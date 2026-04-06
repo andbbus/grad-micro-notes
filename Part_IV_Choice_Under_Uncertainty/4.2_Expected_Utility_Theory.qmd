@@ -1,0 +1,228 @@
+---
+title: "4.2 Expected Utility Theory"
+---
+
+# 4.2 Expected Utility Theory
+
+> **MWG Reference:** Ch. 6, §6.B, pp. 173–183
+
+## Context
+
+The **von Neumann-Morgenstern (VNM) Expected Utility Theorem** is the central representation theorem of decision theory under risk. It establishes that preferences over lotteries satisfying rationality, continuity, and the independence axiom can be represented as the **expected value of a Bernoulli utility function** over outcomes. The theorem has two directions: (1) necessity — if preferences have an EU representation, then the three axioms hold; and (2) sufficiency — the three axioms imply the EU form. The sufficiency direction is the hard and economically important result.
+
+The EU representation has **cardinal** content: unlike the ordinal utility of consumer theory, the Bernoulli function $u$ is unique only up to positive affine transformations. This means differences and curvature of $u$ have behavioral meaning — they encode attitudes toward risk. This cardinality is a direct consequence of the Independence Axiom, which forces the utility to be linear in probabilities.
+
+---
+
+## The VNM Representation Theorem
+
+::: {.callout-important icon=false}
+## Theorem 4.1 — Von Neumann-Morgenstern Expected Utility Theorem
+Let $\mathcal{L}$ be the set of lotteries over a finite outcome set $C = \{c_1, \ldots, c_N\}$. A preference relation $\succsim$ on $\mathcal{L}$ satisfies **rationality**, **continuity**, and **independence** if and only if there exists a function $u: C \to \mathbb{R}$ (a **Bernoulli utility function**) such that for all $L = (p_1, \ldots, p_N)$ and $L' = (p'_1, \ldots, p'_N)$:
+$$L \succsim L' \iff \sum_{n=1}^N p_n u(c_n) \geq \sum_{n=1}^N p'_n u(c_n)$$
+The function $U: \mathcal{L} \to \mathbb{R}$ defined by $U(L) = \sum_n p_n u(c_n) = \mathbb{E}_L[u(c)]$ is the **VNM utility function** (or **expected utility function**).
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+We prove both directions.
+
+---
+
+**Necessity ($\Leftarrow$): EU representation implies the three axioms.**
+
+Suppose $L \succsim L'$ iff $U(L) \geq U(L')$ where $U(L) = \sum_n p_n u(c_n)$.
+
+*Rationality:* $U$ is a real-valued function, so $\geq$ is a complete, transitive ordering on $\mathbb{R}$. Hence $\succsim$ is complete and transitive. $\checkmark$
+
+*Continuity:* Suppose $L \succ L' \succ L''$, i.e., $U(L) > U(L') > U(L'')$. The function $\alpha \mapsto U(\alpha L + (1-\alpha)L'')$ is continuous and strictly increasing in $\alpha$ on $[0,1]$, with:
+- At $\alpha = 1$: $U(L) > U(L')$
+- At $\alpha = 0$: $U(L'') < U(L')$
+
+By the intermediate value theorem, $\exists \alpha \in (0,1)$ such that $U(\alpha L + (1-\alpha)L'') = U(L')$, and in fact for small perturbations there exist strict inequalities. So continuity holds. $\checkmark$
+
+*Independence:* $U(\alpha L + (1-\alpha)L'') = \alpha U(L) + (1-\alpha)U(L'')$ (linearity of expectation). Hence:
+$$U(L) \geq U(L') \iff \alpha U(L) + (1-\alpha)U(L'') \geq \alpha U(L') + (1-\alpha)U(L'')$$
+i.e., $L \succsim L'$ iff $\alpha L + (1-\alpha)L'' \succsim \alpha L' + (1-\alpha)L''$. $\checkmark$
+
+---
+
+**Sufficiency ($\Rightarrow$): Three axioms imply EU representation.**
+
+Assume $\succsim$ satisfies rationality, continuity, and independence on $\mathcal{L}$.
+
+**Step 1: Ordering outcomes and establishing best/worst.**
+
+Since outcomes $c_1, \ldots, c_N$ can be identified with degenerate lotteries $\delta_n$, the rationality of $\succsim$ gives a complete ordering over outcomes. Without loss of generality, re-label so that:
+$$\delta_1 \succsim \delta_2 \succsim \cdots \succsim \delta_N$$
+Let $\bar{L} = \delta_1$ (best outcome) and $\underline{L} = \delta_N$ (worst outcome). If $\bar{L} \sim \underline{L}$, all outcomes are indifferent and $U \equiv 0$ works trivially. Assume $\bar{L} \succ \underline{L}$ (nontrivial case).
+
+**Step 2: Defining the utility function via certainty equivalents.**
+
+For each outcome $c_n$, by continuity: since $\bar{L} \succsim \delta_n \succsim \underline{L}$, there exists a unique $u_n \in [0,1]$ such that:
+$$\delta_n \sim u_n \bar{L} + (1-u_n)\underline{L}$$
+Define $u(c_n) = u_n$. Note: $u(c_1) = 1$ (best outcome) and $u(c_N) = 0$ (worst outcome).
+
+(Existence of $u_n$: by continuity, $U_c(\alpha) := \succsim$-rank of $\alpha \bar{L} + (1-\alpha)\underline{L}$ is continuous in $\alpha$, equals rank of $\bar{L}$ at $\alpha=1$ and rank of $\underline{L}$ at $\alpha=0$. IVT gives existence. Uniqueness follows from the fact that $\alpha \bar{L} + (1-\alpha)\underline{L}$ is strictly improving in $\alpha$ by Independence applied with $\bar{L} \succ \underline{L}$.)
+
+**Step 3: Showing that $U(L) = \sum_n p_n u(c_n)$ represents $\succsim$.**
+
+For any lottery $L = (p_1, \ldots, p_N)$, write:
+$$L = \sum_{n=1}^N p_n \delta_n$$
+
+Using the indifference $\delta_n \sim u_n \bar{L} + (1-u_n)\underline{L}$ from Step 2 and applying Independence repeatedly:
+
+First, replace $\delta_n$ by its indifference equivalent. By Independence (with any $\alpha$ and mixing in the $n$-th component):
+$$\sum_{n=1}^N p_n \delta_n \sim \sum_{n=1}^N p_n [u_n \bar{L} + (1-u_n)\underline{L}]$$
+
+Since $\bar{L}$ and $\underline{L}$ are fixed lotteries, the right-hand side reduces to:
+$$\left(\sum_{n=1}^N p_n u_n\right) \bar{L} + \left(\sum_{n=1}^N p_n (1-u_n)\right) \underline{L} = U \cdot \bar{L} + (1-U) \cdot \underline{L}$$
+where $U = \sum_n p_n u_n = \sum_n p_n u(c_n)$.
+
+So: $L \sim U(L) \bar{L} + (1-U(L))\underline{L}$.
+
+Similarly for $L' = (p'_1, \ldots, p'_N)$: $L' \sim U(L') \bar{L} + (1-U(L'))\underline{L}$.
+
+Now: $L \succsim L'$ iff $U(L)\bar{L} + (1-U(L))\underline{L} \succsim U(L')\bar{L} + (1-U(L'))\underline{L}$.
+
+Since $\bar{L} \succ \underline{L}$, the mixture $\alpha \bar{L} + (1-\alpha)\underline{L}$ is strictly increasing in $\alpha$ (by Independence: higher $\alpha$ puts more weight on the strictly better lottery). Hence:
+$$L \succsim L' \iff U(L) \geq U(L') \iff \sum_n p_n u(c_n) \geq \sum_n p'_n u(c_n) \qquad \blacksquare$$
+
+**Formal justification for Step 3 using Independence:**
+
+The key step — that $\sum_n p_n \delta_n \sim \sum_n p_n [u_n \bar{L} + (1-u_n)\underline{L}]$ — follows by repeated application of Independence. Here is the inductive argument for $N = 3$:
+
+Let $\delta_1 \sim u_1 \bar{L} + (1-u_1)\underline{L}$ and $\delta_2 \sim u_2 \bar{L} + (1-u_2)\underline{L}$.
+
+Consider $L = p_1 \delta_1 + p_2 \delta_2 + p_3 \delta_3$.
+
+By Independence (mixing $\delta_1$ with $\delta_1 \sim u_1 \bar{L} + (1-u_1)\underline{L}$, in the role of $L \sim L'$, with $L'' = p_2 \delta_2 + p_3\delta_3$, $\alpha = p_1$):
+$$p_1 \delta_1 + (1-p_1)(p_2\delta_2 + p_3\delta_3) \sim p_1[u_1\bar{L}+(1-u_1)\underline{L}] + (1-p_1)(p_2\delta_2+p_3\delta_3)$$
+The left side is $L$ (after renormalizing $p_2/(1-p_1)$ and $p_3/(1-p_1)$). Continuing recursively yields the formula. $\blacksquare$
+:::
+
+
+---
+
+## Uniqueness of the Bernoulli Utility Function
+
+::: {.callout-important icon=false}
+## Theorem 4.2 — Uniqueness Up to Positive Affine Transformation
+Suppose $\succsim$ on $\mathcal{L}$ has an EU representation with Bernoulli utility $u: C \to \mathbb{R}$. Then $v: C \to \mathbb{R}$ also represents $\succsim$ as an EU utility if and only if:
+$$v(c_n) = a \cdot u(c_n) + b \quad \forall n, \quad \text{for some } a > 0, b \in \mathbb{R}$$
+That is, $u$ is unique up to a **positive affine transformation**.
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+**($\Leftarrow$)** If $v = au + b$ with $a > 0$:
+$$\sum_n p_n v(c_n) = a \sum_n p_n u(c_n) + b$$
+Since $\sum_n p_n = 1$, this equals $a U(L) + b$, which is an increasing linear function of $U(L)$. Hence $v$ represents the same ordering: $\sum_n p_n v_n \geq \sum_n p'_n v_n$ iff $\sum_n p_n u_n \geq \sum_n p'_n u_n$. $\checkmark$
+
+**($\Rightarrow$)** Suppose both $u$ and $v$ represent $\succsim$ via expected utility. From the construction in Theorem 4.1, the Bernoulli utilities are determined by the indifferences $\delta_n \sim u_n \bar{L} + (1-u_n)\underline{L}$. The value $u_n$ is uniquely determined (as proved in Step 2 of Theorem 4.1). If we normalize differently (setting $u(\bar{c}) = a + b$ and $u(\underline{c}) = b$ instead of 1 and 0), we get $u_n' = a \cdot u_n + b$ for the rescaled version. Conversely, any two representations must have the same indifference-probability correspondences, forcing them to be related by an affine transformation. $\blacksquare$
+:::
+
+
+::: {.callout-caution icon=false}
+## Remark 4.1 — Cardinality of EU
+The uniqueness theorem implies that the EU utility function has **cardinal** content: the differences $u(c_n) - u(c_m)$ and the ratios of differences matter (they are preserved under positive affine transformations). This is in contrast to ordinal utility in consumer theory, where only the ranking matters. The cardinality here is behavioral: it reflects attitudes toward risk.
+
+Specifically, if $u(c_3) - u(c_2) > u(c_2) - u(c_1)$, this says that the agent values the improvement from $c_2$ to $c_3$ more than from $c_1$ to $c_2$ — and this is a refutable behavioral claim (it implies specific choices between lotteries).
+:::
+
+
+---
+
+## The St. Petersburg Paradox
+
+::: {.callout-note icon=false appearance="simple"}
+## Example 4.2 — The St. Petersburg Paradox (Bernoulli, 1738)
+**The game:** A fair coin is flipped repeatedly until the first head appears. If the first head appears on toss $k$, the payoff is $2^k$ dollars.
+
+**Expected monetary value:**
+$$\mathbb{E}[\text{payoff}] = \sum_{k=1}^{\infty} \frac{1}{2^k} \cdot 2^k = \sum_{k=1}^{\infty} 1 = +\infty$$
+The expected monetary value is infinite. Yet no rational person would pay an arbitrarily large sum to play this game.
+
+**Bernoulli's resolution (1738):** Agents maximize expected **utility**, not expected monetary value. With $u(c) = \ln c$:
+$$EU = \sum_{k=1}^{\infty} \frac{1}{2^k} \ln(2^k) = \sum_{k=1}^{\infty} \frac{k \ln 2}{2^k} = \ln 2 \cdot \sum_{k=1}^{\infty} \frac{k}{2^k} = \ln 2 \cdot 2 = 2\ln 2 < \infty$$
+where $\sum_{k=1}^{\infty} k/2^k = 2$ (sum of geometric-type series). So with log utility, the game has finite certainty equivalent $CE = e^{2\ln 2} = 4$ dollars.
+
+**Menger's objection (1934):** Bernoulli's resolution using log utility is insufficient. Consider a modified game where the payoff is $e^{2^k}$ instead of $2^k$. Then with $u(c) = \ln c$:
+$$EU = \sum_{k=1}^{\infty} \frac{1}{2^k} \ln(e^{2^k}) = \sum_{k=1}^{\infty} \frac{2^k}{2^k} = +\infty$$
+The paradox reappears for super-exponentially growing payoffs. The **general resolution** requires $u$ to be **bounded above**: if $\sup_c u(c) < \infty$, then EU is always finite for any lottery over outcomes in $\mathbb{R}_+$.
+
+**Implication:** Boundedness of $u$ is a sufficient condition for EU to be finite for all lotteries. However, bounded utility has implications for behavior at high wealth levels (e.g., satiation) that may be empirically implausible. The standard applied compromise is to use unbounded but concave utility functions (like $u(c) = c^{1-\rho}/(1-\rho)$) and restrict attention to distributions with finite moments.
+:::
+
+
+---
+
+## Extensions to Continuous Outcomes
+
+::: {.callout-note icon=false}
+## Definition 4.2 — Expected Utility with a Continuous Distribution
+Let the outcome space be $C = \mathbb{R}$ (or an interval) and let $F: \mathbb{R} \to [0,1]$ be a cumulative distribution function representing the lottery. The **expected utility** is:
+$$U(F) = \int u(c) \, dF(c) = \int_{-\infty}^{\infty} u(c) f(c) \, dc$$
+if $F$ has density $f$, or more generally $\int u(c) \, dF(c)$ as a Lebesgue-Stieltjes integral.
+:::
+
+
+::: {.callout-caution icon=false}
+## Remark 4.2 — Integrability
+For $U(F)$ to be well-defined and finite, integrability conditions are needed. If $u$ is bounded, $\int |u(c)| dF(c) \leq \sup|u| < \infty$ always. For unbounded $u$ (e.g., $u(c) = \ln c$ or $u(c) = c^{1-\rho}/(1-\rho)$), one requires that $F$ has finite enough moments:
+$$\int |u(c)| \, dF(c) < \infty$$
+The dominated convergence theorem ensures that if $\mathbb{E}_F[u(c)]$ is finite, then EU is well-defined and continuous in $F$ (in the topology of weak convergence under mild regularity).
+:::
+
+
+::: {.callout-important icon=false}
+## Proposition 4.2 — VNM Independence in the Continuous Case
+The Independence Axiom in the continuous outcome case states: for distributions $F, G, H$ and $\alpha \in (0,1)$:
+$$F \succsim G \iff \alpha F + (1-\alpha)H \succsim \alpha G + (1-\alpha)H$$
+where $\alpha F + (1-\alpha)H$ denotes the mixture distribution with CDF $\alpha F(c) + (1-\alpha)H(c)$. The VNM theorem carries over: $\succsim$ satisfies rationality, continuity, and independence iff $\exists u: \mathbb{R} \to \mathbb{R}$ such that $F \succsim G$ iff $\int u \, dF \geq \int u \, dG$.
+:::
+
+
+---
+
+## Non-EU Theories: A Brief Overview
+
+The Allais paradox (see [4.1 State Space Framework](4.1_State_Space_Framework.qmd)) and subsequent experimental evidence have motivated several extensions of EU:
+
+**Rank-Dependent Utility (Quiggin, 1982):**
+$$RDU(F) = \int u(c) \, d[g(F(c))]$$
+where $g: [0,1] \to [0,1]$ is a probability weighting function (e.g., overweighting small probabilities near 0 and 1). This accommodates the Allais paradox and preserves first-order stochastic dominance.
+
+**Prospect Theory (Kahneman-Tversky, 1979; Tversky-Kahneman, 1992):**
+$$V(L) = \sum_n \pi(p_n) v(c_n - r)$$
+where $v$ is an S-shaped value function (concave for gains above reference point $r$, convex for losses), $\pi$ is a nonlinear probability weighting function, and $r$ is a reference point (typically the status quo wealth). Key features: loss aversion ($v'$ is steeper for losses than gains), probability distortion.
+
+**Why EU Remains the Dominant Model:**
+Despite its empirical shortcomings, EU is used in almost all applied microeconomic models because:
+1. It is **tractable**: closed-form solutions exist for CARA and CRRA utility with standard distributions.
+2. Its **comparative statics** are clean: Arrow-Pratt measures fully characterize comparative risk aversion.
+3. **Stochastic dominance** results (see [4.4 Stochastic Dominance](4.4_Stochastic_Dominance.qmd)) carry over with minimal modification.
+4. In **aggregate** models (e.g., asset pricing, insurance markets), violations of EU at the individual level may not manifest at the market level.
+5. For **mechanism design** and game theory, EU provides the linear structure needed for the revelation principle and incentive compatibility analysis.
+
+---
+
+## Economic Intuition
+
+The VNM theorem is a remarkable result: from three relatively innocuous axioms (rationality, continuity, independence), one can derive that the agent behaves as if maximizing a weighted sum of utilities across outcomes, where the weights are the probabilities. This is not just a representation trick — it has strong behavioral implications.
+
+The key insight is that the Independence Axiom forces the utility function to be **linear in probabilities**. This linearity is what makes EU tractable: mixed strategies in game theory, incentive compatible mechanisms in contract theory, and portfolio choice problems in finance all become linear (or at least convex) optimization problems under EU. Remove Independence, and the mathematics becomes substantially harder.
+
+The cardinality of the Bernoulli utility $u$ — unique only up to positive affine transformations — means that $u$ encodes preferences over **distributions** of outcomes, not just outcomes themselves. The curvature of $u$ is the key behavioral object: it determines how much the agent dislikes variance, what premium they pay for insurance, and how they respond to mean-preserving spreads. These topics are developed in detail in [4.3 Risk Aversion](4.3_Risk_Aversion.qmd).
+
+---
+
+## Cross-References
+
+- [4.1 State Space Framework](4.1_State_Space_Framework.qmd) — the axioms; the Allais paradox
+- [4.3 Risk Aversion](4.3_Risk_Aversion.qmd) — concavity of $u$; Arrow-Pratt measures
+- [4.4 Stochastic Dominance](4.4_Stochastic_Dominance.qmd) — welfare rankings using EU for broad classes of $u$
+- [1.1 Preference and Utility](1.1_Preference_and_Utility.qmd) — deterministic utility representation; ordinal vs. cardinal utility
+- [PS Uncertainty](PS_Uncertainty.qmd) — Problems 1 and 2

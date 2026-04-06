@@ -1,0 +1,248 @@
+---
+title: "4.1 The State Space Framework and Axioms"
+---
+
+# 4.1 The State Space Framework and Axioms
+
+> **MWG Reference:** Ch. 6, §6.A–6.B, pp. 167–182
+
+## Context
+
+Before writing down a utility function for choice under uncertainty, one must be precise about the **objects of choice**. There are two major frameworks: the **von Neumann-Morgenstern (VNM)** framework of objective lotteries over outcomes, and the **Savage** framework of acts over states of the world. The VNM framework is more tractable and is the standard in microeconomic theory; the Savage framework is foundational for decision theory and handles subjective beliefs endogenously.
+
+The key axiom distinguishing expected utility from other decision theories is the **Independence Axiom**. Unlike rationality and continuity, which are standard in deterministic choice theory, the Independence Axiom is specific to the probabilistic setting. It is the axiom that drives the linear-in-probabilities form of the EU representation. The **Allais paradox** demonstrates that the Independence Axiom is systematically violated in experiments, providing the primary empirical motivation for non-EU theories.
+
+---
+
+## Framework 1: Objective Uncertainty (VNM)
+
+::: {.callout-note icon=false}
+## Definition 4.1 — Outcomes and Simple Lotteries
+Let $C = \{c_1, \ldots, c_N\}$ be a finite set of **outcomes** (prizes, consumption levels, wealth levels). A **simple lottery** over $C$ is a probability distribution:
+$$L = (p_1, p_2, \ldots, p_N) \quad \text{with} \quad p_n \geq 0 \; \forall n \quad \text{and} \quad \sum_{n=1}^N p_n = 1$$
+where $p_n$ is the probability of outcome $c_n$.
+:::
+
+
+::: {.callout-note icon=false}
+## Definition 4.2 — The Space of Lotteries
+The set of all simple lotteries over $C$ is the **(N-1)-dimensional simplex**:
+$$\mathcal{L} = \left\{(p_1, \ldots, p_N) \in \mathbb{R}^N_+ : \sum_{n=1}^N p_n = 1\right\}$$
+**Degenerate lotteries** $\delta_n$ (placing probability 1 on outcome $c_n$) are the vertices of the simplex.
+:::
+
+
+::: {.callout-note icon=false}
+## Definition 4.3 — Compound Lotteries
+A **compound lottery** is a lottery over lotteries: given lotteries $L_1, \ldots, L_K \in \mathcal{L}$ and probabilities $\alpha_1, \ldots, \alpha_K \geq 0$ with $\sum_k \alpha_k = 1$, the compound lottery $(\alpha_1 \circ L_1, \ldots, \alpha_K \circ L_K)$ first selects $L_k$ with probability $\alpha_k$, then resolves $L_k$.
+:::
+
+
+::: {.callout-note icon=false}
+## Definition 4.4 — Reduction of Compound Lotteries
+The **reduced simple lottery** corresponding to a compound lottery $(\alpha_1 \circ L_1, \ldots, \alpha_K \circ L_K)$ is obtained by computing the total probability of each outcome:
+$$\bar{p}_n = \sum_{k=1}^K \alpha_k p_n^k$$
+where $p_n^k$ is the probability of outcome $c_n$ under lottery $L_k$.
+
+The reduced lottery is the **convex combination**:
+$$\bar{L} = \sum_{k=1}^K \alpha_k L_k = \alpha_1 L_1 + \cdots + \alpha_K L_K \in \mathcal{L}$$
+:::
+
+
+::: {.callout-caution icon=false}
+## Remark 4.1 — Reduction Principle
+The assumption that agents care only about the reduced simple lottery (the ultimate probabilities over outcomes), and not about the multi-stage resolution process, is called the **reduction principle**. It is implicit in the VNM framework. Psychologically, the timing and framing of uncertainty can matter (this is studied in behavioral economics under "temporal resolution of uncertainty"), but for the standard VNM model, only the final distribution over outcomes matters.
+:::
+
+
+---
+
+## Framework 2: Subjective Uncertainty (Savage)
+
+::: {.callout-note icon=false}
+## Definition 4.5 — Savage Framework
+Let $S$ be a set of **states of the world** (possible realizations of uncertainty), $C$ be a set of **outcomes** (consequences), and $\Sigma$ a $\sigma$-algebra of events. An **act** is a measurable function $f: S \to C$ mapping each state to an outcome.
+
+The agent has **preferences** $\succsim$ over acts. The Savage framework does not assume objective probabilities; instead, the agent's **subjective probability measure** $\mu$ over $S$ is derived from preferences over acts via Savage's seven axioms.
+:::
+
+
+::: {.callout-caution icon=false}
+## Remark 4.2 — VNM vs. Savage
+In the VNM framework, probabilities are **objective** (given by the lottery). The agent knows the probability of each outcome. In the Savage framework, the agent has **beliefs** (subjective probabilities) that must be inferred from their choices. Anscombe and Aumann (1963) provided a cleaner axiomatization by mixing the two frameworks: acts map states to objective lotteries, and both subjective probabilities (over states) and VNM utility (over outcomes) are derived jointly.
+
+For most of microeconomic theory (insurance, portfolio choice, mechanism design), the VNM framework with objective probabilities is sufficient. The Savage framework is essential for game theory under ambiguity (Knightian uncertainty) and for decision theory with heterogeneous beliefs.
+:::
+
+
+---
+
+## Preferences Over Lotteries
+
+The agent's preferences are a binary relation $\succsim$ on $\mathcal{L}$, where $L \succsim L'$ means "lottery $L$ is at least as good as lottery $L'$."
+
+::: {.callout-note icon=false}
+## Definition 4.6 — Rational Preferences Over Lotteries
+$\succsim$ on $\mathcal{L}$ is **rational** if it is:
+- **Complete**: for all $L, L' \in \mathcal{L}$, either $L \succsim L'$ or $L' \succsim L$ (or both)
+- **Transitive**: $L \succsim L'$ and $L' \succsim L''$ imply $L \succsim L''$
+:::
+
+
+These are exactly the same axioms as in deterministic choice theory (MWG Ch. 1). Their interpretation carries over: rationality means the agent can rank all lotteries and their rankings are consistent.
+
+---
+
+## The Continuity (Archimedean) Axiom
+
+::: {.callout-note icon=false}
+## Definition 4.7 — Continuity Axiom
+$\succsim$ satisfies **continuity** if for all $L, L', L'' \in \mathcal{L}$ with $L \succ L' \succ L''$, there exist $\alpha, \beta \in (0,1)$ such that:
+$$\alpha L + (1-\alpha) L'' \succ L' \quad \text{and} \quad L' \succ \beta L + (1-\beta) L''$$
+:::
+
+
+::: {.callout-caution icon=false}
+## Remark 4.3 — Interpretation of Continuity
+The continuity axiom says that the preference ranking is not lexicographic in outcomes: if $L \succ L' \succ L''$, then a mixture of the best and worst lotteries ($L$ and $L''$) can be made strictly better or worse than the intermediate lottery $L'$ by choosing the appropriate mixing probability. This rules out the possibility that some outcomes are "infinitely better" or "infinitely worse" than others.
+
+**Example of a violation:** Suppose $c_1$ = death, $c_2$ = poverty, $c_3$ = wealth. An agent who has $\delta_3 \succ \delta_2 \succ \delta_1$ but would never accept any risk of death regardless of the probability (even $0.0001\%$ chance of death) to gain any amount of wealth would violate continuity, since $\alpha \delta_3 + (1-\alpha)\delta_1 \prec \delta_2$ for all $\alpha \in (0,1)$.
+
+Mathematically, continuity ensures that the better-than and worse-than sets are open in the simplex topology, allowing a continuous utility representation to exist.
+:::
+
+
+---
+
+## The Independence Axiom
+
+::: {.callout-note icon=false}
+## Definition 4.8 — Independence Axiom
+$\succsim$ satisfies the **Independence Axiom** if for all $L, L', L'' \in \mathcal{L}$ and all $\alpha \in (0,1)$:
+$$L \succsim L' \iff \alpha L + (1-\alpha) L'' \succsim \alpha L' + (1-\alpha) L''$$
+:::
+
+
+::: {.callout-caution icon=false}
+## Remark 4.4 — Interpretation of the Independence Axiom
+The Independence Axiom says that the preference between two lotteries $L$ and $L'$ is **not affected** by mixing them with a common third lottery $L''$. The common component $(1-\alpha)L''$ is irrelevant and can be "canceled out."
+
+**Intuition:** Think of $\alpha L + (1-\alpha) L''$ as a two-stage lottery: with probability $\alpha$, face lottery $L$; with probability $1-\alpha$, face lottery $L''$. The preference between the two compound lotteries depends only on what happens in the event (probability $\alpha$) where they differ — which is the preference between $L$ and $L'$ themselves. The common part $L''$ occurs in neither case and is irrelevant.
+
+**Why it is controversial:** The Independence Axiom is a separability condition. It says that your preference in one branch of the decision tree is independent of what happens in other branches. Real agents often violate this, particularly when the outcomes involve extreme events or when the framing of the lottery as a two-stage process affects behavior (as documented in the Allais paradox below).
+:::
+
+
+::: {.callout-caution icon=false}
+## Remark 4.5 — Geometric Interpretation
+In the simplex $\mathcal{L}$, the Independence Axiom implies that indifference curves are **straight parallel lines** (hyperplanes). To see this: if $L \sim L'$, then by Independence, $\alpha L + (1-\alpha)L'' \sim \alpha L' + (1-\alpha)L''$ for any $L''$ and $\alpha$. This means the indifference set through $L$ maps linearly to the indifference set through $\alpha L + (1-\alpha)L''$, tracing out a straight line. Non-EU theories (e.g., rank-dependent utility) allow "fanning" of indifference curves — non-parallel lines in the simplex.
+:::
+
+
+---
+
+## The Allais Paradox
+
+The Allais paradox (Allais, 1953) is the most famous systematic violation of the Independence Axiom.
+
+::: {.callout-note icon=false appearance="simple"}
+## Example 4.1 — The Allais Paradox
+Consider monetary outcomes $c_1 = \$0$, $c_2 = \$1{,}000{,}000$, $c_3 = \$5{,}000{,}000$.
+
+**Pair 1:**
+$$L_1 = (0, 1, 0) \quad \text{(win \$1M for certain)}$$
+$$L_2 = (0.01, 0.89, 0.10) \quad \text{(1\% chance of \$0; 89\% chance of \$1M; 10\% chance of \$5M)}$$
+
+**Pair 2:**
+$$L_3 = (0.89, 0.11, 0) \quad \text{(89\% chance of \$0; 11\% chance of \$1M; 0\% chance of \$5M)}$$
+$$L_4 = (0.90, 0, 0.10) \quad \text{(90\% chance of \$0; 0\% chance of \$1M; 10\% chance of \$5M)}$$
+
+**Modal experimental preference:** $L_1 \succ L_2$ and $L_4 \succ L_3$.
+
+**Why this violates Independence:**
+
+Note that:
+$$L_1 = 0.11 \cdot \delta_{c_2} + 0.89 \cdot \delta_{c_2}$$
+$$L_2 = 0.11 \cdot \left(\frac{1}{11}\delta_{c_1} + \frac{10}{11}\delta_{c_3}\right) + 0.89 \cdot \delta_{c_2}$$
+
+So $L_1$ and $L_2$ differ only in the $0.11$-probability event: in that event, $L_1$ gives $\delta_{c_2}$ and $L_2$ gives $\frac{1}{11}\delta_{c_1} + \frac{10}{11}\delta_{c_3}$. Denoting $M_1 = \delta_{c_2}$ and $M_2 = \frac{1}{11}\delta_{c_1} + \frac{10}{11}\delta_{c_3}$:
+$$L_1 = 0.11 M_1 + 0.89 \delta_{c_2}, \quad L_2 = 0.11 M_2 + 0.89 \delta_{c_2}$$
+
+By the Independence Axiom, $L_1 \succ L_2$ iff $M_1 \succ M_2$.
+
+Similarly:
+$$L_3 = 0.11 M_1 + 0.89 \delta_{c_1}, \quad L_4 = 0.11 M_2 + 0.89 \delta_{c_1}$$
+
+Again by Independence, $L_3 \succsim L_4$ iff $M_1 \succsim M_2$.
+
+**Contradiction:** $L_1 \succ L_2$ implies $M_1 \succ M_2$, which implies $L_3 \succ L_4$. But the experimental finding is $L_4 \succ L_3$. This is a violation of the Independence Axiom.
+
+**EU representation check:** Under EU, $L_1 \succ L_2$ means:
+$$u(c_2) > 0.01 u(c_1) + 0.89 u(c_2) + 0.10 u(c_3)$$
+$$0.11 u(c_2) > 0.01 u(c_1) + 0.10 u(c_3) \quad \cdots (*)$$
+
+And $L_4 \succ L_3$ means:
+$$0.90 u(c_1) + 0.10 u(c_3) > 0.89 u(c_1) + 0.11 u(c_2)$$
+$$0.10 u(c_3) - 0.11 u(c_2) > 0.89 u(c_1) - 0.90 u(c_1) = -0.01 u(c_1)$$
+$$0.10 u(c_3) + 0.01 u(c_1) > 0.11 u(c_2) \quad \cdots (**)$$
+
+But $(*)$ and $(**)$ directly contradict each other ($(*)$ says $0.11 u(c_2) > 0.01 u(c_1) + 0.10 u(c_3)$ while $(**)$ says the opposite). Hence no EU representation can accommodate both preferences simultaneously.
+:::
+
+
+::: {.callout-caution icon=false}
+## Remark 4.6 — What the Allais Paradox Tells Us
+The Allais paradox reveals that agents often violate Independence when one option includes **certainty** (the $L_1$ certainty effect). Agents appear to overweight the certain outcome relative to what EU would predict. This suggests:
+
+1. **Psychologically**: People treat "certainty" as qualitatively different from "very high probability," not just quantitatively. The move from 100% to 99% feels worse than the move from 11% to 10% (both are a 1 percentage point reduction).
+
+2. **Modeling response**: Non-EU theories such as **rank-dependent utility** (Quiggin, 1982) and **prospect theory** (Kahneman and Tversky, 1979) accommodate such behavior by allowing the probability weighting function to be nonlinear, with overweighting of extreme probabilities (near 0 and 1).
+
+3. **Practical response**: Despite the Allais violation, EU remains the dominant model in most applied economics because (i) violations are less prevalent in high-stakes repeated environments; (ii) EU is tractable and has well-understood implications; (iii) for aggregate outcomes and policy analysis, violations may average out.
+:::
+
+
+---
+
+## Summary of Axioms
+
+::: {.callout-important icon=false}
+## Proposition 4.1 — The Three Key Axioms
+The three axioms for VNM expected utility are:
+1. **Rationality**: $\succsim$ is complete and transitive on $\mathcal{L}$
+2. **Continuity**: For $L \succ L' \succ L''$, $\exists \alpha, \beta \in (0,1)$ such that $\alpha L + (1-\alpha)L'' \succ L' \succ \beta L + (1-\beta)L''$
+3. **Independence**: $L \succsim L' \iff \alpha L + (1-\alpha)L'' \succsim \alpha L' + (1-\alpha)L''$ for all $\alpha \in (0,1)$, $L'' \in \mathcal{L}$
+
+The VNM theorem states these three axioms are **necessary and sufficient** for an EU representation (see [4.2 Expected Utility Theory](4.2_Expected_Utility_Theory.qmd)).
+:::
+
+
+::: {.callout-caution icon=false}
+## Remark 4.7 — Which Axiom is "Doing the Work"?
+- **Rationality** alone (without continuity) gives an ordinal representation on the simplex (a utility function on lotteries exists).
+- **Rationality + Continuity** gives a continuous utility function $U: \mathcal{L} \to \mathbb{R}$.
+- **+ Independence** forces this utility function to be **linear in probabilities**: $U(L) = \sum_n p_n u(c_n)$.
+
+The Independence Axiom is thus precisely what converts a general preference ordering on lotteries into an expected utility representation. This is the hardest axiom to justify and the most frequently violated.
+:::
+
+
+---
+
+## Economic Intuition
+
+The von Neumann-Morgenstern framework provides a clean, tractable model of decision-making under risk. The genius of the VNM approach is to work directly with preferences over lotteries (probability distributions), rather than trying to model the psychological experience of uncertainty. The axioms encode plausible consistency requirements: completeness (you can always make a choice), transitivity (your choices don't cycle), continuity (no outcome is infinitely good or bad), and independence (the presence of a common background risk doesn't affect relative preferences).
+
+The Independence Axiom is particularly elegant: it says that in evaluating two lotteries, you should focus only on the events where they differ. The common component is irrelevant — you'll experience it in either case. This "consequentialist" reasoning is compelling in many settings, but breaks down when the psychological experience of certainty, or the framing of the lottery, affects the evaluation.
+
+Understanding both the power and the limits of the Independence Axiom is essential for graduate-level economic theory. It is the cornerstone of the most important representation theorem in decision theory, and its systematic violation has generated decades of research in behavioral economics and decision theory.
+
+---
+
+## Cross-References
+
+- [4.2 Expected Utility Theory](4.2_Expected_Utility_Theory.qmd) — VNM theorem; the full proof; uniqueness
+- [4.3 Risk Aversion](4.3_Risk_Aversion.qmd) — what the curvature of Bernoulli utility $u$ means
+- [4.4 Stochastic Dominance](4.4_Stochastic_Dominance.qmd) — welfare rankings of distributions for broad classes of $u$
+- [1.1 Preference and Utility](1.1_Preference_and_Utility.qmd) — rationality axioms in the deterministic setting
+- [PS Uncertainty](PS_Uncertainty.qmd) — Problems 1 and 5

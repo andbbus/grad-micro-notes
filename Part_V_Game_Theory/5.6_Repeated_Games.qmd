@@ -1,0 +1,187 @@
+---
+title: "5.6 Repeated Games"
+---
+
+# 5.6 Repeated Games
+
+> **MWG Reference:** Ch. 9, §9.B, pp. 273–299
+
+## Context
+
+Repeated games model ongoing relationships in which the same stage game is played over and over. The crucial insight — formalized in the Folk Theorem — is that patient players can sustain cooperative outcomes that are not equilibria of the stage game, by threatening to punish deviations in future periods. This captures cartel stability, international trade agreements, social norms, bilateral relationships, and community enforcement. The Folk Theorem comes in two versions: Friedman (1971) uses Nash threats; Fudenberg and Maskin (1986) use minmax threats and characterize the full set of equilibrium payoffs as players approach infinite patience.
+
+## Definitions
+
+::: {.callout-note icon=false}
+## Definition 5.6.1 — Repeated Game (Supergame)
+Let $G = (I, (A_i)_{i \in I}, (u_i)_{i \in I})$ be a finite **stage game**. The **repeated game** (or **supergame**) $G^\infty(\delta)$ is the extensive form game in which:
+- $G$ is played at periods $t = 0, 1, 2, \ldots$
+- At each $t$, all players observe the full history of past actions $h^t = (a^0, a^1, \ldots, a^{t-1})$
+- Each player $i$ maximizes the discounted sum of stage payoffs:
+$$U_i = (1 - \delta) \sum_{t=0}^{\infty} \delta^t u_i(a^t), \quad \delta \in (0, 1),$$
+where the factor $(1-\delta)$ normalizes payoffs to be in the same units as stage payoffs.
+:::
+
+
+::: {.callout-caution icon=false}
+## Remark
+The normalization $(1-\delta) \sum_{t=0}^\infty \delta^t u_i(a^t)$ ensures that the repeated game payoff from constant action profile $a$ equals the stage payoff $u_i(a)$. This makes it meaningful to compare repeated game equilibrium payoffs to stage game payoffs.
+:::
+
+
+::: {.callout-note icon=false}
+## Definition 5.6.2 — Grim Trigger Strategy
+The **grim trigger strategy** $\tau_i$ for player $i$ in $G^\infty(\delta)$ is:
+$$\tau_i(h^t) = \begin{cases} a_i^* & \text{if } h^t = (a^*, a^*, \ldots, a^*) \text{ (all players played } a^* \text{ in all prior periods)} \\ \hat{a}_i & \text{otherwise,} \end{cases}$$
+where $a^* \in A$ is the target cooperative action profile and $\hat{a} = (\hat{a}_i)_{i \in I}$ is a punishment profile (often a stage game NE).
+:::
+
+
+::: {.callout-note icon=false}
+## Definition 5.6.3 — Minmax Payoff
+The **minmax payoff** of player $i$ is
+$$\underline{v}_i = \min_{\sigma_{-i} \in \prod_{j \neq i} \Delta(A_j)} \max_{\sigma_i \in \Delta(A_i)} u_i(\sigma_i, \sigma_{-i}).$$
+This is the lowest payoff opponents can hold player $i$ to, even when $i$ plays a best response against them. A payoff $v_i \geq \underline{v}_i$ is **individually rational** for player $i$.
+:::
+
+
+::: {.callout-note icon=false}
+## Definition 5.6.4 — Feasible Payoff Set
+The **feasible set** of payoff vectors is
+$$V = \text{co}\{(u_i(a))_{i \in I} : a \in A\},$$
+the convex hull of all stage payoff vectors. A payoff vector $v \in V$ is feasible if it can be achieved by some (possibly correlated) mixture of action profiles. The **feasible and individually rational set** is $V^* = \{v \in V : v_i \geq \underline{v}_i\; \forall i\}$.
+:::
+
+
+## Main Results
+
+::: {.callout-important icon=false}
+## Theorem 5.6.1 — Folk Theorem (Friedman 1971, Nash Threats)
+Let $G$ be a finite stage game with Nash equilibrium payoff vector $v^{NE}$ (any NE payoff). For any payoff vector $v \in V$ that **strictly Pareto dominates** $v^{NE}$ (i.e., $v_i > v_i^{NE}$ for all $i$), there exists $\bar{\delta} < 1$ such that for all $\delta \in (\bar{\delta}, 1)$, $v$ is achievable as the average payoff of an SPE of $G^\infty(\delta)$.
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+We prove for the two-player case. Let $a^*$ be a (possibly correlated) action profile achieving $v$ and let $\hat{a}$ be any NE of $G$ with payoffs $v^{NE}$.
+
+**Strategy:** Both players use grim trigger:
+- Play $a^*$ as long as the history is consistent with both playing $a^*$.
+- If any player deviates, play $\hat{a}$ forever after.
+
+**Payoffs:**
+- Cooperation path: $(1-\delta)\sum_{t=0}^\infty \delta^t v_i = v_i$ for each $i$.
+- Deviation payoff of player $i$: If $i$ deviates at time $t$ (when path has been cooperative), their maximum stage payoff from deviation is $\tilde{u}_i = \max_{a_i} u_i(a_i, a_{-i}^*)$. After the deviation, punishment is $v_i^{NE}$ forever.
+
+**SPE condition via one-deviation principle:** Player $i$ prefers not to deviate if and only if the payoff from continued cooperation exceeds the payoff from deviating today and facing punishment forever:
+$$v_i \geq (1-\delta)\tilde{u}_i + \delta v_i^{NE}.$$
+(The deviation happens in one period, yielding $(1-\delta)\tilde{u}_i$, followed by NE play forever yielding discounted value $\delta v_i^{NE}$, since after deviation all future periods also play NE.)
+
+Rearranging:
+$$v_i - \delta v_i^{NE} \geq (1-\delta)\tilde{u}_i$$
+$$v_i - \delta v_i^{NE} \geq (1-\delta)\tilde{u}_i$$
+$$v_i(1 - \delta) + \delta(v_i - v_i^{NE}) \geq (1-\delta)\tilde{u}_i$$
+
+Alternatively, solve for $\delta$:
+$$(1-\delta)(v_i - \tilde{u}_i) \geq -\delta(v_i - v_i^{NE})$$
+$$\delta(v_i - v_i^{NE}) \geq (1-\delta)(\tilde{u}_i - v_i).$$
+
+Since $v_i > v_i^{NE}$ and $\tilde{u}_i \geq v_i$ (one-shot deviation can only be better or equal to the cooperative action in the stage game), the right side is non-negative. Solving:
+$$\delta \geq \frac{\tilde{u}_i - v_i}{\tilde{u}_i - v_i^{NE}} \equiv \bar{\delta}_i.$$
+
+Since $\tilde{u}_i \geq v_i > v_i^{NE}$, we have $0 \leq \bar{\delta}_i < 1$.
+
+Set $\bar{\delta} = \max_i \bar{\delta}_i < 1$. For all $\delta > \bar{\delta}$, no player benefits from a one-shot deviation. By the one-deviation principle (Theorem 5.5.1), the grim trigger strategy profile is an SPE.
+
+The SPE payoff is $v_i$ for each $i$ (evaluated under the cooperative path, which is the equilibrium path). $\blacksquare$
+:::
+
+
+::: {.callout-important icon=false}
+## Theorem 5.6.2 — Folk Theorem (Fudenberg-Maskin 1986, Minmax Threats)
+Let $G$ be a finite stage game satisfying the **full dimensionality condition**: the set of feasible payoff vectors $V$ has dimension $|I|$ (its affine hull spans $\mathbb{R}^{|I|}$). Then for any $v \in V^*$ (feasible and strictly individually rational: $v_i > \underline{v}_i$ for all $i$), there exists $\bar{\delta} < 1$ such that for all $\delta > \bar{\delta}$, $v$ is achievable as an SPE payoff of $G^\infty(\delta)$.
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+**Proof sketch.** The key complication over Friedman's version is that minmax punishments may not themselves be NE, so enforcing them requires additional coordination.
+
+**Phase structure.** The strategy profile uses three phases:
+1. **Cooperation phase:** Play the target action profile $a^*$ achieving $v$. If player $j$ deviates unilaterally, enter punishment phase for $j$.
+2. **Punishment phase for $j$:** All players $k \neq j$ play their minmax strategy against $j$ for $T$ periods; player $j$ plays a best response. This holds $j$'s payoff to approximately $\underline{v}_j$.
+3. **Reward phase:** After $T$ periods of punishment, all players (including $j$) revert to cooperation. Players $k \neq j$ are rewarded with a payoff above $v_k$ for the next $T'$ periods (using the full dimensionality condition to construct such a payoff vector) to compensate them for the cost of administering the punishment.
+
+**Full dimensionality.** The full dimensionality condition ensures that for each player $k$, there exists a feasible payoff vector that gives $k$ strictly more than $v_k$ while keeping other players above their continuation values — needed to construct the reward phase.
+
+**SPE verification.** Using the one-deviation principle:
+- In the cooperation phase: as in Friedman's proof, no deviation for $\delta$ large enough.
+- In the punishment phase for $j$: players $k \neq j$ prefer to administer punishment (incur short-run cost) because they are rewarded afterwards; the reward must exceed the cost, which requires $\delta$ large enough (specifically, $T$ and $T'$ can be tuned, and for large $\delta$ the punishment and reward phases become negligible relative to the long-run cooperation payoff).
+- Player $j$ during punishment: $j$ cannot improve by deviating further because the punishment would restart.
+
+As $\delta \to 1$, any $v \in V^*$ is achievable, giving the full Folk Theorem. $\blacksquare$
+:::
+
+
+## Critical Discount Factor
+
+::: {.callout-note icon=false appearance="simple"}
+## Example 5.6.1 — Prisoner's Dilemma Cooperation
+Stage game:
+$$\begin{array}{c|cc} & C & D \\ \hline C & 2,2 & 0,3 \\ D & 3,0 & 1,1 \end{array}$$
+
+Target outcome: $(C,C)$ with payoffs $(2,2)$. Punishment: NE $(D,D)$ with payoffs $(1,1)$.
+
+Best deviation from $C$: play $D$ when opponent plays $C$, getting $3$.
+
+**No-deviation condition** for player $i$ (by symmetry):
+$$2 \geq (1-\delta) \cdot 3 + \delta \cdot 1$$
+$$2 \geq 3 - 3\delta + \delta = 3 - 2\delta$$
+$$2\delta \geq 1$$
+$$\delta \geq \frac{1}{2}.$$
+
+The critical discount factor is $\delta^* = 1/2$. Cooperation is sustained as an SPE payoff if and only if $\delta \geq 1/2$. For $\delta < 1/2$, the unique SPE has both players defect in every period.
+:::
+
+
+## Finite Repetition
+
+::: {.callout-important icon=false}
+## Theorem 5.6.3 — Unraveling with Unique Stage NE
+If the stage game $G$ has a **unique Nash equilibrium** $a^{NE}$, then the unique SPE of any finitely repeated game $G^T$ ($T$ finite) is to play $a^{NE}$ at every period.
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+By backward induction on $T$.
+
+**Period $T$ (last period):** There is no future, so no threat can be conditioned on actions in period $T$. The subgame in period $T$ is exactly $G$ with no continuation, so each player plays their stage NE strategy $a_i^{NE}$.
+
+**Period $T-1$:** Given that period $T$ play is $a^{NE}$ regardless of period $T-1$ actions (by the period $T$ argument), the period $T-1$ subgame is effectively a one-shot game $G$. Therefore each player plays $a_i^{NE}$ in period $T-1$.
+
+**Induction:** Continuing backward, in every period $t$, given that all future periods will play $a^{NE}$ regardless of history, the current subgame is equivalent to one-shot $G$, and each player plays $a_i^{NE}$.
+
+Hence the unique SPE is $a^{NE}$ in every period. $\blacksquare$
+:::
+
+
+::: {.callout-caution icon=false}
+## Remark
+The uniqueness of the stage NE is crucial. If the stage game has **multiple NE**, cooperation in early periods can sometimes be sustained by threatening to switch from a good NE to a bad NE in future periods (rather than threatening to play a dominated strategy forever). For example, if the stage game has NE $\hat{a}^{good}$ (payoff 3 each) and $\hat{a}^{bad}$ (payoff 0 each), one can sustain cooperation by rewarding cooperation with $\hat{a}^{good}$ and punishing defection with $\hat{a}^{bad}$ — even in finitely repeated games.
+:::
+
+
+## Applications
+
+**Cartels and collusion.** Oligopolists with $\delta > \delta^*$ can sustain prices above the competitive level. The critical discount factor depends on the number of firms, observability of prices, and the stage game payoffs. Antitrust enforcement reduces $\delta$ by increasing detection probability (effectively making the discount factor applicable to cartel profits lower).
+
+**International agreements.** Self-enforcing trade agreements require sufficient mutual patience. The WTO's dispute settlement mechanism works precisely because it enables punishment trigger strategies: reciprocal tariff sanctions are the credible punishment that sustains cooperation.
+
+**Social norms.** Community enforcement (Kandori 1992): even without direct bilateral relationships, community-wide punishment strategies can sustain cooperation in large populations, provided information about defections spreads through the community.
+
+## Cross-References
+
+- [5.5 Subgame Perfect Equilibrium](5.5_Subgame_Perfect_Equilibrium.qmd) — SPE is the equilibrium concept for repeated games; one-deviation principle is the key tool
+- [5.4 Extensive Form Games](5.4_Extensive_Form_Games.qmd) — Repeated game is a special extensive form
+- [5.2 Nash Equilibrium](5.2_Nash_Equilibrium.qmd) — Stage game NE provides the punishment benchmark in Friedman's Folk Theorem

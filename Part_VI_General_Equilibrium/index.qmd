@@ -1,0 +1,45 @@
+---
+title: "Part VI — General Equilibrium"
+---
+
+# Part VI — General Equilibrium
+
+> **MWG Reference:** Ch. 15–18, pp. 505–703
+
+## Context
+
+General equilibrium (GE) theory closes the model: rather than taking prices as parameters (partial equilibrium), GE determines all prices simultaneously as the outcome of market clearing across all markets. The framework, developed in its modern form by Arrow and Debreu (1954) and McKenzie (1954), provides both the positive foundation of competitive price theory and the normative foundation of welfare economics.
+
+The mathematical apex of the MWG program is the GE existence proof, which applies Kakutani's fixed point theorem to the aggregate excess demand correspondence — an elegant fusion of the price theory from Parts II–III, the mathematical tools from Part I, and the equilibrium methodology of Part V. The Welfare Theorems — which formalize Adam Smith's invisible hand — are the deepest results in the normative theory of markets, and their proofs (using only local nonsatiation for the First, and separating hyperplanes for the Second) reveal precisely what assumptions bear the normative weight.
+
+## Why General Equilibrium?
+
+**Partial equilibrium** (supply-and-demand analysis of one market) takes all other prices as fixed. This is appropriate when the market in question is small relative to the economy. But most policy questions involve interactions between markets: a tax on labor affects goods prices; a tariff affects wages; a subsidy to education affects the returns to all skills. GE is the only framework that correctly accounts for these cross-market interactions.
+
+**The completeness of GE:** Arrow-Debreu's insight — that contingent commodities indexed by states of the world extend the framework to uncertainty — means that a single GE model subsumes not only multi-market trade but also financial markets, insurance, and intertemporal choice. The economy has one good for each commodity-state-date triple, and a Walrasian equilibrium in this extended economy is Arrow-Debreu equilibrium: the complete-market benchmark.
+
+## Structure of Part VI
+
+| Note | Topic | MWG Reference |
+|------|-------|---------------|
+| [6.1 Exchange Economies](6.1_Exchange_Economies.qmd) | Walrasian equilibrium, Edgeworth box, Walras' Law | §15.A–15.C |
+| [6.2 Arrow Debreu Economy](6.2_Arrow_Debreu_Economy.qmd) | Production economies, contingent commodities, Radner equilibrium | §15.D–15.E, §19.B |
+| [6.3 Existence of Equilibrium](6.3_Existence_of_Equilibrium.qmd) | Existence proof via Kakutani | §17.C |
+| [6.4 Welfare Theorems](6.4_Welfare_Theorems.qmd) | First and Second Welfare Theorems | §16.C–16.D |
+| [6.5 Externalities and Public Goods](6.5_Externalities_and_Public_Goods.qmd) | Market failures, Pigouvian taxes, Lindahl, Clarke-Groves | §11.A–11.E |
+| [PS General Equilibrium](PS_General_Equilibrium.qmd) | Problem Set | — |
+
+## Key Results
+
+- **Walras' Law:** The value of aggregate excess demand is zero at all prices — a budget identity, not an equilibrium condition. It implies one market clearing equation is redundant.
+- **First Welfare Theorem:** Every Walrasian equilibrium is Pareto optimal. Proof requires only local nonsatiation, not convexity. This is the most general and robust result in welfare economics.
+- **Second Welfare Theorem:** Any Pareto optimum can be decentralized as a Walrasian equilibrium with lump-sum transfers. Proof requires convexity. This separates equity (achieved by redistribution) from efficiency (achieved by markets).
+- **Existence:** Under standard regularity conditions, at least one Walrasian equilibrium exists. Follows from Kakutani applied to the excess demand correspondence.
+- **Non-uniqueness:** The Sonnenschein-Mantel-Debreu (SMD) theorem shows that aggregate excess demand can be essentially arbitrary — uniqueness fails generically.
+
+## Cross-References
+
+- [Index](../Part_V_Game_Theory/Index.qmd) — NE is the solution concept; GE can be understood as a limiting NE of a large economy
+- [1.4 Fixed Point Theorems](1.4_Fixed_Point_Theorems.qmd) — Kakutani is used in the existence proof
+- [Index](../Part_II_Consumer_Theory/Index.qmd) — Consumer demand is the building block of excess demand
+- [Index](../Part_III_Producer_Theory/Index.qmd) — Profit maximization underlies firm supply in Arrow-Debreu economies

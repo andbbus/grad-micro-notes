@@ -1,0 +1,180 @@
+---
+title: "9.2 — Equilibrium Concepts and Selection"
+---
+
+# 9.2 — Equilibrium Concepts and Selection
+
+> **Cross-references:** MWG Ch. 8–9, 13; Carlsson & Van Damme (1993); Diamond & Dybvig (1983)
+
+## Context
+
+Most interesting economic models generate multiple equilibria. This is not a pathology but a feature: multiplicity captures the fundamental role of expectations and coordination in economic life. Bank runs, currency attacks, technology adoption, and development traps all exhibit the same structure — there are multiple self-fulfilling equilibrium outcomes, and which one obtains depends on factors outside the standard model. The challenge for empirical work is that a model with multiple equilibria makes no unique prediction without a theory of equilibrium selection. This note surveys the taxonomy of solution concepts, presents selection methods with formal content, and discusses empirical strategies for handling multiplicity.
+
+## Definitions
+
+::: {.callout-note icon=false}
+## Definition 9.2.1 — Solution Concept Taxonomy
+| Solution Concept | Appropriate Domain | Key Requirement |
+|---|---|---|
+| Nash Equilibrium (NE) | Any strategic game | Rationality + correct beliefs about strategies |
+| Subgame Perfect Equilibrium (SPE) | Extensive form games | Sequential rationality at every subgame |
+| Bayesian Nash Equilibrium (BNE) | Incomplete information games | NE in expectation over types; correct beliefs about type distributions |
+| Perfect Bayesian Equilibrium (PBE) | Dynamic games with incomplete info | SPE + Bayesian updating on path |
+| Rational Expectations Equilibrium (REE) | Markets with asymmetric information | Prices reflect all available information; agents condition on price |
+| Evolutionarily Stable Strategy (ESS) | Evolutionary games | Immune to invasion by small mutations |
+:::
+
+
+::: {.callout-note icon=false}
+## Definition 9.2.2 — Multiplicity Problem
+A model has a **multiplicity problem** if the solution concept admits multiple distinct equilibria, i.e., there exist distinct strategy profiles $\sigma^*$ and $\sigma^{**}$ both satisfying the equilibrium conditions. Multiplicity implies:
+- The model has **no unique testable prediction** without additional selection assumptions
+- Different equilibria may make opposite comparative-statics predictions
+- The mapping from fundamentals (primitives) to outcomes is set-valued, not single-valued
+:::
+
+
+## Main Results
+
+### When to Use Each Solution Concept
+
+::: {.callout-caution icon=false}
+## Remark 9.2.1 — Matching Solution Concept to Economic Setting
+**Nash Equilibrium:** Appropriate when the game is one-shot or when repeated interaction has established stable mutual beliefs. Weaker requirement (correct beliefs in equilibrium but no off-path consistency) makes it appropriate when the history of play is observable but the game is not dynamic.
+
+**SPE:** Required when the game has a non-trivial extensive form — when timing of moves matters, when commitment is at issue, when threats must be credible. The Coase theorem, hold-up problems, and bargaining theory all require SPE.
+
+**BNE:** Required whenever agents have private information that affects their optimal actions. Auctions, signaling games, Bayesian games in oligopoly. The BNE requirement that strategies be optimal in expectation is weaker than dominant strategy optimality (as in VCG).
+
+**PBE:** Required in dynamic games with incomplete information — signaling games (Spence), career concerns, reputational models, cheap talk (Crawford-Sobel). The on-path consistency requirement (Bayesian updating) is the minimal rationality constraint for these games.
+
+**REE:** Required when prices serve as signals — asset pricing with asymmetric information, prediction markets, mechanism design with many agents. The REE requirement that agents condition on prices (as signals) means prices are endogenously informative, unlike BNE where prices are exogenous.
+:::
+
+
+### Equilibrium Selection Methods
+
+#### Refinements
+
+::: {.callout-note icon=false}
+## Definition 9.2.3 — Trembling-Hand Perfect Equilibrium (Selten 1975)
+A Nash equilibrium $\sigma^*$ is **trembling-hand perfect** if there exists a sequence of completely mixed strategies $\{\sigma^k\} \to \sigma^*$ such that $\sigma_i^*$ is a best response to every $\sigma^k$ for all $k$ sufficiently large. Trembling-hand perfection eliminates equilibria that rely on incredible threats — Nash equilibria that are not best responses to any slightly perturbed strategy of the opponent.
+:::
+
+
+::: {.callout-caution icon=false}
+## Remark 9.2.2 — Relationship Between Refinements
+The refinement hierarchy (strongest to weakest) is roughly:
+$$\text{Proper NE} \subset \text{THP NE} \subset \text{Sequential Equilibrium} \subset \text{PBE} \subset \text{NE}$$
+Each refinement eliminates equilibria by restricting off-path beliefs or requiring robustness to small perturbations. The Intuitive Criterion (see [7.4 Signaling](7.4_Signaling.qmd)) lies between PBE and sequential equilibrium in restrictiveness.
+:::
+
+
+#### Global Games
+
+::: {.callout-important icon=false}
+## Theorem 9.2.1 — Carlsson-Van Damme Global Games Equilibrium Selection
+Consider a symmetric $2\times 2$ coordination game with payoff matrix:
+$$\begin{pmatrix} a(\theta) & 0 \\ 0 & b \end{pmatrix}$$
+where $\theta \in \mathbb{R}$ is the state of the world (e.g., fundamentals), $a(\theta)$ is increasing in $\theta$, and $b > 0$ is constant. When $a(\theta) > 0 > b$: action 1 is dominant (invest). When $a(\theta) < 0 < b$: action 0 is dominant (don't invest). In the intermediate region $a(\theta) \in [0, b]$: both $(1,1)$ and $(0,0)$ are Nash equilibria (coordination game).
+
+In the **global game** (Carlsson-Van Damme 1993), each player $i$ observes a noisy signal $x_i = \theta + \varepsilon_i$ where $\varepsilon_i \sim U[-\varepsilon, \varepsilon]$. There exists a unique equilibrium threshold $\theta^*$ such that:
+- Player $i$ plays action 1 iff $x_i > x^*$ where $x^* = \theta^*$
+- As $\varepsilon \to 0$, $\theta^* \to$ the **risk-dominant** equilibrium threshold: $a(\theta^*) = b/2$
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+**Step 1: Threshold strategies.** In the noisy game, each player's strategy is a threshold $\hat{x}$: play 1 iff $x_i > \hat{x}$. Given player $j$ plays threshold $\hat{x}$, player $i$ with signal $x_i$ believes $\theta \approx x_i$ and estimates the probability that $j$ plays 1 as:
+$$p_j = \Pr(x_j > \hat{x} | x_i = x_i) = \Pr(\theta + \varepsilon_j > \hat{x} | \theta \approx x_i)$$
+For small $\varepsilon$, $\theta \approx x_i$, so $p_j \approx \Pr(\varepsilon_j > \hat{x} - x_i) = \frac{\hat{x} - x_i + \varepsilon}{2\varepsilon}$ (for $x_i$ near $\hat{x}$).
+
+**Step 2: Indifference condition.** At the threshold $\hat{x}$, the player is indifferent:
+$$a(\hat{x}) \cdot p_j = b \cdot (1 - p_j)$$
+i.e., $a(\hat{x}) \cdot \frac{1}{2} = b \cdot \frac{1}{2}$ (since at the threshold, $p_j = 1/2$ by the uniform distribution).
+
+**Step 3: Unique threshold.** As $\varepsilon \to 0$, the indifference condition becomes $a(\theta^*) = b$, so $\theta^*$ is the unique solution to $a(\theta^*) = b$. This is the risk-dominant threshold when $a$ and $b$ are symmetric.
+
+More precisely, with heterogeneous payoffs (asymmetric game), the selected equilibrium threshold is $a(\theta^*) = b$, which corresponds to the **risk-dominant** equilibrium. The noise uniquely selects a single equilibrium even though the noise vanishes in the limit.
+
+**Uniqueness:** The threshold equilibrium is unique because higher-order uncertainty pins down beliefs: even though $\varepsilon \to 0$, players remain uncertain about whether others know the fundamentals are such that action 1 dominates. This uncertainty about beliefs-about-beliefs-about-... (iterated reasoning) converges to the unique threshold strategy.
+:::
+
+
+::: {.callout-caution icon=false}
+## Remark 9.2.3 — Applications of Global Games
+Global games have been applied to:
+- **Currency attacks** (Morris-Shin 1998): speculators attack a peg when they believe enough others will attack; unique threshold on fundamentals
+- **Bank runs** (Rochet-Vives 2004): depositors run when they fear others will run; global games select a unique run threshold
+- **Technology adoption** (Chamley 1999): agents adopt a technology when they believe critical mass will be reached; global games predict adoption thresholds
+- **Civil conflict** (Chassang-Padró i Miquel 2010): fighting breaks out when individuals expect enough others to fight; threshold on state capacity or economic shocks
+:::
+
+
+#### Evolutionary Stability
+
+::: {.callout-note icon=false}
+## Definition 9.2.4 — Evolutionarily Stable Strategy (ESS)
+A strategy $\sigma^*$ is an **ESS** if for every mutant strategy $\sigma \neq \sigma^*$, there exists $\bar\varepsilon > 0$ such that for all $\varepsilon \in (0, \bar\varepsilon)$:
+$$u(\sigma^*, \varepsilon \sigma + (1-\varepsilon)\sigma^*) > u(\sigma, \varepsilon \sigma + (1-\varepsilon)\sigma^*)$$
+i.e., $\sigma^*$ earns higher payoff against a population that is mostly $\sigma^*$ with a small fraction of mutants than the mutant strategy does. ESS is a refinement of NE; every ESS is a NE, but not vice versa.
+:::
+
+
+#### Focal Points
+
+::: {.callout-caution icon=false}
+## Remark 9.2.4 — Schelling's Focal Points
+Schelling (1960) observed that when multiple equilibria exist, real players often coordinate on **focal points** — equilibria that are salient by virtue of cultural convention, historical precedent, simplicity, or context. Examples: meeting at "Grand Central Station" when no meeting point was specified; agreeing on "50-50" as the default split; using round numbers as price points.
+
+Focal points are outside-the-model selection devices: they reflect shared cultural knowledge that is not formalized in the payoff structure. For empirical work, this matters because: (1) the equilibrium played may depend on non-economic features of the environment (natural salience); (2) the relevant selection device may vary across contexts, populations, or time periods; (3) policy interventions that change the focal point (e.g., by making one equilibrium legally default) can shift behavior without changing payoffs.
+:::
+
+
+### Empirical Strategy Under Multiplicity
+
+::: {.callout-caution icon=false}
+## Remark 9.2.5 — Three Empirical Approaches to Multiplicity
+
+**Approach 1: Test across equilibria using additional moments.** If the model predicts that equilibrium A has observable feature $X$ while equilibrium B does not, include $X$ as a test. If data exhibit $X$, infer equilibrium A was played. This requires the model to generate observable features that differ across equilibria — not just levels but potentially moments (variances, covariances, persistence).
+
+**Approach 2: Partial identification.** The model predicts a **set** of outcomes consistent with rationality, without selecting among them. The econometrician estimates the identified set — the set of parameters consistent with the data and the model's assumptions, but without imposing additional selection. Manski (1990), Tamer (2003). This approach is honest about what the model can and cannot say.
+
+**Approach 3: Model the selection equation.** Treat equilibrium selection as a primitive of the empirical model. The selection mechanism — which equilibrium is played as a function of observables — is estimated as a separate equation. This requires additional variation (e.g., instruments that affect equilibrium selection without changing payoffs) and is formally equivalent to estimating a switching regression with endogenous regime.
+:::
+
+
+### Application: Diamond-Dybvig Bank Run Model
+
+::: {.callout-note icon=false appearance="simple"}
+## Example 9.2.1 — Diamond-Dybvig (1983) Bank Run
+Two depositors each deposit 1 unit. The bank invests in a long-term project yielding $R > 1$ per unit at $t=2$, or the bank liquidates early yielding $r < 1$ per unit at $t=1$.
+
+Each depositor is independently a "patient" type (prefers $t=2$ consumption) with probability $1-\lambda$, or an "impatient" type (must consume at $t=1$) with probability $\lambda$. Types are private information.
+
+The bank offers a demand deposit contract: depositor can withdraw at $t=1$ (get $c_1 > 1 > r$, financed by bank liquidation) or at $t=2$ (get $c_2 > c_1$ from long-term returns).
+
+**Multiple equilibria:**
+- **Good equilibrium ("no run"):** Only impatient types withdraw at $t=1$; patient types wait; bank's investments are not liquidated early; $c_2 > 1$; optimal for patient types to wait given belief that others wait
+- **Bad equilibrium ("run"):** All depositors withdraw at $t=1$, fearing the bank will fail; bank liquidates early; payoffs are $\leq r < 1$; optimal to run given belief that others run
+
+**Global games selection:** Introducing a signal about the bank's return $R$ pins down a unique threshold: the run occurs iff $R$ is below a threshold $R^*$ (Morris-Shin 1998). This generates an empirical prediction: bank runs should cluster in bad fundamental states, and the threshold should shift with liquidity coverage and deposit insurance.
+:::
+
+
+## Economic Intuition
+
+Multiplicity is not a failure of economic theory; it is a prediction. The real world contains genuine coordination problems: which equilibrium is played depends on history, expectations, and the coordination technology. The theoretical contribution is to characterize the set of equilibria and their properties, not to insist on unique predictions.
+
+For empirical work, the key message is that multiplicity must be handled explicitly. An empirical specification that implicitly assumes a unique equilibrium (e.g., a reduced-form regression of conflict on economic fundamentals) is identifying some average or marginal effect across all the equilibria that are played, which is a valid reduced-form estimate but has no clean structural interpretation. For structural analysis, one of the three approaches to multiplicity must be adopted.
+
+Global games are the most elegant theoretical resolution: a small amount of noise in private information uniquely pins down the equilibrium through iterated deletion of strictly dominated strategies. The selected equilibrium corresponds to the risk-dominant equilibrium as noise vanishes. This provides a theoretically grounded, testable selection mechanism that connects equilibrium play to fundamentals through a threshold rule.
+
+## Cross-References
+
+- [9.1 Anatomy of a Theoretical Model](9.1_Anatomy_of_a_Theoretical_Model.qmd) — solution concept is one of the five primitives
+- [9.3 Comparative Statics Methodology](9.3_Comparative_Statics_Methodology.qmd) — comparative statics require a unique (or selected) equilibrium
+- [7.4 Signaling](7.4_Signaling.qmd) — Intuitive Criterion as a refinement method
+- [7.5 Mechanism Design](7.5_Mechanism_Design.qmd) — dominant strategy mechanisms eliminate multiplicity issues
+- [APP Conflict and Resource Models](APP_Conflict_and_Resource_Models.qmd) — conflict onset as coordination game; global games selection

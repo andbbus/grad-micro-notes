@@ -1,0 +1,59 @@
+---
+title: "Part IX — Model Building for Empirics"
+---
+
+# Part IX — Model Building for Empirics
+
+> **Cross-references:** All Parts I–VIII; Angrist & Pischke (2009); Chetty (2009); Acemoglu (2009)
+
+## Context
+
+Graduate training in microeconomics culminates not in the accumulation of theorems but in the ability to build original formal models that generate novel empirical predictions, identify the right data and variation to test them, and interpret empirical findings through the lens of economic theory. Part IX synthesizes the program. It teaches the **methodology** of translating formal theoretical models into empirically testable frameworks — from specifying primitives and solution concepts to deriving moment conditions and designing identification strategies.
+
+The notes progress through a pipeline:
+1. **Model anatomy** — what are the components of a well-specified model?
+2. **Equilibrium selection** — which equilibrium do we test, and what do we do about multiplicity?
+3. **Comparative statics** — how does theory predict changes in endogenous variables?
+4. **Testable predictions** — what observable restrictions does the model generate?
+5. **Structural vs. reduced form** — what do we learn from each approach?
+6. **Identification** — how do model-based exclusion restrictions justify estimation strategies?
+7. **Tractability and discipline** — how do we simplify models without losing their core content?
+
+Three application notes demonstrate the methodology in action: conflict and resource economics, international trade and price shocks, and prediction markets and information aggregation.
+
+## Notes in This Part
+
+| Note | Topic | Key Methods |
+|---|---|---|
+| [9.1 Anatomy of a Theoretical Model](9.1_Anatomy_of_a_Theoretical_Model.qmd) | Primitives; environment; solution concept; well-specified models | Checklist; Spence model anatomy |
+| [9.2 Equilibrium Concepts and Selection](9.2_Equilibrium_Concepts_and_Selection.qmd) | Multiplicity; refinements; global games; empirical strategies under multiplicity | Carlsson-Van Damme; Diamond-Dybvig |
+| [9.3 Comparative Statics Methodology](9.3_Comparative_Statics_Methodology.qmd) | IFT; Topkis; supermodularity; monotone comparative statics; envelope theorem | Cournot; Walrasian equilibrium |
+| [9.4 Deriving Testable Predictions](9.4_Deriving_Testable_Predictions.qmd) | Testability; moment conditions; FOC-based estimation; shape restrictions; overidentification | Euler equations; household model |
+| [9.5 Structural vs Reduced Form](9.5_Structural_vs_Reduced_Form.qmd) | Definitions; Lucas critique; when each approach is appropriate; hybrid strategies | Supply-demand; demand systems |
+| [9.6 Identification in Structural Models](9.6_Identification_in_Structural_Models.qmd) | Types of identification; model-based exclusion restrictions; simultaneity; partial identification | BLP; contest model |
+| [9.7 Model Discipline and Tractability](9.7_Model_Discipline_and_Tractability.qmd) | Parsimony; tractability devices; sufficient statistics; robustness | LQ approximation; Chetty (2009) |
+| [APP Conflict and Resource Models](APP_Conflict_and_Resource_Models.qmd) | Contest model; looting model; Dal Bó & Dal Bó; commodity price instruments | Garfinkel-Skaperdas; Dube-Vargas |
+| [APP Trade and Price Shock Models](APP_Trade_and_Price_Shock_Models.qmd) | DFS Ricardian; Eaton-Kortum; Bartik shift-share; pass-through | Autor-Dorn-Hanson; gravity equation |
+| [APP Prediction Markets and Signals](APP_Prediction_Markets_and_Signals.qmd) | EMH; LMSR; event studies; CAR methodology; market efficiency tests | Kyle model; conflict pricing |
+| [PS Model Building](PS_Model_Building.qmd) | Problem set: 5 integrated model-building exercises | All methods in this part |
+
+## The Model-Building Pipeline
+
+Every empirical paper with a theoretical foundation implicitly or explicitly follows a pipeline:
+
+$$\underbrace{\text{Economic Question}}_{\text{motivating phenomenon}} \xrightarrow{\text{(1)}} \underbrace{\text{Formal Model}}_{\text{primitives + solution concept}} \xrightarrow{\text{(2)}} \underbrace{\text{Comparative Statics}}_{\text{derivatives / monotone}} \xrightarrow{\text{(3)}} \underbrace{\text{Testable Predictions}}_{\text{sign/shape/moment}} \xrightarrow{\text{(4)}} \underbrace{\text{Identification Strategy}}_{\text{exclusion restriction}} \xrightarrow{\text{(5)}} \underbrace{\text{Estimation}}_{\text{IV/GMM/MLE}}$$
+
+The notes in this part address each arrow in this pipeline. The application notes show the full pipeline for three domains: conflict economics, international trade, and financial information markets.
+
+## Key References
+
+- **Acemoglu, D. (2009)**. *Introduction to Modern Economic Growth*, Ch. 1–2. [Model-building methodology for growth economics]
+- **Angrist, J.D. & Pischke, J.-S. (2009)**. *Mostly Harmless Econometrics*. [Credibility revolution; reduced form vs. structural]
+- **Chetty, R. (2009)**. "Sufficient Statistics for Welfare Analysis." *Annual Review of Economics*, 1, 451–488. [Structural parameters from reduced-form estimates]
+- **Milgrom, P. & Shannon, C. (1994)**. "Monotone Comparative Statics." *Econometrica*, 62(1), 157–180.
+- **Topkis, D.M. (1998)**. *Supermodularity and Complementarity*. [Monotone comparative statics foundations]
+- **Lucas, R.E. (1976)**. "Econometric Policy Evaluation: A Critique." *Carnegie-Rochester Conference Series*, 1, 19–46.
+- **Carlsson, H. & Van Damme, E. (1993)**. "Global Games and Equilibrium Selection." *Econometrica*, 61(5), 989–1018.
+- **Garfinkel, M.R. & Skaperdas, S. (2007)**. "Economics of Conflict: An Overview." In *Handbook of Defense Economics*, Vol. 2.
+- **Eaton, J. & Kortum, S. (2002)**. "Technology, Geography, and Trade." *Econometrica*, 70(5), 1741–1779.
+- **Kyle, A.S. (1985)**. "Continuous Auctions and Insider Trading." *Econometrica*, 53(6), 1315–1335.

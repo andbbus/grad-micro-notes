@@ -1,0 +1,125 @@
+---
+title: "Problem Set: Producer Theory"
+---
+
+# Problem Set: Producer Theory
+
+> **MWG Reference:** Ch. 5; see notes [3.1 Production Sets](3.1_Production_Sets.qmd), [3.2 Profit Maximization](3.2_Profit_Maximization.qmd), [3.3 Cost Minimization](3.3_Cost_Minimization.qmd), [3.4 Supply and Factor Demands](3.4_Supply_and_Factor_Demands.qmd)
+
+---
+
+## Problem 1 — Production Set Properties
+
+Let the production function be $f: \mathbb{R}^2_+ \to \mathbb{R}_+$ defined by:
+$$f(z_1, z_2) = \min\left\{z_1^{1/2}, z_2\right\}$$
+with associated production set $Y = \{(-z_1, -z_2, q) \in \mathbb{R}^3 : q \leq f(z_1, z_2), \; z_1, z_2 \geq 0\}$.
+
+**(a)** Verify formally whether $Y$ satisfies each of the following properties: non-emptiness (inaction), closedness, no free lunch, free disposal, and irreversibility. For each property, either prove it holds or provide a counterexample.
+
+**(b)** Determine the returns to scale of this technology. Is $Y$ a cone? If not, does $Y$ satisfy NIRTS, NDIRTS, both, or neither? Provide a rigorous proof.
+
+**(c)** Is $Y$ convex? Prove your answer rigorously. What does your answer imply about the curvature of $f$?
+
+**(d)** Compute the input requirement set $V(q) = \{(z_1, z_2) \geq 0 : f(z_1, z_2) \geq q\}$ explicitly. Characterize the isoquants and verify that they have the standard properties associated with the production technology.
+
+**(e)** Write down the transformation function $F(y)$ for this technology and characterize the production frontier.
+
+---
+
+## Problem 2 — Profit Function and Hotelling's Lemma
+
+Consider a firm with production function $f(z_1, z_2) = z_1^{\alpha} z_2^{\beta}$ where $\alpha, \beta > 0$ and $\alpha + \beta < 1$ (decreasing returns to scale). The firm is a price-taker in both input and output markets, facing output price $p > 0$ and input prices $w_1, w_2 > 0$.
+
+**(a)** Set up the profit maximization problem. Derive the first-order conditions and solve for the profit-maximizing input demands $z_1^*(p, w_1, w_2)$ and $z_2^*(p, w_1, w_2)$, and the profit-maximizing output $q^*(p, w_1, w_2)$.
+
+**(b)** Derive the profit function $\pi(p, w_1, w_2)$ explicitly. Show that it is homogeneous of degree one in $(p, w_1, w_2)$.
+
+**(c)** Verify Hotelling's lemma: show that $\partial \pi / \partial p = q^*$ and $\partial \pi / \partial w_i = -z_i^*$ for $i = 1, 2$.
+
+**(d)** Compute the $3 \times 3$ matrix of second derivatives $D^2_{(p, w_1, w_2)} \pi$. Verify that this matrix is symmetric and positive semidefinite. What economic properties does PSD imply for the supply and input demand functions?
+
+**(e)** Verify the law of supply: show that if $p$ increases (holding $w_1, w_2$ fixed), then $q^*$ increases. Compute the own-price supply elasticity $\partial \ln q^* / \partial \ln p$ and express it in terms of $\alpha$ and $\beta$.
+
+---
+
+## Problem 3 — CES Cost Function and Shephard's Lemma
+
+Consider a firm with three inputs and CES production function:
+$$f(z_1, z_2, z_3) = \left(z_1^{\rho} + z_2^{\rho} + z_3^{\rho}\right)^{1/\rho}, \quad \rho \in (0,1)$$
+with factor prices $w = (w_1, w_2, w_3) \gg 0$ and output target $q > 0$.
+
+**(a)** Set up and solve the cost minimization problem. Derive the conditional factor demands $z_i(w, q)$ for $i = 1, 2, 3$.
+
+**(b)** Derive the cost function $c(w, q)$ in closed form. Show explicitly that $c$ is:
+  - Homogeneous of degree one in $w$
+  - Nondecreasing in each $w_i$
+  - Concave in $w$ (you may verify this by computing the Hessian $D^2_w c$ and showing it is NSD)
+  - Linear in $q$ (confirming CRS)
+
+**(c)** Apply Shephard's lemma: compute $\partial c / \partial w_i$ and verify that it equals $z_i(w,q)$ from part (a).
+
+**(d)** Compute the $3 \times 3$ factor demand substitution matrix $S_{ij} = \partial z_i / \partial w_j$. Verify symmetry ($S_{ij} = S_{ji}$), NSD, and $S w = 0$.
+
+**(e)** Compute the own-price factor demand elasticities $\epsilon_{ii} = \partial \ln z_i / \partial \ln w_i$ and the cross-price elasticities $\epsilon_{ij}$ for $i \neq j$. Express them in terms of $\rho$ and the elasticity of substitution $\sigma = 1/(1-\rho)$. Are the inputs substitutes or complements? Does the answer depend on $\rho$?
+
+**(f)** Derive the average cost $AC(q)$ and marginal cost $MC(q)$. Verify that $AC = MC$ (consistent with CRS). What happens to the cost function as $\rho \to -\infty$ (Leontief limit)?
+
+---
+
+## Problem 4 — CRS Implies Zero or Infinite Profit
+
+This problem asks you to extend and refine Proposition 3.1 from [3.1 Production Sets](3.1_Production_Sets.qmd).
+
+**(a)** Let $Y \subseteq \mathbb{R}^L$ be a production set satisfying free disposal and constant returns to scale (i.e., $Y$ is a cone with $0 \in Y$). Prove rigorously that for every price vector $p \gg 0$, the profit function satisfies $\pi(p) \in \{0, +\infty\}$.
+
+**(b)** Suppose $Y$ satisfies CRS and the profit function is finite at some prices $p^0 \gg 0$: $\pi(p^0) = 0$. Show that the zero-profit condition can be expressed as:
+$$p^0 \cdot y \leq 0 \quad \text{for all } y \in Y$$
+and interpret this as a no-arbitrage condition.
+
+**(c)** Now suppose $Y$ satisfies **nonincreasing** returns to scale (NIRTS) but not necessarily CRS. Show that in this case, the profit function is always finite: $\pi(p) < +\infty$ for all $p$. (Hint: Use the fact that NIRTS implies the firm can always scale down to zero, bounding profit above by zero from the inaction option.)
+
+Wait — is $\pi < +\infty$ the right claim? Re-examine: under NIRTS, is $\pi$ necessarily finite? Provide a careful argument or a counterexample.
+
+**(d)** Consider a competitive industry where all firms have CRS technology but differ in their productivity parameter $A$: firm $i$ has production function $f_i(z) = A_i \cdot g(z)$ for some common function $g$. Characterize the zero-profit conditions across firms. Which firms produce positive output in a competitive equilibrium? What determines equilibrium output prices?
+
+**(e)** Explain intuitively why the result of part (a) implies that competitive general equilibrium models with CRS production require specific price vectors (those satisfying $\pi = 0$) and why scale is indeterminate for individual firms under CRS.
+
+---
+
+## Problem 5 — Le Chatelier Principle
+
+A firm has production function $f(z_1, z_2) = z_1^{1/3} z_2^{1/3}$ with output price $p > 0$ and factor prices $w_1, w_2 > 0$.
+
+**(a)** Solve the long-run profit maximization problem (both inputs variable). Derive the long-run supply function $q^{LR}(p, w_1, w_2)$ and the long-run profit function $\pi^{LR}(p, w_1, w_2)$.
+
+**(b)** Suppose input 2 is fixed at level $\bar{z}_2$ in the short run. Solve the short-run profit maximization problem. Derive $q^{SR}(p, w_1; \bar{z}_2)$ and $\pi^{SR}(p, w_1; \bar{z}_2)$.
+
+**(c)** Show explicitly that at the long-run optimum (i.e., when $\bar{z}_2 = z_2^*(p, w_1, w_2)$), $q^{SR} = q^{LR}$. Then compute:
+$$\frac{\partial q^{LR}}{\partial p} \quad \text{and} \quad \frac{\partial q^{SR}}{\partial p}\bigg|_{\bar{z}_2 = z_2^*}$$
+Verify that $\partial q^{LR}/\partial p \geq \partial q^{SR}/\partial p$ (Le Chatelier for supply).
+
+**(d)** Repeat the analysis for input demand: compute $\partial z_1^{LR}/\partial w_1$ (long-run) and $\partial z_1^{SR}/\partial w_1$ (short-run, with $z_2$ fixed). Verify $|\partial z_1^{LR}/\partial w_1| \geq |\partial z_1^{SR}/\partial w_1|$.
+
+**(e)** Provide an intuitive explanation of the Le Chatelier principle in this specific example. Why does fixing $z_2$ reduce the firm's ability to respond to price changes? What role does the cross-partial $\partial^2 \pi^{LR}/\partial p \partial w_2$ play?
+
+**(f)** State and prove the general form of the Le Chatelier principle for cost functions: $|\partial z_l^{LR}/\partial w_l| \geq |\partial z_l^{SR}/\partial w_l|$ for any input $l$. Your proof should use the convexity/concavity properties of the profit/cost function and not rely on specific functional forms.
+
+---
+
+## Problem 6 — Duality: Recovering the Production Function from the Cost Function
+
+This problem develops the **duality between cost functions and production functions**.
+
+**(a)** Suppose you are given the cost function:
+$$c(w_1, w_2, q) = q^2 \cdot w_1^{1/2} w_2^{1/2}$$
+Verify that this is a valid cost function: check HD1 in $w$, concavity in $w$, and monotonicity in $q$.
+
+**(b)** Use Shephard's lemma to derive the conditional factor demands $z_1(w, q)$ and $z_2(w,q)$.
+
+**(c)** Invert the factor demands to eliminate $w_1$ and $w_2$ in terms of $z_1$, $z_2$, and $q$. Use the constraint that at the optimum, the cost function satisfies $c(w,q) = w_1 z_1 + w_2 z_2$ (the minimum cost equals actual expenditure). Derive the production function $f(z_1, z_2)$ that rationalizes this cost function.
+
+**(d)** Verify your answer by checking that $c(w, q) = \min_{z: f(z) \geq q} w \cdot z$ when $f$ is the function you derived.
+
+**(e)** More generally, state the **duality theorem** relating cost functions and production functions: under what conditions does a function $c(w,q)$ that is HD1 and concave in $w$ correspond to a well-defined production function? What regularity conditions on the production function guarantee that this function is fully recoverable from $c$?
+
+**(f)** Explain how this duality result justifies the empirical strategy of estimating a **flexible cost function** (e.g., the translog or generalized Leontief form) rather than estimating the production function directly. What are the advantages of working with the cost function in applied work?

@@ -1,0 +1,207 @@
+---
+title: "1.4 Fixed-Point Theorems"
+---
+
+# 1.4 Fixed-Point Theorems
+
+> **MWG Reference:** Mathematical Appendix, Section M.I, pp. 952–954; Chapter 17, pp. 580–586; Chapter 8, pp. 250–254
+
+## Context
+
+A fixed point of a function or correspondence $\phi: C \to C$ (or $\phi: C \rightrightarrows C$) is a point $x^*$ such that $x^* \in \phi(x^*)$. The importance of this concept for microeconomics cannot be overstated: virtually every notion of economic equilibrium — Walrasian equilibrium, Nash equilibrium, competitive equilibrium with production, and optimal mechanisms — can be reformulated as the fixed point of some suitably constructed map. The two central results are Brouwer's Fixed-Point Theorem (for continuous functions) and its generalization, Kakutani's Fixed-Point Theorem (for UHC correspondences). Both require the domain to be nonempty, compact, and convex — conditions whose economic content is discussed at length below. This note proves Brouwer's theorem via Sperner's lemma, derives Kakutani from Brouwer using an approximation argument, and then applies both to preview the existence proofs for Nash equilibrium and Walrasian equilibrium that will be completed in Parts V and VII.
+
+---
+
+## Definitions
+
+::: {.callout-note icon=false}
+## Definition 1.21 — Fixed Point
+Let $C$ be a nonempty set and $\phi: C \rightrightarrows C$ a correspondence (or $f: C \to C$ a function). A point $x^* \in C$ is a **fixed point** of $\phi$ (resp. $f$) if $x^* \in \phi(x^*)$ (resp. $x^* = f(x^*)$).
+:::
+
+
+::: {.callout-note icon=false}
+## Definition 1.22 — Simplex
+The **standard $n$-simplex** is:
+$$\Delta^n = \left\{ x \in \mathbb{R}^{n+1}_+ : \sum_{i=0}^n x_i = 1 \right\}.$$
+More generally, given $n+1$ affinely independent points (vertices) $v^0, v^1, \ldots, v^n \in \mathbb{R}^L$, the simplex with these vertices is $\text{co}(\{v^0, \ldots, v^n\})$ (their convex hull). A **simplicial subdivision** (triangulation) of a simplex $\Delta$ is a decomposition of $\Delta$ into smaller simplices that fit together face-to-face.
+:::
+
+
+::: {.callout-note icon=false}
+## Definition 1.23 — Sperner Labeling
+Let $\Delta^n$ be subdivided into smaller simplices, and let the vertices of the subdivision be labeled with integers in $\{0, 1, \ldots, n\}$. The labeling is a **Sperner labeling** if:
+1. Vertex $v^i$ of the original simplex (for $i = 0, 1, \ldots, n$) receives label $i$.
+2. Any vertex lying on the face $F_I = \text{co}(\{v^i : i \in I\})$ (for $I \subseteq \{0, \ldots, n\}$) receives a label in $I$.
+A small simplex in the subdivision is **completely labeled** if its $n+1$ vertices carry all $n+1$ labels $0, 1, \ldots, n$.
+:::
+
+
+---
+
+## Main Results
+
+::: {.callout-important icon=false}
+## Theorem 1.16 — Sperner's Lemma
+For any Sperner labeling of any simplicial subdivision of $\Delta^n$, the number of completely labeled simplices is odd (in particular, at least one completely labeled simplex exists).
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+(For $n = 2$; the general case is analogous.) Consider a triangulation of $\Delta^2$ with a Sperner labeling. Count ordered pairs $(T, e)$ where $T$ is a small triangle and $e$ is an edge of $T$ carrying labels $\{0, 1\}$. Count this in two ways:
+
+- **From the inside (triangles):** A completely labeled triangle (labels $\{0,1,2\}$) has exactly one $\{0,1\}$-edge. A triangle with labels $\{0,1,1\}$ or $\{0,0,1\}$ has exactly two $\{0,1\}$-edges. All other triangles have zero. So the count equals $(\text{number of completely labeled triangles}) + 2(\text{number of triangles with exactly two }\{0,1\}\text{-edges})$.
+
+- **From the boundary:** An edge on the boundary of $\Delta^2$ can be a $\{0,1\}$-edge only if it lies on the face connecting $v^0$ and $v^1$ (since by Sperner's condition, boundary vertices have restricted labels). Count the $\{0,1\}$-edges on the $v^0$-to-$v^1$ face of $\Delta^2$: these are the boundary edges with one endpoint labeled 0 and one labeled 1. Starting at $v^0$ (label 0) and walking to $v^1$ (label 1) along the subdivision, the label must change from 0 to 1 an odd number of times net. So the number of boundary $\{0,1\}$-edges is odd.
+
+An interior $\{0,1\}$-edge is shared by exactly two triangles (counted twice); a boundary $\{0,1\}$-edge is counted once. So the total count is:
+$$(\text{boundary count, odd}) + 2(\text{interior } \{0,1\}\text{-edges}).$$
+This equals the sum from triangles: $(\text{completely labeled}) + 2(\text{two-edge triangles})$. Reducing modulo 2: the number of completely labeled triangles is congruent to the boundary count (odd), hence odd. $\blacksquare$
+:::
+
+
+::: {.callout-important icon=false}
+## Theorem 1.17 — Brouwer's Fixed-Point Theorem
+Let $C \subseteq \mathbb{R}^L$ be **nonempty, compact, and convex**, and let $f: C \to C$ be **continuous**. Then $f$ has a fixed point: there exists $x^* \in C$ with $f(x^*) = x^*$.
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+It suffices to prove the theorem for $C = \Delta^n$ (the standard $n$-simplex), since any nonempty compact convex set in $\mathbb{R}^L$ is homeomorphic to a simplex of appropriate dimension, and homeomorphisms preserve fixed-point properties.
+
+**Step 1: Construct Sperner labelings on finer and finer subdivisions.**
+For each $m \in \mathbb{N}$, consider the $m$-th barycentric subdivision $\mathcal{T}_m$ of $\Delta^n$ (mesh size $\sim 1/m$). For each vertex $v$ of $\mathcal{T}_m$, assign a label $\ell(v) \in \{0, 1, \ldots, n\}$ as follows: write $v = (v_0, \ldots, v_n) \in \Delta^n$ (barycentric coordinates). Define:
+$$\ell(v) = \min \{ i \in \{0, \ldots, n\} : f(v)_i \leq v_i \}.$$
+(Here $f(v)_i$ is the $i$-th component of $f(v)$.) This is well-defined because $f: \Delta^n \to \Delta^n$ satisfies $\sum_i f(v)_i = 1 = \sum_i v_i$, so at least one $i$ must have $f(v)_i \leq v_i$.
+
+**Sperner condition:** One verifies (exercise) that this labeling satisfies the Sperner condition. In particular, $v^i$ has $v^i_i = 1$ and $v^i_j = 0$ for $j \neq i$; since $f(v^i)_i \leq 1 = v^i_i$, label $i$ is assigned. On a face where some coordinates are zero, the label is always an index in that face.
+
+**Step 2: By Sperner's Lemma, each $\mathcal{T}_m$ has a completely labeled simplex $S_m$.**
+Choose one such completely labeled simplex $S_m$ for each $m$. Let $x^{(m)}$ be a vertex of $S_m$.
+
+**Step 3: Extract a convergent subsequence.**
+Since all $x^{(m)} \in \Delta^n$ (compact), by Bolzano-Weierstrass there is a convergent subsequence $x^{(m_k)} \to x^* \in \Delta^n$.
+
+**Step 4: Show $x^*$ is a fixed point.**
+The mesh of $\mathcal{T}_m \to 0$, so all vertices of $S_{m_k}$ converge to $x^*$. For each $i$, the $i$-labeled vertex $v^i_{m_k}$ of $S_{m_k}$ also converges to $x^*$ (since the simplex diameter $\to 0$). By definition of the labeling: $f(v^i_{m_k})_i \leq (v^i_{m_k})_i$.
+
+Taking $k \to \infty$ (using continuity of $f$): $f(x^*)_i \leq x^*_i$ for all $i = 0, \ldots, n$.
+
+But $\sum_i f(x^*)_i = 1 = \sum_i x^*_i$, so we cannot have $f(x^*)_i < x^*_i$ for any $i$ (as that would make the sum strictly less than $\sum_i x^*_i = 1$). Therefore $f(x^*)_i = x^*_i$ for all $i$, i.e., $f(x^*) = x^*$. $\blacksquare$
+:::
+
+
+::: {.callout-caution icon=false}
+## Remark
+**Why each hypothesis is necessary:**
+- **Compactness (boundedness):** $f(x) = x + 1$ on $\mathbb{R}$: no fixed point.
+- **Compactness (closedness):** $f(x) = x/2 + 1/2$ on $(0,1)$: fixed point at $x=1$ is not in the domain.
+- **Convexity:** The map $f: S^1 \to S^1$ (rotation by $\pi$ on the unit circle) has no fixed point. The circle is compact but not convex.
+- **Continuity:** $f: [0,1] \to [0,1]$ with $f(x) = 1$ for $x \in [0, 1/2)$ and $f(x) = 0$ for $x \in [1/2, 1]$: no fixed point.
+:::
+
+
+::: {.callout-important icon=false}
+## Theorem 1.18 — Kakutani's Fixed-Point Theorem
+Let $C \subseteq \mathbb{R}^L$ be **nonempty, compact, and convex**, and let $\phi: C \rightrightarrows C$ be a correspondence satisfying:
+1. $\phi(x)$ is **nonempty** and **convex** for all $x \in C$.
+2. $\phi$ is **upper hemicontinuous**.
+
+Then $\phi$ has a fixed point: there exists $x^* \in C$ with $x^* \in \phi(x^*)$.
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+**Strategy:** Approximate $\phi$ by a sequence of continuous functions, apply Brouwer to each, and pass to the limit.
+
+**Step 1: Construct continuous approximations.**
+For each $m \in \mathbb{N}$, consider the $m$-th barycentric subdivision $\mathcal{T}_m$ of a simplex $\Delta$ containing $C$ (we may take $C = \Delta$ by convexity). For each vertex $v$ of $\mathcal{T}_m$, pick any $y_v \in \phi(v)$ (nonemptiness). Define the **piecewise-linear approximation** $f_m: \Delta \to \Delta$ by barycentric interpolation: for a point $x$ in a simplex $[v_0, \ldots, v_n]$ of $\mathcal{T}_m$ with barycentric coordinates $\lambda_0, \ldots, \lambda_n$:
+$$f_m(x) = \sum_{i=0}^n \lambda_i y_{v_i}.$$
+Since $y_{v_i} \in \phi(v_i) \subseteq C$ and $C$ is convex, $f_m(x) \in C$. Also $f_m$ is continuous (piecewise linear). So $f_m: C \to C$ is a continuous function from a convex compact set to itself.
+
+**Step 2: Apply Brouwer.**
+By Brouwer's theorem (Theorem 1.17), each $f_m$ has a fixed point $x_m \in C$: $f_m(x_m) = x_m$.
+
+**Step 3: Extract convergent subsequence.**
+Since $C$ is compact, $(x_m)$ has a convergent subsequence $x_{m_k} \to x^* \in C$.
+
+**Step 4: Show $x^* \in \phi(x^*)$.**
+By construction, $x_{m_k} = f_{m_k}(x_{m_k}) = \sum_i \lambda^{(k)}_i y_{v^{(k)}_i}$, where $v^{(k)}_0, \ldots, v^{(k)}_n$ are the vertices of the simplex of $\mathcal{T}_{m_k}$ containing $x_{m_k}$, and $y_{v^{(k)}_i} \in \phi(v^{(k)}_i)$.
+
+As $k \to \infty$, the mesh size $\to 0$, so all $v^{(k)}_i \to x^*$. Consider the sequence $y_{v^{(k)}_i} \in \phi(v^{(k)}_i)$. Since $C$ is compact, passing to a further subsequence, $y_{v^{(k)}_i} \to y_i$ for some $y_i$. By UHC of $\phi$ and $v^{(k)}_i \to x^*$: $y_i \in \phi(x^*)$.
+
+Then $x_{m_k} = \sum_i \lambda^{(k)}_i y_{v^{(k)}_i} \to \sum_i \bar{\lambda}_i y_i$ for some convex weights $\bar{\lambda}_i \geq 0$, $\sum_i \bar{\lambda}_i = 1$. But $x_{m_k} \to x^*$, so $x^* = \sum_i \bar{\lambda}_i y_i$. Since each $y_i \in \phi(x^*)$ and $\phi(x^*)$ is convex, $x^* \in \phi(x^*)$. $\blacksquare$
+:::
+
+
+::: {.callout-caution icon=false}
+## Remark
+**Why convexity of $\phi(x)$ is necessary:** If the correspondence has non-convex values, the argument in Step 4 fails: a convex combination of elements of $\phi(x^*)$ need not be in $\phi(x^*)$. Economically: non-convex best-response correspondences (e.g., from non-quasi-concave payoffs) may fail to have fixed points — Nash equilibria in pure strategies may not exist.
+:::
+
+
+---
+
+## Economic Applications
+
+::: {.callout-important icon=false}
+## Theorem 1.19 — Nash Equilibrium Existence (Preview)
+**Informal statement.** For any finite normal-form game with mixed strategy extensions, the best-response correspondence has the properties required by Kakutani's theorem, and therefore a Nash equilibrium (in mixed strategies) exists.
+
+**Formal setup (to be completed in Part VII).** Let $I = \{1, \ldots, N\}$ be the set of players. For each $i$, let $S_i$ be a finite set of pure strategies, and let $\Sigma_i = \Delta(S_i)$ be the set of mixed strategies (probability distributions over $S_i$). The mixed strategy space $\Sigma = \prod_i \Sigma_i$ is a product of simplices, hence compact and convex. For player $i$, the expected payoff function $U_i: \Sigma \to \mathbb{R}$ is multilinear (hence continuous). The best-response correspondence is:
+$$\beta_i(\sigma_{-i}) = \arg\max_{\sigma_i \in \Sigma_i} U_i(\sigma_i, \sigma_{-i}).$$
+The joint best-response correspondence is $\beta: \Sigma \rightrightarrows \Sigma$ with $\beta(\sigma) = \prod_i \beta_i(\sigma_{-i})$.
+
+**Why Kakutani applies:**
+1. $\Sigma$ is compact and convex.
+2. $\beta(\sigma)$ is nonempty (by Weierstrass, since $\Sigma_i$ is compact and $U_i$ is continuous) and convex (since $U_i$ is linear in $\sigma_i$, the argmax over a linear functional on a convex set is convex).
+3. $\beta$ is UHC (by Berge's Maximum Theorem, Theorem 1.8, applied to $U_i$ and $\Sigma_i$).
+
+By Kakutani, $\exists \sigma^* \in \beta(\sigma^*)$, i.e., $\sigma^*_i \in \beta_i(\sigma^*_{-i})$ for all $i$: a Nash equilibrium.
+:::
+
+
+::: {.callout-important icon=false}
+## Theorem 1.20 — Walrasian Equilibrium Existence (Preview)
+**Informal statement.** Under standard assumptions on preferences and endowments, the excess demand correspondence has the properties required by Kakutani's theorem (applied to a fixed-point argument on the price simplex), and therefore a Walrasian equilibrium exists.
+
+**Formal setup (to be completed in Part V).** The argument (following MWG Theorem 17.C.1) proceeds as follows:
+
+1. Restrict attention to prices in the unit simplex $\Delta^{L-1} = \{p \in \mathbb{R}^L_+ : \sum_\ell p_\ell = 1\}$ (compact, convex).
+
+2. Define the aggregate excess demand correspondence $z: \Delta^{L-1}_{++} \rightrightarrows \mathbb{R}^L$ by $z(p) = \sum_i x_i(p, p \cdot \omega_i) - \sum_i \omega_i$.
+
+3. Define the **price-adjustment correspondence** (tatônnement) $T: \Delta^{L-1} \rightrightarrows \Delta^{L-1}$ by:
+$$T(p) = \arg\max_{q \in \Delta^{L-1}} q \cdot \bar{z}(p),$$
+where $\bar{z}(p)$ is the mean excess demand. This picks out prices that maximize the "value" of excess demand — the tatônnement response to disequilibrium.
+
+4. A fixed point of $T$ (i.e., $p^* \in T(p^*)$) is a Walrasian equilibrium: $p^*$ maximizes $q \cdot z(p^*)$ at $q = p^*$, which (by Walras' law and other standard steps) implies $z(p^*) \leq 0$ (market clearing or free-disposal condition).
+
+5. Kakutani applies to $T$ because: $\Delta^{L-1}$ is compact and convex; $T(p)$ is nonempty and convex (argmax of a linear function over a compact convex set); $T$ is UHC (by Berge, since $z$ is continuous under regularity conditions on preferences).
+
+The full proof and all regularity conditions are given in [Index](../Part_V_General_Equilibrium/Index.qmd).
+:::
+
+
+---
+
+## Economic Intuition
+
+The economic content of a fixed-point theorem is the concept of **self-consistency**. An equilibrium is not simply a solution to an agent's optimization problem — it is a state where every agent is optimizing given what every other agent is doing, and these decisions are mutually consistent. This mutual consistency is exactly what a fixed point captures: $x^*$ is a fixed point of the aggregate response map if and only if, when all agents believe the outcome will be $x^*$, their best responses collectively generate exactly $x^*$.
+
+Brouwer's theorem guarantees existence of such self-consistent states whenever the aggregate response map is continuous — that is, whenever small changes in the "guessed equilibrium" lead to small changes in the "best-response outcome." Kakutani extends this to allow for multi-valued best responses (indifferences, mixed strategies, boundary optima), requiring only that the correspondence of best responses is UHC with convex values. The convexity of values — the requirement that players can mix between optimal responses — is the key condition that rules out non-existence of equilibrium in pure strategies.
+
+The compactness condition is about preventing equilibrium candidates from escaping to infinity. In game theory, restricting to mixed strategies (probabilities) automatically provides a compact strategy space. In general equilibrium, one normalizes prices to the simplex to achieve compactness. In mechanism design, one restricts messages to compact sets. In every case, the same principle applies: make the domain compact to ensure the fixed-point theorem applies.
+
+---
+
+## Cross-References
+
+- [1.1 Metric Spaces and Topology](1.1_Metric_Spaces_and_Topology.qmd) — Compactness and convexity are the domain conditions required by both Brouwer and Kakutani; defined and studied in Note 1.1.
+- [1.2 Correspondences and Hemicontinuity](1.2_Correspondences_and_Hemicontinuity.qmd) — UHC (required for Kakutani) and Berge's Maximum Theorem (which provides UHC of best-response correspondences) are from Note 1.2.
+- [1.3 Optimization Theory](1.3_Optimization_Theory.qmd) — KKT conditions characterize the best-response map whose fixed points are Nash equilibria.
+- [Index](../Part_V_General_Equilibrium/Index.qmd) — Full proof of Walrasian equilibrium existence via Kakutani (Theorem 17.C.1 in MWG).
+- [Index](../Part_VII_Game_Theory/Index.qmd) — Full proof of Nash equilibrium existence in finite games via Kakutani.

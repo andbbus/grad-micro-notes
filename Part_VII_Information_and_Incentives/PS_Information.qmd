@@ -1,0 +1,163 @@
+---
+title: "Problem Set — Part VII: Information and Incentives"
+---
+
+# Problem Set — Part VII: Information and Incentives
+
+> **MWG Reference:** Ch. 13–14, 23; Holmström (1979); Spence (1973); Myerson (1981); Kyle (1985)
+
+**Instructions:** Provide formal proofs for all theoretical results. State assumptions clearly. Use LaTeX for all mathematics. Unless otherwise stated, assume all functions are sufficiently smooth.
+
+---
+
+## Problem 1 — Optimal Linear Contract in the LEN Model
+
+Consider the LEN (Linear-Exponential-Normal) principal-agent model with the following parameters:
+- Output: $q = e + \varepsilon$, $\varepsilon \sim N(0, \sigma^2)$ with $\sigma^2 = 4$
+- Agent's CARA utility with risk aversion coefficient $r = 0.5$
+- Effort cost: $c(e) = \frac{1}{2}e^2$ (so the cost parameter is $c = 1$)
+- Agent's reservation utility: $\bar{u} = 0$ (normalizing the outside option)
+- Contract: linear $t = \alpha + \beta q$
+
+**(a)** Derive the agent's optimal effort level $e^*(\beta)$ as a function of the incentive rate $\beta$.
+
+**(b)** Using the binding participation constraint, express the base salary $\alpha^*(\beta)$ as a function of $\beta$. Show all steps using the certainty-equivalent formula for CARA-normal utility.
+
+**(c)** Derive the principal's profit function $\Pi(\beta)$ after substituting $e^*(\beta)$ and $\alpha^*(\beta)$. Take the derivative and find the optimal incentive rate $\beta^*$. Compute the numerical value using the given parameters.
+
+**(d)** Compute the equilibrium effort level $e^* = e^*(\beta^*)$, the base salary $\alpha^*$, and the principal's expected profit $\Pi^*$.
+
+**(e)** Compare the second-best outcome to the first-best (observable effort). Compute the efficiency loss as a fraction of first-best total surplus. Interpret the result economically.
+
+**(f)** Now suppose the principal can observe a noisy signal $s = e + \eta$ where $\eta \sim N(0, \sigma_s^2 = 1)$ in addition to $q$. Using Holmström's Informativeness Principle, determine whether the optimal contract should condition on $s$. Derive the optimal contract in the augmented LEN model (with both $q$ and $s$), and show analytically that the inclusion of $s$ Pareto-improves relative to the contract based on $q$ alone.
+
+---
+
+## Problem 2 — Two-Type Screening Problem
+
+A monopolist provides quality $q \geq 0$ to a consumer with private type $\theta \in \{\theta_L, \theta_H\}$, where $\theta_H = 3$, $\theta_L = 1$, and $\Pr(\theta_H) = \lambda = 1/3$. Consumer utility: $u(q, t, \theta) = \theta \sqrt{q} - t$. The monopolist's cost: $c(q) = q$. Reservation utility $\bar{u} = 0$.
+
+**(a)** Compute the first-best allocation $(q_L^{FB}, q_H^{FB})$ and the corresponding first-best transfers $(t_L^{FB}, t_H^{FB})$. Show that the first-best allocations are $q_i^{FB} = \theta_i^2 / 4$.
+
+**(b)** Verify that the single-crossing condition holds: show that $MRS_{q,t}(\theta_H, q) > MRS_{q,t}(\theta_L, q)$ for all $q > 0$.
+
+**(c)** Set up the monopolist's second-best program. Write out all four constraints (IC-H, IC-L, IR-H, IR-L) explicitly. Argue informally which constraints bind at the optimum and which are slack. State the standard argument for why IC-H and IR-L bind while IC-L and IR-H are slack.
+
+**(d)** Using the binding IC-H and IR-L, express $t_H$ and $t_L$ as functions of $q_H$ and $q_L$. Substitute into the monopolist's objective function to obtain an unconstrained program in $(q_H, q_L)$.
+
+**(e)** Derive the optimal $q_H^{SB}$ and $q_L^{SB}$ by taking FOCs. Show that: $q_H^{SB} = q_H^{FB}$ (no distortion at the top) and $q_L^{SB} < q_L^{FB}$ (distortion at the bottom). Compute the numerical values.
+
+**(f)** Compute the information rent earned by the high type: $U_H = \theta_H \sqrt{q_H^{SB}} - t_H^{SB}$.
+
+**(g)** Discuss when the monopolist would choose to exclude the low type entirely (shut down the low market). Find the condition on parameters under which exclusion is optimal.
+
+---
+
+## Problem 3 — Signaling Game: PBE and the Intuitive Criterion
+
+Two types of workers: $\theta_H = 4$ (high ability) and $\theta_L = 2$ (low ability), with $\Pr(\theta_H) = \lambda = 0.4$. Workers choose education $e \geq 0$. The cost of education is:
+$$c(e, \theta) = \frac{e^2}{2\theta}$$
+Wages equal expected ability: $w = \mathbb{E}[\theta | e]$. Workers maximize $w - c(e, \theta)$.
+
+**(a)** Verify the single-crossing condition: $\frac{\partial^2 c}{\partial e \partial \theta} < 0$ for all $e > 0$.
+
+**(b)** Find all **separating** PBE. Specifically:
+- Show $e_L^* = 0$ in any separating equilibrium.
+- Find the threshold $\hat{e}$ such that IC-L is satisfied with equality at $e_H = \hat{e}$.
+- Characterize all separating equilibria parametrized by $e_H \geq \hat{e}$.
+- State the off-path beliefs that support each separating equilibrium.
+
+**(c)** Find all **pooling** PBE. Specifically:
+- Compute the pooling wage $\bar\theta = \lambda \theta_H + (1-\lambda) \theta_L$.
+- Find the set of pooling education levels $e^P$ that can be sustained with off-path beliefs $\mu(\theta_H | e) = 0$ for $e \neq e^P$.
+- State the conditions on $e^P$ for a pooling PBE to exist.
+
+**(d)** Apply the **Intuitive Criterion**:
+- Show that every pooling equilibrium fails the Intuitive Criterion. Exhibit explicitly the out-of-equilibrium message that the Intuitive Criterion assigns to the high type.
+- Show that every separating equilibrium with $e_H > \hat{e}$ fails the Intuitive Criterion. Exhibit the deviation.
+- Conclude that the unique surviving equilibrium is the least-costly separating equilibrium at $e_H = \hat{e}$. State the equilibrium explicitly.
+
+**(e)** Compute the total social welfare loss due to signaling in the least-costly separating equilibrium. Is any party better off compared to the first-best no-signaling allocation?
+
+**(f)** **Testable prediction:** State one clear empirical prediction of this model. Describe an identification strategy to test whether the observed education-wage relationship reflects signaling, human capital accumulation, or both. What data variation would allow you to separate these mechanisms?
+
+---
+
+## Problem 4 — VCG Mechanism in a Public Goods Problem
+
+Three agents $i \in \{1,2,3\}$ must decide whether to produce a public good ($k = 1$) or not ($k = 0$). Agent $i$ has private value $v_i(k) = \theta_i \cdot k$ where $\theta_i \in \{0, 1, 2\}$ is their type. The cost of the public good is $C = 2$, paid from VCG transfers.
+
+**(a)** Define the **socially efficient** decision rule $k^*(\theta)$: the good is produced iff the total value exceeds the cost. Write out the rule explicitly for all $3^3 = 27$ type profiles (or characterize it generally).
+
+**(b)** Construct the **VCG mechanism** for this problem:
+- Specify the outcome function $g(\hat\theta)$: allocation $k^*(\hat\theta)$ plus transfers $t_i(\hat\theta)$.
+- Use the Clarke pivot rule: $t_i(\hat\theta) = C_i(\hat\theta_{-i}) - \sum_{j\neq i} v_j(k^*(\hat\theta), \hat\theta_j)$ where $C_i(\hat\theta_{-i})$ is the cost borne by $i$ in the Groves mechanism. Write out the transfers explicitly.
+
+**(c)** Verify that truth-telling is a dominant strategy for each agent by checking that for each type profile and each possible misreport by agent 1, agent 1's payoff is weakly higher from truth-telling.
+
+**(d)** Is the VCG mechanism **budget-balanced**? Compute the expected net revenue $\mathbb{E}[\sum_i t_i]$ under the uniform prior over types and show whether it is positive, negative, or zero.
+
+**(e)** Does the Gibbard-Satterthwaite theorem apply to this problem? Explain why or why not (referring to the quasi-linear domain restriction).
+
+---
+
+## Problem 5 — Myerson-Satterthwaite: Efficiency Deficit
+
+Buyer has value $v \sim U[0,1]$; seller has cost $c \sim U[0,1]$, independent. Trade is efficient iff $v \geq c$.
+
+**(a)** Compute the **virtual value** of the buyer: $\psi_B(v) = v - (1-F_B(v))/f_B(v)$, and the **virtual cost** of the seller: $\phi_S(c) = c + F_S(c)/f_S(c)$. Interpret each.
+
+**(b)** For the efficient allocation $q^*(v,c) = \mathbf{1}[v \geq c]$, compute:
+- $\mathbb{E}[(\psi_B(v) - \phi_S(c)) \cdot \mathbf{1}[v \geq c]]$
+
+Show that this expectation is **negative**, confirming the budget imbalance at the efficient allocation.
+
+**(c)** The Myerson-Satterthwaite theorem states that budget-balanced BIC-IR efficiency is impossible. Using the formula from part (b) and the IR constraints $U_B(0) \geq 0$ and $U_S(1) \geq 0$, show precisely where the contradiction arises.
+
+**(d)** Find the **Myerson-optimal** (second-best) bilateral trade mechanism: the mechanism that maximizes ex-ante gains from trade subject to BIC, IR, and budget balance. Show that trade occurs iff $\psi_B(v) \geq \phi_S(c)$, and find the threshold values of $v$ and $c$ where trade occurs.
+
+**(e)** Compute the **efficiency deficit**: the probability of efficient trades foregone in the Myerson-optimal mechanism relative to first-best. Interpret this as the cost of private information in bilateral trade.
+
+---
+
+## Problem 6 — Kyle Model: Informed Trader Profits and Price Discovery
+
+Consider the Kyle (1985) single-period model with:
+- Asset value: $v \sim N(0, \sigma_v^2)$ with $\sigma_v^2 = 9$
+- Noise traders: $u \sim N(0, \sigma_u^2)$ with $\sigma_u^2 = 4$
+- Informed trader submits $x$; market maker observes $y = x + u$ and sets $p = \mathbb{E}[v|y]$
+
+**(a)** Derive the linear equilibrium: find the informed trader's trading intensity $\beta$ and the market maker's price impact $\lambda$. Compute their numerical values.
+
+**(b)** Compute the informed trader's expected profit $\mathbb{E}[\Pi] = \mathbb{E}[(v-p) \cdot x]$. Show that it equals $\frac{1}{2}\sigma_v \sigma_u$.
+
+**(c)** Compute the **posterior variance** of the asset value conditional on the equilibrium price: $\text{Var}(v | p)$. Show that exactly half the information is revealed in equilibrium.
+
+**(d)** Now suppose noise trading doubles: $\sigma_u^2 = 8$. Recompute $\beta$, $\lambda$, and $\mathbb{E}[\Pi]$. How does the informed trader respond to the change? Does their profit increase or decrease? Interpret.
+
+**(e)** Consider an alternative setup where there are $n > 1$ strategic informed traders each observing the same $v$. The informed traders behave à la Cournot (each chooses $x_i$ taking others' strategies as given). Derive the symmetric linear equilibrium in this case. Show that as $n \to \infty$, $\lambda \to 0$ and prices become fully informative. Reconcile with the Grossman-Stiglitz paradox.
+
+**(f)** **Empirical application:** Describe how Kyle's $\lambda$ can be estimated from transaction-level data. What regression would you run? What does an increase in estimated $\lambda$ before a scheduled earnings announcement imply about information asymmetry?
+
+---
+
+## Problem 7 — Grossman-Stiglitz Equilibrium and Price Informativeness
+
+Consider a Grossman-Stiglitz economy:
+- Risky asset with true value $v \sim N(\mu_0, \sigma_v^2 = 4)$
+- $n$ agents, fraction $\phi$ of whom acquire a signal $s_i = v + \varepsilon_i$, $\varepsilon_i \sim N(0, \sigma_\varepsilon^2 = 1)$, at cost $c = 0.5$
+- Fraction $(1-\phi)$ are uninformed
+- Noise traders supply $u \sim N(0, \sigma_u^2 = 1)$ units
+- All agents have CARA utility with $r = 1$
+
+**(a)** In the noisy REE, the price $p$ is a linear function of $\bar{s}_{\phi} = \phi \bar{s}_{\text{informed}} + $ noise. Write the price as $p = A + B(v + \eta)$ where $\eta$ is a composite noise term. Identify $\eta$ and its variance as a function of $\phi$, $\sigma_\varepsilon^2$, and $\sigma_u^2$.
+
+**(b)** Compute the **conditional variance** of $v$ given the equilibrium price $p$: $\text{Var}(v|p) = \text{Var}(v|\phi \bar{s} + \text{noise})$ as a function of $\phi$. Show that this is decreasing in $\phi$ (more informed traders $\to$ more informative price).
+
+**(c)** Compute the **expected utility** of an informed agent $V^I(\phi)$ and of an uninformed agent $V^U(\phi)$. Show that $V^I$ is decreasing in $\phi$ and $V^U$ is increasing in $\phi$ (use the CARA-normal expected utility formula).
+
+**(d)** Find the **equilibrium fraction** of informed traders $\phi^*$ by setting $V^I(\phi^*) - c = V^U(\phi^*)$. Compute $\phi^*$ for the given parameters.
+
+**(e)** At $\phi = \phi^*$, compute the **equilibrium price informativeness**: the $R^2$ from a regression of $v$ on $p$. How does informativeness respond to changes in information cost $c$? Derive $\frac{d\phi^*}{dc}$ and interpret.
+
+**(f)** **Policy exercise:** Suppose a regulator mandates disclosure of all private signals (i.e., forces full revelation). Show that this cannot be an equilibrium if $c > 0$. What happens to price informativeness and social welfare compared to the Grossman-Stiglitz equilibrium?

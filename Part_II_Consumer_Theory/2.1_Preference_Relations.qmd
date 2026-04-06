@@ -1,0 +1,189 @@
+---
+title: "2.1 — Preference Relations"
+---
+
+# 2.1 — Preference Relations
+
+> **MWG Reference:** Ch. 1, pp. 6–30
+
+## Context
+
+The primitive object of consumer theory is a preference relation — a binary relation on a consumption set that captures how an agent ranks bundles of goods. Rather than assuming utility functions directly, we derive them from preference axioms. This approach clarifies which properties of utility are structural (derivable from rationality) and which are additional restrictions (such as concavity or separability). The axiomatic approach also makes the theory testable: each axiom can, in principle, be questioned empirically or philosophically. The central axioms are rationality (completeness and transitivity), continuity (technical, ensuring a utility representation), and behavioral restrictions on how preferences respond to more or less of goods (monotonicity, convexity).
+
+## Definitions
+
+::: {.callout-note icon=false}
+## Definition 2.1.1 — Consumption Set
+The **consumption set** is $X \subseteq \mathbb{R}^L_+$, where $L \geq 1$ is the number of goods. Each element $x = (x_1, \ldots, x_L) \in X$ is a **consumption bundle**. We typically take $X = \mathbb{R}^L_+$.
+:::
+
+
+::: {.callout-note icon=false}
+## Definition 2.1.2 — Preference Relation
+A **preference relation** $\succsim$ on $X$ is a binary relation on $X$. We read $x \succsim y$ as "$x$ is at least as good as $y$." Two derived relations are:
+- **Strict preference:** $x \succ y \iff x \succsim y$ and $\neg(y \succsim x)$
+- **Indifference:** $x \sim y \iff x \succsim y$ and $y \succsim x$
+:::
+
+
+::: {.callout-note icon=false}
+## Definition 2.1.3 — Completeness
+$\succsim$ is **complete** if for all $x, y \in X$: $x \succsim y$ or $y \succsim x$ (or both).
+
+*Economic motivation:* Every pair of bundles is comparable. The consumer is never "stuck" — they can always express a preference or indifference. While philosophically demanding (it rules out genuine incomparability), completeness is maintained as a tractability assumption in standard theory.
+:::
+
+
+::: {.callout-note icon=false}
+## Definition 2.1.4 — Transitivity
+$\succsim$ is **transitive** if for all $x, y, z \in X$: if $x \succsim y$ and $y \succsim z$, then $x \succsim z$.
+
+*Economic motivation:* Transitivity rules out preference cycles. Without it, a consumer could be "money-pumped" — paying to cycle indefinitely among bundles. Transitivity together with completeness constitutes **rationality**.
+:::
+
+
+::: {.callout-note icon=false}
+## Definition 2.1.5 — Rationality
+A preference relation $\succsim$ is **rational** if it is both complete and transitive.
+:::
+
+
+::: {.callout-note icon=false}
+## Definition 2.1.6 — Continuity
+$\succsim$ is **continuous** if for all $y \in X$, the **upper contour set** $\{x \in X : x \succsim y\}$ and the **lower contour set** $\{x \in X : y \succsim x\}$ are both closed subsets of $X$.
+
+Equivalently, $\succsim$ is continuous if for any sequences $x^n \to x$ and $y^n \to y$ with $x^n \succsim y^n$ for all $n$, we have $x \succsim y$.
+
+*Economic motivation:* Continuity is a technical regularity condition. It prevents situations in which a small change in a bundle causes a discrete jump in preference rank. Its primary role is to guarantee the existence of a utility representation (Debreu's theorem).
+:::
+
+
+::: {.callout-note icon=false}
+## Definition 2.1.7 — Monotonicity
+(a) $\succsim$ is **weakly monotone** if $x \geq y$ (componentwise) implies $x \succsim y$.
+
+(b) $\succsim$ is **strongly monotone** if $x \geq y$ and $x \neq y$ implies $x \succ y$.
+
+*Economic motivation:* Monotonicity captures the idea that goods are desirable — "more is better." Weak monotonicity allows indifference over additional units; strong monotonicity insists that having strictly more of at least one good is strictly preferred.
+:::
+
+
+::: {.callout-note icon=false}
+## Definition 2.1.8 — Local Nonsatiation (LNS)
+$\succsim$ satisfies **local nonsatiation** if for every $x \in X$ and every $\varepsilon > 0$, there exists $y \in X$ with $\|y - x\| < \varepsilon$ such that $y \succ x$.
+
+*Economic motivation:* LNS is weaker than monotonicity. It rules out thick indifference curves (bliss points surrounded by a region of indifference), but allows some goods to be bads. LNS is the minimal assumption needed to derive Walras' Law ($p \cdot x(p,w) = w$): if the consumer were satiated, they might not exhaust their budget.
+:::
+
+
+::: {.callout-note icon=false}
+## Definition 2.1.9 — Convexity
+(a) $\succsim$ is **weakly convex** if for all $y \in X$, the upper contour set $\{x \in X : x \succsim y\}$ is convex. Equivalently: if $x \succsim y$ and $z \succsim y$, then $\alpha x + (1-\alpha) z \succsim y$ for all $\alpha \in [0,1]$.
+
+(b) $\succsim$ is **strictly convex** if $x \succsim y$, $z \succsim y$, and $x \neq z$ implies $\alpha x + (1-\alpha)z \succ y$ for all $\alpha \in (0,1)$.
+
+*Economic motivation:* Convexity captures a taste for variety or diversification. Consumers prefer mixtures of bundles to extremes. Geometrically, it corresponds to convex-to-the-origin indifference curves. Strict convexity additionally rules out linear segments of indifference curves, ensuring uniqueness of the utility-maximizing bundle (given a linear budget set).
+:::
+
+
+## Main Results
+
+::: {.callout-important icon=false}
+## Proposition 2.1.1 — Continuity Implies Closed Contour Sets
+If $\succsim$ is complete, transitive, and continuous on $\mathbb{R}^L_+$, then for every $y \in \mathbb{R}^L_+$, the sets
+$$UC(y) = \{x \in \mathbb{R}^L_+ : x \succsim y\} \quad \text{and} \quad LC(y) = \{x \in \mathbb{R}^L_+ : y \succsim x\}$$
+are closed in $\mathbb{R}^L_+$.
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+This follows directly from the definition of continuity (Definition 2.1.6): continuity of $\succsim$ is defined as the requirement that $UC(y)$ and $LC(y)$ are closed for all $y$. The content of the proposition is that this property is equivalent to sequential continuity.
+
+**Sequential characterization:** $\succsim$ is continuous if and only if for all sequences $\{x^n\}$ and $\{z^n\}$ in $X$ with $x^n \succsim z^n$ for all $n$, $x^n \to x$, and $z^n \to z$, we have $x \succsim z$.
+
+We show that sequential continuity implies $UC(y)$ is closed (the argument for $LC(y)$ is symmetric).
+
+Let $\{x^n\}$ be a sequence in $UC(y)$ with $x^n \to x$. We need to show $x \in UC(y)$, i.e., $x \succsim y$.
+
+By assumption, $x^n \succsim y$ for all $n$. Consider the constant sequence $z^n = y \to y$. By sequential continuity applied to the pair $(x^n, z^n)$ where $x^n \succsim z^n = y$, we conclude $x \succsim y$.
+
+Hence $x \in UC(y)$, so $UC(y)$ is closed.
+
+Conversely, suppose $UC(y)$ and $LC(y)$ are closed for all $y$. Let $x^n \to x$ and $y^n \to y$ with $x^n \succsim y^n$. Suppose for contradiction that $y \succ x$, i.e., $y \succsim x$ but $\neg(x \succsim y)$. Then $x \in LC(y) \setminus UC(y)$. By openness of $LC(y)^c \cup UC(y) = \{z : y \not\succsim z\} \cup \{z : z \succsim y\}$... but more directly: since $y \succ x$, there exist open neighborhoods $U \ni x$ and $V \ni y$ such that every pair $(x', y')$ with $x' \in U, y' \in V$ satisfies $y' \succ x'$ (this uses the equivalence with open-set continuity under completeness and transitivity). For large $n$, $x^n \in U$ and $y^n \in V$, which would give $y^n \succ x^n$, contradicting $x^n \succsim y^n$. $\square$
+:::
+
+
+::: {.callout-caution icon=false}
+## Remark 2.1.1 — Rationality as a Maintained Hypothesis
+The combination of completeness and transitivity — rationality — is a strong behavioral postulate. It is maintained in most of economic theory not because it is believed to be perfectly accurate, but because:
+1. It provides a determinate theory of choice: the agent's decision is fully characterized by the preference relation.
+2. It is normatively defensible: violating transitivity opens an agent to money pumps.
+3. It generates sharp, testable predictions via the revealed preference literature.
+
+Behavioral economics documents systematic violations of both completeness (preference reversals, ambiguity) and transitivity (cyclic choices under framing effects). These motivate alternative models (prospect theory, regret theory), but standard micro theory retains rationality as the benchmark.
+:::
+
+
+::: {.callout-important icon=false}
+## Proposition 2.1.2 — Properties of Derived Relations
+If $\succsim$ is rational (complete and transitive), then:
+(a) $\succ$ is irreflexive and transitive.
+(b) $\sim$ is reflexive, symmetric, and transitive (an equivalence relation).
+(c) If $x \succ y \succsim z$, then $x \succ z$.
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+**(a) Irreflexivity of $\succ$:** By completeness, $x \succsim x$ for all $x$ (take $y = x$). Hence $\neg(x \succ x)$.
+
+**Transitivity of $\succ$:** Suppose $x \succ y$ and $y \succ z$. Then $x \succsim y$ and $y \succsim z$, so by transitivity of $\succsim$, $x \succsim z$. It remains to show $\neg(z \succsim x)$. Suppose for contradiction $z \succsim x$. Then $z \succsim x \succsim y$, so $z \succsim y$ by transitivity, contradicting $y \succ z$. Hence $x \succ z$.
+
+**(b)** Reflexivity: $x \succsim x$ by completeness (apply with $y = x$), so $x \sim x$. Symmetry: if $x \sim y$ then $x \succsim y$ and $y \succsim x$, so $y \sim x$. Transitivity: if $x \sim y$ and $y \sim z$, then $x \succsim y \succsim z$ and $z \succsim y \succsim x$, so $x \sim z$.
+
+**(c)** $x \succ y$ and $y \succsim z$ gives $x \succsim z$ by transitivity. If $z \succsim x$, then $z \succsim x \succsim y$ gives $z \succsim y$, contradicting $y \succ z$... wait, we only have $y \succsim z$ not $y \succ z$. Instead: if $z \succsim x$, transitivity gives $z \succsim x \succsim y$, so $z \succsim y$; but also by $x \succ y$ we have $\neg(y \succsim x)$; and $z \succsim x$ together with transitivity gives $z \succsim y$. This does not immediately give a contradiction. We need: $x \succ y$ means $\neg(y \succsim x)$. If $z \succsim x$, then $y \succsim z \succsim x$ by transitivity of $\succsim$, giving $y \succsim x$, contradiction. $\square$
+:::
+
+
+## Lexicographic Preferences: A Failure of Continuity
+
+::: {.callout-note icon=false appearance="simple"}
+## Example 2.1.1 — Lexicographic Preferences
+On $X = \mathbb{R}^2_+$, define $(x_1, x_2) \succsim^{lex} (y_1, y_2)$ if either $x_1 > y_1$, or $x_1 = y_1$ and $x_2 \geq y_2$.
+
+This preference is complete and transitive (verify: it is essentially the dictionary ordering). However, it is **not continuous**, and **no utility function represents it**.
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+**Failure of continuity:** Consider $y = (1, 0)$ and the upper contour set $UC(y) = \{x : x \succsim^{lex} (1,0)\}$. This set equals $\{x : x_1 > 1\} \cup \{x : x_1 = 1, x_2 \geq 0\} = \{x : x_1 \geq 1\}$. Wait — more carefully: $UC(y)$ consists of all $x$ with $x_1 > 1$, plus all $x$ with $x_1 = 1$ and $x_2 \geq 0$. So $UC(y) = \{x : x_1 > 1\} \cup \{(1, x_2) : x_2 \geq 0\}$.
+
+Consider the sequence $x^n = (1 - 1/n, n)$. Then $x^n_1 = 1 - 1/n < 1 = y_1$, so $y \succ^{lex} x^n$, meaning $x^n \notin UC(y)$. However, $x^n \to (1, \infty)$... actually $x^n$ does not converge in $\mathbb{R}^2_+$. Let us use a better sequence.
+
+Consider $y = (1, 1)$ and $x^n = (1 - 1/n, M)$ for any fixed large $M$. Then $x^n_1 < y_1 = 1$, so $y \succ^{lex} x^n$, i.e., $x^n \notin UC(y)$ for any $n$. But $x^n \to (1, M)$, and $(1, M) \succsim^{lex} (1,1)$ iff $M \geq 1$, so if $M \geq 1$ then the limit $(1, M)$ is in $UC(y)$ but each $x^n$ is not. Hence $UC(y)$ is not closed.
+
+**No utility representation exists:** Suppose for contradiction that $u: \mathbb{R}^2_+ \to \mathbb{R}$ represents $\succsim^{lex}$. For each $x_1 \in \mathbb{R}_+$, consider the "fiber" at $x_1$: the set of bundles $\{(x_1, t) : t \geq 0\}$. For any $t < t'$, $(x_1, t') \succ^{lex} (x_1, t)$, so $u(x_1, t') > u(x_1, t)$. Hence for each fixed $x_1$, the function $t \mapsto u(x_1, t)$ is strictly increasing. In particular, the set $\{u(x_1, t) : t \in \mathbb{Q}_+\}$ is a countably infinite subset of $\mathbb{R}$ with distinct values.
+
+Now, for $x_1 \neq x_1'$ (say $x_1 < x_1'$), we have $(x_1', t) \succ^{lex} (x_1, t')$ for all $t, t' \geq 0$. Hence $u(x_1', t) > u(x_1, t')$ for all $t, t'$. This means the entire range of $u$ on the fiber at $x_1$ lies strictly below the entire range of $u$ on the fiber at $x_1'$, whenever $x_1 < x_1'$.
+
+Thus the ranges $\{u(x_1, t) : t \geq 0\}$ for different values of $x_1$ are pairwise disjoint intervals in $\mathbb{R}$, each containing the set $\{u(x_1, t) : t \in \mathbb{Q}_+\}$, which is a countably infinite set with distinct values (so not a single point). We have uncountably many such disjoint subintervals of $\mathbb{R}$ (one for each $x_1 \in \mathbb{R}_+$), each containing at least two rationals. But since any collection of pairwise disjoint nondegenerate intervals is at most countable (each contains a rational), we have a contradiction. $\square$
+:::
+
+
+## Economic Intuition
+
+The preference axioms fall naturally into two groups: **substantive** and **technical**.
+
+**Substantive axioms** make real behavioral restrictions: Completeness says every comparison is possible. Transitivity rules out cycles. Monotonicity encodes the desirability of goods. Convexity encodes the preference for variety. These are the axioms that behavioral economics tests and sometimes rejects.
+
+**Technical axioms** primarily serve mathematical purposes: Continuity ensures that preference can be represented by a function (and that the optimum exists and varies continuously with parameters). Without continuity, we lose the utility representation theorem, and the entire machinery of calculus-based optimization becomes unavailable. The lexicographic example shows that continuity cannot be weakened without losing the existence of a utility function.
+
+**Which axioms are load-bearing for economics?** The core welfare theorems and the Slutsky decomposition require rationality and local nonsatiation. Monotonicity and convexity are used for clean demand characterizations (interior solutions, uniqueness) but many results hold without them. Continuity is almost always maintained because without it the theory becomes intractable.
+
+## Cross-References
+- [2.2 Utility Representation](2.2_Utility_Representation.qmd) — Representation theorem requires exactly rationality + continuity
+- [2.3 Utility Maximization Problem](2.3_Utility_Maximization_Problem.qmd) — Convexity ensures uniqueness of demand; LNS implies Walras' Law
+- [2.5 Duality and Slutsky](2.5_Duality_and_Slutsky.qmd) — Monotonicity and convexity are maintained throughout duality theory
+- [1.2 Convex Analysis](1.2_Convex_Analysis.qmd) — Mathematical background on convex sets

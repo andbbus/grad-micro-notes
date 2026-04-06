@@ -1,0 +1,134 @@
+---
+title: "Microeconomics Program Overview"
+---
+
+# Microeconomics Program Overview
+
+> **MWG Reference:** Mas-Colell, Whinston & Green, *Microeconomic Theory* (1995) — Full Text
+
+## Introduction
+
+This program is a systematic, graduate-level treatment of microeconomic theory designed to bridge the gap between the formal apparatus of MWG and the practical demands of economic model-building for empirical research. The goal is not merely to reproduce proofs and definitions, but to develop the theoretical intuition and technical fluency needed to construct original models, derive testable predictions, and connect those predictions to identification strategies in applied work. The program is organized so that each part builds on its predecessors: mathematical foundations underpin consumer and producer theory, which together support general equilibrium, which in turn provides the foundation for welfare analysis, game theory, and mechanism design. Every note is written at the level of MWG and uses the same notational conventions, allowing these notes to serve as a genuine companion to the textbook.
+
+---
+
+## Program Structure
+
+| Part | Title | MWG Chapters | Core Competency Gained |
+|------|-------|--------------|------------------------|
+| I | Mathematical Foundations | Math Appendix M.A–M.I, M.K–M.L | Topology, correspondences, optimization, fixed-point theorems; the mathematical toolkit for all subsequent theory |
+| II | Consumer Theory | Ch. 1–4 | Preference axioms, utility representation, demand derivation, duality (EMP/UMP), integrability, aggregation |
+| III | Producer Theory | Ch. 5 | Technology sets, cost minimization, profit maximization, Hotelling's lemma, Shephard's lemma, factor demands |
+| IV | Choice Under Uncertainty | Ch. 6 | Expected utility theory, vNM representation, risk aversion, stochastic dominance, comparative statics |
+| V | General Equilibrium | Ch. 15–18 | Walrasian equilibrium existence (Kakutani), First and Second Welfare Theorems, core equivalence, GE with incomplete markets |
+| VI | Welfare Economics | Ch. 10, 22 | Social welfare functions, Arrow's impossibility theorem, second-best theory, compensation criteria |
+| VII | Game Theory | Ch. 7–9 | Normal and extensive form games, Nash existence, refinements (SPNE, PBE), repeated games, evolutionary stability |
+| VIII | Information Economics | Ch. 13–14 | Adverse selection, screening, signaling, moral hazard, mechanism design (revelation principle, implementation) |
+| IX | Markets and Mechanism Design | Ch. 11–12, 23 | Monopoly, oligopoly, public goods, externalities, auction theory, VCG mechanisms |
+
+---
+
+## How to Use This Program
+
+**Sequential reading.** The parts are ordered by logical dependency. Parts I–III form the core; Part IV can be read after Part II; Parts V–VI require Parts II–III; Parts VII–IX can be read in parallel after Part V. The recommended reading map below makes dependencies explicit.
+
+**Note-taking with templates.** The `Templates/` folder contains two master templates:
+- [Theorem Note Template](../Templates/Theorem_Note_Template.qmd) — use this whenever adding a new definition or theorem note.
+- [Model Building Template](../Templates/Model_Building_Template.qmd) — use this whenever building a new theoretical model from scratch.
+
+When creating a new note, copy the appropriate template, fill in all sections, and do not leave any section blank. The placeholder text in each template explains what belongs in each section.
+
+**Problem sets.** Each Part Index links to problem sets drawn from MWG end-of-chapter exercises and from standard PhD qualifying exams. **Problem sets do not include solutions.** Working through them independently is essential for genuine mastery; the notes provide the theory, but fluency comes only from solving problems.
+
+**Cross-referencing.** Every note includes a Cross-References section with wikilinks to related notes. Follow these links actively — microeconomic theory is a highly interconnected body of knowledge and the connections between results (e.g., between the Envelope Theorem and Shephard's Lemma, or between Kakutani and Nash existence) are often as important as the results themselves.
+
+---
+
+## Recommended Reading Map
+
+The following diagram (rendered as a structured list) shows which parts are prerequisites for which. An arrow $A \to B$ means Part $A$ should be completed before Part $B$.
+
+```
+Part I (Math Foundations)
+    ├──→ Part II (Consumer Theory)
+    │        ├──→ Part IV (Uncertainty)
+    │        └──→ Part V (General Equilibrium)
+    └──→ Part III (Producer Theory)
+             └──→ Part V (General Equilibrium)
+
+Part V (General Equilibrium)
+    ├──→ Part VI (Welfare Economics)
+    └──→ Part VII (Game Theory) [Part I also prerequisite]
+
+Part VII (Game Theory)
+    └──→ Part VIII (Information Economics)
+
+Part VIII (Information Economics)
+    └──→ Part IX (Markets & Mechanism Design)
+```
+
+**Minimum path to General Equilibrium:** Parts I → II → III → V.
+
+**Minimum path to Mechanism Design:** Parts I → II → III → V → VII → VIII → IX.
+
+**Minimum path to Applied Theory:** Parts I → II → III → IV (these four parts are sufficient for most applied theory papers in IO, labor, and public economics).
+
+---
+
+## Part Index Links
+
+- [Index](../Part_I_Mathematical_Foundations/Index.qmd)
+- [Index](../Part_II_Consumer_Theory/Index.qmd)
+- [Index](../Part_III_Producer_Theory/Index.qmd)
+- [Index](../Part_IV_Choice_Under_Uncertainty/Index.qmd)
+- [Index](../Part_V_General_Equilibrium/Index.qmd)
+- [Index](../Part_VI_Welfare_Economics/Index.qmd)
+- [Index](../Part_VII_Game_Theory/Index.qmd)
+- [Index](../Part_VIII_Information_Economics/Index.qmd)
+- [Index](../Part_IX_Markets_and_Mechanism_Design/Index.qmd)
+
+---
+
+## Model-Building Workflow
+
+The following 10-step checklist guides the construction of any new theoretical model. Each step corresponds to a section in the [Model Building Template](../Templates/Model_Building_Template.qmd). Use this checklist as a quality-control device: a model is not complete until every step has been addressed.
+
+1. **Specify the economic environment.** Define the commodity space $\mathcal{L}$, the time horizon (static, finite-horizon, infinite-horizon), and the state space $\Omega$ for uncertainty. Be explicit about what is exogenous and what is endogenous.
+
+2. **Define agents and their primitives.** List each agent $i \in I$. For each agent, specify: (a) the type space $\Theta_i$ (private information); (b) the action space $A_i$; (c) the payoff/utility function $u_i: A \times \Theta \to \mathbb{R}$.
+
+3. **Write down the timing and information structure.** Draw a game tree or timeline. Specify what each agent knows at each decision node. Identify the information partition.
+
+4. **Write each agent's optimization problem.** State the objective function and all constraints formally. For consumer problems: utility maximization or expenditure minimization. For firm problems: profit maximization or cost minimization. For mechanism design: planner's objective subject to IC and IR constraints.
+
+5. **Define the equilibrium concept.** Choose the appropriate solution concept (Walrasian, Nash, SPNE, PBE, BNE, dominant strategy, etc.) and state its definition formally. Justify why this concept is appropriate for the model.
+
+6. **Prove existence.** State sufficient conditions for equilibrium existence and cite the relevant fixed-point theorem (Brouwer, Kakutani) or existence result from Part I or V. If conditions are not satisfied, explain why and what assumptions must be added.
+
+7. **Prove or discuss uniqueness.** State conditions under which the equilibrium is unique. If multiplicity cannot be ruled out, discuss selection criteria or interpret the multiplicity economically.
+
+8. **Derive comparative statics.** Identify the key parameters and predict how equilibrium outcomes change as each parameter changes. Use the Envelope Theorem (Part I), the implicit function theorem, or monotone comparative statics (Topkis/Milgrom-Shannon).
+
+9. **Derive testable predictions.** Translate the comparative statics into statements that are in principle falsifiable with data. Be specific: what is the dependent variable, what is the treatment variable, and what is the predicted sign or magnitude?
+
+10. **Specify an identification strategy.** For each testable prediction, describe how it could be identified empirically: natural experiment, instrumental variable (with exclusion restriction argument), regression discontinuity, difference-in-differences, or structural estimation. Discuss the key threats to identification.
+
+---
+
+## Notation Conventions
+
+Throughout this vault, the following notation is standard (following MWG):
+
+- $L$ — number of commodities; $\ell = 1, \ldots, L$ indexes commodities
+- $\mathbb{R}^L_+$ — nonnegative orthant (consumption sets)
+- $p \in \mathbb{R}^L_{++}$ — strictly positive price vector
+- $w > 0$ — wealth (budget)
+- $x(p,w)$ — Walrasian (Marshallian) demand
+- $h(p,u)$ — Hicksian (compensated) demand
+- $v(p,w)$ — indirect utility function
+- $e(p,u)$ — expenditure function
+- $\pi(p)$ — profit function; $y(p)$ — supply correspondence
+- $c(w,q)$ — cost function; $z(w,q)$ — factor demand
+- $\succsim$ — weak preference relation; $\succ$ strict preference; $\sim$ indifference
+- $\phi: X \rightrightarrows Y$ — correspondence (set-valued map)
+- $\mathcal{L}(x, \lambda)$ — Lagrangian function

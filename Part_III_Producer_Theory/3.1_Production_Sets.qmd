@@ -1,0 +1,337 @@
+---
+title: "3.1 Production Sets and Technology"
+---
+
+# 3.1 Production Sets and Technology
+
+> **MWG Reference:** Ch. 5, §5.A–5.B, pp. 128–142
+
+## Context
+
+The starting point of producer theory is a formal description of what is technologically feasible. Rather than imposing a particular functional form on technology, MWG takes a set-theoretic approach: the **production set** $Y \subseteq \mathbb{R}^L$ is the primitive object, and all behavioral results (supply, cost minimization, comparative statics) follow from properties of $Y$. This level of generality accommodates multiple outputs, joint production, and heterogeneous inputs within a single framework. In the special but important single-output case, the production set reduces to the familiar production function.
+
+---
+
+## Definitions
+
+::: {.callout-note icon=false}
+## Definition 3.1 — Commodity Space and Sign Convention
+There are $L$ commodities. A **production vector** (or **netput vector**) is $y = (y_1, \ldots, y_L) \in \mathbb{R}^L$, where:
+- $y_l > 0$: commodity $l$ is an **output** (net supply to the market)
+- $y_l < 0$: commodity $l$ is an **input** (net demand from the market)
+
+This sign convention consolidates inputs and outputs into a single vector, enabling a unified treatment.
+:::
+
+
+::: {.callout-note icon=false}
+## Definition 3.2 — Production Set
+The **production set** $Y \subseteq \mathbb{R}^L$ is the set of all technologically feasible production vectors. The set $Y$ is the complete description of the firm's technology.
+:::
+
+
+::: {.callout-note icon=false}
+## Definition 3.3 — Input Requirement Set
+For a given output vector $\bar{q}$, the **input requirement set** is:
+$$V(\bar{q}) = \{z \in \mathbb{R}^K_+ : (-z, \bar{q}) \in Y\}$$
+This is the set of input vectors $z$ that can produce at least output $\bar{q}$.
+:::
+
+
+::: {.callout-note icon=false}
+## Definition 3.4 — Isoquant
+The **isoquant** at output level $q$ is:
+$$Q(q) = \{z \in \mathbb{R}^K_+ : z \in V(q) \text{ and } z \notin V(q') \text{ for any } q' > q\}$$
+That is, it is the boundary of the input requirement set: the minimal inputs needed to produce exactly $q$.
+:::
+
+
+---
+
+## Properties of the Production Set
+
+Each property below is stated formally, interpreted economically, and its implication for the profit function $\pi(p) = \sup_{y \in Y} p \cdot y$ is noted.
+
+### Property P1: Non-emptiness
+
+::: {.callout-note icon=false}
+## Definition 3.5 — Non-emptiness (Possibility of Inaction)
+$Y \neq \emptyset$, and in particular $0 \in Y$.
+:::
+
+
+**Economic Interpretation:** The firm can always choose to produce nothing — the "shutdown" option. This is an important outside option that bounds losses to zero (if the firm can always costlessly not produce).
+
+**Implication for $\pi(p)$:** Since $0 \in Y$, we have $p \cdot 0 = 0 \leq \pi(p)$ for all $p$. Hence the profit function satisfies $\pi(p) \geq 0$ whenever inaction is feasible.
+
+### Property P2: Closedness
+
+::: {.callout-note icon=false}
+## Definition 3.6 — Closedness
+$Y$ is a **closed** set: if $\{y^n\} \subset Y$ and $y^n \to y$, then $y \in Y$.
+:::
+
+
+**Economic Interpretation:** The production possibilities do not have "holes" at their boundaries. If a sequence of feasible production plans converges, the limit is also feasible.
+
+**Implication for $\pi(p)$:** Closedness, together with boundedness of the feasible set for given prices, ensures the supremum defining $\pi(p)$ is attained (by the extreme value theorem). Without closedness, optimal production plans may not exist.
+
+### Property P3: No Free Lunch
+
+::: {.callout-note icon=false}
+## Definition 3.7 — No Free Lunch
+$$Y \cap \mathbb{R}^L_+ \subseteq \{0\}$$
+It is impossible to produce positive outputs without using any inputs.
+:::
+
+
+**Economic Interpretation:** Nothing comes from nothing. The only production vector in the positive orthant (all outputs, no inputs) that is feasible is the zero vector. This rules out technologies that create commodities from thin air.
+
+**Implication for $\pi(p)$:** Rules out unbounded profit from zero outlay in the absence of any price-taking inputs, providing a basic regularity condition.
+
+### Property P4: Free Disposal
+
+::: {.callout-note icon=false}
+## Definition 3.8 — Free Disposal
+$$y \in Y \text{ and } y' \leq y \Rightarrow y' \in Y$$
+where $y' \leq y$ means $y'_l \leq y_l$ for all $l$.
+:::
+
+
+**Economic Interpretation:** The firm can freely dispose of any outputs or use more inputs than necessary. If a production plan $y$ is feasible, then producing less output or using more inputs (making components of $y'$ more negative) remains feasible. There are no disposal costs.
+
+**Implication for $\pi(p)$:** Free disposal implies that the input requirement set $V(q)$ is comprehensive upward: $z \in V(q)$ and $z' \geq z$ implies $z' \in V(q)$. This makes the CMP well-behaved since wasting inputs is costless.
+
+### Property P5: Irreversibility
+
+::: {.callout-note icon=false}
+## Definition 3.9 — Irreversibility
+$$y \in Y, \; y \neq 0 \Rightarrow -y \notin Y$$
+:::
+
+
+**Economic Interpretation:** Production processes cannot simply be "run backwards." If inputs can be turned into outputs, those outputs cannot be reversed back into the original inputs at the same rate. This reflects the asymmetry of physical production processes.
+
+**Implication for $\pi(p)$:** Irreversibility, together with No Free Lunch, prevents the technology from being trivially unbounded in all price configurations.
+
+### Property P6: Nonincreasing Returns to Scale (NIRTS)
+
+::: {.callout-note icon=false}
+## Definition 3.10 — Nonincreasing Returns to Scale
+$$y \in Y \Rightarrow \alpha y \in Y \quad \forall \alpha \in [0, 1]$$
+Scaling down any feasible production plan remains feasible.
+:::
+
+
+**Economic Interpretation:** The firm can always do less: if it can produce $y$, it can produce $\alpha y$ for any fraction $\alpha \in [0,1]$. This corresponds to the ability to idle part of the plant. Equivalently, in the single-output case: $f(\lambda z) \leq \lambda f(z)$ for $\lambda \in [0,1]$, i.e., **decreasing or constant returns to scale**.
+
+**Implication for $\pi(p)$:** Under NIRTS, $\pi(p) \leq 0$ or $\pi(p) = 0$. Combined with Non-emptiness ($0 \in Y \Rightarrow \pi \geq 0$), NIRTS implies $\pi(p) \geq 0$ for all $p$, and the profit-maximizing scale is finite.
+
+### Property P7: Nondecreasing Returns to Scale (NDIRTS)
+
+::: {.callout-note icon=false}
+## Definition 3.11 — Nondecreasing Returns to Scale
+$$y \in Y \Rightarrow \alpha y \in Y \quad \forall \alpha \geq 1$$
+Any feasible production plan can be scaled up.
+:::
+
+
+**Economic Interpretation:** The firm can always do at least proportionally more if it scales up all inputs. This could arise from specialization, indivisible fixed costs amortized over large production runs, or network effects. In the single-output case: $f(\lambda z) \geq \lambda f(z)$ for $\lambda \geq 1$.
+
+**Implication for $\pi(p)$:** Under NDIRTS (without NIRTS), the profit function may be $+\infty$ at certain prices, since scaling up is always feasible. Positive profits tend to grow without bound as scale increases.
+
+### Property P8: Constant Returns to Scale (CRS)
+
+::: {.callout-note icon=false}
+## Definition 3.12 — Constant Returns to Scale
+$Y$ is a **cone**:
+$$y \in Y \Rightarrow \alpha y \in Y \quad \forall \alpha \geq 0$$
+Equivalently, CRS = NIRTS $\cap$ NDIRTS.
+:::
+
+
+**Economic Interpretation:** Doubling all inputs exactly doubles all outputs. The firm's technology exhibits no scale economies or diseconomies. CRS is the benchmark case for competitive general equilibrium models, since entry and exit drive profits to zero and scale is indeterminate.
+
+**Implication for $\pi(p)$:** Under CRS, the profit function satisfies $\pi(\alpha p) = \alpha \pi(p)$ (homogeneous of degree 1), but also: since $Y$ is a cone, either $\pi(p) = 0$ (if prices are consistent with zero profit) or $\pi(p) = +\infty$ (if there is a strictly profitable direction). This is formalized in Proposition 3.1 below.
+
+### Property P9: Convexity
+
+::: {.callout-note icon=false}
+## Definition 3.13 — Convexity of $Y$
+$$y, y' \in Y \Rightarrow \lambda y + (1-\lambda) y' \in Y \quad \forall \lambda \in [0,1]$$
+:::
+
+
+**Economic Interpretation:** Mixing two feasible production plans is feasible. This captures the idea of **diminishing marginal returns**: as we shift resources from one activity to another, production possibilities shrink at the margin. Convexity of $Y$ is implied by CRS plus NIRTS (any convex combination of a CRS set lies in the set), but is also consistent with DRS technologies.
+
+**Implication for $\pi(p)$:** Convexity of $Y$ implies that the profit-maximizing problem has a convex feasible set, which (together with linearity of the objective) ensures that the set of optimal solutions $y(p)$ is convex-valued, and that the profit function $\pi(p)$ is convex in $p$ (see [3.2 Profit Maximization](3.2_Profit_Maximization.qmd)).
+
+---
+
+## Single-Output Case and Production Function
+
+::: {.callout-note icon=false}
+## Definition 3.14 — Production Function
+In the **single-output case**, there are $K$ inputs with quantities $z = (z_1, \ldots, z_K) \geq 0$ and one output $q \geq 0$. The **production function** $f: \mathbb{R}^K_+ \to \mathbb{R}_+$ gives the maximum output obtainable from input vector $z$:
+$$f(z) = \max\{q \geq 0 : (-z, q) \in Y\}$$
+The production set is then:
+$$Y = \{(-z, q) \in \mathbb{R}^{K+1} : q \leq f(z), \; z \geq 0\}$$
+:::
+
+
+**Returns to Scale via the Production Function:** For $\lambda > 1$:
+- **Constant Returns to Scale (CRS):** $f(\lambda z) = \lambda f(z)$ — doubling inputs doubles output
+- **Increasing Returns to Scale (IRS):** $f(\lambda z) > \lambda f(z)$ — doubling inputs more than doubles output
+- **Decreasing Returns to Scale (DRS):** $f(\lambda z) < \lambda f(z)$ — doubling inputs less than doubles output
+
+::: {.callout-caution icon=false}
+## Remark 3.1 — Local vs. Global Returns to Scale
+Returns to scale can be **local** (holding at a particular $z$) or **global** (holding for all $z$). A production function may exhibit IRS at low scales and DRS at high scales (the typical "U-shaped" average cost curve corresponds to this pattern). The properties P6–P8 are global.
+:::
+
+
+**Marginal Rate of Technical Substitution (MRTS):** For a two-input technology, the MRTS between inputs 1 and 2 at a given output level is:
+$$MRTS_{12}(z) = -\frac{dz_2}{dz_1}\bigg|_{q = f(z) \text{ fixed}} = \frac{\partial f/\partial z_1}{\partial f/\partial z_2} = \frac{MP_1}{MP_2}$$
+This is the rate at which input 2 can be substituted for input 1 while keeping output constant.
+
+---
+
+## Transformation Function
+
+::: {.callout-note icon=false}
+## Definition 3.15 — Transformation Function
+The **transformation function** $F: \mathbb{R}^L \to \mathbb{R}$ is defined such that:
+$$Y = \{y \in \mathbb{R}^L : F(y) \leq 0\}$$
+The **production frontier** (or **transformation frontier**) is $\{y : F(y) = 0\}$.
+:::
+
+
+**Properties:**
+- $F$ is well-defined when $Y$ is convex and closed with a smooth boundary.
+- The gradient $\nabla F(y)$ at a boundary point is the outward normal to the production frontier.
+- $F$ is normalized so that $F(y) < 0$ for interior points (strictly feasible) and $F(y) > 0$ for infeasible plans.
+
+::: {.callout-note icon=false}
+## Definition 3.16 — Marginal Rate of Transformation
+For a multi-output technology at a boundary point $y^*$ with $F(y^*) = 0$, the **marginal rate of transformation (MRT)** between outputs $k$ and $l$ is:
+$$MRT_{kl}(y^*) = -\frac{dy_l}{dy_k}\bigg|_{F(y) = 0} = \frac{\partial F / \partial y_k}{\partial F / \partial y_l}$$
+:::
+
+
+**Economic Interpretation:** The MRT measures the opportunity cost of producing more of output $k$ in terms of output $l$ foregone. At a profit maximum, the MRT between any two outputs must equal their price ratio: $MRT_{kl} = p_k/p_l$. This is the producer analogue of the consumer's equimarginal condition.
+
+---
+
+## Main Results
+
+::: {.callout-important icon=false}
+## Proposition 3.1 — CRS Implies Zero Profit or Infinite Profit
+Suppose $Y$ satisfies free disposal and CRS (is a cone with $0 \in Y$). Then for every price vector $p \gg 0$:
+$$\pi(p) = 0 \quad \text{or} \quad \pi(p) = +\infty$$
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+**Step 1: $\pi(p) \geq 0$.**
+Since $0 \in Y$ (from CRS, which requires $Y$ to be a cone containing $0$), we have $p \cdot 0 = 0 \leq \pi(p)$.
+
+**Step 2: Either $\pi(p) > 0$ implies $\pi(p) = +\infty$.**
+Suppose there exists $y^* \in Y$ with $p \cdot y^* = \epsilon > 0$. Since $Y$ is a cone, for any $\alpha > 0$ we have $\alpha y^* \in Y$. Therefore:
+$$\pi(p) \geq p \cdot (\alpha y^*) = \alpha (p \cdot y^*) = \alpha \epsilon$$
+Since this holds for all $\alpha > 0$, taking $\alpha \to \infty$ gives $\pi(p) = +\infty$.
+
+**Step 3: Conclusion.**
+The only two possibilities consistent with $\pi(p) \geq 0$ are:
+- $p \cdot y \leq 0$ for all $y \in Y$: then $\pi(p) = \sup_{y \in Y} p \cdot y = 0$ (achieved at $y = 0$).
+- $\exists y^* \in Y$ with $p \cdot y^* > 0$: then by Step 2, $\pi(p) = +\infty$.
+
+Hence $\pi(p) \in \{0, +\infty\}$. $\blacksquare$
+:::
+
+
+::: {.callout-caution icon=false}
+## Remark 3.2 — Economic Significance of Proposition 3.1
+This result explains why competitive general equilibrium models with CRS technologies require zero-profit conditions: if any technology exhibited CRS and generated positive profits at equilibrium prices, firms would want to scale up production without bound, which is inconsistent with market clearing. CRS is therefore the natural assumption for "small" competitive firms whose individual scale decisions do not affect prices.
+:::
+
+
+::: {.callout-important icon=false}
+## Proposition 3.2 — Convexity of $Y$ and Concavity of $f$
+In the single-output case, the production set $Y = \{(-z, q) : q \leq f(z), z \geq 0\}$ is convex if and only if $f$ is a **concave** function.
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+($\Rightarrow$) Suppose $Y$ is convex. Take any $z, z' \geq 0$ and $\lambda \in [0,1]$. Then $(-z, f(z)) \in Y$ and $(-z', f(z')) \in Y$. By convexity of $Y$:
+$$\lambda(-z, f(z)) + (1-\lambda)(-z', f(z')) = (-[\lambda z + (1-\lambda)z'], \; \lambda f(z) + (1-\lambda)f(z')) \in Y$$
+For this to be in $Y$, we need $\lambda f(z) + (1-\lambda)f(z') \leq f(\lambda z + (1-\lambda)z')$. This is precisely the concavity of $f$.
+
+($\Leftarrow$) Suppose $f$ is concave. Take $(-z, q)$ and $(-z', q')$ in $Y$, so $q \leq f(z)$ and $q' \leq f(z')$. For $\lambda \in [0,1]$:
+$$\lambda q + (1-\lambda)q' \leq \lambda f(z) + (1-\lambda)f(z') \leq f(\lambda z + (1-\lambda)z')$$
+where the second inequality uses concavity of $f$. Hence $(-[\lambda z + (1-\lambda) z'], \lambda q + (1-\lambda)q') \in Y$. $\blacksquare$
+:::
+
+
+::: {.callout-caution icon=false}
+## Remark 3.3 — Implications for Returns to Scale
+- A **concave** production function exhibits non-increasing returns to scale (DRS or CRS globally).
+- A **linear** production function ($f(z) = a \cdot z$) is both concave and convex, corresponding to CRS.
+- A **strictly concave** production function implies DRS.
+- Note: concavity of $f$ is a stronger condition than DRS. DRS only requires $f(\lambda z) < \lambda f(z)$ for $\lambda > 1$, while concavity requires the same inequality to hold for all convex combinations.
+:::
+
+
+---
+
+## Examples
+
+::: {.callout-note icon=false appearance="simple"}
+## Example 3.1 — Cobb-Douglas Production Function
+Let $f(z_1, z_2) = z_1^{\alpha} z_2^{\beta}$ with $\alpha, \beta > 0$.
+
+**Returns to scale:** For $\lambda > 0$:
+$$f(\lambda z_1, \lambda z_2) = (\lambda z_1)^{\alpha} (\lambda z_2)^{\beta} = \lambda^{\alpha+\beta} z_1^{\alpha} z_2^{\beta} = \lambda^{\alpha+\beta} f(z_1, z_2)$$
+- If $\alpha + \beta = 1$: CRS
+- If $\alpha + \beta > 1$: IRS
+- If $\alpha + \beta < 1$: DRS
+
+**Transformation function:** $F(-z_1, -z_2, q) = q - z_1^{\alpha} z_2^{\beta}$; the production set is $\{F \leq 0\}$.
+
+**MRTS:** $MRTS_{12} = \frac{\alpha z_2}{\beta z_1}$, which is decreasing in $z_1/z_2$ — confirming diminishing MRTS (convex isoquants).
+:::
+
+
+::: {.callout-note icon=false appearance="simple"}
+## Example 3.2 — CES Production Function
+Let $f(z_1, z_2) = (z_1^{\rho} + z_2^{\rho})^{1/\rho}$ with $\rho \leq 1$, $\rho \neq 0$.
+
+This is CRS for all admissible $\rho$. Special cases:
+- $\rho \to 1$: $f(z_1, z_2) = z_1 + z_2$ (perfect substitutes; linear isoquants)
+- $\rho \to 0$: $f(z_1, z_2) = z_1^{1/2} z_2^{1/2}$ (Cobb-Douglas; limiting case)
+- $\rho \to -\infty$: $f(z_1, z_2) = \min(z_1, z_2)$ (Leontief; perfect complements; L-shaped isoquants)
+
+The elasticity of substitution is $\sigma = 1/(1-\rho)$, measuring curvature of the isoquant.
+:::
+
+
+---
+
+## Economic Intuition
+
+The production set is a more general primitive than the production function because it accommodates **multiple outputs** (joint production), **by-products** (waste), and technologies where the input-output distinction is itself endogenous. The sign convention — inputs negative, outputs positive — is elegant because it reduces the entire description of the firm's technology to a single set in commodity space, and profit is simply $p \cdot y$ for a price vector $p$ with the same sign convention (all prices positive).
+
+The nine properties P1–P9 are not all independent. For example, CRS (P8) implies both NIRTS (P6) and NDIRTS (P7). Convexity (P9) plus NIRTS (P6) gives a very well-behaved technology: the profit-maximizing problem will have a convex feasible set with a finite optimum for any price vector satisfying a no-profitable-direction condition.
+
+The critical practical message is: **returns to scale determine market structure**. CRS supports competitive markets with indeterminate scale; DRS generates finite supply and positive profits; IRS creates natural monopoly pressures. Understanding the production set is thus essential not just for partial equilibrium supply analysis, but for the entire theory of market organization.
+
+---
+
+## Cross-References
+
+- [3.2 Profit Maximization](3.2_Profit_Maximization.qmd) — the PMP takes $Y$ as given; Hotelling's lemma
+- [3.3 Cost Minimization](3.3_Cost_Minimization.qmd) — the CMP works with the single-output production function
+- [3.4 Supply and Factor Demands](3.4_Supply_and_Factor_Demands.qmd) — how returns to scale affect supply and factor demands
+- [1.3 Optimization Theory](1.3_Optimization_Theory.qmd) — convex analysis and the envelope theorem
+- [PS Producer Theory](PS_Producer_Theory.qmd) — Problem 1: verify production set properties for a given technology

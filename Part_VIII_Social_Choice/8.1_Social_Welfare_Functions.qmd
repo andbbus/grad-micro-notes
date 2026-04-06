@@ -1,0 +1,145 @@
+---
+title: "8.1 Social Welfare Functions"
+---
+
+# 8.1 Social Welfare Functions
+
+> **MWG Reference:** Ch. 22, §22.B–22.C, pp. 825–838
+
+## Context
+
+The Bergson-Samuelson social welfare function (SWF) is an alternative to Arrow's aggregation approach: rather than mapping preference profiles to social orderings, it maps utility vectors to a social welfare index. This presupposes cardinal and interpersonally comparable utilities — a significantly stronger informational requirement than Arrow's ordinal framework. In exchange for this requirement, the SWF approach delivers a complete and transitive social ranking, avoids Arrow's impossibility, and provides a tractable framework for cost-benefit analysis and optimal tax theory. The utilitarian and Rawlsian SWFs represent the two poles of a spectrum of distributional preferences, parameterized by the isoelastic family, which is now standard in both welfare economics and optimal policy analysis.
+
+## Definitions
+
+::: {.callout-note icon=false}
+## Definition 8.1.1 — Social Choice Rule
+A **social choice rule** is a function $f: \mathcal{R}^I \to \mathcal{R}$ or $f: \mathcal{R}^I \to X$ that maps a profile of individual preference orderings $(R_1, \ldots, R_I)$ over alternatives $X$ to either a social preference ordering over $X$ or a choice from $X$.
+
+Arrow's framework (see [8.2 Arrows Impossibility Theorem](8.2_Arrows_Impossibility_Theorem.qmd)) works with ordinal, interpersonally non-comparable preferences. The Bergson-Samuelson approach instead works with cardinal utility levels.
+:::
+
+
+::: {.callout-note icon=false}
+## Definition 8.1.2 — Bergson-Samuelson Social Welfare Function
+A **Bergson-Samuelson social welfare function** is a function $W: \mathbb{R}^I \to \mathbb{R}$ that assigns a social welfare level to each utility vector $(u_1, \ldots, u_I) \in \mathbb{R}^I$:
+$$W = W(u_1(x), u_2(x), \ldots, u_I(x)).$$
+The SWF is defined over utility levels, not preference orderings. It assumes:
+- **Cardinality:** Utilities are measured on a common cardinal scale
+- **Interpersonal comparability:** The numbers $u_i$ are comparable across individuals
+- **Pareto principle:** $W$ is increasing in each $u_i$
+:::
+
+
+::: {.callout-note icon=false}
+## Definition 8.1.3 — Utilitarian SWF
+The **utilitarian social welfare function** is:
+$$W^U(u_1, \ldots, u_I) = \sum_{i=1}^I u_i.$$
+Social welfare is the **sum** of individual utilities. This is anonymous (symmetric in all $u_i$), additively separable, and treats each individual's utility gain equally regardless of their current utility level.
+:::
+
+
+::: {.callout-note icon=false}
+## Definition 8.1.4 — Rawlsian (Maximin) SWF
+The **Rawlsian social welfare function** is:
+$$W^R(u_1, \ldots, u_I) = \min_{i \in I} u_i.$$
+Social welfare equals the utility of the **worst-off individual**. This reflects extreme inequality aversion: society values only improvements to the bottom of the distribution.
+:::
+
+
+::: {.callout-note icon=false}
+## Definition 8.1.5 — Isoelastic SWF
+The **isoelastic (CES) social welfare function** parameterized by $\epsilon \geq 0$ is:
+$$W^\epsilon(u_1, \ldots, u_I) = \begin{cases} \sum_{i=1}^I \frac{u_i^{1-\epsilon}}{1-\epsilon} & \text{if } \epsilon \neq 1 \\ \sum_{i=1}^I \ln u_i & \text{if } \epsilon = 1 \end{cases}$$
+where utilities are assumed positive.
+
+This family **nests** the utilitarian SWF as $\epsilon \to 0$ (in the limit, $W^\epsilon \to \sum u_i$) and the Rawlsian SWF as $\epsilon \to \infty$ (in the limit, $W^\epsilon \to \min_i u_i$). The parameter $\epsilon$ is the **inequality aversion** coefficient.
+:::
+
+
+::: {.callout-note icon=false}
+## Definition 8.1.6 — Atkinson Inequality Index
+For a distribution of incomes $(y_1, \ldots, y_I)$ and isoelastic SWF with parameter $\epsilon$, the **equally-distributed equivalent income** $y^{EDE}$ is defined by:
+$$W^\epsilon(y^{EDE}, \ldots, y^{EDE}) = W^\epsilon(y_1, \ldots, y_I),$$
+i.e., the level of equal income that yields the same social welfare as the actual distribution. The **Atkinson inequality index** is:
+$$A_\epsilon = 1 - \frac{y^{EDE}}{\bar{y}},$$
+where $\bar{y} = \frac{1}{I}\sum_i y_i$ is mean income. $A_\epsilon \in [0, 1)$ measures inequality: $A_\epsilon = 0$ iff incomes are perfectly equal; $A_\epsilon \to 1$ iff welfare is minimized by the distribution.
+:::
+
+
+## Main Results
+
+::: {.callout-important icon=false}
+## Theorem 8.1.1 — Harsanyi's Veil of Ignorance Justification for Utilitarianism
+Suppose an impartial observer must rank social states without knowing which individual they will be. If the observer satisfies the von Neumann-Morgenstern axioms (expected utility maximization) and believes each state is equally likely to be their own, then the observer's preferences over social states are represented by the utilitarian SWF $W^U = \sum_i u_i$.
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+Let $x$ and $y$ be two social states with utility profiles $(u_1(x), \ldots, u_I(x))$ and $(u_1(y), \ldots, u_I(y))$ respectively.
+
+The impartial observer, behind the veil of ignorance, faces a lottery: with probability $1/I$ they will be individual $i$. Their expected utility from state $x$ is:
+$$V(x) = \sum_{i=1}^I \frac{1}{I} u_i(x) = \frac{1}{I} W^U(u(x)).$$
+Similarly $V(y) = \frac{1}{I} W^U(u(y))$. The observer prefers $x$ to $y$ iff $V(x) > V(y)$ iff $W^U(u(x)) > W^U(u(y))$.
+
+Therefore the observer's ranking coincides with the utilitarian SWF. $\blacksquare$
+:::
+
+
+::: {.callout-caution icon=false}
+## Remark
+**Rawlsian critique of Harsanyi.** Rawls (1971) accepts the veil-of-ignorance thought experiment but rejects expected utility maximization behind it. Rawls argues that rational individuals under uncertainty about their position would adopt the **maximin** rule: maximize the minimum payoff, because the risk of being the worst-off individual is not an ordinary probability but an existential uncertainty. Under maximin, the observer prefers $x$ to $y$ iff $\min_i u_i(x) > \min_i u_i(y)$ — the Rawlsian SWF.
+
+The disagreement between Harsanyi and Rawls is not about the veil-of-ignorance device but about the appropriate decision rule under uncertainty: expected utility maximization (Harsanyi) vs. maximin (Rawls). This reflects different attitudes toward risk — neutrality vs. extreme aversion.
+:::
+
+
+::: {.callout-important icon=false}
+## Theorem 8.1.2 — Isoelastic SWF Nests Utilitarian and Rawlsian
+1. As $\epsilon \to 0$: $W^\epsilon(u) \to \sum_i u_i = W^U(u)$ (up to a positive affine transformation).
+2. As $\epsilon \to \infty$: For any utility profile with $\min_i u_i = u_{\min}$, $W^\epsilon(u) \to u_{\min} = W^R(u)$.
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+**Part 1.** For $\epsilon$ near 0, $u_i^{1-\epsilon} = e^{(1-\epsilon)\ln u_i} \approx 1 + (1-\epsilon)\ln u_i$ for small deviations, but more precisely: $\frac{u_i^{1-\epsilon} - 1}{1-\epsilon} \to \ln u_i$ as $\epsilon \to 1$ (l'Hôpital's rule). For $\epsilon \to 0$: $W^\epsilon = \frac{1}{1-\epsilon}\sum_i u_i^{1-\epsilon} \approx \frac{1}{1-\epsilon}\sum_i u_i^1 = \frac{1}{1-\epsilon}\sum_i u_i$ which is a positive multiple of $\sum_i u_i$. More rigorously, the social ranking induced by $W^\epsilon$ as $\epsilon \to 0$ converges to the ranking induced by $W^U$, since $u_i^{1-\epsilon} \to u_i$ uniformly on compact sets.
+
+**Part 2.** Write $u_{\min} = \min_i u_i$ and let $u_i = u_{\min} + d_i$ with $d_i \geq 0$. Then:
+$$W^\epsilon = \frac{\sum_i u_i^{1-\epsilon}}{1-\epsilon} = \frac{u_{\min}^{1-\epsilon} \sum_i (1 + d_i/u_{\min})^{1-\epsilon}}{1-\epsilon}.$$
+For $\epsilon \to \infty$: $(1 + d_i/u_{\min})^{1-\epsilon} \to 0$ for all $d_i > 0$ and equals 1 for $d_i = 0$. Therefore only the minimizing individual(s) contribute:
+$$W^\epsilon \sim \frac{u_{\min}^{1-\epsilon} \cdot |\arg\min u_i|}{1-\epsilon}.$$
+The induced ranking satisfies: $W^\epsilon(u) > W^\epsilon(v)$ iff $u_{\min} > v_{\min}$ (for large $\epsilon$), which is the Rawlsian criterion. $\blacksquare$
+:::
+
+
+## Sen's Capabilities Critique
+
+::: {.callout-caution icon=false}
+## Remark
+**Sen's capabilities approach** (Sen 1985, 1999) challenges the utility-based welfare framework at its foundations. Sen argues that welfare should be measured not by utility (satisfaction, happiness) but by **capabilities**: what a person can be and do — the substantive freedoms they enjoy. Key distinctions:
+
+- **Functionings**: actual beings and doings (being well-nourished, being educated, participating in community)
+- **Capabilities**: the real freedoms to achieve functionings (capability to be nourished, capability to be educated)
+
+The SWF approach — utilitarian or Rawlsian — aggregates utility or income, which may not capture the actual freedom or opportunities available to individuals. A person with a disability may require more income to achieve the same capability levels; a woman in a patriarchal society may have low utility yet high resourcefulness. Utility-based welfare can be adaptive: oppressed groups may adapt their preferences to their circumstances ("adaptive preferences"), making their utility comparisons misleading guides for policy.
+
+Sen's critique has practical implications: human development indices (HDI, UNDP) measure capabilities (life expectancy, education, income) rather than utility or income alone.
+:::
+
+
+## Empirical Link: SWF in Policy Analysis
+
+Every cost-benefit analysis implicitly uses a social welfare function, even when analysts claim to be value-neutral. The choice of:
+- **Distributional weights** (equal vs. income-adjusted)
+- **Discount rate** (reflecting intergenerational welfare comparisons)
+- **Aggregation rule** (sum vs. minimum)
+
+are all SWF choices. The **Marginal Value of Public Funds (MVPF)** framework (Hendren-Sprung-Keyser 2020) makes the implicit SWF explicit by measuring welfare effects of government policies as the ratio of beneficiary gains to government costs, allowing welfare comparisons across policies without committing to a specific SWF.
+
+## Cross-References
+
+- [8.2 Arrows Impossibility Theorem](8.2_Arrows_Impossibility_Theorem.qmd) — Arrow's framework is the alternative to the Bergson-Samuelson approach; they contrast in their use of utility information
+- [8.3 Welfare Criteria](8.3_Welfare_Criteria.qmd) — Pareto and compensation criteria are specific instances of social choice rules
+- [6.4 Welfare Theorems](../Part_VI_General_Equilibrium/6.4_Welfare_Theorems.qmd) — Welfare theorems require a SWF to rank among Pareto-optimal equilibria

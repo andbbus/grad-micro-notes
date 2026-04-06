@@ -1,0 +1,183 @@
+---
+title: "5.1 Normal Form Games"
+---
+
+# 5.1 Normal Form Games
+
+> **MWG Reference:** Ch. 8, §8.B–8.C, pp. 236–255
+
+## Context
+
+The normal form (or strategic form) is the most compact representation of a game. It abstracts away from the temporal structure of play and records only: who the players are, what strategies they have available, and what payoffs result from each combination of strategies. Despite this compression, the normal form is rich enough to define dominance, rationalizability, and Nash equilibrium. Dynamic games are typically analyzed in extensive form first, then reduced to normal form when applying equilibrium refinements. This note covers the structure of normal form games and the solution concepts based on iterated reasoning: dominance, IESDS, and rationalizability.
+
+## Definitions
+
+::: {.callout-note icon=false}
+## Definition 5.1.1 — Normal Form Game
+A **normal form game** (or strategic form game) is a triple
+$$\Gamma = (I,\, (S_i)_{i \in I},\, (u_i)_{i \in I})$$
+where:
+- $I = \{1, 2, \ldots, n\}$ is the finite set of **players**;
+- $S_i$ is player $i$'s **strategy set** (which may be finite or infinite);
+- $S = S_1 \times S_2 \times \cdots \times S_n$ is the set of **strategy profiles**;
+- $u_i: S \to \mathbb{R}$ is player $i$'s **payoff function** (von Neumann–Morgenstern utility over outcomes).
+
+The notation $s_{-i} \in S_{-i} = \prod_{j \neq i} S_j$ denotes the strategies of all players except $i$.
+:::
+
+
+::: {.callout-note icon=false}
+## Definition 5.1.2 — Strict Dominance
+Strategy $s_i \in S_i$ is **strictly dominated** by $s_i' \in S_i$ if
+$$u_i(s_i', s_{-i}) > u_i(s_i, s_{-i}) \quad \text{for all } s_{-i} \in S_{-i}.$$
+A strategy $s_i$ is a **strictly dominant strategy** for player $i$ if it strictly dominates every other $s_i'' \in S_i \setminus \{s_i\}$.
+:::
+
+
+::: {.callout-note icon=false}
+## Definition 5.1.3 — Weak Dominance
+Strategy $s_i \in S_i$ is **weakly dominated** by $s_i' \in S_i$ if
+$$u_i(s_i', s_{-i}) \geq u_i(s_i, s_{-i}) \quad \text{for all } s_{-i} \in S_{-i},$$
+with strict inequality for at least one $s_{-i}$.
+:::
+
+
+::: {.callout-caution icon=false}
+## Remark
+Strict domination is a stronger requirement. A rational player should never play a strictly dominated strategy regardless of beliefs about opponents. Weakly dominated strategies may be best responses under some beliefs, which creates subtlety in iterated elimination.
+:::
+
+
+::: {.callout-note icon=false}
+## Definition 5.1.4 — IESDS (Iterated Elimination of Strictly Dominated Strategies)
+Define a sequence of reduced games as follows. Let $S^0 = S$.
+
+At stage $k \geq 1$: for each player $i$, eliminate from $S_i^{k-1}$ every strategy $s_i$ that is strictly dominated within the reduced game $S^{k-1}$. That is:
+$$S_i^k = \{s_i \in S_i^{k-1} : \nexists\, s_i' \in S_i^{k-1} \text{ such that } u_i(s_i', s_{-i}) > u_i(s_i, s_{-i})\, \forall s_{-i} \in S_{-i}^{k-1}\}.$$
+The process continues until no further eliminations are possible. The resulting set $S^\infty = \bigcap_{k=0}^\infty S^k$ is the **IESDS outcome**.
+:::
+
+
+::: {.callout-note icon=false}
+## Definition 5.1.5 — Rationalizability
+A strategy $s_i \in S_i$ is **rationalizable** if it survives IESDS, i.e., $s_i \in S_i^\infty$.
+
+Equivalently, $s_i$ is rationalizable if there exists a sequence of **belief-closed sets** $B_i \subseteq S_i$ — called a **best-response set** — such that $s_i \in B_i$ and every $s_i \in B_i$ is a best response to some probability distribution over $B_{-i} = \prod_{j \neq i} B_j$.
+:::
+
+
+## Main Results
+
+::: {.callout-important icon=false}
+## Theorem 5.1.1 — Order Independence of IESDS
+The outcome $S^\infty$ of iterated elimination of **strictly** dominated strategies is independent of the order in which strategies are eliminated.
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+Let $S^\infty$ denote the outcome of any particular elimination order. We show that any strategy surviving one elimination order survives all others.
+
+**Step 1: IESDS terminates.** Since $S$ is finite (or satisfies a finiteness condition), the sequence $S^0 \supseteq S^1 \supseteq \cdots$ is a weakly decreasing sequence of finite sets, hence must stabilize.
+
+**Step 2: Monotonicity.** Let $T \subseteq S$ be any set with $S^\infty \subseteq T \subseteq S$. We claim: if $s_i$ is strictly dominated in $S$, it remains strictly dominated in $T$ (since the domain of $s_{-i}$ only shrinks, strict inequality is preserved). Therefore, any strategy eliminated from $S$ is also eliminated from $T$.
+
+**Step 3: Order independence.** Let $A^\infty$ and $B^\infty$ be outcomes of two different elimination orders. We show $A^\infty \subseteq B^\infty$ (and by symmetry, $B^\infty \subseteq A^\infty$, giving equality).
+
+Suppose $s_i \notin B^\infty$. Then $s_i$ was eliminated at some stage $k$ of the $B$-procedure, meaning there exists $s_i'$ such that $u_i(s_i', s_{-i}) > u_i(s_i, s_{-i})$ for all $s_{-i} \in B_{-i}^{k-1}$.
+
+Since $A^\infty \subseteq B^{k-1}$ (the $A$-procedure only eliminates strictly dominated strategies, and anything eliminated in $A$ was strictly dominated when $S_{-i}$ was still at least as large as $B_{-i}^{k-1}$, so it was also eliminated in $B$ by stage $k-1$), we have $s_i'$ strictly dominates $s_i$ on $A_{-i}^\infty$ as well. Hence $s_i \notin A^\infty$.
+
+This shows $s_i \notin B^\infty \Rightarrow s_i \notin A^\infty$, i.e., $A^\infty \subseteq B^\infty$. By symmetry $B^\infty \subseteq A^\infty$, so $A^\infty = B^\infty$. $\blacksquare$
+:::
+
+
+::: {.callout-caution icon=false}
+## Remark
+Order independence **fails** for iterated elimination of **weakly** dominated strategies. Different elimination orders can produce different outcomes, which is a key reason IESDS (strict) is theoretically cleaner than its weak counterpart.
+:::
+
+
+::: {.callout-important icon=false}
+## Theorem 5.1.2 — Rationalizability and Nash Equilibrium
+Let $\Gamma$ be a finite normal form game.
+1. Every strategy $s_i^*$ played in a Nash equilibrium is rationalizable.
+2. The converse fails in general: there exist rationalizable strategy profiles that are not Nash equilibria.
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+**Part 1.** Let $s^* = (s_1^*, \ldots, s_n^*)$ be a Nash equilibrium. By definition, $s_i^*$ is a best response to $s_{-i}^*$ for each $i$. The set $\{s_i^*\}$ for each $i$ constitutes a best-response set: $s_i^*$ is a best response to the degenerate belief that puts probability one on $s_{-i}^*$. Therefore $s_i^*$ is rationalizable.
+
+**Part 2.** Consider the game where both players choose from $\{H, T\}$ with payoff matrix (Matching Pennies):
+
+|   | H | T |
+|---|---|---|
+| H | 1,−1 | −1,1 |
+| T | −1,1 | 1,−1 |
+
+No strategy is strictly dominated (each is a best response to some belief). Therefore $S^\infty = S$, so all four strategies are rationalizable. Yet the only Nash equilibrium is the mixed strategy $(1/2, 1/2)$. Pure strategies $H$ and $T$ are rationalizable but not part of any pure NE. $\blacksquare$
+:::
+
+
+## Examples
+
+::: {.callout-note icon=false appearance="simple"}
+## Example 5.1.1 — Prisoner's Dilemma
+Two players, each choosing $\{C, D\}$ (Cooperate, Defect):
+
+$$\begin{array}{c|cc} & C & D \\ \hline C & 2,2 & 0,3 \\ D & 3,0 & 1,1 \end{array}$$
+
+**IESDS:** $D$ strictly dominates $C$ for both players:
+$$u_i(D, C) = 3 > 2 = u_i(C, C), \quad u_i(D, D) = 1 > 0 = u_i(C, D).$$
+After one round of elimination, $S^\infty = \{(D,D)\}$.
+
+**Economic intuition:** The unique rationalizable outcome is $(D,D)$ with payoff $(1,1)$, even though $(C,C)$ with payoff $(2,2)$ Pareto dominates it. Individual rationality conflicts with collective optimality — the fundamental tension in collective action problems, cartel stability, public goods provision, and arms races.
+:::
+
+
+::: {.callout-note icon=false appearance="simple"}
+## Example 5.1.2 — Coordination Game
+$$\begin{array}{c|cc} & A & B \\ \hline A & 2,2 & 0,0 \\ B & 0,0 & 1,1 \end{array}$$
+
+**IESDS:** Neither $A$ nor $B$ is strictly dominated (each is a best response to the matching strategy). So $S^\infty = S$; both strategies are rationalizable. Rationalizability does not select a unique outcome here — it only eliminates strategies inconsistent with any rational belief, but both $(A,A)$ and $(B,B)$ are consistent with rational play. The two pure Nash equilibria are $(A,A)$ and $(B,B)$.
+:::
+
+
+::: {.callout-note icon=false appearance="simple"}
+## Example 5.1.3 — Battle of the Sexes
+Two players (Opera $O$, Football $F$), player 1 prefers Opera, player 2 prefers Football:
+
+$$\begin{array}{c|cc} & O & F \\ \hline O & 2,1 & 0,0 \\ F & 0,0 & 1,2 \end{array}$$
+
+**IESDS:** Neither strategy is dominated for either player. $S^\infty = S$; both strategies are rationalizable. The game has two pure NE — $(O,O)$ and $(F,F)$ — and one mixed NE. Rationalizability predicts any of the four pure strategy combinations could be played.
+:::
+
+
+## Finite vs. Infinite Strategy Spaces
+
+When $S_i$ is infinite (e.g., $S_i = [0,\infty)$ as in Cournot quantity competition), additional regularity conditions are needed:
+
+1. **Continuity**: $u_i(s_i, s_{-i})$ must be continuous in $s_i$ for best responses to exist (Weierstrass theorem requires compactness and continuity).
+2. **Compactness**: $S_i$ is typically restricted to a compact set (e.g., $S_i = [0,\bar{q}]$) to guarantee best responses exist.
+3. **IESDS with infinite spaces**: Elimination must be done transfinitely; order independence still holds for strict dominance but the process may require uncountably many rounds.
+
+In Cournot duopoly with linear demand $P = a - bQ$ and constant marginal cost $c$:
+$$u_i(q_i, q_j) = (a - b(q_i + q_j) - c)q_i.$$
+IESDS converges to the unique Cournot-Nash equilibrium $q_i^* = (a-c)/(3b)$ after countably infinite rounds (starting from the upper bound on rational quantities).
+
+## Economic Intuition
+
+**Rationalizability as epistemic foundation.** A strategy is rationalizable if it is consistent with common knowledge of rationality — every player is rational, knows every player is rational, knows every player knows this, and so on ad infinitum. This is a purely epistemic concept: it does not require players to *coordinate* on an equilibrium, only that they are *reasonable*.
+
+IESDS implements this reasoning iteratively: in round 1, eliminate strategies no rational player would ever use; in round 2, eliminate strategies that are only best responses to now-eliminated strategies; and so on. The surviving strategies are exactly those consistent with any depth of mutual reasoning about rationality.
+
+The gap between rationalizability and Nash equilibrium is precisely the gap between **individual rational reasoning** and **mutual coordination**: Nash equilibrium additionally requires that beliefs are *correct*, i.e., that each player's belief about others' strategies exactly matches their actual equilibrium strategy. Rationalizability does not require this consistency of beliefs across players.
+
+## Cross-References
+
+- [5.2 Nash Equilibrium](5.2_Nash_Equilibrium.qmd) — Nash equilibrium refines rationalizability by requiring consistent beliefs
+- [5.3 Mixed Strategies](5.3_Mixed_Strategies.qmd) — Mixed strategies are used in the formal definition of rationalizability for finite games
+- [5.4 Extensive Form Games](5.4_Extensive_Form_Games.qmd) — Normal form is the reduced form of an extensive form game
+- [1.4 Fixed Point Theorems](1.4_Fixed_Point_Theorems.qmd) — Fixed point theorems underlie Nash existence

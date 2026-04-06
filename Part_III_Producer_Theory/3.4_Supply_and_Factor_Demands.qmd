@@ -1,0 +1,306 @@
+---
+title: "3.4 Supply and Factor Demands"
+---
+
+# 3.4 Supply and Factor Demands
+
+> **MWG Reference:** Ch. 5, §5.C–5.E, pp. 138–167
+
+## Context
+
+Having established the PMP and CMP separately, this note synthesizes them. The key insight is that the PMP and CMP are dual to each other: the profit function equals the net revenue from cost-minimizing production at the profit-maximizing output. This **profit-cost duality** allows us to deploy the results from both problems simultaneously.
+
+The central economic questions addressed here are: How does supply respond to price changes in the short run versus the long run (Le Chatelier principle)? How do returns to scale determine equilibrium market structure? What is the relationship between unconditional and conditional factor demands? These questions are central to applied microeconomics, industrial organization, and general equilibrium theory.
+
+---
+
+## Definitions
+
+::: {.callout-note icon=false}
+## Definition 3.1 — Profit-Cost Duality
+The profit function and cost function are related by:
+$$\pi(p, w) = \max_{q \geq 0} \left[pq - c(w, q)\right]$$
+Profit equals revenues $pq$ from selling $q$ units minus the minimized cost of producing $q$ units.
+:::
+
+
+::: {.callout-note icon=false}
+## Definition 3.2 — Unconditional Factor Demands
+The **unconditional factor demands** $z^*(p, w)$ are the input demands at the profit-maximizing output level:
+$$z^*(p, w) = z\bigl(w, q^*(p,w)\bigr)$$
+where $q^*(p,w)$ is the profit-maximizing output and $z(w,q)$ are the conditional factor demands from the CMP.
+:::
+
+
+---
+
+## Profit-Cost Duality
+
+::: {.callout-important icon=false}
+## Proposition 3.1 — First-Order Condition for Profit Maximization
+Suppose $c(w, q)$ is differentiable in $q$ and the profit-maximizing output $q^*(p,w) > 0$ is interior. Then:
+$$p = MC(w, q^*) = \frac{\partial c(w, q^*)}{\partial q}$$
+**Price equals marginal cost** at the profit optimum.
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+From the PMP decomposed as $\pi(p,w) = \max_{q \geq 0} [pq - c(w,q)]$, the first-order condition for an interior maximum with respect to $q$ is:
+$$\frac{d}{dq}[pq - c(w,q)] = p - \frac{\partial c(w,q)}{\partial q} = 0$$
+$$\Rightarrow p = \frac{\partial c(w,q^*)}{\partial q} = MC(w, q^*)$$
+The second-order condition is $-\frac{\partial^2 c}{\partial q^2} \leq 0$, i.e., $\frac{\partial^2 c}{\partial q^2} \geq 0$: marginal cost is nondecreasing in $q$. This holds under DRS (where $c$ is convex in $q$) but not necessarily under IRS. $\blacksquare$
+:::
+
+
+::: {.callout-caution icon=false}
+## Remark 3.1 — Supply Function from MC
+When $MC(w,q)$ is strictly increasing in $q$ (DRS), the equation $p = MC(w, q^*)$ uniquely determines $q^*(p,w)$ as the **inverse of the MC function**:
+$$q^*(p,w) = MC^{-1}(p; w)$$
+This is the firm's supply function. The supply curve is the marginal cost curve (above minimum average variable cost).
+:::
+
+
+::: {.callout-important icon=false}
+## Proposition 3.2 — Envelope Relationships: Hotelling via Shephard
+Using the profit-cost decomposition $\pi(p,w) = pq^*(p,w) - c(w, q^*(p,w))$:
+
+(a) $\frac{\partial \pi}{\partial p} = q^*(p,w)$ (Hotelling's lemma for output)
+
+(b) $\frac{\partial \pi}{\partial w_l} = -z^*_l(p,w)$ (Hotelling's lemma for inputs, with negative sign)
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+**(a)** By the envelope theorem applied to $\pi(p,w) = \max_q [pq - c(w,q)]$, treating $p$ as the parameter:
+$$\frac{\partial \pi}{\partial p} = q^*(p,w) + \underbrace{\left(p - \frac{\partial c}{\partial q}\right)}_{\text{= 0 at optimum}} \frac{\partial q^*}{\partial p} = q^*(p,w)$$
+
+**(b)** By the envelope theorem, treating $w_l$ as the parameter (it enters $c$ but not $pq$ directly):
+$$\frac{\partial \pi}{\partial w_l} = -\frac{\partial c(w, q^*)}{\partial w_l} + \underbrace{\left(p - \frac{\partial c}{\partial q}\right)}_{\text{= 0}} \frac{\partial q^*}{\partial w_l} = -\frac{\partial c(w, q^*)}{\partial w_l} = -z_l(w, q^*) = -z^*_l(p,w)$$
+where Shephard's lemma was used in the last step. $\blacksquare$
+:::
+
+
+---
+
+## Comparative Statics: Full Matrix
+
+The full matrix of supply and factor demand responses can be derived by combining Hotelling's and Shephard's lemmas.
+
+::: {.callout-note icon=false}
+## Definition 3.3 — Full Comparative Statics Matrix
+Partition prices into $(p, w)$ where $p$ is the output price and $w = (w_1, \ldots, w_K)$ are input prices. The full $(1+K) \times (1+K)$ comparative statics matrix is:
+$$\begin{pmatrix} \partial q^*/\partial p & \partial q^*/\partial w^T \\ \partial z^*/\partial p & \partial z^*/\partial w \end{pmatrix} = \begin{pmatrix} \partial^2 \pi/\partial p^2 & \partial^2 \pi/\partial p \partial w^T \\ \partial^2 \pi/\partial w \partial p & \partial^2 \pi/\partial w^2 \end{pmatrix} = D^2_{(p,w)} \pi$$
+:::
+
+
+::: {.callout-important icon=false}
+## Proposition 3.3 — Properties of the Comparative Statics Matrix
+$D^2_{(p,w)} \pi$ is:
+1. **Symmetric** (Young's theorem on $\pi$)
+2. **Positive semidefinite** (convexity of $\pi$)
+3. **$D^2_{(p,w)} \pi \cdot (p,w)^T = 0$** (HD0 of supply and factor demands)
+
+In particular:
+- $\partial q^*/\partial p \geq 0$: supply is nondecreasing in output price
+- $\partial z^*_l/\partial w_l \leq 0$: unconditional own-price factor demand is nonincreasing
+- $\partial q^*/\partial w_l = \partial z^*_l / \partial p$: cross-effects are symmetric
+:::
+
+
+::: {.callout-caution icon=false}
+## Remark 3.2 — Symmetric Cross-Effects
+The symmetry $\partial q^*/\partial w_l = -\partial z^*_l/\partial p$ (note the sign: Hotelling gives $\partial \pi/\partial w_l = -z^*_l$ so $\partial z^*_l/\partial p = -\partial^2 \pi/\partial w_l \partial p$) is a testable restriction: the effect of a factor price change on output equals (up to sign) the effect of the output price change on that factor's demand. This has strong empirical content.
+:::
+
+
+---
+
+## Returns to Scale and Market Structure
+
+::: {.callout-important icon=false}
+## Proposition 3.4 — CRS and Zero Profit
+Under **constant returns to scale**, in a competitive equilibrium with positive production, profit must be zero: $\pi(p,w) = 0$.
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+By Proposition 3.1 of [3.1 Production Sets](3.1_Production_Sets.qmd), under CRS $\pi(p,w) \in \{0, +\infty\}$. In a competitive equilibrium, supply must equal finite demand, so $\pi(p,w) = +\infty$ is impossible. Hence $\pi(p,w) = 0$. Alternatively: if $\pi > 0$, the firm would want to scale up indefinitely (since CRS means scaling up is always feasible), driving supply to infinity. $\blacksquare$
+:::
+
+
+**Implications for market structure:**
+
+| Returns to Scale | Cost structure | Equilibrium implication |
+|-----------------|---------------|------------------------|
+| **CRS** | $c(w,q) = q \cdot c(w,1)$; $AC = MC = $ const | Zero profit; supply horizontal; scale indeterminate |
+| **DRS** | $c$ strictly convex in $q$; $AC < MC$ | Finite supply; upward-sloping supply curve; positive profit |
+| **IRS** | $c$ strictly concave in $q$; $AC > MC$ | Natural monopoly tendency; competitive equilibrium may fail to exist |
+
+::: {.callout-caution icon=false}
+## Remark 3.3 — IRS and Natural Monopoly
+Under IRS, the average cost curve is everywhere declining. A single firm producing all industry output always has lower average cost than any division of output among multiple firms. This is the definition of a **natural monopoly**. Competitive equilibrium breaks down because at any price $p > 0$, if a firm makes profit, it wants to scale up; if $p = AC$, it makes zero profit but a competitor who produces slightly more makes profit (since $AC$ is declining). The natural outcome is monopoly or regulated pricing at $p = AC$.
+:::
+
+
+---
+
+## Producer Surplus
+
+::: {.callout-note icon=false}
+## Definition 3.4 — Producer Surplus
+The **producer surplus** at price $p$ is:
+$$PS(p) = \pi(p, w) - \pi(0, w)$$
+For a competitive firm with $0 \in Y$ (inaction possible), $\pi(0,w) = 0$ (zero profit at zero output price), so:
+$$PS(p) = \pi(p, w)$$
+
+Equivalently, producer surplus is the area above the supply curve and below the price:
+$$PS(p) = \int_0^{q^*(p)} [p - MC(w, q)] \, dq = p \cdot q^* - \int_0^{q^*} MC(w, q) \, dq = p q^* - VC(q^*)$$
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Equivalence of the Two Definitions
+$PS(p) = p q^* - VC(q^*)$ where $VC(q) = c(w,q) - FC$.
+
+The area above supply and below $p$: supply curve is $p = MC(q)$ (the inverse supply). The area to the left of the supply curve between $q = 0$ and $q = q^*$ is:
+$$\int_0^{p} q^*(s) \, ds = p q^* - \int_0^{q^*} MC(q) \, dq$$
+where integration by parts was used. Since $\int_0^{q^*} MC(q) dq = VC(q^*) = c(q^*) - FC$:
+$$PS(p) = p q^* - VC(q^*) = \pi(p) + FC$$
+If there are no fixed costs ($FC = 0$), then $PS = \pi$. $\blacksquare$
+:::
+
+
+---
+
+## Factor Demand Elasticities
+
+::: {.callout-note icon=false}
+## Definition 3.5 — Factor Demand Elasticities
+The **own-price elasticity of (conditional) factor demand** for input $l$:
+$$\epsilon_{ll} = \frac{\partial \ln z_l}{\partial \ln w_l} = \frac{\partial z_l}{\partial w_l} \cdot \frac{w_l}{z_l} \leq 0$$
+
+The **cross-price elasticity of factor demand**:
+$$\epsilon_{lk} = \frac{\partial \ln z_l}{\partial \ln w_k} = \frac{\partial z_l}{\partial w_k} \cdot \frac{w_k}{z_l}$$
+Inputs $l$ and $k$ are **substitutes** if $\epsilon_{lk} > 0$ (raise price of $k$, demand for $l$ increases) and **complements** if $\epsilon_{lk} < 0$.
+
+The **output elasticity of factor demand**:
+$$\epsilon_{lq} = \frac{\partial \ln z_l}{\partial \ln q} = \frac{\partial z_l}{\partial q} \cdot \frac{q}{z_l}$$
+:::
+
+
+::: {.callout-important icon=false}
+## Proposition 3.5 — Symmetry of Cross-Elasticities (Allen-Uzawa)
+The Allen-Uzawa elasticity of substitution $\sigma_{lk}^{AU} = \frac{c \cdot c_{lk}}{c_l c_k}$ (where $c_l = \partial c/\partial w_l$) is symmetric: $\sigma_{lk}^{AU} = \sigma_{kl}^{AU}$.
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+From Shephard's lemma, $c_l = z_l$ and $c_k = z_k$. By Young's theorem, $c_{lk} = \partial^2 c/\partial w_l \partial w_k = \partial^2 c/\partial w_k \partial w_l = c_{kl}$. Hence $\sigma_{lk}^{AU} = c \cdot c_{lk}/(c_l c_k) = c \cdot c_{kl}/(c_k c_l) = \sigma_{kl}^{AU}$. $\blacksquare$
+:::
+
+
+---
+
+## Le Chatelier Principle
+
+The Le Chatelier principle states that long-run responses to price changes are at least as large (in absolute value) as short-run responses. Intuitively, in the short run some inputs are fixed; in the long run all inputs are variable, providing more flexibility to respond to price changes.
+
+::: {.callout-note icon=false}
+## Definition 3.6 — Short-Run and Long-Run
+The **short-run** cost function $c^{SR}(w, q; \bar{z}_K)$ holds input $K$ fixed at $\bar{z}_K$:
+$$c^{SR}(w, q; \bar{z}_K) = \min_{z_1, \ldots, z_{K-1}} w_{-K} \cdot z_{-K} + w_K \bar{z}_K \quad \text{s.t.} \quad f(z_{-K}, \bar{z}_K) \geq q$$
+The **long-run** cost function $c^{LR}(w, q) = \min_z w \cdot z$ s.t. $f(z) \geq q$ optimizes over all inputs.
+:::
+
+
+::: {.callout-important icon=false}
+## Theorem 3.3 — Le Chatelier Principle (Supply Elasticity)
+At the long-run profit-maximizing output $q^{LR}(p,w)$, the long-run supply response to a price change is at least as large as the short-run supply response:
+$$\frac{\partial q^{LR}}{\partial p} \geq \frac{\partial q^{SR}}{\partial p} \geq 0$$
+More generally, for any input $l$ that is variable in both the short run and long run, the long-run price response of that factor exceeds the short-run response in absolute value:
+$$\left|\frac{\partial z^{LR}_l}{\partial w_l}\right| \geq \left|\frac{\partial z^{SR}_l}{\partial w_l}\right|$$
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+**Proof sketch for supply elasticity:**
+
+At the long-run optimum $(q^*, z^*)$, $q^{SR}(p, w; \bar{z}_K) = q^{LR}(p,w)$ when $\bar{z}_K = z^*_K$ (the short-run optimum coincides with the long-run optimum when the fixed input is set at its long-run optimal level).
+
+The short-run and long-run profit functions satisfy $\pi^{LR}(p,w) \geq \pi^{SR}(p,w; z^*_K(p,w))$ for all $(p,w)$ (the long run is more flexible), with equality at the equilibrium prices $(p^0, w^0)$: both equal $\pi^0$.
+
+Define $g(p) = \pi^{LR}(p, w^0)$ and $h(p) = \pi^{SR}(p, w^0; z^*_K(p^0, w^0))$. Then:
+- $g(p) \geq h(p)$ for all $p$ (long run dominates)
+- $g(p^0) = h(p^0)$ (equal at $p^0$)
+
+Both $g$ and $h$ are convex and have the same value at $p^0$. Since $g \geq h$ everywhere and they are equal at $p^0$, $g$ is "more convex" than $h$ at $p^0$:
+$$g''(p^0) \geq h''(p^0)$$
+By Hotelling's lemma, $g'(p) = q^{LR}(p,w^0)$ and $h'(p) = q^{SR}(p,w^0; \bar{z}_K)$. Thus $g''(p^0) = \partial q^{LR}/\partial p$ and $h''(p^0) = \partial q^{SR}/\partial p$:
+$$\frac{\partial q^{LR}}{\partial p}\bigg|_{p^0} \geq \frac{\partial q^{SR}}{\partial p}\bigg|_{p^0} \qquad \blacksquare$$
+:::
+
+
+::: {.callout-caution icon=false}
+## Remark 3.4 — Economic Interpretation of Le Chatelier
+The Le Chatelier principle captures the idea that adjustment takes time. In the short run, firms cannot change all inputs; this constrains their ability to respond to price changes. In the long run, all inputs are variable and firms can fully optimize. Therefore, long-run supply curves are flatter (more elastic) than short-run supply curves, and long-run factor demand curves are steeper (more elastic in absolute value) than short-run ones.
+
+This has important policy implications: the short-run response of supply to a price change (e.g., from a tax or subsidy) understates the long-run response. Policymakers who rely on short-run elasticities will underestimate the long-run effects of price interventions.
+:::
+
+
+---
+
+## Connecting Conditional and Unconditional Factor Demands
+
+The relationship between conditional factor demands $z(w,q)$ and unconditional factor demands $z^*(p,w)$ illuminates how output decisions interact with input decisions.
+
+::: {.callout-important icon=false}
+## Proposition 3.6 — Decomposition of Factor Demand Response
+For an unconditional factor demand $z^*_l(p,w) = z_l(w, q^*(p,w))$, differentiating with respect to $w_k$:
+$$\frac{\partial z^*_l}{\partial w_k} = \underbrace{\frac{\partial z_l}{\partial w_k}\bigg|_q}_{\text{substitution effect}} + \underbrace{\frac{\partial z_l}{\partial q} \cdot \frac{\partial q^*}{\partial w_k}}_{\text{output effect}}$$
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+By the chain rule applied to $z^*_l(p,w) = z_l(w, q^*(p,w))$:
+$$\frac{\partial z^*_l}{\partial w_k} = \frac{\partial z_l}{\partial w_k}\bigg|_{q \text{ fixed}} + \frac{\partial z_l}{\partial q} \cdot \frac{\partial q^*}{\partial w_k}$$
+The first term is the conditional (substitution) effect, holding output fixed. The second term captures how the change in $w_k$ affects optimal output $q^*$, which in turn affects input demand for $l$. $\blacksquare$
+:::
+
+
+::: {.callout-caution icon=false}
+## Remark 3.5 — Sign of the Output Effect
+The output effect $\frac{\partial z_l}{\partial q} \cdot \frac{\partial q^*}{\partial w_k}$ has an ambiguous sign in general:
+- Raising $w_k$ reduces optimal output $q^*$ (since costs increase): $\partial q^*/\partial w_k \leq 0$.
+- If $l$ is a normal input ($\partial z_l/\partial q > 0$), higher output means more of input $l$.
+- Therefore the output effect $\frac{\partial z_l}{\partial q} \cdot \frac{\partial q^*}{\partial w_k} \leq 0$ reinforces the substitution effect for normal inputs.
+
+The decomposition is analogous to the **Slutsky decomposition** in consumer theory, with the "output effect" playing the role of the income effect. Unlike the income effect in consumer theory, the output effect here has a determinate sign for normal inputs (it reinforces the substitution effect), which is why the law of unconditional factor demand (own-price factor demand decreasing) is more robust than the law of demand in consumer theory.
+:::
+
+
+---
+
+## Economic Intuition
+
+The synthesis of the PMP and CMP reveals that competitive firm behavior is characterized by two conditions: (1) **cost minimization** — use the cheapest input combination for any given output level; (2) **output optimization** — set output where price equals marginal cost. These two conditions together fully determine the firm's supply and input demands.
+
+The Le Chatelier principle is one of the deepest results in producer theory. It shows that the **flexibility** of the optimization problem — how many variables can adjust — determines the elasticity of the response. Long-run responses are always at least as large as short-run responses because the long run simply has more degrees of freedom. This is a general principle in comparative statics: adding constraints reduces the magnitude of optimal responses.
+
+Returns to scale drive market structure. The welfare analysis of competitive markets (the efficiency of competitive equilibrium, the deadweight loss from monopoly, the effects of entry) all depend critically on whether firms face CRS, DRS, or IRS. CRS supports efficient competitive markets with free entry; IRS creates the natural monopoly problem that is central to regulatory economics.
+
+---
+
+## Cross-References
+
+- [3.1 Production Sets](3.1_Production_Sets.qmd) — production set; CRS and profit zero result
+- [3.2 Profit Maximization](3.2_Profit_Maximization.qmd) — PMP; Hotelling's lemma; convexity of $\pi$
+- [3.3 Cost Minimization](3.3_Cost_Minimization.qmd) — CMP; cost function; Shephard's lemma; concavity of $c$
+- [1.3 Optimization Theory](1.3_Optimization_Theory.qmd) — envelope theorem; comparative statics methodology
+- [PS Producer Theory](PS_Producer_Theory.qmd) — Problems 4 and 5

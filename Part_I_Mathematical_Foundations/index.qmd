@@ -1,0 +1,59 @@
+---
+title: "Part I: Mathematical Foundations — Index"
+---
+
+# Part I: Mathematical Foundations — Index
+
+> **MWG Reference:** Mathematical Appendix, Sections M.A–M.I, M.K–M.L
+
+## Overview
+
+Mathematical foundations come first because every existence proof, every comparative statics argument, and every equilibrium characterization in subsequent parts rests on a small set of deep mathematical results. The most important are:
+
+1. **Compactness and continuity** (covered in Note 1.1) — needed to guarantee that optimization problems have solutions (via the Weierstrass Maximum Theorem). Without compactness of the budget set or production set, a consumer or firm might have no optimal choice.
+
+2. **Correspondences and hemicontinuity** (Note 1.2) — because demand and supply are in general set-valued (correspondences), not functions; Berge's Maximum Theorem gives conditions under which the value function and the argmax correspondence inherit the continuity properties of the objective and constraint correspondence.
+
+3. **Optimization theory** (Note 1.3) — the Lagrangian method, KKT conditions, and the Envelope Theorem are the workhorses of comparative statics. The Envelope Theorem alone underlies Hotelling's Lemma, Shephard's Lemma, Roy's Identity, and numerous other fundamental results.
+
+4. **Fixed-point theorems** (Note 1.4) — Brouwer's theorem and its generalization, Kakutani's theorem, are the load-bearing mathematical structure behind every equilibrium existence proof: Nash equilibrium, Walrasian equilibrium, and the existence of optimal mechanisms all reduce to an application of Kakutani.
+
+These four notes are prerequisites for the entire program. They should be mastered — not just read — before proceeding to Part II.
+
+---
+
+## Notes in This Part
+
+| Note | Title | Key Results |
+|------|-------|-------------|
+| [1.1 Metric Spaces and Topology](1.1_Metric_Spaces_and_Topology.qmd) | Metric Spaces and Topology | Heine-Borel Theorem; Weierstrass Maximum Theorem; definition of compact and convex sets |
+| [1.2 Correspondences and Hemicontinuity](1.2_Correspondences_and_Hemicontinuity.qmd) | Correspondences and Hemicontinuity | UHC and LHC definitions; Berge's Maximum Theorem; budget correspondence continuity |
+| [1.3 Optimization Theory](1.3_Optimization_Theory.qmd) | Optimization Theory | Lagrange's Theorem; KKT conditions; Envelope Theorem (unconstrained and constrained versions) |
+| [1.4 Fixed Point Theorems](1.4_Fixed_Point_Theorems.qmd) | Fixed-Point Theorems | Brouwer's Fixed-Point Theorem; Kakutani's Fixed-Point Theorem; Nash existence preview; GE existence preview |
+
+---
+
+## Prerequisites
+
+None. Part I is the starting point of the program. However, familiarity with real analysis at the level of Rudin's *Principles of Mathematical Analysis* (Chapters 1–4) is assumed throughout.
+
+---
+
+## What Part I Enables
+
+After completing Part I, you will have the tools needed for:
+- **Part II (Consumer Theory):** Weierstrass for existence of $x(p,w)$; Berge for UHC of demand; Envelope Theorem for Roy's Identity and Shephard's Lemma.
+- **Part III (Producer Theory):** Same tools applied to the firm's profit and cost problems.
+- **Part V (General Equilibrium):** Kakutani for existence of Walrasian equilibrium.
+- **Part VII (Game Theory):** Kakutani for existence of Nash equilibrium; Berge for payoff continuity in mixed strategies.
+
+---
+
+## MWG Sections Covered
+
+| Note | MWG Sections |
+|------|-------------|
+| 1.1 | M.A (Sets and mappings), M.B (Metric spaces), M.C (Sequences), M.F (Compact sets), M.G (Convex sets) |
+| 1.2 | M.H (Correspondences), M.K (Berge's Theorem) |
+| 1.3 | M.D (Calculus), M.L (Optimization) |
+| 1.4 | M.I (Fixed-point theorems) |

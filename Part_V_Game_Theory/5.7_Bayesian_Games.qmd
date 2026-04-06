@@ -1,0 +1,145 @@
+---
+title: "5.7 Bayesian Games"
+---
+
+# 5.7 Bayesian Games
+
+> **MWG Reference:** Ch. 8, §8.E, pp. 253–262
+
+## Context
+
+Bayesian games (Harsanyi 1967–68) extend normal form games to environments of **incomplete information**: each player may have private information about payoff-relevant characteristics — their cost, valuation, quality, type — that other players do not observe. Harsanyi's key insight is to model private information as a **type**, drawn from a common prior distribution. A Bayesian Nash equilibrium (BNE) is a strategy profile in which each player, for every possible realization of their type, maximizes expected payoff given their beliefs about others' types and others' equilibrium strategies. The BNE framework is the foundation of auction theory, mechanism design, signaling, and the vast literature on strategic behavior under asymmetric information.
+
+## Definitions
+
+::: {.callout-note icon=false}
+## Definition 5.7.1 — Bayesian Game (Harsanyi)
+A **Bayesian game** is a tuple $\Gamma^B = (I, (S_i)_{i \in I}, (T_i)_{i \in I}, (\phi_i)_{i \in I}, (u_i)_{i \in I})$ where:
+- $I = \{1, \ldots, n\}$ is the set of players
+- $S_i$ is the **action set** (or strategy set, when types are ignored)
+- $T_i$ is the **type space** of player $i$; a type $t_i \in T_i$ is a summary of $i$'s private information
+- $\phi_i(t_{-i} \mid t_i) \in \Delta(T_{-i})$ is player $i$'s **belief**: the conditional distribution over others' types given own type $t_i$
+- $u_i: S \times T \to \mathbb{R}$ is the **payoff function**, where $S = \prod_i S_i$ and $T = \prod_i T_i$
+:::
+
+
+::: {.callout-caution icon=false}
+## Remark
+In most applications, types are drawn from a **common prior** $p \in \Delta(T)$, and beliefs are derived by Bayes' rule: $\phi_i(t_{-i} \mid t_i) = p(t_{-i}, t_i) / p(t_i)$. The common prior assumption — that players disagree only about private information, not about priors — is standard in Bayesian analysis.
+:::
+
+
+::: {.callout-note icon=false}
+## Definition 5.7.2 — Strategy in a Bayesian Game
+A **pure strategy** for player $i$ is a function $s_i: T_i \to S_i$ mapping each type to an action. A **mixed strategy** is a function $\sigma_i: T_i \to \Delta(S_i)$ mapping each type to a probability distribution over actions.
+:::
+
+
+::: {.callout-note icon=false}
+## Definition 5.7.3 — Bayesian Nash Equilibrium
+A strategy profile $\sigma^* = (\sigma_i^*: T_i \to \Delta(S_i))_{i \in I}$ is a **Bayesian Nash Equilibrium (BNE)** if, for every player $i$ and every type $t_i \in T_i$:
+$$\sigma_i^*(t_i) \in \arg\max_{\sigma_i \in \Delta(S_i)} \mathbb{E}_{t_{-i} \sim \phi_i(\cdot|t_i)}\left[u_i(\sigma_i, \sigma_{-i}^*(t_{-i}), t_i, t_{-i})\right].$$
+Each type $t_i$ plays a best response to the conditional expectation of others' strategies, given own type.
+:::
+
+
+::: {.callout-note icon=false}
+## Definition 5.7.4 — Interim, Ex-Ante, and Ex-Post Payoffs
+Three notions of expected payoff:
+- **Ex-ante:** $\mathbb{E}_{t \sim p}[u_i(\sigma^*(t), t)]$ — expectation before any type is realized
+- **Interim:** $\mathbb{E}_{t_{-i} \sim \phi_i(\cdot|t_i)}[u_i(\sigma_i^*(t_i), \sigma_{-i}^*(t_{-i}), t_i, t_{-i})]$ — expectation after $i$ learns $t_i$ but before others' types are realized
+- **Ex-post:** $u_i(\sigma^*(t), t)$ — payoff realized after all types are known
+
+BNE is an **interim** concept: each type of each player best-responds given their information.
+:::
+
+
+## Main Results
+
+::: {.callout-important icon=false}
+## Theorem 5.7.1 — Existence of BNE
+In any finite Bayesian game (finite type spaces and action spaces), a Bayesian Nash equilibrium in mixed strategies exists.
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+A Bayesian game with finite type spaces can be converted to an equivalent normal form game (the **induced normal form**) by expanding the player set: treat each $(i, t_i)$ pair as a distinct player with action set $S_i$ and payoffs $\mathbb{E}_{t_{-i}}[u_i(s_i, s_{-i}(t_{-i}), t_i, t_{-i}) \mid t_i]$. This "Bayesian normal form" has $\sum_i |T_i|$ players, each with finite action set $S_i$.
+
+By Nash's existence theorem (Theorem 5.2.1), the Bayesian normal form has a Nash equilibrium in mixed strategies. A Nash equilibrium of the Bayesian normal form corresponds exactly to a BNE of the original game, since each $(i, t_i)$-player best-responding in the normal form is equivalent to type $t_i$ of player $i$ best-responding in the Bayesian game.
+
+Therefore a BNE exists. $\blacksquare$
+:::
+
+
+::: {.callout-important icon=false}
+## Theorem 5.7.2 — Linear BNE in Cournot with Private Costs
+Consider a two-player Cournot duopoly with inverse demand $P(Q) = a - Q$ (where $Q = q_1 + q_2$). Firm $i$'s marginal cost $c_i$ is private information, drawn independently from a uniform distribution on $[0, \bar{c}]$ with $\bar{c} < a$. Then there exists a linear symmetric BNE of the form $q_i^*(c_i) = \alpha - \beta c_i$ for constants $\alpha, \beta$.
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+**Conjecture:** Suppose firm $j$ uses strategy $q_j(c_j) = \alpha - \beta c_j$. Firm $i$ of type $c_i$ chooses $q_i$ to maximize:
+$$\mathbb{E}_{c_j}\left[(a - q_i - q_j(c_j) - c_i) q_i\right].$$
+
+Computing $\mathbb{E}[q_j(c_j)] = \alpha - \beta \mathbb{E}[c_j] = \alpha - \beta \bar{c}/2$.
+
+Firm $i$'s problem:
+$$\max_{q_i} \left(a - q_i - (\alpha - \beta\bar{c}/2) - c_i\right) q_i.$$
+FOC:
+$$a - 2q_i - (\alpha - \beta\bar{c}/2) - c_i = 0$$
+$$q_i^*(c_i) = \frac{a - \alpha + \beta\bar{c}/2 - c_i}{2}.$$
+
+**Consistency:** For the conjectured linear form $q_i^* = \alpha - \beta c_i$, we need:
+$$\alpha - \beta c_i = \frac{a - \alpha + \beta\bar{c}/2 - c_i}{2}.$$
+Matching coefficients:
+- Coefficient of $c_i$: $-\beta = -1/2 \Rightarrow \beta = 1/2$.
+- Constant: $\alpha = (a - \alpha + \bar{c}/4)/2 \Rightarrow 2\alpha = a - \alpha + \bar{c}/4 \Rightarrow 3\alpha = a + \bar{c}/4 \Rightarrow \alpha = (a + \bar{c}/4)/3$.
+
+**BNE:** $q_i^*(c_i) = \frac{a + \bar{c}/4}{3} - \frac{c_i}{2}$.
+
+As $\bar{c} \to 0$, the BNE collapses to the complete information Cournot equilibrium $q^* = a/3$. $\blacksquare$
+:::
+
+
+::: {.callout-note icon=false appearance="simple"}
+## Example 5.7.1 — First-Price Auction with Two Bidders
+Two bidders have private values $v_1, v_2 \sim U[0,1]$, independently drawn. Each submits a bid $b_i$; the highest bidder wins and pays their bid. Loser pays nothing.
+
+**Symmetric BNE:** Conjecture $b_i(v_i) = \beta v_i$ for some $\beta \in (0,1)$.
+
+Bidder $i$ with value $v_i$ choosing bid $b$ wins if $b > b_j(v_j) = \beta v_j$, i.e., $v_j < b/\beta$. Since $v_j \sim U[0,1]$, $\Pr[i \text{ wins}] = b/\beta$ (assuming $b \leq \beta$).
+
+Expected payoff:
+$$\pi_i(b, v_i) = \frac{b}{\beta}(v_i - b).$$
+FOC in $b$:
+$$\frac{\partial \pi_i}{\partial b} = \frac{v_i - b}{\beta} - \frac{b}{\beta} = \frac{v_i - 2b}{\beta} = 0 \Rightarrow b^* = v_i/2.$$
+
+Consistency: $\beta = 1/2$. The symmetric BNE is $b_i^*(v_i) = v_i/2$.
+
+**Revenue equivalence preview:** In the second-price auction, the dominant strategy is to bid $v_i$; the winner pays the second-highest bid, which equals $\mathbb{E}[\max(v_j) \mid v_j < v_i] = v_i/2$ in expectation. Therefore both auctions yield the same expected revenue — the Revenue Equivalence Theorem.
+:::
+
+
+## From BNE to Mechanism Design
+
+::: {.callout-caution icon=false}
+## Remark
+The BNE framework formalizes a key observation: in any mechanism where players report information (a "direct mechanism"), the equilibrium behavior is a function $\sigma_i^*: T_i \to S_i$ mapping types to reports/actions. The **Revelation Principle** (see Part VII) states that any BNE of any mechanism can be replicated by a direct mechanism in which truthful reporting ($\sigma_i^*(t_i) = t_i$) is a BNE. This reduces the mechanism design problem from searching over all possible mechanisms to characterizing incentive-compatible direct mechanisms — a foundational simplification. The BNE concept, applied to the message game, is what makes the Revelation Principle work.
+:::
+
+
+**Interim, ex-ante, and ex-post efficiency.** Efficiency concepts in Bayesian environments depend on the information available:
+- **Ex-post efficiency**: allocation is optimal for every realization of types $t$. Requires the mechanism to always allocate to the highest-value agent, regardless of types.
+- **Interim efficiency**: allocation maximizes expected social surplus conditional on each player's own type.
+- **Ex-ante efficiency**: allocation maximizes expected social surplus before any type is realized.
+
+The Myerson-Satterthwaite theorem shows that in bilateral trade, no BNE mechanism can achieve ex-post efficiency while also satisfying individual rationality and budget balance — a fundamental impossibility result in the economics of information.
+
+## Cross-References
+
+- [5.2 Nash Equilibrium](5.2_Nash_Equilibrium.qmd) — BNE reduces to NE in complete information games
+- [5.3 Mixed Strategies](5.3_Mixed_Strategies.qmd) — Purification connects mixed NE to BNE with private types
+- [5.5 Subgame Perfect Equilibrium](5.5_Subgame_Perfect_Equilibrium.qmd) — Dynamic Bayesian games combine BNE with SPE (perfect Bayesian equilibrium)
+- [5.1 Normal Form Games](5.1_Normal_Form_Games.qmd) — Normal form reduction of Bayesian games

@@ -1,0 +1,210 @@
+---
+title: "6.5 Externalities and Public Goods"
+---
+
+# 6.5 Externalities and Public Goods
+
+> **MWG Reference:** Ch. 11, §11.A–11.E, pp. 350–395
+
+## Context
+
+Externalities and public goods are the two central examples of market failure in microeconomics — situations where competitive markets fail to achieve Pareto optimality, and the First Welfare Theorem does not apply. Externalities are present when the actions of one agent enter directly into the utility function or production set of another, outside of any market transaction. Public goods are characterized by nonrivalry and nonexcludability, meaning private provision is suboptimal because agents can free-ride. Both phenomena generate wedges between private and social incentives, and correcting these wedges is the subject of Pigouvian taxation, the Coase theorem, and mechanism design for public goods.
+
+## Definitions
+
+::: {.callout-note icon=false}
+## Definition 6.5.1 — Externality
+A **consumption externality** is present when consumer $i$'s utility depends on the action of consumer $j \neq i$:
+$$u_i = u_i(x_i, x_j) \quad \text{where } x_j \notin x_i\text{'s choice set.}$$
+A **production externality** is present when firm $k$'s production set $Y_k$ depends on firm $j$'s production choice $y_j$:
+$$Y_k = Y_k(y_j).$$
+
+Externalities are **negative** if the external effect reduces the payoff (e.g., pollution), and **positive** if it increases the payoff (e.g., knowledge spillovers).
+:::
+
+
+::: {.callout-note icon=false}
+## Definition 6.5.2 — Pigouvian Tax
+A **Pigouvian tax** is a per-unit tax on an activity that generates a negative externality, equal to the marginal external cost evaluated at the social optimum. The tax internalizes the externality by equating private and social marginal costs.
+:::
+
+
+::: {.callout-note icon=false}
+## Definition 6.5.3 — Public Good
+A good $g$ is a **public good** if it is:
+- **Nonrival:** Consumption by agent $i$ does not reduce the amount available for agent $j$. Formally, the same $G$ enters all utility functions: $u_i = u_i(x_i, G)$.
+- **Nonexcludable:** It is impossible (or prohibitively costly) to prevent any agent from consuming $G$ once it is provided.
+:::
+
+
+::: {.callout-note icon=false}
+## Definition 6.5.4 — Lindahl Equilibrium
+A **Lindahl equilibrium** for a public good economy consists of:
+- A public good level $G^*$
+- Personalized prices $\tau_i$ for each consumer $i$ (the "Lindahl price": consumer $i$'s share of the cost per unit of $G$)
+
+such that:
+1. Each consumer $i$ maximizes $u_i(x_i, G)$ subject to $p \cdot x_i + \tau_i G = w_i$, yielding demand $G_i^*(\tau_i)$
+2. All consumers demand the same quantity: $G_1^*(\tau_1) = G_2^*(\tau_2) = \cdots = G_n^*(\tau_n) = G^*$
+3. Lindahl prices cover costs: $\sum_{i=1}^n \tau_i = c$ (the marginal cost of providing $G$)
+:::
+
+
+## Main Results
+
+::: {.callout-important icon=false}
+## Theorem 6.5.1 — Market Failure with Negative Externalities
+In a competitive equilibrium with negative production externalities, the equilibrium output is **above** the socially optimal level.
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+Consider two firms: firm 1 produces output $y_1$ with profit $\pi_1(y_1)$; firm 2 has profit $\pi_2(y_2, y_1)$ with $\partial \pi_2/\partial y_1 < 0$ (firm 1's output harms firm 2, e.g., upstream pollution).
+
+**Private equilibrium:** Firm 1 ignores the external cost. It chooses $y_1^{CE}$ to maximize $\pi_1(y_1)$:
+$$\pi_1'(y_1^{CE}) = 0. \tag{1}$$
+
+**Social optimum:** A social planner maximizes total profit $\pi_1(y_1) + \pi_2(y_2, y_1)$. The FOC for $y_1$ is:
+$$\pi_1'(y_1^*) + \frac{\partial \pi_2(y_2, y_1^*)}{\partial y_1} = 0. \tag{2}$$
+
+Since $\partial \pi_2/\partial y_1 < 0$, equation (2) requires $\pi_1'(y_1^*) > 0$, which (under concavity of $\pi_1$) implies $y_1^* < y_1^{CE}$.
+
+The competitive equilibrium overproduces relative to the social optimum. $\blacksquare$
+:::
+
+
+::: {.callout-important icon=false}
+## Theorem 6.5.2 — Pigouvian Tax Corrects the Externality
+At the social optimum $y^*$, a Pigouvian tax $\tau^* = -\partial \pi_2(y_2^*, y_1^*)/\partial y_1$ (the marginal external cost) on firm 1's output restores efficiency: the competitive equilibrium of the tax economy equals the social optimum.
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+Under the Pigouvian tax $\tau^*$, firm 1's problem is:
+$$\max_{y_1} \pi_1(y_1) - \tau^* y_1.$$
+FOC:
+$$\pi_1'(y_1) - \tau^* = 0 \Rightarrow \pi_1'(y_1) = \tau^* = -\frac{\partial \pi_2}{\partial y_1}\bigg|_{y^*}.$$
+This coincides with the social optimum FOC (2). Therefore $y_1 = y_1^*$ at the tax equilibrium. $\blacksquare$
+:::
+
+
+::: {.callout-important icon=false}
+## Theorem 6.5.3 — Coase Theorem (Coase 1960)
+In a two-agent economy with an externality, if:
+- Property rights over the externality are well-defined (assigned to either party)
+- Transactions costs are zero
+- Information is symmetric
+
+Then bargaining between the agents leads to the Pareto-efficient outcome, regardless of the initial assignment of property rights. The assignment of rights affects the distribution of surplus but not its size.
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+Let firm 1 generate a negative externality on firm 2. Total surplus is $S(y_1) = \pi_1(y_1) + \pi_2(y_1)$, maximized at $y_1^*$ (social optimum).
+
+**Case 1: Firm 1 has the right to pollute (no restriction on $y_1$).**
+Firm 2 will offer to pay firm 1 to reduce output below $y_1^{CE}$. The maximum payment firm 2 is willing to make for a reduction to $y_1$ is $\pi_2(y_1) - \pi_2(y_1^{CE}) > 0$ (for $y_1 < y_1^{CE}$). Firm 1 will accept any payment exceeding $\pi_1(y_1^{CE}) - \pi_1(y_1) > 0$.
+
+The gains from reduction are: $[\pi_2(y_1) - \pi_2(y_1^{CE})] - [\pi_1(y_1^{CE}) - \pi_1(y_1)] = S(y_1) - S(y_1^{CE})$.
+
+This is positive for all $y_1 \in (y_1^*, y_1^{CE})$, so there are mutually beneficial gains from reducing output toward $y_1^*$. Bargaining exhausts all gains from trade, leading to $y_1^*$.
+
+**Case 2: Firm 2 has the right to be free of pollution (firm 1 can only produce with firm 2's consent).**
+Now firm 1 will pay firm 2 to allow some production. The same argument applies: gains from trade are $S(y_1) - S(0)$ for $y_1 \in (0, y_1^*)$, and bargaining leads to $y_1^*$.
+
+In both cases the efficient quantity $y_1^*$ is achieved; only the distribution of profits differs. $\blacksquare$
+:::
+
+
+::: {.callout-caution icon=false}
+## Remark
+**Limitations of the Coase theorem:**
+- **Transactions costs:** With many agents (e.g., air pollution affecting millions), negotiation is prohibitively costly.
+- **Information asymmetry:** If agents have private information about costs or damages, bargaining may be inefficient (Myerson-Satterthwaite theorem applies).
+- **Wealth effects:** With non-transferable utility or income effects on preferences, the efficient allocation depends on the initial rights assignment.
+- **Hold-up problem:** In long-term relationships, the possibility of renegotiation distorts ex-ante investment incentives.
+:::
+
+
+::: {.callout-important icon=false}
+## Theorem 6.5.4 — Samuelson Condition for Public Good Optimality
+The Pareto-optimal level of a public good $G^*$ satisfies the **Samuelson condition**:
+$$\sum_{i=1}^n MRS_i^{Gx} = MC(G),$$
+where $MRS_i^{Gx} = \frac{\partial u_i/\partial G}{\partial u_i/\partial x_i}$ is consumer $i$'s marginal rate of substitution between the public good and the private good, and $MC(G)$ is the marginal cost of providing $G$.
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+Consider a $2$-consumer economy with one private good $x$ and one public good $G$, produced from private good at marginal cost $c$ (constant). The feasibility constraint is $x_1 + x_2 + cG = \bar{x}$ (total endowment).
+
+A Pareto optimum maximizes $u_1(x_1, G)$ subject to $u_2(x_2, G) = \bar{u}_2$ and the feasibility constraint.
+
+Lagrangian:
+$$\mathcal{L} = u_1(x_1, G) + \lambda[u_2(x_2, G) - \bar{u}_2] + \mu[\bar{x} - x_1 - x_2 - cG].$$
+
+FOCs:
+$$\frac{\partial \mathcal{L}}{\partial x_1} = \frac{\partial u_1}{\partial x_1} - \mu = 0 \Rightarrow \frac{\partial u_1}{\partial x_1} = \mu.$$
+$$\frac{\partial \mathcal{L}}{\partial x_2} = \lambda\frac{\partial u_2}{\partial x_2} - \mu = 0 \Rightarrow \frac{\partial u_2}{\partial x_2} = \mu/\lambda.$$
+$$\frac{\partial \mathcal{L}}{\partial G} = \frac{\partial u_1}{\partial G} + \lambda\frac{\partial u_2}{\partial G} - \mu c = 0.$$
+
+From the third condition:
+$$\frac{\partial u_1/\partial G}{\mu} + \frac{\lambda \partial u_2/\partial G}{\mu} = c.$$
+Using $\mu = \partial u_1/\partial x_1$ and $\mu/\lambda = \partial u_2/\partial x_2$:
+$$\frac{\partial u_1/\partial G}{\partial u_1/\partial x_1} + \frac{\partial u_2/\partial G}{\partial u_2/\partial x_2} = c.$$
+This is $MRS_1^{Gx} + MRS_2^{Gx} = c = MC(G)$, the Samuelson condition. $\blacksquare$
+:::
+
+
+::: {.callout-caution icon=false}
+## Remark
+**Private provision fails the Samuelson condition.** Under private provision, each consumer contributes $g_i$ to the public good ($G = \sum_i g_i$) and takes others' contributions as given (Nash equilibrium of the voluntary contribution game). The private FOC for consumer $i$ is:
+$$MRS_i^{Gx} = MC(G).$$
+This sets one consumer's MRS equal to MC, whereas the social optimum requires the **sum** of all MRS to equal MC. Since all MRS are positive, private provision satisfies $MRS_i < MC/n$ at the social optimum — the private market under-provides the public good.
+:::
+
+
+::: {.callout-important icon=false}
+## Theorem 6.5.5 — Lindahl Equilibrium is Pareto Optimal
+Every Lindahl equilibrium $(G^*, (\tau_i^*), (x_i^*))$ is Pareto optimal.
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+In a Lindahl equilibrium, each consumer $i$ takes their personalized price $\tau_i^*$ as given and maximizes utility. The optimality condition for consumer $i$ is:
+$$MRS_i^{Gx}(x_i^*, G^*) = \tau_i^*.$$
+Summing over $i$:
+$$\sum_{i=1}^n MRS_i^{Gx} = \sum_{i=1}^n \tau_i^* = MC(G^*)$$
+(using the Lindahl pricing condition $\sum_i \tau_i^* = MC$).
+
+This is precisely the Samuelson condition for Pareto optimality. Therefore the Lindahl allocation is Pareto optimal. $\blacksquare$
+:::
+
+
+::: {.callout-caution icon=false}
+## Remark
+**Free-rider problem.** Although the Lindahl equilibrium is efficient, it requires consumers to reveal their true willingness to pay for the public good. In practice, consumers have an incentive to underreport their valuation: if they declare $MRS_i = 0$, they pay $\tau_i = 0$ and still consume $G^*$ (once others have financed it). This incentive to free-ride makes the Lindahl prices non-dominant-strategy incentive compatible.
+:::
+
+
+## Clarke-Groves Mechanism (Preview)
+
+The **Clarke-Groves mechanism** (Clarke 1971, Groves 1973) is a direct revelation mechanism for public goods that elicits truthful reporting as a dominant strategy:
+
+- Each consumer reports a valuation $\hat{v}_i(G)$ for the public good.
+- The public good level $G^*$ is chosen to maximize total reported surplus: $\sum_i \hat{v}_i(G) - C(G)$.
+- Consumer $i$'s tax is $C(G^*) - \sum_{j \neq i} \hat{v}_j(G^*)$ — they pay the "pivotal cost": the difference between total cost and others' total benefit.
+
+Under this mechanism, each consumer's dominant strategy is to report truthfully ($\hat{v}_i = v_i$), because the tax does not depend on their own report — only on others' reports. The mechanism implements the Samuelson optimum in dominant strategies.
+
+The budget balancing problem: Clarke-Groves may run a surplus or deficit. The Groves-Ledyard mechanism addresses budget balance but uses Nash rather than dominant strategy implementation. The fundamental tension between efficiency, incentive compatibility, and budget balance is formalized in mechanism design (Part VII).
+
+## Cross-References
+
+- [6.4 Welfare Theorems](6.4_Welfare_Theorems.qmd) — 1WT fails with externalities; Pigouvian correction restores it
+- [6.1 Exchange Economies](6.1_Exchange_Economies.qmd) — Walrasian equilibrium is the baseline; externalities are deviations
+- [5.7 Bayesian Games](../Part_V_Game_Theory/5.7_Bayesian_Games.qmd) — Voluntary contribution game is a normal-form game; Nash equilibrium gives private provision level

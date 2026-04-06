@@ -1,0 +1,203 @@
+---
+title: "9.3 — Comparative Statics Methodology"
+---
+
+# 9.3 — Comparative Statics Methodology
+
+> **Cross-references:** MWG Ch. 2–3, 5; Topkis (1998); Milgrom & Shannon (1994)
+
+## Context
+
+Comparative statics is the workhorse of applied theory: it predicts how equilibrium outcomes change when model parameters change. These predictions are the link between the formal model and empirical data. The classical approach uses the Implicit Function Theorem (IFT) to differentiate equilibrium conditions around a smooth interior optimum. But IFT requires differentiability, applies only locally, and fails at corners or kinks. The modern approach — monotone comparative statics using supermodularity and Topkis's theorem — is more general: it delivers global comparative statics under weaker conditions, without differentiability, and even for discrete choice problems. This note develops both approaches with full proofs.
+
+## Definitions
+
+::: {.callout-note icon=false}
+## Definition 9.3.1 — Comparative Statics
+Let $x^*(\alpha) = \arg\max_{x \in X} f(x, \alpha)$ be the equilibrium outcome as a function of parameter $\alpha$. **Comparative statics** is the characterization of how $x^*$ depends on $\alpha$: specifically, the sign and magnitude of $\frac{dx^*}{d\alpha}$ (or the direction of the change in $x^*$ in the lattice sense when the choice set is not an ordered field).
+:::
+
+
+::: {.callout-note icon=false}
+## Definition 9.3.2 — Supermodularity
+A function $f: X \times T \to \mathbb{R}$ (where $X$ and $T$ are partially ordered sets) is **supermodular in $(x, t)$** if for all $x' \geq x$ and $t' \geq t$:
+$$f(x', t') + f(x, t) \geq f(x', t) + f(x, t')$$
+Equivalently, when $X, T \subseteq \mathbb{R}$ and $f$ is $C^2$: $f$ is supermodular iff $\frac{\partial^2 f}{\partial x \partial t} \geq 0$ (complementarity between $x$ and $t$).
+:::
+
+
+::: {.callout-note icon=false}
+## Definition 9.3.3 — Strong Set Order
+For two sets $A, B \subseteq X$ (a lattice), $A \geq_s B$ (**strong set order**) if for all $a \in A$ and $b \in B$: $a \vee b \in A$ and $a \wedge b \in B$, where $\vee$ and $\wedge$ denote meet and join in the lattice. For single-valued choices, $x^*(t') \geq x^*(t)$ means the optimal choice is weakly higher under $t'$ than $t$.
+:::
+
+
+## Main Results
+
+### The Implicit Function Theorem Method
+
+::: {.callout-important icon=false}
+## Theorem 9.3.1 — Implicit Function Theorem (Comparative Statics Version)
+Suppose $x^*(\alpha)$ is characterized by the FOC $F(x^*, \alpha) = 0$ where $F: \mathbb{R} \times \mathbb{R} \to \mathbb{R}$ is $C^1$, and $\frac{\partial F}{\partial x}\big|_{(x^*, \alpha)} \neq 0$. Then $x^*(\alpha)$ is a $C^1$ function of $\alpha$ in a neighborhood of $(x^*, \alpha)$, with:
+$$\frac{dx^*}{d\alpha} = -\frac{\partial F / \partial \alpha}{\partial F / \partial x}\bigg|_{(x^*, \alpha)}$$
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+By the Implicit Function Theorem (Rudin, Theorem 9.28): if $F(x^*, \alpha) = 0$ and $\partial F/\partial x \neq 0$ at $(x^*, \alpha)$, then there exist open sets $U \ni \alpha$ and $V \ni x^*$ and a unique $C^1$ function $g: U \to V$ such that $F(g(\alpha), \alpha) = 0$ for all $\alpha \in U$. The derivative formula follows from total differentiation:
+$$\frac{\partial F}{\partial x} \cdot \frac{dx^*}{d\alpha} + \frac{\partial F}{\partial \alpha} = 0 \implies \frac{dx^*}{d\alpha} = -\frac{\partial F/\partial \alpha}{\partial F/\partial x}$$
+:::
+
+
+::: {.callout-note icon=false appearance="simple"}
+## Example 9.3.1 — Cournot Output and Marginal Cost
+In the Cournot duopoly with firms $i \in \{1,2\}$, linear demand $P = a - b(q_1 + q_2)$, and marginal costs $c_1, c_2$, firm 1's FOC is:
+$$F(q_1, q_2, c_1) = a - b q_2 - 2b q_1 - c_1 = 0$$
+Solving the system of FOCs gives:
+$$q_1^* = \frac{a - 2c_1 + c_2}{3b}$$
+Direct IFT application: $\frac{\partial q_1^*}{\partial c_1} = -2/(3b) < 0$ (own cost increase reduces output) and $\frac{\partial q_1^*}{\partial c_2} = 1/(3b) > 0$ (rival's cost increase raises own output).
+:::
+
+
+::: {.callout-note icon=false appearance="simple"}
+## Example 9.3.2 — Walrasian Equilibrium Price and Endowment
+Consider a two-good, two-consumer exchange economy with agent $i = 1,2$ having utility $u_i(x_i, y_i) = \alpha_i \ln x_i + (1-\alpha_i) \ln y_i$. At Walrasian equilibrium, market clearing in good $x$ gives:
+$$\sum_i \frac{\alpha_i I_i}{p} = \omega_x$$
+where $I_i = p \omega_{xi} + \omega_{yi}$ is agent $i$'s income, $\omega_x = \sum_i \omega_{xi}$.
+
+Total differentiating with respect to $\omega_{x1}$ (endowment of good $x$ for agent 1):
+$$\frac{dp}{d\omega_{x1}} = -\frac{\partial F/\partial \omega_{x1}}{\partial F/\partial p}$$
+where $F$ is the excess demand for $x$. Computing: $\frac{\partial F}{\partial \omega_{x1}} = -\alpha_1 < 0$; $\frac{\partial F}{\partial p} = -\sum_i \alpha_i \omega_{yi}/p^2 < 0$.
+Therefore $\frac{dp}{d\omega_{x1}} = \frac{\alpha_1}{\sum_i \alpha_i \omega_{yi}/p^2}$. The sign depends on the Walras Law structure; generically, an increase in supply of $x$ lowers its equilibrium price.
+:::
+
+
+### Limitations of the IFT
+
+::: {.callout-caution icon=false}
+## Remark 9.3.1 — When IFT Fails
+The IFT requires: (1) differentiability of $F$; (2) non-zero Jacobian at equilibrium; (3) interior solution (so FOC is valid). It fails when:
+- **Corners/kinks:** Optimal choice is at a boundary; FOC does not hold as equality. Example: labor supply with binding minimum wage.
+- **Discrete choice:** $x \in \{0,1\}$; no FOC exists. Example: investment decision under uncertainty.
+- **Multiple equilibria:** Jacobian is singular; IFT is not applicable. Example: models with strategic complementarities at the bifurcation point.
+- **Non-differentiable payoffs:** Payoffs with kinks (e.g., max functions, absolute value). Example: loss-averse agents.
+
+In all these cases, monotone comparative statics (Milgrom-Shannon, Topkis) provides an alternative.
+:::
+
+
+### Topkis's Theorem
+
+::: {.callout-important icon=false}
+## Theorem 9.3.2 — Topkis's Theorem (Monotone Comparative Statics)
+Let $X$ be a compact sublattice of $\mathbb{R}^n$ and let $f: X \times T \to \mathbb{R}$ where $T$ is a partially ordered set. If $f$ is supermodular in $(x, t)$ (i.e., $f$ has increasing differences in $(x, t)$: $f(x', t') - f(x', t) \geq f(x, t') - f(x, t)$ for $x' \geq x$, $t' \geq t$), then:
+1. **$x^*(t) = \arg\max_{x \in X} f(x, t)$ is non-decreasing in $t$** in the strong set order: if $t' \geq t$, then for every $x' \in x^*(t')$ and $x \in x^*(t)$, $x' \geq x$ (or $x^*(t')$ is higher than $x^*(t)$ in the strong set order)
+2. The conclusion holds without requiring differentiability or compactness of $T$
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+We prove the single-valued case ($x^*$ is unique); the set-valued case follows similarly.
+
+**Suppose, for contradiction,** that $t' \geq t$ but $x^*(t') < x^*(t)$. Denote $x_H = x^*(t)$ and $x_L = x^*(t')$ with $x_H > x_L$.
+
+Since $x_H = x^*(t)$: $f(x_H, t) \geq f(x_L, t)$.
+Since $x_L = x^*(t')$: $f(x_L, t') \geq f(x_H, t')$.
+
+Summing these two inequalities:
+$$f(x_H, t) + f(x_L, t') \geq f(x_L, t) + f(x_H, t')$$
+Rearranging:
+$$f(x_H, t') - f(x_H, t) \leq f(x_L, t') - f(x_L, t)$$
+
+But this contradicts supermodularity: for $x_H > x_L$ and $t' > t$, supermodularity (increasing differences) requires:
+$$f(x_H, t') - f(x_H, t) \geq f(x_L, t') - f(x_L, t)$$
+
+Contradiction. Therefore $x^*(t') \geq x^*(t)$ whenever $t' \geq t$.
+:::
+
+
+::: {.callout-note icon=false appearance="simple"}
+## Example 9.3.3 — Supermodularity in a Coordination Game
+In a 2-player coordination game, player $i$ chooses action $a_i \in [0,1]$; payoff is $f(a_i, a_j, \theta) = a_i(\theta + \rho a_j) - a_i^2/2$ where $\rho > 0$ captures strategic complementarity and $\theta$ is a fundamental.
+
+$f$ is supermodular in $(a_i, \theta)$: $\frac{\partial^2 f}{\partial a_i \partial \theta} = 1 > 0$.
+$f$ is supermodular in $(a_i, a_j)$: $\frac{\partial^2 f}{\partial a_i \partial a_j} = \rho > 0$.
+
+By Topkis: $a_i^*(\theta, a_j)$ is increasing in both $\theta$ (own fundamentals) and $a_j$ (strategic complementarity). In symmetric Nash equilibrium:
+$$a^*(\theta) = \frac{\theta}{1 - \rho}$$
+(from $\theta + \rho a^* = a^*$, so $a^* = \theta/(1-\rho)$ for $\rho < 1$).
+
+Monotone comparative statics: $da^*/d\theta = 1/(1-\rho) > 0$ (stronger fundamentals $\to$ higher equilibrium action). This connects to the global games result: the threshold $\theta^*$ below which the low equilibrium is selected is decreasing in $\rho$ (stronger complementarity makes coordination easier).
+:::
+
+
+### Milgrom-Shannon Single Crossing Property
+
+::: {.callout-note icon=false}
+## Definition 9.3.4 — Single Crossing Property (Milgrom-Shannon)
+A function $f: X \times T \to \mathbb{R}$ satisfies the **single crossing property (SCP)** in $(x; t)$ if for all $x' > x$ and $t' > t$:
+$$f(x', t) \geq f(x, t) \implies f(x', t') \geq f(x, t')$$
+and
+$$f(x', t) > f(x, t) \implies f(x', t') > f(x, t')$$
+SCP is weaker than supermodularity (it does not require $f$ to be differentiable or the differences to be increasing, only that the sign of differences is preserved).
+:::
+
+
+::: {.callout-important icon=false}
+## Theorem 9.3.3 — Milgrom-Shannon Monotone Comparative Statics
+If $f(x, t)$ satisfies SCP in $(x; t)$ and $x^*(t) = \arg\max_{x \in X(t)} f(x, t)$ where $X(t)$ is a sublattice that is non-decreasing in $t$ (in the strong set order), then $x^*(t)$ is non-decreasing in $t$.
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+The proof follows the same contradiction argument as Topkis's Theorem but replaces the supermodularity condition with SCP. Suppose $t' > t$ and $x^*(t') < x^*(t)$. Then $f(x^*(t), t) \geq f(x^*(t'), t)$ (optimality at $t$) implies $f(x^*(t), t') \geq f(x^*(t'), t')$ (by SCP applied with $x' = x^*(t) > x^*(t')$). But this contradicts $x^*(t') = \arg\max f(\cdot, t')$.
+
+SCP is strictly weaker than supermodularity: it allows non-monotone individual payoffs and non-differentiable functions while still delivering monotone comparative statics.
+:::
+
+
+### The Envelope Theorem as Comparative Statics
+
+::: {.callout-important icon=false}
+## Theorem 9.3.4 — Envelope Theorem
+Let $V(\alpha) = \max_{x \in X} f(x, \alpha)$ be the value function, with $x^*(\alpha)$ the unique maximizer. If $f$ is $C^1$ in $\alpha$ and $x^*(\alpha)$ is in the interior of $X$, then $V$ is differentiable in $\alpha$ with:
+$$V'(\alpha) = \frac{\partial f(x^*(\alpha), \alpha)}{\partial \alpha}$$
+When there is a binding constraint $g(x, \alpha) = 0$ with Lagrange multiplier $\lambda^*$, the Lagrangian envelope theorem gives:
+$$V'(\alpha) = \frac{\partial \mathcal{L}}{\partial \alpha}\bigg|_{x^*(\alpha), \lambda^*(\alpha)} = \frac{\partial f}{\partial \alpha} + \lambda^* \frac{\partial g}{\partial \alpha}$$
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+Let $x^* = x^*(\alpha)$. Then $V(\alpha') = f(x^*(\alpha'), \alpha')$ and $V(\alpha) = f(x^*(\alpha), \alpha) \geq f(x^*(\alpha'), \alpha)$. Therefore:
+$$V(\alpha') - V(\alpha) \leq f(x^*(\alpha'), \alpha') - f(x^*(\alpha'), \alpha)$$
+Similarly: $V(\alpha) - V(\alpha') \leq f(x^*(\alpha), \alpha) - f(x^*(\alpha), \alpha')$.
+Therefore:
+$$f(x^*(\alpha'), \alpha') - f(x^*(\alpha'), \alpha) \geq V(\alpha') - V(\alpha) \geq f(x^*(\alpha), \alpha') - f(x^*(\alpha), \alpha)$$
+Dividing by $(\alpha' - \alpha)$ and taking $\alpha' \to \alpha$: both bounds converge to $\frac{\partial f(x^*(\alpha), \alpha)}{\partial \alpha}$ (since $x^*(\alpha') \to x^*(\alpha)$ by continuity). Therefore $V'(\alpha) = \frac{\partial f(x^*(\alpha), \alpha)}{\partial \alpha}$.
+:::
+
+
+::: {.callout-caution icon=false}
+## Remark 9.3.2 — Interpreting the Lagrange Multiplier
+The envelope theorem gives the Lagrange multiplier $\lambda^*$ a precise economic interpretation: $\lambda^* = \frac{\partial V}{\partial b}$ where $b$ is the right-hand side of the binding constraint. It is the **shadow price** of the constraint — the marginal value of relaxing the constraint by one unit. In the consumer problem, $\lambda^*$ is the marginal utility of income. In the firm problem, $\lambda^*$ is the shadow price of the budget constraint. In the principal-agent model, $\lambda^*$ is the marginal value of relaxing the participation constraint — i.e., the marginal cost of the agent's reservation utility.
+:::
+
+
+## Economic Intuition
+
+Comparative statics is the mode of inquiry that connects a formal model to empirical data. The IFT gives the derivative — the local linear approximation — of the equilibrium outcome function, which is exactly what a regression coefficient estimates. The sign and magnitude of $dx^*/d\alpha$ from IFT corresponds directly to the coefficient estimate from a regression of the outcome on the parameter.
+
+Topkis's theorem is the non-parametric version: it tells us the direction of the effect (non-decreasing) without pinning down the magnitude, and it does so under much weaker conditions. For empirical work, this matters because: (1) the sign of a comparative static is often sufficient to test a model; (2) Topkis applies when the payoff structure is known only qualitatively (supermodular) rather than parametrically; (3) it handles discrete choice and non-differentiable objectives.
+
+The envelope theorem connects the value function to welfare analysis: $\lambda^*$ is the shadow price of a constraint, and $V'(\alpha)$ is the welfare effect of changing a parameter. This is the foundation for all welfare calculations in structural economics.
+
+## Cross-References
+
+- [9.1 Anatomy of a Theoretical Model](9.1_Anatomy_of_a_Theoretical_Model.qmd) — comparative statics are derived from equilibrium conditions (the model's predictions)
+- [9.4 Deriving Testable Predictions](9.4_Deriving_Testable_Predictions.qmd) — comparative statics become testable predictions after identifying the observational counterpart
+- [7.3 Adverse Selection and Screening](7.3_Adverse_Selection_and_Screening.qmd) — envelope theorem used to derive optimal screening contract
+- [APP Conflict and Resource Models](APP_Conflict_and_Resource_Models.qmd) — comparative statics of conflict intensity with respect to resource value

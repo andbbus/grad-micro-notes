@@ -1,0 +1,324 @@
+---
+title: "3.3 Cost Minimization"
+---
+
+# 3.3 Cost Minimization
+
+> **MWG Reference:** Ch. 5, §5.C–5.D, pp. 138–158
+
+## Context
+
+The **cost minimization problem (CMP)** separates the firm's decision into two stages: (1) for a given output target $q$, find the cheapest input bundle; (2) choose the profit-maximizing output level. This decomposition is valid whenever the firm is a price-taker in input markets, regardless of its market power in the output market. The CMP therefore underlies not just competitive supply theory but also monopoly and oligopoly models.
+
+The CMP is the producer analogue of the expenditure minimization problem (EMP) in consumer theory. The **cost function** $c(w, q)$ plays the role of the expenditure function $e(p, u)$, and **Shephard's lemma** — $\nabla_w c = z(w,q)$ — is the exact analogue of the Hicksian demand identity $\nabla_p e = h(p,u)$. The **duality theorem** states that the production function can be fully recovered from the cost function, just as preferences can be recovered from the expenditure function. This duality is the foundation of empirical production analysis using cost functions.
+
+---
+
+## Definitions
+
+::: {.callout-note icon=false}
+## Definition 3.1 — Cost Minimization Problem (CMP)
+Given factor price vector $w \in \mathbb{R}^K_{++}$, output level $q \geq 0$, and production function $f: \mathbb{R}^K_+ \to \mathbb{R}_+$, the **cost minimization problem** is:
+$$\min_{z \geq 0} \; w \cdot z \quad \text{s.t.} \quad f(z) \geq q$$
+:::
+
+
+::: {.callout-note icon=false}
+## Definition 3.2 — Cost Function
+The **cost function** $c: \mathbb{R}^K_{++} \times \mathbb{R}_+ \to \mathbb{R}_+$ is the value function of the CMP:
+$$c(w, q) = \min_{z \geq 0} \; w \cdot z \quad \text{s.t.} \quad f(z) \geq q$$
+Equivalently: $c(w,q) = \min\{w \cdot z : z \in V(q)\}$ where $V(q) = \{z \geq 0 : f(z) \geq q\}$ is the input requirement set.
+:::
+
+
+::: {.callout-note icon=false}
+## Definition 3.3 — Conditional Factor Demands
+The **conditional factor demand correspondence** $z: \mathbb{R}^K_{++} \times \mathbb{R}_+ \rightrightarrows \mathbb{R}^K_+$ is:
+$$z(w, q) = \arg\min_{z \geq 0, \, f(z) \geq q} \; w \cdot z$$
+These are "conditional" because they are conditioned on a fixed output level $q$ (unlike unconditional factor demands, which optimize over $q$ as well). They are the producer analogue of **Hicksian compensated demands**.
+:::
+
+
+---
+
+## Properties of the Cost Function
+
+::: {.callout-important icon=false}
+## Proposition 3.1 — Homogeneity of Degree One of $c(w,q)$ in $w$
+For all $\alpha > 0$:
+$$c(\alpha w, q) = \alpha \cdot c(w, q)$$
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+$$c(\alpha w, q) = \min_{z \geq 0, \, f(z) \geq q} (\alpha w) \cdot z = \alpha \min_{z \geq 0, \, f(z) \geq q} w \cdot z = \alpha \cdot c(w, q)$$
+Multiplying factor prices by $\alpha > 0$ scales the objective but does not change the feasible set $V(q)$ or the minimizer $z(w,q)$: $z(\alpha w, q) = z(w,q)$. $\blacksquare$
+:::
+
+
+::: {.callout-caution icon=false}
+## Remark 3.1
+HD1 of $c$ in $w$ is simply a no-money-illusion property for cost: doubling all factor prices doubles minimum cost, since the cost of any input bundle doubles. Equivalently, conditional factor demands $z(w,q)$ are homogeneous of degree zero in $w$.
+:::
+
+
+::: {.callout-important icon=false}
+## Proposition 3.2 — Monotonicity of $c(w,q)$
+(a) $c(w,q)$ is **nondecreasing in $w$**: if $w' \geq w$ (componentwise), then $c(w',q) \geq c(w,q)$.
+(b) $c(w,q)$ is **nondecreasing in $q$**: if $q' \geq q$, then $c(w, q') \geq c(w,q)$ (assuming more output requires weakly more inputs).
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+**(a)** Let $z^*$ minimize cost at $(w, q)$. Then $c(w, q) = w \cdot z^*$. For prices $w' \geq w$:
+$$c(w', q) = \min_{z \in V(q)} w' \cdot z \leq w' \cdot z^* \text{ is wrong direction}$$
+Wait — we need a lower bound. Since $w' \geq w$:
+$$c(w', q) = \min_{z \in V(q)} w' \cdot z \geq \min_{z \in V(q)} w \cdot z = c(w,q)$$
+where the inequality uses $w' \cdot z \geq w \cdot z$ for all $z \geq 0$ (since $w' - w \geq 0$ and $z \geq 0$). $\blacksquare$
+
+**(b)** Since $q' \geq q$, we have $V(q') \subseteq V(q)$ (more output requires at least as many inputs). Minimizing over a smaller set gives a larger or equal minimum:
+$$c(w, q') = \min_{z \in V(q')} w \cdot z \geq \min_{z \in V(q)} w \cdot z = c(w,q) \qquad \blacksquare$$
+:::
+
+
+::: {.callout-important icon=false}
+## Proposition 3.3 — Concavity of $c(w,q)$ in $w$
+The cost function $c(w, q)$ is **concave** in $w$ for each fixed $q$.
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+The cost function is the infimum of a family of linear functions of $w$. For each fixed $z \in V(q)$, the function $w \mapsto w \cdot z$ is linear (hence concave) in $w$. Since the infimum of linear functions is concave:
+$$c(w,q) = \inf_{z \in V(q)} w \cdot z$$
+is concave in $w$.
+
+**Direct proof:** Fix $w, w' \in \mathbb{R}^K_{++}$, $\lambda \in [0,1]$. Let $z^* = z(\lambda w + (1-\lambda)w', q)$ minimize cost at the convex combination of prices. Then:
+\begin{align}
+c(\lambda w + (1-\lambda)w', q) &= [\lambda w + (1-\lambda)w'] \cdot z^* \\
+&= \lambda (w \cdot z^*) + (1-\lambda)(w' \cdot z^*) \\
+&\geq \lambda c(w, q) + (1-\lambda) c(w', q)
+\end{align}
+where the inequality uses $w \cdot z^* \geq c(w,q)$ and $w' \cdot z^* \geq c(w',q)$ (since $z^*$ is feasible but not necessarily optimal at $w$ or $w'$). $\blacksquare$
+:::
+
+
+::: {.callout-caution icon=false}
+## Remark 3.2 — Economic Meaning of Concavity
+Concavity of $c$ in $w$ has a key economic interpretation: the firm benefits from **factor price variability** in a specific sense — when factor prices fluctuate, the firm can always substitute toward cheaper inputs, so average cost under variable prices is lower than or equal to cost at average prices. This is the producer analogue of compensated demand being downward-sloping.
+:::
+
+
+::: {.callout-important icon=false}
+## Proposition 3.4 — Continuity of $c(w,q)$
+If the production function $f$ is continuous and $V(q)$ is nonempty for $q \geq 0$, then $c(w,q)$ is **continuous** in $(w,q)$.
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+Continuity follows from the theorem of the maximum (Berge's maximum theorem). The feasible correspondence $V(q)$ is continuous (by continuity of $f$) and the objective $w \cdot z$ is continuous jointly in $(w,z)$. Therefore the value function $c(w,q) = \min_{z \in V(q)} w \cdot z$ is continuous in $(w,q)$. $\blacksquare$
+:::
+
+
+---
+
+## Shephard's Lemma
+
+::: {.callout-important icon=false}
+## Theorem 3.1 — Shephard's Lemma (for Costs)
+Suppose $c(w, q)$ is differentiable at $(w^0, q)$. Then:
+$$z_l(w^0, q) = \frac{\partial c(w^0, q)}{\partial w_l} \quad \forall l = 1, \ldots, K$$
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+**Proof via the Envelope Theorem:**
+
+At the optimum $z^*(w,q) = z(w,q)$, define:
+$$\phi(w) = w \cdot z^*(w^0, q) \quad \text{(cost of the fixed bundle $z^*$ at varying prices)}$$
+This is a linear function of $w$ with gradient $z^*(w^0, q)$. Since $z^*$ is optimal at $w^0$ but not necessarily at other prices, $\phi(w) \geq c(w,q)$ for all $w$ (the fixed bundle is weakly costlier than the optimal bundle at other prices), and $\phi(w^0) = c(w^0, q)$.
+
+Therefore, the linear function $\phi$ lies **above** the concave function $c(\cdot, q)$ and touches it at $w^0$: $\phi$ is a **supporting hyperplane** to $c(\cdot,q)$ from above at $w^0$. Since $c$ is differentiable at $w^0$, the supporting hyperplane equals the tangent hyperplane:
+$$\nabla_w c(w^0, q) = \nabla_w \phi(w^0) = z^*(w^0, q) \qquad \blacksquare$$
+
+**Alternative direct proof:** Let $e_l$ be the $l$-th standard basis vector. For small $h > 0$:
+$$c(w^0 + h e_l, q) \leq (w^0 + h e_l) \cdot z^* = c(w^0, q) + h z^*_l$$
+$$c(w^0 + h e_l, q) \geq c(w^0, q) + h \frac{\partial c}{\partial w_l}\bigg|_{\text{lin approx}}$$
+Together, as $h \to 0$: $\partial c(w^0,q)/\partial w_l = z^*_l$. $\blacksquare$
+:::
+
+
+::: {.callout-caution icon=false}
+## Remark 3.3 — Shephard's Lemma and Duality
+Shephard's lemma has the same structure as **Roy's identity** for the indirect utility function and **Hotelling's lemma** for the profit function: differentiation of a value function yields the optimizer. In each case, the proof relies on the envelope theorem and the "supporting hyperplane" property of the value function. Shephard's lemma is the foundation for empirical cost studies: estimate $c(w,q)$, differentiate with respect to factor prices to obtain factor demands.
+:::
+
+
+---
+
+## Factor Demand Substitution Matrix
+
+::: {.callout-note icon=false}
+## Definition 3.4 — Substitution Matrix for Factor Demands
+The **factor demand substitution matrix** is:
+$$S(w,q) = \frac{\partial z(w,q)}{\partial w} = D^2_w c(w,q)$$
+the $K \times K$ Hessian matrix of $c$ with respect to $w$.
+:::
+
+
+::: {.callout-important icon=false}
+## Proposition 3.5 — Properties of the Substitution Matrix
+If $c(w,q)$ is twice differentiable, $S(w,q) = D^2_w c(w,q)$ satisfies:
+1. **Symmetry:** $\frac{\partial z_l}{\partial w_k} = \frac{\partial z_k}{\partial w_l}$ for all $k, l$
+2. **Negative semidefiniteness (NSD):** $v^T S(w,q) v \leq 0$ for all $v \in \mathbb{R}^K$
+3. **$S(w,q) w = 0$** (from HD0 of $z$ in $w$)
+4. In particular, $\frac{\partial z_l}{\partial w_l} \leq 0$: **own-price factor demand is nonincreasing**
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+Properties 1 and 2 follow from $S = D^2_w c$ and concavity of $c$ in $w$: the Hessian of a concave function is symmetric (Young's theorem) and negative semidefinite.
+
+**Property 3:** Since $z(w,q)$ is HD0 in $w$, Euler's theorem gives $\sum_k \frac{\partial z_l}{\partial w_k} w_k = 0$ for all $l$, i.e., $S w = 0$.
+
+**Property 4:** NSD implies all diagonal entries are nonpositive: for $v = e_l$, $e_l^T S e_l = S_{ll} = \partial z_l / \partial w_l \leq 0$. $\blacksquare$
+:::
+
+
+---
+
+## Average and Marginal Costs
+
+::: {.callout-note icon=false}
+## Definition 3.5 — Average and Marginal Cost
+Given factor prices $w$ (treated as fixed) and the cost function $c(w,q)$:
+- **Average cost:** $AC(q) = \frac{c(w,q)}{q}$ for $q > 0$
+- **Marginal cost:** $MC(q) = \frac{\partial c(w,q)}{\partial q}$
+- **Fixed cost:** $c(w, 0) = FC$ (cost when $q = 0$; zero under free disposal if inputs can be idled)
+- **Variable cost:** $VC(q) = c(w,q) - c(w,0)$
+:::
+
+
+The relationship between AC, MC, and returns to scale is as follows:
+
+::: {.callout-important icon=false}
+## Proposition 3.6 — Returns to Scale and Cost
+
+(a) **CRS:** $c(w, \lambda q) = \lambda c(w, q)$ for all $\lambda > 0$. Hence $AC(q) = MC(q)$ (constant, independent of $q$).
+
+(b) **IRS:** $c$ is **subadditive** in $q$: $c(w, q + q') \leq c(w,q) + c(w,q')$. At the optimum: $MC(q) < AC(q)$ (marginal cost below average cost pulls the average down).
+
+(c) **DRS:** $c$ is **superadditive** in $q$. $MC(q) > AC(q)$ (marginal cost above average cost pulls the average up).
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+**(a) CRS implies linear cost in $q$:** Under CRS, $f(\lambda z) = \lambda f(z)$. If $z^*(w,q)$ minimizes cost for output $q$, then $\lambda z^*(w,q)$ is feasible for output $\lambda q$ (since $f(\lambda z^*) = \lambda f(z^*) = \lambda q$). Moreover, it minimizes cost for $\lambda q$ (by HD1 of $c$):
+$$c(w, \lambda q) \leq w \cdot (\lambda z^*) = \lambda (w \cdot z^*) = \lambda c(w,q)$$
+Similarly, $c(w, q) = c(w, (1/\lambda)(\lambda q)) \leq (1/\lambda) c(w, \lambda q)$, so $c(w, \lambda q) \geq \lambda c(w,q)$. Combined: $c(w, \lambda q) = \lambda c(w,q)$. Dividing by $q$: $AC = c/q = $ constant; differentiating in $\lambda$ at $\lambda = 1$: $MC = \partial c / \partial q = c(w,q)/q = AC$.
+
+**(b) IRS:** Under IRS, $f(\lambda z) > \lambda f(z)$ for $\lambda > 1$. For output $q$, the minimizer $z^*$ satisfies $f(z^*) = q$. For output $\lambda q$, we need $f(z) \geq \lambda q$. Since $f(\lambda z^*) > \lambda q$, we can use slightly less than $\lambda z^*$. Hence $c(w, \lambda q) < \lambda c(w, q)$, meaning $c$ is sublinear (subadditive). Differentiating: $MC = \partial c / \partial q < c(w,q)/q = AC$.
+
+**(c) DRS:** Analogously, $c$ is superlinear, so $MC > AC$. $\blacksquare$
+:::
+
+
+::: {.callout-caution icon=false}
+## Remark 3.4 — The U-Shaped AC Curve
+When returns to scale shift from IRS to DRS as $q$ increases (common in practice), the $MC$ curve crosses the $AC$ curve at the $AC$ minimum. For $q$ below the crossing point: IRS, $MC < AC$, $AC$ is falling. For $q$ above: DRS, $MC > AC$, $AC$ is rising. The $AC$-minimizing output is the **minimum efficient scale**. At $MC = AC$, returns to scale are locally CRS.
+:::
+
+
+---
+
+## Duality Between Cost Function and Production Function
+
+::: {.callout-important icon=false}
+## Theorem 3.2 — Cost-Production Duality
+Under standard regularity conditions (monotonicity, continuity, quasiconcavity of $f$), the production function can be **recovered** from the cost function:
+$$f(z) = \max\{q \geq 0 : w \cdot z \geq c(w, q) \; \forall w \gg 0\}$$
+That is, $f(z)$ equals the largest output level $q$ such that the cost of $z$ at any prices exceeds the minimum cost of producing $q$.
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+**Sketch:** Let $\hat{f}(z) = \max\{q : w \cdot z \geq c(w,q) \; \forall w \gg 0\}$.
+
+(1) **$f(z) \leq \hat{f}(z)$:** If $z \in V(q)$ (i.e., $f(z) \geq q$), then for any $w \gg 0$: $w \cdot z \geq c(w,q)$ by definition of $c$ as the minimum. Hence $q$ satisfies the condition in $\hat{f}$, so $\hat{f}(z) \geq q = f(z)$.
+
+(2) **$f(z) \geq \hat{f}(z)$:** Suppose $f(z) < q$. We must show $\exists w$ such that $w \cdot z < c(w,q)$. Under convexity and monotonicity of $f$, $z \notin V(q)$ implies that $z$ can be separated from the convex set $V(q)$ by a hyperplane: there exists $w^* \gg 0$ such that $w^* \cdot z < \min_{z' \in V(q)} w^* \cdot z' = c(w^*, q)$. Hence $q$ does not satisfy the condition in $\hat{f}(z)$.
+
+Combining: $\hat{f}(z) = f(z)$. $\blacksquare$
+:::
+
+
+::: {.callout-caution icon=false}
+## Remark 3.5 — Duality in Practice
+The duality theorem means that a cost function $c(w,q)$ satisfying the regularity properties (HD1, concavity, monotonicity in $w$; nondecreasing in $q$) is the cost function of **some** production function, and that production function is uniquely determined by $c$ (up to the convex hull of its isoquants). Empirical cost estimation therefore identifies the technology.
+:::
+
+
+---
+
+## Example: CES Production Function
+
+::: {.callout-note icon=false appearance="simple"}
+## Example 3.3 — CES Cost Function
+Consider the CES production function with two inputs:
+$$f(z_1, z_2) = (z_1^{\rho} + z_2^{\rho})^{1/\rho}, \quad \rho \in (-\infty, 0) \cup (0, 1]$$
+(This is CRS.)
+
+**CMP:** $\min_{z_1, z_2 \geq 0} w_1 z_1 + w_2 z_2$ subject to $(z_1^{\rho} + z_2^{\rho})^{1/\rho} \geq q$.
+
+**FOC** (Lagrangian with multiplier $\lambda$):
+$$w_i = \lambda \cdot \frac{\partial f}{\partial z_i} = \lambda \cdot z_i^{\rho-1} (z_1^{\rho} + z_2^{\rho})^{(1/\rho)-1}$$
+
+Dividing FOCs: $\frac{w_1}{w_2} = \left(\frac{z_1}{z_2}\right)^{\rho-1}$, so $\frac{z_1}{z_2} = \left(\frac{w_1}{w_2}\right)^{1/(\rho-1)} = \left(\frac{w_2}{w_1}\right)^{1/(1-\rho)}$.
+
+Let $\sigma = 1/(1-\rho)$ (elasticity of substitution). Then $z_1/z_2 = (w_2/w_1)^{\sigma}$.
+
+Substituting back into the production constraint and simplifying:
+$$c(w_1, w_2, q) = q \cdot (w_1^{1-\sigma} + w_2^{1-\sigma})^{1/(1-\sigma)}$$
+where $1-\sigma = 1 - 1/(1-\rho) = -\rho/(1-\rho)$.
+
+Equivalently, letting $s = 1-\sigma$:
+$$c(w,q) = q \cdot \left(\sum_i w_i^{s}\right)^{1/s}, \quad s = \frac{-\rho}{1-\rho} = \frac{\rho}{\rho - 1}$$
+
+**Verification of Shephard's Lemma:**
+$$z_1(w,q) = \frac{\partial c}{\partial w_1} = q \cdot \frac{w_1^{s-1}}{(w_1^s + w_2^s)^{(s-1)/s}} = q \cdot \left(\frac{w_1^s + w_2^s}{w_1^s}\right)^{(1-s)/s} \cdot w_1^{-1}$$
+This matches the conditional factor demand derived from the FOCs. $\checkmark$
+
+**Special cases:**
+- $\rho \to 1$ ($\sigma \to \infty$; perfect substitutes): $c(w,q) = q \cdot \min(w_1, w_2)$
+- $\rho \to 0$ ($\sigma \to 1$; Cobb-Douglas): $c(w,q) = q \cdot w_1^{1/2} w_2^{1/2} \cdot 2$ (for equal shares)
+- $\rho \to -\infty$ ($\sigma \to 0$; perfect complements): $c(w,q) = q(w_1 + w_2)$ with equal input requirements
+:::
+
+
+---
+
+## Economic Intuition
+
+The cost function $c(w,q)$ is the fundamental object for understanding the supply side of the economy. It encodes everything about the firm's technology that is relevant for competitive behavior: how costs respond to output (determining the supply curve), how costs respond to factor prices (determining factor demands via Shephard's lemma), and whether there are economies or diseconomies of scale.
+
+The concavity of $c$ in $w$ has a beautiful interpretation: it means that **firms can substitute inputs** in response to factor price changes. When input prices change, the firm adjusts its input mix toward cheaper inputs, so the cost increase is less than proportional to the price increase. The degree of curvature of $c$ (how concave it is) measures the degree of factor substitutability.
+
+Shephard's lemma provides a tight connection between the cost function and observable factor demand: it says that the slope of the cost function in factor prices equals the conditional factor demand. This is deeply useful empirically — one can estimate a cost function and recover all factor demands from it, without separately estimating each demand equation. The symmetry of cross-price effects ($\partial z_l / \partial w_k = \partial z_k / \partial w_l$) is a testable restriction that follows from Shephard's lemma and Young's theorem.
+
+---
+
+## Cross-References
+
+- [3.1 Production Sets](3.1_Production_Sets.qmd) — production set, input requirement set $V(q)$, production function
+- [3.2 Profit Maximization](3.2_Profit_Maximization.qmd) — profit function; Hotelling's lemma; the PMP reduces to CMP + output choice
+- [3.4 Supply and Factor Demands](3.4_Supply_and_Factor_Demands.qmd) — combining CMP and PMP; unconditional factor demands; Le Chatelier
+- [2.3 Expenditure Minimization](2.3_Expenditure_Minimization.qmd) — exact consumer analogue: EMP, expenditure function, Shephard's/Hicksian demand
+- [1.3 Optimization Theory](1.3_Optimization_Theory.qmd) — envelope theorem; Lagrangian methods; Berge's maximum theorem
+- [PS Producer Theory](PS_Producer_Theory.qmd) — Problems 3 and 6

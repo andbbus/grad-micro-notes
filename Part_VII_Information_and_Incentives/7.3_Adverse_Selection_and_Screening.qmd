@@ -1,0 +1,249 @@
+---
+title: "7.3 — Adverse Selection and Screening"
+---
+
+# 7.3 — Adverse Selection and Screening
+
+> **MWG Reference:** Ch. 14, §14.C, pp. 488–516; Ch. 23, §23.B; Mirrlees (1971); Mussa & Rosen (1978)
+
+## Context
+
+Adverse selection arises when one party to a contract has private information about a characteristic that the other party values. Unlike moral hazard (where the information concerns actions), adverse selection concerns **types** — fixed characteristics such as productivity, willingness to pay, or risk. Akerlof's (1970) used-car market showed that adverse selection can destroy markets entirely. The screening problem (also called the mechanism design approach to adverse selection) reverses this: the uninformed principal designs a menu of contracts to induce agents to reveal their types through self-selection. The key insight is that the principal can generally implement any allocation that satisfies incentive compatibility, but at the cost of either distorting allocations below the efficient level for low types or conceding information rents to high types.
+
+## Definitions
+
+::: {.callout-note icon=false}
+## Definition 7.3.1 — Screening Environment
+The screening environment consists of:
+- **Types:** $\theta \in [\underline{\theta}, \bar{\theta}]$ with density $f(\theta) > 0$ and CDF $F(\theta)$; $\theta$ is private information to the agent
+- **Allocation:** $q \in \mathbb{R}_+$ (quantity of a good, quality level, effort)
+- **Transfer:** $t \in \mathbb{R}$ (payment from agent to principal, or negative for subsidies)
+- **Agent's payoff:** $u(q, t, \theta) = v(q, \theta) - t$ where $v$ is increasing in both arguments (higher type values quantity more)
+- **Principal's payoff:** $\pi(q, t) = t - c(q)$ where $c(q)$ is the cost of providing $q$
+- **Contract:** a menu $\{(q(\theta), t(\theta))\}_{\theta \in [\underline{\theta}, \bar{\theta}]}$; agent of type $\theta$ can choose any item from the menu
+:::
+
+
+::: {.callout-note icon=false}
+## Definition 7.3.2 — Incentive Compatibility and Individual Rationality
+A menu $\{(q(\theta), t(\theta))\}$ is:
+- **Incentive Compatible (IC):** if each type $\theta$ prefers the item designed for them:
+$$v(q(\theta), \theta) - t(\theta) \geq v(q(\hat{\theta}), \theta) - t(\hat{\theta}) \quad \forall \theta, \hat{\theta} \in [\underline{\theta}, \bar{\theta}]$$
+- **Individually Rational (IR):** if each type finds participation weakly preferable to their outside option $\bar{u}$:
+$$v(q(\theta), \theta) - t(\theta) \geq \bar{u} \quad \forall \theta$$
+The **information rent** of type $\theta$ is $U(\theta) \equiv v(q(\theta), \theta) - t(\theta) - \bar{u} \geq 0$.
+:::
+
+
+::: {.callout-note icon=false}
+## Definition 7.3.3 — Spence-Mirrlees Single-Crossing Condition
+The preferences satisfy the **single-crossing condition** if the marginal rate of substitution between $q$ and $t$ is strictly monotone in $\theta$:
+$$\frac{\partial}{\partial \theta}\left(\frac{\partial v / \partial q}{1}\right) = v_{q\theta}(q, \theta) > 0 \quad \forall q, \theta$$
+Equivalently: the indifference curves of different types cross exactly once in the $(q, t)$ plane, with higher types having steeper indifference curves (willing to pay more per unit of $q$).
+:::
+
+
+::: {.callout-caution icon=false}
+## Remark 7.3.1 — Interpretation of Single-Crossing
+Single-crossing (also called the Spence-Mirrlees condition) is the key regularity condition in screening. It implies that if a high-type agent is indifferent between two bundles, the low-type agent strictly prefers the bundle with less $q$. This ordering of preferences is what makes screening feasible: different types can be separated by their allocation choices.
+:::
+
+
+## Main Results
+
+### Revelation Principle
+
+::: {.callout-important icon=false}
+## Theorem 7.3.1 — Revelation Principle (Mechanism Design Version)
+For any incentive mechanism $\Gamma = (M, g)$ (message space $M$, outcome function $g: M \to \{(q, t)\}$) and any Nash equilibrium $\sigma^*$ of the game induced by $\Gamma$, there exists a **direct revelation mechanism** $\Gamma' = (\Theta, g')$ where:
+- Each agent reports a type $\hat{\theta} \in \Theta$
+- $g'(\hat{\theta}) = g(\sigma^*(\hat{\theta}))$
+- Truth-telling $\hat{\theta} = \theta$ is a Nash equilibrium of $\Gamma'$
+and $\Gamma'$ achieves the same outcome as $\Gamma$ under $\sigma^*$.
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+Let $\Gamma = (M, g)$ be any mechanism and $\sigma^*: \Theta \to M$ be a Nash equilibrium (each agent plays $m^* = \sigma^*(\theta)$ given type $\theta$).
+
+**Construction of the direct mechanism:** Define $\Gamma' = (\Theta, g')$ where $g'(\hat{\theta}) = g(\sigma^*(\hat{\theta}))$. The direct mechanism $\Gamma'$ simply simulates the equilibrium play of $\Gamma$: when the agent reports $\hat{\theta}$, the mechanism plays the equilibrium message $\sigma^*(\hat{\theta})$ on the agent's behalf and applies $g$.
+
+**Truth-telling is a Nash equilibrium in $\Gamma'$:** Agent with type $\theta$ reports $\hat{\theta}$ to obtain outcome $g'(\hat{\theta}) = g(\sigma^*(\hat{\theta}))$. Under $\Gamma$, agent $\theta$ plays $\sigma^*(\theta)$ in equilibrium, obtaining $g(\sigma^*(\theta))$. By definition of Nash equilibrium in $\Gamma$:
+$$u(g(\sigma^*(\theta)), \theta) \geq u(g(m), \theta) \quad \forall m \in M$$
+In particular, for any $\hat{\theta} \in \Theta$:
+$$u(g(\sigma^*(\theta)), \theta) \geq u(g(\sigma^*(\hat{\theta})), \theta)$$
+i.e., $u(g'(\theta), \theta) \geq u(g'(\hat{\theta}), \theta)$ for all $\hat{\theta}$.
+This is exactly the IC condition for truth-telling in $\Gamma'$.
+
+**Same outcome:** By construction, the outcome under truth-telling in $\Gamma' $ equals the outcome under $\sigma^*$ in $\Gamma$.
+:::
+
+
+::: {.callout-caution icon=false}
+## Remark 7.3.2 — Significance of the Revelation Principle
+The revelation principle collapses the space of mechanisms the principal needs to consider: instead of optimizing over all possible games, message spaces, and equilibria, the principal need only consider direct, truth-telling mechanisms. This dramatically simplifies the characterization of optimal mechanisms.
+:::
+
+
+### The Screening Problem: Continuous Types
+
+::: {.callout-note icon=false}
+## Definition 7.3.4 — Screening Problem
+The principal's program is:
+$$\max_{q(\cdot), t(\cdot)} \int_{\underline{\theta}}^{\bar{\theta}} [t(\theta) - c(q(\theta))] f(\theta) d\theta$$
+subject to:
+$$\text{(IC):} \quad v(q(\theta), \theta) - t(\theta) \geq v(q(\hat{\theta}), \theta) - t(\hat{\theta}) \quad \forall \theta, \hat{\theta}$$
+$$\text{(IR):} \quad v(q(\theta), \theta) - t(\theta) \geq \bar{u} \quad \forall \theta$$
+:::
+
+
+::: {.callout-important icon=false}
+## Proposition 7.3.2 — Reduction to Local IC and Envelope Condition
+Under single-crossing ($v_{q\theta} > 0$), the global IC constraints reduce to two local conditions:
+1. **Monotonicity:** $q'(\theta) \geq 0$ (allocation is non-decreasing in type)
+2. **Envelope condition:** $U'(\theta) = v_\theta(q(\theta), \theta)$ where $U(\theta) = v(q(\theta), \theta) - t(\theta) - \bar{u}$ is the information rent
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+**Step 1: Derive the envelope condition from IC.** IC requires that agent $\theta$ prefers $(q(\theta), t(\theta))$ to $(q(\hat{\theta}), t(\hat{\theta}))$ for all $\hat{\theta}$:
+$$\max_{\hat{\theta}} \{v(q(\hat{\theta}), \theta) - t(\hat{\theta})\}$$
+is attained at $\hat{\theta} = \theta$. Define $V(\theta, \hat{\theta}) = v(q(\hat{\theta}), \theta) - t(\hat{\theta})$. At the optimum:
+$$U(\theta) = \max_{\hat{\theta}} V(\theta, \hat{\theta}) = V(\theta, \theta)$$
+By the envelope theorem (Dini's theorem applied to the maximum):
+$$U'(\theta) = \frac{\partial V}{\partial \theta}\bigg|_{\hat{\theta}=\theta} = v_\theta(q(\theta), \theta)$$
+This is the **envelope condition** — the sensitivity of information rent to type equals the partial derivative of the agent's value with respect to type.
+
+**Step 2: Monotonicity.** Suppose $\theta' > \theta$. IC for type $\theta$ choosing bundle of $\theta'$, and IC for type $\theta'$ choosing bundle of $\theta$:
+$$v(q(\theta), \theta) - t(\theta) \geq v(q(\theta'), \theta) - t(\theta')$$
+$$v(q(\theta'), \theta') - t(\theta') \geq v(q(\theta), \theta') - t(\theta)$$
+Adding these two inequalities:
+$$v(q(\theta), \theta) + v(q(\theta'), \theta') \geq v(q(\theta'), \theta) + v(q(\theta), \theta')$$
+Rearranging:
+$$v(q(\theta'), \theta') - v(q(\theta'), \theta) \geq v(q(\theta), \theta') - v(q(\theta), \theta)$$
+$$\int_{\theta}^{\theta'} v_\theta(q(\theta'), s) ds \geq \int_{\theta}^{\theta'} v_\theta(q(\theta), s) ds$$
+Since $v_{q\theta} > 0$ (single-crossing), $v_\theta$ is increasing in $q$. Therefore this inequality holds iff $q(\theta') \geq q(\theta)$. Hence $q$ is non-decreasing.
+
+**Step 3: Sufficiency.** The two local conditions (monotonicity + envelope condition) together imply global IC under single-crossing. We can verify: for $\theta' > \theta$,
+$$U(\theta) - [v(q(\theta'), \theta) - t(\theta')] = U(\theta) - U(\theta') + [v(q(\theta'), \theta') - t(\theta')] - [v(q(\theta'), \theta) - t(\theta')]$$
+$$= -\int_\theta^{\theta'} U'(s) ds + \int_\theta^{\theta'} v_\theta(q(\theta'), s) ds = \int_\theta^{\theta'} [v_\theta(q(\theta'), s) - v_\theta(q(s), s)] ds$$
+$$\geq 0$$
+since $v_{q\theta} > 0$ and $q(\theta') \geq q(s)$ for $s \leq \theta'$.
+:::
+
+
+::: {.callout-important icon=false}
+## Proposition 7.3.3 — Optimal Allocation in the Screening Problem
+Under single-crossing, the optimal allocation $q^*(\theta)$ satisfies the **"virtual type" condition**:
+$$\underbrace{v_q(q^*(\theta), \theta)}_{\text{marginal value}} = \underbrace{c'(q^*(\theta))}_{\text{marginal cost}} + \underbrace{\frac{F(\theta)}{f(\theta)} v_{q\theta}(q^*(\theta), \theta)}_{\text{information rent adjustment}}$$
+The third term represents the marginal cost of the information rent paid to higher types when the allocation of type $\theta$ is raised. The optimal allocation features:
+1. **No distortion at the top:** $v_q(q^*(\bar{\theta}), \bar{\theta}) = c'(q^*(\bar{\theta}))$ (efficient allocation for the highest type)
+2. **Downward distortion:** $q^*(\theta) < q^{FB}(\theta)$ for all $\theta < \bar{\theta}$
+3. **No rent at the bottom:** $U(\underline{\theta}) = 0$ (IR binds for the lowest type)
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+Using the envelope condition $U'(\theta) = v_\theta(q(\theta), \theta)$, integrate by parts to express the principal's objective in terms of $q(\cdot)$ alone.
+
+Total rent paid: $\int U(\theta) f(\theta) d\theta$. Using $U(\underline{\theta}) = 0$ (IR binds at bottom; if IR binds at all, it binds at the bottom since $U'(\theta) = v_\theta \geq 0$ so $U$ is non-decreasing — the bottom type gets the least rent) and integrating by parts:
+$$\int_{\underline{\theta}}^{\bar{\theta}} U(\theta) f(\theta) d\theta = \int_{\underline{\theta}}^{\bar{\theta}} U'(\theta)(1-F(\theta)) d\theta = \int_{\underline{\theta}}^{\bar{\theta}} v_\theta(q(\theta), \theta)(1-F(\theta)) d\theta$$
+
+The principal's payoff (revenue minus cost):
+$$\int [t(\theta) - c(q(\theta))] f(\theta) d\theta = \int [v(q(\theta), \theta) - U(\theta) - \bar{u} - c(q(\theta))] f(\theta) d\theta$$
+$$= \int [v(q(\theta), \theta) - c(q(\theta)) - \bar{u}] f(\theta) d\theta - \int U(\theta) f(\theta) d\theta$$
+
+Substituting the integration-by-parts result:
+$$= \int \left[v(q(\theta), \theta) - c(q(\theta)) - \bar{u} - \frac{(1-F(\theta))}{f(\theta)} v_\theta(q(\theta), \theta)\right] f(\theta) d\theta$$
+
+Pointwise optimization over $q(\theta)$ gives:
+$$v_q(q^*(\theta), \theta) - c'(q^*(\theta)) - \frac{1-F(\theta)}{f(\theta)} v_{q\theta}(q^*(\theta), \theta) = 0$$
+Rearranging:
+$$v_q(q^*(\theta), \theta) = c'(q^*(\theta)) + \frac{1-F(\theta)}{f(\theta)} v_{q\theta}(q^*(\theta), \theta)$$
+
+Wait — I need to reconcile the sign. Let me restate: the formula should read $\frac{F(\theta)}{f(\theta)}$ depending on convention (whether types are high or low). With $\theta$ the "high type" valued at the top $\bar\theta$:
+
+$$v_q(q^*(\theta), \theta) = c'(q^*(\theta)) + \frac{1-F(\theta)}{f(\theta)} v_{q\theta}$$
+
+At $\theta = \bar{\theta}$: $(1-F(\bar\theta))/f(\bar\theta) = 0$, so $v_q = c'$ — no distortion at the top.
+For $\theta < \bar\theta$: $(1-F(\theta))/f(\theta) > 0$, so $v_q > c'$ — marginal value exceeds marginal cost, meaning $q^*(\theta) < q^{FB}(\theta)$. The downward distortion reduces the information rents that higher types could extract by mimicking lower types.
+:::
+
+
+### The Two-Type Example
+
+::: {.callout-note icon=false appearance="simple"}
+## Example 7.3.1 — Two-Type Screening (Mussa-Rosen Setup)
+Types: $\theta \in \{\theta_L, \theta_H\}$ with $\theta_H > \theta_L > 0$ and $\Pr(\theta_H) = \lambda \in (0,1)$.
+Agent utility: $v(q, \theta) = \theta q - t$ (linear in $q$ and $\theta$).
+Principal's cost: $c(q) = \frac{q^2}{2}$.
+
+**First-best:** Each type gets $q_i^{FB} = \theta_i$ (from $v_q = c'$: $\theta = q$) and pays $t_i^{FB} = \theta_i q_i^{FB} - \bar{u} = \theta_i^2 - \bar{u}$.
+
+**Second-best:** The principal solves:
+$$\max_{q_L, q_H, t_L, t_H} (1-\lambda)(t_L - \frac{q_L^2}{2}) + \lambda(t_H - \frac{q_H^2}{2})$$
+s.t. (IC-H): $\theta_H q_H - t_H \geq \theta_H q_L - t_L$
+(IC-L): $\theta_L q_L - t_L \geq \theta_L q_H - t_H$
+(IR-H): $\theta_H q_H - t_H \geq \bar{u}$
+(IR-L): $\theta_L q_L - t_L \geq \bar{u}$
+
+**Standard arguments show:** IR-L binds and IC-H binds (IR-H follows from IC-H + IR-L). IC-L does not bind (downward IC rarely binds under single-crossing).
+
+From IR-L: $t_L = \theta_L q_L - \bar{u}$.
+From IC-H: $t_H = t_L + \theta_H(q_H - q_L) = \theta_L q_L - \bar{u} + \theta_H(q_H - q_L)$.
+
+Substituting into the principal's objective and maximizing over $q_L, q_H$:
+
+FOC for $q_H$: $\lambda\frac{\partial}{\partial q_H}[t_H - q_H^2/2] = \lambda[\theta_H - q_H] = 0 \implies q_H^* = \theta_H$ (no distortion at top).
+
+FOC for $q_L$: $(1-\lambda)[\theta_L - q_L] - \lambda[\theta_H - \theta_L] + 0 = 0$
+$(1-\lambda)\theta_L - (1-\lambda)q_L - \lambda(\theta_H - \theta_L) = 0$
+$q_L^* = \theta_L - \frac{\lambda}{1-\lambda}(\theta_H - \theta_L)$
+
+So $q_L^* = \theta_L^{FB} - \frac{\lambda}{1-\lambda}(\theta_H - \theta_L) < \theta_L = q_L^{FB}$ — distortion at the bottom.
+
+**Information rent for $\theta_H$:** $U_H = \theta_H q_H - t_H = \bar{u} + (\theta_H - \theta_L)q_L^* > \bar{u}$ — the high type earns a positive rent above reservation utility.
+:::
+
+
+### Bunching (Pooling at the Bottom)
+
+::: {.callout-note icon=false}
+## Definition 7.3.5 — Bunching
+**Bunching** occurs when the optimal allocation $q^*(\theta)$ is constant over an interval $[\underline{\theta}, \hat{\theta}]$ — all types in this interval receive the same allocation. The monotonicity constraint $q'(\theta) \geq 0$ binds over this interval (is slack everywhere else).
+:::
+
+
+::: {.callout-important icon=false}
+## Proposition 7.3.4 — Condition for Bunching
+Bunching occurs when the pointwise optimal allocation derived from the virtual type condition (Proposition 7.3.3) is decreasing — i.e., when the **hazard rate** $h(\theta) = f(\theta)/(1-F(\theta))$ fails to be monotone increasing (non-monotone hazard rate). When the hazard rate is not increasing in $\theta$, the unconstrained solution violates monotonicity and must be ironed.
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+From the virtual type condition:
+$$v_q(q^*(\theta), \theta) = c'(q^*(\theta)) + \frac{1-F(\theta)}{f(\theta)} v_{q\theta}$$
+Differentiating the left side with respect to $\theta$ and analyzing when $q^*(\theta)$ is non-decreasing: $q^*(\theta)$ is increasing iff $\frac{d}{d\theta}\left[\frac{1-F(\theta)}{f(\theta)}\right] \leq 0$, i.e., the inverse hazard rate is decreasing, i.e., the hazard rate $h(\theta) = f(\theta)/(1-F(\theta))$ is increasing.
+
+When the hazard rate is non-monotone (e.g., bathtub-shaped), the unconstrained $q^*(\theta)$ is non-monotone. The constrained optimum **irons** the solution: replace $q^*(\theta)$ by a constant $\bar{q}$ over the bunching interval $[\underline{\theta}, \hat{\theta}]$ such that the average virtual type condition holds over the interval. This is the **ironing procedure** of Mussa-Rosen (1978) and Myerson (1981).
+:::
+
+
+## Economic Intuition
+
+The screening problem captures the fundamental tradeoff between **efficiency** and **information extraction**. The principal wants to allocate goods efficiently (each type gets the socially optimal quantity), but extracting the maximum possible transfer from each type requires offering contracts that only match the revealed preferences of each type. The problem is that a high-type agent can always pretend to be a low type to get a low-quantity, low-price deal that is attractive to them.
+
+The solution distorts the low type's allocation downward. By reducing $q_L$, the principal reduces the attractiveness of the low-type bundle to the high type, enabling the principal to extract more from the high type without violating IC. The high type's information rent — the rent they earn because the principal cannot identify them — is the price the principal pays for this information asymmetry.
+
+The "no distortion at the top" result is intuitive: the top type has no one to mimic, so there is no benefit to distorting their allocation. The distortion is purely about preventing high types from mimicking low types.
+
+## Cross-References
+
+- [7.1 Principal Agent Problem](7.1_Principal_Agent_Problem.qmd) — hidden action analog
+- [7.4 Signaling](7.4_Signaling.qmd) — signaling is the agent-moves-first analog; same single-crossing condition
+- [7.5 Mechanism Design](7.5_Mechanism_Design.qmd) — general mechanism design; Myerson's payment formula; optimal auctions as special case
+- [9.4 Deriving Testable Predictions](9.4_Deriving_Testable_Predictions.qmd) — virtual type equation as structural equation

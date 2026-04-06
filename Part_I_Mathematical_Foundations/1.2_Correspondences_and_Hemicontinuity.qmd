@@ -1,0 +1,232 @@
+---
+title: "1.2 Correspondences and Hemicontinuity"
+---
+
+# 1.2 Correspondences and Hemicontinuity
+
+> **MWG Reference:** Mathematical Appendix, Sections M.H, M.K, pp. 959–966, and Appendix to Chapter 3, pp. 82–84
+
+## Context
+
+Many fundamental objects in microeconomics are correspondences (set-valued maps) rather than single-valued functions: the Walrasian demand $x(p,w)$ may be multi-valued when indifference curves have flat segments; supply correspondences are multi-valued whenever marginal cost is flat; the budget correspondence $B(p,w)$ is always set-valued; and best-response correspondences in game theory are generally set-valued. To study how these objects change as parameters vary, we need a notion of continuity for correspondences. This note develops two one-sided notions — upper hemicontinuity (UHC) and lower hemicontinuity (LHC) — and then proves Berge's Maximum Theorem, which is the workhorse result connecting continuity of correspondences to continuity of value functions. The note applies these results to the budget correspondence and the Walrasian demand correspondence. Berge's theorem will be used repeatedly in Parts II, III, V, and VII.
+
+---
+
+## Definitions
+
+::: {.callout-note icon=false}
+## Definition 1.10 — Correspondence
+Let $X$ and $Y$ be nonempty sets. A **correspondence** $\phi: X \rightrightarrows Y$ assigns to each $x \in X$ a nonempty subset $\phi(x) \subseteq Y$. The **graph** of $\phi$ is the set:
+$$\text{Gr}(\phi) = \{ (x, y) \in X \times Y : y \in \phi(x) \}.$$
+The **image** of a set $A \subseteq X$ under $\phi$ is $\phi(A) = \bigcup_{x \in A} \phi(x)$.
+:::
+
+
+::: {.callout-caution icon=false}
+## Remark
+Every function $f: X \to Y$ is a correspondence with $\phi(x) = \{f(x)\}$ (a singleton) for all $x$. The theory of correspondences is strictly more general.
+:::
+
+
+::: {.callout-note icon=false}
+## Definition 1.11 — Upper Hemicontinuity (Sequential Definition)
+Let $(X, d_X)$ and $(Y, d_Y)$ be metric spaces. A correspondence $\phi: X \rightrightarrows Y$ is **upper hemicontinuous (UHC) at $x \in X$** if: whenever $x_n \to x$ in $X$ and $y_n \in \phi(x_n)$ for all $n$, the sequence $(y_n)$ has a subsequence converging to some $y \in \phi(x)$.
+
+$\phi$ is **UHC** (on $X$) if it is UHC at every $x \in X$.
+:::
+
+
+::: {.callout-note icon=false}
+## Definition 1.12 — Upper Hemicontinuity (Open-Sets Definition)
+A correspondence $\phi: X \rightrightarrows Y$ is **UHC at $x \in X$** if for every open set $V \supseteq \phi(x)$ in $Y$, there exists an open set $U \ni x$ in $X$ such that $\phi(U) = \bigcup_{x' \in U} \phi(x') \subseteq V$.
+:::
+
+
+::: {.callout-caution icon=false}
+## Remark
+Definitions 1.11 and 1.12 are equivalent when $Y$ is compact (see Theorem 1.7 below). The open-sets definition is cleaner for abstract proofs, while the sequential definition is easier to verify in applications. When $\phi$ is single-valued (a function), UHC reduces to ordinary continuity.
+:::
+
+
+::: {.callout-note icon=false}
+## Definition 1.13 — Closed Graph
+A correspondence $\phi: X \rightrightarrows Y$ has a **closed graph** if $\text{Gr}(\phi)$ is a closed subset of $X \times Y$ (under the product metric). Equivalently: if $x_n \to x$, $y_n \to y$, and $y_n \in \phi(x_n)$ for all $n$, then $y \in \phi(x)$.
+:::
+
+
+::: {.callout-important icon=false}
+## Theorem 1.7 — UHC and Closed Graph
+Let $\phi: X \rightrightarrows Y$ where $Y$ is compact. Then $\phi$ is UHC at $x$ if and only if $\phi$ has a closed graph at $x$ and $\phi(x)$ is closed.
+
+More precisely: if $\phi$ is UHC and has compact values, then $\phi$ has a closed graph. Conversely, if $Y$ is compact and $\phi$ has a closed graph, then $\phi$ is UHC.
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+**UHC + compact values $\Rightarrow$ closed graph.** Suppose $x_n \to x$ and $y_n \in \phi(x_n)$ with $y_n \to y$. Since $\phi$ is UHC, $(y_n)$ has a subsequence $y_{n_k} \to z \in \phi(x)$. But $y_n \to y$, so every subsequence converges to $y$, hence $z = y \in \phi(x)$.
+
+**$Y$ compact, closed graph $\Rightarrow$ UHC.** Let $x_n \to x$ and $y_n \in \phi(x_n)$. Since $Y$ is compact, $(y_n)$ has a convergent subsequence $y_{n_k} \to y$. Since $\phi$ has a closed graph and $(x_{n_k}, y_{n_k}) \to (x, y)$ with $y_{n_k} \in \phi(x_{n_k})$, we have $y \in \phi(x)$. So $\phi$ is UHC. $\blacksquare$
+:::
+
+
+::: {.callout-note icon=false}
+## Definition 1.14 — Lower Hemicontinuity (Sequential Definition)
+A correspondence $\phi: X \rightrightarrows Y$ is **lower hemicontinuous (LHC) at $x \in X$** if: whenever $x_n \to x$ and $y \in \phi(x)$, there exist $y_n \in \phi(x_n)$ such that $y_n \to y$.
+
+$\phi$ is **LHC** (on $X$) if it is LHC at every $x \in X$.
+:::
+
+
+::: {.callout-note icon=false}
+## Definition 1.15 — Continuous Correspondence
+A correspondence $\phi: X \rightrightarrows Y$ is **continuous at $x$** if it is both UHC and LHC at $x$. It is **continuous** if it is continuous at every $x \in X$.
+:::
+
+
+::: {.callout-caution icon=false}
+## Remark
+UHC and LHC capture different aspects of "continuity." Intuitively:
+- **UHC** says the correspondence does not "explode" (the image does not suddenly become much larger as we perturb $x$). Equivalently, the graph does not have points "above" the limit that escaped from the image.
+- **LHC** says the correspondence does not "implode" (the image does not suddenly become much smaller; every selection near the limit can be tracked by nearby selections). Equivalently, no part of $\phi(x)$ is "isolated" from nearby images.
+
+The distinction matters: Walrasian demand is always UHC, but is LHC only if the optimum is unique (otherwise, a point removed from the argmax set by a perturbation violates LHC).
+:::
+
+
+---
+
+## Main Results
+
+::: {.callout-important icon=false}
+## Theorem 1.8 — Berge's Maximum Theorem (Theorem M.K.6)
+Let $X \subseteq \mathbb{R}^K$ and $Y \subseteq \mathbb{R}^L$ be metric spaces. Let $f: X \times Y \to \mathbb{R}$ be a **continuous** function, and let $\phi: X \rightrightarrows Y$ be a **continuous** (UHC and LHC) correspondence with **nonempty compact values** $\phi(x)$ for all $x \in X$.
+
+Define the **value function**:
+$$V(x) = \max_{y \in \phi(x)} f(x, y)$$
+and the **argmax correspondence**:
+$$\phi^*(x) = \arg\max_{y \in \phi(x)} f(x, y) = \{ y \in \phi(x) : f(x, y) = V(x) \}.$$
+
+Then:
+1. $V: X \to \mathbb{R}$ is **continuous**.
+2. $\phi^*: X \rightrightarrows Y$ is **UHC** and has **nonempty compact values**.
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+**Preliminary:** Since $\phi(x)$ is compact and $f(x, \cdot)$ is continuous (as a restriction of the continuous function $f$), Weierstrass (Theorem 1.5) guarantees $V(x)$ is well-defined and $\phi^*(x)$ is nonempty for all $x$. Compactness of $\phi^*(x)$: $\phi^*(x) = \{y \in \phi(x) : f(x,y) = V(x)\}$ is the preimage of the closed set $\{V(x)\}$ under the continuous map $f(x, \cdot)$, intersected with the compact set $\phi(x)$, hence compact.
+
+**Step 1: $V$ is upper semicontinuous.**
+Let $x_n \to x$. We want $\limsup_{n} V(x_n) \leq V(x)$.
+
+For each $n$, let $y_n \in \phi^*(x_n)$, so $V(x_n) = f(x_n, y_n)$. Since $\phi$ is UHC and $y_n \in \phi(x_n)$, the sequence $(y_n)$ has a subsequence $y_{n_k} \to y \in \phi(x)$.
+
+Along this subsequence: $V(x_{n_k}) = f(x_{n_k}, y_{n_k}) \to f(x, y)$ (continuity of $f$). Since $y \in \phi(x)$, we have $f(x, y) \leq V(x)$. Thus:
+$$\limsup_k V(x_{n_k}) = f(x, y) \leq V(x).$$
+Since this holds for any subsequence, $\limsup_n V(x_n) \leq V(x)$.
+
+**Step 2: $V$ is lower semicontinuous.**
+Let $x_n \to x$. We want $\liminf_n V(x_n) \geq V(x)$.
+
+Let $y^* \in \phi^*(x)$, so $V(x) = f(x, y^*)$. Since $\phi$ is LHC at $x$ and $y^* \in \phi(x)$, there exist $y_n \in \phi(x_n)$ with $y_n \to y^*$.
+
+Then: $V(x_n) \geq f(x_n, y_n) \to f(x, y^*) = V(x)$ (continuity of $f$).
+So $\liminf_n V(x_n) \geq V(x)$.
+
+**Step 3: $V$ is continuous.**
+From Steps 1 and 2: $\limsup_n V(x_n) \leq V(x) \leq \liminf_n V(x_n)$. Since $\liminf \leq \limsup$ always holds, we have equality throughout: $\lim_n V(x_n) = V(x)$. So $V$ is continuous (by the sequential characterization, Theorem 1.4).
+
+**Step 4: $\phi^*$ is UHC.**
+Let $x_n \to x$ and $y_n \in \phi^*(x_n)$. We want a subsequence $y_{n_k} \to y \in \phi^*(x)$.
+
+Since $y_n \in \phi^*(x_n) \subseteq \phi(x_n)$ and $\phi$ is UHC, $(y_n)$ has a subsequence $y_{n_k} \to y \in \phi(x)$.
+
+We check $y \in \phi^*(x)$: $f(x_{n_k}, y_{n_k}) = V(x_{n_k})$. Taking limits (using continuity of $f$ and $V$): $f(x, y) = V(x)$. So $y \in \phi^*(x)$.
+
+Thus $\phi^*$ is UHC. $\blacksquare$
+:::
+
+
+::: {.callout-caution icon=false}
+## Remark
+Note carefully where each hypothesis is used:
+- **UHC of $\phi$** is used in Steps 1 and 4 (to extract convergent subsequences from $\phi(x_n)$).
+- **LHC of $\phi$** is used in Step 2 (to track the maximizer $y^*$ at the limit with nearby feasible points).
+- **Compactness of $\phi(x)$** is used to ensure existence via Weierstrass and to extract convergent subsequences.
+- **Continuity of $f$** is used in all steps to pass limits through $f$.
+
+If $\phi$ is only UHC (not LHC), then $V$ is only upper semicontinuous. If $\phi$ is only LHC, then $V$ is only lower semicontinuous. Full continuity of $V$ requires full continuity of $\phi$.
+:::
+
+
+---
+
+## Economic Applications
+
+::: {.callout-important icon=false}
+## Theorem 1.9 — Budget Correspondence is Continuous
+Let $L \geq 1$. Define the budget correspondence $B: \mathbb{R}^L_{++} \times \mathbb{R}_{++} \rightrightarrows \mathbb{R}^L_+$ by:
+$$B(p, w) = \{ x \in \mathbb{R}^L_+ : p \cdot x \leq w \}.$$
+Then $B$ is continuous (UHC and LHC) and has nonempty compact values for all $(p, w) \in \mathbb{R}^L_{++} \times \mathbb{R}_{++}$.
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+**Nonemptiness:** $0 \in B(p,w)$ always (since $p \cdot 0 = 0 \leq w$).
+
+**Compactness of $B(p,w)$:** $B(p,w)$ is closed (intersection of the closed half-space $\{p \cdot x \leq w\}$ and the closed set $\mathbb{R}^L_+$). It is bounded: for each $\ell$, $x_\ell \leq (p \cdot x)/p_\ell \leq w/p_\ell < \infty$ since $p_\ell > 0$. By Heine-Borel, $B(p,w)$ is compact.
+
+**UHC:** Suppose $(p_n, w_n) \to (p, w)$ and $x_n \in B(p_n, w_n)$. We need a subsequence of $(x_n)$ converging to a point in $B(p,w)$.
+
+Since $p_n \to p \in \mathbb{R}^L_{++}$ and $w_n \to w > 0$, for large enough $n$, $p_n \geq \frac{p}{2} \gg 0$ (componentwise) and $w_n \leq 2w$. So $x_{n,\ell} \leq w_n / p_{n,\ell} \leq 2w / (p_\ell/2) = 4w/p_\ell$ for all $n$ large. Thus $(x_n)$ is eventually bounded. By Bolzano-Weierstrass, it has a convergent subsequence $x_{n_k} \to x \geq 0$.
+
+Check $x \in B(p,w)$: $p_{n_k} \cdot x_{n_k} \leq w_{n_k}$ for all $k$; taking limits: $p \cdot x \leq w$. Also $x \geq 0$. So $x \in B(p,w)$. UHC verified.
+
+**LHC:** Suppose $(p_n, w_n) \to (p,w)$ and $x \in B(p,w)$. We need $x_n \in B(p_n, w_n)$ with $x_n \to x$.
+
+*Case 1: $p \cdot x < w$ (strict interior of budget set).* Since $p_n \cdot x \to p \cdot x < w$ and $w_n \to w$, for large $n$: $p_n \cdot x < w_n$. Take $x_n = x$ for all large $n$. Then $x_n \in B(p_n, w_n)$ and $x_n \to x$.
+
+*Case 2: $p \cdot x = w$ (on the budget hyperplane).* Let $e = (1, 1, \ldots, 1)$. For small $\varepsilon > 0$, define $x(\varepsilon) = (1-\varepsilon)x$. Then $p \cdot x(\varepsilon) = (1-\varepsilon)w < w$, so $x(\varepsilon)$ is in the interior of $B(p,w)$. For fixed $\varepsilon$, Case 1 gives $x_n(\varepsilon) = x(\varepsilon)$ for large $n$ with $x_n(\varepsilon) \in B(p_n, w_n)$.
+
+More carefully: define $\lambda_n = \min(1, w_n / (p_n \cdot x))$ if $p_n \cdot x > 0$ and $\lambda_n = 1$ if $p_n \cdot x = 0$. Set $x_n = \lambda_n x$. Then $p_n \cdot x_n = \lambda_n (p_n \cdot x) \leq w_n$, so $x_n \in B(p_n, w_n)$. Moreover, $\lambda_n = w_n / (p_n \cdot x) \to w / (p \cdot x) = 1$ (since $p_n \to p$, $w_n \to w$, and $p \cdot x = w > 0$). Thus $x_n \to x$.
+
+If $x = 0$: take $x_n = 0$ always. $0 \in B(p_n, w_n)$ and $0 \to 0 = x$.
+
+In all cases, LHC is verified. $\blacksquare$
+:::
+
+
+::: {.callout-caution icon=false}
+## Remark
+**Walrasian demand correspondence.** By Berge's Maximum Theorem (Theorem 1.8), since $u: \mathbb{R}^L_+ \to \mathbb{R}$ is continuous, $B: \mathbb{R}^L_{++} \times \mathbb{R}_{++} \rightrightarrows \mathbb{R}^L_+$ is continuous with compact values, the Walrasian demand correspondence:
+$$x(p,w) = \arg\max_{x \in B(p,w)} u(x)$$
+is **UHC** with compact values, and the indirect utility function:
+$$v(p,w) = \max_{x \in B(p,w)} u(x)$$
+is **continuous** in $(p,w)$. This is MWG Proposition 3.D.3.
+:::
+
+
+---
+
+## Economic Intuition
+
+Upper hemicontinuity of demand says: if I slightly perturb prices and wealth, optimal choices cannot "jump to infinity" — any sequence of optimal choices under slightly perturbed parameters must have a subsequence that converges to an optimal choice at the limit parameters. This is the formalization of the intuition that demand is "well-behaved" as prices vary. The budget correspondence is the key link: it is UHC because the budget set cannot suddenly expand without bound (it stays bounded due to positive prices), and it is LHC because the budget set cannot suddenly collapse (a strictly affordable bundle remains strictly affordable after a small perturbation, and a boundary bundle can be approximated by interior ones).
+
+Lower hemicontinuity is the harder condition to verify and the more restrictive one economically. It fails whenever the feasible set has a "kink" or "notch" that disappears under perturbation — for example, a quantity constraint or a non-convex budget set. In such cases, Berge's theorem gives only upper semicontinuity of the value function. Many applied models are built on value functions that are assumed to be continuous, and verifying the LHC condition on the constraint correspondence is the key step in justifying this assumption.
+
+::: {.callout-note icon=false appearance="simple"}
+## Example
+**Failure of LHC.** Consider a non-linear budget constraint: $\phi(p) = \{x \in \mathbb{R}_+ : x \leq 1/p\}$. For $p > 0$: $\phi(p) = [0, 1/p]$, which is nonempty and compact. At $p \to 0^+$: $1/p \to \infty$, so $\phi(p)$ "explodes." This correspondence is LHC (for any $x \in \phi(0^+)$, we can find $x_n \in \phi(p_n)$ with $x_n \to x$), but is not well-defined at $p = 0$ since $\phi(0)$ would be unbounded. This is why we require $p \gg 0$ in the budget correspondence.
+:::
+
+
+---
+
+## Cross-References
+
+- [1.1 Metric Spaces and Topology](1.1_Metric_Spaces_and_Topology.qmd) — Compactness (used in Berge's theorem for compact values and Weierstrass for existence); continuity of functions (special case of UHC).
+- [1.3 Optimization Theory](1.3_Optimization_Theory.qmd) — Envelope Theorem complements Berge: Berge says $V$ is continuous; Envelope says $V$ is differentiable under stronger conditions.
+- [1.4 Fixed Point Theorems](1.4_Fixed_Point_Theorems.qmd) — Kakutani's theorem applies to UHC correspondences; Berge provides the UHC property needed for best-response correspondences.
+- [Index](../Part_II_Consumer_Theory/Index.qmd) — Budget correspondence continuity and UHC of demand are used throughout; Berge underlies Proposition 3.D.3 on continuity of demand.

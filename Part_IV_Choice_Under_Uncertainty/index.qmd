@@ -1,0 +1,66 @@
+---
+title: "Part IV: Choice Under Uncertainty — Overview"
+---
+
+# Part IV: Choice Under Uncertainty — Overview
+
+> **MWG Reference:** Ch. 6, pp. 167–233
+
+## Context
+
+Uncertainty pervades economic life. Agents must make decisions — how much insurance to buy, how to allocate a portfolio, whether to accept a contract — before they know the realized state of the world. The theory of choice under uncertainty provides the axiomatic foundation for modeling such decisions.
+
+The dominant framework is the **von Neumann-Morgenstern (VNM) expected utility (EU) model**, which rests on a specific set of axioms about preferences over probability distributions (lotteries). The central result — the **VNM representation theorem** — establishes that preferences satisfying rationality, continuity, and the independence axiom can be represented by the expected value of a Bernoulli utility function over outcomes. This representation is unique up to positive affine transformation, which gives it cardinal content.
+
+Expected utility theory is foundational for a vast range of applied fields:
+
+- **Insurance and contract theory**: risk-averse agents are willing to pay a premium for coverage; the Arrow-Debreu framework for insurance markets rests on EU.
+- **Financial economics**: portfolio choice, asset pricing (CAPM, consumption CAPM), option pricing models all use EU as a starting point.
+- **Game theory under incomplete information**: Bayesian games, mechanism design, and the revelation principle require agents to have EU preferences over uncertain outcomes.
+- **Poverty and inequality analysis**: stochastic dominance criteria provide welfare rankings without specifying a particular social welfare function (directly linking to empirical welfare analysis).
+- **Behavioral economics**: the systematic violations of EU documented in experiments (Allais paradox, Ellsberg paradox) have motivated extensions (prospect theory, rank-dependent utility) that retain most of the EU framework's tractability while accommodating richer behavioral patterns.
+
+The four notes in this part build the theory from its axiomatic foundations through its key applied concepts, culminating in stochastic dominance, which bridges the normative theory and empirical welfare measurement.
+
+---
+
+## Notes in This Part
+
+| Note | Topic | Key Results |
+|------|-------|-------------|
+| [4.1 State Space Framework](4.1_State_Space_Framework.qmd) | Lotteries; axioms; Independence Axiom; Allais Paradox | Independence Axiom drives the EU form; Allais as systematic violation |
+| [4.2 Expected Utility Theory](4.2_Expected_Utility_Theory.qmd) | VNM theorem; Bernoulli utility; uniqueness; St. Petersburg | EU iff rationality + continuity + independence; $u$ unique up to affine transformation |
+| [4.3 Risk Aversion](4.3_Risk_Aversion.qmd) | Arrow-Pratt measures; CARA; CRRA; comparing risk aversion | $r_A = -u''/u'$; risk premium $\approx \frac{1}{2} r_A \sigma^2$; DARA/IARA |
+| [4.4 Stochastic Dominance](4.4_Stochastic_Dominance.qmd) | FSD; SSD; mean-preserving spread; welfare applications | FSD iff all $\uparrow$ $u$ prefer $F$; SSD iff all risk-averse $u$ prefer $F$ |
+
+---
+
+## Logical Dependencies
+
+$$
+\text{Rationality + Continuity + Independence} \xrightarrow{\text{VNM Theorem}} EU = \sum_n p_n u(c_n)
+$$
+$$
+\text{Concavity of } u \;\Leftrightarrow\; \text{Risk Aversion} \;\Rightarrow\; r_A(c) = -u''(c)/u'(c)
+$$
+$$
+F \succsim_1 G \;\Rightarrow\; F \succsim_2 G \;\Rightarrow\; \text{All risk-averse agents prefer } F
+$$
+
+---
+
+## Key Themes
+
+**The Independence Axiom** is the most important and most controversial axiom. All other standard axioms (rationality, continuity) carry over from deterministic choice theory. The Independence Axiom is specific to choice under uncertainty: it says that mixing two lotteries with a common third lottery preserves the ranking. This axiom drives the linearity of the EU representation (the expected value form), and its violation — as demonstrated by the Allais paradox — shows that real agents sometimes deviate systematically from EU.
+
+**Cardinal utility** plays a role here that it does not in deterministic choice theory. In deterministic consumer theory, only ordinal properties of $u$ matter (the ranking of consumption bundles). In EU theory, the curvature of $u$ has direct behavioral meaning: concavity of $u$ means risk aversion; the degree of concavity (measured by Arrow-Pratt) quantifies how much the agent dislikes uncertainty. This is because the Independence Axiom forces the utility representation to be linear in probabilities.
+
+**Stochastic dominance** provides welfare rankings that are **robust** to the particular choice of utility function, within a class. First-order stochastic dominance is robust to all monotone preferences; second-order stochastic dominance is robust to all monotone and concave preferences (risk-averse agents). This robustness is crucial for applied welfare analysis: instead of committing to a specific functional form for the social welfare function, the analyst can test for stochastic dominance and make welfare statements that hold for all functions in the relevant class.
+
+---
+
+## Cross-References
+
+- [1.1 Preference and Utility](1.1_Preference_and_Utility.qmd) — rational preferences and utility representation in the deterministic setting
+- [1.3 Optimization Theory](1.3_Optimization_Theory.qmd) — calculus tools used throughout (Taylor expansion for Arrow-Pratt, integration by parts for FSD/SSD)
+- [PS Uncertainty](PS_Uncertainty.qmd) — problem set for this part

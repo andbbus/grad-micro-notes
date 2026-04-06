@@ -1,0 +1,149 @@
+---
+title: "Problem Set — Part IX: Model Building for Empirics"
+---
+
+# Problem Set — Part IX: Model Building for Empirics
+
+> **Cross-references:** All notes in Part IX; [7.4 Signaling](7.4_Signaling.qmd); [APP Conflict and Resource Models](APP_Conflict_and_Resource_Models.qmd)
+
+**Instructions:** These problems are integrative: they require combining theoretical analysis (formal model solution) with empirical methodology (identification strategy design). For each problem, provide (a) the complete formal model with all definitions; (b) full derivations; and (c) an empirical strategy with explicit identification assumptions and testable predictions. Write all mathematics in LaTeX. Problems are designed at the level of a second-year PhD qualifying examination or an applied theory paper.
+
+---
+
+## Problem 1 — Extended Spence Signaling Model with Three Types
+
+**Background:** The two-type Spence model has a unique surviving PBE under the Intuitive Criterion: the least-costly separating equilibrium. Extending to three types creates richer equilibrium structure.
+
+**Setup:** Three types $\theta \in \{1, 2, 3\}$ with $\theta_1 < \theta_2 < \theta_3$. Education cost: $c(e, \theta) = e^2/(2\theta)$. Wages: $w = \mathbb{E}[\theta | e]$. Prior: $\Pr(\theta_i) = \lambda_i$ with $\lambda_1 + \lambda_2 + \lambda_3 = 1$.
+
+**(a) Full separation:** Characterize conditions on $(\theta_1, \theta_2, \theta_3, \lambda_1, \lambda_2, \lambda_3)$ under which there exists a fully separating PBE where $e_1 < e_2 < e_3$. Derive the conditions on education levels: find the IC constraints for each type (9 constraints), and argue which are binding and which are slack at the optimal separating equilibrium.
+
+**(b) Partial pooling:** Show that there may also exist equilibria in which $\theta_2$ and $\theta_3$ pool at a common education level $\bar{e}$ while $\theta_1$ separates at $e_1 = 0$. Derive the wage for the pooling bundle: $w(\bar{e}) = (\lambda_2 \theta_2 + \lambda_3 \theta_3)/(\lambda_2 + \lambda_3)$. Write out the IC constraints supporting this equilibrium.
+
+**(c) Intuitive Criterion in the three-type model:** Apply the Intuitive Criterion to the fully separating equilibrium. Does the least-costly separating equilibrium (where each type's education is the minimum that deters lower types from mimicking) survive? Show that with three types, the Intuitive Criterion may not fully pin down a unique equilibrium — there may be a set of surviving equilibria. Characterize this set.
+
+**(d) D1 criterion:** Apply the D1 criterion to the three-type model. Show that D1 achieves a unique selection. State the unique surviving equilibrium.
+
+**(e) Testable prediction and identification:** State one clear comparative static of the model: how does the minimum separating education level for $\theta_3$ change when $\lambda_2$ increases (more middle-type workers)? Design an empirical strategy to test whether the observed education-wage relationship in a labor market reflects signaling. Describe: (i) the ideal natural experiment; (ii) the regression specification; (iii) how you would use variation in cohort composition ($\lambda$) to test the signaling model vs. human capital accumulation.
+
+---
+
+## Problem 2 — Household Agricultural Input Choice Under Price Uncertainty
+
+**Background:** This problem develops a structural model of household fertilizer demand under output price uncertainty and derives an Euler equation-style moment condition.
+
+**Setup:** A smallholder household maximizes expected utility over consumption in two periods. In period 1, the household purchases fertilizer $x$ at price $w$ and plants a crop. In period 2, the crop yields $q = f(x, z) \cdot \varepsilon$ where $f$ is the production function, $z$ is land quality (exogenous), and $\varepsilon \sim F$ is an output shock (lognormal with $\mathbb{E}[\varepsilon] = 1$). Output is sold at stochastic price $p \sim G$, independent of $\varepsilon$. Period 2 consumption: $c_2 = p \cdot q - d$, where $d$ is a debt repayment from period 1 borrowing to purchase $x$.
+
+**(a) Formal model:** Write the household's optimization problem formally. Specify the period 1 budget constraint (borrowing to finance $x$ at interest rate $r$), the period 2 budget constraint, and the objective function $\max_x \mathbb{E}[u(c_2)]$ where $u$ is CRRA with parameter $\rho$.
+
+**(b) First-order condition:** Derive the FOC for the optimal fertilizer input $x^*$. Show that it can be written as:
+$$\mathbb{E}[u'(c_2(x^*)) \cdot p \cdot f_x(x^*, z) \cdot \varepsilon] = (1+r) w \cdot \mathbb{E}[u'(c_2(x^*))]$$
+Interpret this condition: the expected marginal utility-weighted marginal revenue product of fertilizer equals the cost of capital times the expected marginal utility.
+
+**(c) Log-linearization:** Under Cobb-Douglas $f(x,z) = A z^\alpha x^\gamma$ and CRRA $u$, log-linearize the FOC around the non-stochastic steady state to obtain an expression of the form:
+$$\ln x^* = \beta_0 + \beta_1 \ln w + \beta_2 \ln p_0 + \beta_3 \ln z + \beta_4 \rho + \text{error}$$
+Identify each $\beta_i$ as a function of structural parameters $(\gamma, \alpha, r, \rho)$.
+
+**(d) Moment conditions:** Write the FOC as a GMM moment condition: $\mathbb{E}[m(c_2, x^*, p, w, z; \gamma, \alpha, \rho)] = 0$. Specify the function $m(\cdot)$ explicitly.
+
+**(e) Identification:** The challenge: output price $p$ is realized only after the planting decision, but $p_0$ (the expected price) may be correlated with the household's productivity $A$ (good farmers plant in productive areas and also have better information about prices). Propose an instrument $v$ for $p_0$ that: (i) is correlated with $p_0$; (ii) is excluded from the structural equation by the model's assumptions; (iii) allows identification of the risk aversion parameter $\rho$. Explain why (ii) holds using the model's structure.
+
+**(f) Welfare calculation:** Using the identified structural parameters, compute the **certainty equivalent loss** from output price risk relative to the risk-free world: $CE\_loss = \mathbb{E}[c_2(p)] - CE(c_2(p))$ where $CE$ is the certainty equivalent under CRRA utility. Show how this is a function of structural parameters estimable from the moment conditions.
+
+---
+
+## Problem 3 — Contest Model with Heterogeneous Groups: Theory and IV
+
+**Background:** This problem extends the symmetric Garfinkel-Skaperdas contest to heterogeneous groups, derives comparative statics, and designs an IV strategy.
+
+**Setup:** Two groups $i \in \{1,2\}$ with heterogeneous fighting costs: group 1 has unit cost $c_1$ and group 2 has unit cost $c_2 \neq c_1$. The Tullock contest success function is $p_i = m_i/(m_1 + m_2)$. The prize is $R > 0$. Each group maximizes $\Pi_i = p_i R - c_i m_i$.
+
+**(a) Asymmetric Nash equilibrium:** Derive the Nash equilibrium $(m_1^*, m_2^*)$ with asymmetric costs. Show that:
+$$m_i^* = \frac{c_j R}{(c_1 + c_2)^2}$$
+Verify: $\sum_i m_i^* = R c_1 c_2 (1/c_1 + 1/c_2)/(c_1+c_2)^2$ ... (compute and simplify). At what cost ratio $c_1/c_2$ is total conflict effort maximized?
+
+**(b) Comparative statics:** Compute $\partial m_1^*/\partial R$, $\partial m_2^*/\partial R$, $\partial m_1^*/\partial c_1$, and $\partial m_1^*/\partial c_2$. Interpret each. Show that an increase in $R$ increases both groups' efforts. Show that an increase in group 1's cost decreases group 1's effort and also changes group 2's effort — derive the direction of the spillover.
+
+**(c) Observable conflict intensity:** Let $I$ denote observable conflict intensity (casualties, incidents) which proxies total effort: $I = \kappa (m_1^* + m_2^*) + \eta$ where $\kappa > 0$ and $\eta$ is measurement error. Derive $\partial I/\partial R$ in terms of structural parameters. Write this as a regression equation:
+$$I = \alpha + \beta R + \varepsilon$$
+where $\beta$ is a structural parameter. Express $\beta$ in terms of $(c_1, c_2, \kappa)$.
+
+**(d) IV strategy:** Suppose $R = \phi P^w$ where $P^w$ is the international commodity price (exogenous) and $\phi$ is a local technology parameter (time-invariant, potentially correlated with unobservables). The regression of interest is: $I_{kt} = \alpha + \beta R_{kt} + \gamma X_{kt} + \varepsilon_{kt}$. Propose an IV strategy:
+- State the first stage: $R_{kt} = \delta_0 + \delta_1 P^w_t \cdot S_k + \delta_2 X_{kt} + u_{kt}$ where $S_k$ is the resource endowment of region $k$. Identify $S_k$ and $P^w_t$ precisely.
+- State the exclusion restriction: $P^w_t$ should be uncorrelated with $\varepsilon_{kt}$ conditional on controls. State this as a model assumption derived from the Garfinkel-Skaperdas payoff structure.
+- Discuss threats to the exclusion restriction: what economic channels could cause $P^w_t$ to directly affect conflict without passing through $R_{kt}$?
+
+**(e) Heterogeneity predictions:** The model predicts that the conflict-resource value relationship is stronger when groups are more equal in fighting capacity ($c_1 \approx c_2$). Show this formally: compute $\frac{\partial^2 (m_1^* + m_2^*)}{\partial R \, \partial \Delta c}$ where $\Delta c = c_1 - c_2$, and show the sign. Propose an empirical test using cross-sectional variation in group capability.
+
+**(f) Dynamic extension:** Extend the model to two periods. In period 2, the losing group from period 1 has degraded capacity (a conflict trap). Write down the two-period model and derive whether this creates a complementarity between period 1 and period 2 conflict, generating strategic reasons for early termination or escalation.
+
+---
+
+## Problem 4 — Technology Adoption with Coordination and Global Games
+
+**Background:** Technology adoption exhibits strategic complementarities: a technology is more valuable when more others adopt it (network externalities). This creates multiple equilibria. Global games provide a unique selection.
+
+**Setup:** A continuum of firms, each deciding whether to adopt a new technology ($a = 1$) or stick with the old one ($a = 0$). The payoff from adoption depends on the fraction $\phi$ of others who adopt and on a state parameter $\theta$ (the "technology shock," e.g., a subsidy or productivity improvement):
+$$\pi(1, \phi, \theta) = \theta + \rho \phi - k$$
+$$\pi(0, \phi, \theta) = 0$$
+where $k > 0$ is the adoption cost and $\rho > 0$ is the network externality.
+
+**(a) Full information game:** Show that with full information about $\theta$, there are multiple equilibria for intermediate values of $\theta$:
+- For $\theta < k$ (even if all adopt): "No adoption" ($\phi = 0$) is the unique equilibrium
+- For $\theta > k - \rho$ (even if no one adopts): "Full adoption" ($\phi = 1$) is the unique equilibrium
+- For $\theta \in [k - \rho, k]$: Both $\phi = 0$ and $\phi = 1$ are Nash equilibria
+Find the conditions precisely and verify.
+
+**(b) Global games equilibrium:** Now each firm observes a noisy private signal $x_i = \theta + \varepsilon_i$ where $\varepsilon_i \sim U[-\epsilon, \epsilon]$. Apply the Carlsson-Van Damme argument to derive the unique equilibrium threshold $\theta^*$ as $\epsilon \to 0$. Show that $\theta^* = k - \rho/2$ — the "risk-dominant" threshold at which the firm is indifferent between adopting and not adopting when they believe half of others adopt.
+
+**(c) Policy implications:** Suppose the government provides a subsidy $s$, reducing $k$ to $k - s$. Compute the new threshold $\theta^*(s) = k - s - \rho/2$. Show that the probability of the adoption equilibrium (when $\theta \sim U[\underline\theta, \bar\theta]$) is:
+$$\Pr(\text{adoption}) = \Pr(\theta > \theta^*(s)) = \frac{\bar\theta - k + s + \rho/2}{\bar\theta - \underline\theta}$$
+Compute the marginal effect of the subsidy: $d\Pr(\text{adoption})/ds$. Interpret as the policy multiplier.
+
+**(d) Testable prediction:** The global games model generates a regression discontinuity prediction: adoption rates should jump discontinuously at the threshold $\theta^*$. Propose an empirical design that:
+- Defines a running variable $X$ that proxies for $\theta$ (e.g., a productivity index, a subsidy amount, a demand shock)
+- Defines the outcome $Y$ (technology adoption rate in a region or sector)
+- Identifies the RD bandwidth $h$ around the threshold
+- States what a discontinuous jump in $Y$ at $X = \theta^*$ would imply about the global games equilibrium selection
+- Discusses the assumptions needed for the RD to be valid (no manipulation, no other discontinuities)
+
+**(e) Multiplicity vs. coordination failure:** Distinguish between two interpretations of low adoption rates in the data: (i) $\theta < \theta^*$ (fundamentals are bad; the unique global games equilibrium is no adoption); (ii) $\theta > \theta^*$ but coordination failure has selected the bad equilibrium (multiplicity). Describe an empirical test that distinguishes these interpretations. What does the test require theoretically and empirically?
+
+---
+
+## Problem 5 — Original Model-Building Exercise
+
+**Instructions:** This problem asks you to build an original formal model, following the methodology of Part IX. Choose a stylized empirical phenomenon from the list below (or propose your own), and complete the full pipeline.
+
+**Choose one phenomenon:**
+(A) Firms in conflict zones pay a "war tax" to armed groups in exchange for protection; explain when this arrangement is stable.
+(B) Mining companies invest more in CSR (community development) in regions with stronger community organizations; explain the mechanism.
+(C) Humanitarian aid in conflict zones may be captured by armed groups; explain when and how much aid is captured in equilibrium.
+(D) Journalists self-censor in environments with uncertain reprisals; model when truthful reporting is an equilibrium.
+
+**Complete each step:**
+
+**(a) Define the economic environment** $\mathcal{E}$. Specify:
+- The agents (who are they? what are their objectives?)
+- The action space for each agent
+- The timing (who moves first? what do they observe when moving?)
+- The information structure (what is private? what is common knowledge?)
+- The technology (how do actions map to outcomes?)
+
+**(b) Derive the equilibrium.** Specify the solution concept explicitly. Derive the Nash equilibrium (or PBE, or SPE — as appropriate). Check existence and uniqueness. If there are multiple equilibria, acknowledge this and select using a refinement.
+
+**(c) Derive comparative statics.** Find the most important comparative static of your model: how does the key outcome change when the key parameter changes? Use the IFT or Topkis as appropriate. Verify the sign.
+
+**(d) Derive a testable prediction.** Translate the comparative static into a testable empirical prediction. Specify:
+- The observable outcome variable $Y$
+- The observable predictor $X$ (the empirical proxy for the key parameter)
+- The direction of the predicted relationship: $\mathbb{E}[Y | X = x+1] - \mathbb{E}[Y | X = x] \gtrless 0$
+
+**(e) Design an identification strategy.** Propose a credible empirical strategy for testing the prediction:
+- Specify the regression equation (or matching/RD/DID design)
+- Specify the instrument $Z$ if an IV strategy is needed
+- Justify the exclusion restriction $Z \perp \varepsilon_Y | X$ using the structure of your model
+- Describe what data would be needed and where it could be obtained
+- Identify the main threat to identification and propose a robustness test
+
+**(f) Discuss the model's limitations.** List two assumptions of your model that are likely violated in practice. For each, describe: (i) how the violation would change the model's predictions; (ii) whether the violation would bias the empirical estimate upward or downward.

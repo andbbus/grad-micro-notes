@@ -1,0 +1,225 @@
+---
+title: "7.2 — Moral Hazard"
+---
+
+# 7.2 — Moral Hazard
+
+> **MWG Reference:** Ch. 14, §14.B–14.D, pp. 477–506; Holmström (1979); Holmström & Milgrom (1991); Holmström (1982)
+
+## Context
+
+Moral hazard refers to the distortion of behavior that arises when an agent takes hidden actions — actions that affect outcomes but that the principal cannot observe or verify. The term originates in insurance markets (insured individuals take less care), but the structure appears throughout economics: employers and employees, shareholders and managers, lenders and borrowers, regulators and regulated firms. This note develops the formal theory of moral hazard beginning with the discrete two-effort model, characterizes the optimal contract using the likelihood ratio, derives monotonicity conditions, and extends to the multitasking problem and team production.
+
+## Definitions
+
+::: {.callout-note icon=false}
+## Definition 7.2.1 — Binary Effort Model
+The agent chooses effort $e \in \{e_L, e_H\}$ (low or high). Output $q \in \{q_1, \ldots, q_n\}$ is distributed according to:
+- $f_k^H = \Pr(q = q_k | e_H)$ under high effort
+- $f_k^L = \Pr(q = q_k | e_L)$ under low effort
+The effort cost satisfies $c(e_H) > c(e_L) \geq 0$ (normalize $c(e_L) = 0$; write $\Delta c = c(e_H) - c(e_L) > 0$).
+:::
+
+
+::: {.callout-note icon=false}
+## Definition 7.2.2 — Monotone Likelihood Ratio Condition (MLRC)
+The distribution $\{f_k^H\}$ satisfies the **Monotone Likelihood Ratio Condition (MLRC)** if the likelihood ratio $\ell(q_k) = f_k^L / f_k^H$ is **non-increasing** in $q_k$:
+$$q_k > q_j \implies \frac{f_k^L}{f_k^H} \leq \frac{f_j^L}{f_j^H}$$
+Equivalently, $f^H(q)/f^L(q)$ is non-decreasing in $q$: higher output is relatively more likely under high effort.
+:::
+
+
+::: {.callout-note icon=false}
+## Definition 7.2.3 — Convexity of Distribution Function Condition (CDFC)
+The cumulative distribution function satisfies the **CDFC** if $F(q|e)$ is convex in $e$: for any $e'', e' > 0$ and $\lambda \in (0,1)$:
+$$F(q|\lambda e'' + (1-\lambda)e') \leq \lambda F(q|e'') + (1-\lambda) F(q|e')$$
+i.e., increasing effort shifts the distribution of output upward in the sense of first-order stochastic dominance, and this shift is convex in effort (diminishing returns to effort in shifting the distribution).
+:::
+
+
+## Main Results
+
+### The Principal's Program Under Moral Hazard
+
+The principal wishes to implement high effort $e_H$. The program is:
+
+$$\max_{t_1, \ldots, t_n} \sum_k (q_k - t_k) f_k^H$$
+
+subject to:
+
+$$\text{(PC):} \quad \sum_k u(t_k) f_k^H - \Delta c \geq \bar{u}$$
+
+$$\text{(IC):} \quad \sum_k u(t_k) f_k^H - \Delta c \geq \sum_k u(t_k) f_k^L$$
+
+The IC can be rewritten as: $\sum_k u(t_k)(f_k^H - f_k^L) \geq \Delta c$.
+
+::: {.callout-important icon=false}
+## Proposition 7.2.1 — Optimal Contract Under Moral Hazard
+Suppose the principal wishes to implement $e_H$. The optimal contract $\{t_k^*\}$ satisfies the following first-order conditions for each output level $q_k$:
+$$\frac{1}{u'(t_k^*)} = \lambda + \mu\left(1 - \frac{f_k^L}{f_k^H}\right)$$
+where $\lambda \geq 0$ (PC multiplier) and $\mu \geq 0$ (IC multiplier). Both constraints bind at the optimum.
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+Form the Lagrangian:
+$$\mathcal{L} = \sum_k (q_k - t_k) f_k^H + \lambda\left(\sum_k u(t_k) f_k^H - \Delta c - \bar{u}\right) + \mu\left(\sum_k u(t_k)(f_k^H - f_k^L) - \Delta c\right)$$
+Taking the FOC with respect to $t_k$:
+$$-f_k^H + \lambda u'(t_k) f_k^H + \mu u'(t_k)(f_k^H - f_k^L) = 0$$
+Dividing by $f_k^H > 0$:
+$$-1 + u'(t_k)\left[\lambda + \mu\left(1 - \frac{f_k^L}{f_k^H}\right)\right] = 0$$
+Therefore:
+$$\frac{1}{u'(t_k^*)} = \lambda + \mu\left(1 - \frac{f_k^L}{f_k^H}\right)$$
+
+**Both constraints bind:** Suppose PC does not bind. Then $\lambda = 0$, and the contract satisfies $1/u'(t_k) = \mu(1 - f_k^L/f_k^H)$. Since $f_k^L/f_k^H < 1$ for some $k$, $\mu > 0$ (IC must bind; otherwise $t_k$ is constant which generically violates IC). Now if PC slack, the principal could reduce all $t_k$ uniformly, increasing profit while maintaining IC, until PC binds — contradiction.
+
+**IC binds:** If IC slack, then the optimal contract has only PC binding, giving a flat contract $t_k = \bar{t}$ for all $k$. But a flat contract violates IC (with flat pay, the agent strictly prefers $e_L$). Contradiction.
+:::
+
+
+::: {.callout-caution icon=false}
+## Remark 7.2.1 — Interpretation of the Optimal Payment
+The optimal transfer $t_k^*$ is increasing in $q_k$ iff $u'(t_k^*)$ is decreasing in $q_k$ iff $t_k^*$ is increasing in $q_k$ (since $u'' < 0$). From the FOC, $1/u'(t_k^*)$ is increasing in $q_k$ iff $\mu(1 - f_k^L/f_k^H)$ is increasing in $q_k$ iff the likelihood ratio $f_k^L/f_k^H$ is decreasing in $q_k$ — exactly the MLRC. Therefore:
+
+**Under MLRC, the optimal payment $t_k^*$ is non-decreasing in output $q_k$.**
+:::
+
+
+### Monotone Contracts
+
+::: {.callout-important icon=false}
+## Proposition 7.2.2 — Monotonicity of the Optimal Contract
+Under MLRC and CDFC, the optimal contract $t^*(q)$ solving the principal's program is non-decreasing in $q$.
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+From Proposition 7.2.1, the optimal payment satisfies:
+$$\frac{1}{u'(t^*(q))} = \lambda + \mu\left(1 - \frac{f(q|e_L)}{f(q|e_H)}\right)$$
+The right side is non-decreasing in $q$ iff $f(q|e_L)/f(q|e_H)$ is non-increasing in $q$, which is exactly MLRC. Since $u'' < 0$, $1/u'(\cdot)$ is increasing. Therefore $t^*(q)$ is non-decreasing in $q$.
+
+The CDFC is used to justify the first-order approach (replacing the global IC constraint with the local FOC), validating the Lagrangian approach in Proposition 7.2.1. Specifically, CDFC guarantees that the agent's expected utility, as a function of effort, is concave, so the first-order condition is sufficient for the agent's maximum.
+:::
+
+
+### Multitasking (Holmström-Milgrom 1991)
+
+::: {.callout-note icon=false}
+## Definition 7.2.4 — Multitask Principal-Agent Environment
+The agent performs $n$ tasks. Let $\mathbf{e} = (e_1, \ldots, e_n) \in \mathbb{R}_+^n$ denote the effort vector. The output of task $i$ is $q_i = e_i + \varepsilon_i$ where $\boldsymbol{\varepsilon} \sim N(\mathbf{0}, \Sigma)$. The agent's cost function is $C(\mathbf{e}) = \frac{1}{2}\mathbf{e}^T \Psi \mathbf{e}$ where $\Psi$ is positive definite.
+
+Only a subset of tasks have measurable outputs (say tasks $1, \ldots, m$, $m < n$); the remaining tasks $m+1, \ldots, n$ produce non-measurable outputs (e.g., relationship building, quality). The contract can condition only on measurable outputs: $t = \alpha + \boldsymbol{\beta}^T \mathbf{q}_m$ where $\mathbf{q}_m = (q_1, \ldots, q_m)$.
+:::
+
+
+::: {.callout-important icon=false}
+## Proposition 7.2.3 — Holmström-Milgrom Multitasking Result
+In the multitask LEN model:
+1. **Effort substitution:** Higher incentives on measurable tasks divert effort away from non-measurable tasks. If the principal values non-measurable task output, this creates a welfare cost.
+2. **Optimal incentives:** When tasks are substitutes in the effort cost function, the optimal incentive intensity on measurable tasks is **lower** than in the single-task LEN model. In some cases, the optimal contract has $\beta_i^* = 0$ for all measurable tasks.
+3. **Complementarity resolution:** If the principal can restrict the agent to measurable tasks only, providing high-powered incentives is optimal. The problem arises when tasks cannot be separated.
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+**Setup:** For simplicity, take $n = 2$ tasks, both with $\sigma^2$ variance and zero covariance. Task 1 is measurable ($q_1 = e_1 + \varepsilon_1$), task 2 is not. The principal values both: $V = \gamma_1 e_1 + \gamma_2 e_2$. The cost function satisfies $C(e_1, e_2) = \frac{c}{2}(e_1^2 + e_2^2) + \rho e_1 e_2$ where $\rho > 0$ (effort substitutes).
+
+The contract is $t = \alpha + \beta q_1$. Agent's CE:
+$$CE = \alpha + \beta e_1 - C(e_1, e_2) - \frac{r\beta^2\sigma^2}{2}$$
+Agent's FOCs:
+$$\frac{\partial CE}{\partial e_1} = \beta - c e_1 - \rho e_2 = 0$$
+$$\frac{\partial CE}{\partial e_2} = 0 - c e_2 - \rho e_1 = 0$$
+From the second equation: $e_2 = -\frac{\rho}{c} e_1 < 0$ if $\rho > 0$... But effort is non-negative.
+
+With $e_2 \geq 0$, the second FOC gives a corner solution: $e_2^*(\beta) = \max\{0, -\frac{\rho}{c}e_1\} = 0$ when $\rho > 0$ and $\beta > 0$ (since $e_1 > 0$). So when tasks are substitutes and both are desirable, stronger incentives on task 1 crowds out task 2 at the margin.
+
+More precisely, with $e_2 = 0$ (forced by non-negativity), we return to a single-task problem, but the principal loses value $\gamma_2 e_2 = 0$. The optimal $\beta$ trades off incentives for task 1 against the loss in task 2. The net social value of increasing $\beta$ is $\gamma_1 \frac{de_1}{d\beta} + \gamma_2 \frac{de_2}{d\beta}$. When $\frac{de_2}{d\beta} < 0$ (substitution) and $\gamma_2 > 0$, the marginal benefit of incentives is reduced relative to the single-task case, so $\beta^* < \beta^*_{\text{single task}}$.
+
+At the extreme, if the marginal cost of reduced effort on task 2 (measured by $\gamma_2 |de_2/d\beta|$) exceeds the marginal benefit on task 1, the optimal incentive is $\beta^* = 0$ — no performance pay at all.
+:::
+
+
+::: {.callout-caution icon=false}
+## Remark 7.2.2 — Institutional Implications of Multitasking
+The multitasking model provides a theoretical foundation for several institutional features:
+- **Public sector employment:** Civil servants perform non-measurable tasks (justice, fairness, long-run policy quality). High-powered incentives on measurable outputs (throughput, cases resolved) would divert effort from non-measurable tasks. Optimal institutional design may call for flat wages and job security.
+- **Teaching:** Standardized testing creates incentives on measurable outputs (test scores) at the expense of non-measurable outputs (critical thinking, citizenship). This is the "teaching to the test" problem.
+- **Sales force compensation:** High-powered commissions on sales divert effort from customer service and relationship building. Salaried sales forces may outperform commissioned ones when repeat business matters.
+:::
+
+
+### Risk Neutrality with Limited Liability: Moral Hazard Survives
+
+::: {.callout-important icon=false}
+## Proposition 7.2.4 — Moral Hazard with Risk-Neutral Agent and Limited Liability
+Suppose the agent is risk-neutral ($u(t) = t$) but has limited liability: $t(q) \geq 0$ for all $q$. Then:
+1. The first-best is generally not achievable.
+2. The agent earns a positive expected rent: $\mathbb{E}[t(q^*)] - c(e^*) > \bar{u}$.
+3. Equilibrium effort is below first-best: $e^* < e^{FB}$.
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+With a risk-neutral agent, the sell-the-firm contract $t(q) = q - F$ implements first-best. But if $q$ can be very low (say $q = 0$ occurs with positive probability), then $t(0) = -F < 0$, violating limited liability.
+
+Under limited liability $t(q) \geq 0$, the contract must set $t(q) = 0$ at bad output levels. This means the agent does not internalize the full cost of bad outcomes, creating a wedge between private and social incentives to exert effort.
+
+Formally, with binary effort and binary output $q \in \{q_L, q_H\}$, $q_L = 0$, the contract is $t_L \geq 0$ and $t_H \geq 0$. IC: $(f_H^H - f_H^L)u(t_H) - (f_L^H - f_L^L)u(t_L) \geq \Delta c$. With $t_L = 0$ (optimal to minimize payment at low output), IC becomes $f_H^H t_H \geq \Delta c + f_H^L t_H$, i.e., $(f_H^H - f_H^L) t_H \geq \Delta c$. This gives $t_H^* = \frac{\Delta c}{f_H^H - f_H^L}$.
+
+Agent's expected rent $= f_H^H \cdot t_H^* - \Delta c = \frac{f_H^H \Delta c}{f_H^H - f_H^L} - \Delta c = \frac{f_H^L \Delta c}{f_H^H - f_H^L} > 0$.
+
+The principal prefers to reduce agency rent by shading down effort below first-best — setting $e^* < e^{FB}$ costs efficiency but reduces the rent $t_H^*$ that must be paid to induce effort.
+:::
+
+
+### Moral Hazard in Teams (Holmström 1982)
+
+::: {.callout-note icon=false}
+## Definition 7.2.5 — Team Production Environment
+$n$ agents each choose effort $e_i \geq 0$. Team output is $q = Q(e_1, \ldots, e_n) + \varepsilon$. The principal (or budget breaker) observes total output $q$ and distributes it among agents. Each agent $i$ receives share $s_i(q)$ with $\sum_i s_i(q) \leq q$; the remainder $q - \sum_i s_i(q)$ goes to the budget breaker.
+:::
+
+
+::: {.callout-important icon=false}
+## Proposition 7.2.5 — Free Rider Problem and Budget Breaking (Holmström 1982)
+Consider $n$ risk-neutral agents in team production. There is no symmetric sharing rule $s_i(q) = q/n$ that simultaneously achieves:
+(i) Each agent chooses the first-best effort level $e_i^{FB}$
+(ii) The budget is balanced: $\sum_i s_i(q) = q$ for all $q$
+
+However, both (i) and (ii) can be achieved simultaneously if there exists a **budget breaker** (principal/outside investor) who can run a deficit.
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+**Free rider problem:** With symmetric sharing $s_i(q) = q/n$, agent $i$ solves:
+$$\max_{e_i} \frac{1}{n}\mathbb{E}[Q(e_i, e_{-i})] - c(e_i)$$
+FOC: $\frac{1}{n} \frac{\partial Q}{\partial e_i} = c'(e_i)$
+First-best requires $\frac{\partial Q}{\partial e_i} = c'(e_i^{FB})$, which is $n$ times larger. Therefore each agent under-provides effort by a factor of $n$.
+
+**Budget breaking as solution:** Holmström's mechanism: Each agent $i$ receives $s_i(q)$ defined by: if $q \geq q^*$ (the first-best output target), each agent receives $\tilde{t}_i$; if $q < q^*$, each agent receives $\underline{t}_i < \tilde{t}_i$, and the deficit (if any) or surplus is absorbed by the budget breaker.
+
+Formally, construct shares $s_i(q) = t_i$ for $q \geq q^*$ and $s_i(q) = 0$ otherwise, where $t_i$ is chosen so that agent $i$'s expected payoff under $e^{FB}$ exceeds that under any deviation. Since $q^*$ is deterministic under first-best and stochastic otherwise (output is noisy), the budget breaker earns $q - \sum_i t_i$ when $q \geq q^*$ and $-0$ otherwise, with strictly positive expected profit.
+
+The key insight: **budget balancing is the constraint that prevents first-best.** If the budget must balance state-by-state, then sharing rules cannot simultaneously provide full incentives to all $n$ agents, because the "reward good performance, punish bad" rule requires paying out more in good states than total output (or less in bad states, destroying incentives). An outside budget breaker absorbs this imbalance.
+:::
+
+
+## Economic Intuition
+
+Moral hazard is the problem of observational non-verifiability: what cannot be seen cannot be contracted upon. In the discrete model, the optimal contract exploits whatever information is available about the agent's effort — the distribution of outputs given effort choices — and uses the likelihood ratio as the sufficient statistic for inferring effort.
+
+The MLRC is the empirically relevant condition: it says that higher output is "good news" about effort. Under MLRC, the optimal contract pays more for better outcomes. This is simply performance pay, and the MLRC tells us when performance pay is incentive-theoretically justified.
+
+Multitasking is the most important practical extension: organizations rarely have agents doing a single, fully measurable task. Whenever effort is multi-dimensional and measurement is imperfect, high-powered incentives on measured outputs create distortions in unmeasured directions. The institutional implication is that the optimal incentive system is a portfolio choice — not just how much to pay for performance, but which dimensions to measure and incentivize at all.
+
+## Cross-References
+
+- [7.1 Principal Agent Problem](7.1_Principal_Agent_Problem.qmd) — LEN model and informativeness principle
+- [7.3 Adverse Selection and Screening](7.3_Adverse_Selection_and_Screening.qmd) — hidden type (compare information structure)
+- [9.4 Deriving Testable Predictions](9.4_Deriving_Testable_Predictions.qmd) — moment conditions from FOC
+- [APP Conflict and Resource Models](APP_Conflict_and_Resource_Models.qmd) — effort in conflict modeled similarly to hidden action

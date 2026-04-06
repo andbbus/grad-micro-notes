@@ -1,0 +1,260 @@
+---
+title: "7.6 — Prediction Markets and Information Aggregation"
+---
+
+# 7.6 — Prediction Markets and Information Aggregation
+
+> **MWG Reference:** Ch. 13, §13.B, pp. 432–450; Grossman & Stiglitz (1980); Kyle (1985)
+
+## Context
+
+A central question in information economics is whether markets aggregate dispersed private information. Hayek's (1945) insight was that prices serve as signals that convey information no single agent possesses in full. The formal theory of **rational expectations equilibrium (REE)** makes this precise: in a fully revealing REE, the equilibrium price is a sufficient statistic for all agents' private information. But Grossman and Stiglitz (1980) showed this leads to a paradox: if prices fully reveal information, no one will pay to acquire it; if no one acquires information, prices cannot reveal it. The resolution is the **noisy rational expectations equilibrium**, in which uninformed noise traders prevent prices from fully revealing information, leaving informed traders with positive returns on their information acquisition.
+
+Kyle's (1985) model provides the strategic counterpart: a single informed trader strategically chooses order flow to maximize profits while a competitive market maker sets prices to break even given observed order flow. Together, these models characterize when and how well markets aggregate information — with direct implications for prediction market design, financial market efficiency, and the use of market prices as policy signals.
+
+## Definitions
+
+::: {.callout-note icon=false}
+## Definition 7.6.1 — Rational Expectations Equilibrium (REE)
+Consider an economy with agents $i \in \{1,\ldots,n\}$, each observing private signal $s_i$ and taking prices $p$ as given. An **REE** is a price function $p^*: S \to \mathbb{R}$ (mapping signal profiles to prices) such that:
+1. **Market clearing:** At price $p^*(s)$, aggregate demand equals aggregate supply for every signal realization $s = (s_1, \ldots, s_n)$
+2. **Bayesian rationality:** Each agent $i$ maximizes expected utility $\mathbb{E}[u_i | s_i, p^*(s)]$, treating the price $p^*(s)$ as an additional signal about the unobserved aggregate state
+
+A **fully revealing REE** is an REE in which $p^*$ is a sufficient statistic for all private signals: the joint distribution of the state conditional on $p^*(s)$ is the same as conditional on the entire signal profile $(s_1, \ldots, s_n)$.
+:::
+
+
+::: {.callout-note icon=false}
+## Definition 7.6.2 — Hayek's Knowledge Problem
+Hayek (1945) argued that the key economic problem is the use of knowledge that is dispersed among individuals — each agent has local, specific knowledge that no central planner can access. Prices solve this problem by aggregating dispersed knowledge into a single number that guides resource allocation. The formal content is: in a competitive economy, the market price $p^*$ is an informative signal about the true state $\omega$ even when no individual agent observes $\omega$ directly.
+:::
+
+
+## Main Results
+
+### Fully Revealing Rational Expectations Equilibrium
+
+::: {.callout-important icon=false}
+## Proposition 7.6.1 — Fully Revealing REE in a Linear Economy
+Consider an economy with a risky asset with true value $v \sim N(\mu_0, \sigma_v^2)$. There are $n$ informed agents, each observing signal $s_i = v + \varepsilon_i$ where $\varepsilon_i \sim N(0, \sigma_\varepsilon^2)$ IID and independent of $v$. Agent $i$ has CARA utility with risk aversion $r$ and wealth $w_i$. In a competitive equilibrium, there exists a fully revealing linear REE price:
+$$p^* = A + B \cdot \bar{s}$$
+where $\bar{s} = \frac{1}{n}\sum_i s_i$ is the average signal, and $A, B$ are constants. Given $p^*$, all agents can recover $\bar{s}$ and hence the posterior $\mathbb{E}[v|\bar{s}] \to v$ as $n \to \infty$.
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+**Posterior beliefs:** Observing signal $s_i$ and price $p = A + B\bar{s}$ (equivalently, $\bar{s} = (p-A)/B$), agent $i$ can infer $\bar{s}$. The posterior distribution of $v$ given $s_i$ and $\bar{s}$ is:
+$$v | (s_i, \bar{s}) \sim N\left(\mu_i^*, (\sigma_i^*)^2\right)$$
+where $\mu_i^*$ and $(\sigma_i^*)^2$ are obtained by Bayesian updating using the prior $N(\mu_0, \sigma_v^2)$, signal $s_i$ with variance $\sigma_\varepsilon^2$, and the additional signal $\bar{s}$ with variance $\sigma_\varepsilon^2/n$ (since $\bar{s} = v + \bar\varepsilon$ with $\bar\varepsilon \sim N(0, \sigma_\varepsilon^2/n)$).
+
+**Demand:** With CARA-normal utility, agent $i$'s demand for the risky asset:
+$$x_i^* = \frac{\mu_i^* - p}{r (\sigma_i^*)^2}$$
+
+**Market clearing:** $\sum_i x_i^* = X_0$ (fixed supply $X_0$). Using the fact that all agents have the same posterior given $\bar{s}$ (they all observe $\bar{s}$ via $p$) and symmetry:
+$$n \cdot \frac{\mu^*({\bar{s}}) - p}{r (\sigma^*)^2} = X_0$$
+Solving for $p$:
+$$p = \mu^*(\bar{s}) - \frac{r (\sigma^*)^2 X_0}{n}$$
+
+Since $\mu^*(\bar{s})$ is a linear function of $\bar{s}$, this gives $p = A + B\bar{s}$ for constants $A$ and $B$ that can be solved for from the Bayesian updating formulas.
+
+**Full revelation:** Observing $p = A + B\bar{s}$ and knowing $A$ and $B$, any agent can recover $\bar{s} = (p-A)/B$ exactly. As $n \to \infty$, $\bar{s} \to v$ by the law of large numbers, so $p^* \to v$ and the market becomes fully informationally efficient.
+:::
+
+
+### Grossman-Stiglitz Paradox
+
+::: {.callout-important icon=false}
+## Theorem 7.6.2 — Grossman-Stiglitz Impossibility of Informationally Efficient Markets
+If information acquisition is costly, a fully revealing REE cannot be an equilibrium: if prices fully reveal all private information, the return to acquiring information is zero, so rational agents choose not to acquire information. But then there is no information for prices to reveal. This is a contradiction.
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+Suppose, for contradiction, that in equilibrium prices fully reveal all private information (fully revealing REE).
+
+**Step 1: Zero return to information.** If prices are fully informative, an uninformed trader who observes the price has exactly the same posterior distribution over the true value as an informed trader. Therefore an uninformed trader can achieve the same expected utility as an informed trader simply by conditioning on the observable price.
+
+**Step 2: Costly acquisition.** If acquiring information costs $c > 0$ and yields no incremental advantage (since prices already reveal all information), no rational agent will acquire information. Expected utility from being uninformed = Expected utility from being informed.
+
+**Step 3: Contradiction.** If no agent acquires information, prices carry no information (they are based purely on liquidity/noise trades or uninformed demands). Prices therefore cannot be fully informative. Contradiction with the assumption.
+
+**Resolution:** The paradox implies that in a world with costly information, prices cannot be fully informative. The equilibrium must feature **partial information revelation** — prices reveal some but not all information, leaving informed traders with positive expected rents that justify information acquisition.
+:::
+
+
+### Noisy Rational Expectations Equilibrium
+
+::: {.callout-note icon=false}
+## Definition 7.6.3 — Noisy REE
+A **noisy REE** introduces exogenous "noise traders" whose demands are random (unrelated to fundamentals). The presence of noise traders prevents prices from fully revealing private information, creating a role for informed traders. The equilibrium features partial information revelation: prices are more informative than no information but less informative than full revelation.
+:::
+
+
+::: {.callout-note icon=false appearance="simple"}
+## Example 7.6.1 — Noisy REE in the Linear-Normal Model
+Augment the model of Proposition 7.6.1 with noise traders who supply $u \sim N(0, \sigma_u^2)$ units of the asset. Now $\bar{s} = v + \bar\varepsilon$ and the total order from informed traders plus noise traders determines price.
+
+The equilibrium price becomes $p^* = A + B(v + \bar\varepsilon) + Cu$ for coefficients $A, B, C$. The price aggregates information but is confounded by noise $u$. Given $p^*$, an agent cannot distinguish whether a high price reflects high $v$ (good news) or a negative noise-trader demand shock. The posterior variance of $v$ given $p^*$ is strictly positive, so informed traders have an informational advantage over uninformed traders.
+
+**Equilibrium informativeness:** Let $\phi$ denote the fraction of agents who acquire information (endogenous). In equilibrium, informed and uninformed agents earn the same expected utility:
+$$V^I(\phi) = V^U(\phi)$$
+where $V^I$ (informed utility) decreases in $\phi$ (more informed traders $\to$ price is more informative $\to$ informed advantage shrinks) and $V^U$ increases in $\phi$. The equilibrium $\phi^*$ equates the two, yielding partial information revelation.
+:::
+
+
+### Kyle Model
+
+::: {.callout-note icon=false}
+## Definition 7.6.4 — Kyle (1985) Model Setup
+The Kyle model features:
+- **Informed trader:** observes true asset value $v \sim N(\mu_0, \sigma_v^2)$ and submits order $x$
+- **Noise traders:** submit order $u \sim N(0, \sigma_u^2)$, independent of $v$
+- **Market maker:** observes total order flow $y = x + u$; cannot distinguish $x$ from $u$; sets price $p = \mathbb{E}[v | y]$ (Bayesian posterior, competitive market maker breaks even)
+- **Payoff to informed trader:** $\pi = (v - p) \cdot x$
+:::
+
+
+::: {.callout-important icon=false}
+## Theorem 7.6.3 — Kyle Linear Equilibrium
+In the Kyle model, there exists a unique linear equilibrium characterized by:
+- **Informed trader's strategy:** $x^*(v) = \beta(v - \mu_0)$ where $\beta = \frac{\sigma_u}{\sigma_v}$
+- **Market maker's pricing rule:** $p(y) = \mu_0 + \lambda y$ where $\lambda = \frac{\sigma_v}{2\sigma_u}$
+- **Price impact:** $\lambda = \frac{\sigma_v}{2\sigma_u}$ (Kyle's lambda)
+- **Informed trader's expected profit:** $\Pi^* = \frac{1}{2}\sigma_v \sigma_u$
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+**Step 1: Conjecture linear strategies.** Assume $x = \beta(v - \mu_0)$ and $p = \mu_0 + \lambda y$. We will verify these by requiring: (a) $x^*$ maximizes informed trader's profit given $p(\cdot)$; (b) $p = \mathbb{E}[v|y]$ (market maker breaks even/rational Bayesian).
+
+**Step 2: Market maker's pricing rule.** Total order flow:
+$$y = x + u = \beta(v - \mu_0) + u$$
+Both $v$ and $u$ are normally distributed. The market maker computes $\mathbb{E}[v|y]$:
+
+$(v - \mu_0)$ and $y$ are jointly normal with:
+- $\text{Var}(y) = \beta^2 \sigma_v^2 + \sigma_u^2$
+- $\text{Cov}(v, y) = \text{Cov}(v, \beta(v-\mu_0) + u) = \beta \sigma_v^2$
+
+By the projection theorem for normal random variables:
+$$\mathbb{E}[v|y] = \mu_0 + \frac{\text{Cov}(v,y)}{\text{Var}(y)} (y - 0) = \mu_0 + \frac{\beta \sigma_v^2}{\beta^2 \sigma_v^2 + \sigma_u^2} y$$
+Therefore the market maker's price rule is $p = \mu_0 + \lambda y$ where:
+$$\lambda = \frac{\beta \sigma_v^2}{\beta^2 \sigma_v^2 + \sigma_u^2} \quad \text{...(MM condition)}$$
+
+**Step 3: Informed trader's optimization.** The informed trader with value $v$ observes $v$ and knows $p = \mu_0 + \lambda(x + u)$. The trader does not observe $u$, so from their perspective:
+$$\mathbb{E}[(v - p) x | v] = (v - \mu_0 - \lambda x) x$$
+(since $\mathbb{E}[u] = 0$ and $u$ is independent of $v$).
+
+This is a quadratic in $x$; maximizing:
+$$\frac{d}{dx}[(v - \mu_0 - \lambda x) x] = (v - \mu_0) - 2\lambda x = 0$$
+$$x^* = \frac{v - \mu_0}{2\lambda} \quad \text{...(IT optimality condition)}$$
+So $\beta = \frac{1}{2\lambda}$.
+
+**Step 4: Solve for $\beta$ and $\lambda$.** From IT optimality: $\beta = \frac{1}{2\lambda}$. Substituting into MM condition:
+$$\lambda = \frac{\frac{1}{2\lambda} \sigma_v^2}{\frac{1}{4\lambda^2}\sigma_v^2 + \sigma_u^2} = \frac{\frac{\sigma_v^2}{2\lambda}}{\frac{\sigma_v^2}{4\lambda^2} + \sigma_u^2}$$
+Multiply numerator and denominator by $4\lambda^2$:
+$$\lambda = \frac{2\lambda\sigma_v^2}{\sigma_v^2 + 4\lambda^2\sigma_u^2}$$
+$$\lambda(\sigma_v^2 + 4\lambda^2\sigma_u^2) = 2\lambda\sigma_v^2$$
+$$\sigma_v^2 + 4\lambda^2\sigma_u^2 = 2\sigma_v^2$$
+$$4\lambda^2\sigma_u^2 = \sigma_v^2$$
+$$\lambda = \frac{\sigma_v}{2\sigma_u}$$
+And $\beta = \frac{1}{2\lambda} = \frac{\sigma_u}{\sigma_v}$.
+
+**Step 5: Expected profit.**
+$$\Pi^* = \mathbb{E}[(v-p)x | v] = (v - \mu_0 - \lambda x^*) x^* = \lambda (x^*)^2 = \lambda \beta^2 (v-\mu_0)^2$$
+Taking expectations over $v$:
+$$\mathbb{E}[\Pi^*] = \lambda \beta^2 \sigma_v^2 = \frac{\sigma_v}{2\sigma_u} \cdot \frac{\sigma_u^2}{\sigma_v^2} \cdot \sigma_v^2 = \frac{\sigma_v \sigma_u}{2}$$
+:::
+
+
+::: {.callout-caution icon=false}
+## Remark 7.6.1 — Properties of the Kyle Equilibrium
+The Kyle model delivers several important results:
+
+1. **Price impact $\lambda = \sigma_v/(2\sigma_u)$:** Price impact increases with fundamental volatility $\sigma_v$ (more private information to hide) and decreases with noise-trader volume $\sigma_u$ (more liquidity = less price impact per unit of order flow). This is the key empirical prediction tested in market microstructure studies.
+
+2. **Informed trader "hides in the noise":** The optimal order $x^* = \beta(v-\mu_0)$ is proportional to $\sigma_u/\sigma_v$. More noise trading gives the informed trader cover to trade larger positions without moving prices as much.
+
+3. **Market depth:** $1/\lambda = 2\sigma_u/\sigma_v$ measures market depth — the quantity needed to move the price by one unit. Deeper markets (higher $\sigma_u$) have lower price impact.
+
+4. **Efficiency:** The equilibrium price absorbs exactly half the information: $\text{Var}(v|p) = \sigma_v^2/2 = \text{Var}(v)/2$. The market maker reduces uncertainty by 50% by observing order flow.
+:::
+
+
+### Prediction Markets
+
+::: {.callout-note icon=false}
+## Definition 7.6.5 — Prediction Market
+A **prediction market** is a financial market specifically designed to aggregate information about the probability of future events. An Arrow-Debreu security for event $E$ pays $\$1$ if $E$ occurs and $\$0$ otherwise; the equilibrium price $p$ equals the market-implied probability of $E$.
+:::
+
+
+::: {.callout-important icon=false}
+## Proposition 7.6.4 — Conditions for Prediction Market Accuracy
+A prediction market accurately reveals the true probability $\Pr(E)$ of event $E$ if:
+1. **Trader diversity:** There are informed traders with signals about $E$, and their signals are collectively sufficient for $E$
+2. **No manipulation:** No trader has market power or incentive to manipulate prices (which requires sufficient liquidity)
+3. **Rational updating:** Traders update beliefs using Bayes' rule
+4. **No common value problems:** The true probability of $E$ is pinned down by the fundamentals, not by circular market beliefs
+:::
+
+
+::: {.callout-caution icon=false}
+## Remark 7.6.2 — Empirical Evidence on Prediction Markets
+Prediction markets (Iowa Electronic Markets, Betfair, Polymarket) have proven remarkably accurate in forecasting election outcomes, commodity prices, and economic indicators, often outperforming professional forecasters and polls. The theoretical explanation is consistent with noisy REE: enough traders have private information, and prices efficiently aggregate this information despite individual noise. Exceptions arise when markets are thin, when common value problems create manipulation incentives, or when regulatory restrictions limit participation.
+:::
+
+
+::: {.callout-note icon=false}
+## Definition 7.6.6 — Logarithmic Market Scoring Rule (LMSR)
+In a **market scoring rule**, a market maker plays the role of an automated bookmaker. The logarithmic market scoring rule (LMSR) sets the price of an Arrow-Debreu security based on the current quantity outstanding $q$:
+$$p(q) = \frac{e^{q/b}}{\sum_{j} e^{q_j/b}}$$
+where $b > 0$ is a liquidity parameter. The LMSR is:
+- **Proper:** truth-telling maximizes expected profit for a trader who believes $\Pr(E) = p$
+- **Path-independent:** the market maker's final loss depends only on the outcome, not the order of trades
+- **Connection to Bayesian updating:** the LMSR price update is equivalent to Bayesian updating in a specific conjugate exponential family model
+:::
+
+
+### Event Studies as Information Aggregation Tests
+
+::: {.callout-note icon=false}
+## Definition 7.6.7 — Event Study Methodology
+An **event study** measures the market's informational response to a discrete event at time $\tau$. The **abnormal return** is:
+$$AR_t = R_t - \hat{R}_t$$
+where $R_t$ is the realized return at time $t$ and $\hat{R}_t = \hat{\alpha} + \hat{\beta} R_t^M$ is the predicted normal return from a market model estimated on a pre-event window.
+
+The **cumulative abnormal return (CAR)** over an event window $[\tau_1, \tau_2]$:
+$$CAR(\tau_1, \tau_2) = \sum_{t=\tau_1}^{\tau_2} AR_t$$
+
+Under the EMH, all information in a publicly announced event is immediately incorporated into prices at $t = \tau$, so $AR_t = 0$ for $t > \tau$ and $AR_t \neq 0$ only at $t = \tau$. Pre-event $CAR(\tau - k, \tau - 1) > 0$ indicates information leakage.
+:::
+
+
+::: {.callout-caution icon=false}
+## Remark 7.6.3 — Bridge to Empirical Research
+Event studies test the speed and accuracy of information aggregation in financial markets. In the context of commodity markets and conflict research, event studies can examine:
+
+- **How quickly do commodity futures prices incorporate news of resource discoveries or mine openings in the DRC?** If markets are efficient, prices should jump at announcement and remain stable thereafter.
+- **Do conflict events affect commodity prices?** Abnormal returns in mineral futures following conflict episodes in mining regions would indicate that markets internalize conflict risk.
+- **Pre-event leakage:** Positive CAR before public announcement of a conflict event suggests insider trading or information leakage — markets aggregate private information before it becomes public.
+
+The theoretical connection: the Kyle model predicts that informed trading will generate price impact prior to public revelation of information ($\lambda > 0$), creating the pre-event drift observed in many event studies. The magnitude of the pre-event CAR is related to Kyle's $\lambda$ — higher price impact markets will show stronger pre-announcement drift.
+:::
+
+
+## Economic Intuition
+
+The information aggregation problem is a microcosm of the tension between competitive equilibrium and strategic behavior. In the frictionless Walrasian world of fully revealing REE, prices solve Hayek's knowledge problem perfectly. But this leads to the Grossman-Stiglitz paradox — perfectly efficient markets undermine the incentive to become informed. The real world operates in the interior: markets partially reveal information, informed traders earn rents, and prices are more informative than individual signals but less informative than the social planner's omniscient aggregation.
+
+Kyle's model captures the strategic dimension: the informed trader voluntarily limits their order size to prevent prices from moving against them. This creates a tradeoff between profit per unit (higher for small orders) and total volume, leading to the half-information result. The price impact coefficient $\lambda$ is the key structural parameter linking theory to empirics — it can be estimated from order flow data and used to infer the degree of information asymmetry in a market.
+
+## Cross-References
+
+- [7.3 Adverse Selection and Screening](7.3_Adverse_Selection_and_Screening.qmd) — adverse selection in financial markets (Glosten-Milgrom)
+- [7.5 Mechanism Design](7.5_Mechanism_Design.qmd) — market scoring rules as mechanism design problems
+- [APP Prediction Markets and Signals](APP_Prediction_Markets_and_Signals.qmd) — detailed empirical applications
+- [APP Trade and Price Shock Models](APP_Trade_and_Price_Shock_Models.qmd) — commodity price signals and local economic outcomes
+- [APP Conflict and Resource Models](APP_Conflict_and_Resource_Models.qmd) — commodity price shocks as signals in conflict models

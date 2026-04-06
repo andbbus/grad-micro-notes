@@ -1,0 +1,280 @@
+---
+title: "7.1 — The Principal-Agent Problem"
+---
+
+# 7.1 — The Principal-Agent Problem
+
+> **MWG Reference:** Ch. 14, §14.A–14.C, pp. 477–519; Holmström (1979); Holmström & Milgrom (1987)
+
+## Context
+
+The principal-agent problem is the foundational model of incentive theory. A principal (P) — an employer, investor, or buyer — hires an agent (A) to perform a task. The agent's effort is either unobservable or non-contractible. The principal observes only an output or outcome that is imperfectly correlated with the agent's effort. The central tension is between **efficiency** (the principal wants high effort) and **incentives** (inducing high effort requires imposing risk on the agent when output is noisy). Under full information — observable effort — the first-best solution is attained. Under hidden effort, the second-best contract must balance incentive provision against risk sharing, and the resulting allocation is strictly inefficient relative to the first-best.
+
+This note develops the model from primitives, characterizes first-best and second-best contracts, proves Holmström's informativeness principle, and derives the optimal linear contract in the LEN model.
+
+## Definitions
+
+::: {.callout-note icon=false}
+## Definition 7.1.1 — Principal-Agent Environment
+A principal-agent environment consists of:
+- **Agent's action (effort):** $e \in E \subseteq \mathbb{R}_+$
+- **Output:** $q = q(e, \theta)$ where $\theta$ is an exogenous noise term with distribution $F_\theta$; the principal observes $q$ but not $(e, \theta)$ separately
+- **Transfer:** $t: Q \to \mathbb{R}$, a payment from principal to agent contingent on observed output $q$
+- **Agent's utility:** $U^A(t, e) = u(t) - c(e)$ where $u(\cdot)$ is increasing and concave ($u'' \leq 0$) and $c(\cdot)$ is the cost of effort with $c' > 0$, $c'' \geq 0$
+- **Principal's utility:** $U^P(q, t) = v(q - t)$ or, in the risk-neutral case, $U^P = \mathbb{E}[q - t]$
+- **Reservation utility:** $\bar{u}$, the agent's outside option
+:::
+
+
+::: {.callout-note icon=false}
+## Definition 7.1.2 — Participation Constraint (PC)
+The agent voluntarily accepts the contract if and only if:
+$$\mathbb{E}[u(t(q))] - c(e) \geq \bar{u}$$
+This is the **individual rationality** or **participation constraint** (PC). It will bind at the optimum: the principal extracts all surplus above the agent's reservation value.
+:::
+
+
+::: {.callout-note icon=false}
+## Definition 7.1.3 — Incentive Compatibility Constraint (IC)
+Under hidden effort, the agent chooses effort to maximize their own utility. The **incentive compatibility constraint** (IC) requires that the contracted effort level $e^*$ satisfies:
+$$e^* \in \arg\max_{e \in E} \left\{ \mathbb{E}[u(t(q(e,\theta)))] - c(e) \right\}$$
+Equivalently, the agent has no incentive to deviate to any $e \neq e^*$ given the contract $t(\cdot)$.
+:::
+
+
+::: {.callout-note icon=false}
+## Definition 7.1.4 — First-Best vs. Second-Best
+- **First-best allocation:** the effort level $e^{FB}$ and contract $t^{FB}$ that maximize total surplus $\mathbb{E}[q(e,\theta)] - c(e) - \text{(risk premium)}$ subject only to the PC, ignoring the IC. Achievable when effort is observable.
+- **Second-best allocation:** the effort level $e^{SB}$ and contract $t^{SB}$ that maximize total surplus subject to both PC and IC. Generically $e^{SB} < e^{FB}$ when the agent is risk-averse.
+:::
+
+
+## Main Results
+
+### First-Best Contract
+
+::: {.callout-important icon=false}
+## Proposition 7.1.1 — First-Best with Observable Effort
+Suppose effort $e$ is observable and contractible. The first-best contract $t^{FB}(e)$ satisfies:
+1. **Efficiency:** $e^{FB}$ solves $\frac{\partial \mathbb{E}[q(e,\theta)]}{\partial e} = c'(e^{FB})$
+2. **Risk sharing:** If the agent is risk-averse and the principal is risk-neutral, optimal risk sharing sets $t = \bar{t}$ (a fixed wage). The principal absorbs all output risk.
+3. **PC binds:** $u(\bar{t}) - c(e^{FB}) = \bar{u}$
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+The principal maximizes $\mathbb{E}[q(e,\theta)] - t$ subject to $u(t) - c(e) \geq \bar{u}$ (PC), where here $t$ is a fixed payment since $e$ is observable. Since $u$ is concave, risk-sharing optimality requires that the agent faces no output risk — a fixed wage $\bar{t}$ is optimal.
+
+The Lagrangian with respect to effort level $e$ is:
+$$\mathcal{L} = \mathbb{E}[q(e,\theta)] - \bar{t} + \lambda(u(\bar{t}) - c(e) - \bar{u})$$
+FOC with respect to $e$:
+$$\frac{\partial \mathbb{E}[q]}{\partial e} = \lambda c'(e)$$
+FOC with respect to $\bar{t}$:
+$$-1 + \lambda u'(\bar{t}) = 0 \implies \lambda = \frac{1}{u'(\bar{t})}$$
+Substituting: $\frac{\partial \mathbb{E}[q]}{\partial e} = \frac{c'(e)}{u'(\bar{t})}$. For a risk-neutral agent, $u'(\bar{t}) = 1$, so $\frac{\partial \mathbb{E}[q]}{\partial e} = c'(e^{FB})$.
+
+PC binds at the optimum: if PC slack, the principal could reduce $\bar{t}$, increasing their payoff while maintaining incentive compatibility (which is irrelevant here since $e$ is observable). Therefore $u(\bar{t}) - c(e^{FB}) = \bar{u}$.
+:::
+
+
+### Second-Best Contract: Risk-Neutral Agent
+
+::: {.callout-important icon=false}
+## Proposition 7.1.2 — Second-Best with Risk-Neutral Agent: First-Best is Achievable
+If the agent is risk-neutral ($u(t) = t$), the principal can implement the first-best effort level even under hidden action by **selling the firm** to the agent.
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+Consider the contract: $t(q) = q - F$ (the agent receives all output minus a fixed fee $F$). Under this contract, the agent solves:
+$$\max_{e} \mathbb{E}[q(e,\theta)] - F - c(e)$$
+Since the agent is the residual claimant, their FOC is $\frac{\partial \mathbb{E}[q]}{\partial e} = c'(e)$, which is exactly the first-best efficiency condition.
+
+The PC pins down $F$: the agent accepts iff $\mathbb{E}[q(e^{FB},\theta)] - F - c(e^{FB}) \geq \bar{u}$. At the optimum, $F = \mathbb{E}[q(e^{FB},\theta)] - c(e^{FB}) - \bar{u}$.
+
+The principal's payoff: $F = \mathbb{E}[q(e^{FB},\theta)] - c(e^{FB}) - \bar{u}$, which is exactly the first-best total surplus minus the agent's reservation value. Therefore the first-best is achieved.
+
+The key is that with a risk-neutral agent, making the agent the residual claimant (the "sell the firm" or franchise contract) aligns incentives without imposing any risk premium cost.
+:::
+
+
+### Second-Best Contract: Risk-Averse Agent
+
+With a risk-averse agent ($u'' < 0$), the "sell the firm" contract imposes undesirable risk on the agent. The optimal contract must trade off insurance (reducing the agent's risk exposure) against incentives (making pay sensitive to output to preserve effort incentives).
+
+::: {.callout-important icon=false}
+## Proposition 7.1.3 — Optimal Second-Best Contract (Holmström 1979)
+Suppose the agent is strictly risk-averse ($u'' < 0$), effort is binary $e \in \{e_L, e_H\}$, the principal wants to implement $e_H$, and output $q$ has density $f(q|e)$ with support $Q$. The optimal contract $t^*(q)$ solving the principal's program
+$$\max_{t(\cdot)} \int_Q [q - t(q)] f(q|e_H) dq$$
+subject to
+$$\text{(PC):} \int_Q u(t(q)) f(q|e_H) dq - c(e_H) \geq \bar{u}$$
+$$\text{(IC):} \int_Q u(t(q)) f(q|e_H) dq - c(e_H) \geq \int_Q u(t(q)) f(q|e_L) dq - c(e_L)$$
+satisfies, for each $q \in Q$:
+$$\frac{1}{u'(t^*(q))} = \lambda + \mu\left(1 - \frac{f(q|e_L)}{f(q|e_H)}\right)$$
+where $\lambda \geq 0$ is the PC multiplier and $\mu \geq 0$ is the IC multiplier.
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+Form the Lagrangian, pointwise in $q$:
+$$\mathcal{L} = \int_Q \left\{ [q - t(q)] f(q|e_H) + \lambda [u(t(q)) f(q|e_H) - \ldots] + \mu [u(t(q))(f(q|e_H) - f(q|e_L))] \right\} dq$$
+
+Taking the first-order condition with respect to $t(q)$ at each $q$:
+$$-f(q|e_H) + \lambda u'(t(q)) f(q|e_H) + \mu u'(t(q))[f(q|e_H) - f(q|e_L)] = 0$$
+Divide by $f(q|e_H) > 0$:
+$$-1 + \lambda u'(t(q)) + \mu u'(t(q))\left[1 - \frac{f(q|e_L)}{f(q|e_H)}\right] = 0$$
+Rearranging:
+$$u'(t(q)) \left[\lambda + \mu\left(1 - \frac{f(q|e_L)}{f(q|e_H)}\right)\right] = 1$$
+Therefore:
+$$\frac{1}{u'(t^*(q))} = \lambda + \mu\left(1 - \frac{f(q|e_L)}{f(q|e_H)}\right)$$
+
+**Interpretation:** The left side is the inverse of marginal utility — a measure of how much the agent values an additional dollar of pay. The right side depends on the **likelihood ratio** $f(q|e_L)/f(q|e_H)$. When this ratio is small (output $q$ is much more likely under $e_H$ than $e_L$), the bracketed term is large, so the agent receives high pay. When the ratio is large ($q$ is much more likely under $e_L$), the agent receives low pay. This aligns the agent's compensation with the likelihood that the agent exerted high effort.
+
+Both $\lambda, \mu \geq 0$ (multipliers on binding constraints). Typically both PC and IC bind at the optimum; if $\mu = 0$ (IC not binding), then $1/u'(t) = \lambda$ everywhere, meaning $t$ is constant — full insurance. But constant $t$ generally violates IC.
+:::
+
+
+### Holmström's Informativeness Principle
+
+::: {.callout-important icon=false}
+## Theorem 7.1.4 — Holmström's Informativeness Principle (Holmström 1979)
+Let $q$ be the output observable in the contract, and let $s$ be an additional signal also observable by the principal. The optimal contract should condition on $s$ if and only if $s$ is **informative about effort** given $q$, i.e., if and only if:
+$$s \text{ is not redundant given } q: \quad \frac{\partial}{\partial s} \log f(q, s | e) \neq 0 \text{ for some } (q,s,e)$$
+Equivalently, $s$ is informative about $e$ given $q$ iff $s \not\perp e \mid q$, i.e., the joint density $f(q,s|e)$ cannot be factored as $g(q|e) \cdot h(s)$.
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+**Sufficiency (adding $s$ helps):** Suppose $s$ is informative about $e$ given $q$. The contract conditioning on $(q, s)$ permits a Pareto improvement relative to the contract that conditions only on $q$. Formally, the first-order condition for the optimal contract on $(q,s)$ becomes:
+$$\frac{1}{u'(t^*(q,s))} = \lambda + \mu\left(1 - \frac{f(q,s|e_L)}{f(q,s|e_H)}\right)$$
+If $s$ is informative, the likelihood ratio $f(q,s|e_L)/f(q,s|e_H)$ depends on $s$ and is not constant in $s$ for given $q$. Therefore the optimal $t^*(q,s)$ is not constant in $s$ for fixed $q$ — the additional signal genuinely affects compensation.
+
+Including $s$ achieves the same effort provision at lower cost to the principal (less risk imposed on the agent for the same IC satisfaction), constituting a Pareto improvement.
+
+**Necessity (dropping $s$ is costless if it is uninformative):** Suppose $s$ is a sufficient statistic for $e$ given $q$: $f(q,s|e) = g(q|e) \cdot h(s|q)$. Then the likelihood ratio:
+$$\frac{f(q,s|e_L)}{f(q,s|e_H)} = \frac{g(q|e_L)}{g(q|e_H)} \cdot \frac{h(s|q)}{h(s|q)} = \frac{g(q|e_L)}{g(q|e_H)}$$
+does not depend on $s$. Therefore the optimal contract $t^*(q,s)$ derived from the first-order condition does not vary with $s$. Conditioning on $s$ provides no additional benefit; the contract on $q$ alone is equally optimal.
+:::
+
+
+::: {.callout-caution icon=false}
+## Remark 7.1.1 — Applications of the Informativeness Principle
+The informativeness principle has direct practical implications:
+- **Relative performance evaluation:** If a worker's output depends on a common shock (industry conditions, weather), then observing a peer's output provides information about the common shock, and hence about the worker's effort net of the shock. Therefore relative performance evaluation is optimal. This is why CEO pay should be benchmarked against industry performance.
+- **Noisy performance measures:** Including a very noisy signal imposes risk on the agent with little incentive benefit; the informativeness criterion tells us the minimum benefit required to justify inclusion.
+- **Multi-dimensional output:** If output has several dimensions, the contract should include all dimensions that are informative about effort.
+:::
+
+
+### The LEN Model: Optimal Linear Contracts
+
+The LEN (Linear contract, Exponential utility, Normal output) model provides a tractable closed-form characterization of optimal contracts when we restrict attention to linear transfer schemes.
+
+::: {.callout-note icon=false}
+## Definition 7.1.5 — LEN Model Setup
+- **Output:** $q = e + \varepsilon$ where $\varepsilon \sim N(0, \sigma^2)$
+- **Agent's utility:** $u(t, e) = -\exp(-r(t - c(e)))$ where $r > 0$ is the coefficient of absolute risk aversion and $c(e) = \frac{1}{2} c e^2$ is the cost of effort ($c > 0$)
+- **Linear contract:** $t = \alpha + \beta q$ where $\alpha$ is the base salary and $\beta \in [0,1]$ is the commission/incentive rate
+- **Principal is risk-neutral:** $U^P = \mathbb{E}[q - t] = e(1 - \beta) - \alpha$
+:::
+
+
+::: {.callout-important icon=false}
+## Proposition 7.1.5 — Optimal Linear Contract in the LEN Model
+In the LEN model, the optimal incentive rate is:
+$$\beta^* = \frac{1}{1 + r \sigma^2 c}$$
+and the optimal base salary $\alpha^*$ is determined by the binding PC: $\alpha^* = \bar{u}/(-r)^{-1} - \beta^* e^* + \frac{1}{2}c(e^*)^2 + \frac{r\sigma^2(\beta^*)^2}{2}$, where $e^* = \beta^*/c$.
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+**Step 1: Agent's certainty equivalent.** Under a linear contract $t = \alpha + \beta q = \alpha + \beta(e + \varepsilon)$, the agent's income is:
+$$t - c(e) = \alpha + \beta e - \frac{c e^2}{2} + \beta \varepsilon$$
+Since the agent has CARA utility with coefficient $r$ and income is normally distributed with mean $\alpha + \beta e - \frac{c e^2}{2}$ and variance $\beta^2 \sigma^2$, the **certainty equivalent (CE)** of the lottery is:
+$$CE = \alpha + \beta e - \frac{c e^2}{2} - \frac{r \beta^2 \sigma^2}{2}$$
+(For CARA-normal, $CE = \mu - \frac{r}{2}\text{Var}$.)
+
+**Step 2: Agent's effort choice.** The agent maximizes CE over $e$:
+$$\max_e \left\{ \alpha + \beta e - \frac{c e^2}{2} - \frac{r \beta^2 \sigma^2}{2} \right\}$$
+FOC: $\beta - c e = 0 \implies e^*(\beta) = \frac{\beta}{c}$
+The agent exerts effort proportional to the incentive rate.
+
+**Step 3: Principal's problem.** Anticipating $e^*(\beta) = \beta/c$, the principal maximizes:
+$$\max_{\alpha, \beta} \mathbb{E}[q - t] = \mathbb{E}[e^*(\beta) + \varepsilon - \alpha - \beta(e^*(\beta) + \varepsilon)]$$
+$$= e^*(\beta) - \alpha - \beta e^*(\beta) = \frac{\beta}{c}(1-\beta) - \alpha$$
+Subject to the PC (binding at optimum):
+$$CE = \alpha + \beta \cdot \frac{\beta}{c} - \frac{c}{2}\left(\frac{\beta}{c}\right)^2 - \frac{r\beta^2\sigma^2}{2} = \bar{u}$$
+$$\alpha = \bar{u} - \frac{\beta^2}{2c} + \frac{r\beta^2\sigma^2}{2}$$
+Wait, let me redo: $CE = \alpha + \frac{\beta^2}{c} - \frac{c}{2}\cdot\frac{\beta^2}{c^2} - \frac{r\beta^2\sigma^2}{2} = \alpha + \frac{\beta^2}{2c} - \frac{r\beta^2\sigma^2}{2} = \bar{u}$, so $\alpha = \bar{u} - \frac{\beta^2}{2c} + \frac{r\beta^2\sigma^2}{2}$.
+
+Substituting into the principal's objective:
+$$\Pi(\beta) = \frac{\beta}{c}(1-\beta) - \bar{u} + \frac{\beta^2}{2c} - \frac{r\beta^2\sigma^2}{2}$$
+$$= \frac{\beta}{c} - \frac{\beta^2}{c} + \frac{\beta^2}{2c} - \frac{r\beta^2\sigma^2}{2} - \bar{u}$$
+$$= \frac{\beta}{c} - \frac{\beta^2}{2c} - \frac{r\beta^2\sigma^2}{2} - \bar{u}$$
+
+**Step 4: Optimal $\beta$.** Taking FOC with respect to $\beta$:
+$$\frac{d\Pi}{d\beta} = \frac{1}{c} - \frac{\beta}{c} - r\sigma^2\beta = 0$$
+$$\frac{1}{c} = \beta\left(\frac{1}{c} + r\sigma^2\right) = \beta \cdot \frac{1 + r\sigma^2 c}{c}$$
+$$\boxed{\beta^* = \frac{1}{1 + r\sigma^2 c}}$$
+
+**Comparative statics:**
+- $\frac{\partial \beta^*}{\partial r} = -\frac{\sigma^2 c}{(1+r\sigma^2 c)^2} < 0$: More risk-averse agents receive lower-powered incentives.
+- $\frac{\partial \beta^*}{\partial \sigma^2} = -\frac{rc}{(1+r\sigma^2 c)^2} < 0$: Noisier environments call for weaker incentives.
+- $\frac{\partial \beta^*}{\partial c} = -\frac{r\sigma^2}{(1+r\sigma^2 c)^2} < 0$: Higher effort cost $\Rightarrow$ lower incentives.
+- As $r \to 0$ or $\sigma^2 \to 0$: $\beta^* \to 1$ (full incentives, first-best).
+:::
+
+
+::: {.callout-caution icon=false}
+## Remark 7.1.2 — Testable Predictions of the LEN Model
+The formula $\beta^* = 1/(1+r\sigma^2 c)$ generates clean empirical predictions:
+1. **Risk-incentive tradeoff:** Incentive pay intensity should be decreasing in output uncertainty ($\sigma^2$). Tested in sharecropping (Allen 1985; Prendergast 1999), executive compensation (Core-Guay-Larcker 2003).
+2. **Risk aversion:** More risk-averse agents (e.g., those with less wealth) should receive flatter contracts. Evidence from microfinance and agricultural contracts.
+3. **Agency identification problem:** Prendergast (1999) notes that empirical studies find a positive correlation between risk and incentive intensity in many datasets — a "puzzle" for the simple model. Resolution: risk may proxy for difficult environments that require more delegation and hence more incentives. This debate illustrates the challenge of mapping structural parameters to observables.
+:::
+
+
+### Limited Liability
+
+::: {.callout-note icon=false}
+## Definition 7.1.6 — Limited Liability Constraint
+If the agent has limited liability (cannot pay the principal), the transfer must satisfy $t(q) \geq \underline{t}$ for some minimum $\underline{t}$ (often normalized to 0). This modifies the PC:
+$$\mathbb{E}[u(t(q))] - c(e) \geq \bar{u}$$
+but now the agent may earn rent even with the PC binding when the limited liability constraint is binding at low output levels.
+:::
+
+
+::: {.callout-caution icon=false}
+## Remark 7.1.3 — Limited Liability and Agency Rents
+With limited liability:
+- The principal cannot extract all surplus via a franchise fee (the "sell the firm" solution breaks down even for a risk-neutral agent)
+- The agent earns an **expected rent** above the reservation utility
+- The optimal contract bunches payments at the minimum $\underline{t}$ for bad outcomes (limited liability binds) and provides incentive bonuses for good outcomes
+- This mechanism generates a U-shaped or increasing bonus structure and is central to models of executive compensation, debt contracts, and venture capital financing
+:::
+
+
+## Economic Intuition
+
+The principal-agent problem captures the fundamental tension between **ownership and control**. When the person who bears financial consequences (the principal) is not the same as the person who makes decisions (the agent), incentive problems arise. The owner of a firm wants profits maximized; a manager they hire may prefer a quieter life, empire-building, or excessive risk-taking.
+
+The first-best solution is simple: make the agent the residual claimant. If the agent gets all the upside and downside, they will internalize all consequences of their actions. This works perfectly for a risk-neutral agent. The problem with risk-averse agents is that making them the residual claimant exposes them to risk they could not face under full information — the optimal first-best contract would have insured them against output fluctuations.
+
+The second-best contract balances two forces:
+- **Insurance motive:** To reduce the risk-averse agent's risk exposure, the principal would prefer a flat wage.
+- **Incentive motive:** To induce effort, the principal must make the agent's pay sensitive to output.
+
+The optimal contract lies between these extremes: $\beta^* \in (0,1)$. The agent bears some output risk but not all of it. The efficiency loss relative to first-best is the **cost of moral hazard** — a welfare loss that is a genuine feature of environments with non-contractible effort, not a market failure that can be corrected by policy.
+
+## Cross-References
+
+- [7.2 Moral Hazard](7.2_Moral_Hazard.qmd) — extends to discrete effort, MLRC, multitasking
+- [7.3 Adverse Selection and Screening](7.3_Adverse_Selection_and_Screening.qmd) — hidden type analog
+- [7.5 Mechanism Design](7.5_Mechanism_Design.qmd) — general mechanism design; revelation principle applied to this setting
+- [9.4 Deriving Testable Predictions](9.4_Deriving_Testable_Predictions.qmd) — how to derive moment conditions from the FOC of the agent's problem
+- [9.5 Structural vs Reduced Form](9.5_Structural_vs_Reduced_Form.qmd) — structural estimation of agency models

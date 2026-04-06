@@ -1,0 +1,162 @@
+---
+title: "2.4 — The Expenditure Minimization Problem (EMP)"
+---
+
+# 2.4 — The Expenditure Minimization Problem (EMP)
+
+> **MWG Reference:** Ch. 3, pp. 58–79
+
+## Context
+
+The Expenditure Minimization Problem (EMP) is the dual to the UMP. While the UMP asks "what is the best bundle I can afford?", the EMP asks "what is the cheapest way to achieve a given utility level?" The solution is the Hicksian (compensated) demand correspondence, and the value function is the expenditure function. The Hicksian demand isolates the pure substitution effect of a price change by holding utility fixed; it is the welfare-theoretically natural object for computing the compensating and equivalent variation. The expenditure function is the key tool for welfare measurement: a price change is valued by asking how much wealth must change to keep the consumer at their original utility level.
+
+## Setup and Definitions
+
+::: {.callout-note icon=false}
+## Definition 2.4.1 — Expenditure Minimization Problem (EMP)
+Given prices $p \gg 0$ and a utility target $\bar{u} > u(0)$ (infimum of $u$ on $\mathbb{R}^L_+$), the **EMP** is:
+$$\min_{x \in \mathbb{R}^L_+} \; p \cdot x \quad \text{subject to} \quad u(x) \geq \bar{u}$$
+:::
+
+
+::: {.callout-note icon=false}
+## Definition 2.4.2 — Hicksian Demand Correspondence
+The **Hicksian (compensated) demand correspondence** is:
+$$h(p, \bar{u}) = \arg\min_{x \geq 0, \; u(x) \geq \bar{u}} p \cdot x$$
+Elements of $h(p, \bar{u})$ are the utility-compensated (Hicksian) demands.
+:::
+
+
+::: {.callout-note icon=false}
+## Definition 2.4.3 — Expenditure Function
+The **expenditure function** is the value function of the EMP:
+$$e(p, \bar{u}) = \min_{x \geq 0, \; u(x) \geq \bar{u}} p \cdot x = p \cdot h(p, \bar{u})$$
+:::
+
+
+## Existence
+
+::: {.callout-important icon=false}
+## Proposition 2.4.1 — Existence of Expenditure Minimum
+If $u$ is continuous and locally nonsatiated, and $p \gg 0$, $\bar{u} > u(0)$, then the EMP has a solution.
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+The constraint set $A = \{x \in \mathbb{R}^L_+ : u(x) \geq \bar{u}\}$ is closed (by continuity of $u$) and nonempty (by assumption, $\bar{u}$ is attainable). The objective $p \cdot x$ is continuous and, since $p \gg 0$, goes to infinity as $\|x\| \to \infty$. Hence any sequence in $A$ along which $p \cdot x$ approaches its infimum must be bounded; the infimum is achieved in the closure of $A = A$. More formally, fix any $\hat{x} \in A$ (which exists by assumption). Restrict to the compact set $A \cap \{x : p \cdot x \leq p \cdot \hat{x}\}$, which is closed (intersection of two closed sets) and bounded (since $p \gg 0$ bounds all components from above). The continuous function $p \cdot x$ attains its minimum on this compact set, which equals its infimum over all of $A$. $\square$
+:::
+
+
+## Properties of the Expenditure Function
+
+::: {.callout-important icon=false}
+## Theorem 2.4.1 — Properties of $e(p, \bar{u})$
+Suppose $u$ is continuous and locally nonsatiated. The expenditure function $e(p, \bar{u})$ satisfies:
+1. **Homogeneous of degree one in $p$:** $e(\alpha p, \bar{u}) = \alpha e(p, \bar{u})$ for all $\alpha > 0$
+2. **Strictly increasing in $\bar{u}$**
+3. **Nondecreasing in $p_l$** for each $l$
+4. **Concave in $p$**
+5. **Continuous in $(p, \bar{u})$**
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+**(1) Homogeneity of degree one:**
+$e(\alpha p, \bar{u}) = \min_{u(x) \geq \bar{u}} (\alpha p) \cdot x = \alpha \min_{u(x) \geq \bar{u}} p \cdot x = \alpha \, e(p, \bar{u})$.
+The second equality holds because $\alpha > 0$ does not affect the argmin, only scales the objective.
+
+**(2) Strictly increasing in $\bar{u}$:**
+Let $\bar{u}' > \bar{u}$. Then the constraint set $\{x : u(x) \geq \bar{u}'\} \subsetneq \{x : u(x) \geq \bar{u}\}$ (strictly, since we can find an $x$ with $u(x) \in [\bar{u}, \bar{u}')$ by continuity and the assumption that $\bar{u}'$ is achievable). Hence $e(p, \bar{u}') \geq e(p, \bar{u})$. For strict inequality: let $x^* \in h(p, \bar{u})$, so $u(x^*) = \bar{u}$ (by LNS; if $u(x^*) > \bar{u}$, we could reduce expenditure slightly while maintaining $u(x) \geq \bar{u}$, contradicting minimality). So $x^*$ is not in $\{x: u(x) \geq \bar{u}'\}$, meaning the minimizer for $\bar{u}'$ must lie in a strictly smaller set, which by LNS forces strictly higher expenditure.
+
+**(3) Nondecreasing in $p_l$:**
+If $p_l$ increases to $p_l'$, then the cost of any bundle $x$ weakly increases (since $x_l \geq 0$). Hence $e(p', \bar{u}) = \min_{u(x) \geq \bar{u}} p' \cdot x \geq \min_{u(x) \geq \bar{u}} p \cdot x = e(p, \bar{u})$.
+
+**(4) Concavity in $p$:**
+Let $p, p'$ be two price vectors and $\alpha \in [0,1]$. Let $\tilde{p} = \alpha p + (1-\alpha)p'$. Let $x^*$ be a minimizer for the EMP at prices $\tilde{p}$, so $e(\tilde{p}, \bar{u}) = \tilde{p} \cdot x^* = \alpha p \cdot x^* + (1-\alpha) p' \cdot x^*$.
+
+Since $u(x^*) \geq \bar{u}$, $x^*$ is feasible for the EMP at prices $p$ and prices $p'$. Hence:
+$$p \cdot x^* \geq e(p, \bar{u}) \quad \text{and} \quad p' \cdot x^* \geq e(p', \bar{u})$$
+Therefore:
+$$e(\tilde{p}, \bar{u}) = \alpha p \cdot x^* + (1-\alpha) p' \cdot x^* \geq \alpha \, e(p, \bar{u}) + (1-\alpha) \, e(p', \bar{u})$$
+This is exactly concavity: $e(\alpha p + (1-\alpha)p', \bar{u}) \geq \alpha \, e(p, \bar{u}) + (1-\alpha) \, e(p', \bar{u})$. $\square$
+
+**(5) Continuity:** By Berge's Maximum Theorem applied to the EMP, since the constraint correspondence $p \mapsto \{x \geq 0 : u(x) \geq \bar{u}\}$ is constant (and thus continuous in $p$), and the objective $p \cdot x$ is continuous in $(p,x)$, the value function $e(p, \bar{u})$ is continuous in $p$. Continuity in $\bar{u}$ follows similarly. $\square$
+:::
+
+
+## Shephard's Lemma
+
+::: {.callout-important icon=false}
+## Theorem 2.4.2 — Shephard's Lemma
+If $e(p, \bar{u})$ is differentiable in $p$ at $(p^0, \bar{u})$, then:
+$$h_l(p^0, \bar{u}) = \frac{\partial e(p^0, \bar{u})}{\partial p_l} \quad \text{for all } l = 1, \ldots, L$$
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+We apply the **Envelope Theorem** to the EMP. Write the EMP as:
+$$e(p, \bar{u}) = \min_x \; p \cdot x \quad \text{s.t.} \quad u(x) \geq \bar{u}$$
+The Lagrangian is $\mathcal{L}(x, \mu) = p \cdot x - \mu(u(x) - \bar{u})$ where $\mu \geq 0$.
+
+By the envelope theorem, the derivative of the optimal value function with respect to a parameter equals the partial derivative of the Lagrangian with respect to that parameter, evaluated at the optimum:
+$$\frac{\partial e(p, \bar{u})}{\partial p_l} = \frac{\partial \mathcal{L}}{\partial p_l}\bigg|_{x = h(p,\bar{u})} = x_l^* = h_l(p, \bar{u})$$
+since $\partial \mathcal{L}/\partial p_l = x_l$. $\square$
+:::
+
+
+::: {.callout-caution icon=false}
+## Remark 2.4.1 — Shephard's Lemma and the Substitution Matrix
+Shephard's Lemma immediately implies: the **substitution matrix** (Hessian of $e$ with respect to $p$):
+$$\frac{\partial h_l(p, \bar{u})}{\partial p_k} = \frac{\partial^2 e(p, \bar{u})}{\partial p_l \partial p_k}$$
+Since $e$ is concave in $p$, its Hessian is **negative semidefinite**. Since the Hessian of $e$ is symmetric (Young's theorem), the substitution matrix is symmetric: $\partial h_l/\partial p_k = \partial h_k/\partial p_l$. These properties — NSD and symmetry — are the content of the Slutsky restrictions, derived more fully in [2.5 Duality and Slutsky](2.5_Duality_and_Slutsky.qmd).
+:::
+
+
+## Properties of Hicksian Demand
+
+::: {.callout-important icon=false}
+## Proposition 2.4.2 — Properties of Hicksian Demand
+Under the maintained assumptions, Hicksian demand $h(p, \bar{u})$ satisfies:
+1. **Homogeneous of degree zero in $p$:** $h(\alpha p, \bar{u}) = h(p, \bar{u})$ for all $\alpha > 0$
+2. **The substitution matrix $\partial h/\partial p$ is symmetric:** $\frac{\partial h_l}{\partial p_k} = \frac{\partial h_k}{\partial p_l}$
+3. **The substitution matrix $\partial h/\partial p$ is negative semidefinite:** $z^\top \frac{\partial h(p,\bar{u})}{\partial p} z \leq 0$ for all $z \in \mathbb{R}^L$
+4. **$\frac{\partial h}{\partial p} \cdot p = 0$** (from homogeneity)
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+**(1) Homogeneity of degree zero:** $h(\alpha p, \bar{u}) = \arg\min_{u(x) \geq \bar{u}} (\alpha p) \cdot x = \arg\min_{u(x) \geq \bar{u}} p \cdot x = h(p, \bar{u})$, since scaling the objective by $\alpha > 0$ does not change the argmin.
+
+**(2) Symmetry:** By Shephard's Lemma, $h_l = \partial e / \partial p_l$ and $h_k = \partial e/\partial p_k$. Therefore $\partial h_l/\partial p_k = \partial^2 e / \partial p_k \partial p_l = \partial^2 e/\partial p_l \partial p_k = \partial h_k/\partial p_l$ by Young's theorem (equality of mixed partials), valid when $e$ is twice continuously differentiable.
+
+**(3) Negative semidefiniteness:** Since $e(p, \bar{u})$ is concave in $p$ (Theorem 2.4.1(4)), its Hessian $D^2_p e = \partial h/\partial p$ is negative semidefinite. More explicitly: by concavity, for any vector $z$:
+$$e(p + tz, \bar{u}) \leq e(p, \bar{u}) + t \nabla_p e \cdot z + \frac{t^2}{2} z^\top D^2_p e \cdot z$$
+but also from concavity: $e(p + tz, \bar{u}) \leq e(p, \bar{u}) + t z^\top \nabla_p e(p, \bar{u})$ is not directly useful. The correct statement: $e$ is concave iff its Hessian is NSD wherever it exists. Hence $D^2_p e \preceq 0$, i.e., $z^\top D^2_p e \, z \leq 0$ for all $z$.
+
+**(4) $(\partial h/\partial p) p = 0$:** Differentiating the homogeneity condition $h(\alpha p, \bar{u}) = h(p, \bar{u})$ with respect to $\alpha$ at $\alpha = 1$ yields $\frac{\partial h(p, \bar{u})}{\partial p} p = 0$ (by Euler's theorem for homogeneous functions of degree zero). $\square$
+:::
+
+
+::: {.callout-caution icon=false}
+## Remark 2.4.2 — No Income Effect
+Hicksian demand holds utility constant by construction. Therefore, it has no income effect: changes in $p$ affect $h$ only through the substitution channel. The own-price effect satisfies $\partial h_l/\partial p_l \leq 0$ (from NSD of the substitution matrix — set $z = e_l$), meaning Hicksian demand is always downward sloping. This contrasts with Marshallian demand, which can slope upward for Giffen goods (where a strong income effect reverses the substitution effect).
+:::
+
+
+## Economic Intuition
+
+The EMP is the "cost side" of consumer theory. It answers a dual question to the UMP: instead of maximizing utility within a budget, it minimizes cost while meeting a utility standard. The Hicksian demand isolates the pure substitution response to a price change, holding the consumer's welfare fixed. This makes it the correct object for welfare measurement: if good $l$'s price rises, the Hicksian demand shows how the consumer would substitute away from $l$ if they were compensated enough to maintain their original utility level.
+
+The concavity of $e$ in $p$ has a transparent revealed-preference interpretation: if a firm (or consumer) can substitute away from goods whose prices rise, total costs are "convex" — but if the cost function is evaluated at a fixed bundle, costs are linear in prices. The minimum cost is therefore always below or equal to the cost of the fixed bundle, making the minimum-cost function concave.
+
+Shephard's Lemma is the dual analog of Roy's Identity: just as the Walrasian demand can be recovered from the indirect utility function by differentiation, the Hicksian demand can be recovered from the expenditure function by differentiation. This provides a remarkably clean connection between welfare (expenditure) and observable demand.
+
+## Cross-References
+- [2.3 Utility Maximization Problem](2.3_Utility_Maximization_Problem.qmd) — The dual problem; indirect utility function
+- [2.5 Duality and Slutsky](2.5_Duality_and_Slutsky.qmd) — Full duality, Slutsky equation, CV/EV
+- [2.7 Integrability](2.7_Integrability.qmd) — Recovering $e$ from $h$ by integration
+- [1.3 Optimization Theory](1.3_Optimization_Theory.qmd) — Envelope theorem, Berge's maximum theorem

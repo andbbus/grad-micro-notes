@@ -1,0 +1,117 @@
+---
+title: "Problem Set — Part VI: General Equilibrium"
+---
+
+# Problem Set — Part VI: General Equilibrium
+
+> **MWG Reference:** Ch. 15–18
+
+---
+
+## Problem 1 — Walrasian Equilibrium in a 2×2 Exchange Economy
+
+Consider a pure exchange economy with 2 consumers and 2 goods. Consumer 1 has utility $u_1(x_{11}, x_{12}) = \min\{x_{11}, x_{12}\}$ (Leontief preferences) and endowment $\omega_1 = (4, 2)$. Consumer 2 has utility $u_2(x_{21}, x_{22}) = x_{21} + 2x_{22}$ (linear preferences) and endowment $\omega_2 = (2, 4)$.
+
+**(a)** Draw the Edgeworth box. Identify the contract curve (set of Pareto optima) geometrically and algebraically.
+
+**(b)** Derive each consumer's Walrasian demand as a function of prices $(p_1, p_2)$ and wealth.
+
+**(c)** Set up the market clearing conditions. Use Walras' Law to reduce to a single equation.
+
+**(d)** Solve for the equilibrium price ratio $p_1/p_2$ and the equilibrium allocation $(x_1^*, x_2^*)$.
+
+**(e)** Verify that the equilibrium allocation is Pareto optimal (by checking it lies on the contract curve). Interpret: what does it mean that a competitive equilibrium is Pareto optimal for this specific economy?
+
+**(f)** Suppose the initial endowment is redistributed so that $\omega_1 = (3,3)$ and $\omega_2 = (3,3)$. Find the new equilibrium. Does the equilibrium price ratio change? Explain why or why not.
+
+---
+
+## Problem 2 — Walras' Law and Market Clearing Reduction
+
+Consider a three-good, two-consumer exchange economy. Suppose the aggregate excess demand function satisfies:
+
+$$z_1(p) = \frac{3p_2 - 2p_1}{p_1 + p_2}, \quad z_2(p) = \frac{2p_1 - 3p_2 + p_3}{p_1 + p_2 + p_3}, \quad z_3(p) = ?$$
+
+**(a)** Verify that $z_1$ and $z_2$ are homogeneous of degree zero in $(p_1, p_2, p_3)$.
+
+**(b)** Using Walras' Law ($p \cdot z(p) = 0$ for all $p \gg 0$), derive $z_3(p)$ explicitly. Show all algebraic steps.
+
+**(c)** Solve for the Walrasian equilibrium prices $(p_1^*, p_2^*, p_3^*)$ by setting $z_1 = z_2 = 0$ (Walras' Law ensures $z_3 = 0$ automatically). Normalize $p_1 = 1$.
+
+**(d)** Check whether the boundary condition holds for all three goods: as $p_\ell \to 0$, does $z_\ell(p) \to +\infty$?
+
+**(e)** Now suppose a tax of $t > 0$ per unit is imposed on good 3, wedging the consumer price above the producer price: $p_3^c = p_3^p + t$. How does the equilibrium analysis change? Write out the modified market clearing conditions. Does Walras' Law still hold?
+
+---
+
+## Problem 3 — First Welfare Theorem from Scratch
+
+Let $\mathcal{E} = ((u_i, \omega_i)_{i=1}^{n})$ be an exchange economy where all consumers have locally nonsatiated preferences. Let $(x^*, p^*)$ be any Walrasian equilibrium.
+
+**(a)** State formally what it means for preferences to satisfy local nonsatiation. Prove that local nonsatiation implies the budget constraint is binding at any optimum: $p \cdot x_i^* = p \cdot \omega_i$.
+
+**(b)** Prove the First Welfare Theorem: $(x^*)$ is Pareto optimal.
+
+**(c)** The proof in (b) uses the fact that any preferred bundle must be unaffordable. In two steps: first show this for bundles strictly preferred to $x_i^*$; then use local nonsatiation to extend it to bundles weakly preferred.
+
+**(d)** Identify precisely where the proof would fail if local nonsatiation were dropped. Construct an explicit counterexample: an economy without local nonsatiation where a Walrasian equilibrium exists but is not Pareto optimal.
+
+**(e)** Does the First Welfare Theorem hold if some consumer $i$ has satiated preferences for some goods? Explain carefully with reference to the proof.
+
+---
+
+## Problem 4 — Failure of the Second Welfare Theorem with Non-Convex Preferences
+
+Let there be 1 consumer and 2 goods. The consumer has utility function:
+$$u(x_1, x_2) = \max\{x_1, x_2\}$$
+and total endowment $\bar{\omega} = (1, 1)$ (so the consumer owns everything).
+
+**(a)** Show that $u$ is not quasi-concave. Sketch the upper contour sets in $\mathbb{R}^2_+$.
+
+**(b)** Identify all Pareto-optimal allocations (there is only one consumer, so any feasible allocation is trivially Pareto optimal). In particular, identify the allocations $(1, 0)$ and $(1/2, 1/2)$.
+
+**(c)** For the allocation $\tilde{x} = (1, 0)$: show that there exists **no** price vector $p^* \in \mathbb{R}^2_{++}$ such that $\tilde{x}$ is the demand at prices $p^*$ and wealth $w = p^* \cdot \tilde{x}$. (Hint: compute the consumer's demand at any price and show $\tilde{x}$ is never optimal.)
+
+**(d)** For the allocation $\tilde{x} = (0, 1)$: repeat (c).
+
+**(e)** Conclude that the Second Welfare Theorem fails for non-convex preferences. Explain geometrically why the separating hyperplane argument breaks down: which step of the proof in [6.4 Welfare Theorems](6.4_Welfare_Theorems.qmd) fails?
+
+**(f)** Discuss: in a two-consumer economy with non-convex preferences, can any Pareto-optimal allocation be decentralized as a Walrasian equilibrium with lump-sum transfers? When might it be possible even without global convexity?
+
+---
+
+## Problem 5 — Pigouvian Tax in a Specific Externality Model
+
+Consider two firms in an economy with one input (labor, price normalized to 1) and two outputs:
+- Firm 1 produces steel: $y_1 = \sqrt{L_1}$ (tons of steel from $L_1$ units of labor)
+- Firm 2 produces fish: $y_2 = \sqrt{L_2} - \gamma y_1$ (tons of fish, reduced by firm 1's steel output at rate $\gamma > 0$)
+
+Output prices are $p_1 = 4$ (steel) and $p_2 = 2$ (fish). Both firms are price-takers.
+
+**(a)** Derive each firm's private profit-maximizing labor demand $L_i^{CE}$ and output $y_i^{CE}$.
+
+**(b)** Write out the social planner's problem: maximize total profit $\pi_1 + \pi_2$ by choosing $(L_1, L_2)$ jointly.
+
+**(c)** Solve for the socially optimal $(L_1^*, L_2^*, y_1^*, y_2^*)$.
+
+**(d)** Compute the Pigouvian tax $\tau^* = $ marginal external cost of steel production at the social optimum. Verify that a competitive equilibrium where firm 1 faces per-unit tax $\tau^*$ on output $y_1$ achieves the social optimum.
+
+**(e)** Compute the change in welfare from implementing the Pigouvian tax: compare total profits under $(y_1^{CE}, y_2^{CE})$ and $(y_1^*, y_2^*)$. If $\gamma = 1$, what is the numerical welfare gain?
+
+---
+
+## Problem 6 — Lindahl Equilibrium and Free-Rider Incentives
+
+Consider a two-consumer economy with one private good $x$ (numeraire) and one public good $G$. Consumer 1 has utility $u_1(x_1, G) = x_1 + 2\ln G$ and consumer 2 has $u_2(x_2, G) = x_2 + 3\ln G$. The public good costs $c = 1$ unit of private good per unit of $G$. Both consumers have wealth $w_i = 10$.
+
+**(a)** Compute the socially optimal public good level $G^*$ using the Samuelson condition $\sum_i MRS_i^{Gx} = MC(G)$.
+
+**(b)** Derive the Lindahl prices $(\tau_1^*, \tau_2^*)$ and verify $\tau_1^* + \tau_2^* = 1 = MC(G^*)$.
+
+**(c)** Verify that both consumers voluntarily demand $G^*$ at the Lindahl prices: at $\tau_i^*$, consumer $i$'s optimal $G_i^*(\tau_i^*) = G^*$.
+
+**(d)** Now consider private (voluntary) provision. Each consumer $i$ contributes $g_i \geq 0$ to the public good; $G = g_1 + g_2$. Consumer $i$ takes $g_j$ as given. Derive the Nash equilibrium level of private provision $G^{NE}$. Compare with $G^*$ and confirm $G^{NE} < G^*$.
+
+**(e)** Suppose consumer 1 knows both willingness-to-pay values and tries to design a "contribution scheme" to implement $G^*$. Show that consumer 2 has an incentive to misreport (free-ride) even in the Lindahl scheme if $\tau_i$ is determined by reported valuations. This illustrates why Lindahl equilibrium is not dominant-strategy incentive compatible.
+
+**(f)** Describe qualitatively how the Clarke-Groves mechanism resolves the incentive problem. What is the "pivotal tax" consumer 2 would face under Clarke-Groves? Is the mechanism budget-balanced?

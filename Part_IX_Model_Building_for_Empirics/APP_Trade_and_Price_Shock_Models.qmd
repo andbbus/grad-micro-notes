@@ -1,0 +1,191 @@
+---
+title: "APP — Trade and Price Shock Models"
+---
+
+# APP — Trade and Price Shock Models
+
+> **Cross-references:** Dornbusch-Fischer-Samuelson (1977); Eaton & Kortum (2002); Autor, Dorn & Hanson (2013)
+
+## Context
+
+International trade models provide a theoretical framework for understanding how price shocks propagate from world markets to local economies. When a commodity price rises on international markets, local producers gain (via higher revenues) while local consumers lose (via higher prices). The net effect on wages, employment, and welfare depends on the economy's factor intensity structure, its trade openness, and the degree of price pass-through from world to local markets. This application note develops the major models — Ricardian comparative advantage, the Eaton-Kortum quantitative framework, and the Autor-Dorn-Hanson shift-share approach — and bridges each to empirical identification strategies.
+
+## Ricardian Model: Dornbusch-Fischer-Samuelson (1977)
+
+::: {.callout-note icon=false}
+## Definition APP.5 — DFS Ricardian Model Setup
+Two countries, Home (H) and Foreign (F). A continuum of goods $z \in [0,1]$. Home's unit labor requirement for good $z$: $a(z)$. Foreign's unit labor requirement: $a^*(z)$. Define the comparative advantage index:
+$$A(z) = \frac{a^*(z)}{a(z)}$$
+ranked in decreasing order: $A'(z) < 0$ (home has comparative advantage in goods $z$ close to 0).
+
+Let $\omega = w/w^*$ be the wage ratio (Home wage relative to Foreign). Home produces good $z$ competitively iff:
+$$w a(z) < w^* a^*(z) \iff \omega < A(z)$$
+The **cutoff** $\tilde{z}$ satisfies $\omega = A(\tilde{z})$: Home produces $[0, \tilde{z}]$ and Foreign produces $[\tilde{z}, 1]$.
+:::
+
+
+::: {.callout-important icon=false}
+## Proposition APP.5 — DFS Equilibrium
+In the DFS model, the equilibrium wage ratio $\omega^*$ and cutoff $\tilde{z}^*$ are jointly determined by:
+1. **Pattern of specialization:** $\omega = A(\tilde{z})$ (the cutoff condition)
+2. **Trade balance:** $w L \cdot \int_0^{\tilde{z}} b(z) dz = w^* L^* \cdot \int_{\tilde{z}}^1 b(z) dz$
+where $b(z)$ is the expenditure share on good $z$ (from Cobb-Douglas preferences, $b(z)$ is uniform).
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+**Cutoff condition:** Home wages are $w$, Foreign wages are $w^*$. Home can undercut Foreign in good $z$ iff $w a(z) < w^* a^*(z)$, i.e., $\omega < A(z)$. Since $A$ is decreasing, this defines a cutoff $\tilde{z}$ with $A(\tilde{z}) = \omega$.
+
+**Trade balance:** With symmetric Cobb-Douglas preferences (uniform $b(z) = 1$), Home's expenditure on imports (goods from $[\tilde{z}, 1]$) equals Foreign's expenditure on Home's goods (from $[0, \tilde{z}]$):
+$$w L (1 - \tilde{z}) = w^* L^* \tilde{z}$$
+(Home workers spend fraction $(1-\tilde{z})$ of income on Foreign goods; Foreign workers spend fraction $\tilde{z}$ on Home goods.)
+
+Solving: $\omega \equiv w/w^* = L^* \tilde{z} / (L(1-\tilde{z}))$.
+
+**Equilibrium:** The pair $(\omega^*, \tilde{z}^*)$ solves both $\omega = A(\tilde{z})$ (decreasing in $\tilde{z}$, since $A$ is decreasing) and $\omega = L^* \tilde{z}/(L(1-\tilde{z}))$ (increasing in $\tilde{z}$). Since one is decreasing and one is increasing, there is a unique intersection.
+:::
+
+
+::: {.callout-important icon=false}
+## Proposition APP.6 — DFS Comparative Statics: Terms of Trade Shocks
+1. **Technology improvement at Home** (lower $a(z)$ for all $z$, shifting $A(z)$ up): equilibrium wage ratio $\omega^*$ rises and cutoff $\tilde{z}^*$ rises — Home produces more varieties and wages are higher
+2. **Population increase at Home** ($L$ rises): $\omega^*$ falls (lower wages) and $\tilde{z}^*$ falls (Home produces fewer varieties)
+3. **Terms of trade shock** (exogenous change in $\omega$): reallocation of production across goods sectors; wage adjustment
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+**Technology improvement:** $A(z) = a^*(z)/a(z)$ shifts up (all $A(z)$ increase). The cutoff condition $A(\tilde{z}) = \omega$ at the new higher $A$ requires either higher $\omega$ or lower $\tilde{z}$. The trade balance determines which: with higher $A$, Home is more competitive, earns higher wages, and $\omega^*$ rises. At higher $\omega^*$, $\tilde{z}^*$ also rises (from the trade balance equation). This is the Rybczynski-type result in comparative advantage: better technology shifts production toward more goods and raises relative wages.
+:::
+
+
+## Eaton-Kortum (2002) Model
+
+::: {.callout-note icon=false}
+## Definition APP.6 — Eaton-Kortum Setup
+$N$ countries; a continuum of goods. Country $i$'s productivity in good $\omega$ (for buyer in country $j$): drawn from a Fréchet distribution:
+$$\Pr(Z_{ij}(\omega) \leq z) = e^{-T_i z^{-\theta}}$$
+where $T_i > 0$ is country $i$'s technology level and $\theta > 1$ is the shape parameter (heterogeneity). The delivered price from country $i$ to $j$ is $p_{ij}(\omega) = c_i d_{ij} / Z_{ij}(\omega)$ where $c_i = w_i$ (unit cost in country $i$) and $d_{ij} \geq 1$ is the iceberg trade cost.
+:::
+
+
+::: {.callout-important icon=false}
+## Theorem APP.7 — Eaton-Kortum Gravity Equation and Welfare Formula
+In the EK model:
+
+1. **Trade shares (gravity):**
+$$\pi_{ij} = \frac{X_{ij}}{X_j} = \frac{T_i (c_i d_{ij})^{-\theta}}{\sum_{k=1}^N T_k (c_k d_{kj})^{-\theta}}$$
+where $X_{ij}$ is expenditure by $j$ on goods from $i$ and $X_j$ is total expenditure of $j$.
+
+2. **Welfare formula (Arkolakis-Costinot-Rodriguez-Clare 2012):**
+$$\hat{W}_j = \hat\lambda_{jj}^{-1/\theta}$$
+where $\hat\lambda_{jj} = \lambda_{jj}'/\lambda_{jj}$ is the proportional change in country $j$'s home expenditure share and $\hat{W}_j = W_j'/W_j$ is the proportional change in welfare (real income). This is the **ACR sufficient statistic**: welfare change from any trade shock equals the change in home expenditure share, scaled by $-1/\theta$.
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+**Trade shares:** Country $j$ buys good $\omega$ from the country $i$ offering the lowest delivered price $p_j(\omega) = \min_i p_{ij}(\omega)$. Using properties of the Fréchet distribution and the minimum of Fréchet random variables:
+
+$$\Pr(\text{buy from } i) = \Pr(p_{ij}(\omega) = \min_k p_{kj}(\omega)) = \frac{T_i (c_i d_{ij})^{-\theta}}{\sum_k T_k (c_k d_{kj})^{-\theta}}$$
+(Standard result from extreme value theory: the probability of drawing the minimum from a set of independent Fréchet distributions is proportional to each distribution's scale parameter, raised to $\theta$.)
+
+By the law of large numbers over the continuum of goods, the fraction of goods purchased from $i$ equals the probability above. Since spending is uniform across goods (Cobb-Douglas aggregator), the expenditure share equals the probability share.
+
+**Welfare formula:** The price index faced by consumers in $j$ is:
+$$P_j = \gamma \left(\sum_k T_k (c_k d_{kj})^{-\theta}\right)^{-1/\theta}$$
+where $\gamma$ is a constant. Real income $W_j = w_j/P_j$. Labor market clearing: $w_j L_j = X_j$ (balanced trade). The home expenditure share is $\lambda_{jj} = T_j(c_j)^{-\theta}/\sum_k T_k(c_k d_{kj})^{-\theta}$.
+
+After algebraic manipulation, $W_j \propto w_j/P_j \propto \lambda_{jj}^{-1/\theta}$ (up to terms that cancel in ratios). Therefore $\hat{W}_j = \hat\lambda_{jj}^{-1/\theta}$.
+
+**ACR result interpretation:** Welfare change from any trade shock (technology, tariff, cost change) depends only on two observable/estimable objects: (1) the change in home expenditure share (observable from trade data); (2) the trade elasticity $\theta$ (estimable from gravity regressions using tariff variation). No need to know $T_i$, $c_i$, or $d_{ij}$ separately.
+:::
+
+
+::: {.callout-caution icon=false}
+## Remark APP.5 — Estimating the Trade Elasticity $\theta$
+The gravity equation $\ln X_{ij} = \ln T_i - \theta \ln c_i - \theta \ln d_{ij} + \ln X_j + \text{const}$ implies:
+$$\frac{d \ln X_{ij}}{d \ln d_{ij}} = -\theta$$
+A 1% increase in trade costs reduces the trade share by $\theta$%. Tariff variation provides the identifying variation: a tariff imposed by $j$ on imports from $i$ is a multiplicative iceberg cost $d_{ij}' = d_{ij}(1+\tau_{ij})$, so $\ln d_{ij}' = \ln d_{ij} + \ln(1+\tau_{ij})$. IV estimate of $\theta$: regress $\Delta \ln X_{ij}$ on $\Delta \ln(1+\tau_{ij})$ using MFN tariff changes as instruments.
+:::
+
+
+## International Price Shocks and Local Labor Markets
+
+::: {.callout-note icon=false}
+## Definition APP.7 — Shift-Share (Bartik) Instrument
+The **Autor-Dorn-Hanson (2013) shift-share instrument** measures exposure of local labor market $\ell$ to import competition from China:
+$$\Delta IPW_{\ell t} = \sum_j \frac{L_{j\ell 0}}{L_{\ell 0}} \cdot \frac{\Delta M_{j,\text{other},t}}{L_{j,\text{US},0}}$$
+where:
+- $j$ indexes industries
+- $L_{j\ell 0}$ = employment in industry $j$ in local labor market $\ell$ at the start of period
+- $L_{\ell 0}$ = total employment in $\ell$
+- $\Delta M_{j,\text{other},t}$ = growth in Chinese exports to other developed countries (not US) in industry $j$
+- $L_{j,\text{US},0}$ = total US employment in industry $j$
+
+The instrument uses the import growth in other countries ($\Delta M_{j,\text{other},t}$) as a proxy for the exogenous supply-side shock from China, interacted with local industry composition (the "share" $L_{j\ell}/L_\ell$) to assign exposure to local labor markets.
+:::
+
+
+::: {.callout-important icon=false}
+## Proposition APP.8 — Conditions for Validity of the Shift-Share Instrument
+The Bartik shift-share instrument is a valid instrument for import exposure iff:
+1. **Relevance:** Industry shares $L_{j\ell 0}/L_{\ell 0}$ are correlated with the import exposure (ensured by construction)
+2. **Exogeneity (Identification):** The "shifts" $\Delta M_{j,\text{other},t}$ are uncorrelated with unobserved determinants of local labor market outcomes in the US conditional on controls
+3. **No direct effect of "shares":** The initial industry composition does not independently affect outcomes except through its interaction with the China shock (exclusion restriction)
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+The validity conditions come from two interpretations of the shift-share estimator (Goldsmith-Pinkham, Sorkin & Swift 2020):
+
+**"Shares" interpretation:** The shift-share is a weighted IV, with initial industry shares as instruments. Validity requires the shares to be as good as randomly assigned (conditional on controls) — i.e., the initial industry composition is uncorrelated with local trends in employment growth.
+
+**"Shifts" interpretation:** The shift-share is a GMM estimator using industry-level shocks as instruments. Validity requires the industry-level shifts $\Delta M_{j,\text{other}}$ to be uncorrelated with the industry-level component of US employment shocks.
+
+The economic (model-based) justification for the exclusion: Chinese import growth in other developed countries is driven by Chinese productivity improvements (supply side), which is exogenous to US local labor market conditions. This justification comes from a model of China's export growth: supply-side technological change in China shifts the global supply curve, generating correlated export growth across all destination countries. The correlation with US local exposure is mechanical (industry composition), not through any feedback from US labor markets to Chinese productivity.
+:::
+
+
+### Pass-Through Models
+
+::: {.callout-note icon=false}
+## Definition APP.8 — Exchange Rate Pass-Through
+The **exchange rate pass-through** (ERPT) measures how much of a currency depreciation is reflected in import prices. Let $p_t^m$ be the import price (in local currency), $e_t$ be the exchange rate (domestic currency per foreign currency), and $p_t^f$ be the foreign export price. The pass-through coefficient is:
+$$\text{ERPT} = \frac{d \ln p_t^m}{d \ln e_t} = 1 - \frac{d \ln(p_t^f / e_t)}{d \ln e_t}$$
+Under complete pass-through (ERPT = 1): import prices move one-for-one with exchange rates (Law of One Price). Under zero pass-through (ERPT = 0): exporters fully absorb exchange rate changes in their markups (pricing to market).
+:::
+
+
+::: {.callout-caution icon=false}
+## Remark APP.6 — Bridge to Commodity Prices in the DRC
+The pipeline from world commodity price to household welfare:
+
+**Stage 1: World price → Export price.** Mining companies sell minerals at world prices. The pass-through from world mineral prices to mining companies' revenues is close to 1 (price-taking, internationally traded goods).
+
+**Stage 2: Export price → Local wage.** The mining company's revenue determines the wage it can pay local workers. In a competitive labor market, wage = marginal revenue product. The wage elasticity to world prices depends on the production function (mining technology) and local labor market competition.
+
+**Stage 3: Local wage → Household welfare.** Households with workers employed in mining benefit directly (wage income). Agricultural households are affected indirectly through labor market competition and consumer prices. Non-traded goods prices respond to the local income effect.
+
+**Stage 4: Price shock → Conflict (via resource prize).** The mining sector's value also affects the contest prize in the conflict model. A higher world price raises $R$ in the Garfinkel-Skaperdas model, increasing conflict effort.
+
+Each stage has a structural model justifying the mechanism and generating testable predictions. The IV strategy (world prices → local outcomes) traverses all stages; structural analysis would decompose the total effect into the contribution of each stage.
+:::
+
+
+## Economic Intuition
+
+Trade models make precise predictions about the local welfare effects of international price shocks. The DFS model shows that comparative advantage determines which sectors contract and which expand in response to a terms-of-trade shock. The EK model provides the sufficient statistic for welfare: the change in the home expenditure share, scaled by the trade elasticity. This elegant formula — $\hat{W}_j = \hat\lambda_{jj}^{-1/\theta}$ — is one of the best examples of the sufficient statistics approach in action: welfare depends only on two estimable quantities, regardless of the full model structure.
+
+The Autor-Dorn-Hanson shift-share design is the canonical example of how a trade model's comparative static (exposure to Chinese import competition) can be turned into an empirical instrument. The shift-share is not a pure reduced-form instrument — it is grounded in the structure of the trade model (the Heckscher-Ohlin or specific-factors framework that predicts industry-specific adjustment to trade shocks). The model justifies both the instrument and the interpretation of the estimated coefficient.
+
+## Cross-References
+
+- [APP Conflict and Resource Models](APP_Conflict_and_Resource_Models.qmd) — commodity price shocks as instruments in conflict model
+- [9.6 Identification in Structural Models](9.6_Identification_in_Structural_Models.qmd) — model-justified exclusion restrictions from trade theory
+- [9.7 Model Discipline and Tractability](9.7_Model_Discipline_and_Tractability.qmd) — EK sufficient statistic as example of model discipline
+- [9.5 Structural vs Reduced Form](9.5_Structural_vs_Reduced_Form.qmd) — Bartik as hybrid structural-reduced form
+- [APP Prediction Markets and Signals](APP_Prediction_Markets_and_Signals.qmd) — commodity futures prices aggregate information about supply shocks

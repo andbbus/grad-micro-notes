@@ -1,0 +1,153 @@
+---
+title: "Problem Set — Part V: Game Theory"
+---
+
+# Problem Set — Part V: Game Theory
+
+> **MWG Reference:** Ch. 7–9
+
+---
+
+## Problem 1 — Nash Equilibria of a 3×3 Game
+
+Consider the following normal form game where Player 1 chooses rows ($T, M, B$) and Player 2 chooses columns ($L, C, R$):
+
+$$\begin{array}{c|ccc} & L & C & R \\ \hline T & 4,3 & 0,0 & 3,4 \\ M & 2,2 & 5,5 & 1,1 \\ B & 3,4 & 0,0 & 4,3 \end{array}$$
+
+**(a)** Apply IESDS. State which strategies are eliminated at each round and justify each elimination.
+
+**(b)** Find all pure strategy Nash equilibria.
+
+**(c)** Find all mixed strategy Nash equilibria. (Hint: by part (a), you may work with the reduced game.)
+
+**(d)** Verify that every pure strategy NE you found in (b) is rationalizable. Show that the IESDS outcome from (a) coincides with the set of rationalizable strategies.
+
+**(e)** Compute the payoffs of each player at every NE you found. Assess whether any NE Pareto dominates another.
+
+---
+
+## Problem 2 — IESDS vs. Nash Equilibrium
+
+Consider the three-player normal form game in which each player chooses from $\{A, B\}$. Player 1 chooses rows, Player 2 chooses columns, Player 3 chooses the matrix. Payoffs $(u_1, u_2, u_3)$:
+
+**Player 3 chooses $X$:**
+$$\begin{array}{c|cc} & A & B \\ \hline A & 1,1,2 & 3,0,1 \\ B & 0,3,1 & 2,2,3 \end{array}$$
+
+**Player 3 chooses $Y$:**
+$$\begin{array}{c|cc} & A & B \\ \hline A & 2,2,1 & 0,1,0 \\ B & 1,0,0 & 3,3,2 \end{array}$$
+
+**(a)** Perform IESDS and find $S^\infty$.
+
+**(b)** Find all Nash equilibria (pure and mixed) of this game.
+
+**(c)** Explicitly exhibit a rationalizable strategy profile that is **not** a Nash equilibrium. For the strategy you exhibit, construct the chain of beliefs justifying each player's choice.
+
+**(d)** Prove formally that the order of elimination in (a) does not affect the outcome, using Theorem 5.1.1. Exhibit two different elimination orders that produce the same $S^\infty$.
+
+---
+
+## Problem 3 — SPE via Backward Induction and Non-Credible Threats
+
+Consider the following 3-stage sequential game:
+
+- **Stage 1:** Player 1 chooses $U$ (up) or $D$ (down).
+- **Stage 2:** Player 2, observing Player 1's choice, chooses $L$ or $R$.
+- **Stage 3:** Player 1, observing both prior choices, chooses $A$ or $B$.
+
+Terminal payoffs $(u_1, u_2)$:
+- $(U, L, A) \to (4, 2)$
+- $(U, L, B) \to (1, 5)$
+- $(U, R, A) \to (3, 3)$
+- $(U, R, B) \to (2, 1)$
+- $(D, L, A) \to (5, 1)$
+- $(D, L, B) \to (0, 4)$
+- $(D, R, A) \to (2, 2)$
+- $(D, R, B) \to (3, 3)$
+
+**(a)** Draw the extensive form game tree, labeling all nodes and payoffs.
+
+**(b)** Find the backward induction solution. State the optimal action of Player 1 at Stage 3 for each history, then the optimal action of Player 2 at Stage 2, then the optimal action of Player 1 at Stage 1.
+
+**(c)** Write down the SPE strategy profile explicitly as a complete contingent plan for each player.
+
+**(d)** Find all Nash equilibria of the normal form game. Identify which NE are SPE and which rely on non-credible threats. For each non-SPE Nash equilibrium, identify the subgame in which the induced strategies are not a Nash equilibrium, and specify the off-path threat that is non-credible.
+
+**(e)** Apply the one-deviation principle to verify that your SPE is indeed subgame perfect. Show that no single-information-set deviation is profitable.
+
+---
+
+## Problem 4 — Critical Discount Factor in Prisoner's Dilemma
+
+Consider the Prisoner's Dilemma stage game:
+
+$$\begin{array}{c|cc} & C & D \\ \hline C & 3,3 & 0,5 \\ D & 5,0 & 1,1 \end{array}$$
+
+Players interact in the infinitely repeated game $G^\infty(\delta)$ with discount factor $\delta \in (0,1)$. Payoffs are normalized as $(1-\delta)\sum_{t=0}^\infty \delta^t u_i(a^t)$.
+
+**(a)** Verify that $(D, D)$ is the unique Nash equilibrium of the stage game.
+
+**(b)** State the grim trigger strategy profile $\tau$ that attempts to sustain $(C, C)$ in every period.
+
+**(c)** Compute the critical discount factor $\delta^*$ such that $\tau$ is an SPE for all $\delta \geq \delta^*$. Show all steps of the no-deviation calculation.
+
+**(d)** Now suppose the punishment is not permanent NE play but rather $T$ periods of $(D,D)$ followed by a return to cooperation. Derive the critical discount factor $\delta^*(T)$ as a function of $T$. Show that $\delta^*(T) \to \delta^*$ (from part c) as $T \to \infty$ and $\delta^*(T) \to 1$ as $T \to 1$.
+
+**(e)** Suppose cooperation is $(C,C)$ but deviation is detected only with probability $p \in (0,1)$ each period (imperfect monitoring). Rederive $\delta^*(p)$. How does $\delta^*$ depend on $p$? Interpret economically in terms of antitrust enforcement.
+
+---
+
+## Problem 5 — BNE in Cournot Duopoly with Private Costs
+
+Consider a Cournot duopoly with inverse demand $P(Q) = 10 - Q$ where $Q = q_1 + q_2$. Marginal costs are private information: firm $i$'s cost $c_i$ is drawn independently from the uniform distribution on $\{c_L, c_H\} = \{1, 3\}$ with equal probability $1/2$.
+
+**(a)** List all possible type profiles $(c_1, c_2)$ and the complete information Nash equilibrium quantity pairs for each type profile.
+
+**(b)** A strategy for firm $i$ in the Bayesian game is a pair $(q_i^L, q_i^H) \in \mathbb{R}_+^2$ where $q_i^L$ is the quantity if $c_i = c_L$ and $q_i^H$ if $c_i = c_H$. Write out firm $i$'s interim expected profit as a function of $(q_i^L, q_i^H)$ given that firm $j$ plays $(q_j^L, q_j^H)$.
+
+**(c)** Derive the four first-order conditions for a symmetric BNE. Solve for the symmetric BNE $(q^{L*}, q^{H*})$.
+
+**(d)** Compare the BNE quantities to the complete information Cournot equilibrium quantities from (a). For which cost types does a firm produce more under incomplete information? Provide the economic intuition.
+
+**(e)** Compute the ex-ante expected total quantity and expected price under the BNE. Compare to the expected total quantity and price in the complete information equilibria (averaged over type profiles).
+
+---
+
+## Problem 6 — Correlated Equilibrium in Battle of the Sexes
+
+Consider the Battle of the Sexes:
+
+$$\begin{array}{c|cc} & O & F \\ \hline O & 3,1 & 0,0 \\ F & 0,0 & 1,3 \end{array}$$
+
+**(a)** Find all pure strategy Nash equilibria. Find the mixed strategy Nash equilibrium and compute expected payoffs.
+
+**(b)** Consider the correlated distribution $\mu$ defined by:
+$$\mu(O,O) = \frac{1}{2}, \quad \mu(F,F) = \frac{1}{2}, \quad \mu(O,F) = \mu(F,O) = 0.$$
+Verify all the correlated equilibrium conditions. What are the expected payoffs?
+
+**(c)** Consider the more general correlated distribution:
+$$\mu(O,O) = p, \quad \mu(F,F) = q, \quad \mu(O,F) = r, \quad \mu(F,O) = s,$$
+where $p + q + r + s = 1$ and $p,q,r,s \geq 0$. Derive the four obedience constraints (one for each player and each possible recommendation). Characterize the set of all correlated equilibria as a convex polytope.
+
+**(d)** Find the correlated equilibrium $\mu^*$ that maximizes the **sum** of expected payoffs $E_\mu[u_1 + u_2]$. Show that $\mu^*$ strictly Pareto dominates the mixed NE. Explain why a mediator who can recommend (but not enforce) actions can improve on the Nash outcome.
+
+**(e)** Show that no Nash equilibrium (pure or mixed) achieves the welfare-maximizing CE payoffs from (d). This illustrates that CE strictly expands the set of implementable payoff vectors beyond NE.
+
+---
+
+## Problem 7 — Folk Theorem: Explicit Construction
+
+Consider the following two-player stage game:
+
+$$\begin{array}{c|cc} & C & D \\ \hline C & 4,4 & 0,6 \\ D & 6,0 & 1,1 \end{array}$$
+
+**(a)** Find all Nash equilibria of the stage game. Compute the minmax payoff $\underline{v}_i$ for each player $i$.
+
+**(b)** Characterize the feasible set $V = \text{co}\{v \in \mathbb{R}^2 : v = u(a), a \in A\}$. Sketch $V$ in payoff space. Identify the feasible and strictly individually rational set $V^*$.
+
+**(c)** Consider the target payoff vector $v^* = (3, 3)$. This payoff requires correlation (verify this). Assume a mediator can publicly correlate players' actions. Propose a correlated action profile achieving $v^* = (3,3)$.
+
+**(d)** Explicitly construct the grim trigger strategy profile $(\tau_1, \tau_2)$ sustaining $v^* = (3,3)$ as an SPE payoff. Compute the critical discount factor $\delta^*$ such that no deviation is profitable for $\delta \geq \delta^*$.
+
+**(e)** Now consider the target payoff $v^{**} = (2, 5)$, which is feasible and strictly individually rational. Explain why the simple grim trigger strategy is not sufficient to sustain $v^{**}$ (asymmetric payoffs require asymmetric strategies). Propose an explicit strategy profile sustaining $v^{**}$ as an SPE payoff. Compute the critical discount factor.
+
+**(f)** Verify the full dimensionality condition for this game. Explain intuitively why this condition is necessary for the Fudenberg-Maskin version of the Folk Theorem but not for Friedman's version.

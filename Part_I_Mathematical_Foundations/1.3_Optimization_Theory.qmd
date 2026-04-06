@@ -1,0 +1,273 @@
+---
+title: "1.3 Optimization Theory"
+---
+
+# 1.3 Optimization Theory
+
+> **MWG Reference:** Mathematical Appendix, Sections M.D, M.L, pp. 937–940, 966–977
+
+## Context
+
+Optimization theory is the engine of microeconomics: virtually every positive result (a demand function, a supply function, a contract) is the solution to some agent's optimization problem, and virtually every comparative statics result (how demand changes with income, how cost changes with output) follows from differentiating the optimized value with respect to a parameter. This note develops the key tools in sequence: unconstrained FOCs and SOCs, the Lagrangian method for equality constraints, the Kuhn-Tucker conditions for inequality constraints, and — most importantly for applications — the Envelope Theorem in both unconstrained and constrained versions. The Envelope Theorem is a single mathematical result with at least a dozen named corollaries in economic theory: Hotelling's Lemma, Shephard's Lemma, Roy's Identity, the Slutsky equation, and the characterization of shadow prices all follow directly. The note closes with quasi-concavity, which is the minimal convexity condition needed for the consumer's and firm's optimization programs to be well-behaved.
+
+---
+
+## Definitions
+
+::: {.callout-note icon=false}
+## Definition 1.16 — Local and Global Optima
+Let $f: U \subseteq \mathbb{R}^L \to \mathbb{R}$.
+- $x^* \in U$ is a **local maximum** of $f$ on $U$ if there exists $\varepsilon > 0$ such that $f(x^*) \geq f(x)$ for all $x \in B_\varepsilon(x^*) \cap U$.
+- $x^*$ is a **global maximum** if $f(x^*) \geq f(x)$ for all $x \in U$.
+- Replace $\geq$ with $\leq$ for minima; replace $\geq$ with $>$ for strict local/global maxima.
+:::
+
+
+::: {.callout-note icon=false}
+## Definition 1.17 — Concavity and Quasi-Concavity
+A function $f: C \to \mathbb{R}$ on a convex set $C \subseteq \mathbb{R}^L$ is:
+- **Concave** if for all $x, y \in C$ and $\lambda \in [0,1]$: $f(\lambda x + (1-\lambda)y) \geq \lambda f(x) + (1-\lambda) f(y)$.
+- **Strictly concave** if the inequality is strict for $x \neq y$ and $\lambda \in (0,1)$.
+- **Quasi-concave** if for all $x, y \in C$ and $\lambda \in [0,1]$: $f(\lambda x + (1-\lambda)y) \geq \min\{f(x), f(y)\}$.
+- **Strictly quasi-concave** if the inequality is strict for $x \neq y$ and $\lambda \in (0,1)$.
+
+Equivalently, $f$ is quasi-concave if and only if every **upper contour set** $\{x \in C : f(x) \geq t\}$ is convex for all $t \in \mathbb{R}$.
+:::
+
+
+::: {.callout-caution icon=false}
+## Remark
+Concavity implies quasi-concavity (but not conversely). Quasi-concavity is the right condition for preferences: it says "averages are weakly preferred to extremes," i.e., indifference curves are convex to the origin. Strictly quasi-concave utility functions yield unique demand (single-valued $x(p,w)$). Concavity is a stronger condition used for profit functions and cost functions (as functions of output).
+:::
+
+
+::: {.callout-note icon=false}
+## Definition 1.18 — Hessian Matrix
+For $f: U \subseteq \mathbb{R}^L \to \mathbb{R}$ twice continuously differentiable, the **Hessian** is the $L \times L$ symmetric matrix:
+$$H_f(x) = D^2 f(x) = \left( \frac{\partial^2 f}{\partial x_i \partial x_j}(x) \right)_{i,j=1}^L.$$
+$f$ is **concave** on $U$ (convex $U$) if and only if $H_f(x)$ is **negative semidefinite** for all $x \in U$; strictly concave if $H_f$ is negative definite everywhere.
+:::
+
+
+::: {.callout-note icon=false}
+## Definition 1.19 — Lagrangian
+For the constrained problem:
+$$\max_{x \in \mathbb{R}^L} \; f(x) \quad \text{subject to} \quad g_k(x) = 0, \; k = 1, \ldots, K,$$
+the **Lagrangian** is:
+$$\mathcal{L}(x, \lambda) = f(x) - \sum_{k=1}^K \lambda_k g_k(x),$$
+where $\lambda = (\lambda_1, \ldots, \lambda_K) \in \mathbb{R}^K$ are **Lagrange multipliers**.
+:::
+
+
+::: {.callout-note icon=false}
+## Definition 1.20 — Kuhn-Tucker Lagrangian
+For the problem with inequality constraints:
+$$\max_{x \in \mathbb{R}^L} \; f(x) \quad \text{subject to} \quad g_k(x) \leq 0, \; k = 1, \ldots, K,$$
+the **Kuhn-Tucker Lagrangian** is:
+$$\mathcal{L}(x, \mu) = f(x) - \sum_{k=1}^K \mu_k g_k(x),$$
+where $\mu_k \geq 0$ for all $k$.
+:::
+
+
+---
+
+## Main Results
+
+::: {.callout-important icon=false}
+## Theorem 1.10 — Unconstrained First and Second-Order Conditions
+Let $f: U \subseteq \mathbb{R}^L \to \mathbb{R}$ be $C^2$ on the open set $U$.
+
+**(Necessity)** If $x^*$ is a local maximum, then:
+$$\text{(FOC)} \quad Df(x^*) = 0 \quad \text{(i.e., } \nabla f(x^*) = 0\text{)},$$
+$$\text{(SOC)} \quad D^2 f(x^*) \text{ is negative semidefinite.}$$
+
+**(Sufficiency)** If $Df(x^*) = 0$ and $D^2 f(x^*)$ is negative definite, then $x^*$ is a strict local maximum.
+
+**(Global)** If $f$ is concave on $U$ (convex), then any local maximum is a global maximum, and any point with $Df(x^*) = 0$ is a global maximum.
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+**FOC Necessity.** Suppose $x^*$ is a local maximum. For any direction $v \in \mathbb{R}^L$, the function $\varphi(t) = f(x^* + tv)$ achieves a local maximum at $t=0$, so $\varphi'(0) = Df(x^*) \cdot v = 0$. Since $v$ is arbitrary, $Df(x^*) = 0$.
+
+**SOC Necessity.** Similarly, $\varphi''(0) = v^T D^2 f(x^*) v \leq 0$ for all $v$, since $t=0$ is a local max of $\varphi$. This is the definition of negative semidefiniteness.
+
+**Sufficiency.** By Taylor's theorem, $f(x^* + h) = f(x^*) + Df(x^*) \cdot h + \frac{1}{2} h^T D^2 f(x^*) h + o(\|h\|^2)$. If $Df(x^*) = 0$ and $D^2 f(x^*)$ is negative definite, then $h^T D^2 f(x^*) h \leq -c\|h\|^2$ for some $c > 0$, so $f(x^*+h) \leq f(x^*) - (c/2)\|h\|^2 < f(x^*)$ for small $\|h\| > 0$.
+
+**Global (concave case).** If $f$ is concave and $x^*$ is a local maximum, suppose $f(y) > f(x^*)$ for some $y$. For $\lambda \in (0,1)$ small, $f(\lambda y + (1-\lambda) x^*) \geq \lambda f(y) + (1-\lambda)f(x^*) > f(x^*)$, and $\lambda y + (1-\lambda)x^*$ is arbitrarily close to $x^*$ for small $\lambda$, contradicting local maximality. $\blacksquare$
+:::
+
+
+::: {.callout-important icon=false}
+## Theorem 1.11 — Lagrange's Theorem (Equality-Constrained FOCs)
+Let $f: \mathbb{R}^L \to \mathbb{R}$ and $g: \mathbb{R}^L \to \mathbb{R}^K$ be $C^1$. Suppose $x^*$ is a local maximum of $f$ subject to $g(x) = 0$, and suppose the **constraint qualification** holds at $x^*$: the Jacobian $Dg(x^*) \in \mathbb{R}^{K \times L}$ has full row rank (rank $K$). Then there exists a unique $\lambda^* \in \mathbb{R}^K$ such that:
+$$D_x \mathcal{L}(x^*, \lambda^*) = Df(x^*) - \lambda^{*T} Dg(x^*) = 0.$$
+Equivalently:
+$$\frac{\partial f}{\partial x_\ell}(x^*) = \sum_{k=1}^K \lambda^*_k \frac{\partial g_k}{\partial x_\ell}(x^*), \quad \ell = 1, \ldots, L.$$
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+**Step 1: Characterize the tangent space of the constraint set.**
+The constraint set is $S = \{x : g(x) = 0\}$. The tangent space of $S$ at $x^*$ is $T_{x^*} S = \ker(Dg(x^*)) = \{v \in \mathbb{R}^L : Dg(x^*) v = 0\}$.
+
+**Step 2: $Df(x^*)$ must annihilate $T_{x^*} S$.**
+If $v \in T_{x^*} S$, let $\gamma: (-\varepsilon, \varepsilon) \to S$ be a $C^1$ curve with $\gamma(0) = x^*$ and $\gamma'(0) = v$. Since $x^*$ is a local max of $f$ on $S$, $t = 0$ is a local max of $f \circ \gamma$, so $(f \circ \gamma)'(0) = Df(x^*) \cdot v = 0$. (Such a curve exists by the implicit function theorem, which applies because $Dg(x^*)$ has full rank.)
+
+**Step 3: Invoke the fundamental theorem of linear algebra.**
+We have $Df(x^*) \in (\ker Dg(x^*))^\perp = \text{rowspace}(Dg(x^*))$.
+
+Therefore $Df(x^*)$ is a linear combination of the rows of $Dg(x^*)$: $\exists \lambda^* \in \mathbb{R}^K$ such that $Df(x^*) = \lambda^{*T} Dg(x^*)$.
+
+**Step 4: Uniqueness of $\lambda^*$.**
+Since $Dg(x^*)$ has full row rank $K$, the rows are linearly independent, so $\lambda^*$ is unique. $\blacksquare$
+:::
+
+
+::: {.callout-caution icon=false}
+## Remark
+The Lagrange multiplier $\lambda_k^*$ has the interpretation of a **shadow price**: it measures how much the optimal value $f(x^*)$ would increase if constraint $k$ were relaxed from $g_k(x) = 0$ to $g_k(x) = \varepsilon$ (by $\varepsilon \lambda_k^*$ to first order). This interpretation is made precise by the Envelope Theorem (Theorem 1.13 below).
+:::
+
+
+::: {.callout-important icon=false}
+## Theorem 1.12 — Kuhn-Tucker Necessary Conditions
+Let $f: \mathbb{R}^L \to \mathbb{R}$ and $g_k: \mathbb{R}^L \to \mathbb{R}$ for $k = 1, \ldots, K$ be $C^1$. Consider:
+$$\max_{x \in \mathbb{R}^L} f(x) \quad \text{s.t.} \quad g_k(x) \leq 0, \; k = 1, \ldots, K.$$
+Let $x^*$ be a local maximum and suppose a **constraint qualification** holds at $x^*$ (e.g., LICQ: the gradients $\nabla g_k(x^*)$ for active constraints $k \in A(x^*) = \{k : g_k(x^*) = 0\}$ are linearly independent). Then there exist multipliers $\mu^* = (\mu^*_1, \ldots, \mu^*_K) \geq 0$ such that:
+
+**(Stationarity)** $\displaystyle \nabla f(x^*) = \sum_{k=1}^K \mu_k^* \nabla g_k(x^*)$
+
+**(Primal Feasibility)** $g_k(x^*) \leq 0$ for all $k$
+
+**(Dual Feasibility)** $\mu_k^* \geq 0$ for all $k$
+
+**(Complementary Slackness)** $\mu_k^* g_k(x^*) = 0$ for all $k$.
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+The active constraints $g_k(x^*) = 0$ for $k \in A(x^*)$ are equality constraints at $x^*$; the inactive constraints $g_k(x^*) < 0$ for $k \notin A(x^*)$ are locally nonbinding and can be ignored. Apply Lagrange's Theorem (Theorem 1.11) to $f$ subject to the active equality constraints, obtaining multipliers $\mu_k^*$ for $k \in A(x^*)$. Set $\mu_k^* = 0$ for $k \notin A(x^*)$ (this enforces complementary slackness automatically for inactive constraints).
+
+The sign condition $\mu_k^* \geq 0$ follows from the observation that the active constraints enter as $g_k(x^*) \leq 0$: relaxing a binding $\leq$-constraint (increasing the right-hand side from 0 to $\varepsilon > 0$) cannot decrease the maximum (more feasibility only helps), so the shadow price of a binding $\leq$-constraint must be non-negative. $\blacksquare$
+:::
+
+
+::: {.callout-caution icon=false}
+## Remark
+**Complementary slackness** says: either a constraint is binding ($g_k(x^*) = 0$) or its multiplier is zero ($\mu_k^* = 0$), or both. In consumer theory: the budget constraint is almost always binding at the optimum (by local non-satiation), so $\mu > 0$; the non-negativity constraint $x_\ell \geq 0$ may be binding (if good $\ell$ is not consumed) with $\mu_\ell^*$ equal to the imputed value of the good, or non-binding with $\mu_\ell^* = 0$.
+:::
+
+
+::: {.callout-important icon=false}
+## Theorem 1.13 — Sufficiency Under Convexity
+Suppose $f$ is concave and each $g_k$ is convex. If $(x^*, \mu^*)$ satisfies the KKT conditions, then $x^*$ is a **global** maximum.
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+For any feasible $x$ (with $g_k(x) \leq 0$):
+$$f(x) - f(x^*) \leq Df(x^*) \cdot (x - x^*) \quad (\text{concavity of } f)$$
+$$= \sum_k \mu_k^* \nabla g_k(x^*) \cdot (x - x^*) \quad (\text{stationarity})$$
+$$\leq \sum_k \mu_k^* [g_k(x) - g_k(x^*)] \quad (\text{convexity of each } g_k: g_k(x) \geq g_k(x^*) + \nabla g_k(x^*) \cdot (x-x^*))$$
+$$= \sum_k \mu_k^* g_k(x) - \sum_k \mu_k^* g_k(x^*)$$
+$$\leq \sum_k \mu_k^* \cdot 0 - \sum_k \mu_k^* g_k(x^*) \quad (\text{since } g_k(x) \leq 0 \text{ and } \mu_k^* \geq 0)$$
+$$= -\sum_k \mu_k^* g_k(x^*) = 0 \quad (\text{complementary slackness: } \mu_k^* g_k(x^*) = 0).$$
+So $f(x) \leq f(x^*)$ for all feasible $x$. $\blacksquare$
+:::
+
+
+::: {.callout-important icon=false}
+## Theorem 1.14 — Envelope Theorem (Unconstrained Version)
+Let $f: \mathbb{R}^L \times \mathbb{R}^M \to \mathbb{R}$ be $C^1$ in $(x, \alpha)$ where $x$ is the choice variable and $\alpha \in \mathbb{R}^M$ is a parameter vector. Define the value function:
+$$V(\alpha) = \max_{x \in \mathbb{R}^L} f(x, \alpha),$$
+and suppose that for each $\alpha$, the maximizer $x^*(\alpha)$ is unique and varies $C^1$ with $\alpha$. Then $V$ is differentiable and:
+$$\frac{\partial V}{\partial \alpha_m}(\alpha) = \frac{\partial f}{\partial \alpha_m}(x^*(\alpha), \alpha) \quad \text{for each } m = 1, \ldots, M.$$
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+Differentiate $V(\alpha) = f(x^*(\alpha), \alpha)$ with respect to $\alpha_m$ using the chain rule:
+$$\frac{dV}{d\alpha_m} = \sum_{\ell=1}^L \frac{\partial f}{\partial x_\ell}(x^*, \alpha) \frac{\partial x^*_\ell}{\partial \alpha_m} + \frac{\partial f}{\partial \alpha_m}(x^*, \alpha).$$
+By the FOC for an interior maximum: $\frac{\partial f}{\partial x_\ell}(x^*(\alpha), \alpha) = 0$ for all $\ell$. Therefore the first sum vanishes and:
+$$\frac{dV}{d\alpha_m} = \frac{\partial f}{\partial \alpha_m}(x^*(\alpha), \alpha). \qquad \blacksquare$$
+:::
+
+
+::: {.callout-caution icon=false}
+## Remark
+The key insight is that we can ignore the indirect effect of $\alpha$ on $V$ through the optimal choice $x^*(\alpha)$, because at the optimum the FOC guarantees that a marginal change in $x$ has zero first-order effect on $f$. Only the **direct** effect of $\alpha$ on $f$ matters for the derivative of $V$.
+:::
+
+
+::: {.callout-important icon=false}
+## Theorem 1.15 — Envelope Theorem (Constrained Version, Theorem M.L.1)
+Consider the parameterized constrained problem:
+$$V(\alpha) = \max_{x} f(x, \alpha) \quad \text{s.t.} \quad g_k(x, \alpha) = 0, \; k = 1, \ldots, K.$$
+Let $\mathcal{L}(x, \lambda, \alpha) = f(x, \alpha) - \sum_k \lambda_k g_k(x, \alpha)$. Suppose $x^*(\alpha)$ and $\lambda^*(\alpha)$ are $C^1$ and satisfy the FOCs for all $\alpha$ near $\alpha_0$. Then $V$ is differentiable at $\alpha_0$ and:
+$$\frac{\partial V}{\partial \alpha_m}(\alpha_0) = \frac{\partial \mathcal{L}}{\partial \alpha_m}(x^*(\alpha_0), \lambda^*(\alpha_0), \alpha_0) = \frac{\partial f}{\partial \alpha_m}(x^*, \alpha_0) - \sum_{k=1}^K \lambda_k^* \frac{\partial g_k}{\partial \alpha_m}(x^*, \alpha_0).$$
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+**Step 1: Express $V$ in terms of the Lagrangian at the optimum.**
+At the optimum, all constraints hold: $g_k(x^*(\alpha), \alpha) = 0$. Therefore:
+$$V(\alpha) = f(x^*(\alpha), \alpha) = \mathcal{L}(x^*(\alpha), \lambda^*(\alpha), \alpha)$$
+(since the $\lambda_k g_k$ terms vanish at the constraint).
+
+**Step 2: Differentiate with respect to $\alpha_m$.**
+$$\frac{dV}{d\alpha_m} = \frac{d}{d\alpha_m} \mathcal{L}(x^*(\alpha), \lambda^*(\alpha), \alpha)$$
+$$= \underbrace{\sum_\ell \frac{\partial \mathcal{L}}{\partial x_\ell} \frac{\partial x^*_\ell}{\partial \alpha_m}}_{=0 \text{ by FOC}} + \underbrace{\sum_k \frac{\partial \mathcal{L}}{\partial \lambda_k} \frac{\partial \lambda^*_k}{\partial \alpha_m}}_{=0 \text{ since } \partial \mathcal{L}/\partial \lambda_k = -g_k = 0} + \frac{\partial \mathcal{L}}{\partial \alpha_m}.$$
+**Explanation of zero terms:**
+- $\partial \mathcal{L} / \partial x_\ell = 0$ at $(x^*, \lambda^*)$ by the Lagrange FOC.
+- $\partial \mathcal{L} / \partial \lambda_k = -g_k(x^*, \alpha) = 0$ because the constraints hold at the optimum.
+
+Therefore: $\displaystyle\frac{dV}{d\alpha_m} = \frac{\partial \mathcal{L}}{\partial \alpha_m}(x^*, \lambda^*, \alpha) = \frac{\partial f}{\partial \alpha_m}(x^*, \alpha) - \sum_k \lambda_k^* \frac{\partial g_k}{\partial \alpha_m}(x^*, \alpha).$ $\blacksquare$
+:::
+
+
+::: {.callout-caution icon=false}
+## Remark
+**Economic applications of the Envelope Theorem:**
+
+1. **Hotelling's Lemma:** Let $\pi(p) = \max_y \{p \cdot y : y \in Y\}$ be the profit function. The parameter is $p_\ell$, the objective is $\sum_j p_j y_j$, and there is no parameter-dependent constraint. By the unconstrained Envelope Theorem: $\frac{\partial \pi}{\partial p_\ell} = y_\ell^*(p)$ — the supply of good $\ell$ equals the derivative of the profit function.
+
+2. **Shephard's Lemma:** Let $c(w, q) = \min_z \{w \cdot z : f(z) \geq q\}$. Treating the minimization as $-c(w,q) = \max_z \{-w \cdot z : f(z) \geq q\}$ with parameter $w_\ell$: $\frac{\partial c}{\partial w_\ell} = z_\ell^*(w,q)$ — the conditional factor demand equals the derivative of the cost function.
+
+3. **Roy's Identity:** Let $v(p,w) = \max_{p \cdot x \leq w} u(x)$. The budget constraint can be written $p \cdot x - w = 0$; the Lagrangian is $\mathcal{L} = u(x) - \lambda(p \cdot x - w)$. By the constrained Envelope Theorem: $\frac{\partial v}{\partial p_\ell} = -\lambda^* x_\ell^*(p,w)$ and $\frac{\partial v}{\partial w} = \lambda^*$. Dividing: $x_\ell^*(p,w) = -\frac{\partial v / \partial p_\ell}{\partial v / \partial w}$ — Roy's Identity.
+:::
+
+
+---
+
+## Economic Intuition
+
+The central insight of the Envelope Theorem is the principle of "optimized-out" indirect effects. When an agent is already at an optimum, a small change in a parameter can affect welfare both directly (the new parameter changes the objective function for fixed choices) and indirectly (the agent re-optimizes). But at an optimum, the first-order effect of re-optimizing is exactly zero — the agent's FOC says that small changes in the choice variable have zero first-order effect on the objective. This is why only the direct effect survives in the Envelope Theorem.
+
+This has a profound practical implication for model-building: to derive how a value function responds to a parameter (e.g., how welfare responds to a price change, how cost responds to a wage change), you do not need to solve for how optimal choices respond to the parameter — you only need to differentiate the objective function directly with respect to the parameter, holding optimal choices fixed. This dramatically simplifies comparative statics.
+
+The Kuhn-Tucker multipliers have a clean economic interpretation via the Envelope Theorem: $\lambda_k^*$ is the marginal value (in terms of the objective function) of relaxing constraint $k$ by one unit. In consumer theory, the multiplier on the budget constraint is the **marginal utility of wealth** $\lambda^* = \partial v / \partial w$: how much utility increases per unit of additional wealth. This allows the shadow price interpretation of Lagrange multipliers to be made rigorous.
+
+::: {.callout-note icon=false appearance="simple"}
+## Example
+**CES expenditure function.** Let $u(x_1, x_2) = (x_1^\rho + x_2^\rho)^{1/\rho}$ with $\rho \leq 1$, $\rho \neq 0$ (CES utility with elasticity of substitution $\sigma = 1/(1-\rho)$). The expenditure function is $e(p,u) = u \cdot (p_1^{\rho/(\rho-1)} + p_2^{\rho/(\rho-1)})^{(\rho-1)/\rho}$. By Shephard's Lemma (Envelope Theorem applied to the EMP):
+$$h_1(p,u) = \frac{\partial e}{\partial p_1} = u \cdot \frac{p_1^{1/(\rho-1)}}{(p_1^{\rho/(\rho-1)} + p_2^{\rho/(\rho-1)})^{1/\rho}},$$
+which is the Hicksian demand for good 1. Note: this required only differentiating $e$, not re-solving the EMP.
+:::
+
+
+---
+
+## Cross-References
+
+- [1.1 Metric Spaces and Topology](1.1_Metric_Spaces_and_Topology.qmd) — Weierstrass (Theorem 1.5) guarantees existence of optima; quasi-concavity of preferences relates to convex upper contour sets defined using the topology here.
+- [1.2 Correspondences and Hemicontinuity](1.2_Correspondences_and_Hemicontinuity.qmd) — Berge's Theorem (Theorem 1.8) gives continuity of $V$; the Envelope Theorem gives differentiability of $V$ under stronger assumptions.
+- [1.4 Fixed Point Theorems](1.4_Fixed_Point_Theorems.qmd) — KKT conditions characterize fixed points of best-response maps in game theory.
+- [Index](../Part_II_Consumer_Theory/Index.qmd) — Roy's Identity, Slutsky equation, and duality (UMP/EMP) all follow from Envelope Theorem applications.
+- [Index](../Part_III_Producer_Theory/Index.qmd) — Hotelling's Lemma and Shephard's Lemma are direct Envelope Theorem applications.

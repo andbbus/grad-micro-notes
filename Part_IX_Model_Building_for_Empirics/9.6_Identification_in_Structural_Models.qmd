@@ -1,0 +1,163 @@
+---
+title: "9.6 — Identification in Structural Models"
+---
+
+# 9.6 — Identification in Structural Models
+
+> **Cross-references:** Manski (1990); Tamer (2003); BLP (1995); Imbens & Angrist (1994)
+
+## Context
+
+Identification is the logical precondition for estimation: before asking how to estimate a parameter, one must ask whether the parameter is determined by the data distribution. A structural model is identified if distinct parameter values imply distinct distributions of observable outcomes — i.e., the mapping from parameters to observables is injective. This note develops a rigorous treatment of identification types, shows how economic models generate model-justified exclusion restrictions (the most credible source of identification), and discusses identification in random coefficient models and simultaneous equations systems.
+
+## Definitions
+
+::: {.callout-note icon=false}
+## Definition 9.6.1 — Identification
+Let $\mathcal{M}(\theta)$ be a model indexed by parameter $\theta \in \Theta$, generating distribution $P_\theta$ over observable data $(Y, X)$. The parameter $\theta$ is **identified** if:
+$$P_{\theta} = P_{\theta'} \implies \theta = \theta'$$
+i.e., the mapping $\theta \mapsto P_\theta$ is injective. If $\theta$ is not identified, the data cannot distinguish $\theta$ from $\theta'$ even with infinite observations.
+
+The **identified set** $\mathcal{I}(P)$ for observation $P$ is the set of parameter values consistent with the observed distribution:
+$$\mathcal{I}(P) = \{\theta \in \Theta : P_\theta = P\}$$
+Point identification means $|\mathcal{I}(P)| = 1$ for all $P$; partial identification means $|\mathcal{I}(P)| > 1$.
+:::
+
+
+::: {.callout-note icon=false}
+## Definition 9.6.2 — Types of Identification
+1. **Parametric identification:** $\theta$ is identified up to the assumed functional forms. If the functional form is wrong, the estimated $\theta$ may not be the true parameter. Common in structural IO and trade.
+2. **Nonparametric identification:** $\theta$ is identified under general nonparametric assumptions — no distributional or functional form assumptions beyond regularity. Provides stronger support for the identification claim but is harder to achieve.
+3. **Set/Partial identification:** The data pins down a set $\mathcal{I}(P) \subset \Theta$ of compatible parameter values rather than a unique point. Manski's (1990) bounds on treatment effects are the canonical example.
+4. **Local identification:** $\theta$ is locally identified if $\mathcal{I}(P)$ is a singleton in a neighborhood of the true $\theta_0$, but the mapping may not be globally injective.
+:::
+
+
+## Main Results
+
+### Exclusion Restrictions from Theory
+
+::: {.callout-caution icon=false}
+## Remark 9.6.1 — Model-Based vs. Ad Hoc Exclusion Restrictions
+An **exclusion restriction** asserts that variable $z$ affects the outcome $y$ only through the endogenous variable $x$: $z$ is excluded from the structural equation for $y$. In IV language: $z$ is a valid instrument for $x$ iff $z \perp \varepsilon_y$ (exogeneity/exclusion) and $z$ affects $x$ (relevance).
+
+**Ad hoc exclusion:** Choose $z$ because it looks uncorrelated with $\varepsilon_y$ in the data. No structural justification.
+
+**Model-based exclusion:** The economic model implies $z$ should be excluded from the $y$-equation because the mechanism through which $z$ affects $y$ operates entirely through $x$. This is a much stronger justification: the exclusion restriction is a theoretical prediction of the model, not a statistical assumption.
+
+The advantage of model-based exclusion restrictions: they generate overidentification tests (if the model is correct, any instrument implied by the model should pass a Sargan test) and heterogeneity predictions (the instrument's effect should vary in directions predicted by the model).
+:::
+
+
+::: {.callout-note icon=false appearance="simple"}
+## Example 9.6.1 — Input Prices as Instruments for Output (from Producer Theory)
+In a competitive firm's problem, the firm maximizes $\pi = p f(L, K) - wL - rK$. The FOC for labor: $p f_L(L^*, K^*) = w$. This implies that $w$ (the wage) affects output $y = f(L^*, K^*)$ only through the firm's input choice $L^*$ — there is no direct effect of $w$ on $y$ in the production function (technology is the primitive, not $w$). Therefore $w$ is excluded from the production function equation and can serve as an instrument for $L$ in estimating the production function.
+
+The model-based exclusion restriction: the wage $w$ is determined in the factor market and enters the FOC but not the production technology. It shifts the supply of labor but not the productivity of workers once hired.
+:::
+
+
+::: {.callout-note icon=false appearance="simple"}
+## Example 9.6.2 — Weather as Instrument for Agricultural Supply
+In an agricultural supply model, supply $q = s(p, z)$ depends on price $p$ and weather $z$. Demand $q = d(p, y)$ depends on price $p$ and income $y$. Weather $z$ affects supply (it determines yields) but not demand directly (households don't demand differently because of good weather per se — they demand based on income and price). This exclusion restriction ($z$ excluded from demand) is justified by the structural model of agricultural markets, not just by statistical grounds.
+:::
+
+
+::: {.callout-note icon=false appearance="simple"}
+## Example 9.6.3 — International Commodity Prices as Instruments for Local Conflict
+In a resource conflict model (see [APP Conflict and Resource Models](APP_Conflict_and_Resource_Models.qmd)), the value of a contested resource $R$ drives conflict effort. The world commodity price $p^w_t$ affects the local value of resources. The model implies: $p^w_t$ affects conflict through its effect on $R$ (the prize value), but does not directly enter the conflict payoff function (which depends on $R$, not on $p^w$ independently). Therefore $p^w_t$ is excluded from the conflict structural equation and can serve as an instrument for the local resource value.
+
+The exclusion restriction is justified by the economic model: the conflict model (Garfinkel-Skaperdas or looting) specifies that agents fight for resource rents, and the world price enters only through the rent calculation.
+:::
+
+
+### Equilibrium as an Instrument
+
+::: {.callout-caution icon=false}
+## Remark 9.6.2 — Variables that Shift One Player's Payoff as Instruments for Another
+In game-theoretic models, variables that shift one player's payoff (cost, technology, endowment) are excluded from other players' payoff functions by the model structure. This generates model-justified instruments:
+
+- In a Nash bargaining model, a variable $z_1$ that improves player 1's outside option affects the equilibrium outcome (because it changes player 1's threat point) but does not enter player 2's structural payoff function. Therefore $z_1$ is excluded from player 2's demand/supply equation and can instrument for prices in a supply-demand system.
+
+- In a Bertrand oligopoly, firm $j$'s cost shifter $w_j$ is excluded from firm $i$'s demand equation (consumers don't care about firm $j$'s costs directly — only prices matter for consumers) but affects the equilibrium price $p_j$, which in turn affects firm $i$'s demand. The instrument $w_j$ is called a BLP instrument (Berry-Levinsohn-Pakes 1995).
+:::
+
+
+### Simultaneity and Identification
+
+::: {.callout-important icon=false}
+## Proposition 9.6.1 — Order Condition and Rank Condition for Simultaneous Equations
+Consider a system of $G$ structural equations with $G$ endogenous variables $(y_1, \ldots, y_G)$ and $K$ exogenous variables $(x_1, \ldots, x_K)$. The $g$-th structural equation includes $G_g$ endogenous variables and $K_g$ exogenous variables. The **order condition** for identification of equation $g$ is:
+$$K - K_g \geq G_g - 1$$
+(at least as many excluded exogenous variables as included endogenous variables minus 1).
+
+The **rank condition** is: the $G_g - 1$ column submatrix of the coefficient matrix on excluded variables, when restricted to the included endogenous variables, has rank $G_g - 1$. The rank condition is necessary and sufficient; the order condition is necessary but not sufficient.
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+The proof of the rank condition is an application of linear algebra. The $g$-th equation can be written $y_g = \delta Z_g + \varepsilon_g$ where $Z_g$ includes the included endogenous variables (excluding $y_g$). The IV estimator uses excluded exogenous variables $X_g^*$ as instruments. For the IV estimator to be consistent, the instruments must be correlated with $Z_g$: $\mathbb{E}[X_g^* Z_g'] \neq 0$, which requires the rank condition on the reduced-form matrix.
+:::
+
+
+::: {.callout-caution icon=false}
+## Remark 9.6.3 — Connection to Comparative Statics
+The identification argument for a structural parameter is directly linked to comparative statics: the identified parameter is the one that generates differential comparative statics with respect to the instrument. If $z$ shifts supply (comparative static: $\partial q^S/\partial z \neq 0$) but not demand ($\partial q^D/\partial z = 0$), then $z$ identifies the demand elasticity — because the equilibrium price and quantity move in ways that trace out the demand curve.
+
+Formally: if $z$ shifts the supply equation, the comparative static $\partial p^*/\partial z$ depends on the demand elasticity (through the equilibrium condition). Estimating $\frac{\partial p^*}{\partial z} / \frac{\partial q^*}{\partial z}$ gives the demand elasticity. This is exactly the IV estimator.
+:::
+
+
+### Partial Identification
+
+::: {.callout-note icon=false}
+## Definition 9.6.3 — Manski Bounds
+When the assignment mechanism is unknown (no random experiment or credible IV), the treatment effect $\tau = \mathbb{E}[y(1) - y(0)]$ may not be point-identified. Manski's bounds use the distribution of observables $(y, d, x)$ to bound $\tau$:
+$$\tau \in [\mathbb{E}[y|d=1]\Pr(d=1) + \underline{y}\Pr(d=0) - \bar{y}\Pr(d=1) - \mathbb{E}[y|d=0]\Pr(d=0), \ldots]$$
+where $\underline{y}$ and $\bar{y}$ are the bounds of the outcome support. The identified set is $[\tau_L, \tau_U]$.
+:::
+
+
+::: {.callout-caution icon=false}
+## Remark 9.6.4 — When to Use Partial Identification
+Partial identification is appropriate when: (1) point-identifying assumptions are implausible; (2) the researcher wants to be transparent about what the data alone (vs. untestable assumptions) implies; (3) the policy question only requires knowing whether $\tau > 0$ (or $\tau > $ some threshold), and the bounds already establish this. Partial identification bounds can be tightened by adding progressively more credible assumptions, showing the researcher what assumptions are "buying" in terms of identification.
+:::
+
+
+### Random Coefficient Models and BLP
+
+::: {.callout-note icon=false}
+## Definition 9.6.4 — Random Coefficient Model (Berry-Levinsohn-Pakes 1995)
+In the BLP demand model, consumer $i$ has utility for product $j$:
+$$u_{ij} = x_j \beta_i - \alpha_i p_j + \xi_j + \varepsilon_{ij}$$
+where $\beta_i = \bar\beta + \Sigma \nu_i$ with $\nu_i \sim N(0, I)$ (random coefficients), $p_j$ is price, $\xi_j$ is the unobserved product characteristic (quality), and $\varepsilon_{ij}$ is logit error.
+
+**Identification challenge:** $p_j$ is correlated with $\xi_j$ (high-quality products command high prices and have high demand). The instrument for price: $\sum_{k \neq j} x_k$ (sum of characteristics of rival products — BLP instruments). The structural justification: competitor product characteristics shift competitors' prices through the pricing FOC (markup equation), but do not directly affect the demand for product $j$.
+:::
+
+
+### Recovering Welfare from Identified Parameters
+
+::: {.callout-important icon=false}
+## Proposition 9.6.2 — Welfare from Structural Parameters
+Once the demand system parameters $(\alpha, \beta, \Sigma)$ are identified and estimated, consumer welfare changes from a price change $\Delta p$ are:
+$$\Delta CS_i = \frac{1}{\alpha_i}\left[\ln\left(\sum_j \exp(V_{ij}^{new})\right) - \ln\left(\sum_j \exp(V_{ij}^{old})\right)\right]$$
+where $V_{ij} = x_j \beta_i - \alpha_i p_j + \xi_j$ is the deterministic utility. This is the **log-sum formula** (Small-Rosen 1981): it converts structural utility parameters into welfare (compensating variation) measures.
+
+**Key point:** This welfare calculation requires the structural parameter $\alpha_i$ (the marginal utility of income). This is what structural identification "buys" over reduced-form identification. A reduced-form regression of market share on price gives the price elasticity but cannot compute welfare without a welfare criterion (which requires knowing the units of utility — i.e., $\alpha$).
+:::
+
+
+## Economic Intuition
+
+Identification is the bridge between theory and data. The economic model generates relationships among variables; the identification strategy exploits variation in observables to pin down which mechanism is driving the relationship. The model-building perspective on identification is: the exclusion restrictions and instruments used in an empirical study are predictions of the economic model, not just statistical assumptions. A properly grounded empirical study should be able to say: "I use $z$ as an instrument because the model implies $z$ should not appear in the structural equation for $y$ — and this implication is itself a testable prediction of the model."
+
+The distinction between parametric and nonparametric identification matters for robustness: if the result only holds under Cobb-Douglas, it may reflect the functional form assumption rather than the economic mechanism. Checking sensitivity to functional form is a robustness exercise that tests whether the identification is substantive or assumes its way to a result.
+
+## Cross-References
+
+- [9.4 Deriving Testable Predictions](9.4_Deriving_Testable_Predictions.qmd) — testable predictions from the same model that generates exclusion restrictions
+- [9.5 Structural vs Reduced Form](9.5_Structural_vs_Reduced_Form.qmd) — identification is what makes structural estimation legitimate
+- [APP Conflict and Resource Models](APP_Conflict_and_Resource_Models.qmd) — commodity price instrument for conflict: model-based exclusion
+- [APP Trade and Price Shock Models](APP_Trade_and_Price_Shock_Models.qmd) — shift-share instruments; BLP identification in trade contexts

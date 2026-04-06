@@ -1,0 +1,167 @@
+---
+title: "9.1 — Anatomy of a Theoretical Model"
+---
+
+# 9.1 — Anatomy of a Theoretical Model
+
+> **Cross-references:** MWG Ch. 1, 5, 10; Acemoglu (2009) Ch. 1
+
+## Context
+
+A theoretical model is a deliberate simplification of reality. Its purpose is not descriptive accuracy but analytical leverage: by stripping away non-essential complexity, a model makes precise claims about the mechanisms driving observed phenomena. The art of model building consists in choosing which features to include and which to abstract from — a balance between richness (capturing the phenomenon of interest) and tractability (being able to derive useful results). This note dissects the anatomy of a well-specified model, identifies its essential components, and provides a checklist for construction and evaluation.
+
+## Definitions
+
+::: {.callout-note icon=false}
+## Definition 9.1.1 — What Is a Model?
+A formal economic model is a triple $\mathcal{M} = (\mathcal{E}, \mathcal{A}, \mathcal{S})$ where:
+- $\mathcal{E}$ is the **economic environment**: the set of exogenous primitives describing the physical and informational setting
+- $\mathcal{A}$ is the **agent description**: who the agents are, what they know, and what they can do
+- $\mathcal{S}$ is the **solution concept**: the equilibrium notion used to predict outcomes
+
+Everything else — allocations, prices, welfare — is an **endogenous outcome** derived from $(\mathcal{E}, \mathcal{A}, \mathcal{S})$ by analysis. The model's predictions are comparative statics of endogenous outcomes with respect to exogenous primitives.
+:::
+
+
+::: {.callout-note icon=false}
+## Definition 9.1.2 — The Five Primitives of a Model
+Every well-specified model must define five primitives:
+1. **Commodity/action space $X$:** The set of feasible actions, consumption bundles, or allocations. Specifying $X$ means defining what agents can do and the constraints they face (budget sets, technological feasibility, physical bounds).
+2. **Type space $\Theta$:** The set of possible agent characteristics, including preferences, endowments, and private information. In models with uncertainty, $\Theta$ includes both the state space and the information partition (who knows what, when).
+3. **Preference/payoff structure $u_i: X \times \Theta_i \to \mathbb{R}$:** What agents maximize. The payoff structure must be specified including its domain, ordinal vs. cardinal properties, and relationship to observables.
+4. **Technology/feasibility constraints $\mathcal{F} \subseteq X$:** What is physically possible. In production models: the production set $Y$. In exchange models: feasibility constraints $\sum_i x_i \leq \sum_i \omega_i$.
+5. **Information structure $\mathcal{I}$:** Who knows what, when. This includes: common knowledge, private signals, the prior over states, the timing of information revelation, and the extent of public information.
+:::
+
+
+::: {.callout-note icon=false}
+## Definition 9.1.3 — Parsimony Principle
+A model satisfies the **parsimony principle** if every primitive in $(\mathcal{E}, \mathcal{A}, \mathcal{S})$ is necessary for generating the phenomenon of interest: removing any single primitive eliminates the model's ability to generate the prediction. Equivalently, a model is **parsimonious** if there is no simpler model (fewer primitives, weaker assumptions) that generates the same core prediction.
+:::
+
+
+## Main Results
+
+### The Tinbergen Rule (Extended)
+
+::: {.callout-important icon=false}
+## Proposition 9.1.1 — Extended Tinbergen Rule
+In a well-specified model, the number of independent equilibrium conditions equals the number of endogenous variables. Formally, if $x^* = (x_1^*, \ldots, x_n^*) \in \mathbb{R}^n$ is the endogenous outcome vector and $F(x^*, \alpha) = 0$ are the equilibrium conditions (FOCs, market clearing, etc.) where $\alpha$ is the parameter vector, then the system is **exactly identified** iff $F: \mathbb{R}^n \times \mathbb{R}^k \to \mathbb{R}^n$ (as many equations as unknowns).
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+By the Implicit Function Theorem, if $F$ is $C^1$ and $D_x F(x^*, \alpha)$ (the Jacobian with respect to $x$) is non-singular at the equilibrium $(x^*, \alpha)$, then there exists a neighborhood $U$ of $\alpha$ and a unique $C^1$ function $x^*: U \to \mathbb{R}^n$ such that $F(x^*(\alpha'), \alpha') = 0$ for all $\alpha' \in U$.
+
+The Jacobian condition $\det(D_x F) \neq 0$ is the "rank condition" for identification of the equilibrium. When it fails, the model is either under-determined (multiple equilibria locally) or over-determined (no equilibrium locally). The Tinbergen rule is the counting condition $n_{\text{equations}} = n_{\text{unknowns}}$ — a necessary but not sufficient condition.
+:::
+
+
+::: {.callout-caution icon=false}
+## Remark 9.1.1 — Exogenous vs. Endogenous Variables
+A common error is conflating parameters (exogenous) with outcomes (endogenous). The model should make this distinction explicit:
+- **Exogenous:** taken as given by the analyst; determined outside the model or by the researcher's design (policies, natural experiments, preferences)
+- **Endogenous:** determined within the model; the object of prediction; function of exogenous parameters
+
+Comparative statics ask: how does an endogenous outcome change when an exogenous parameter changes? This question is only coherent if the endogenous/exogenous distinction is maintained throughout.
+:::
+
+
+### Comparative Institutional Analysis
+
+::: {.callout-note icon=false}
+## Definition 9.1.4 — Comparative Institutional Analysis
+**Comparative institutional analysis** uses models to compare outcomes across different institutional arrangements — different property rights, market structures, information regimes, or governance systems. The key methodological point: the **environment $\mathcal{E}$** (not the equilibrium outcome) is the unit of analysis. Different institutions correspond to different environments, and the model traces the implications for equilibrium outcomes.
+:::
+
+
+::: {.callout-note icon=false appearance="simple"}
+## Example 9.1.1 — Comparing Institutions via Model Change
+Consider a model of agricultural land contracts. The same agents (landlord and tenant) interact under different institutional environments:
+- **Wage labor** ($\mathcal{E}_1$): Landlord hires tenant for fixed wage; landlord bears all risk
+- **Sharecropping** ($\mathcal{E}_2$): Tenant gets fraction $\beta$ of output; risk shared; moral hazard problem (Marshall's critique)
+- **Fixed rent tenancy** ($\mathcal{E}_3$): Tenant pays fixed rent; bears all output risk; full effort incentive
+
+Each institution corresponds to a different information structure and risk-sharing arrangement. The model's comparative statics predict how efficiency, effort, and risk allocation differ across $\mathcal{E}_1$, $\mathcal{E}_2$, $\mathcal{E}_3$. This is comparative institutional analysis: the model is used to evaluate which institution performs better under different parameter constellations (degree of risk aversion, output variance, wealth distribution).
+:::
+
+
+### Common Mistakes in Model Construction
+
+::: {.callout-caution icon=false}
+## Remark 9.1.2 — Four Common Errors in Model Construction
+
+**Error 1: Underspecifying the solution concept.** A model without a solution concept generates no predictions. Simply writing down agents' payoffs without specifying the equilibrium concept (Nash? Competitive? Sequential?) leaves the analysis indeterminate. Every model must state: (a) what agents observe when choosing actions; (b) what beliefs they hold; (c) how beliefs relate to strategies (e.g., Bayes' rule).
+
+**Error 2: Conflating parameters with endogenous variables.** A classic error is to take as "given" something the model should predict. For example, treating the wage as exogenous in a labor market model is valid only if the market is not modeled; if the model includes both supply and demand, the wage is endogenous. The distinction depends on the model's scope.
+
+**Error 3: Ignoring boundary conditions.** Optimization solutions often differ at the boundary. Stating "the FOC characterizes the optimum" requires verifying that (a) the FOC has a solution; (b) the SOC confirms a maximum; (c) no corner solution is optimal. Kinks, non-differentiabilities, and binding constraints all require separate treatment.
+
+**Error 4: Assuming existence without verifying.** Not every model has an equilibrium. Nash's existence theorem requires a compact, convex action space and continuous, quasi-concave payoffs. When these conditions fail (discrete strategies, discontinuous payoffs, unbounded action spaces), existence must be verified separately. Many interesting models (price competition with homogeneous goods, all-pay auctions) require mixed-strategy equilibria and cannot be analyzed assuming pure-strategy solutions.
+:::
+
+
+### Checklist for a Well-Specified Model
+
+::: {.callout-caution icon=false}
+## Remark 9.1.3 — 10-Point Model Construction Checklist
+
+Before finalizing a theoretical model, verify each point:
+
+1. **Are all primitives specified?** Commodity space, type space, preferences, technology, information structure.
+2. **Is the action space well-defined?** Compact? Convex? Are constraints on actions stated?
+3. **Is the information structure explicit?** Who observes what, when? Is there private information? Common knowledge?
+4. **Is the solution concept stated?** Nash, SPE, BNE, PBE, REE? Are beliefs consistent with Bayes' rule?
+5. **Is existence of equilibrium verified?** By fixed-point theorem or direct construction?
+6. **Is uniqueness established or is multiplicity acknowledged?** If multiple equilibria, which is selected and why?
+7. **Are boundary conditions handled?** Interior solutions? Corner solutions? Existence of FOC solutions?
+8. **Does every primitive do work?** Is there a prediction that changes if each primitive is modified?
+9. **What is the key comparative static?** Is it signed? Under what assumptions?
+10. **What is the testable prediction?** Does the model restrict the joint distribution of observables? Can it be falsified?
+:::
+
+
+### Application: Anatomy of the Spence Signaling Model
+
+::: {.callout-note icon=false appearance="simple"}
+## Example 9.1.2 — Anatomy of the Spence (1973) Signaling Model
+Applying the anatomy framework to the Spence model (see [7.4 Signaling](7.4_Signaling.qmd)):
+
+**Commodity/Action Space $X$:** Education levels $e \in \mathbb{R}_+$; wages $w \in \mathbb{R}_+$. The firm's "action" is setting wages as a function of observed education.
+
+**Type Space $\Theta$:** Worker type $\theta \in \{\theta_L, \theta_H\}$ with $\theta_H > \theta_L$. Private information: only the worker knows their type.
+
+**Preference/Payoff Structure:** Worker: $w - c(e, \theta)$ with $c_{e\theta} < 0$ (single-crossing). Firm: zero profit (competitive), so $w(e) = \mathbb{E}[\theta | e]$.
+
+**Technology/Feasibility:** Education is feasible for any $e \geq 0$. Productivity of worker type $\theta$ is $\theta$ regardless of education (pure signaling). Labor market is competitive.
+
+**Information Structure:** Type is known to the worker, not the firm. Firms observe education $e$ (the signal). Wages are set after observing $e$. Firms' beliefs $\mu(\theta_H | e)$ must be consistent with Bayes' rule on path.
+
+**Solution Concept:** Perfect Bayesian Equilibrium (PBE) — sequential rationality + consistent beliefs.
+
+**Primitive doing work:**
+- Single-crossing ($c_{e\theta} < 0$): removes it $\Rightarrow$ separating equilibria cannot exist
+- Competitive firms: removes it $\Rightarrow$ firms could extract rents, fundamentally changing the game
+- Private type information: removes it $\Rightarrow$ signaling has no purpose; collapses to complete information
+
+**Key comparative static:** Minimum separating education level $\hat{e}$ is decreasing in $\theta_H - \theta_L$ (larger ability gap requires less education to separate). Testable.
+
+**Testable prediction:** In the least-costly separating equilibrium, $w = \theta_H$ for workers with $e \geq \hat{e}$ and $w = \theta_L$ for $e < \hat{e}$. Observationally, wages jump at the threshold $\hat{e}$ — a regression discontinuity design.
+:::
+
+
+## Economic Intuition
+
+The anatomy framework is not just a checklist — it is a discipline that forces the modeler to think clearly about what mechanism generates the phenomenon of interest. In practice, many applied theory papers fail because one or more of the five primitives is underspecified or implicitly assumed. The most common failure is the information structure: papers often write down a strategic interaction without clarifying who knows what when, leading to ambiguous predictions.
+
+The parsimony principle is the counterforce to the impulse to add complexity. Every additional primitive adds potential interactions and makes the model harder to analyze. More importantly, if a prediction holds regardless of a particular primitive, that primitive is not doing analytical work — it should be removed. A model where every assumption is load-bearing is a model whose predictions are robust to the full theoretical framework, not just one cherry-picked specification.
+
+The Tinbergen rule (extended) reminds us that a model's predictive content is contained in its equilibrium conditions: these are the equations that tie endogenous to exogenous variables. Counting equations and unknowns is a basic sanity check, but the rank condition (non-singular Jacobian) is the actual requirement for a locally unique and well-behaved equilibrium.
+
+## Cross-References
+
+- [9.2 Equilibrium Concepts and Selection](9.2_Equilibrium_Concepts_and_Selection.qmd) — specifying and selecting the right solution concept
+- [9.3 Comparative Statics Methodology](9.3_Comparative_Statics_Methodology.qmd) — how to derive comparative statics once the model is specified
+- [9.4 Deriving Testable Predictions](9.4_Deriving_Testable_Predictions.qmd) — how to translate comparative statics into empirical implications
+- [7.4 Signaling](7.4_Signaling.qmd) — the Spence model analyzed using this anatomy

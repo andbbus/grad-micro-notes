@@ -1,0 +1,44 @@
+---
+title: "Part V — Game Theory"
+---
+
+# Part V — Game Theory
+
+> **MWG Reference:** Ch. 7–9, pp. 219–334
+
+## Context
+
+Game theory extends individual optimization to settings of **strategic interaction**: each agent's payoff depends not only on her own choice but also on the choices of others. The central challenge is to predict behavior when no agent can optimize in isolation. The equilibrium concepts developed in this part — Nash equilibrium, subgame perfect equilibrium, and Bayesian Nash equilibrium — constitute the analytical backbone of virtually every field of applied economic theory: industrial organization, political economy, contract theory, auction theory, mechanism design, and international economics.
+
+The MWG treatment (Chapters 7–9) covers the three main game forms: normal form (static, complete information), extensive form (dynamic, complete information), and Bayesian games (static, incomplete information). The progression mirrors the increasing richness of strategic environments encountered in applications.
+
+## Why Equilibrium?
+
+The equilibrium concept resolves the problem that each player's best response depends on others' strategies, which in turn depend on the first player's strategy. A Nash equilibrium (NE) is a fixed point of the joint best-response correspondence: every player is simultaneously best-responding to the others. This mutual consistency is the minimum requirement for a "stable" prediction. Stronger refinements — subgame perfection, sequential equilibrium — impose additional credibility requirements on behavior off the equilibrium path.
+
+## Structure of Part V
+
+| Note | Topic | MWG Section |
+|------|-------|-------------|
+| [5.1 Normal Form Games](5.1_Normal_Form_Games.qmd) | Dominance, IESDS, Rationalizability | §8.B–8.C |
+| [5.2 Nash Equilibrium](5.2_Nash_Equilibrium.qmd) | Nash equilibrium, existence theorem | §8.D |
+| [5.3 Mixed Strategies](5.3_Mixed_Strategies.qmd) | Mixed NE, purification, correlated equilibrium | §8.D–8.E |
+| [5.4 Extensive Form Games](5.4_Extensive_Form_Games.qmd) | Game trees, information sets, Kuhn's theorem | §7.B–7.D |
+| [5.5 Subgame Perfect Equilibrium](5.5_Subgame_Perfect_Equilibrium.qmd) | SPE, backward induction, one-deviation principle | §9.B–9.C |
+| [5.6 Repeated Games](5.6_Repeated_Games.qmd) | Folk theorem, trigger strategies, cartel stability | §9.B |
+| [5.7 Bayesian Games](5.7_Bayesian_Games.qmd) | BNE, type spaces, auctions | §8.E |
+| [PS Game Theory](PS_Game_Theory.qmd) | Problem Set | — |
+
+## Key Relationships
+
+- Every **strictly dominant strategy equilibrium** is the unique NE and the unique outcome of IESDS.
+- Every **NE** strategy profile is rationalizable, but not conversely.
+- Every **SPE** is a NE, but not conversely; SPE eliminates non-credible threats.
+- The **Folk Theorem** shows that repeated interaction radically expands the set of equilibrium outcomes relative to the stage game.
+- **BNE** reduces to NE when types are degenerate (complete information); it generalizes NE to environments with private information.
+
+## Cross-References
+
+- [1.4 Fixed Point Theorems](1.4_Fixed_Point_Theorems.qmd) — Kakutani's theorem used in Nash existence proof
+- [Index](../Part_VI_General_Equilibrium/Index.qmd) — GE applies NE concepts to competitive markets
+- [Index](../Part_VII_Mechanism_Design/Index.qmd) — Mechanism design uses BNE as the equilibrium concept

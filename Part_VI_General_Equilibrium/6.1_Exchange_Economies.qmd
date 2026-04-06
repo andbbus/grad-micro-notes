@@ -1,0 +1,150 @@
+---
+title: "6.1 Exchange Economies"
+---
+
+# 6.1 Exchange Economies
+
+> **MWG Reference:** Ch. 15, §15.A–15.C, pp. 505–545
+
+## Context
+
+The pure exchange economy is the simplest general equilibrium model: there is no production, only redistribution of a fixed aggregate endowment through trade. Despite its simplicity, the exchange economy contains all the essential conceptual apparatus: competitive equilibrium, excess demand, Walras' Law, price normalization, and the geometric intuition of the Edgeworth box. These are the foundations on which the Arrow-Debreu production economy and the welfare theorems are built.
+
+## Definitions
+
+::: {.callout-note icon=false}
+## Definition 6.1.1 — Pure Exchange Economy
+A **pure exchange economy** $\mathcal{E}$ consists of:
+- $I = \{1, \ldots, n\}$ consumers and $L$ goods
+- Consumer $i$'s **endowment** $\omega_i \in \mathbb{R}^L_+$: the bundle they bring to the market
+- Consumer $i$'s preference relation $\succeq_i$ (or utility function $u_i: \mathbb{R}^L_+ \to \mathbb{R}$) over consumption bundles
+- **Total (aggregate) endowment:** $\bar{\omega} = \sum_{i=1}^n \omega_i \in \mathbb{R}^L_{++}$
+:::
+
+
+::: {.callout-note icon=false}
+## Definition 6.1.2 — Walrasian (Competitive) Equilibrium
+A **Walrasian equilibrium** of $\mathcal{E}$ is a pair $(x^*, p^*)$ where $x^* = (x_1^*, \ldots, x_n^*)$ and $p^* \in \mathbb{R}^L_{++}$ such that:
+1. **Individual optimality:** For each $i$, $x_i^* \in x_i(p^*, p^* \cdot \omega_i)$, where $x_i(p, w)$ is consumer $i$'s Walrasian demand correspondence at price $p$ and wealth $w$
+2. **Market clearing:** $\sum_{i=1}^n x_i^* = \bar{\omega}$ (the allocation is feasible and exhausts the endowment)
+:::
+
+
+::: {.callout-note icon=false}
+## Definition 6.1.3 — Excess Demand
+The **excess demand function** (or correspondence) is
+$$z(p) = \sum_{i=1}^n x_i(p, p \cdot \omega_i) - \bar{\omega}.$$
+Equilibrium requires $z(p^*) = 0_{\mathbb{R}^L}$ (every market clears).
+:::
+
+
+::: {.callout-note icon=false}
+## Definition 6.1.4 — Edgeworth Box
+In a two-consumer, two-good economy with total endowment $\bar{\omega} = (\bar{\omega}_1, \bar{\omega}_2)$, the **Edgeworth box** is the rectangle of feasible allocations:
+$$\mathcal{F} = \{(x_1, x_2) \in \mathbb{R}^4_+ : x_1 + x_2 = \bar{\omega}\}.$$
+Consumer 1's origin is the southwest corner; consumer 2's origin is the northeast corner. Any point $(x_1, x_2) \in \mathcal{F}$ represents a feasible allocation.
+:::
+
+
+::: {.callout-note icon=false}
+## Definition 6.1.5 — Pareto Set and Contract Curve
+An allocation $(x_1, x_2) \in \mathcal{F}$ is **Pareto optimal** if there is no other feasible $(x_1', x_2')$ such that $u_i(x_i') \geq u_i(x_i)$ for all $i$ and $u_j(x_j') > u_j(x_j)$ for some $j$.
+
+The **contract curve** (or Pareto set) is the set of all Pareto optimal allocations in the Edgeworth box. In the interior, it consists of points where the consumers' indifference curves are tangent, i.e., $MRS_1 = MRS_2$.
+:::
+
+
+## Main Results
+
+::: {.callout-important icon=false}
+## Theorem 6.1.1 — Walras' Law
+If each consumer's preference relation $\succeq_i$ satisfies **local nonsatiation**, then the excess demand function satisfies:
+$$p \cdot z(p) = 0 \quad \text{for all } p \in \mathbb{R}^L_{++}.$$
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+By local nonsatiation, each consumer exhausts their budget at any optimal choice:
+$$p \cdot x_i^*(p, p \cdot \omega_i) = p \cdot \omega_i \quad \forall i.$$
+(If the budget constraint were not binding, there would exist a preferred bundle arbitrarily close to $x_i^*$, contradicting optimality.)
+
+Summing over all consumers:
+$$\sum_{i=1}^n p \cdot x_i(p, p \cdot \omega_i) = \sum_{i=1}^n p \cdot \omega_i.$$
+Rearranging:
+$$p \cdot \left(\sum_{i=1}^n x_i(p, p \cdot \omega_i) - \sum_{i=1}^n \omega_i\right) = 0.$$
+By Definition 6.1.3, this is $p \cdot z(p) = 0$. $\blacksquare$
+:::
+
+
+::: {.callout-caution icon=false}
+## Remark
+Walras' Law has a crucial implication for market clearing. If there are $L$ goods and $L-1$ markets clear (i.e., $z_\ell(p^*) = 0$ for $\ell = 1, \ldots, L-1$), then:
+$$p^* \cdot z(p^*) = 0 \Rightarrow \sum_{\ell=1}^L p_\ell^* z_\ell(p^*) = 0 \Rightarrow p_L^* z_L(p^*) = 0.$$
+Since $p_L^* > 0$ in equilibrium, it follows that $z_L(p^*) = 0$. The $L$-th market clears automatically. This reduces the number of independent equilibrium conditions to $L-1$.
+:::
+
+
+::: {.callout-important icon=false}
+## Theorem 6.1.2 — Properties of Excess Demand
+Under standard assumptions (continuity and local nonsatiation of preferences, positive endowments), the excess demand function $z: \mathbb{R}^L_{++} \to \mathbb{R}^L$ satisfies:
+1. **Walras' Law:** $p \cdot z(p) = 0$ for all $p \gg 0$
+2. **Homogeneity of degree zero:** $z(\lambda p) = z(p)$ for all $\lambda > 0$
+3. **Continuity:** $z$ is continuous on $\mathbb{R}^L_{++}$
+4. **Boundary condition:** As $p_\ell \to 0$, $z_\ell(p) \to +\infty$ (demand for a free good is unbounded)
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+**Homogeneity:** Each individual demand $x_i(p, p \cdot \omega_i)$ is homogeneous of degree zero in $(p, w)$ since $w_i = p \cdot \omega_i$ scales proportionally with $p$. Therefore $x_i(\lambda p, \lambda p \cdot \omega_i) = x_i(p, p \cdot \omega_i)$, and so $z(\lambda p) = z(p)$.
+
+**Continuity:** Under standard preference assumptions (continuous, strictly convex), Walrasian demand $x_i(p, w)$ is continuous. Continuity of $z$ follows from continuity of the sum.
+
+**Boundary condition:** As $p_\ell \to 0$, good $\ell$ becomes free. By local nonsatiation, each consumer wants more of every good (or at worst, is indifferent). With free good $\ell$, the budget set becomes effectively unconstrained in dimension $\ell$, and demand for $\ell$ grows without bound. Formally, the Walrasian demand $x_{i\ell}(p, w) \to +\infty$ as $p_\ell \to 0^+$ for any fixed $w$ (since the wealth buys infinite units of good $\ell$). Therefore $z_\ell(p) \to +\infty$. $\blacksquare$
+:::
+
+
+::: {.callout-important icon=false}
+## Theorem 6.1.3 — Price Normalization
+Due to homogeneity of degree zero, it is without loss of generality to restrict attention to prices in the unit simplex:
+$$\Delta^{L-1} = \left\{p \in \mathbb{R}^L_+ : \sum_{\ell=1}^L p_\ell = 1\right\}.$$
+Any equilibrium price vector $p^* \in \mathbb{R}^L_{++}$ corresponds to a normalized price $p^*/\|p^*\|_1 \in \Delta^{L-1}$ that is also an equilibrium (since excess demand is unchanged).
+:::
+
+
+## The Edgeworth Box: Geometric Intuition
+
+::: {.callout-note icon=false appearance="simple"}
+## Example 6.1.1 — Walrasian Equilibrium in the Edgeworth Box
+Consider 2 consumers, 2 goods: $u_1(x_{11}, x_{12}) = x_{11}^\alpha x_{12}^{1-\alpha}$, $u_2(x_{21}, x_{22}) = x_{21}^\beta x_{22}^{1-\beta}$. Endowments: $\omega_1 = (1, 0)$, $\omega_2 = (0, 1)$.
+
+**Walrasian demand:** With Cobb-Douglas preferences, consumer $i$'s demand for good $\ell$ is a fixed fraction of wealth:
+$$x_{11}(p, w_1) = \frac{\alpha w_1}{p_1} = \frac{\alpha p_1}{p_1} = \alpha, \quad x_{12}(p, w_1) = \frac{(1-\alpha)p_1}{p_2}.$$
+$$x_{21}(p, w_2) = \frac{\beta p_2}{p_1}, \quad x_{22}(p, w_2) = \frac{(1-\beta)p_2}{p_2} = 1-\beta.$$
+
+**Market clearing for good 1:** $x_{11} + x_{21} = 1$:
+$$\alpha + \frac{\beta p_2}{p_1} = 1 \Rightarrow \frac{p_2}{p_1} = \frac{1-\alpha}{\beta}.$$
+
+**Equilibrium price ratio:** $p_1/p_2 = \beta/(1-\alpha)$.
+
+**Equilibrium allocation:** $x_1^* = (\alpha, (1-\alpha)\beta/\beta) = (\alpha, 1-\alpha)$ and $x_2^* = (1-\alpha, \beta)$... adjusting: $x_{12}^* = (1-\alpha)p_1/p_2 = (1-\alpha) \cdot \beta/(1-\alpha) = \beta$, so $x_1^* = (\alpha, \beta)$ and... Let us recompute. With $p_2/p_1 = (1-\alpha)/\beta$:
+- $w_1 = p_1 \cdot 1 = p_1$; $x_{11}^* = \alpha$, $x_{12}^* = (1-\alpha)p_1/p_2 = (1-\alpha)\beta/(1-\alpha) = \beta$.
+- $w_2 = p_2 \cdot 1 = p_2$; $x_{21}^* = \beta p_2/p_1 = \beta(1-\alpha)/\beta = 1-\alpha$, $x_{22}^* = 1-\beta$.
+
+Equilibrium allocation: $x_1^* = (\alpha, \beta)$, $x_2^* = (1-\alpha, 1-\beta)$. Market clearing: $\alpha + (1-\alpha) = 1$ and $\beta + (1-\beta) = 1$. Confirmed.
+:::
+
+
+## Core and Walrasian Equilibrium
+
+The **core** of the exchange economy is the set of feasible allocations that cannot be blocked by any coalition: allocation $x$ is in the core if no subset $S \subseteq I$ can redistribute their endowments $\sum_{i \in S}\omega_i$ to make all members strictly better off.
+
+Every Walrasian equilibrium allocation is in the core (this follows from the First Welfare Theorem plus the ability of blocking coalitions to use only their own endowments). The **core convergence theorem** (Edgeworth, formalized by Debreu-Scarf 1963) states that as the economy is replicated infinitely many times, the core shrinks to the set of Walrasian allocations.
+
+## Cross-References
+
+- [6.2 Arrow Debreu Economy](6.2_Arrow_Debreu_Economy.qmd) — Extends to production; same excess demand framework
+- [6.3 Existence of Equilibrium](6.3_Existence_of_Equilibrium.qmd) — Existence proof uses excess demand properties
+- [6.4 Welfare Theorems](6.4_Welfare_Theorems.qmd) — First WT uses Walrasian equilibrium definition; Second WT shows converse
+- [Index](../Part_II_Consumer_Theory/Index.qmd) — Walrasian demand $x_i(p, w)$ is the consumer theory object

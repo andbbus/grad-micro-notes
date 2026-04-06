@@ -1,0 +1,165 @@
+---
+title: "2.2 — Utility Representation"
+---
+
+# 2.2 — Utility Representation
+
+> **MWG Reference:** Ch. 3, pp. 46–59
+
+## Context
+
+Given a rational and continuous preference relation, we wish to represent it numerically — to find a real-valued function that preserves the preference ordering. The existence of such a representation is not trivial: the lexicographic example in [2.1 Preference Relations](2.1_Preference_Relations.qmd) showed that rationality alone is insufficient. Debreu's 1954 theorem establishes that rationality plus continuity is sufficient. Once the representation exists, we must grapple with its non-uniqueness: utility is ordinal, unique only up to monotone transformations, and therefore carries no cardinal or interpersonal meaning. Beyond the general existence question, consumer theory makes use of specific functional forms — quasi-linear, homothetic, CES — each of which imposes restrictions on income effects and expenditure shares that are central to structural demand estimation.
+
+## Definitions
+
+::: {.callout-note icon=false}
+## Definition 2.2.1 — Utility Function
+A function $u: X \to \mathbb{R}$ **represents** the preference relation $\succsim$ on $X$ if for all $x, y \in X$:
+$$x \succsim y \iff u(x) \geq u(y)$$
+Such a function is called a **utility function** for $\succsim$.
+:::
+
+
+::: {.callout-caution icon=false}
+## Remark 2.2.1 — Ordinal Utility
+Utility is **ordinal**: if $u$ represents $\succsim$ and $f: \mathbb{R} \to \mathbb{R}$ is strictly increasing, then $v = f \circ u$ also represents $\succsim$. Proof: $x \succsim y \iff u(x) \geq u(y) \iff f(u(x)) \geq f(u(y)) \iff v(x) \geq v(y)$. Hence utility is unique only up to a strictly increasing transformation. This means cardinal statements ("good $x$ gives twice the utility of $y$") are meaningless; only ordinal comparisons survive. This severely limits welfare analysis: interpersonal utility comparisons and aggregate welfare measures require additional structure beyond ordinal preferences.
+:::
+
+
+::: {.callout-note icon=false}
+## Definition 2.2.2 — Quasi-Linear Utility
+Preferences on $\mathbb{R}^L_+$ are **quasi-linear** with respect to good 1 if they can be represented by:
+$$u(x_1, x_2, \ldots, x_L) = x_1 + v(x_2, \ldots, x_L)$$
+where $v: \mathbb{R}^{L-1}_+ \to \mathbb{R}$ is a function of goods $2$ through $L$ only.
+:::
+
+
+::: {.callout-note icon=false}
+## Definition 2.2.3 — Homothetic Preferences
+Preferences $\succsim$ on $\mathbb{R}^L_+$ are **homothetic** if $x \sim y$ implies $\lambda x \sim \lambda y$ for all $\lambda > 0$. Equivalently, $\succsim$ is homothetic if it can be represented by a utility function that is homogeneous of degree one: $u(\lambda x) = \lambda u(x)$ for all $\lambda > 0, x \in \mathbb{R}^L_+$.
+:::
+
+
+::: {.callout-note icon=false}
+## Definition 2.2.4 — CES Utility
+The **Constant Elasticity of Substitution (CES)** utility function is:
+$$u(x) = \left(\sum_{l=1}^L \alpha_l x_l^\rho\right)^{1/\rho}, \quad \alpha_l > 0, \; \rho \in (-\infty, 1) \setminus \{0\}$$
+The **elasticity of substitution** between any two goods $l$ and $k$ is:
+$$\sigma = \frac{1}{1-\rho}$$
+Special cases: $\rho \to 1$ gives linear (perfect substitutes, $\sigma \to \infty$); $\rho \to 0$ gives Cobb-Douglas ($\sigma = 1$); $\rho \to -\infty$ gives Leontief/perfect complements ($\sigma \to 0$).
+:::
+
+
+## Main Results
+
+::: {.callout-important icon=false}
+## Theorem 2.2.1 — Debreu Representation Theorem
+Let $\succsim$ be a rational (complete and transitive) and continuous preference relation on $\mathbb{R}^L_+$. Then there exists a continuous utility function $u: \mathbb{R}^L_+ \to \mathbb{R}$ that represents $\succsim$.
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+We sketch the Debreu (1954) construction, which builds on the idea of using a countable dense subset of $\mathbb{R}^L_+$ to construct utility values.
+
+**Step 1: Strong Monotonicity Simplification.** For clarity, we first prove the result under strong monotonicity; the general case requires more care but uses the same architecture.
+
+Under strong monotonicity, for any $x \in \mathbb{R}^L_+$, consider the "diagonal ray" $\{(t,t,\ldots,t) : t \geq 0\} \subseteq \mathbb{R}^L_+$. Since $\succsim$ is strongly monotone, the map $t \mapsto (t, \ldots, t)$ is strictly increasing in preference. By continuity of $\succsim$ and the intermediate value theorem (applied to preference):
+
+*Claim:* For every $x \in \mathbb{R}^L_+$, there exists a unique $t(x) \geq 0$ such that $x \sim (t(x), \ldots, t(x))$.
+
+*Proof of Claim:* Consider $f(t) = $ "preference comparison of $x$ vs. $(t,\ldots,t)$." When $t$ is large enough (say $t > \max_l x_l$), strong monotonicity gives $(t,\ldots,t) \succ x$. When $t = 0$, we have $x \succsim (0,\ldots,0)$ by weak monotonicity. By continuity of $\succsim$, the function $t \mapsto \mathbf{1}[x \succsim (t,\ldots,t)]$ is upper semicontinuous and $t \mapsto \mathbf{1}[(t,\ldots,t) \succsim x]$ is also upper semicontinuous. By a connectedness argument, there exists $t^*$ with $x \sim (t^*,\ldots,t^*)$. Uniqueness follows from strict monotonicity: if $t' > t^*$ then $(t',\ldots,t') \succ (t^*,\ldots,t^*) \sim x$, so $(t',\ldots,t') \not\sim x$.
+
+**Step 2: Define $u(x) = t(x)$.** Set $u(x) := t(x)$, the unique $t \geq 0$ such that $x \sim (t,\ldots,t)$.
+
+*$u$ represents $\succsim$:* $x \succsim y \iff (t(x),\ldots) \sim x \succsim y \sim (t(y),\ldots) \iff (t(x),\ldots) \succsim (t(y),\ldots) \iff t(x) \geq t(y)$ (by monotonicity of the diagonal).
+
+**Step 3: Continuity of $u$.** Let $x^n \to x$. We need $u(x^n) = t(x^n) \to t(x) = u(x)$. Let $t_n = t(x^n)$, so $x^n \sim (t_n,\ldots,t_n)$. Suppose $t_n \not\to t(x)$; then there exists a subsequence $t_{n_k} \to t' \neq t(x)$ (or diverging). By continuity of $\succsim$ applied to $x^{n_k} \sim (t_{n_k},\ldots,t_{n_k})$ and taking limits: $x \sim (t', \ldots, t')$. By uniqueness, $t' = t(x)$, contradiction. Hence $t_n \to t(x)$, so $u$ is continuous.
+
+**Step 4: General Case (no monotonicity).** Debreu's original proof uses a different architecture. The key insight is:
+
+(a) $\mathbb{R}^L_+$ is a second-countable topological space (it has a countable base). Every preference relation that is representable must have a countable "dense" subset in the preference order. More precisely, $\succsim$ is continuous iff the topology it induces on $X$ (generated by upper and lower contour sets) is second-countable, which holds for $X = \mathbb{R}^L_+$.
+
+(b) Let $D = \mathbb{Q}^L_+ \cap X$ be the countable dense subset of $X$. For each $x$, the set $D_x^- = \{d \in D : x \succ d\}$ is non-empty for most $x$ (by density and LNS). Define $u(x)$ via the measure of "how much of $D$ lies below $x$" — formally, by assigning rational numbers to elements of $D$ consistently with $\succsim$ on $D$ and then extending to all of $X$ by: $u(x) = \sup\{r \in \mathbb{Q} : \exists d \in D, r = u(d), d \prec x\}$.
+
+The full Debreu proof establishes that continuity of $\succsim$ ensures this construction yields a well-defined, continuous utility function on all of $X$. The key step is showing continuity of $u$: upper semicontinuity follows from the fact that $\{x : u(x) \geq c\} = UC(d)$ for appropriately chosen $d \in D$, and these are closed. $\square$
+:::
+
+
+::: {.callout-caution icon=false}
+## Remark 2.2.2 — Necessity of Continuity
+The lexicographic preference ([2.1 Preference Relations](2.1_Preference_Relations.qmd), Example 2.1.1) is rational (complete and transitive) but not continuous, and has no utility representation. This shows continuity cannot be dropped from Theorem 2.2.1. In infinite-dimensional spaces, even stronger conditions are needed.
+:::
+
+
+::: {.callout-important icon=false}
+## Proposition 2.2.1 — Quasi-Concavity and Convex Preferences
+Let $u: \mathbb{R}^L_+ \to \mathbb{R}$ be a continuous utility function representing $\succsim$. Then $u$ is **quasi-concave** (i.e., $\{x : u(x) \geq c\}$ is convex for all $c \in \mathbb{R}$) if and only if $\succsim$ is weakly convex (Definition 2.1.9(a)).
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+**($\Rightarrow$)** Suppose $u$ is quasi-concave. Let $x \succsim y$ and $z \succsim y$; we must show $\alpha x + (1-\alpha)z \succsim y$ for all $\alpha \in [0,1]$.
+
+Since $x \succsim y$, we have $u(x) \geq u(y)$. Since $z \succsim y$, we have $u(z) \geq u(y)$. Let $c = u(y)$. Then $x, z \in \{x' : u(x') \geq c\}$. By quasi-concavity, this set is convex, so $\alpha x + (1-\alpha)z \in \{x' : u(x') \geq c\}$, i.e., $u(\alpha x + (1-\alpha)z) \geq c = u(y)$. Hence $\alpha x + (1-\alpha)z \succsim y$.
+
+**($\Leftarrow$)** Suppose $\succsim$ is weakly convex. Let $c \in \mathbb{R}$ and let $U_c = \{x : u(x) \geq c\}$ be the upper level set. We show $U_c$ is convex. Take $x, z \in U_c$, so $u(x) \geq c$ and $u(z) \geq c$.
+
+Let $y$ be any element with $u(y) = c$ (if no such $y$ exists because $c$ is below the infimum of $u$, then $U_c = X$ which is convex; if $c$ exceeds the supremum, $U_c = \emptyset$, also convex). Actually, we work directly: $u(x) \geq c$ means $x \succsim y$ for any $y$ with $u(y) = c$. Similarly $z \succsim y$. By weak convexity, $\alpha x + (1-\alpha)z \succsim y$, so $u(\alpha x + (1-\alpha)z) \geq u(y) = c$.
+
+More carefully, without assuming a $y$ exists with $u(y) = c$: if $u(x) \geq c$ and $u(z) \geq c$, let $m = \min(u(x), u(z)) \geq c$. Consider any $y$ with $u(y) = m$ (which is achievable by continuity of $u$ on the path from $x$ to $z$ if $u(x) \neq u(z)$). This sub-case analysis can be avoided by noting: quasi-concavity means $u(\alpha x + (1-\alpha)z) \geq \min(u(x), u(z))$ for all $\alpha$. We prove this directly.
+
+Define $v := \alpha x + (1-\alpha)z$ for $\alpha \in (0,1)$. WLOG $u(x) \leq u(z)$, so $x \succsim$ (?) — actually $u(x) \leq u(z)$ means $z \succsim x$. Let $c' = u(x) = \min(u(x), u(z))$. We need $u(v) \geq c'$, i.e., $v \succsim$ any bundle with utility $c'$. Since $u(x) = c'$, we need $v \succsim x$. We have $x \succsim x$ (trivially) and $z \succsim x$ (since $u(z) \geq u(x)$). By weak convexity (taking $y = x$): $\alpha x + (1-\alpha)z \succsim x$, so $u(v) \geq u(x) = c'$. Hence $u(\alpha x + (1-\alpha)z) \geq \min(u(x), u(z))$, which is exactly quasi-concavity. $\square$
+:::
+
+
+::: {.callout-caution icon=false}
+## Remark 2.2.3 — Strict Quasi-Concavity
+$u$ is **strictly quasi-concave** if $u(x) \geq u(y)$, $u(z) \geq u(y)$, $x \neq z$ implies $u(\alpha x + (1-\alpha)z) > u(y)$ for $\alpha \in (0,1)$. This corresponds exactly to strict convexity of preferences and ensures uniqueness of the utility-maximizing bundle given a convex budget set.
+:::
+
+
+## Special Functional Forms
+
+### Quasi-Linear Utility
+
+$u(x_1, \ldots, x_L) = x_1 + v(x_2, \ldots, x_L)$
+
+**Key property:** The marginal utility of wealth is constant (equal to 1), so there is **no income effect on goods $2, \ldots, L$**. Specifically, if $w$ increases by $\Delta w$, all additional income is spent on good 1; demand for goods $2, \ldots, L$ is unaffected. This makes quasi-linear utility ideal for settings where good 1 is a "numeraire" (e.g., money) and one studies demand for a single market good. Engel curves for goods $2, \ldots, L$ are vertical; consumer surplus is an exact welfare measure.
+
+### Homothetic Preferences
+
+Represented by a utility function homogeneous of degree one: $u(\lambda x) = \lambda u(x)$.
+
+**Key property:** Engel curves are rays through the origin — budget shares $p_l x_l / w$ are constant in $w$ for all $l$. This is verified: the UMP gives $x(p, w) = w \cdot x(p, 1)$ (by homogeneity of degree one in $w$ from homogeneity of $u$). Thus demand scales proportionally with income, and expenditure shares are independent of $w$. CES and Cobb-Douglas are homothetic; quasi-linear is not (unless $v$ is also homogeneous).
+
+### CES Utility
+
+$$u(x) = \left(\sum_{l=1}^L \alpha_l x_l^\rho\right)^{1/\rho}, \quad \rho \neq 0, \rho < 1$$
+
+The elasticity of substitution between goods $l$ and $k$ is:
+$$\sigma_{lk} = -\frac{d \ln(x_l/x_k)}{d \ln(p_l/p_k)}\bigg|_{u = \bar{u}} = \frac{1}{1-\rho}$$
+
+This is the same for all pairs, hence "constant" elasticity of substitution. The CES family nests:
+- $\rho \to 1$: $u(x) = \sum_l \alpha_l x_l$ (linear/perfect substitutes, $\sigma \to \infty$)
+- $\rho \to 0$: $u(x) = \prod_l x_l^{\alpha_l}$ (Cobb-Douglas, $\sigma = 1$) — derivation via L'Hopital
+- $\rho \to -\infty$: $u(x) = \min_l \{x_l/\alpha_l\}$ (Leontief/perfect complements, $\sigma = 0$)
+
+**Cobb-Douglas derivation from CES ($\rho \to 0$):** Take $\ln u = \frac{1}{\rho} \ln\left(\sum_l \alpha_l x_l^\rho\right)$. As $\rho \to 0$, applying L'Hopital:
+$$\lim_{\rho \to 0} \frac{\ln(\sum_l \alpha_l x_l^\rho)}{\rho} = \frac{\sum_l \alpha_l x_l^\rho \ln x_l}{\sum_l \alpha_l x_l^\rho}\bigg|_{\rho=0} = \frac{\sum_l \alpha_l \ln x_l}{\sum_l \alpha_l} = \sum_l \bar{\alpha}_l \ln x_l$$
+where $\bar{\alpha}_l = \alpha_l / \sum_k \alpha_k$. So $u \to \exp\left(\sum_l \bar{\alpha}_l \ln x_l\right) = \prod_l x_l^{\bar{\alpha}_l}$, the Cobb-Douglas form.
+
+## Economic Intuition
+
+The Debreu theorem tells us that the preference-based and utility-function-based approaches to consumer theory are equivalent under the maintained assumptions of rationality and continuity. This equivalence justifies the standard practice of positing a utility function directly, knowing it encodes a well-defined underlying preference ordering.
+
+The ordinal nature of utility means that two economists who use different utility representations of the same preferences (one using $u$, another using $\ln u$) will derive identical demand functions, identical indifference curves, and identical behavioral predictions. The only things that can legitimately be said about utility are ordinal: "this bundle gives higher utility than that one." Cardinal statements ("bundle $x$ gives twice the welfare of bundle $y$") are conventions imposed by the specific utility representation chosen, not features of the underlying preferences.
+
+Special functional forms play a crucial role in applied work because they impose tractable restrictions on the shape of demand, allowing closed-form solutions and structural estimation.
+
+## Cross-References
+- [2.1 Preference Relations](2.1_Preference_Relations.qmd) — Rationality and continuity are the hypotheses of Debreu's theorem
+- [2.3 Utility Maximization Problem](2.3_Utility_Maximization_Problem.qmd) — Utility maximization uses the functions defined here
+- [2.4 Expenditure Minimization](2.4_Expenditure_Minimization.qmd) — Duality requires specific properties of $u$ (e.g., quasi-concavity)
+- [1.2 Convex Analysis](1.2_Convex_Analysis.qmd) — Quasi-concavity and its relationship to convex sets

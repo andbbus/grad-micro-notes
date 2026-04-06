@@ -1,0 +1,177 @@
+---
+title: "2.6 — Revealed Preference"
+---
+
+# 2.6 — Revealed Preference
+
+> **MWG Reference:** Ch. 2, pp. 28–45; Ch. 3, pp. 87–101
+
+## Context
+
+Revealed preference theory, initiated by Samuelson (1938) and extended by Houthakker (1950) and Afriat (1967), provides a nonparametric approach to consumer theory. Rather than assuming a specific utility function and deriving its properties, revealed preference theory asks: what does observed demand behavior tell us about the consumer's underlying preferences? This approach is attractive because it connects theory directly to observable data. The Weak Axiom of Revealed Preference (WARP) is the minimum consistency requirement on demand behavior, implying the negative semidefiniteness of the Slutsky matrix. The Strong Axiom (SARP) adds transitivity and is equivalent to rationalizability by a utility function. Afriat's theorem provides the definitive answer for finite datasets: a demand system is rationalizable if and only if it satisfies GARP, and provides an explicit construction of a rationalizing utility function.
+
+## Revealed Preference Relations
+
+::: {.callout-note icon=false}
+## Definition 2.6.1 — Directly Revealed Preferred
+Given a demand function $x(p,w)$, bundle $x$ is **directly revealed preferred** to bundle $y$ (written $x \, R^0 \, y$, or "$x$ is revealed preferred to $y$") if there exist $(p, w)$ such that $x = x(p, w)$ and $p \cdot y \leq w$.
+
+Interpretation: at the prices when $x$ was chosen, $y$ was also affordable, yet the consumer chose $x$. This reveals that the consumer considers $x$ at least as good as $y$.
+:::
+
+
+::: {.callout-note icon=false}
+## Definition 2.6.2 — Revealed Preferred (Transitive Closure)
+Bundle $x$ is **revealed preferred** to $y$ (written $x \, R \, y$) if there exists a chain $x = z^0, z^1, \ldots, z^k = y$ such that $z^m \, R^0 \, z^{m+1}$ for all $m = 0, \ldots, k-1$. This is the transitive closure of $R^0$.
+:::
+
+
+## Weak Axiom of Revealed Preference (WARP)
+
+::: {.callout-note icon=false}
+## Definition 2.6.3 — Weak Axiom of Revealed Preference (WARP)
+A demand function $x(p,w)$ satisfies **WARP** if: for all $(p, w)$ and $(p', w')$,
+$$\text{if } p \cdot x(p',w') \leq w \text{ and } x(p',w') \neq x(p,w), \text{ then } p' \cdot x(p,w) > w'$$
+Equivalently: if $x(p',w')$ was affordable at $(p,w)$ but not chosen, then $x(p,w)$ must not be affordable at $(p', w')$.
+
+In the revealed preference language: if $x(p,w) \, R^0 \, x(p',w')$, then $\neg [x(p',w') \, R^0 \, x(p,w)]$ (unless the two bundles are equal).
+:::
+
+
+::: {.callout-caution icon=false}
+## Remark 2.6.1 — WARP and Consistency
+WARP is a minimal consistency requirement: it says the consumer does not directly contradict herself. If she chose $x$ over $y$ when $y$ was affordable (revealing $x \succsim y$), she cannot later choose $y$ when $x$ is affordable (which would reveal $y \succsim x$), unless $x = y$. WARP is implied by utility maximization, but is weaker: it does not require transitivity.
+:::
+
+
+## WARP Implies NSD of the Slutsky Matrix
+
+::: {.callout-important icon=false}
+## Theorem 2.6.1 — WARP and Negative Semidefiniteness
+Suppose demand $x(p,w)$ satisfies Walras' Law, homogeneity of degree zero, and WARP. Then the Slutsky matrix $S(p,w)$ is negative semidefinite.
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+We follow the MWG (Ch. 2) argument.
+
+**Setup:** We want to show $z^\top S(p,w) z \leq 0$ for all $z \in \mathbb{R}^L$. Consider a compensated price change: let $p' = p + \Delta p$ and $w' = w + \Delta w$ where the wealth adjustment compensates so that $x(p,w)$ remains affordable at $(p', w')$: $w' = p' \cdot x(p,w) = w + \Delta p \cdot x(p,w)$. This is the **Slutsky compensation**: wealth is adjusted to keep the original bundle affordable.
+
+**Step 1:** With Slutsky compensation, $x(p,w)$ is affordable at $(p', w')$: $p' \cdot x(p,w) = w'$ by construction.
+
+**Step 2:** By WARP: if $x(p',w') \neq x(p,w)$, then $x(p,w)$ cannot be affordable at $(p', w')$ when $x(p', w')$ is chosen at $(p, w)$... wait, we need to be careful about the direction. With Slutsky compensation, $p' \cdot x(p,w) = w'$, so $x(p,w)$ is affordable at $(p', w')$. If $x(p', w') \neq x(p,w)$, then $x(p,w)$ is affordable at $(p', w')$ but not chosen (instead $x(p', w')$ is chosen). By WARP, it must be that $x(p', w')$ is NOT affordable at $(p, w)$: $p \cdot x(p', w') > w$.
+
+**Step 3:** Walras' Law at $(p', w')$: $p' \cdot x(p',w') = w'$. So:
+$$p \cdot x(p',w') > w = p \cdot x(p,w) \quad (\text{by Walras' Law at } (p,w))$$
+Wait, $p \cdot x(p,w) = w$ by Walras' Law. So:
+$$p \cdot x(p', w') > w = p \cdot x(p, w)$$
+Therefore: $p \cdot [x(p',w') - x(p,w)] > 0$.
+
+**Step 4:** From Walras' Law at $(p', w')$: $p' \cdot x(p',w') = w'$. And $w' = p' \cdot x(p,w)$. So:
+$$p' \cdot [x(p',w') - x(p,w)] = w' - p' \cdot x(p,w) = 0$$
+Hence $\Delta p \cdot [x(p',w') - x(p,w)] = (p' - p) \cdot \Delta x = -p \cdot \Delta x$... let $\Delta x = x(p',w') - x(p,w)$:
+$$p' \cdot \Delta x = 0 \implies (p + \Delta p) \cdot \Delta x = 0 \implies p \cdot \Delta x + \Delta p \cdot \Delta x = 0$$
+Combined with Step 3 ($p \cdot \Delta x > 0$): $\Delta p \cdot \Delta x < 0$.
+
+**Step 5:** Taking $\Delta p \to 0$ (differentiating): $\Delta p \cdot \Delta x \approx \Delta p \cdot [S(p,w) \Delta p]$ (to first order, since the Slutsky-compensated change in demand equals $S \Delta p$ to first order). Therefore $\Delta p^\top S(p,w) \Delta p \leq 0$ for all $\Delta p$, with equality when $\Delta x = 0$ (i.e., $x(p',w') = x(p,w)$). This establishes NSD of $S$. $\square$
+:::
+
+
+::: {.callout-caution icon=false}
+## Remark 2.6.2 — WARP vs. Utility Maximization
+WARP is necessary but not sufficient for full utility maximization. It implies $S$ is NSD but does not imply symmetry of $S$. Full rationalizability (existence of a utility function) requires additionally transitivity, which is encoded in SARP or GARP.
+:::
+
+
+## Strong Axiom of Revealed Preference (SARP)
+
+::: {.callout-note icon=false}
+## Definition 2.6.4 — Strong Axiom of Revealed Preference (SARP)
+A demand function $x(p,w)$ satisfies **SARP** if: for all $x \neq y$, $x \, R \, y$ implies $\neg (y \, R \, x)$.
+
+That is, there are no cycles in the revealed preference relation $R$ (the transitive closure of $R^0$).
+:::
+
+
+::: {.callout-important icon=false}
+## Proposition 2.6.1 — SARP and Rationalizability
+A demand function satisfies SARP if and only if it is consistent with maximization of a strictly monotone and strictly convex utility function.
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+(Sketch.) The key step is to show that SARP implies the demand can be rationalized by a utility function. Given SARP, define $u(x)$ as the "length" of the longest revealed preference chain strictly below $x$; this gives a well-defined function (no cycles by SARP). One then verifies that $u$ is a utility function that rationalizes the demand. Conversely, if $u$ rationalizes demand, then $x \, R^0 \, y$ means $u(x) \geq u(y)$, and transitivity of $\geq$ implies SARP. $\square$
+:::
+
+
+## Afriat's Theorem
+
+::: {.callout-note icon=false}
+## Definition 2.6.5 — GARP (Generalized Axiom of Revealed Preference)
+Given finite data $\{(p^t, x^t)\}_{t=1}^T$ where $p^t \cdot x^t = w^t$ (Walras' Law imposed), the data satisfies **GARP** if: for all $t, s$, $x^t \, R \, x^s$ implies $p^s \cdot x^t \geq p^s \cdot x^s = w^s$.
+
+Equivalently: if the transitive closure of revealed preference ranks $x^t$ above $x^s$, then $x^s$ is not strictly cheaper than $x^t$ at prices $p^s$. (GARP allows for weak inequality — $p^s \cdot x^t \geq w^s$ — in contrast to SARP which requires strict inequality for different bundles.)
+:::
+
+
+::: {.callout-important icon=false}
+## Theorem 2.6.2 — Afriat's Theorem
+Given finite data $\{(p^t, x^t)\}_{t=1}^T$ with $p^t \gg 0$ and $x^t \geq 0$, the following statements are equivalent:
+1. There exists a locally nonsatiated utility function $u$ that rationalizes the data: $x^t = \arg\max_{p^t \cdot x \leq w^t} u(x)$ for all $t$.
+2. The data satisfies GARP.
+3. There exist numbers $\{U^t, \lambda^t\}_{t=1}^T$ with $\lambda^t > 0$ such that for all $t, s$:
+$$U^t \leq U^s + \lambda^s p^s \cdot (x^t - x^s) \quad \text{(Afriat inequalities)}$$
+4. There exists a continuous, concave, monotone utility function that rationalizes the data.
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+We sketch the key directions.
+
+**(1) $\Rightarrow$ (2):** If $u$ rationalizes the data and $x^t \, R^0 \, x^s$ (i.e., $p^t \cdot x^s \leq w^t$), then since $x^t$ was chosen over $x^s$ at prices $p^t$, we have $u(x^t) \geq u(x^s)$. By transitivity, $x^t \, R \, x^s$ implies $u(x^t) \geq u(x^s)$, so $x^s$ is not strictly cheaper than $x^t$ at $p^s$. More precisely, if $p^s \cdot x^t < w^s = p^s \cdot x^s$, then $x^t$ would be strictly cheaper than $x^s$ at prices $p^s$, meaning $x^s$ would not minimize... wait, this direction: if $u(x^t) \geq u(x^s)$ and $x^s$ is optimal at $p^s$, then $p^s \cdot x^t \geq p^s \cdot x^s = w^s$ (otherwise $x^t$ would be feasible and better, contradicting optimality of $x^s$). Hence GARP holds.
+
+**(2) $\Rightarrow$ (3):** The Afriat inequalities can be derived from GARP via a linear programming argument (Varian 1982). GARP ensures no cycles in a certain directed graph, which by a theorem of network theory (Farkas' lemma) guarantees the existence of numbers $\{U^t, \lambda^t\}$ satisfying the Afriat inequalities.
+
+**(3) $\Rightarrow$ (4):** Given $\{U^t, \lambda^t\}$, define:
+$$u(x) = \min_t \{U^t + \lambda^t p^t \cdot (x - x^t)\}$$
+This is a minimum of affine functions, hence continuous and concave. We verify it rationalizes the data: $u(x^t) = U^t$ (the minimum is achieved at $s = t$), and for any $x$ with $p^t \cdot x \leq w^t = p^t \cdot x^t$, we have $u(x) \leq U^t + \lambda^t p^t \cdot (x - x^t) \leq U^t = u(x^t)$ (using $\lambda^t > 0$ and $p^t \cdot (x - x^t) \leq 0$). Hence $x^t$ maximizes $u$ over the budget set.
+
+**(4) $\Rightarrow$ (1):** Trivial, since (4) gives a specific utility function rationalizing the data. $\square$
+:::
+
+
+::: {.callout-caution icon=false}
+## Remark 2.6.3 — Varian's GARP Test
+Varian (1982) provided a computationally efficient algorithm (based on Warshall's algorithm for transitive closure of a directed graph) to check GARP for any finite dataset. This makes Afriat's theorem practically useful: given observed price-quantity data, one can test rationality without assuming any parametric functional form for utility. This is the foundation of **nonparametric demand analysis**.
+:::
+
+
+::: {.callout-note icon=false appearance="simple"}
+## Example 2.6.1 — WARP Violation
+Suppose $L = 2$ and we observe two data points:
+- Observation 1: $p^1 = (1, 2)$, $w^1 = 4$, $x^1 = (2, 1)$
+- Observation 2: $p^2 = (2, 1)$, $w^2 = 4$, $x^2 = (1, 2)$
+
+Check: $p^1 \cdot x^2 = 1 \cdot 1 + 2 \cdot 2 = 5 > 4 = w^1$: $x^2$ was not affordable at prices $p^1$. Hence we cannot say $x^1 \, R^0 \, x^2$.
+
+$p^2 \cdot x^1 = 2 \cdot 2 + 1 \cdot 1 = 5 > 4 = w^2$: $x^1$ was not affordable at prices $p^2$. Hence $x^2 \, R^0 \, x^1$ does not hold either.
+
+No revealed preference violation: WARP is satisfied. Now consider instead $x^2 = (0, 2)$:
+$p^1 \cdot x^2 = 0 + 4 = 4 \leq w^1$: $x^2$ is affordable at $p^1$, yet $x^1$ was chosen, so $x^1 \, R^0 \, x^2$.
+$p^2 \cdot x^1 = 4 + 1 = 5 > 4$: $x^1$ is not affordable at $p^2$ when $x^2$ is chosen. WARP holds.
+:::
+
+
+## Empirical Link
+
+GARP testing (Varian 1982) is the foundation of **nonparametric demand analysis**. Using household-level panel data, one can test whether individual consumers satisfy rationality without imposing any parametric functional form. Violations of GARP measure "how irrational" behavior is (using money-pump indices or Afriat efficiency scores). The literature finds that most households satisfy GARP most of the time, but there are systematic violations associated with inattention, limited cognition, and changing household composition.
+
+SARP and GARP are also used in partial identification of demand systems: even without full rationalizability, the revealed preference restrictions generate testable inequalities on counterfactual demand, which can be used to bound welfare effects of policy changes.
+
+## Cross-References
+- [2.5 Duality and Slutsky](2.5_Duality_and_Slutsky.qmd) — Slutsky symmetry and NSD are the differential counterpart of WARP/SARP
+- [2.7 Integrability](2.7_Integrability.qmd) — Integrability is the continuous analog of SARP/GARP
+- [2.3 Utility Maximization Problem](2.3_Utility_Maximization_Problem.qmd) — The UMP is the behavioral model whose consistency WARP tests

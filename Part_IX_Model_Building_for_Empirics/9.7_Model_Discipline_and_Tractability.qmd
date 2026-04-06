@@ -1,0 +1,184 @@
+---
+title: "9.7 — Model Discipline and Tractability"
+---
+
+# 9.7 — Model Discipline and Tractability
+
+> **Cross-references:** Chetty (2009); Tirole (1988); Acemoglu (2009) Ch. 1
+
+## Context
+
+Every model faces the tractability-richness tradeoff: more realistic models are harder to solve and harder to take to data, while simpler models may miss important mechanisms. Model discipline is the craft of navigating this tradeoff systematically — adding exactly as much complexity as is needed to generate the phenomenon of interest, and no more. This note presents the parsimony principle formally, surveys the standard tractability devices used in the literature, discusses robustness of results to modeling choices, and introduces the "sufficient statistics" approach as a way to do welfare analysis without full structural estimation.
+
+## Definitions
+
+::: {.callout-note icon=false}
+## Definition 9.7.1 — Tractability-Richness Tradeoff
+A model $\mathcal{M}$ is **more rich** than $\mathcal{M}'$ if $\mathcal{M}$ has more primitives, or its primitives span a larger parameter space, such that $\mathcal{M}'$ is a special case of $\mathcal{M}$. Richness generates more testable predictions and captures more mechanisms. But richness imposes costs:
+1. **Analytical cost:** The model may not have a closed-form equilibrium
+2. **Estimation cost:** More parameters require more data moments for identification
+3. **Communication cost:** Complicated models are harder to present and replicate
+
+A tractable model achieves its core prediction in a framework simple enough to admit closed-form or easily computable solutions.
+:::
+
+
+::: {.callout-note icon=false}
+## Definition 9.7.2 — Parsimony Principle (Occam's Razor Applied to Models)
+Among models that generate the same core prediction, prefer the model with fewer primitive assumptions. Applied formally: a model element (an assumption, a parameter, a player) is **essential** if removing it eliminates the core prediction. An element is **inessential** if the prediction holds without it. A parsimonious model has no inessential elements.
+:::
+
+
+## Main Results
+
+### Five Canonical Tractability Devices
+
+::: {.callout-caution icon=false}
+## Remark 9.7.1 — Device 1: Linear-Quadratic (LQ) Approximation
+The **linear-quadratic approximation** replaces a general dynamic or strategic problem with one in which payoffs are quadratic and constraints are linear. This generates linear optimal strategies (linear decision rules) and linear equilibrium objects, which are analytically tractable.
+
+**Formal basis:** Expand the objective function $f(x, \alpha)$ around the steady state $(x_0, \alpha_0)$ to second order in deviations:
+$$f(x, \alpha) \approx f_0 + f_x(x-x_0) + f_\alpha(\alpha-\alpha_0) + \frac{1}{2}f_{xx}(x-x_0)^2 + f_{x\alpha}(x-x_0)(\alpha-\alpha_0)$$
+The resulting optimization problem has linear FOCs and linear comparative statics. Dynamic LQ problems (LQR theory) have closed-form solutions given by algebraic Riccati equations.
+
+**When to use:** Dynamic models where the steady-state deviation is small (business cycle models, dynamic contracting). Warning: LQ approximations lose global properties of the model; comparative statics are only locally valid.
+:::
+
+
+::: {.callout-caution icon=false}
+## Remark 9.7.2 — Device 2: Normality and Linearity (Linear-Bayes)
+In models with normal distributions, conditional expectations are linear: $\mathbb{E}[v|s] = \mu + \frac{\text{Cov}(v,s)}{\text{Var}(s)}(s-\mu_s)$. This means that optimal Bayesian strategies are linear functions of signals, and equilibrium prices are linear functions of fundamentals (as in the Kyle model and Grossman-Stiglitz). The entire equilibrium characterization reduces to solving a system of linear equations.
+
+**When to use:** Information economics models (Kyle, Grossman-Stiglitz, dynamic learning), forecasting games, cheap talk with continuous types. The normality + linearity combination makes posterior updating trivial and equilibrium characterization explicit.
+:::
+
+
+::: {.callout-caution icon=false}
+## Remark 9.7.3 — Device 3: Symmetry Reductions
+When all agents have identical primitives (preferences, endowments, type distributions), a symmetric equilibrium — where all agents play the same strategy — often exists and is the natural prediction. Symmetry reduces an $n$-dimensional optimization (one for each agent) to a one-dimensional problem (the representative agent's problem).
+
+**Caution:** Symmetry is a restriction. When the phenomenon of interest involves heterogeneity (income inequality, firm size distribution, heterogeneous price responses), imposing symmetry eliminates the key mechanism. Use symmetry only when heterogeneity is not the point.
+:::
+
+
+::: {.callout-caution icon=false}
+## Remark 9.7.4 — Device 4: Quasi-Linearity (No Income Effects)
+**Quasi-linear preferences** take the form $u(x, m) = v(x) + m$ where $m$ is money (numeraire). Quasi-linearity implies no income effects on good $x$: the demand for $x$ does not depend on the agent's wealth level. Welfare calculations simplify: total social surplus is $\sum_i v_i(x) - c(x)$ and the consumer surplus from a price change is exactly the area under the demand curve.
+
+**When to use:** Mechanism design (VCG, optimal auctions), public economics (Pigouvian taxation), industrial organization (oligopoly welfare). Quasi-linearity is often justified for goods that represent a small share of expenditure (so income effects are negligible). It is inappropriate for housing, health care, or other large expenditure goods.
+:::
+
+
+::: {.callout-caution icon=false}
+## Remark 9.7.5 — Device 5: Continuum of Agents (Law of Large Numbers)
+Replacing a finite set of agents with a **continuum** eliminates strategic interaction at the individual level: each agent is infinitesimally small and takes aggregate outcomes as given. Individual behavior follows a law of large numbers: the average outcome is deterministic even when individual outcomes are stochastic. This is the basis for competitive equilibrium theory (continuum of firms and consumers), matching models (Shimer-Smith), and search models.
+
+**When to use:** Competitive models; models where strategic interaction is not the focus; models with aggregate uncertainty but idiosyncratic risk (Bewley-Huggett-Aiyagari). The continuum assumption can obscure integer problems (e.g., you cannot have half a firm) and is inappropriate for oligopoly or small-group games.
+:::
+
+
+### Model Robustness
+
+::: {.callout-note icon=false}
+## Definition 9.7.3 — Robust vs. Knife-Edge Result
+A result is **robust** if it holds for a broad class of functional forms, distributions, and model specifications. A result is **knife-edge** if it holds only for a specific parameterization or under a non-generic assumption. Knife-edge results are academically interesting but empirically fragile.
+
+**Tests of robustness:**
+1. Does the prediction hold for CES utility and Cobb-Douglas utility? If yes, it likely holds for a broader utility class.
+2. Does the sign of the comparative static change under different distributional assumptions?
+3. Does the result require a specific parameter restriction (e.g., $\rho = 1$, $\beta = 1$) or does it hold over a range?
+:::
+
+
+::: {.callout-caution icon=false}
+## Remark 9.7.6 — Falsifiability and Model Discipline
+A model with no testable implications is not a scientific model — it is a framework. Every well-disciplined model should have at least one moment condition or shape restriction that it could fail on. Identifying the "falsification moment" — the single most powerful test of the model's core mechanism — is part of model building.
+
+Publication bias pushes toward sharp, universal results. A practitioner aware of this bias should distinguish: (i) results that hold generally and provide robust empirical guidance; (ii) results that hold under specific functional forms and should be treated as illustrative rather than predictive.
+:::
+
+
+### The Sufficient Statistics Approach (Chetty 2009)
+
+::: {.callout-note icon=false}
+## Definition 9.7.4 — Sufficient Statistic for Welfare
+A **sufficient statistic** for a welfare calculation is a reduced-form parameter (or set of parameters) that can be estimated without full structural estimation, but that is sufficient to compute the welfare effect of a policy change to a first-order approximation. The sufficient statistic is derived from the structural model but only requires reduced-form variation to estimate.
+:::
+
+
+::: {.callout-important icon=false}
+## Theorem 9.7.1 — Sufficient Statistic for Policy Welfare (Chetty 2009)
+Consider a model where the government sets a tax $\tau$ on good $x$. The social welfare effect of a marginal change in $\tau$ is:
+$$\frac{dW}{d\tau} = -\tau \frac{dx^*}{d\tau} + \text{(externality terms)}$$
+The key sufficient statistic is $\frac{dx^*}{d\tau}$ — the behavioral response to the tax — which can be estimated from reduced-form variation (a policy experiment) without knowing the full utility function.
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+**Setup:** Social welfare is $W = \sum_i u_i(x_i, m_i) + \tau \sum_i x_i$ (tax revenue redistributed to consumers). At the social optimum, agents maximize $u_i(x_i, m_i)$ subject to $(1+\tau)x_i + m_i \leq I_i$.
+
+**Envelope theorem:** At the agent's optimum, the indirect utility is $V_i(\tau) = u_i(x_i^*(\tau), I_i - (1+\tau)x_i^*(\tau))$. By the envelope theorem:
+$$\frac{dV_i}{d\tau} = -x_i^*(\tau) \cdot \lambda_i$$
+where $\lambda_i$ is the marginal utility of income.
+
+**Tax revenue:** $R(\tau) = \tau \sum_i x_i^*(\tau)$. The marginal revenue is:
+$$\frac{dR}{d\tau} = \sum_i x_i^*(\tau) + \tau \sum_i \frac{dx_i^*}{d\tau}$$
+
+**Social welfare:**
+$$\frac{dW}{d\tau} = \sum_i \frac{dV_i}{d\tau} + \frac{dR}{d\tau}$$
+Assuming equal social weights $\lambda_i = 1$:
+$$= -\sum_i x_i^* + \sum_i x_i^* + \tau \sum_i \frac{dx_i^*}{d\tau} = \tau \frac{d\sum_i x_i^*}{d\tau}$$
+
+Therefore:
+$$\frac{dW}{d\tau} = \tau \cdot \frac{dX^*}{d\tau}$$
+where $X^* = \sum_i x_i^*$ is aggregate quantity. This is the deadweight loss formula — the welfare effect depends only on the tax rate $\tau$ and the behavioral response $dX^*/d\tau$, not on the underlying utility function.
+
+The key insight: even without knowing the utility function, we can compute the welfare effect if we know (i) the current tax $\tau$ and (ii) the elasticity of demand $dX^*/d\tau$. The latter can be estimated from reduced-form variation.
+:::
+
+
+::: {.callout-caution icon=false}
+## Remark 9.7.7 — Applications of the Sufficient Statistics Approach
+The sufficient statistics approach has been applied to:
+- **Unemployment insurance:** The welfare gain from extending UI depends on the consumption smoothing benefit (estimated from consumption data) and the moral hazard cost (the behavioral response of job search to UI extension). No utility function needed.
+- **Health insurance:** The welfare effect of the mandate depends on the price elasticity of insurance demand and the adverse selection externality.
+- **Trade policy:** The welfare gain from trade liberalization equals $\hat\lambda^{-1/\theta}$ where $\hat\lambda$ is the change in home expenditure share and $\theta$ is the trade elasticity (Eaton-Kortum formula) — both estimable from trade data.
+
+The sufficient statistics approach bridges structural and reduced-form: it uses the structure of a model to derive a formula, but only requires reduced-form estimates to evaluate the formula.
+:::
+
+
+### Example: Simplifying an Overly Complex Model
+
+::: {.callout-note icon=false appearance="simple"}
+## Example 9.7.1 — Simplifying a Model While Retaining Key Predictions
+**Overly complex model:** A dynamic contest model with $n$ heterogeneous groups, stochastic resource values, learning about rival capabilities, renegotiation, and three-dimensional effort choices (fight, negotiate, produce). This model generates rich qualitative predictions but has no closed-form solution and 15+ parameters requiring estimation.
+
+**Core mechanism:** The key prediction is that higher resource value $R$ increases conflict effort. This prediction follows from the contest model's FOC: $\frac{\partial p_i}{\partial m_i} R = c$, so $m^* = m(R)$ with $m' > 0$.
+
+**Simplified model:** A static symmetric contest with two groups, fixed costs, and deterministic resource value. This generates the same core prediction ($m^*(R)$ is increasing in $R$) with a closed-form equilibrium, 2 parameters, and clean comparative statics.
+
+**Inessential elements dropped:** Dynamics (no prediction change for the static comparative static); learning (no prediction change without strategic information revelation); negotiation (adds a separate game but does not affect the prediction for conflict intensity); three-dimensional effort (reduce to single effort choice without qualitative change).
+
+**Retained elements:** Two groups (necessary for contest); resource prize $R$ (necessary for the prediction); cost parameter $c$ (necessary for the equilibrium condition). All three elements are essential.
+
+**Lesson:** The simplified model generates the same testable prediction (conflict $\uparrow$ when $R \uparrow$) with far greater analytical and empirical tractability.
+:::
+
+
+## Economic Intuition
+
+Model discipline is the difference between a paper with a clear, falsifiable contribution and a paper that disappears into its own complexity. The key discipline: for every element added to a model, ask "what prediction changes if I remove this?" If the answer is "nothing material," remove it. If the answer is "the sign of the key comparative static reverses," keep it.
+
+The sufficient statistics approach is a powerful tool for maintaining discipline: it forces the researcher to identify what structural parameters are actually needed for the welfare calculation of interest. In many cases, the answer is far fewer parameters than the full model contains — and those few parameters can be estimated from credible reduced-form variation.
+
+Robustness checking is an integral part of model building, not an afterthought. Before presenting a model, test its key predictions under alternative functional forms. A prediction that holds under both Cobb-Douglas and CES is a genuine theoretical result. A prediction that requires exactly Cobb-Douglas is a computational artifact.
+
+## Cross-References
+
+- [9.1 Anatomy of a Theoretical Model](9.1_Anatomy_of_a_Theoretical_Model.qmd) — parsimony principle as component of model anatomy
+- [9.5 Structural vs Reduced Form](9.5_Structural_vs_Reduced_Form.qmd) — sufficient statistics bridge both approaches
+- [9.4 Deriving Testable Predictions](9.4_Deriving_Testable_Predictions.qmd) — tractable models generate cleaner testable predictions
+- [7.1 Principal Agent Problem](7.1_Principal_Agent_Problem.qmd) — LEN model as the canonical tractability device in agency theory
+- [APP Conflict and Resource Models](APP_Conflict_and_Resource_Models.qmd) — simplified contest model as example of model discipline

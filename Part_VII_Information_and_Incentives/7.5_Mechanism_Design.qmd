@@ -1,0 +1,250 @@
+---
+title: "7.5 — Mechanism Design"
+---
+
+# 7.5 — Mechanism Design
+
+> **MWG Reference:** Ch. 23, §23.B–23.D, pp. 857–916; Myerson (1979, 1981); Vickrey (1961); Clarke (1971); Groves (1973)
+
+## Context
+
+Mechanism design — sometimes called "reverse game theory" — asks: given a desired social objective, what game should we design so that rational agents playing the game achieve the objective? The principal knows the social objective but not the agents' types. The space of possible mechanisms is enormous: any message space, any outcome function, any equilibrium concept. The Revelation Principle collapses this space to direct, truth-telling mechanisms. Once restricted to direct mechanisms, the design problem becomes a constrained optimization: maximize the objective subject to incentive compatibility and individual rationality.
+
+In quasi-linear environments (where transfers are possible), rich positive results follow: the VCG mechanism achieves social surplus maximization as a dominant-strategy equilibrium; Myerson's payment formula characterizes all incentive-compatible mechanisms; and the optimal auction maximizes revenue by assigning goods to the bidder with the highest virtual value. The negative results — Gibbard-Satterthwaite, Myerson-Satterthwaite — reveal fundamental limits on what mechanisms can achieve when private information is present.
+
+## Definitions
+
+::: {.callout-note icon=false}
+## Definition 7.5.1 — Mechanism
+A **mechanism** $\Gamma = (M, g)$ consists of:
+- $M = \times_{i=1}^n M_i$: the message (strategy) space, where $M_i$ is agent $i$'s message set
+- $g: M \to X$: the outcome function mapping messages to outcomes in some outcome space $X$
+
+Each agent $i$ has type $\theta_i \in \Theta_i$ (private information) and payoff $u_i(x, \theta_i)$ when outcome $x \in X$ occurs. The game induced by $\Gamma$ is one in which agents simultaneously choose messages and receive the outcome $g(m)$.
+:::
+
+
+::: {.callout-note icon=false}
+## Definition 7.5.2 — Direct Mechanism and Incentive Compatibility
+A **direct mechanism** sets $M_i = \Theta_i$ for all $i$: agents directly report their types.
+- **Dominant Strategy Incentive Compatible (DSIC):** Truth-telling is a dominant strategy: for all $i$, all $\theta_i$, all $\hat\theta_i \neq \theta_i$, and all messages $m_{-i}$ of others:
+$$u_i(g(\theta_i, m_{-i}), \theta_i) \geq u_i(g(\hat\theta_i, m_{-i}), \theta_i)$$
+- **Bayesian Incentive Compatible (BIC):** Truth-telling is optimal in expectation over others' types: for all $i$, all $\theta_i$, all $\hat\theta_i$:
+$$\mathbb{E}_{\theta_{-i}}[u_i(g(\theta_i, \theta_{-i}), \theta_i)] \geq \mathbb{E}_{\theta_{-i}}[u_i(g(\hat\theta_i, \theta_{-i}), \theta_i)]$$
+:::
+
+
+::: {.callout-note icon=false}
+## Definition 7.5.3 — Individual Rationality
+A mechanism is **individually rational (IR)** (or **ex-interim IR**) if each agent is willing to participate after learning their own type:
+$$\mathbb{E}_{\theta_{-i}}[u_i(g(\theta_i, \theta_{-i}), \theta_i)] \geq \bar{u}_i(\theta_i)$$
+where $\bar{u}_i(\theta_i)$ is agent $i$'s outside option.
+:::
+
+
+## Main Results
+
+### Revelation Principle (General Version)
+
+::: {.callout-important icon=false}
+## Theorem 7.5.1 — Revelation Principle (DSIC Version)
+For any mechanism $\Gamma = (M, g)$ and any dominant strategy equilibrium $\sigma^*$ of the game induced by $\Gamma$, there exists a direct mechanism $\Gamma' = (\Theta, g')$ that is DSIC and implements the same outcome: $g'(\theta) = g(\sigma^*(\theta))$ for all $\theta$.
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+Define the direct mechanism $\Gamma'$ by setting $g'(\hat\theta) = g(\sigma^*(\hat\theta))$ for all $\hat\theta$.
+
+**Truth-telling is dominant in $\Gamma'$:** Fix agent $i$ with type $\theta_i$. In $\Gamma$, $\sigma_i^*(\theta_i)$ is a dominant strategy:
+$$u_i(g(\sigma_i^*(\theta_i), m_{-i}), \theta_i) \geq u_i(g(m_i, m_{-i}), \theta_i) \quad \forall m_i, m_{-i}$$
+In $\Gamma'$, if agent $i$ reports $\hat\theta_i$ and all others report $\theta_{-i}$, the outcome is $g'(\hat\theta_i, \theta_{-i}) = g(\sigma_i^*(\hat\theta_i), \sigma_{-i}^*(\theta_{-i}))$.
+
+Agent $i$'s payoff from truthful report $\theta_i$ in $\Gamma'$ (given any $\theta_{-i}$ and any strategy of others):
+$$u_i(g'(\theta_i, \theta_{-i}), \theta_i) = u_i(g(\sigma_i^*(\theta_i), \sigma_{-i}^*(\theta_{-i})), \theta_i)$$
+Agent $i$'s payoff from misreport $\hat\theta_i$ in $\Gamma'$:
+$$u_i(g'(\hat\theta_i, \theta_{-i}), \theta_i) = u_i(g(\sigma_i^*(\hat\theta_i), \sigma_{-i}^*(\theta_{-i})), \theta_i)$$
+
+Since $\sigma^*$ is a dominant strategy equilibrium in $\Gamma$, for the message profile $m_{-i} = \sigma_{-i}^*(\theta_{-i})$:
+$$u_i(g(\sigma_i^*(\theta_i), m_{-i}), \theta_i) \geq u_i(g(\sigma_i^*(\hat\theta_i), m_{-i}), \theta_i)$$
+Therefore truth-telling is optimal for agent $i$ in $\Gamma'$, for any messages of others. This is a dominant strategy.
+:::
+
+
+::: {.callout-important icon=false}
+## Theorem 7.5.2 — Revelation Principle (BIC Version)
+For any mechanism $\Gamma$ and any Bayesian Nash Equilibrium $\sigma^*$, there exists a direct BIC mechanism with the same outcome.
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+Same construction as DSIC version, with the inequality replaced by the BIC inequality (expected over others' types). The argument goes through identically, replacing the universal quantifier over $m_{-i}$ with an expectation over $\theta_{-i}$.
+:::
+
+
+### Gibbard-Satterthwaite Theorem
+
+::: {.callout-important icon=false}
+## Theorem 7.5.3 — Gibbard-Satterthwaite Theorem
+Suppose: (i) $|X| \geq 3$ (at least 3 social alternatives); (ii) agents have unrestricted preferences over $X$ (any linear order is possible); (iii) the social choice function $f: \times_i \mathcal{R}_i \to X$ is onto (every alternative is chosen for some preference profile). Then $f$ is DSIC if and only if $f$ is **dictatorial**: there exists agent $d$ such that $f(\mathbf{R}) = \arg\max_x R_d$ for all $\mathbf{R}$.
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+The proof proceeds in two steps, connecting the result to Arrow's Impossibility Theorem.
+
+**Step 1: Reduction to Arrow's Theorem.** Given a DSIC social choice function $f$, construct a social welfare function $W$ from $f$ by asking: what would $f$ choose if agents are given any two-alternative comparison? A careful construction (using the "independence of irrelevant alternatives" structure implicit in DSIC) shows that $W$ satisfies Arrow's conditions: Pareto efficiency and independence of irrelevant alternatives.
+
+**Step 2: Arrow implies dictatorship.** Arrow's Impossibility Theorem states that any social welfare function satisfying Pareto efficiency and IIA on a universal domain with $\geq 3$ alternatives is a dictatorship. Therefore $W$ is a dictatorship for the underlying pairwise comparisons, which translates to $f$ being dictatorial.
+
+**Connection to Arrow:** Both theorems are expressions of the same deep fact — that with unrestricted preferences, no non-dictatorial rule can aggregate preferences in a consistent (incentive-compatible / IIA-respecting) way. The Gibbard-Satterthwaite theorem applies to ordinal social choice; the quasi-linear restriction used in VCG escapes the impossibility by restricting the domain.
+:::
+
+
+### Quasi-Linear Environments
+
+::: {.callout-note icon=false}
+## Definition 7.5.4 — Quasi-Linear Environment
+In a quasi-linear environment:
+- Outcome $x = (k, t_1, \ldots, t_n)$ where $k \in K$ is an allocation and $t_i \in \mathbb{R}$ is a transfer to agent $i$
+- Agent $i$'s payoff: $u_i(x, \theta_i) = v_i(k, \theta_i) - t_i$
+- Budget balance: $\sum_i t_i = 0$ (transfers are internal) or $\sum_i t_i \leq 0$ (transfers may be collected by principal)
+- Social surplus: $\sum_i v_i(k, \theta_i)$
+:::
+
+
+### VCG Mechanism
+
+::: {.callout-important icon=false}
+## Theorem 7.5.4 — Vickrey-Clarke-Groves (VCG) Mechanism
+In a quasi-linear environment, the VCG mechanism:
+- **Allocation:** $k^*(\theta) \in \arg\max_{k \in K} \sum_i v_i(k, \theta_i)$ (maximize social surplus)
+- **Transfer to $i$:** $t_i(\theta) = \sum_{j \neq i} v_j(k^*(\theta), \theta_j) + h_i(\theta_{-i})$
+where $h_i: \Theta_{-i} \to \mathbb{R}$ is any function of others' reports only
+
+is DSIC: truth-telling is a dominant strategy for every agent.
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+Agent $i$ with type $\theta_i$ reports $\hat\theta_i$ and receives payoff:
+$$u_i = v_i(k^*(\hat\theta_i, \theta_{-i}), \theta_i) - t_i(\hat\theta_i, \theta_{-i})$$
+Substituting the VCG transfer:
+$$u_i = v_i(k^*(\hat\theta_i, \theta_{-i}), \theta_i) - \sum_{j \neq i} v_j(k^*(\hat\theta_i, \theta_{-i}), \theta_j) - h_i(\theta_{-i})$$
+$$= \sum_j v_j(k^*(\hat\theta_i, \theta_{-i}), \theta_j) - h_i(\theta_{-i})$$
+
+The last expression is the **total social surplus** achieved when the agent reports $\hat\theta_i$, minus a term that does not depend on $\hat\theta_i$. To maximize their payoff, agent $i$ chooses $\hat\theta_i$ to maximize total social surplus:
+$$\hat\theta_i^* \in \arg\max_{\hat\theta_i} \sum_j v_j(k^*(\hat\theta_i, \theta_{-i}), \theta_j)$$
+
+By definition of $k^*$, this is maximized by truthful reporting $\hat\theta_i = \theta_i$, because:
+$$k^*(\theta_i, \theta_{-i}) = \arg\max_k \sum_j v_j(k, \theta_j)$$
+achieves the highest total surplus when $\hat\theta_i = \theta_i$ — no manipulation can increase total social surplus, and agent $i$'s payoff is precisely total social surplus (minus a constant). Therefore truth-telling is a dominant strategy.
+:::
+
+
+::: {.callout-note icon=false appearance="simple"}
+## Example 7.5.1 — Second-Price Auction as a VCG Mechanism
+Single good; bidder $i$ has private value $v_i(\theta_i) = \theta_i$. VCG allocation: award to highest-value bidder $i^* = \arg\max_i \theta_i$. VCG transfer to $i^*$: $t_{i^*} = \sum_{j \neq i^*} v_j(k^*, \theta_j) - \sum_{j \neq i^*} v_j(k^{-i^*}, \theta_j)$ where $k^{-i^*}$ is the allocation without $i^*$. Since the good goes to $i^*$, others get 0 regardless; the term simplifies to $-(- v_{(2)}) = -\max_{j \neq i^*} \theta_j = -v_{(2)}$, so $i^*$ pays $v_{(2)}$ (the second-highest value). This is the Vickrey second-price auction. Other bidders pay 0. Truth-telling is dominant.
+:::
+
+
+### Myerson-Satterthwaite Theorem
+
+::: {.callout-important icon=false}
+## Theorem 7.5.5 — Myerson-Satterthwaite Impossibility Theorem
+Consider a bilateral trade setting: a buyer with private value $v \sim F_B$ on $[0,1]$ and a seller with private cost $c \sim F_S$ on $[0,1]$, with $F_B$ and $F_S$ having overlapping supports. There is no BIC, IR mechanism that always achieves efficient trade (trade occurs iff $v \geq c$) and also satisfies budget balance ($\mathbb{E}[t_B - t_S] = 0$).
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+**Step 1: Myerson's payment formula.** For a BIC mechanism, the probability of trade as a function of the buyer's type $Q_B(v) = \mathbb{E}_c[q(v,c)]$ must be non-decreasing in $v$ (standard monotonicity from BIC). By the envelope theorem:
+$$U_B(v) = U_B(0) + \int_0^v Q_B(s) ds$$
+where $U_B(v) = \mathbb{E}_c[v \cdot q(v,c) - t_B(v,c)]$ is the buyer's expected payoff.
+
+**Step 2: Expected payments.** The buyer's expected payment:
+$$\mathbb{E}_v[t_B(v)] = \mathbb{E}_v[v \cdot Q_B(v)] - \mathbb{E}_v[U_B(v)]$$
+$$= \mathbb{E}_v[v \cdot Q_B(v)] - U_B(0) - \int_0^1 \int_0^v Q_B(s) ds \, f_B(v) dv$$
+Integrating by parts:
+$$= \mathbb{E}_v\left[v \cdot Q_B(v) - \frac{1-F_B(v)}{f_B(v)} Q_B(v)\right] - U_B(0)$$
+$$= \mathbb{E}_v\left[\psi_B(v) Q_B(v)\right] - U_B(0)$$
+where $\psi_B(v) = v - \frac{1-F_B(v)}{f_B(v)}$ is the **virtual value** of the buyer.
+
+Similarly, the seller's expected receipt:
+$$\mathbb{E}_c[t_S(c)] = \mathbb{E}_c\left[\phi_S(c) Q_S(c)\right] + U_S(1)$$
+where $\phi_S(c) = c + \frac{F_S(c)}{f_S(c)}$ is the seller's virtual cost and $Q_S(c) = \mathbb{E}_v[q(v,c)]$.
+
+**Step 3: Budget balance condition.** Budget balance requires:
+$$\mathbb{E}[t_B(v,c)] = \mathbb{E}[t_S(v,c)]$$
+i.e., $\mathbb{E}_v[t_B(v)] = \mathbb{E}_c[t_S(c)]$ (by the law of iterated expectations and linearity).
+
+**Step 4: Efficient mechanism fails budget balance.** Under efficient trade, $q^*(v,c) = \mathbf{1}[v \geq c]$. Compute:
+$$\mathbb{E}[t_B] - \mathbb{E}[t_S] = \mathbb{E}[\psi_B(v) \mathbf{1}[v \geq c]] - \mathbb{E}[\phi_S(c) \mathbf{1}[v \geq c]] - U_B(0) - U_S(1)$$
+$$= \mathbb{E}[(\psi_B(v) - \phi_S(c)) \mathbf{1}[v \geq c]] - U_B(0) - U_S(1)$$
+
+For budget balance: $U_B(0) + U_S(1) = \mathbb{E}[(\psi_B(v) - \phi_S(c)) \mathbf{1}[v \geq c]]$.
+
+But IR requires $U_B(0) \geq 0$ and $U_S(1) \geq 0$. So budget balance + IR requires:
+$$0 \leq U_B(0) + U_S(1) = \mathbb{E}[(\psi_B(v) - \phi_S(c))\mathbf{1}[v \geq c]]$$
+
+Now, with overlapping supports, there is a region where $v \geq c$ (trade is efficient) but $\psi_B(v) < v < c < \phi_S(c)$ (virtual values cross before actual values). Specifically, $\psi_B(v) = v - (1-F_B(v))/f_B(v) < v$ and $\phi_S(c) = c + F_S(c)/f_S(c) > c$. Near the overlap (small $v \geq c$), $\psi_B(v) - \phi_S(c) < v - c \approx 0$, so $\psi_B(v) - \phi_S(c) < 0$.
+
+Therefore $\mathbb{E}[(\psi_B(v) - \phi_S(c))\mathbf{1}[v \geq c]] < 0$ in general with overlapping supports, making it impossible to satisfy $U_B(0) + U_S(1) \geq 0$ simultaneously. Budget balance requires a deficit from the efficient mechanism.
+:::
+
+
+::: {.callout-caution icon=false}
+## Remark 7.5.1 — Interpretation of Myerson-Satterthwaite
+The theorem shows that private information has a real welfare cost that cannot be contracted away, even in the most favorable environments (quasi-linear utilities, bilateral trade). The fundamental tension: BIC and IR together imply that information rents (positive information rents for the buyer at low values, positive rents for the seller at high costs) must be paid, and these rents exceed the gains from efficient trade in the overlap region. No budget-balancing mechanism can always achieve efficiency.
+:::
+
+
+### Optimal Auctions (Myerson 1981)
+
+::: {.callout-important icon=false}
+## Theorem 7.5.6 — Myerson's Optimal Auction
+A seller has one unit; $n$ buyers with IID private values $v_i \sim F$ on $[V, \bar{V}]$, $F$ regular (virtual value $\psi(v) = v - (1-F(v))/f(v)$ is strictly increasing). The revenue-maximizing BIC, IR auction:
+1. **Allocates to the bidder with the highest virtual value** $\psi(v_i)$, if this virtual value exceeds 0 (otherwise no sale)
+2. **Sets a reserve price** $r^*$ solving $\psi(r^*) = 0$, i.e., $r^* - (1-F(r^*))/f(r^*) = 0$
+3. **Expected revenue** = $\mathbb{E}[\max_i \psi(v_i) \cdot \mathbf{1}[\max_i v_i \geq r^*]]$
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+By the Revelation Principle, focus on direct BIC, IR mechanisms $(q_i(v), p_i(v))$ where $q_i(v)$ is the probability of allocation to $i$ and $p_i(v)$ is the payment.
+
+**Step 1: Characterize BIC.** Bidder $i$'s utility: $U_i(v_i) = v_i q_i(v_i) - p_i(v_i)$ where $q_i(v_i) = \mathbb{E}_{v_{-i}}[q_i(v_i, v_{-i})]$ (interim allocation probability). BIC requires $q_i(v_i)$ non-decreasing and the envelope condition $U_i'(v_i) = q_i(v_i)$.
+
+**Step 2: Myerson's payment formula.** Integrating:
+$$p_i(v_i) = v_i q_i(v_i) - U_i(v_i) = v_i q_i(v_i) - U_i(\underline{V}) - \int_{\underline{V}}^{v_i} q_i(s) ds$$
+Expected revenue from bidder $i$:
+$$\mathbb{E}[p_i(v_i)] = \mathbb{E}[v_i q_i(v_i)] - U_i(\underline{V}) - \mathbb{E}\left[\int_{\underline{V}}^{v_i} q_i(s) ds\right]$$
+Integrating by parts, total revenue:
+$$\sum_i \mathbb{E}[p_i(v_i)] = \mathbb{E}\left[\sum_i \psi(v_i) q_i(v_i)\right] - \sum_i U_i(\underline{V})$$
+
+**Step 3: Maximize revenue.** IR requires $U_i(\underline{V}) \geq 0$; optimal: $U_i(\underline{V}) = 0$. To maximize $\mathbb{E}[\sum_i \psi(v_i) q_i(v_i)]$ subject to $\sum_i q_i(v_i) \leq 1$ (feasibility), set $q_i^*(v) = 1$ if $\psi(v_i) = \max_j \psi(v_j) > 0$ and $q_i^*(v) = 0$ otherwise. Under monotone virtual values, this means awarding to the highest bidder if their virtual value exceeds 0.
+
+**Step 4: Reserve price.** The reserve price $r^*$ is defined by $\psi(r^*) = 0$. If the highest bid $v_{(1)} < r^*$, the seller withholds the good (since $\psi(v_{(1)}) < 0$, selling would reduce expected revenue).
+
+With IID regular types and symmetric bidders, the optimal mechanism is a **second-price auction with reserve price $r^*$**.
+:::
+
+
+## Economic Intuition
+
+Mechanism design is the tool for asking: what is the best we can do? Given private information and rational agents, what outcomes are achievable? The Revelation Principle tells us we need only consider truth-telling mechanisms. The VCG mechanism shows that, in the class of quasi-linear problems, social surplus maximization is always achievable as a dominant-strategy outcome — private information does not prevent efficiency. However, VCG may run a deficit (violating budget balance), which is why it fails in bilateral trade settings.
+
+Myerson's optimal auction shows that when the designer cares about revenue rather than efficiency, the optimal mechanism distorts the allocation — it excludes some trades that are socially efficient (when $v_i > 0$ but $\psi(v_i) < 0$) in order to extract more surplus from infra-marginal bidders. The reserve price is the analog of the downward distortion in the screening problem: exclude the lowest-value buyers to raise the price paid by high-value buyers.
+
+The Myerson-Satterthwaite theorem is the fundamental impossibility result: private information creates inefficiency that cannot be removed by clever mechanism design. This has practical implications for regulatory economics, market design, and the study of bargaining.
+
+## Cross-References
+
+- [7.3 Adverse Selection and Screening](7.3_Adverse_Selection_and_Screening.qmd) — screening is a special mechanism design problem; Revelation Principle unifies both
+- [7.2 Moral Hazard](7.2_Moral_Hazard.qmd) — mechanism design with hidden action (different from hidden type)
+- [9.4 Deriving Testable Predictions](9.4_Deriving_Testable_Predictions.qmd) — VCG and auction theory generate testable predictions for empirical auction literature
+- [9.6 Identification in Structural Models](9.6_Identification_in_Structural_Models.qmd) — structural identification in auction models (Guerre-Perrigne-Vuong 2000)

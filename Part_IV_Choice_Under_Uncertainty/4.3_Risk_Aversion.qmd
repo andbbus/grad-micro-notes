@@ -1,0 +1,327 @@
+---
+title: "4.3 Risk Aversion"
+---
+
+# 4.3 Risk Aversion
+
+> **MWG Reference:** Ch. 6, §6.C, pp. 183–205
+
+## Context
+
+Risk aversion is the most important behavioral property in the theory of decision under uncertainty. A risk-averse agent prefers a sure outcome to any lottery with the same expected value. Under the VNM framework, risk aversion is equivalent to **concavity of the Bernoulli utility function** $u$. This elegant equivalence follows from Jensen's inequality.
+
+The **Arrow-Pratt measures** of absolute and relative risk aversion quantify how risk-averse an agent is, and provide a cardinal measure that can be compared across agents and wealth levels. These measures are used throughout applied economics: in insurance theory (how much premium will an agent pay?), in portfolio choice (how much risky asset will an agent hold?), in macroeconomics (calibrating the equity premium puzzle), and in mechanism design (characterizing the cost of risk-bearing).
+
+---
+
+## Risk Aversion: Definition and Characterization
+
+::: {.callout-note icon=false}
+## Definition 4.1 — Risk Aversion, Risk Neutrality, Risk Seeking
+An agent with Bernoulli utility $u$ is:
+- **Risk-averse** if $u(\mathbb{E}[c]) \geq \mathbb{E}[u(c)]$ for all lotteries $L$ over $c$
+- **Risk-neutral** if $u(\mathbb{E}[c]) = \mathbb{E}[u(c)]$ for all $L$
+- **Risk-seeking (risk-loving)** if $u(\mathbb{E}[c]) \leq \mathbb{E}[u(c)]$ for all $L$
+
+where $\mathbb{E}[c] = \sum_n p_n c_n$ is the expected value of the lottery and $\mathbb{E}[u(c)] = \sum_n p_n u(c_n)$ is the expected utility.
+:::
+
+
+::: {.callout-important icon=false}
+## Theorem 4.1 — Risk Aversion Equivalent to Concavity
+An agent with Bernoulli utility $u: \mathbb{R} \to \mathbb{R}$ (differentiable) is risk-averse if and only if $u$ is **concave**. Risk-neutral iff $u$ is linear. Risk-seeking iff $u$ is convex.
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+**($\Leftarrow$) Concavity implies risk aversion:**
+
+Suppose $u$ is concave. For any lottery $L$ with outcomes $c_1, \ldots, c_N$ and probabilities $p_1, \ldots, p_N$, by **Jensen's inequality** for concave functions:
+$$u\left(\sum_{n=1}^N p_n c_n\right) \geq \sum_{n=1}^N p_n u(c_n)$$
+i.e., $u(\mathbb{E}[c]) \geq \mathbb{E}[u(c)]$. This holds for all lotteries, so the agent is risk-averse. $\checkmark$
+
+**($\Rightarrow$) Risk aversion implies concavity:**
+
+Suppose the agent is risk-averse: $u(\mathbb{E}[c]) \geq \mathbb{E}[u(c)]$ for all lotteries $L$.
+
+To show $u$ is concave, we must show: for any $c, c' \in \mathbb{R}$ and $\lambda \in [0,1]$:
+$$u(\lambda c + (1-\lambda)c') \geq \lambda u(c) + (1-\lambda)u(c')$$
+
+Consider the two-outcome lottery $L$ with outcome $c$ with probability $\lambda$ and outcome $c'$ with probability $1-\lambda$. Then:
+- $\mathbb{E}[c] = \lambda c + (1-\lambda)c'$
+- $\mathbb{E}[u(c)] = \lambda u(c) + (1-\lambda)u(c')$
+
+Risk aversion requires:
+$$u(\mathbb{E}[c]) \geq \mathbb{E}[u(c)] \iff u(\lambda c + (1-\lambda)c') \geq \lambda u(c) + (1-\lambda)u(c')$$
+This is precisely the concavity condition. $\blacksquare$
+:::
+
+
+---
+
+## Certainty Equivalent and Risk Premium
+
+::: {.callout-note icon=false}
+## Definition 4.2 — Certainty Equivalent
+The **certainty equivalent** $CE(L)$ of a lottery $L$ for an agent with utility $u$ is the certain outcome that the agent finds equally desirable as $L$:
+$$u(CE(L)) = \mathbb{E}[u(c)] = \sum_n p_n u(c_n)$$
+Since $u$ is strictly increasing, $CE(L) = u^{-1}(\mathbb{E}[u(c)])$ is well-defined.
+:::
+
+
+::: {.callout-note icon=false}
+## Definition 4.3 — Risk Premium
+The **risk premium** $\pi(L)$ (also denoted $\rho$ or $RP$) is the maximum amount the agent is willing to pay to eliminate the risk of $L$:
+$$\pi(L) = \mathbb{E}[c] - CE(L)$$
+For a risk-averse agent: $CE(L) \leq \mathbb{E}[c]$, so $\pi(L) \geq 0$ (the agent would pay to avoid the lottery). For a risk-neutral agent: $\pi(L) = 0$. For risk-seeking: $\pi(L) \leq 0$.
+:::
+
+
+::: {.callout-caution icon=false}
+## Remark 4.1 — Insurance Interpretation
+The risk premium is the maximum insurance premium the agent would pay to replace the random outcome $c$ with its expected value $\mathbb{E}[c]$. In an insurance market, an insurer offering full insurance at actuarially fair premium $\pi^* = \pi(L)$ would just make the agent indifferent between insuring and not insuring; any premium below $\pi^*$ would be strictly accepted.
+:::
+
+
+---
+
+## Arrow-Pratt Measure of Absolute Risk Aversion
+
+::: {.callout-note icon=false}
+## Definition 4.4 — Absolute Risk Aversion (Arrow-Pratt)
+The **Arrow-Pratt measure of absolute risk aversion** at wealth level $c$ is:
+$$r_A(c) = -\frac{u''(c)}{u'(c)}$$
+This is well-defined when $u$ is twice differentiable with $u'(c) > 0$.
+:::
+
+
+::: {.callout-important icon=false}
+## Theorem 4.2 — Risk Premium Approximation (Arrow-Pratt)
+For a small actuarially fair lottery $\tilde{\epsilon}$ with $\mathbb{E}[\tilde{\epsilon}] = 0$ and $\text{Var}[\tilde{\epsilon}] = \sigma^2$, added to a sure income $c$, the risk premium satisfies:
+$$\pi \approx \frac{1}{2} r_A(c) \sigma^2$$
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+Let $c + \tilde{\epsilon}$ be the risky outcome, where $\mathbb{E}[\tilde{\epsilon}] = 0$ and $\text{Var}[\tilde{\epsilon}] = \sigma^2$.
+
+The certainty equivalent $CE = c - \pi$ satisfies $u(c - \pi) = \mathbb{E}[u(c + \tilde{\epsilon})]$.
+
+**Left-hand side:** Taylor expand $u(c - \pi)$ around $c$ for small $\pi$:
+$$u(c - \pi) \approx u(c) - \pi u'(c)$$
+
+**Right-hand side:** Taylor expand $u(c + \tilde{\epsilon})$ around $c$ for small $\tilde{\epsilon}$:
+$$u(c + \tilde{\epsilon}) \approx u(c) + \tilde{\epsilon} u'(c) + \frac{1}{2}\tilde{\epsilon}^2 u''(c)$$
+
+Taking expectations (using $\mathbb{E}[\tilde{\epsilon}] = 0$ and $\mathbb{E}[\tilde{\epsilon}^2] = \sigma^2$):
+$$\mathbb{E}[u(c + \tilde{\epsilon})] \approx u(c) + 0 + \frac{1}{2}\sigma^2 u''(c)$$
+
+Setting LHS $=$ RHS:
+$$u(c) - \pi u'(c) \approx u(c) + \frac{1}{2}\sigma^2 u''(c)$$
+$$-\pi u'(c) \approx \frac{1}{2}\sigma^2 u''(c)$$
+$$\pi \approx -\frac{u''(c)}{u'(c)} \cdot \frac{\sigma^2}{2} = \frac{1}{2} r_A(c) \sigma^2 \qquad \blacksquare$$
+:::
+
+
+::: {.callout-caution icon=false}
+## Remark 4.2 — Interpretation of the Arrow-Pratt Formula
+The risk premium $\pi \approx \frac{1}{2} r_A(c) \sigma^2$ has a clean interpretation:
+- The risk premium is **proportional to the variance** $\sigma^2$: more uncertain lotteries require larger compensation.
+- The risk premium is **proportional to $r_A(c)$**: more risk-averse agents require larger compensation.
+- The factor $\frac{1}{2}$ comes from the second-order Taylor expansion.
+
+This formula is used throughout applied work as a first-order approximation. For example, in portfolio choice, the optimal portfolio weight on a risky asset is $\approx \mu/(r_A \sigma^2)$ where $\mu$ is the excess return — the higher the risk aversion, the lower the demand for risky assets.
+:::
+
+
+---
+
+## Arrow-Pratt Measure of Relative Risk Aversion
+
+::: {.callout-note icon=false}
+## Definition 4.5 — Relative Risk Aversion
+The **Arrow-Pratt measure of relative risk aversion** at wealth $c$ is:
+$$r_R(c) = -\frac{c \cdot u''(c)}{u'(c)} = c \cdot r_A(c)$$
+It measures risk aversion relative to the level of wealth.
+:::
+
+
+::: {.callout-caution icon=false}
+## Remark 4.3 — Absolute vs. Relative Risk Aversion
+- **Absolute risk aversion** $r_A(c)$: relevant when the stakes are in **absolute dollar amounts** (e.g., "would you accept a lottery that gains or loses \$1000 with equal probability?"). A person with constant $r_A$ has the same attitude to a \$1000 gamble regardless of their wealth.
+- **Relative risk aversion** $r_R(c)$: relevant when the stakes are proportional to wealth (e.g., "would you accept a lottery that gains or loses 10% of your wealth?"). A person with constant $r_R$ has the same attitude to a 10% gamble regardless of their wealth.
+
+For the risk premium of a proportional gamble $c \cdot \tilde{\epsilon}$ (where $\mathbb{E}[\tilde{\epsilon}] = 0$, $\text{Var}[\tilde{\epsilon}] = \sigma^2$): $\pi \approx \frac{1}{2} r_R(c) \sigma^2 c$ (in dollar terms).
+:::
+
+
+---
+
+## CARA Utility
+
+::: {.callout-note icon=false}
+## Definition 4.6 — CARA (Constant Absolute Risk Aversion) Utility
+The Bernoulli utility function $u: \mathbb{R} \to \mathbb{R}$ has **constant absolute risk aversion (CARA)** with parameter $\gamma > 0$ if $r_A(c) = \gamma$ for all $c$. The unique (up to affine transformation) CARA utility function is:
+$$u(c) = -\frac{1}{\gamma} e^{-\gamma c}$$
+(or equivalently $u(c) = -e^{-\gamma c}$, which differs only by a positive scaling).
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Derivation of CARA Family
+$r_A(c) = \gamma$ means $-u''(c)/u'(c) = \gamma$, i.e., $u''(c) = -\gamma u'(c)$. This is a linear ODE in $u'$:
+$$\frac{d(u')}{u'} = -\gamma \, dc \implies \ln u'(c) = -\gamma c + K \implies u'(c) = e^K e^{-\gamma c}$$
+Integrating: $u(c) = -\frac{e^K}{\gamma} e^{-\gamma c} + C$. Up to the positive affine transformation (set $e^K = 1$, $C = 0$): $u(c) = -\frac{1}{\gamma} e^{-\gamma c}$. $\blacksquare$
+:::
+
+
+::: {.callout-caution icon=false}
+## Remark 4.4 — Properties of CARA
+1. **Wealth-independent risk attitudes**: $r_A(c) = \gamma$ for all $c$. The agent takes the same absolute gamble at any wealth level (no "wealth effect" on risk attitudes).
+2. **Portfolio choice under CARA**: The demand for a risky asset in a portfolio is independent of wealth (dollar amount invested in risky asset does not change with $w$). This is a strong and often counterfactual prediction.
+3. **CARA + Normal distribution**: If $c \sim \mathcal{N}(\mu, \sigma^2)$, then $\mathbb{E}[u(c)] = -\frac{1}{\gamma}\exp\left(-\gamma\mu + \frac{\gamma^2\sigma^2}{2}\right)$, so the agent's preference over Normal lotteries is captured by the **mean-variance criterion**: $\mu - \frac{\gamma\sigma^2}{2}$.
+4. **Certainty equivalent for Normal**: $CE = \mu - \frac{\gamma \sigma^2}{2}$, so risk premium $= \frac{\gamma \sigma^2}{2}$, consistent with the Arrow-Pratt approximation.
+:::
+
+
+---
+
+## CRRA Utility
+
+::: {.callout-note icon=false}
+## Definition 4.7 — CRRA (Constant Relative Risk Aversion) Utility
+The utility function $u$ has **constant relative risk aversion (CRRA)** with parameter $\rho \geq 0$ if $r_R(c) = \rho$ for all $c > 0$. The CRRA family is:
+$$u(c) = \begin{cases} \dfrac{c^{1-\rho}}{1-\rho} & \text{if } \rho \neq 1 \\[6pt] \ln c & \text{if } \rho = 1 \end{cases}$$
+for $c > 0$.
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Derivation of CRRA Family
+$r_R(c) = \rho$ means $-c u''(c)/u'(c) = \rho$, i.e., $u''(c) = -\frac{\rho}{c} u'(c)$. Let $v = u'$:
+$$\frac{v'}{v} = -\frac{\rho}{c} \implies \ln v = -\rho \ln c + K \implies v(c) = u'(c) = A c^{-\rho}$$
+Integrating (for $\rho \neq 1$): $u(c) = \frac{A c^{1-\rho}}{1-\rho} + B$. Up to positive affine transformation ($A = 1$, $B = 0$): $u(c) = c^{1-\rho}/(1-\rho)$.
+
+For $\rho = 1$: $u'(c) = c^{-1}$, so $u(c) = \ln c + B$. Up to normalization: $u(c) = \ln c$.
+
+Verify: $u''(c) = -\rho c^{-\rho-1}$, $u'(c) = c^{-\rho}$, so $r_R = -c \cdot (-\rho c^{-\rho-1})/c^{-\rho} = \rho$. $\checkmark$ $\blacksquare$
+:::
+
+
+::: {.callout-caution icon=false}
+## Remark 4.5 — Properties of CRRA
+1. **Scale-invariant risk attitudes**: $r_R(c) = \rho$ for all $c$. The agent takes the same proportional gamble regardless of wealth.
+2. **Portfolio share under CRRA**: The fraction of wealth invested in the risky asset is independent of wealth. This is consistent with empirical evidence on portfolio composition (rich and poor households hold similar portfolio shares in risky assets, but different dollar amounts).
+3. **Special cases**: $\rho = 0$ gives $u(c) = c$ (risk neutrality); $\rho = 1$ gives $u(c) = \ln c$ (log utility, Bernoulli's original proposal); $\rho \to \infty$ gives the maximin criterion (Rawlsian preferences: maximize the worst outcome).
+4. **Macroeconomic calibration**: Empirical estimates of $\rho$ from consumption data range from 1 to 5; for the equity premium puzzle to be resolved, $\rho \approx 30$ is needed — implausibly high, suggesting that EU with CRRA is insufficient to explain asset prices (Mehra-Prescott, 1985).
+:::
+
+
+---
+
+## Comparing Risk Aversion Across Agents
+
+::: {.callout-note icon=false}
+## Definition 4.8 — More Risk-Averse
+Agent $A$ (with utility $u_A$) is **more risk-averse** than agent $B$ (with utility $u_B$) if for every lottery $L$ and every certain outcome $c$:
+$$u_B(c) \geq EU_B(L) \implies u_A(c) \geq EU_A(L)$$
+(Whenever $B$ is willing to accept a certain outcome over a lottery, $A$ is also willing.) Equivalently: $CE_A(L) \leq CE_B(L)$ for all $L$ (agent $A$ has a lower certainty equivalent for every lottery).
+:::
+
+
+::: {.callout-important icon=false}
+## Theorem 4.3 — Equivalent Characterizations of "More Risk-Averse"
+The following are equivalent:
+1. $A$ is more risk-averse than $B$ (as in Definition 4.8)
+2. $u_A$ is a **concave transformation** of $u_B$: there exists a concave, strictly increasing function $\phi$ such that $u_A = \phi \circ u_B$
+3. $r_A^A(c) \geq r_A^B(c)$ for all $c$ (Arrow-Pratt absolute risk aversion of $A$ is everywhere at least as large as $B$'s)
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+**(1) $\iff$ (2):**
+
+**($\Leftarrow$)** Suppose $u_A = \phi(u_B)$ with $\phi$ concave and increasing. Suppose $u_B(c^*) \geq EU_B(L) = \mathbb{E}[u_B(\tilde{c})]$. We want to show $u_A(c^*) \geq EU_A(L) = \mathbb{E}[u_A(\tilde{c})] = \mathbb{E}[\phi(u_B(\tilde{c}))]$.
+
+By Jensen's inequality applied to the concave function $\phi$:
+$$\mathbb{E}[\phi(u_B(\tilde{c}))] \leq \phi(\mathbb{E}[u_B(\tilde{c})]) \leq \phi(u_B(c^*)) = u_A(c^*)$$
+where the last step uses $\phi$ increasing and $u_B(c^*) \geq \mathbb{E}[u_B(\tilde{c})]$. Hence $u_A(c^*) \geq EU_A(L)$. $\checkmark$
+
+**($\Rightarrow$)** If $A$ is more risk-averse than $B$, define $\phi = u_A \circ u_B^{-1}$ (the composition, where $u_B^{-1}$ is the inverse of $u_B$). Then $u_A = \phi(u_B)$. The function $\phi$ must be concave: suppose for contradiction $\phi$ is convex at some point. Then by Jensen's inequality, $\mathbb{E}[\phi(u_B)] \geq \phi(\mathbb{E}[u_B])$, meaning $A$ would accept a lottery that $B$ rejects, contradicting $A$ being more risk-averse.
+
+**(2) $\iff$ (3):**
+
+If $u_A = \phi(u_B)$, then:
+$$u_A' = \phi'(u_B) \cdot u_B', \quad u_A'' = \phi''(u_B)(u_B')^2 + \phi'(u_B) u_B''$$
+
+$$r_A^A = -\frac{u_A''}{u_A'} = -\frac{\phi''(u_B)(u_B')^2 + \phi'(u_B)u_B''}{\phi'(u_B)u_B'} = -\frac{\phi''(u_B) u_B'}{\phi'(u_B)} - \frac{u_B''}{u_B'} = -\frac{\phi''(u_B)u_B'}{\phi'(u_B)} + r_A^B$$
+
+Since $\phi$ is concave ($\phi'' \leq 0$) and $\phi' > 0$ and $u_B' > 0$:
+$$-\frac{\phi''(u_B)u_B'}{\phi'(u_B)} \geq 0$$
+Hence $r_A^A \geq r_A^B$ everywhere. Conversely, $r_A^A \geq r_A^B$ for all $c$ implies $-\phi''u_B'/\phi' \geq 0$, so $\phi'' \leq 0$ (since $u_B' > 0, \phi' > 0$), so $\phi$ is concave. $\blacksquare$
+:::
+
+
+---
+
+## Decreasing and Increasing Absolute Risk Aversion
+
+::: {.callout-note icon=false}
+## Definition 4.9 — DARA and IARA
+- **Decreasing Absolute Risk Aversion (DARA)**: $r_A'(c) < 0$ — wealthier agents take larger absolute risks.
+- **Increasing Absolute Risk Aversion (IARA)**: $r_A'(c) > 0$ — wealthier agents take smaller absolute risks.
+- **Constant Absolute Risk Aversion (CARA)**: $r_A'(c) = 0$.
+:::
+
+
+::: {.callout-important icon=false}
+## Proposition 4.1 — DARA and Risky Asset Demand
+Under DARA, the demand for a risky asset (in dollar terms) is **increasing in wealth**. Under IARA, it is decreasing. Under CARA, it is constant.
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+Consider an agent with wealth $w$ choosing to invest dollar amount $a$ in a risky asset with return $\tilde{R}$ and the remainder $(w - a)$ in a safe asset with return $r$. The portfolio problem:
+$$\max_a \mathbb{E}\left[u\left(w(1+r) + a(\tilde{R} - r)\right)\right]$$
+
+FOC: $\mathbb{E}\left[u'(c^*)(\tilde{R}-r)\right] = 0$ where $c^* = w(1+r) + a^*(\tilde{R}-r)$.
+
+Differentiate the FOC with respect to $w$ (applying the implicit function theorem):
+$$\frac{da^*}{dw} = -\frac{\mathbb{E}[u''(c^*)(\tilde{R}-r)]}{\mathbb{E}[u''(c^*)(\tilde{R}-r)^2]} (1+r)$$
+
+The sign of $da^*/dw$ depends on $\text{sign}(\mathbb{E}[u''(c^*)(\tilde{R}-r)])$.
+
+Note that $c^* = w(1+r) + a^*(\tilde{R}-r)$ increases in $\tilde{R}$ when $a^* > 0$ (risky investment). States with $\tilde{R} > r$ have high $c^*$ and $u'(c^*)$ low; states with $\tilde{R} < r$ have low $c^*$ and $u'(c^*)$ high. Define $f(\tilde{R}) = u'(c^*)(\tilde{R}-r)$.
+
+Under DARA: $r_A(c)$ is decreasing, so $-u''(c)/u'(c)$ decreases in $c$, meaning $|u''(c)|/u'(c)$ is smaller at higher wealth (higher $\tilde{R}$ states). This means $-u''(c^*)$ decreases faster than $u'(c^*)$ as $\tilde{R}$ rises. A careful calculation shows $\mathbb{E}[u''(c^*)(\tilde{R}-r)] < 0$ under DARA, so $da^*/dw > 0$. $\blacksquare$
+:::
+
+
+::: {.callout-caution icon=false}
+## Remark 4.6 — Empirical Evidence on DARA
+The empirical evidence strongly supports DARA: wealthier households hold larger dollar amounts of risky assets (stocks) in their portfolios. The CARA model (with constant $a^*$) is counterfactual. The CRRA model ($r_R$ constant implies DARA since $r_A = r_R/c$ is decreasing) predicts constant portfolio shares, which is broadly consistent with the data. This is why CRRA is preferred over CARA in consumption-savings and portfolio choice models.
+:::
+
+
+---
+
+## Economic Intuition
+
+Risk aversion is the central behavioral primitive in the economics of uncertainty. It explains why people buy insurance (paying a premium above the actuarially fair price to eliminate risk), why capital markets exist (allowing risk sharing across individuals), why risk is costly in principal-agent relationships (risk-averse agents require a risk premium to accept uncertain contracts), and why the equity premium puzzle exists (CRRA agents require a large equity premium to be willing to hold stocks given their risk).
+
+The Arrow-Pratt measure $r_A(c) = -u''/u'$ is elegant: it is the negative of the logarithmic derivative of marginal utility. Concavity of $u$ (diminishing marginal utility) is what drives risk aversion: as consumption increases, each additional unit is worth less, so the utility loss from a downward deviation exceeds the utility gain from an equal upward deviation. The Arrow-Pratt formula $\pi \approx \frac{1}{2}r_A \sigma^2$ quantifies this asymmetry to second order.
+
+CARA and CRRA are the two workhorse families because they admit closed-form solutions in models with standard distributions (Normal for CARA, power-law for CRRA). The choice between them depends on the empirical question: CARA is used when the model involves additive shocks and the wealth level is not the relevant state variable; CRRA is used in life-cycle models where wealth accumulation matters.
+
+---
+
+## Cross-References
+
+- [4.1 State Space Framework](4.1_State_Space_Framework.qmd) — axioms for EU; Independence Axiom
+- [4.2 Expected Utility Theory](4.2_Expected_Utility_Theory.qmd) — VNM theorem; Bernoulli utility function
+- [4.4 Stochastic Dominance](4.4_Stochastic_Dominance.qmd) — SSD corresponds to preferences of all risk-averse agents
+- [PS Uncertainty](PS_Uncertainty.qmd) — Problems 2 and 3

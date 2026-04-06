@@ -1,0 +1,43 @@
+---
+title: "Part VIII — Social Choice Theory"
+---
+
+# Part VIII — Social Choice Theory
+
+> **MWG Reference:** Ch. 21–22, pp. 789–847
+
+## Context
+
+Social choice theory addresses a fundamental question: can individual preferences be coherently aggregated into a collective ranking? The question is as old as political philosophy (Condorcet 1785), but Arrow's (1951) contribution gave it a precise mathematical form and a devastating negative answer. Under four seemingly natural conditions — unrestricted domain, the Pareto principle, independence of irrelevant alternatives, and non-dictatorship — no aggregation rule is consistent. This impossibility result is one of the deepest theorems in all of economics and political science.
+
+The MWG treatment (Chapters 21–22) presents Arrow's theorem, its proof and implications, alternative welfare criteria (Pareto, Kaldor-Hicks, Scitovsky), and the Bergson-Samuelson social welfare function approach that abandons Arrow's aggregation framework in favor of a direct ordering over social states based on utility information.
+
+## Why Social Choice?
+
+**From positive to normative economics.** The welfare theorems (Part VI) tell us that competitive equilibria are Pareto optimal, but they are silent on which Pareto optimum to implement. A social ranking is needed to compare Pareto-optimal allocations with different distributional implications. Social choice theory studies how individual utility information is (or cannot be) aggregated into such a ranking.
+
+**The limits of the Pareto criterion.** Pareto dominance is the most cautious welfare criterion: it recommends a change only when everyone agrees it is an improvement. But most real policy changes involve trade-offs — some gain, some lose. Kaldor-Hicks, Rawlsian, and utilitarian criteria are attempts to extend the Pareto principle to such cases, each embodying a different value judgment about distribution.
+
+**Arrow's theorem as a benchmark.** The impossibility theorem does not say that social decisions are impossible or irrational. It says that no mechanical rule for aggregating ordinal preferences can satisfy all four axioms simultaneously. The appropriate response is not nihilism but rather careful attention to which axiom is violated: restricting to single-peaked preferences (Black's median voter), using cardinal utility (utilitarian SWF), or accepting some degree of dictatorship (e.g., a benevolent planner using a social welfare function).
+
+## Structure of Part VIII
+
+| Note | Topic | MWG Reference |
+|------|-------|---------------|
+| [8.1 Social Welfare Functions](8.1_Social_Welfare_Functions.qmd) | Bergson-Samuelson SWF, utilitarian, Rawlsian | §22.B–22.C |
+| [8.2 Arrows Impossibility Theorem](8.2_Arrows_Impossibility_Theorem.qmd) | Arrow's axioms, proof, escape routes | §21.C |
+| [8.3 Welfare Criteria](8.3_Welfare_Criteria.qmd) | Pareto, Kaldor-Hicks, Scitovsky, Sen's impossibility | §22.A–22.D |
+| [PS Social Choice](PS_Social_Choice.qmd) | Problem Set | — |
+
+## Key Results
+
+- **Arrow's Impossibility Theorem:** No social welfare function satisfies unrestricted domain, Pareto, IIA, and non-dictatorship simultaneously. Any two of the first three conditions imply dictatorship or violation of the fourth.
+- **Gibbard-Satterthwaite:** Every non-dictatorial social choice function (mapping profiles to alternatives, not orderings) is manipulable — there exists a profile where some agent benefits from misreporting preferences.
+- **Sen's Impossibility of a Paretian Liberal:** There is no social choice rule that is simultaneously Paretian and respects minimal individual liberty (each person has at least one pair of alternatives over which their preferences are decisive).
+- **Single-peaked preferences and the Median Voter:** On a single-dimensional issue space, if preferences are single-peaked, majority rule is transitive and picks the median voter's ideal point (Black 1948).
+
+## Cross-References
+
+- [6.4 Welfare Theorems](../Part_VI_General_Equilibrium/6.4_Welfare_Theorems.qmd) — Welfare theorems establish Pareto optimality of equilibria; social choice determines which PO allocation to implement
+- [6.5 Externalities and Public Goods](../Part_VI_General_Equilibrium/6.5_Externalities_and_Public_Goods.qmd) — Public good provision requires social choice criteria
+- [5.7 Bayesian Games](../Part_V_Game_Theory/5.7_Bayesian_Games.qmd) — Mechanism design (Part VII) applies game theory to implement social choice rules

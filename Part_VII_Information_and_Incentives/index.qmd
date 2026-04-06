@@ -1,0 +1,53 @@
+---
+title: "Part VII — Information and Incentives"
+---
+
+# Part VII — Information and Incentives
+
+> **MWG Reference:** Ch. 13–14, 23; Mirrlees (1971); Spence (1973); Myerson (1979)
+
+## Context
+
+Classical competitive theory assumes that all agents share common knowledge of the economic environment, including each other's preferences, endowments, and actions. This assumption is almost never satisfied in practice. Information economics studies what happens when agents possess private information — about their own types, their actions, or exogenous shocks — and how contracts, prices, and institutions respond to this asymmetry. The canonical organizing framework is the **principal-agent problem**: a less-informed principal (employer, buyer, regulator) designs a mechanism to influence the behavior of a better-informed agent (employee, seller, firm). The welfare losses relative to the full-information benchmark — second-best inefficiencies, information rents, distortions — are the central objects of study.
+
+The discipline divides along two fundamental dimensions of information asymmetry:
+
+1. **Hidden action (moral hazard)**: The principal cannot observe the agent's choice of action (effort, care, investment). The friction is that rewarding outcomes perfectly exposes a risk-averse agent to risk, while insuring the agent perfectly destroys effort incentives. The design problem is to trade off incentive provision against risk sharing.
+
+2. **Hidden type (adverse selection)**: The agent has private information about a fixed characteristic (productivity, valuation, cost) that the principal cannot observe. The friction is that the principal cannot tailor contracts to individual types. The design problem is to construct a menu of contracts that induces agents to self-select, accepting that higher-type agents will earn information rents and lower-type agents will face distorted allocations.
+
+These two branches generate the sub-disciplines of **screening** (principal moves first, designs menu), **signaling** (agent moves first, chooses costly action to reveal type), and **mechanism design** (general analysis of what outcomes are achievable under any incentive-compatible mechanism). The Revelation Principle is the organizing theorem: it collapses the space of mechanisms to direct, truth-telling mechanisms without loss of generality. Myerson's treatment culminates in the characterization of revenue-maximizing auctions and the impossibility of efficient bilateral trade (Myerson-Satterthwaite), showing that private information has real welfare costs that cannot be contracted away.
+
+A sixth note extends the framework to the aggregation of dispersed information across many agents through markets, linking back to Hayek's knowledge problem, the Grossman-Stiglitz paradox, and the Kyle model of strategic informed trading.
+
+## Notes in This Part
+
+| Note | Topic | MWG Reference |
+|---|---|---|
+| [7.1 Principal Agent Problem](7.1_Principal_Agent_Problem.qmd) | Principal-agent setup; first-best vs. second-best; LEN model; Holmström informativeness principle | Ch. 14, §14.A–14.C |
+| [7.2 Moral Hazard](7.2_Moral_Hazard.qmd) | Hidden action; discrete effort; MLRC; optimal contract; multitasking; teams | Ch. 14, §14.B–14.D |
+| [7.3 Adverse Selection and Screening](7.3_Adverse_Selection_and_Screening.qmd) | Hidden type; single-crossing; revelation principle; Mirrlees-Mussa-Rosen screening; bunching | Ch. 14, §14.C; Ch. 23 |
+| [7.4 Signaling](7.4_Signaling.qmd) | Spence job market model; PBE; separating/pooling; Intuitive Criterion | Ch. 13, §13.C |
+| [7.5 Mechanism Design](7.5_Mechanism_Design.qmd) | Mechanisms; revelation principle; Gibbard-Satterthwaite; VCG; Myerson-Satterthwaite; optimal auctions | Ch. 23 |
+| [7.6 Prediction Markets and Information Aggregation](7.6_Prediction_Markets_and_Information_Aggregation.qmd) | Hayek; REE; Grossman-Stiglitz; noisy REE; Kyle model; prediction markets | Ch. 13, §13.B |
+| [PS Information](PS_Information.qmd) | Problem set: 7 problems covering all topics | — |
+
+## Key References
+
+- **Mas-Colell, Whinston & Green (1995)**, *Microeconomic Theory*, Chapters 13, 14, 23.
+- **Mirrlees, J.A. (1971)**. "An Exploration in the Theory of Optimum Income Taxation." *Review of Economic Studies*, 38(2), 175–208. [Foundations of screening]
+- **Spence, M. (1973)**. "Job Market Signaling." *Quarterly Journal of Economics*, 87(3), 355–374. [Signaling equilibrium; Nobel Prize 2001]
+- **Myerson, R.B. (1979)**. "Incentive Compatibility and the Bargaining Problem." *Econometrica*, 47(1), 61–73. [Revelation principle]
+- **Myerson, R.B. (1981)**. "Optimal Auction Design." *Mathematics of Operations Research*, 6(1), 58–73. [Revenue-maximizing auctions]
+- **Holmström, B. (1979)**. "Moral Hazard and Observability." *Bell Journal of Economics*, 10(1), 74–91. [Informativeness principle]
+- **Holmström, B. & Milgrom, P. (1987)**. "Aggregation and Linearity in the Provision of Intertemporal Incentives." *Econometrica*, 55(2), 303–328. [LEN model foundations]
+- **Holmström, B. & Milgrom, P. (1991)**. "Multitask Principal-Agent Analyses." *Journal of Law, Economics, and Organization*, 7, 24–52. [Multitasking]
+- **Cho, I.-K. & Kreps, D.M. (1987)**. "Signaling Games and Stable Equilibria." *Quarterly Journal of Economics*, 102(2), 179–221. [Intuitive Criterion]
+- **Grossman, S.J. & Stiglitz, J.E. (1980)**. "On the Impossibility of Informationally Efficient Markets." *American Economic Review*, 70(3), 393–408.
+- **Kyle, A.S. (1985)**. "Continuous Auctions and Insider Trading." *Econometrica*, 53(6), 1315–1335.
+
+## Conceptual Map
+
+$$\text{Asymmetric Information} \begin{cases} \text{Hidden Action} \to \text{Moral Hazard} \to \text{Insurance/Incentive Tradeoff} \\ \text{Hidden Type} \begin{cases} \text{Principal designs contract} \to \text{Screening/Adverse Selection} \\ \text{Agent signals type} \to \text{Signaling} \end{cases} \\ \text{General mechanism} \to \text{Mechanism Design} \to \text{Revelation Principle} \end{cases}$$
+
+The unifying thread: **second-best optimality**. When information is asymmetric, the first-best allocation is generally unachievable. The optimal mechanism trades off allocative efficiency against information rents and risk, and the characterization of this tradeoff — using Lagrangian methods, envelope theorems, and monotone comparative statics — is the technical core of the field.

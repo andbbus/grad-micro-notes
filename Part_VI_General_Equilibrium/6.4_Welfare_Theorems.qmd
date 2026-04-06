@@ -1,0 +1,158 @@
+---
+title: "6.4 Welfare Theorems"
+---
+
+# 6.4 Welfare Theorems
+
+> **MWG Reference:** Ch. 16, §16.C–16.D, pp. 549–579
+
+## Context
+
+The welfare theorems are the mathematical formalization of Adam Smith's invisible hand. The First Welfare Theorem states that competitive equilibrium is efficient — no central planner can improve on the market outcome (in the Pareto sense). The Second Welfare Theorem states the converse: any efficient allocation can be achieved by the market, provided the government redistributes wealth appropriately via lump-sum transfers. Together, they provide the normative foundation of competitive market theory: markets should be trusted to allocate resources efficiently, and distributional concerns should be addressed through redistribution, not interference with prices.
+
+The First Welfare Theorem is a remarkably robust result — it requires only local nonsatiation, not convexity. The Second Welfare Theorem requires convexity, and its limitations (informational requirements of lump-sum transfers, non-convexities in reality) motivate the second-best theory.
+
+## Definitions
+
+::: {.callout-note icon=false}
+## Definition 6.4.1 — Pareto Optimality
+A feasible allocation $(x, y) = ((x_i)_{i \in I}, (y_j)_{j \in J})$ satisfying $\sum_i x_i = \bar{\omega} + \sum_j y_j$ is **Pareto optimal (PO)** if there is no other feasible allocation $(\tilde{x}, \tilde{y})$ such that:
+- $u_i(\tilde{x}_i) \geq u_i(x_i)$ for all $i \in I$
+- $u_j(\tilde{x}_j) > u_j(x_j)$ for at least one $j \in I$
+
+An allocation is PO if and only if it solves:
+$$\max_{(x,y) \text{ feasible}} u_1(x_1) \text{ subject to } u_i(x_i) \geq \bar{u}_i\; \forall i \geq 2,$$
+for some vector of utility bounds $(\bar{u}_2, \ldots, \bar{u}_n)$.
+:::
+
+
+## Main Results
+
+::: {.callout-important icon=false}
+## Theorem 6.4.1 — First Welfare Theorem (1WT)
+If preferences $\succeq_i$ satisfy **local nonsatiation** for all $i$, then every Walrasian equilibrium allocation $(x^*, y^*, p^*)$ is Pareto optimal.
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+Suppose for contradiction that $(x^*, y^*, p^*)$ is a Walrasian equilibrium but is **not** Pareto optimal. Then there exists a feasible allocation $(\tilde{x}, \tilde{y})$ such that $u_i(\tilde{x}_i) \geq u_i(x_i^*)$ for all $i$, with strict inequality for some $k$.
+
+**Step 1: Every consumer's preferred bundle costs at least as much as their equilibrium bundle.**
+
+Since $x_i^* \in x_i(p^*, w_i^*)$ (utility maximization), any bundle $\tilde{x}_i$ preferred to $x_i^*$ cannot be affordable at $(p^*, w_i^*)$:
+$$u_i(\tilde{x}_i) > u_i(x_i^*) \implies p^* \cdot \tilde{x}_i > w_i^* = p^* \cdot x_i^*. \tag{1}$$
+(If $\tilde{x}_i$ were affordable and preferred, it would have been chosen over $x_i^*$.)
+
+**Step 2: Any bundle as good as $x_i^*$ costs at least as much (for local nonsatiation).**
+
+For the consumer $i$ with $u_i(\tilde{x}_i) \geq u_i(x_i^*)$ but $u_i(\tilde{x}_i) = u_i(x_i^*)$ (indifference), we need to show $p^* \cdot \tilde{x}_i \geq p^* \cdot x_i^*$. Suppose not: $p^* \cdot \tilde{x}_i < p^* \cdot x_i^* = w_i^*$. By local nonsatiation, there exists $\tilde{x}_i'$ arbitrarily close to $\tilde{x}_i$ with $u_i(\tilde{x}_i') > u_i(\tilde{x}_i) = u_i(x_i^*)$ and $p^* \cdot \tilde{x}_i' \leq w_i^*$ (by continuity of the budget set). But this means $\tilde{x}_i'$ is affordable and preferred to $x_i^*$, contradicting the optimality of $x_i^*$. Therefore:
+$$u_i(\tilde{x}_i) \geq u_i(x_i^*) \implies p^* \cdot \tilde{x}_i \geq p^* \cdot x_i^*. \tag{2}$$
+
+**Step 3: Aggregate and derive a contradiction.**
+
+Summing (2) over all $i$ with $u_i(\tilde{x}_i) \geq u_i(x_i^*)$, and using (1) for the consumer $k$ with strict preference:
+$$\sum_{i \in I} p^* \cdot \tilde{x}_i > \sum_{i \in I} p^* \cdot x_i^* = \sum_{i \in I} w_i^* = p^* \cdot \bar{\omega} + \sum_{j \in J} \pi_j(p^*).$$
+
+Since $(\tilde{x}, \tilde{y})$ is feasible: $\sum_i \tilde{x}_i = \bar{\omega} + \sum_j \tilde{y}_j$. Therefore:
+$$p^* \cdot \left(\bar{\omega} + \sum_j \tilde{y}_j\right) > p^* \cdot \bar{\omega} + \sum_j \pi_j(p^*)$$
+$$\sum_j p^* \cdot \tilde{y}_j > \sum_j \pi_j(p^*) = \sum_j \max_{y \in Y_j} p^* \cdot y.$$
+
+But $\tilde{y}_j \in Y_j$ by feasibility, so $p^* \cdot \tilde{y}_j \leq \pi_j(p^*)$ for each $j$. Summing: $\sum_j p^* \cdot \tilde{y}_j \leq \sum_j \pi_j(p^*)$ — a contradiction. $\blacksquare$
+:::
+
+
+::: {.callout-caution icon=false}
+## Remark
+The proof uses only:
+- Individual optimization (demand and profit maximization)
+- Local nonsatiation (to establish that preferred bundles are more expensive)
+- Feasibility of the alternative allocation
+- No convexity is required.
+:::
+
+
+::: {.callout-important icon=false}
+## Theorem 6.4.2 — Second Welfare Theorem (2WT)
+Let $(\tilde{x}, \tilde{y})$ be a Pareto optimal allocation. Under the following assumptions:
+- Consumer preferences $\succeq_i$ are **convex** and **continuous** for all $i$
+- Production sets $Y_j$ are **convex** for all $j$
+- $\tilde{x}_i \gg 0$ for all $i$ (interior optimal consumption)
+
+There exists a price vector $p^* \in \mathbb{R}^L_{++}$ and wealth levels $w_i^*$ with $\sum_i w_i^* = p^* \cdot \bar{\omega} + \sum_j \pi_j(p^*)$ such that $(\tilde{x}, \tilde{y}, p^*)$ is a Walrasian equilibrium when consumers have wealth $w_i^*$.
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+The proof uses the **separating hyperplane theorem** to find the equilibrium price vector.
+
+**Step 1: Define the "better-than" sets.**
+
+For each consumer $i$, define:
+$$\hat{P}_i = \{x_i \in \mathbb{R}^L_+ : u_i(x_i) \geq u_i(\tilde{x}_i)\}$$
+(the set of bundles at least as good as $\tilde{x}_i$).
+
+By convexity of preferences, $\hat{P}_i$ is a **convex** set. By continuity of $u_i$, $\hat{P}_i$ is **closed**. Since $\tilde{x}_i \in \hat{P}_i$, it is nonempty.
+
+Define:
+$$\hat{P} = \sum_{i \in I} \hat{P}_i = \left\{\sum_i x_i : x_i \in \hat{P}_i\right\}$$
+(the Minkowski sum of the individual better-than sets). $\hat{P}$ is convex (sum of convex sets).
+
+**Step 2: Define the feasible set and apply the separating hyperplane theorem.**
+
+Define the aggregate feasible production set:
+$$Y = \bar{\omega} + \sum_{j \in J} Y_j = \left\{\bar{\omega} + \sum_j y_j : y_j \in Y_j\right\}.$$
+$Y$ is convex (sum of convex sets).
+
+**Key claim:** $\hat{P} \cap \text{int}(Y) = \emptyset$.
+
+Proof of claim: Suppose $z \in \hat{P} \cap \text{int}(Y)$. Then $z = \sum_i x_i'$ with $u_i(x_i') \geq u_i(\tilde{x}_i)$ and $z = \bar{\omega} + \sum_j y_j'$ with $y_j' \in Y_j$, and $z$ is in the interior of $Y$. This means there exists $\tilde{z} < z$ (componentwise) with $\tilde{z} \in Y$ as well. But then the allocation with $\sum_i x_i' = z > \tilde{z}$... We need to be more careful.
+
+Since $(\tilde{x}, \tilde{y})$ is Pareto optimal, there is no feasible allocation improving all consumers. If $z \in \hat{P}$, then $z = \sum_i x_i'$ with each $x_i'$ weakly preferred to $\tilde{x}_i$. If such a $z$ were feasible (in $Y = \bar\omega + \sum_j Y_j$), then $(x', y')$ would be a feasible allocation weakly preferred by all, with feasibility following from $\sum_i x_i' = \bar\omega + \sum_j y_j'$. Pareto optimality of $(\tilde{x}, \tilde{y})$ and the local nonsatiation would imply this is an improvement only if some consumer is strictly better off — but the definition of $\hat{P}$ allows weak preference. For strict Pareto optimality to be contradicted, we need strict preference somewhere.
+
+Using **local nonsatiation** more carefully: if $z \in \hat{P}$ and $z \in \text{int}(Y)$, there is a feasible $z' = z - \epsilon \mathbf{1}$ for small $\epsilon > 0$, still feasible. This allows us to redistribute slightly and still allocate $\sum_i x_i' = z$, which is more than the feasible $z'$, not less. The argument needs the interior condition to allow free disposal.
+
+More precisely: if $\sum_i \tilde{x}_i \in \text{int}(\bar{\omega} + \sum_j Y_j)$, then there exists a direction in which total resources could be reduced while remaining feasible, contradicting PO (we could reallocate the saved resources to strictly improve someone). Therefore $\sum_i \tilde{x}_i$ is on the boundary of the feasible set, and $\hat{P} \cap \text{int}(Y) = \emptyset$.
+
+**Step 3: Apply the separating hyperplane theorem.**
+
+Since $\hat{P}$ and $\text{int}(Y)$ are disjoint convex sets (with $\hat{P}$ nonempty and $\text{int}(Y)$ nonempty), by the separating hyperplane theorem there exists $p^* \in \mathbb{R}^L \setminus \{0\}$ and $\alpha \in \mathbb{R}$ such that:
+$$p^* \cdot z \geq \alpha \quad \forall z \in \hat{P}, \qquad p^* \cdot z \leq \alpha \quad \forall z \in Y.$$
+
+**Step 4: Show $p^*$ is the equilibrium price vector.**
+
+- **Profit maximization:** For each firm $j$, since $y_j \in Y_j \subset Y$ (adjusting the definition appropriately), $p^* \cdot y_j \leq \alpha - p^* \cdot \bar{\omega}$, and equality is achieved at $\tilde{y}_j$ (since $\bar{\omega} + \tilde{y} \in Y$ and $\sum_i \tilde{x}_i \in \hat{P}$ with $p^* \cdot \sum_i \tilde{x}_i \geq \alpha \geq p^* \cdot (\bar{\omega} + \sum_j \tilde{y}_j)$, and by feasibility of $(\tilde{x}, \tilde{y})$ these are equal). Therefore $\tilde{y}_j \in \arg\max_{y \in Y_j} p^* \cdot y$ for each $j$.
+
+- **Utility maximization:** From the separation, $p^* \cdot x_i \geq p^* \cdot \tilde{x}_i$ for any $x_i$ weakly preferred to $\tilde{x}_i$ (any $x_i \in \hat{P}_i$ contributes at least $p^* \cdot \tilde{x}_i$ to the sum $p^* \cdot z$). Therefore $\tilde{x}_i$ minimizes expenditure over the upper contour set, which is equivalent to utility maximization (expenditure minimization and utility maximization are dual by convexity of preferences). With wealth $w_i^* = p^* \cdot \tilde{x}_i$, consumer $i$ optimally chooses $\tilde{x}_i$.
+
+- **Market clearing:** Follows by construction: $\sum_i \tilde{x}_i = \bar{\omega} + \sum_j \tilde{y}_j$.
+
+Therefore $(\tilde{x}, \tilde{y}, p^*)$ is a Walrasian equilibrium with wealth redistribution $w_i^* = p^* \cdot \tilde{x}_i$. $\blacksquare$
+:::
+
+
+## Limitations of the Second Welfare Theorem
+
+**Convexity.** The Second WT requires convex preferences and production sets. With non-convexities (increasing returns, indivisibilities), a Pareto optimum cannot generally be decentralized as a competitive equilibrium. This is the fundamental market failure of natural monopolies and economies of scale.
+
+**Lump-sum transfers.** Implementing the 2WT requires lump-sum taxes and subsidies: wealth transfers that do not distort relative prices. In practice, lump-sum transfers are informationally demanding (the government must know individual endowments or productivities) and politically constrained. The **second-best theory** (Ramsey, Diamond-Mirrlees) studies optimal taxation when lump-sum transfers are unavailable.
+
+**Distributional concerns.** Both welfare theorems are silent on distribution: PO allocations can be extremely unequal. The 2WT says any PO allocation (including one giving all resources to one person) is a WE under some redistribution. The choice among Pareto-optimal allocations requires a social welfare function (see Part VIII).
+
+## Welfare Theorems with Externalities and Public Goods
+
+When utilities or production functions depend directly on others' actions, the proof of the 1WT fails. Specifically, **Step 1** fails: a bundle preferred by consumer $i$ may cost less at equilibrium prices, because $i$ benefits from a positive externality generated by $j$'s purchase.
+
+The 1WT holds in the presence of externalities only if:
+- Pigouvian taxes correct the wedge between private and social marginal costs (see [6.5 Externalities and Public Goods](6.5_Externalities_and_Public_Goods.qmd))
+- Property rights are well-defined and bargaining is costless (Coase theorem)
+
+**Public goods:** With nonrival goods, the competitive market cannot internalize the social value. The 1WT fails because a consumer's private willingness to pay understates the social benefit (which is the sum of all consumers' valuations). Lindahl pricing restores efficiency conceptually but is not incentive-compatible.
+
+## Cross-References
+
+- [6.1 Exchange Economies](6.1_Exchange_Economies.qmd) — Walrasian equilibrium definition used in both theorems
+- [6.3 Existence of Equilibrium](6.3_Existence_of_Equilibrium.qmd) — Existence is needed for the 1WT to be non-vacuous
+- [6.5 Externalities and Public Goods](6.5_Externalities_and_Public_Goods.qmd) — Market failures where 1WT breaks down
+- [8.1 Social Welfare Functions](../Part_VIII_Social_Choice/8.1_Social_Welfare_Functions.qmd) — Choosing among Pareto-optimal allocations requires a SWF

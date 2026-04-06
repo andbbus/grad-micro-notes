@@ -1,0 +1,148 @@
+---
+title: "9.5 — Structural vs. Reduced Form"
+---
+
+# 9.5 — Structural vs. Reduced Form
+
+> **Cross-references:** Lucas (1976); Angrist & Pischke (2009); Heckman (2010); Chetty (2009)
+
+## Context
+
+The debate between structural and reduced-form empirical approaches is one of the central methodological debates in applied economics. Structural models estimate the underlying parameters of the economic model — preferences, technology, costs — and use them for welfare analysis and counterfactual prediction. Reduced-form approaches estimate causal effects of specific interventions without committing to a complete economic model, yielding cleaner identification but more limited scope. This note presents both approaches formally, analyzes when each is appropriate, and discusses hybrid strategies that combine the advantages of both.
+
+## Definitions
+
+::: {.callout-note icon=false}
+## Definition 9.5.1 — Reduced Form
+A **reduced-form** specification is a regression of an outcome variable $y$ on a treatment variable $d$ and controls $x$, exploiting exogenous variation in $d$ (from a natural experiment, randomization, or instrumental variable):
+$$y_i = \alpha + \tau d_i + \beta x_i + \varepsilon_i$$
+The coefficient $\tau$ estimates a causal effect of $d$ on $y$ — specifically, the **Local Average Treatment Effect (LATE)** (Imbens-Angrist 1994) if IV is used, or the **Average Treatment Effect (ATE)** if randomization is perfect. The reduced form is "structural" only in the sense that it estimates a causal parameter; it does not model the mechanism through which $d$ affects $y$.
+:::
+
+
+::: {.callout-note icon=false}
+## Definition 9.5.2 — Structural Form
+A **structural specification** estimates the parameters of an economic model — preferences, technology, costs, information — by expressing the model's optimality conditions (FOCs, equilibrium conditions) as estimating equations. The parameter vector $\theta = (\theta_1, \ldots, \theta_k)$ indexes the model, and identification is achieved by combining economic assumptions with data variation.
+
+Example: estimating the CES parameter $\sigma$ from consumer demand data requires specifying the utility function, deriving demand, and estimating $\sigma$ from the relationship between relative quantities and relative prices. The structural parameter $\sigma$ is economically interpretable (elasticity of substitution) and enables welfare calculations.
+:::
+
+
+## Main Results
+
+### The Lucas Critique
+
+::: {.callout-important icon=false}
+## Theorem 9.5.1 — Lucas Critique (Lucas 1976)
+Let the economy be described by a model with decision rules $y_t = f(x_t, \theta, \pi)$ where $x_t$ are state variables, $\theta$ are structural (deep) parameters (preferences, technology), and $\pi$ are the parameters of the policy rule. If the reduced-form relationship between $y_t$ and $x_t$ is estimated as:
+$$y_t = \hat{A} x_t + \varepsilon_t$$
+then $\hat{A}$ depends on $\pi$ (the current policy rule) through the agents' optimal behavior. When the policy changes ($\pi \to \pi'$), the reduced-form coefficients change ($\hat{A} \to \hat{A}'$) because agents adjust their decision rules. Therefore reduced-form estimates cannot be used to evaluate policy counterfactuals.
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+**Formal statement:** In a rational expectations model, the agent's optimal decision rule $y_t = f(x_t, \theta, \pi)$ is derived by solving:
+$$y_t = \arg\max_y \mathbb{E}\left[\sum_{s=0}^\infty \beta^s u(y_{t+s}, x_{t+s}) \big| x_t, \pi\right]$$
+The solution depends on the agent's beliefs about future states $x_{t+s}$, which are derived from the policy rule $\pi$ (how $x$ evolves). When $\pi$ changes, the optimal $y_t$ changes even if $\theta$ (preferences, technology) is unchanged.
+
+Specifically: suppose the reduced-form is $y_t = A(\pi) x_t + \varepsilon_t$. A policy change from $\pi$ to $\pi'$ gives $y_t = A(\pi') x_t + \varepsilon_t$, with $A(\pi') \neq A(\pi)$ in general. Predicting the effect of the policy change using $A(\pi)$ is therefore incorrect.
+
+**The exception:** The critique does not apply to deep structural parameters $\theta$. If we estimate $\theta$ directly (not through the reduced form $A = A(\theta, \pi)$), then $\theta$ is invariant to policy changes, and counterfactual analysis using $\theta$ is valid.
+:::
+
+
+::: {.callout-note icon=false appearance="simple"}
+## Example 9.5.1 — Lucas Critique in Macro Policy
+The Phillips curve $\pi_t = \alpha - \beta u_t$ (inflation as a linear function of unemployment) appeared stable in the 1960s. Policymakers used it to predict the cost of reducing unemployment via expansionary policy. After sustained expansionary policy in the 1970s, the curve shifted: inflation expectations adjusted, and the relationship between inflation and unemployment changed. The reduced-form parameter $\beta$ depended on the policy regime; estimating it in one regime and using it to predict effects in another was invalid.
+
+The structural analog: if we estimate the structural parameters of price-setting and wage-setting behavior (which depend on expectations formation mechanisms), we can predict how the curve shifts under different policy regimes. This is the Lucas argument for structural estimation.
+:::
+
+
+### When Does Structural Matter?
+
+::: {.callout-caution icon=false}
+## Remark 9.5.1 — Five Cases Where Structural Estimation is Necessary
+
+**Case 1: Policy counterfactuals outside the observed variation.** If the policy question involves a price or quantity outside the historical range, reduced-form estimates cannot extrapolate. The structural model extrapolates using the parameterized utility/technology function.
+
+**Case 2: Welfare analysis.** Computing consumer surplus, equivalent variation, or deadweight loss requires the utility function or demand system, not just a causal coefficient. The compensating variation from a price increase is $CV = \int_{p_0}^{p_1} x^h(p, u_0) dp$ — the Hicksian demand function, which requires estimating preferences.
+
+**Case 3: Out-of-sample prediction.** Predicting behavior in a new market, a new population, or a new institutional setting requires structural parameters that are invariant to the setting. Reduced-form coefficients are setting-specific.
+
+**Case 4: Testing economic theory.** Structural estimation imposes the model's restrictions as constraints on the estimating equations. Rejection of these restrictions is a test of the theory, not just a description of the data.
+
+**Case 5: Multiple endogenous variables.** When multiple outcomes are jointly determined by the model (e.g., price and quantity in an oligopoly), a reduced-form regression of one on another conflates supply and demand. Structural identification requires modeling both simultaneously.
+:::
+
+
+### When Does Reduced Form Suffice?
+
+::: {.callout-caution icon=false}
+## Remark 9.5.2 — When Reduced Form is Appropriate
+
+**When the LATE is the parameter of interest.** If the policy question is "what is the effect of this specific intervention on this specific population in this specific context?", the LATE from an IV estimate is exactly the right answer — no structural model is needed or appropriate.
+
+**When the structural model is uncertain.** If there are multiple plausible structural models with different implications, and there is no a priori reason to prefer one, the reduced form provides a model-agnostic causal estimate. The reduced form is interpretable without committing to a particular model of behavior.
+
+**When the treatment is well-defined and the variation is credible.** The value of randomized experiments and natural experiments is that they deliver clean causal estimates without the maintaining assumptions required for structural identification. If the IV assumptions are satisfied and the LATE is the relevant parameter, reduced form is efficient.
+
+**When welfare analysis is not needed.** If the question is purely positive (does X cause Y?) rather than normative (what is the optimal policy? what is the welfare gain?), reduced form is sufficient.
+:::
+
+
+### The Hybrid Approach: Structural + IV
+
+::: {.callout-caution icon=false}
+## Remark 9.5.3 — Hybrid Strategy
+The hybrid approach derives an equation from the structural model that can be estimated with instrumental variables. The structural model provides the economic interpretation of the coefficient; the IV provides credible identification.
+
+**Supply-demand example:** The structural supply equation is $Q_s = \alpha_s + \beta_s P + \gamma_s W + \varepsilon_s$ where $W$ is input price. The structural demand equation is $Q_d = \alpha_d + \beta_d P + \gamma_d Y + \varepsilon_d$ where $Y$ is income. The IV strategy: use $W$ (input cost) as an instrument for $P$ in the demand equation (excluded from demand by the structural model). The estimated $\beta_d$ is the structural demand elasticity.
+
+**Household example:** The structural FOC for fertilizer input is $pf_x(x, A) = w$. With Cobb-Douglas: $\gamma p A^\alpha x^{\gamma-1} = w$. This rearranges to $x = (w/\gamma p A^\alpha)^{1/(\gamma-1)}$. Taking logs: $\ln x = \frac{1}{\gamma-1}[\ln w - \ln(\gamma p) - \alpha \ln A]$. Estimating this by IV (using input price variation that is exogenous to household-level productivity) identifies $\gamma$ (the output elasticity of fertilizer).
+:::
+
+
+### Identification of Structural Parameters
+
+::: {.callout-caution icon=false}
+## Remark 9.5.4 — Examples from Consumer, Producer, and Game Theory
+
+**Consumer theory:** Demand system estimation (AIDS, QUAIDS, CES demand). The structural parameters are preference parameters (elasticities, scale parameters). Identified from price variation (using input cost instruments for prices) subject to the Slutsky restrictions (symmetry, NSD) as over-identifying restrictions.
+
+**Producer theory:** Production function estimation (Olley-Pakes 1996, Ackerberg-Caves-Frazer 2015). The structural parameter is the technology (output elasticities). The challenge: unobserved productivity $\omega_{it}$ is correlated with input choices (simultaneity bias). Instrumental variable: capital (predetermined) or material inputs (proxy for productivity). The production function moment condition is $\mathbb{E}[\omega_{it} | k_{it}, l_{it-1}] = 0$.
+
+**Game theory — Nash conduct in oligopoly:** The Bertrand/Cournot decision rule gives a structural equation for pricing: $p = c(w, z) + \frac{p}{\epsilon} \cdot \theta$ where $\theta$ is the conduct parameter ($\theta = 0$: competitive; $\theta = 1$: monopoly) and $\epsilon$ is the demand elasticity. Identifying $\theta$ requires: (i) estimating demand elasticity from demand equation; (ii) using demand shifters as instruments for price in the pricing equation; (iii) using cost shifters as instruments in the demand equation. This is the "New Empirical IO" approach.
+:::
+
+
+### The Credibility Revolution Critique
+
+::: {.callout-caution icon=false}
+## Remark 9.5.5 — Angrist-Pischke Critique of Structural Methods
+Angrist and Pischke (2010) argue that structural models often bury untestable assumptions: functional form (Cobb-Douglas production vs. CES), distribution of unobservables (normality), and equilibrium concept (Nash vs. competitive). Because these assumptions are not directly testable, the structural estimates may be driven by the assumptions rather than the data.
+
+The appropriate response is not to abandon structural methods but to make assumptions explicit and test them wherever possible:
+1. Test functional form assumptions (e.g., test Cobb-Douglas against CES using non-nested hypothesis tests)
+2. Test distributional assumptions (e.g., test normality of unobservables using specification tests)
+3. Test overidentifying restrictions from the model (Sargan-Hansen test)
+4. Compare structural estimates to IV estimates that exploit the same variation: if they differ, one of them is wrong
+
+The value of structural identification over ad hoc IV is that the model provides an economic justification for the identifying assumptions — not just the statistical power to detect effects.
+:::
+
+
+## Economic Intuition
+
+The structural vs. reduced-form debate is fundamentally about the scope of the empirical question being asked. Reduced-form methods answer narrow but credibly identified questions: "What happened to outcome $Y$ when policy $X$ changed in this context?" Structural methods answer broader questions: "What would happen to outcome $Y$ if policy $X$ changed in a different way, in a different context, for a different population?" The cost of breadth is the need for maintained assumptions; the cost of credibility is the restriction to local, context-specific claims.
+
+For development economics and conflict economics, the right approach often depends on the policy question. Estimating the effect of a commodity price shock on conflict incidence is a reduced-form question (answered by IV). Predicting the welfare effects of a permanent price change, or the conflict response to a novel institutional arrangement, requires a structural model.
+
+## Cross-References
+
+- [9.4 Deriving Testable Predictions](9.4_Deriving_Testable_Predictions.qmd) — both approaches generate testable restrictions; they differ in their scope
+- [9.6 Identification in Structural Models](9.6_Identification_in_Structural_Models.qmd) — structural identification strategies
+- [9.7 Model Discipline and Tractability](9.7_Model_Discipline_and_Tractability.qmd) — sufficient statistics bridge structural and reduced form
+- [APP Conflict and Resource Models](APP_Conflict_and_Resource_Models.qmd) — IV strategy (commodity prices) identifies structural parameter of conflict model
+- [APP Trade and Price Shock Models](APP_Trade_and_Price_Shock_Models.qmd) — shift-share as hybrid structural-IV approach

@@ -1,0 +1,208 @@
+---
+title: "2.3 — The Utility Maximization Problem (UMP)"
+---
+
+# 2.3 — The Utility Maximization Problem (UMP)
+
+> **MWG Reference:** Ch. 2, pp. 20–42
+
+## Context
+
+The Utility Maximization Problem (UMP) is the central optimization problem of consumer theory. Given prices $p$ and wealth $w$, the consumer selects the most preferred feasible bundle. The solution — the Walrasian (Marshallian) demand — is the observable outcome of the UMP, and it is the primary object studied in demand analysis. The value function of the UMP is the indirect utility function, from which demand can be recovered via Roy's Identity. Understanding the properties of Walrasian demand — homogeneity, Walras' Law, and the structure imposed by the Slutsky matrix — is the foundation for all empirical demand work.
+
+## Setup and Definitions
+
+::: {.callout-note icon=false}
+## Definition 2.3.1 — Budget Set
+Given prices $p = (p_1, \ldots, p_L) \gg 0$ (strictly positive) and wealth $w > 0$, the **Walrasian budget set** is:
+$$B(p, w) = \{x \in \mathbb{R}^L_+ : p \cdot x \leq w\}$$
+This is a compact (closed and bounded), convex subset of $\mathbb{R}^L_+$. Compactness follows: closedness is clear; boundedness because $x \in B(p,w)$ implies $x_l \leq w/p_l < \infty$ for all $l$ (since $p \gg 0$).
+:::
+
+
+::: {.callout-note icon=false}
+## Definition 2.3.2 — Utility Maximization Problem (UMP)
+The **UMP** is:
+$$\max_{x \in \mathbb{R}^L_+} u(x) \quad \text{subject to} \quad p \cdot x \leq w$$
+:::
+
+
+::: {.callout-note icon=false}
+## Definition 2.3.3 — Walrasian Demand Correspondence
+The **Walrasian (Marshallian) demand correspondence** $x(p,w)$ is the set of solutions to the UMP:
+$$x(p, w) = \arg\max_{x \in B(p,w)} u(x)$$
+When $u$ is strictly quasi-concave, $x(p,w)$ is single-valued (a function).
+:::
+
+
+::: {.callout-note icon=false}
+## Definition 2.3.4 — Indirect Utility Function
+The **indirect utility function** $v: \mathbb{R}^L_{++} \times \mathbb{R}_{++} \to \mathbb{R}$ is the value function of the UMP:
+$$v(p, w) = \max_{x \in B(p,w)} u(x) = u(x(p,w))$$
+:::
+
+
+## Existence of Solutions
+
+::: {.callout-important icon=false}
+## Proposition 2.3.1 — Existence of Utility Maximum
+If $u: \mathbb{R}^L_+ \to \mathbb{R}$ is continuous and $p \gg 0$, $w > 0$, then the UMP has at least one solution.
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+The budget set $B(p,w)$ is compact (closed and bounded in $\mathbb{R}^L_+$, as argued in Definition 2.3.1). The objective function $u$ is continuous. By the **Weierstrass Extreme Value Theorem**, a continuous function on a compact set attains its maximum. Hence $\max_{x \in B(p,w)} u(x)$ is achieved at some $x^* \in B(p,w)$. $\square$
+:::
+
+
+## First-Order Conditions
+
+Assume $u$ is continuously differentiable. The Lagrangian for the UMP (relaxing the non-negativity constraints for interior solutions) is:
+$$\mathcal{L}(x, \lambda) = u(x) - \lambda(p \cdot x - w)$$
+
+::: {.callout-important icon=false}
+## Proposition 2.3.2 — KKT Conditions for Interior Solution
+If $x^* \gg 0$ is an interior solution to the UMP and $u$ is continuously differentiable, then there exists $\lambda^* > 0$ such that:
+$$\frac{\partial u(x^*)}{\partial x_l} = \lambda^* p_l \quad \text{for all } l = 1, \ldots, L$$
+Equivalently: $\nabla u(x^*) = \lambda^* p$, or for any two goods $l$ and $k$:
+$$\frac{\partial u/\partial x_l}{\partial u/\partial x_k} = \frac{p_l}{p_k}$$
+That is, the **Marginal Rate of Substitution** equals the price ratio.
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+At an interior solution, the non-negativity constraints $x_l \geq 0$ are not binding. The only active constraint is the budget constraint $p \cdot x \leq w$. Under local nonsatiation, this constraint binds at the optimum (Walras' Law, proven below), so we have an equality constraint. By the Lagrange necessary conditions (which apply since the constraint qualification holds — the gradient of $p \cdot x - w$ is $p \neq 0$), there exists $\lambda^* \in \mathbb{R}$ such that:
+$$\frac{\partial u(x^*)}{\partial x_l} = \lambda^* p_l \quad \text{for all } l$$
+Since $u$ is increasing (local nonsatiation) and $p_l > 0$, we have $\partial u / \partial x_l \geq 0$ (at the optimum), so $\lambda^* \geq 0$. If $\lambda^* = 0$, then $\nabla u(x^*) = 0$, but LNS implies $\nabla u(x^*) \neq 0$ (there is always a direction of improvement). Hence $\lambda^* > 0$. $\square$
+:::
+
+
+::: {.callout-caution icon=false}
+## Remark 2.3.1 — Interpretation of $\lambda^*$
+The Lagrange multiplier $\lambda^*$ equals $\partial v(p,w)/\partial w$, the **marginal utility of wealth**. This follows from the envelope theorem: $\frac{\partial v}{\partial w} = \lambda^*$. Thus $\lambda^*$ tells us how much utility increases when the budget expands by one unit. The condition $\nabla u(x^*) = \lambda^* p$ says that at the optimum, the marginal utility per dollar spent is equalized across all goods: $\frac{\partial u/\partial x_l}{p_l} = \lambda^*$ for all $l$.
+:::
+
+
+## Properties of Walrasian Demand
+
+::: {.callout-important icon=false}
+## Proposition 2.3.3 — Homogeneity of Degree Zero
+If $u$ represents a locally nonsatiated preference, then $x(\alpha p, \alpha w) = x(p, w)$ for all $\alpha > 0$.
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+The budget set satisfies $B(\alpha p, \alpha w) = \{x \geq 0 : \alpha p \cdot x \leq \alpha w\} = \{x \geq 0 : p \cdot x \leq w\} = B(p, w)$. Since the feasible set is unchanged, the optimization problem is identical, so the set of maximizers is unchanged: $x(\alpha p, \alpha w) = x(p, w)$. $\square$
+:::
+
+
+::: {.callout-caution icon=false}
+## Remark 2.3.2
+Homogeneity of degree zero reflects the absence of money illusion: only relative prices and real wealth matter. Doubling all prices and wealth leaves the budget set — and therefore demand — unchanged.
+:::
+
+
+::: {.callout-important icon=false}
+## Proposition 2.3.4 — Walras' Law
+If $\succsim$ is locally nonsatiated, then $p \cdot x(p,w) = w$ for all $(p,w)$.
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+Suppose for contradiction that $x^* = x(p,w)$ satisfies $p \cdot x^* < w$. Then $x^*$ is in the interior of $B(p,w)$. By local nonsatiation (Definition 2.1.8), for any $\varepsilon > 0$ there exists $y$ with $\|y - x^*\| < \varepsilon$ and $y \succ x^*$. For $\varepsilon$ small enough, $y \in B(p,w)$ (since $x^*$ is interior to $B(p,w)$, small perturbations remain feasible). But then $y \in B(p,w)$ and $y \succ x^*$, contradicting $x^*$ being the utility-maximizing element of $B(p,w)$. Hence $p \cdot x(p,w) = w$. $\square$
+:::
+
+
+::: {.callout-important icon=false}
+## Proposition 2.3.5 — Uniqueness under Strict Quasi-Concavity
+If $u$ is strictly quasi-concave, then $x(p,w)$ is single-valued for all $(p,w)$ with $p \gg 0$, $w > 0$.
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+Suppose $x^*$ and $x^{**}$ are both in $x(p,w)$ with $x^* \neq x^{**}$. Then $u(x^*) = u(x^{**}) = v(p,w)$. By strict quasi-concavity, $u\left(\frac{x^* + x^{**}}{2}\right) > \min(u(x^*), u(x^{**})) = v(p,w)$. Since $B(p,w)$ is convex, $\frac{x^* + x^{**}}{2} \in B(p,w)$, and this midpoint achieves strictly higher utility, contradicting the optimality of $x^*$ and $x^{**}$. $\square$
+:::
+
+
+## Properties of the Indirect Utility Function
+
+::: {.callout-important icon=false}
+## Proposition 2.3.6 — Properties of $v(p,w)$
+Suppose $u$ is continuous and locally nonsatiated. The indirect utility function $v(p,w)$ satisfies:
+1. **Homogeneous of degree zero:** $v(\alpha p, \alpha w) = v(p,w)$ for all $\alpha > 0$
+2. **Continuous** in $(p,w)$
+3. **Nonincreasing in $p_l$:** if $p_l$ rises, $v$ does not increase
+4. **Strictly increasing in $w$**
+5. **Quasi-convex in $(p,w)$:** the lower level set $\{(p,w) : v(p,w) \leq \bar{v}\}$ is convex
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+**(1) Homogeneity:** $v(\alpha p, \alpha w) = \max_{x \in B(\alpha p, \alpha w)} u(x) = \max_{x \in B(p,w)} u(x) = v(p,w)$ since $B(\alpha p, \alpha w) = B(p,w)$.
+
+**(2) Continuity:** By Berge's Maximum Theorem: the constraint correspondence $(p,w) \mapsto B(p,w)$ is continuous (in fact, the budget set varies continuously with $(p,w)$ when $p \gg 0, w > 0$), and $u$ is continuous. The maximum theorem implies $v(p,w)$ is continuous.
+
+**(3) Nonincreasing in $p_l$:** If $p_l$ increases to $p_l' > p_l$ (other prices fixed), then $B(p', w) \subseteq B(p, w)$ (the feasible set shrinks). Hence $v(p', w) = \max_{x \in B(p',w)} u(x) \leq \max_{x \in B(p,w)} u(x) = v(p,w)$.
+
+**(4) Strictly increasing in $w$:** If $w' > w$, then $B(p, w) \subsetneq B(p, w')$. By local nonsatiation, the optimal $x(p,w)$ satisfies $p \cdot x(p,w) = w < w'$, so it is in the interior of $B(p, w')$. There exists a better bundle in $B(p, w')$, so $v(p, w') > v(p, w)$.
+
+**(5) Quasi-convexity:** We need to show that if $v(p,w) \leq \bar{v}$ and $v(p',w') \leq \bar{v}$, then $v(\alpha p + (1-\alpha)p', \alpha w + (1-\alpha)w') \leq \bar{v}$. Let $\tilde{p} = \alpha p + (1-\alpha)p'$ and $\tilde{w} = \alpha w + (1-\alpha)w'$. We show $B(\tilde{p}, \tilde{w}) \subseteq B(p, w) \cup B(p', w')$... actually this is not quite right. The standard proof proceeds as follows: suppose $x^*$ maximizes $u$ subject to $\tilde{p} \cdot x \leq \tilde{w}$. Then $\tilde{p} \cdot x^* \leq \tilde{w}$, so $\alpha p \cdot x^* + (1-\alpha) p' \cdot x^* \leq \alpha w + (1-\alpha)w'$. This means either $p \cdot x^* \leq w$ or $p' \cdot x^* \leq w'$ (or both); for if $p \cdot x^* > w$ and $p' \cdot x^* > w'$, then $\alpha p \cdot x^* + (1-\alpha) p' \cdot x^* > \alpha w + (1-\alpha)w'$, a contradiction. Hence $x^*$ is feasible in $B(p,w)$ or $B(p',w')$. If $x^* \in B(p,w)$, then $v(\tilde{p}, \tilde{w}) = u(x^*) \leq v(p,w) \leq \bar{v}$. Similarly for the other case. $\square$
+:::
+
+
+## Roy's Identity
+
+::: {.callout-important icon=false}
+## Theorem 2.3.1 — Roy's Identity
+Suppose $v(p,w)$ is differentiable at $(p,w)$ and $\partial v(p,w)/\partial w \neq 0$. Then:
+$$x_l(p,w) = -\frac{\partial v(p,w)/\partial p_l}{\partial v(p,w)/\partial w} \quad \text{for all } l = 1, \ldots, L$$
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+We use the **Envelope Theorem**. The UMP is:
+$$v(p,w) = \max_x u(x) - \lambda(p \cdot x - w)$$
+where $\lambda = \lambda(p,w)$ is the optimal multiplier.
+
+By the envelope theorem applied to the parameter $w$:
+$$\frac{\partial v(p,w)}{\partial w} = \frac{\partial \mathcal{L}}{\partial w}\bigg|_{x = x(p,w)} = \lambda^*$$
+(since $\partial \mathcal{L}/\partial w = \lambda$).
+
+By the envelope theorem applied to the parameter $p_l$:
+$$\frac{\partial v(p,w)}{\partial p_l} = \frac{\partial \mathcal{L}}{\partial p_l}\bigg|_{x = x(p,w)} = -\lambda^* x_l(p,w)$$
+(since $\partial \mathcal{L}/\partial p_l = -\lambda x_l$).
+
+Hence:
+$$\frac{\partial v/\partial p_l}{\partial v/\partial w} = \frac{-\lambda^* x_l(p,w)}{\lambda^*} = -x_l(p,w)$$
+Rearranging:
+$$x_l(p,w) = -\frac{\partial v(p,w)/\partial p_l}{\partial v(p,w)/\partial w} \qquad \square$$
+:::
+
+
+::: {.callout-caution icon=false}
+## Remark 2.3.3 — Roy's Identity: Significance
+Roy's Identity is a powerful result: it allows full recovery of the Walrasian demand system from the indirect utility function alone, using only differentiation. This is the basis for many structural demand models: one specifies $v(p,w)$, checks it satisfies the integrability conditions, and recovers demand via Roy's Identity. The denominator $\partial v/\partial w = \lambda^*$ is the marginal utility of income; the ratio $-(\partial v/\partial p_l)/(\partial v/\partial w)$ can be interpreted as the compensated demand for $l$ at the margin.
+:::
+
+
+## Economic Intuition
+
+The UMP encapsulates the fundamental scarcity problem: the consumer wants more of everything but is constrained by income. The KKT conditions $\nabla u = \lambda p$ express the optimality condition that the consumer allocates spending across goods until the marginal utility per dollar is equalized everywhere. If $\partial u/\partial x_l / p_l > \partial u/\partial x_k / p_k$, then good $l$ provides more utility per dollar spent, and the consumer should reallocate toward $l$.
+
+Walras' Law ($p \cdot x = w$) follows from the assumption that more is always better (LNS): a consumer who leaves money on the table could achieve strictly higher utility, contradicting optimality. This simple observation has powerful implications: it reduces the dimensionality of the demand system by one (one demand equation is redundant), and combined with homogeneity, it places tight restrictions on how demand responds to price changes.
+
+Roy's Identity closes the loop: given the indirect utility function (a scalar), we can recover the entire demand system (a vector) by differentiation. This duality between the "primal" demand representation and the "dual" indirect utility representation is exploited throughout applied economics.
+
+## Cross-References
+- [2.1 Preference Relations](2.1_Preference_Relations.qmd) — LNS is used to prove Walras' Law; strict quasi-concavity for uniqueness
+- [2.2 Utility Representation](2.2_Utility_Representation.qmd) — The utility functions being maximized here
+- [2.4 Expenditure Minimization](2.4_Expenditure_Minimization.qmd) — The dual problem; Hicksian demand
+- [2.5 Duality and Slutsky](2.5_Duality_and_Slutsky.qmd) — Duality and the Slutsky equation connect UMP and EMP
+- [1.3 Optimization Theory](1.3_Optimization_Theory.qmd) — Weierstrass theorem, envelope theorem, KKT conditions

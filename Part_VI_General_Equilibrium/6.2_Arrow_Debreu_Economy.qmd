@@ -1,0 +1,151 @@
+---
+title: "6.2 The Arrow-Debreu Economy"
+---
+
+# 6.2 The Arrow-Debreu Economy
+
+> **MWG Reference:** Ch. 15, §15.D–15.E, pp. 546–570; Ch. 19, §19.B, pp. 688–703
+
+## Context
+
+The Arrow-Debreu economy (Arrow-Debreu 1954, McKenzie 1954) extends the pure exchange model to include production. Firms possess production sets and profit-maximize; their profits are distributed to consumers as dividend income. This model is not only more general than exchange economies — it provides the complete competitive equilibrium framework that is the benchmark for all of modern microeconomics and macroeconomics. Arrow and Debreu's further insight — that goods indexed by state of the world are formally identical to ordinary goods — gives the model its extraordinary scope: a single Arrow-Debreu equilibrium in the extended commodity space captures not only multi-market trade but also complete-market financial allocation.
+
+## Definitions
+
+::: {.callout-note icon=false}
+## Definition 6.2.1 — Arrow-Debreu Economy
+An **Arrow-Debreu economy** is $\mathcal{E} = \big((u_i, \omega_i, (\theta_{ij})_{j \in J})_{i \in I},\, (Y_j)_{j \in J}\big)$ where:
+- $I = \{1, \ldots, n\}$ consumers, $J = \{1, \ldots, m\}$ firms, $L$ goods
+- $u_i: \mathbb{R}^L_+ \to \mathbb{R}$ is consumer $i$'s utility function; $\omega_i \in \mathbb{R}^L_+$ is their endowment
+- $\theta_{ij} \geq 0$ with $\sum_{i \in I} \theta_{ij} = 1$ is consumer $i$'s **ownership share** of firm $j$
+- $Y_j \subseteq \mathbb{R}^L$ is firm $j$'s **production set**: the set of technologically feasible input-output vectors $y_j$ (by convention, inputs are negative, outputs positive)
+:::
+
+
+::: {.callout-note icon=false}
+## Definition 6.2.2 — Profit-Maximizing Firm
+At price vector $p \in \mathbb{R}^L_{++}$, firm $j$'s **profit-maximization problem** is:
+$$\pi_j(p) = \max_{y_j \in Y_j} p \cdot y_j,$$
+with supply correspondence $y_j^*(p) = \arg\max_{y_j \in Y_j} p \cdot y_j$.
+:::
+
+
+::: {.callout-note icon=false}
+## Definition 6.2.3 — Consumer Wealth in Arrow-Debreu
+Consumer $i$'s **wealth** at prices $p$ is:
+$$w_i(p) = p \cdot \omega_i + \sum_{j \in J} \theta_{ij} \pi_j(p).$$
+Wealth comprises both the market value of the endowment and the dividend income from profit shares.
+:::
+
+
+::: {.callout-note icon=false}
+## Definition 6.2.4 — Walrasian Equilibrium (Arrow-Debreu Economy)
+A Walrasian equilibrium is a triple $(x^*, y^*, p^*)$ where:
+1. $x_i^* \in x_i(p^*, w_i(p^*))$ for each consumer $i$ (utility maximization)
+2. $y_j^* \in y_j^*(p^*)$ for each firm $j$ (profit maximization)
+3. $\sum_{i \in I} x_i^* = \sum_{i \in I} \omega_i + \sum_{j \in J} y_j^*$ (market clearing)
+:::
+
+
+::: {.callout-note icon=false}
+## Definition 6.2.5 — Aggregate Excess Demand (with Production)
+$$z(p) = \sum_{i \in I} x_i(p, w_i(p)) - \sum_{j \in J} y_j^*(p) - \bar{\omega},$$
+where $\bar{\omega} = \sum_i \omega_i$. Equilibrium requires $z(p^*) = 0$.
+:::
+
+
+## Main Results
+
+::: {.callout-important icon=false}
+## Theorem 6.2.1 — Walras' Law in the Arrow-Debreu Economy
+Under local nonsatiation of consumer preferences, $p \cdot z(p) = 0$ for all $p \gg 0$.
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+By local nonsatiation, each consumer exhausts their budget:
+$$p \cdot x_i(p, w_i(p)) = w_i(p) = p \cdot \omega_i + \sum_j \theta_{ij}\pi_j(p) \quad \forall i.$$
+Summing over consumers:
+$$\sum_i p \cdot x_i = \sum_i p \cdot \omega_i + \sum_i \sum_j \theta_{ij}\pi_j(p) = p \cdot \bar{\omega} + \sum_j \pi_j(p) \sum_i \theta_{ij}.$$
+Since $\sum_i \theta_{ij} = 1$ for each $j$:
+$$\sum_i p \cdot x_i = p \cdot \bar{\omega} + \sum_j \pi_j(p) = p \cdot \bar{\omega} + \sum_j p \cdot y_j^*(p).$$
+Therefore:
+$$p \cdot z(p) = p \cdot \left(\sum_i x_i - \sum_j y_j^* - \bar{\omega}\right) = \left(p \cdot \bar{\omega} + \sum_j p \cdot y_j^*\right) - \sum_j p \cdot y_j^* - p \cdot \bar{\omega} = 0. \quad \blacksquare$$
+:::
+
+
+::: {.callout-important icon=false}
+## Theorem 6.2.2 — Homogeneity of Aggregate Excess Demand
+The aggregate excess demand $z(p)$ is homogeneous of degree zero in $p$.
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+Both $x_i(p, w_i(p))$ and $y_j^*(p)$ are homogeneous of degree zero in $p$:
+- Consumer demand: Walrasian demand is homogeneous of degree zero in $(p, w)$. Since $w_i(\lambda p) = \lambda p \cdot \omega_i + \sum_j \theta_{ij} \pi_j(\lambda p)$. Profit $\pi_j(\lambda p) = \max_{y \in Y_j} \lambda p \cdot y = \lambda \pi_j(p)$ (homogeneous of degree one in $p$). Therefore $w_i(\lambda p) = \lambda w_i(p)$. Hence $x_i(\lambda p, \lambda w_i(p)) = x_i(p, w_i(p))$.
+- Firm supply: $y_j^*(\lambda p) = \arg\max_{y \in Y_j} \lambda p \cdot y = \arg\max_{y \in Y_j} p \cdot y = y_j^*(p)$.
+
+Therefore $z(\lambda p) = z(p)$. $\blacksquare$
+:::
+
+
+## Arrow-Debreu Contingent Commodities
+
+The most profound generalization of the Arrow-Debreu framework is its extension to **uncertainty**.
+
+::: {.callout-note icon=false}
+## Definition 6.2.6 — Arrow-Debreu Contingent Commodity
+Let $\Omega = \{1, \ldots, S\}$ be a finite set of **states of the world**. An **Arrow-Debreu contingent commodity** $\ell_s$ is a unit of good $\ell$ delivered if and only if state $s$ occurs. The extended commodity space is $\mathbb{R}^{L \times S}$, with $LS$ commodities.
+
+A **complete markets equilibrium** (Arrow-Debreu equilibrium under uncertainty) is a Walrasian equilibrium in this $LS$-commodity space.
+:::
+
+
+::: {.callout-caution icon=false}
+## Remark
+Defining goods by $(commodity, state)$ pairs formally reduces GE under uncertainty to the standard GE framework. Consumers maximize expected utility over state-contingent consumption bundles; firms maximize expected profits. The existence theorem and welfare theorems apply without modification.
+
+A price $p_{\ell s}$ for contingent commodity $\ell_s$ is an **Arrow-Debreu price**: it is the current price of a commitment to deliver one unit of good $\ell$ in state $s$. Under complete markets, all risk is traded away in equilibrium.
+:::
+
+
+::: {.callout-note icon=false}
+## Definition 6.2.7 — Radner Equilibrium
+A **Radner equilibrium** (Radner 1972) is an equilibrium in a **sequential** market structure where:
+- At $t = 0$ (before the state is realized), there are markets for assets (financial instruments)
+- At $t = 1$ (after the state is realized), there are spot markets for goods
+
+Agents trade assets at $t = 0$ to transfer wealth across states; they trade goods at $t = 1$ given their realized wealth.
+:::
+
+
+::: {.callout-important icon=false}
+## Theorem 6.2.3 — Equivalence of Radner and Arrow-Debreu Equilibria
+If there are **complete asset markets** (the asset payoff matrix has rank equal to the number of states $S$), then the set of Radner equilibrium allocations coincides with the set of Arrow-Debreu equilibrium allocations.
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+**Proof sketch.**
+
+**From Arrow-Debreu to Radner:** Given an Arrow-Debreu equilibrium with contingent prices $p_{\ell s}$, define asset portfolios that replicate the contingent commodity purchases. Each consumer's Arrow-Debreu consumption plan can be decomposed into a financial portfolio (purchased at $t = 0$) and spot market purchases (at $t = 1$). With complete markets (rank $S$ asset payoff matrix), any contingent wealth transfer is achievable.
+
+**From Radner to Arrow-Debreu:** A Radner equilibrium with spot prices $q_{\ell s}$ (in state $s$) and asset prices $r$ satisfies: each agent maximizes utility subject to financial feasibility at $t = 0$ and budget constraints at $t = 1$ for each state. Define Arrow-Debreu prices $p_{\ell s} = q_{\ell s} \cdot \phi_s$ where $\phi_s$ is the state price (the $t = 0$ price of one unit of account in state $s$, derived from asset prices). Under complete markets, state prices are uniquely determined. The Radner optimal consumption plan satisfies the Arrow-Debreu budget constraint at prices $\{p_{\ell s}\}$, and market clearing at each state maps to Arrow-Debreu market clearing. $\blacksquare$
+:::
+
+
+::: {.callout-caution icon=false}
+## Remark
+The Arrow-Debreu/Radner equivalence theorem is the foundation of financial economics. It implies that in complete markets, the specific trading arrangement (all contingent claims at date 0 vs. sequential trading with assets) is irrelevant for allocations. **Market incompleteness** — when the rank of the asset payoff matrix is less than $S$ — is the fundamental source of financial market failures: agents cannot perfectly insure against all risks, and equilibrium allocations are generally constrained inefficient.
+:::
+
+
+## Cross-References
+
+- [6.1 Exchange Economies](6.1_Exchange_Economies.qmd) — Pure exchange is Arrow-Debreu with $Y_j = \{0\}$ (no production)
+- [6.3 Existence of Equilibrium](6.3_Existence_of_Equilibrium.qmd) — Existence proof applies to the Arrow-Debreu economy
+- [6.4 Welfare Theorems](6.4_Welfare_Theorems.qmd) — Welfare theorems apply to Arrow-Debreu allocations
+- [Index](../Part_III_Producer_Theory/Index.qmd) — Production sets and profit maximization are from producer theory

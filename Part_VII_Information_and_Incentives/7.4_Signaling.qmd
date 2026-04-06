@@ -1,0 +1,209 @@
+---
+title: "7.4 — Signaling"
+---
+
+# 7.4 — Signaling
+
+> **MWG Reference:** Ch. 13, §13.C, pp. 450–462; Spence (1973); Cho & Kreps (1987)
+
+## Context
+
+Signaling is the strategic analog of screening in which the **informed party moves first**. An agent with private information chooses a costly action — a signal — that conveys information to an uninformed observer. Michael Spence's insight (1973) was that education can be privately valued (it serves as a signal of ability) even if it has no direct productivity effect. The key is that the signal must be differentially costly across types: higher-ability workers find education less costly, so education can serve as a credible signal of ability.
+
+The equilibrium concept is **Perfect Bayesian Equilibrium (PBE)**: strategies must be optimal given beliefs, and beliefs are derived from Bayes' rule on the equilibrium path. A central challenge is that PBE is often non-unique — both separating and pooling equilibria may exist. Equilibrium refinements such as the Intuitive Criterion (Cho-Kreps 1987) and the D1 criterion narrow down the prediction.
+
+## Definitions
+
+::: {.callout-note icon=false}
+## Definition 7.4.1 — Spence Job Market Signaling Model
+The model consists of:
+- **Workers:** type $\theta \in \{\theta_L, \theta_H\}$ with $\theta_H > \theta_L > 0$; prior probability $\Pr(\theta_H) = \lambda \in (0,1)$
+- **Education signal:** $e \geq 0$; marginal product (if education is pure signal) is zero; type $\theta$ pays cost $c(e, \theta)$ to acquire education $e$
+- **Single-crossing:** $c_e(e, \theta) > 0$ (education is costly), $c_{e\theta}(e, \theta) < 0$ (higher ability → lower marginal cost of education)
+- **Firms:** competitive; observe education $e$; wage = expected marginal product $w(e) = \mathbb{E}[\theta | e]$
+- **Payoff:** worker of type $\theta$ with education $e$ gets $w(e) - c(e, \theta)$
+
+The timing is: (1) worker learns type $\theta$; (2) worker chooses $e$; (3) firms observe $e$, form beliefs $\mu(\theta_H | e)$, set wage $w(e) = \mu(\theta_H|e) \cdot \theta_H + (1-\mu(\theta_H|e)) \cdot \theta_L$; (4) payoffs realized.
+:::
+
+
+::: {.callout-note icon=false}
+## Definition 7.4.2 — Perfect Bayesian Equilibrium (PBE)
+A **Perfect Bayesian Equilibrium** consists of: (1) a strategy for each type $e^*(\theta)$; (2) beliefs $\mu(\theta_H | e)$ for firms for all $e$; (3) a wage function $w^*(e)$; such that:
+- **Sequential rationality:** $e^*(\theta) \in \arg\max_e \{w^*(e) - c(e,\theta)\}$ for each $\theta$
+- **Bayesian updating on path:** $\mu(\theta_H | e^*(\theta)) = \Pr(\theta_H | e^*(\theta))$ via Bayes' rule wherever $e^*(\theta)$ is played with positive probability
+- **Free beliefs off path:** $\mu(\theta_H | e)$ can be anything for $e \notin \{e^*(\theta_L), e^*(\theta_H)\}$
+- **Competitive wage:** $w^*(e) = \mu(\theta_H|e) \theta_H + (1-\mu(\theta_H|e))\theta_L$
+:::
+
+
+::: {.callout-note icon=false}
+## Definition 7.4.3 — Separating and Pooling Equilibria
+- **Separating equilibrium:** $e^*(\theta_L) \neq e^*(\theta_H)$; each type chooses a distinct signal; firms can perfectly identify types; wages equal true productivity: $w(e^*(\theta_i)) = \theta_i$
+- **Pooling equilibrium:** $e^*(\theta_L) = e^*(\theta_H) = e^P$; both types choose the same signal; firms cannot distinguish types; wage is the average: $w(e^P) = \lambda \theta_H + (1-\lambda)\theta_L \equiv \bar{\theta}$
+:::
+
+
+## Main Results
+
+### Separating Equilibria
+
+::: {.callout-important icon=false}
+## Proposition 7.4.1 — Characterization of Separating Equilibria
+In a separating PBE:
+1. The low type chooses $e^*(\theta_L) = 0$ (no signaling for the low type)
+2. The high type chooses $e^*(\theta_H) \in [\hat{e}, \bar{e}]$ where $\hat{e}$ is the minimum education level that deters the low type from mimicking and $\bar{e}$ is the maximum education level the high type is willing to acquire
+3. The beliefs support the equilibrium: $\mu(\theta_H | e) = 1$ for $e \geq e^*(\theta_H)$ and $\mu(\theta_H | e) = 0$ for $e < e^*(\theta_H)$ (or more generally, any beliefs that make deviation unprofitable)
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+**Step 1: Low type chooses $e_L = 0$.** In any separating equilibrium, wages perfectly reveal types: $w(e^*(\theta_L)) = \theta_L$ and $w(e^*(\theta_H)) = \theta_H$. Since $c(0, \theta_L) = 0$ (normalize) and the low type earns $\theta_L$ regardless of signal level (at $e^*(\theta_L)$), they minimize signaling costs by setting $e^*(\theta_L) = 0$. Any $e^*(\theta_L) > 0$ is dominated by $e^*(\theta_L) = 0$ since education is costly and does not affect wages (in equilibrium, the low type is identified regardless).
+
+**Step 2: Incentive constraints.** For separation to be incentive compatible:
+- Low type should not mimic the high type:
+$$\theta_L - c(0, \theta_L) \geq \theta_H - c(e^*(\theta_H), \theta_L)$$
+$$c(e^*(\theta_H), \theta_L) \geq \theta_H - \theta_L \quad \text{(IC-L)}$$
+- High type should not mimic the low type (i.e., should not deviate to $e = 0$):
+$$\theta_H - c(e^*(\theta_H), \theta_H) \geq \theta_L - c(0, \theta_H) = \theta_L$$
+$$c(e^*(\theta_H), \theta_H) \leq \theta_H - \theta_L \quad \text{(IC-H)}$$
+
+**Step 3: Threshold $\hat{e}$.** The binding IC-L (with equality) defines the threshold:
+$$c(\hat{e}, \theta_L) = \theta_H - \theta_L$$
+For $e^*(\theta_H) \geq \hat{e}$: IC-L is satisfied (the low type does not want to acquire that much education).
+
+**Step 4: Continuum of equilibria.** IC-H and IC-L together require $e^*(\theta_H) \in [\hat{e}, \bar{e}]$ where $\bar{e}$ solves $c(\bar{e}, \theta_H) = \theta_H - \theta_L$. Any $e_H \in [\hat{e}, \bar{e}]$, combined with appropriate off-path beliefs, supports a separating PBE.
+
+**Verification of beliefs:** If the firm believes any education $e < e^*(\theta_H)$ signals $\theta_L$ (i.e., $\mu(\theta_H|e) = 0$ for $e < e^*(\theta_H)$), then the equilibrium wage for deviation is $\theta_L$, and the high type will not deviate as long as IC-H holds.
+:::
+
+
+### Pooling Equilibria
+
+::: {.callout-important icon=false}
+## Proposition 7.4.2 — Characterization of Pooling Equilibria
+A pooling PBE exists at education level $e^P \geq 0$ with wage $w(e^P) = \bar{\theta} = \lambda \theta_H + (1-\lambda)\theta_L$ if and only if:
+1. Both types prefer the pooling wage at $e^P$ to the low wage at any deviation $e' \neq e^P$:
+$$\bar{\theta} - c(e^P, \theta) \geq \theta_L - c(e', \theta) \quad \forall \theta, \forall e'$$
+2. Off-path beliefs assign $\mu(\theta_H | e') \leq$ some threshold for deviations $e' \neq e^P$
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+At pooling education $e^P$, the wage is $\bar\theta$. The firm's off-path beliefs $\mu(\theta_H | e')$ for $e' \neq e^P$ can be set arbitrarily, which determines $w(e')$. A worst-case belief for deviations: $\mu(\theta_H | e') = 0$ for all $e' \neq e^P$, so $w(e') = \theta_L$ for all deviations.
+
+Under these beliefs, neither type wants to deviate if:
+$$\bar\theta - c(e^P, \theta) \geq \theta_L$$
+i.e., $c(e^P, \theta) \leq \bar\theta - \theta_L$ for both $\theta \in \{\theta_L, \theta_H\}$.
+
+Since $c_{e\theta} < 0$ (single-crossing), the high type has lower education costs, so the binding constraint is the low type: $c(e^P, \theta_L) \leq \bar\theta - \theta_L$. This is satisfied for small enough $e^P$, including $e^P = 0$.
+
+Therefore a pooling equilibrium at $e^P = 0$ (no education) always exists with worst-case off-path beliefs.
+:::
+
+
+### Equilibrium Refinements
+
+#### The Intuitive Criterion (Cho-Kreps 1987)
+
+::: {.callout-note icon=false}
+## Definition 7.4.4 — Equilibrium Dominance and the Intuitive Criterion
+In a signaling game with equilibrium payoffs $u^*(\theta)$ for each type $\theta$:
+- A message $e'$ is **equilibrium dominated** for type $\theta$ if:
+$$\max_{w \in [\theta_L, \theta_H]} \{w - c(e', \theta)\} < u^*(\theta)$$
+i.e., even the best possible wage after sending $e'$ yields less than the equilibrium payoff.
+
+The **Intuitive Criterion** requires: if $e'$ is equilibrium dominated for $\theta_L$ but NOT for $\theta_H$ (i.e., $\theta_H$ could benefit from $e'$ if firms believe $\theta_H$ with probability 1), then off-path beliefs must assign $\mu(\theta_H | e') = 1$.
+:::
+
+
+::: {.callout-important icon=false}
+## Theorem 7.4.3 — Intuitive Criterion Eliminates All But the Least-Costly Separating Equilibrium
+The unique separating PBE surviving the Intuitive Criterion has the high type choosing $e^*(\theta_H) = \hat{e}$ — the **least-costly separating equilibrium** — where $\hat{e}$ is defined by $c(\hat{e}, \theta_L) = \theta_H - \theta_L$.
+
+Moreover, all pooling equilibria are eliminated by the Intuitive Criterion.
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+**Eliminating pooling equilibria:** Consider a pooling equilibrium at $e^P$ with equilibrium payoffs $u^*(\theta) = \bar\theta - c(e^P, \theta)$.
+
+Consider a deviation to $e' > e^P$ such that:
+$$\bar\theta - c(e^P, \theta_L) > \theta_H - c(e', \theta_L) \quad \text{(deviation dominated for } \theta_L\text{)}$$
+$$\theta_H - c(e', \theta_H) > \bar\theta - c(e^P, \theta_H) \quad \text{(deviation not dominated for } \theta_H\text{)}$$
+
+Such an $e'$ exists because $c_{e\theta} < 0$: higher types have lower marginal costs, so there is a range $e'$ where $e'$ is too costly for $\theta_L$ but profitable for $\theta_H$.
+
+Specifically, single-crossing implies that the set of $e'$ satisfying the second inequality (profitable for $\theta_H$) extends above the set satisfying the first (dominated for $\theta_L$). Pick any $e'$ in the gap: it is dominated for $\theta_L$ but not for $\theta_H$.
+
+By the Intuitive Criterion, beliefs must put $\mu(\theta_H | e') = 1$, so $w(e') = \theta_H$. But then $\theta_H$ strictly prefers to deviate to $e'$: $\theta_H - c(e', \theta_H) > \bar\theta - c(e^P, \theta_H) = u^*(\theta_H)$. Contradiction with $e^P$ being a pooling equilibrium.
+
+**Eliminating non-least-costly separating equilibria:** Consider a separating equilibrium with $e^*(\theta_H) = \tilde{e} > \hat{e}$, so $u^*(\theta_H) = \theta_H - c(\tilde{e}, \theta_H)$.
+
+Consider a deviation by the high type to $e' \in (\hat{e}, \tilde{e})$. Since $c(\hat{e}, \theta_L) = \theta_H - \theta_L$, for $e' > \hat{e}$:
+$$c(e', \theta_L) > \theta_H - \theta_L \implies \theta_H - c(e', \theta_L) < \theta_L = u^*(\theta_L)$$
+So $e'$ is equilibrium dominated for $\theta_L$ (even if the firm pays the maximum wage $\theta_H$, $\theta_L$ does worse than in equilibrium).
+
+For $\theta_H$ at $e' \in (\hat{e}, \tilde{e})$:
+$$\theta_H - c(e', \theta_H) > \theta_H - c(\tilde{e}, \theta_H) = u^*(\theta_H) \quad \text{(since } c \text{ is increasing in } e\text{)}$$
+So $e'$ is NOT dominated for $\theta_H$.
+
+By the Intuitive Criterion: $\mu(\theta_H | e') = 1$, so $w(e') = \theta_H$. But then $\theta_H$ earns $\theta_H - c(e', \theta_H) > u^*(\theta_H)$ by deviating to $e'$. Contradiction.
+
+The only surviving equilibrium is $e^*(\theta_H) = \hat{e}$: the high type chooses the minimum education that credibly separates.
+:::
+
+
+### D1 Criterion
+
+::: {.callout-note icon=false}
+## Definition 7.4.5 — D1 Criterion
+The **D1 criterion** strengthens the Intuitive Criterion. For a message $e'$ off the equilibrium path, define the set of best responses for the firm that would make type $\theta$ willing to send $e'$:
+$$D_\theta(e') = \{w : w - c(e', \theta) \geq u^*(\theta)\}$$
+The D1 criterion requires that if $D_{\theta_L}(e') \subset D_{\theta_H}(e')$ (strictly), then $\mu(\theta_H | e') = 1$.
+
+D1 implies the Intuitive Criterion. Together with single-crossing, D1 also selects the least-costly separating equilibrium.
+:::
+
+
+### Over-Education as Social Waste
+
+::: {.callout-important icon=false}
+## Proposition 7.4.4 — Signaling is Socially Wasteful
+If education has no direct effect on productivity (pure signaling), then any separating equilibrium is socially inefficient relative to the no-signaling pooling allocation at $e = 0$. The education expenditures are a social deadweight loss.
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+Under pure signaling, total output is $\lambda \theta_H + (1-\lambda)\theta_L = \bar\theta$ regardless of the education choices, since education does not affect productivity.
+
+In the separating equilibrium with $e^*(\theta_H) = \hat{e}$, the total social cost is $\lambda c(\hat{e}, \theta_H) > 0$.
+
+In the pooling equilibrium at $e^P = 0$, total social cost of education is $0$.
+
+Total output in both cases: $\bar\theta$. Therefore the separating equilibrium has strictly lower total surplus by $\lambda c(\hat{e}, \theta_H) > 0$.
+
+Intuitively: signaling is a zero-sum redistribution (from firms to high-ability workers) that requires a positive resource cost (education). From society's perspective, the education expenditures are burned while the allocation of workers to jobs is the same as if there were no signaling. This is a classical result showing that equilibria with private information may be Pareto-dominated by a world without the signal technology.
+
+**Caveat:** This argument assumes education has zero human capital value. If education raises productivity, the first-best has positive education, and the welfare comparison between signaling equilibria and no-education requires a more careful analysis.
+:::
+
+
+## Economic Intuition
+
+Signaling reverses the informational structure of screening: here, the informed party (the worker) moves first and chooses an action (education) that conveys information to the uninformed party (the firm). The key is that the action must be **credible** — it must be too costly for low types to mimic.
+
+The single-crossing condition is the engine of all signaling results. Because high-ability workers have lower marginal costs of education, they can credibly signal their ability by acquiring education levels that would be prohibitively expensive for low-ability workers. This creates a separating equilibrium where education levels perfectly sort workers by type, even though education has no direct productivity effect.
+
+The multiplicity of equilibria reflects the self-fulfilling nature of beliefs in signaling games. If firms believe that all workers with $e \geq e_H$ are high ability, then high-ability workers have an incentive to acquire $e_H$ — and firms' beliefs are confirmed. Any $e_H \in [\hat{e}, \bar{e}]$ can sustain these beliefs. The Intuitive Criterion rules out equilibria with excessive education by noting that firms should be able to "understand" that a deviation to $e' \in (\hat{e}, e_H)$ must come from a high-ability worker (since the low type would never benefit from it), and therefore should update beliefs upward.
+
+## Cross-References
+
+- [7.3 Adverse Selection and Screening](7.3_Adverse_Selection_and_Screening.qmd) — screening (principal moves first); same single-crossing condition, dual structure
+- [7.5 Mechanism Design](7.5_Mechanism_Design.qmd) — mechanism design generalizes; the Revelation Principle does not directly apply to signaling (sender moves first)
+- [9.2 Equilibrium Concepts and Selection](9.2_Equilibrium_Concepts_and_Selection.qmd) — PBE; equilibrium refinements in dynamic games
+- [9.4 Deriving Testable Predictions](9.4_Deriving_Testable_Predictions.qmd) — Spence model predicts wage-education relationship; identification challenges

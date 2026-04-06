@@ -1,0 +1,347 @@
+---
+title: "3.2 Profit Maximization"
+---
+
+# 3.2 Profit Maximization
+
+> **MWG Reference:** Ch. 5, §5.C, pp. 135–148
+
+## Context
+
+Given a production set $Y$ and a price vector $p \in \mathbb{R}^L_{++}$ (all prices strictly positive), the firm's **profit maximization problem (PMP)** selects the production plan that generates the highest revenue net of input costs. The PMP is the foundational behavioral model of the competitive firm. Its value function — the **profit function** $\pi(p)$ — and its optimizer — the **supply correspondence** $y(p)$ — encode all observable supply behavior of the firm.
+
+The key analytical tools are (1) the **properties of $\pi(p)$**, which follow directly from the structure of the optimization problem and do not require any specific functional form for $Y$, and (2) **Hotelling's lemma**, which states that the derivative of the profit function with respect to any price equals the profit-maximizing supply of that commodity. Hotelling's lemma is a direct application of the envelope theorem and is the producer analogue of Roy's identity in consumer theory.
+
+---
+
+## Definitions
+
+::: {.callout-note icon=false}
+## Definition 3.1 — Profit Maximization Problem (PMP)
+Given price vector $p \in \mathbb{R}^L_{++}$ and production set $Y \subseteq \mathbb{R}^L$, the firm's **profit maximization problem** is:
+$$\max_{y \in Y} \; p \cdot y$$
+where $p \cdot y = \sum_{l=1}^L p_l y_l$ is revenue from outputs minus expenditure on inputs (using the sign convention $y_l < 0$ for inputs).
+:::
+
+
+::: {.callout-note icon=false}
+## Definition 3.2 — Profit Function
+The **profit function** is the value function of the PMP:
+$$\pi(p) = \sup_{y \in Y} \; p \cdot y$$
+When the supremum is attained, $\pi(p) = \max_{y \in Y} p \cdot y$.
+:::
+
+
+::: {.callout-note icon=false}
+## Definition 3.3 — Supply Correspondence
+The **supply correspondence** $y: \mathbb{R}^L_{++} \rightrightarrows Y$ is:
+$$y(p) = \arg\max_{y \in Y} \; p \cdot y = \{y^* \in Y : p \cdot y^* = \pi(p)\}$$
+When $y(p)$ is single-valued, it is called the **supply function**.
+:::
+
+
+---
+
+## Properties of the Profit Function
+
+::: {.callout-important icon=false}
+## Proposition 3.1 — Homogeneity of Degree One of $\pi(p)$
+The profit function $\pi(p)$ is **homogeneous of degree one** in $p$: for all $\alpha > 0$,
+$$\pi(\alpha p) = \alpha \pi(p)$$
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+For any $\alpha > 0$:
+$$\pi(\alpha p) = \sup_{y \in Y} (\alpha p) \cdot y = \sup_{y \in Y} \alpha (p \cdot y) = \alpha \sup_{y \in Y} p \cdot y = \alpha \pi(p)$$
+The third equality uses the fact that multiplying the objective by a positive scalar $\alpha$ does not change the set of maximizers, and scales the maximum value by $\alpha$. $\blacksquare$
+:::
+
+
+::: {.callout-caution icon=false}
+## Remark 3.1
+Homogeneity of degree one has a direct economic interpretation: a proportional increase in all prices (inputs and outputs alike) does not change the firm's optimal production plan $y(p)$ — only the monetary value of profit scales by the same factor. This is a **no money illusion** property for producers. Formally, $y(\alpha p) = y(p)$ for all $\alpha > 0$.
+:::
+
+
+::: {.callout-important icon=false}
+## Proposition 3.2 — Convexity of $\pi(p)$
+The profit function $\pi(p)$ is **convex** in $p$.
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+The profit function is the supremum of a family of linear functions of $p$. Specifically, for each $y \in Y$, the function $p \mapsto p \cdot y$ is linear (hence convex) in $p$. Since the supremum of any family of convex functions is convex:
+$$\pi(p) = \sup_{y \in Y} p \cdot y$$
+is convex in $p$.
+
+**Alternative direct proof:** Fix $p, p' \in \mathbb{R}^L_{++}$ and $\lambda \in [0,1]$. Let $y^*$ be a profit-maximizing production plan at prices $\lambda p + (1-\lambda)p'$. Then:
+\begin{align}
+\pi(\lambda p + (1-\lambda)p') &= [\lambda p + (1-\lambda)p'] \cdot y^* \\
+&= \lambda (p \cdot y^*) + (1-\lambda)(p' \cdot y^*) \\
+&\leq \lambda \pi(p) + (1-\lambda)\pi(p')
+\end{align}
+where the inequality uses $p \cdot y^* \leq \pi(p)$ and $p' \cdot y^* \leq \pi(p')$ (since $y^*$ may not be optimal at $p$ or $p'$). $\blacksquare$
+:::
+
+
+::: {.callout-caution icon=false}
+## Remark 3.2 — Economic Meaning of Convexity
+Convexity of $\pi(p)$ means that the profit function "curves upward" in prices. A firm benefits from price variability: if output price fluctuates between $p_1$ and $p_2$, average profit under the fluctuating price exceeds profit at the average price. This is the producer analogue of **Jensen's inequality**. Intuitively, the firm can adjust its optimal production plan in response to each price realization, so it takes advantage of high prices more than it suffers from low prices.
+:::
+
+
+::: {.callout-important icon=false}
+## Proposition 3.3 — Monotonicity of $\pi(p)$
+The profit function is:
+(a) **Nondecreasing in output prices**: if $p_l$ is an output price and $p_l$ rises (holding all else equal), then $\pi(p)$ does not decrease.
+(b) **Nonincreasing in input prices**: if $p_l$ is an input price (i.e., the price of commodity $l$ which enters $y$ negatively) and $p_l$ rises, then $\pi(p)$ does not increase.
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+Let $p' \geq p$ (componentwise). For any $y^* \in y(p)$ (profit maximizing at $p$):
+$$\pi(p') = \max_{y \in Y} p' \cdot y \geq p' \cdot y^* \geq p \cdot y^* = \pi(p)$$
+where the first inequality is from the definition of max, and the second uses $p' \geq p$ and $y^*$ may have mixed-sign components (but for an output $y_l^* \geq 0$ and $p'_l \geq p_l$ contributes nonnegatively; for an input $y_l^* \leq 0$, if only that input price rises, then $p'_l y_l^* \leq p_l y_l^*$, so $\pi$ is nonincreasing in input prices).
+
+More precisely: if only input price $w_k$ rises (i.e., $p'_k > p_k$ for the input commodity $k$ with $y_k \leq 0$), then for any feasible $y$, the objective $p' \cdot y \leq p \cdot y$ (since $y_k \leq 0$ means $p'_k y_k \leq p_k y_k$). Hence $\pi(p') \leq \pi(p)$. $\blacksquare$
+:::
+
+
+---
+
+## Supply Correspondence
+
+::: {.callout-important icon=false}
+## Proposition 3.4 — Nonemptiness of Supply
+Suppose $Y$ is closed and there exists $M < \infty$ such that $p \cdot y \leq M$ for all $y \in Y$ (profit is bounded above). Then $y(p) \neq \emptyset$: the PMP has a solution.
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+Since $Y$ is closed and $p \cdot y$ is bounded above on $Y$, there exists a sequence $\{y^n\} \subset Y$ with $p \cdot y^n \to \pi(p)$. If $Y$ is bounded, a convergent subsequence exists by Bolzano-Weierstrass, and the limit lies in $Y$ by closedness. In general, the existence of a maximizer requires that the superlevel sets $\{y \in Y : p \cdot y \geq c\}$ are compact. Under free disposal and appropriate boundedness conditions on $Y$, this holds. $\blacksquare$
+:::
+
+
+::: {.callout-caution icon=false}
+## Remark 3.3 — When Does the PMP Have a Solution?
+The PMP may fail to have a solution in two ways:
+1. **Unbounded profit**: If $Y$ is a cone (CRS), then by Proposition 3.1 of note [3.1 Production Sets](3.1_Production_Sets.qmd), $\pi(p) \in \{0, +\infty\}$. If $\pi(p) = +\infty$, no maximizer exists.
+2. **Non-attainment**: If $Y$ is not closed, the supremum may not be achieved.
+
+In practice, well-posed competitive models either (i) restrict to DRS technologies where the optimum is interior and finite, or (ii) use the zero-profit condition to pin down the equilibrium price under CRS.
+:::
+
+
+::: {.callout-important icon=false}
+## Proposition 3.5 — Convex-valuedness of $y(p)$
+If $Y$ is convex, then $y(p)$ is a **convex set** for every $p$.
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+Let $y, y' \in y(p)$, so $p \cdot y = p \cdot y' = \pi(p)$. For any $\lambda \in [0,1]$, by convexity of $Y$, $\lambda y + (1-\lambda)y' \in Y$. Moreover:
+$$p \cdot [\lambda y + (1-\lambda)y'] = \lambda(p \cdot y) + (1-\lambda)(p \cdot y') = \lambda\pi(p) + (1-\lambda)\pi(p) = \pi(p)$$
+So $\lambda y + (1-\lambda)y' \in y(p)$. $\blacksquare$
+:::
+
+
+---
+
+## Hotelling's Lemma
+
+::: {.callout-important icon=false}
+## Theorem 3.1 — Hotelling's Lemma
+Suppose $\pi(p)$ is differentiable at $p^0$. Then:
+$$y(p^0) = \nabla_p \pi(p^0), \quad \text{i.e.,} \quad y_l(p^0) = \frac{\partial \pi(p^0)}{\partial p_l} \quad \forall l = 1, \ldots, L$$
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+**Proof via the Envelope Theorem** (see [1.3 Optimization Theory](1.3_Optimization_Theory.qmd)):
+
+The profit function is $\pi(p) = p \cdot y(p)$ where $y(p)$ solves $\max_{y \in Y} p \cdot y$. The Lagrangian (treating $Y$ as a constraint set) is simply the objective $p \cdot y$; there are no binding equality constraints other than $y \in Y$.
+
+By the **envelope theorem**, the derivative of the value function with respect to a parameter equals the partial derivative of the objective with respect to that parameter, evaluated at the optimum:
+$$\frac{\partial \pi(p)}{\partial p_l} = \frac{\partial}{\partial p_l}[p \cdot y]\bigg|_{y = y(p)} = y_l(p)$$
+
+**Direct proof (without appealing to the envelope theorem):**
+
+Since $y^* = y(p^0)$ is optimal at $p^0$, for any $p$:
+$$\pi(p) \geq p \cdot y^* \quad \text{(since $y^*$ is feasible at price $p$)}$$
+Also $\pi(p^0) = p^0 \cdot y^*$ by optimality. Define $g(p) = p \cdot y^*$ (a linear function). Then:
+$$g(p) \leq \pi(p) \quad \forall p, \qquad g(p^0) = \pi(p^0)$$
+So $g$ is a **supporting hyperplane** to $\pi$ at $p^0$: the linear function $p \mapsto p \cdot y^*$ is below $\pi$ everywhere and touches it at $p^0$. If $\pi$ is differentiable at $p^0$, the supporting hyperplane is unique and equals the tangent hyperplane. The gradient of $g(p) = p \cdot y^*$ is exactly $y^*$. Therefore:
+$$\nabla_p \pi(p^0) = y^* = y(p^0) \qquad \blacksquare$$
+:::
+
+
+::: {.callout-caution icon=false}
+## Remark 3.4 — Economic Content of Hotelling's Lemma
+Hotelling's lemma says that the supply of each commodity equals the rate at which profit increases in the price of that commodity. For an output commodity $l$, $\partial \pi / \partial p_l = y_l \geq 0$: raising the output price increases profit, and the rate of increase equals the quantity supplied. For an input commodity $k$, $\partial \pi / \partial p_k = y_k \leq 0$: raising the input price decreases profit, and the rate of decrease equals the (negative of) quantity demanded. This is the most important tool for deriving supply and factor demand from the profit function.
+:::
+
+
+---
+
+## Comparative Statics from Hotelling's Lemma
+
+From Hotelling's Lemma and the convexity of $\pi(p)$, we obtain the full matrix of price responses.
+
+::: {.callout-note icon=false}
+## Definition 3.4 — Substitution Matrix in Production
+The **supply substitution matrix** is the $L \times L$ matrix of cross-price supply responses:
+$$S(p) = \frac{\partial y(p)}{\partial p} = D^2_p \pi(p)$$
+where $D^2_p \pi$ is the Hessian matrix of $\pi$ with respect to $p$.
+:::
+
+
+::: {.callout-important icon=false}
+## Proposition 3.6 — Properties of the Supply Substitution Matrix
+If $\pi$ is twice differentiable, the supply substitution matrix $S(p) = D^2_p \pi(p)$ satisfies:
+1. **Symmetry**: $S(p) = S(p)^T$ (i.e., $\partial y_l / \partial p_k = \partial y_k / \partial p_l$)
+2. **Positive semidefiniteness (PSD)**: $v^T S(p) v \geq 0$ for all $v \in \mathbb{R}^L$
+3. **$S(p) p = 0$** (Euler's theorem applied to the HD1 supply)
+4. In particular, $\frac{\partial y_l}{\partial p_l} \geq 0$: **own-price supply is nondecreasing**
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+Properties 1 and 2 follow directly from $S(p) = D^2_p \pi(p)$ and the fact that $\pi$ is convex: the Hessian of a convex function is symmetric (Young's theorem) and positive semidefinite.
+
+**Property 3:** Since $y(p)$ is HD0 in $p$ (scaling all prices by $\alpha > 0$ does not change the optimal production plan), by Euler's theorem for homogeneous functions:
+$$\sum_k \frac{\partial y_l}{\partial p_k} p_k = 0 \cdot y_l = 0 \quad \forall l$$
+i.e., $S(p) p = 0$.
+
+**Property 4:** Since $S$ is PSD, all diagonal entries are nonneg: $v^T S v \geq 0$ for $v = e_l$ (standard basis vector) gives $S_{ll} = \partial y_l / \partial p_l \geq 0$. $\blacksquare$
+:::
+
+
+---
+
+## Law of Supply
+
+::: {.callout-important icon=false}
+## Theorem 3.2 — Law of Supply
+For any two price vectors $p$ and $p'$:
+$$(\Delta p) \cdot (\Delta y) \geq 0$$
+where $\Delta p = p' - p$ and $\Delta y = y(p') - y(p)$ (taking any selections from the supply correspondence).
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+Let $y \in y(p)$ and $y' \in y(p')$. By optimality:
+- $y$ is optimal at $p$: $p \cdot y \geq p \cdot y'$
+- $y'$ is optimal at $p'$: $p' \cdot y' \geq p' \cdot y$
+
+Adding these two inequalities:
+$$p \cdot y + p' \cdot y' \geq p \cdot y' + p' \cdot y$$
+Rearranging:
+$$(p' - p) \cdot (y' - y) \geq 0$$
+i.e., $\Delta p \cdot \Delta y \geq 0$. $\blacksquare$
+:::
+
+
+::: {.callout-caution icon=false}
+## Remark 3.5 — Interpretation of the Law of Supply
+The law of supply says that **supply responds in the same direction as price changes**. If only output price $p_l$ rises, then the supply of output $l$ does not fall ($\Delta p_l \cdot \Delta y_l \geq 0$ since other price changes are zero). If only input price rises, input demand does not increase (recall $y_k < 0$ for inputs). This is a very strong and general result — it requires no assumptions beyond the optimization hypothesis (that firms maximize profit).
+:::
+
+
+---
+
+## Profit Maximization with a Production Function
+
+In the single-output case, the PMP takes a more familiar form.
+
+::: {.callout-note icon=false}
+## Definition 3.5 — PMP with Production Function
+With output $q$, inputs $z = (z_1, \ldots, z_K) \geq 0$, output price $p > 0$, and factor price vector $w \in \mathbb{R}^K_{++}$:
+$$\max_{q, z \geq 0} \; pq - w \cdot z \quad \text{s.t.} \quad q \leq f(z)$$
+Since the objective is increasing in $q$, the constraint binds: $q = f(z)$, and the problem reduces to:
+$$\max_{z \geq 0} \; p f(z) - w \cdot z$$
+:::
+
+
+::: {.callout-important icon=false}
+## Proposition 3.7 — First-Order Conditions for PMP
+Suppose $f$ is differentiable and the interior optimum $z^* \gg 0$ satisfies the FOC:
+$$p \frac{\partial f(z^*)}{\partial z_l} = w_l \quad \forall l = 1, \ldots, K$$
+Equivalently: **value of marginal product equals factor price** for every input.
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+The unconstrained problem $\max_z p f(z) - w \cdot z$ has FOC (differentiating with respect to $z_l$):
+$$p \frac{\partial f(z)}{\partial z_l} - w_l = 0 \quad \Rightarrow \quad p \cdot MP_l(z) = w_l$$
+where $MP_l = \partial f/\partial z_l$ is the marginal product of input $l$. At an interior solution, this holds for all $l$. The second-order condition is $p D^2 f(z^*)$ being negative semidefinite, which is satisfied when $f$ is concave. $\blacksquare$
+:::
+
+
+::: {.callout-caution icon=false}
+## Remark 3.6 — MRTS and Price Ratio
+Dividing the FOC for inputs $k$ and $l$:
+$$\frac{p \cdot MP_k}{p \cdot MP_l} = \frac{w_k}{w_l} \quad \Rightarrow \quad MRTS_{kl} = \frac{w_k}{w_l}$$
+The marginal rate of technical substitution between any two inputs equals their price ratio at the optimum. This is the familiar "isoquant tangent to isocost" condition.
+:::
+
+
+---
+
+## Example: Cobb-Douglas Profit Maximization
+
+::: {.callout-note icon=false appearance="simple"}
+## Example 3.2 — Cobb-Douglas Supply Function
+Let $f(z) = z^{\alpha}$ with $\alpha \in (0,1)$ (single input; DRS). Output price $p > 0$, input price $w > 0$.
+
+**PMP:** $\max_{z \geq 0} p z^{\alpha} - wz$
+
+**FOC:** $p \alpha z^{\alpha - 1} = w$
+$$z^*(p,w) = \left(\frac{p\alpha}{w}\right)^{1/(1-\alpha)}$$
+
+**Supply function:**
+$$q^*(p,w) = f(z^*) = \left(\frac{p\alpha}{w}\right)^{\alpha/(1-\alpha)}$$
+
+**Profit function:**
+$$\pi(p,w) = pq^* - wz^* = p\left(\frac{p\alpha}{w}\right)^{\alpha/(1-\alpha)} - w\left(\frac{p\alpha}{w}\right)^{1/(1-\alpha)}$$
+
+Simplifying (let $A = \alpha^{\alpha/(1-\alpha)}$):
+$$\pi(p,w) = (1-\alpha) \cdot A \cdot p^{1/(1-\alpha)} w^{-\alpha/(1-\alpha)}$$
+
+**Verification of Hotelling's Lemma:**
+$$\frac{\partial \pi}{\partial p} = (1-\alpha) \cdot A \cdot \frac{1}{1-\alpha} p^{\alpha/(1-\alpha)} w^{-\alpha/(1-\alpha)} = A \cdot \left(\frac{p}{w}\right)^{\alpha/(1-\alpha)} = q^*(p,w) \checkmark$$
+$$\frac{\partial \pi}{\partial w} = (1-\alpha) \cdot A \cdot p^{1/(1-\alpha)} \cdot \left(-\frac{\alpha}{1-\alpha}\right) w^{-1/(1-\alpha)} = -z^*(p,w) \checkmark$$
+(The negative sign reflects that $y_{\text{input}} = -z^*$ in the net-output convention.)
+
+**Homogeneity:** $\pi(\lambda p, \lambda w) = \lambda \pi(p,w)$ for $\lambda > 0$ — verify: each power of $p$ and $w$ in $\pi$ sums to $\frac{1}{1-\alpha} - \frac{\alpha}{1-\alpha} = \frac{1-\alpha}{1-\alpha} = 1$. $\checkmark$
+:::
+
+
+---
+
+## Economic Intuition
+
+Profit maximization is the behavioral hypothesis that firms choose among all technologically feasible production plans the one that generates the largest net revenue. This is a powerful and restrictive hypothesis: it implies the law of supply (without any additional assumptions), Hotelling's lemma (when $\pi$ is differentiable), and symmetry and PSD of the supply Hessian.
+
+The convexity of $\pi(p)$ captures a fundamental asymmetry: firms respond to price changes by adjusting their production plans, and they always adjust in the direction that benefits from the change. This is the producer analogue of the substitution effect in consumer theory, but here it works in the "easy" direction — there is no income effect in producer theory.
+
+Hotelling's lemma is the single most important result in producer theory for applied work. It says that all information about supply behavior is encoded in the profit function: once $\pi(p)$ is known (estimated), all supply functions follow by differentiation. This is the core of the **duality approach** to empirical production analysis.
+
+---
+
+## Cross-References
+
+- [3.1 Production Sets](3.1_Production_Sets.qmd) — the domain $Y$ of the PMP; properties of $Y$ and their effect on $\pi$
+- [3.3 Cost Minimization](3.3_Cost_Minimization.qmd) — the CMP; cost function and Shephard's lemma; duality
+- [3.4 Supply and Factor Demands](3.4_Supply_and_Factor_Demands.qmd) — combining PMP and CMP; comparative statics; Le Chatelier
+- [1.3 Optimization Theory](1.3_Optimization_Theory.qmd) — envelope theorem; Euler's theorem; convexity
+- [PS Producer Theory](PS_Producer_Theory.qmd) — Problems 2 and 4

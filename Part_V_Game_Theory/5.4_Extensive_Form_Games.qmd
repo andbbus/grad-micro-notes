@@ -1,0 +1,173 @@
+---
+title: "5.4 Extensive Form Games"
+---
+
+# 5.4 Extensive Form Games
+
+> **MWG Reference:** Ch. 7, §7.B–7.D, pp. 219–244
+
+## Context
+
+The extensive form is the natural representation of games where players move sequentially, may have incomplete information about past actions, or must make decisions at multiple stages. Unlike the normal form, it makes explicit the temporal structure of play, the information available to each player at each decision point, and the sequentiality of choices. The distinction between strategies and actions — central to extensive form analysis — is conceptually subtle but critical: a strategy must specify behavior at every possible information set, including those that may never be reached on the equilibrium path. This apparently minor point drives the entire theory of equilibrium refinements, from subgame perfection to sequential equilibrium.
+
+## Definitions
+
+::: {.callout-note icon=false}
+## Definition 5.4.1 — Extensive Form Game
+An **extensive form game** $\Gamma^E$ consists of:
+- A finite **game tree** $T$: a directed tree with a distinguished root node $\emptyset$, where each non-terminal node has one or more successors
+- A partition of non-terminal nodes into **player sets** $\{H_i\}_{i \in I \cup \{0\}}$, where $H_0$ are nodes controlled by Nature (chance moves)
+- At each node $x \in H_i$, a **action set** $A(x)$, with each branch from $x$ labeled by an element of $A(x)$
+- A collection of **information sets** $\mathcal{H}_i = \{h_{i,k}\}$ for each player $i$, forming a partition of $H_i$, with the requirement that $A(x) = A(x')$ for all $x, x' \in h_{i,k}$ (same actions available at indistinguishable nodes)
+- A **payoff function** $u_i: Z \to \mathbb{R}$ for each $i$, where $Z$ is the set of terminal nodes
+- For each Nature node, a probability distribution over branches
+:::
+
+
+::: {.callout-note icon=false}
+## Definition 5.4.2 — Information Sets and Perfect Information
+An **information set** $h$ for player $i$ is a set of nodes in $H_i$ such that player $i$ cannot distinguish between nodes within $h$. The collection $\mathcal{H}_i$ partitions $H_i$.
+
+A game has **perfect information** if every information set is a singleton: $|h| = 1$ for all $h \in \bigcup_i \mathcal{H}_i$. In a game of perfect information, every player knows the complete history of play at every decision point.
+
+A game has **imperfect information** if some information set contains more than one node — the player cannot distinguish between the histories in that information set when making their decision.
+:::
+
+
+::: {.callout-note icon=false}
+## Definition 5.4.3 — Strategy in Extensive Form
+A **pure strategy** for player $i$ is a function $s_i: \mathcal{H}_i \to \bigcup_h A(h)$ such that $s_i(h) \in A(h)$ for every information set $h \in \mathcal{H}_i$.
+
+A strategy specifies an action at **every** information set of player $i$, including information sets that may not be reached given $s_i$'s own choices at earlier information sets.
+:::
+
+
+::: {.callout-caution icon=false}
+## Remark
+The distinction between **strategies** and **actions** is fundamental. An action is a choice at a particular point in the game. A strategy is a complete contingent plan specifying what to do at every information set that could possibly be reached, whether or not the player's own prior choices would lead there. This completeness is essential for defining equilibria where behavior off the equilibrium path matters (e.g., SPE requires credible threats at unreached subgames).
+
+In a game where player 1 moves first (choice $\{L, R\}$) and player 2 observes and responds at two separate nodes (one after $L$, one after $R$), player 2 has $2 \times 2 = 4$ strategies despite only one action being taken on any given play.
+:::
+
+
+::: {.callout-note icon=false}
+## Definition 5.4.4 — Behavioral Strategy
+A **behavioral strategy** for player $i$ is a function $b_i: \mathcal{H}_i \to \Delta(A(h))$ that assigns an independent probability distribution over actions to each information set $h \in \mathcal{H}_i$.
+
+This contrasts with a **mixed strategy** $\sigma_i \in \Delta(S_i)$, which randomizes over the entire pure strategy space. Under a mixed strategy, the correlations across different information sets are determined by the mixing over pure strategies.
+:::
+
+
+::: {.callout-note icon=false}
+## Definition 5.4.5 — Perfect Recall
+Player $i$ has **perfect recall** if they never forget information they previously knew and never forget their own past actions. Formally, for any two nodes $x, x' \in h$ in the same information set of player $i$, the sequence of information sets and actions of player $i$ leading to $x$ must equal the sequence leading to $x'$.
+:::
+
+
+## Main Results
+
+::: {.callout-important icon=false}
+## Theorem 5.4.1 — Kuhn's Theorem (1953)
+In a finite extensive form game with perfect recall, every mixed strategy $\sigma_i$ is **outcome-equivalent** to a behavioral strategy $b_i$: for every strategy profile of other players $\sigma_{-i}$, the probability distribution over terminal nodes induced by $(\sigma_i, \sigma_{-i})$ equals that induced by $(b_i, \sigma_{-i})$.
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+**Proof sketch.** We construct $b_i$ from $\sigma_i$ explicitly.
+
+For each information set $h \in \mathcal{H}_i$ and action $a \in A(h)$, define
+$$b_i(a|h) = \frac{\Pr[a \text{ is taken at } h \text{ and } h \text{ is reached} \mid \sigma_i]}{\Pr[h \text{ is reached} \mid \sigma_i]},$$
+whenever $\Pr[h \text{ is reached} \mid \sigma_i] > 0$.
+
+**Perfect recall is used here:** Since player $i$ has perfect recall, reaching information set $h$ is consistent with a unique path of player $i$'s own past actions. Therefore, conditioning on reaching $h$ does not create spurious correlations between actions at different information sets — the event "reach $h$ and take $a$" factors cleanly.
+
+Without perfect recall, conditioning on reaching $h$ may depend on choices at earlier information sets, making the factorization impossible (Isbell's counterexample).
+
+To show outcome equivalence: the probability of any terminal node $z$ can be computed by multiplying the probabilities along the path from the root to $z$. Under $\sigma_i$, the contribution from player $i$'s moves is $\Pr_{\sigma_i}[\text{path to } z]$. Under the constructed $b_i$, the same probability is obtained by multiplying the behavioral probabilities at each information set along the path — which by construction equals the conditional probability under $\sigma_i$. By the chain rule of probability, the overall probability of $z$ is the same. $\blacksquare$
+:::
+
+
+::: {.callout-important icon=false}
+## Theorem 5.4.2 — Zermelo's Theorem (1913)
+In any finite, two-player, zero-sum game of **perfect information**, one of the following holds:
+1. Player 1 has a winning strategy (guarantees a win regardless of Player 2's play), or
+2. Player 2 has a winning strategy, or
+3. Both players have a drawing strategy (each can guarantee at least a draw).
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+We prove by backward induction on the game tree.
+
+**Setup.** Since the game is finite, the tree has finitely many nodes. Assign "values" to terminal nodes: $+1$ if Player 1 wins, $-1$ if Player 2 wins, $0$ for a draw.
+
+**Backward induction procedure.** For each non-terminal node $x$ at depth $d$ (counting from the leaves):
+
+- **Base case ($d = 0$):** Terminal nodes $z \in Z$ have assigned values $v(z) \in \{-1, 0, +1\}$.
+
+- **Inductive step.** Suppose all nodes at depth $< d$ have been assigned values. Consider node $x$ at depth $d$:
+  - If $x$ belongs to Player 1: $v(x) = \max_{a \in A(x)} v(x_a)$, where $x_a$ is the successor after action $a$. Player 1 chooses the action maximizing value.
+  - If $x$ belongs to Player 2: $v(x) = \min_{a \in A(x)} v(x_a)$. Player 2 minimizes.
+
+Since the action sets are finite and all successor values are defined by hypothesis, $v(x)$ is well-defined.
+
+**The strategies.** Define each player's strategy: at each node $x$ they control, play the action achieving $v(x)$. The resulting strategy profile is subgame perfect.
+
+**The outcome.** The value $v(\emptyset)$ of the root node is $+1$, $-1$, or $0$:
+- $v(\emptyset) = +1$: Player 1's backward induction strategy guarantees a win.
+- $v(\emptyset) = -1$: Player 2's backward induction strategy guarantees a win.
+- $v(\emptyset) = 0$: Each player's backward induction strategy guarantees at least a draw.
+
+The strategies are well-defined because perfect information ensures every information set is a singleton — there is no ambiguity about which node is reached, so strategy selection at every node is unambiguous.
+
+This establishes the existence of the three-way trichotomy claimed by the theorem. $\blacksquare$
+:::
+
+
+::: {.callout-caution icon=false}
+## Remark
+Zermelo's theorem applies to chess, checkers, and Go: each game has a determined outcome under optimal play. However, the theorem is non-constructive — it does not tell us which player wins chess, only that the game is determined. The practical computational challenge of finding the optimal strategy is entirely separate from the existence proof.
+:::
+
+
+## Examples
+
+::: {.callout-note icon=false appearance="simple"}
+## Example 5.4.1 — The Centipede Game
+Players 1 and 2 alternate moving for $T$ rounds. At each round $t$, the current player can either:
+- **Stop ($S$):** game ends; payoffs determined by the current "pot"
+- **Continue ($C$):** pot grows; other player moves next
+
+Payoffs at round $t$ (if stopped): mover gets $2^t$, other gets $2^{t-1}$. At round $T$, both get $2^T$ if player 2 continues.
+
+**Backward induction:** At round $T$, Player 2 stops (gets $2^T > 2^{T-1}$). Anticipating this, at round $T-1$, Player 1 stops (gets $2^{T-1} > $ payoff from continuing given Player 2 will stop). Iterating back to round 1, Player 1 stops immediately.
+
+**Paradox:** The backward induction equilibrium gives Player 1 payoff $2$ and Player 2 payoff $1$, whereas continuing to round $T$ gives both payoffs of order $2^T$. This extreme inefficiency challenges the rationality assumptions underlying backward induction — it requires Player 1 to believe Player 2 is rational, to believe Player 2 believes Player 1 is rational, and so on, even as player 1 contemplates deviating in round 1 from what appears to be the rational plan.
+:::
+
+
+::: {.callout-note icon=false appearance="simple"}
+## Example 5.4.2 — Stackelberg Game as Extensive Form
+Player 1 (leader) chooses output $q_1 \geq 0$; Player 2 (follower) observes $q_1$ and chooses $q_2 \geq 0$.
+
+**Information sets:** Player 2 has one information set for each value of $q_1$ (perfect information — a continuum of information sets). Player 2's strategy is a function $s_2: \mathbb{R}_+ \to \mathbb{R}_+$ mapping observed $q_1$ to response $q_2$.
+
+**Normal form reduction:** Player 1 has strategies $q_1 \in \mathbb{R}_+$; Player 2 has strategies that are functions $s_2(\cdot)$. The Nash equilibrium concept applies to the normal form but does not eliminate non-credible threats — SPE is needed.
+
+The SPE outcome (backward induction): Player 2 best-responds $q_2^*(q_1)$ for each $q_1$; Player 1 anticipates this and chooses $q_1^*$ to maximize profit given the function $q_2^*(q_1)$. The SPE involves a first-mover advantage, yielding higher profit to Player 1 than the Cournot (simultaneous) NE.
+:::
+
+
+## Economic Intuition
+
+**Why strategies, not just actions?** In applying equilibrium concepts to extensive form games, we must specify what players would do at *every* contingency, even those not reached in equilibrium. This is because the credibility of threats and promises depends on what a player would actually do off the equilibrium path. A monopolist threatening to fight entry is a threat about a contingency (entry occurs) that may not happen in equilibrium — but the would-be entrant must assess whether the threat is credible. This requires knowing the monopolist's strategy (complete contingent plan), not just their equilibrium action (no fight because entry doesn't happen).
+
+**Information sets and strategic complexity.** The size of the strategy space grows exponentially in the number of information sets: if player $i$ has $K$ information sets and $m$ actions at each, there are $m^K$ pure strategies. This is why extensive form games are typically analyzed using behavioral strategies (specification of mixing at each information set), which grow only linearly in $K$.
+
+## Cross-References
+
+- [5.2 Nash Equilibrium](5.2_Nash_Equilibrium.qmd) — NE applies to the normal form reduction of the extensive form
+- [5.5 Subgame Perfect Equilibrium](5.5_Subgame_Perfect_Equilibrium.qmd) — SPE refines NE using the subgame structure
+- [5.6 Repeated Games](5.6_Repeated_Games.qmd) — Repeated games are a special extensive form with independent stage games

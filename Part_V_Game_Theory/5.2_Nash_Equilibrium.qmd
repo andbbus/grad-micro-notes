@@ -1,0 +1,169 @@
+---
+title: "5.2 Nash Equilibrium"
+---
+
+# 5.2 Nash Equilibrium
+
+> **MWG Reference:** Ch. 8, §8.D, pp. 246–260
+
+## Context
+
+Nash equilibrium (Nash 1950) is the central solution concept of non-cooperative game theory. It requires that each player's strategy is a best response to the strategies of all other players — a condition of **mutual best response**. This is the natural stability condition: in a Nash equilibrium, no player has a unilateral incentive to deviate. The deep mathematical question is whether such a fixed point of the best-response correspondence always exists. Nash's answer — yes, in finite games if we allow mixed strategies — follows from Kakutani's fixed point theorem and is the primary existence result in all of game theory.
+
+## Definitions
+
+::: {.callout-note icon=false}
+## Definition 5.2.1 — Best Response Correspondence
+Given a normal form game $\Gamma = (I, (S_i), (u_i))$, the **best response correspondence** of player $i$ is
+$$B_i(s_{-i}) = \arg\max_{s_i \in S_i} u_i(s_i, s_{-i}) = \{s_i \in S_i : u_i(s_i, s_{-i}) \geq u_i(s_i', s_{-i})\; \forall s_i' \in S_i\}.$$
+This is a correspondence $B_i: S_{-i} \rightrightarrows S_i$; it may be multi-valued.
+:::
+
+
+::: {.callout-note icon=false}
+## Definition 5.2.2 — Nash Equilibrium (Nash 1950)
+A strategy profile $s^* = (s_1^*, \ldots, s_n^*) \in S$ is a **Nash equilibrium (NE)** if, for every player $i \in I$:
+$$s_i^* \in B_i(s_{-i}^*),$$
+or equivalently,
+$$u_i(s_i^*, s_{-i}^*) \geq u_i(s_i, s_{-i}^*) \quad \text{for all } s_i \in S_i \text{ and all } i \in I.$$
+Each player is best-responding to the equilibrium strategies of all other players.
+:::
+
+
+::: {.callout-caution icon=false}
+## Remark
+A Nash equilibrium is a **fixed point** of the joint best-response correspondence $B: S \rightrightarrows S$ defined by $B(s) = \prod_{i \in I} B_i(s_{-i})$. The existence problem is precisely: does $B$ have a fixed point?
+:::
+
+
+::: {.callout-note icon=false}
+## Definition 5.2.3 — Mixed Extension
+The **mixed extension** of $\Gamma$ is the game $\hat{\Gamma} = (I, (\Delta(S_i)), (\hat{u}_i))$ where $\Delta(S_i)$ is the set of probability distributions over $S_i$ and
+$$\hat{u}_i(\sigma) = \sum_{s \in S} \left(\prod_{j \in I} \sigma_j(s_j)\right) u_i(s)$$
+is the expected payoff under mixed strategy profile $\sigma = (\sigma_1, \ldots, \sigma_n)$.
+:::
+
+
+## Main Results
+
+::: {.callout-important icon=false}
+## Theorem 5.2.1 — Nash Existence Theorem (Theorem 8.D.3 in MWG)
+Every finite normal form game $\Gamma = (I, (S_i)_{i \in I}, (u_i)_{i \in I})$ has at least one Nash equilibrium in mixed strategies.
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+We apply Kakutani's fixed point theorem (see [1.4 Fixed Point Theorems](1.4_Fixed_Point_Theorems.qmd)) to the joint best-response correspondence of the mixed extension.
+
+**Step 1: Define the domain.** Let $\Delta_i = \Delta(S_i)$ be the set of mixed strategies for player $i$. Since $S_i$ is finite with $|S_i| = m_i$, $\Delta_i$ is the standard $(m_i - 1)$-simplex in $\mathbb{R}^{m_i}$. The joint strategy space is
+$$\Delta = \prod_{i \in I} \Delta_i \subset \mathbb{R}^{\sum_i m_i}.$$
+$\Delta$ is **nonempty** (contains the uniform distribution), **compact** (closed and bounded in finite-dimensional space), and **convex** (product of convex sets).
+
+**Step 2: Define the best-response correspondence.** For each player $i$, define
+$$\beta_i(\sigma_{-i}) = \arg\max_{\sigma_i \in \Delta_i} \hat{u}_i(\sigma_i, \sigma_{-i}) \subseteq \Delta_i.$$
+Define the joint correspondence $\beta: \Delta \rightrightarrows \Delta$ by $\beta(\sigma) = \prod_{i \in I} \beta_i(\sigma_{-i})$.
+
+**Step 3: $\beta$ has nonempty, convex values.** Since $S_i$ is finite, $\hat{u}_i(\sigma_i, \sigma_{-i})$ is linear (hence continuous) in $\sigma_i$, and $\Delta_i$ is compact. By the Weierstrass theorem, $\beta_i(\sigma_{-i})$ is nonempty for every $\sigma_{-i}$. Furthermore, $\hat{u}_i$ is linear in $\sigma_i$, so the set of maximizers is a convex subset of $\Delta_i$ (it is an intersection of a linear function's preimage with a simplex). Hence $\beta_i(\sigma_{-i})$ is convex, and so is $\beta(\sigma) = \prod_i \beta_i(\sigma_{-i})$.
+
+**Step 4: $\beta$ is upper hemicontinuous (UHC).** We use the closed graph characterization. Let $\sigma^n \to \sigma$ in $\Delta$ and $\tau^n \to \tau$ with $\tau^n \in \beta(\sigma^n)$ for all $n$. We must show $\tau \in \beta(\sigma)$.
+
+Since $\tau_i^n \in \beta_i(\sigma_{-i}^n)$, we have $\hat{u}_i(\tau_i^n, \sigma_{-i}^n) \geq \hat{u}_i(\rho_i, \sigma_{-i}^n)$ for all $\rho_i \in \Delta_i$.
+
+Taking limits (using continuity of $\hat{u}_i$, which is a multilinear polynomial, hence continuous):
+$$\hat{u}_i(\tau_i, \sigma_{-i}) \geq \hat{u}_i(\rho_i, \sigma_{-i}) \quad \forall \rho_i \in \Delta_i.$$
+Therefore $\tau_i \in \beta_i(\sigma_{-i})$, and $\tau \in \beta(\sigma)$. Thus $\beta$ has a closed graph, which (since $\Delta$ is compact) is equivalent to upper hemicontinuity.
+
+**Step 5: Apply Kakutani.** The correspondence $\beta: \Delta \rightrightarrows \Delta$ satisfies all conditions of Kakutani's fixed point theorem:
+- $\Delta$ is compact, convex, and nonempty
+- $\beta$ has nonempty, convex values
+- $\beta$ is UHC
+
+Therefore there exists $\sigma^* \in \Delta$ such that $\sigma^* \in \beta(\sigma^*)$, i.e., $\sigma_i^* \in \beta_i(\sigma_{-i}^*)$ for all $i$. This is precisely a Nash equilibrium in mixed strategies. $\blacksquare$
+:::
+
+
+::: {.callout-important icon=false}
+## Theorem 5.2.2 — Dominant Strategy Equilibria and NE
+If every player $i$ has a strictly dominant strategy $s_i^d$, then $s^d = (s_1^d, \ldots, s_n^d)$ is the **unique** Nash equilibrium.
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+First, $s^d$ is a NE: $s_i^d$ strictly dominates all $s_i \neq s_i^d$, so in particular $u_i(s_i^d, s_{-i}^d) > u_i(s_i, s_{-i}^d)$ for all $s_i \neq s_i^d$. Therefore $s_i^d \in B_i(s_{-i}^d)$ for all $i$, making $s^d$ a NE.
+
+Second, uniqueness: suppose $s^*$ is any NE. Then $s_i^* \in B_i(s_{-i}^*)$, which requires $u_i(s_i^*, s_{-i}^*) \geq u_i(s_i, s_{-i}^*)$ for all $s_i$. But $s_i^d$ strictly dominates $s_i^*$ (if $s_i^* \neq s_i^d$), yielding $u_i(s_i^d, s_{-i}^*) > u_i(s_i^*, s_{-i}^*)$, a contradiction. Therefore $s_i^* = s_i^d$ for all $i$. $\blacksquare$
+:::
+
+
+::: {.callout-important icon=false}
+## Theorem 5.2.3 — NE Survives IESDS
+If $s^*$ is a Nash equilibrium and $S^\infty$ is the IESDS outcome, then $s^* \in S^\infty$.
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+We show by induction on the elimination round $k$ that $s_i^* \in S_i^k$ for all $i$ and all $k$.
+
+**Base case ($k=0$):** $S^0 = S$, so trivially $s_i^* \in S_i^0$.
+
+**Inductive step:** Suppose $s_i^* \in S_i^{k-1}$ for all $i$. Suppose for contradiction that $s_i^*$ is eliminated at round $k$, i.e., there exists $s_i' \in S_i^{k-1}$ such that $u_i(s_i', s_{-i}) > u_i(s_i^*, s_{-i})$ for all $s_{-i} \in S_{-i}^{k-1}$.
+
+By the inductive hypothesis, $s_{-i}^* \in S_{-i}^{k-1}$. Therefore $u_i(s_i', s_{-i}^*) > u_i(s_i^*, s_{-i}^*)$, contradicting $s_i^* \in B_i(s_{-i}^*)$.
+
+Therefore $s_i^* \in S_i^k$ for all $k$, so $s^* \in S^\infty$. $\blacksquare$
+:::
+
+
+## Properties of Nash Equilibrium
+
+**Failure of uniqueness.** NE need not be unique. Coordination games have two pure NE; Battle of the Sexes has two pure NE plus one mixed NE. Non-uniqueness is the rule, not the exception, in economics applications.
+
+**Failure of Pareto optimality.** The Prisoner's Dilemma has a unique NE that is Pareto dominated. This reflects the fundamental insight that individual rationality does not imply collective efficiency. Market failures (externalities, public goods) are essentially NE phenomena where the NE outcome fails the Pareto criterion.
+
+**NE as self-enforcing agreement.** If players could meet before the game to agree on strategies, the only agreements that would actually be honored (without enforcement) are Nash equilibria: if $s^*$ is not a NE, some player would prefer to deviate unilaterally.
+
+**NE as steady state of learning.** If players repeatedly play the same game and adjust strategies toward best responses, any rest point of such adjustment dynamics must be a NE. This provides a dynamic justification for the static concept.
+
+**NE as consistent beliefs.** A NE can be interpreted as a situation where each player's belief about others' play exactly matches actual play. The epistemic conditions for NE are: rationality plus mutual correct beliefs. This is strictly stronger than common knowledge of rationality (which gives only rationalizability).
+
+## Example: Computing All Nash Equilibria
+
+::: {.callout-note icon=false appearance="simple"}
+## Example 5.2.1 — Complete NE Analysis of a 2×2 Game
+Consider the Battle of the Sexes:
+$$\begin{array}{c|cc} & O & F \\ \hline O & 2,1 & 0,0 \\ F & 0,0 & 1,2 \end{array}$$
+
+**Pure strategy NE:**
+- $(O,O)$: Player 1 gets 2, best response to $O$ is $O$ (since $2>0$). Player 2 gets 1, best response to $O$ is $O$ (since $1>0$). Both best-responding. **NE.**
+- $(F,F)$: Player 1 gets 1, best response to $F$ is $F$ (since $1>0$). Player 2 gets 2, best response to $F$ is $F$ (since $2>0$). **NE.**
+- $(O,F)$ and $(F,O)$: payoff 0 for both; either player can deviate to get positive payoff. **Not NE.**
+
+**Mixed strategy NE:**
+Let $\sigma_1 = (p, 1-p)$ and $\sigma_2 = (q, 1-q)$ where $p = \Pr_1(O)$ and $q = \Pr_2(O)$.
+
+For player 1 to mix, they must be indifferent:
+$$\hat{u}_1(O, \sigma_2) = 2q + 0(1-q) = 2q$$
+$$\hat{u}_1(F, \sigma_2) = 0 \cdot q + 1(1-q) = 1-q$$
+Indifference: $2q = 1-q \Rightarrow q = 1/3$.
+
+For player 2 to mix, they must be indifferent:
+$$\hat{u}_2(\sigma_1, O) = 1 \cdot p + 0 \cdot (1-p) = p$$
+$$\hat{u}_2(\sigma_1, F) = 0 \cdot p + 2(1-p) = 2-2p$$
+Indifference: $p = 2-2p \Rightarrow p = 2/3$.
+
+**Mixed NE:** $\sigma_1^* = (2/3, 1/3)$, $\sigma_2^* = (1/3, 2/3)$.
+
+Expected payoffs at mixed NE: $\hat{u}_1 = 2/3$, $\hat{u}_2 = 2/3$. Both players are worse off than at either pure NE — a characteristic feature of mixed NE in coordination-type games.
+:::
+
+
+## Cross-References
+
+- [5.1 Normal Form Games](5.1_Normal_Form_Games.qmd) — Rationalizability, IESDS, dominance; every NE is rationalizable
+- [5.3 Mixed Strategies](5.3_Mixed_Strategies.qmd) — Mixed strategy NE; indifference condition; purification
+- [5.5 Subgame Perfect Equilibrium](5.5_Subgame_Perfect_Equilibrium.qmd) — SPE refines NE for extensive form games
+- [5.7 Bayesian Games](5.7_Bayesian_Games.qmd) — BNE generalizes NE to incomplete information
+- [1.4 Fixed Point Theorems](1.4_Fixed_Point_Theorems.qmd) — Kakutani's theorem is the mathematical core of Nash existence

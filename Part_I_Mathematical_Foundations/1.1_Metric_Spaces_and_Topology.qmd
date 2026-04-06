@@ -1,0 +1,254 @@
+---
+title: "1.1 Metric Spaces and Topology"
+---
+
+# 1.1 Metric Spaces and Topology
+
+> **MWG Reference:** Mathematical Appendix, Sections M.A–M.C, M.F–M.G, pp. 940–951, 954–959
+
+## Context
+
+The purpose of this note is to establish the topological foundations on which all of microeconomic theory rests. The central concern is: under what conditions does an optimization problem have a solution? The answer, given by the Weierstrass Maximum Theorem, requires the domain to be compact and the objective function to be continuous. Understanding what these conditions mean, why they are needed, and how to verify them in economic applications is the primary goal of this note. The note proceeds from metric spaces through open and closed sets, convergence, compactness (with the Heine-Borel characterization), and continuity, culminating in the Weierstrass theorem and its economic applications. Convex sets are introduced at the end because convexity of budget sets and production sets is a standing assumption throughout the program; the relationship between compactness and convexity also matters for the fixed-point theorems in Note 1.4.
+
+---
+
+## Definitions
+
+::: {.callout-note icon=false}
+## Definition 1.1 — Metric Space
+A **metric space** is a pair $(X, d)$ where $X$ is a nonempty set and $d: X \times X \to \mathbb{R}_+$ is a **metric** (distance function) satisfying, for all $x, y, z \in X$:
+1. **(Nonnegativity)** $d(x, y) \geq 0$, with $d(x, y) = 0$ if and only if $x = y$.
+2. **(Symmetry)** $d(x, y) = d(y, x)$.
+3. **(Triangle inequality)** $d(x, z) \leq d(x, y) + d(y, z)$.
+:::
+
+
+::: {.callout-caution icon=false}
+## Remark
+The canonical example throughout this program is $(\mathbb{R}^L, d_E)$ with the **Euclidean metric** $d_E(x, y) = \|x - y\| = \left(\sum_{\ell=1}^L (x_\ell - y_\ell)^2\right)^{1/2}$. This metric generates the standard topology on $\mathbb{R}^L$ that underlies all of consumer and producer theory. Other metrics on $\mathbb{R}^L$ (e.g., the sup-norm $d_\infty(x,y) = \max_\ell |x_\ell - y_\ell|$) generate the same topology (they are equivalent), so topological properties such as compactness and continuity are unaffected by the choice among them.
+:::
+
+
+::: {.callout-note icon=false}
+## Definition 1.2 — Open and Closed Balls
+Let $(X, d)$ be a metric space, $x \in X$, and $\varepsilon > 0$. The **open ball** of radius $\varepsilon$ centered at $x$ is:
+$$B_\varepsilon(x) = \{ y \in X : d(x, y) < \varepsilon \}.$$
+The **closed ball** is $\bar{B}_\varepsilon(x) = \{ y \in X : d(x, y) \leq \varepsilon \}$.
+:::
+
+
+::: {.callout-note icon=false}
+## Definition 1.3 — Open Sets and Closed Sets
+Let $(X, d)$ be a metric space.
+- A set $U \subseteq X$ is **open** if for every $x \in U$ there exists $\varepsilon > 0$ such that $B_\varepsilon(x) \subseteq U$.
+- A set $F \subseteq X$ is **closed** if its complement $X \setminus F$ is open; equivalently, $F$ contains all its limit points (see Definition 1.4).
+- The **interior** of $A \subseteq X$ is $\text{int}(A) = \bigcup \{U \subseteq A : U \text{ open}\}$.
+- The **closure** of $A$ is $\bar{A} = \bigcap \{F \supseteq A : F \text{ closed}\}$.
+- The **boundary** of $A$ is $\partial A = \bar{A} \setminus \text{int}(A)$.
+:::
+
+
+::: {.callout-caution icon=false}
+## Remark
+In $\mathbb{R}^L$: the open orthant $\mathbb{R}^L_{++} = \{x : x_\ell > 0 \; \forall \ell\}$ is open; the closed orthant $\mathbb{R}^L_+ = \{x : x_\ell \geq 0 \; \forall \ell\}$ is closed. The budget set $\{x \in \mathbb{R}^L_+ : p \cdot x \leq w\}$ is closed (and, as we shall see, bounded, hence compact). The strict budget set $\{x \in \mathbb{R}^L_+ : p \cdot x < w\}$ is not closed.
+:::
+
+
+::: {.callout-note icon=false}
+## Definition 1.4 — Convergence and Limit Points
+Let $(X, d)$ be a metric space. A sequence $(x_n)_{n=1}^\infty$ in $X$ **converges** to $x \in X$, written $x_n \to x$, if:
+$$\forall \varepsilon > 0, \; \exists N \in \mathbb{N} \text{ such that } n \geq N \implies d(x_n, x) < \varepsilon.$$
+The point $x$ is called the **limit** of the sequence. A point $x \in X$ is a **limit point** (or accumulation point) of $A \subseteq X$ if every open ball $B_\varepsilon(x)$ contains a point of $A$ different from $x$.
+:::
+
+
+::: {.callout-note icon=false}
+## Definition 1.5 — Cauchy Sequence and Completeness
+A sequence $(x_n)$ in $(X, d)$ is a **Cauchy sequence** if:
+$$\forall \varepsilon > 0, \; \exists N \in \mathbb{N} \text{ such that } m, n \geq N \implies d(x_m, x_n) < \varepsilon.$$
+A metric space $(X, d)$ is **complete** if every Cauchy sequence in $X$ converges to a point in $X$.
+:::
+
+
+::: {.callout-caution icon=false}
+## Remark
+$(\mathbb{R}^L, d_E)$ is complete (this follows from the completeness of $\mathbb{R}$, which in turn follows from the least upper bound property). Closed subsets of complete metric spaces are complete. This fact is used implicitly whenever we work with closed constraint sets.
+:::
+
+
+::: {.callout-note icon=false}
+## Definition 1.6 — Compactness
+A subset $K \subseteq X$ is **compact** if every open cover of $K$ has a finite subcover. That is, $K$ is compact if for every collection of open sets $\{U_\alpha\}_{\alpha \in \mathcal{A}}$ with $K \subseteq \bigcup_\alpha U_\alpha$, there exist finitely many indices $\alpha_1, \ldots, \alpha_n$ such that $K \subseteq U_{\alpha_1} \cup \cdots \cup U_{\alpha_n}$.
+:::
+
+
+::: {.callout-note icon=false}
+## Definition 1.7 — Sequential Compactness
+A subset $K \subseteq X$ is **sequentially compact** if every sequence in $K$ has a subsequence that converges to a point in $K$.
+:::
+
+
+::: {.callout-note icon=false}
+## Definition 1.8 — Continuity
+Let $(X, d_X)$ and $(Y, d_Y)$ be metric spaces. A function $f: X \to Y$ is **continuous at $x \in X$** if:
+$$\forall \varepsilon > 0, \; \exists \delta > 0 \text{ such that } d_X(x, x') < \delta \implies d_Y(f(x), f(x')) < \varepsilon.$$
+The function $f$ is **continuous** (on $X$) if it is continuous at every $x \in X$.
+:::
+
+
+::: {.callout-note icon=false}
+## Definition 1.9 — Convex Set
+A set $C \subseteq \mathbb{R}^L$ is **convex** if for all $x, y \in C$ and all $\lambda \in [0, 1]$:
+$$\lambda x + (1 - \lambda) y \in C.$$
+A **convex combination** of points $x^1, \ldots, x^K \in \mathbb{R}^L$ is any point $\sum_{k=1}^K \lambda_k x^k$ with $\lambda_k \geq 0$ and $\sum_k \lambda_k = 1$. The **convex hull** of a set $A$ is the smallest convex set containing $A$: $\text{co}(A) = \bigcap \{C \supseteq A : C \text{ convex}\}$.
+:::
+
+
+---
+
+## Main Results
+
+::: {.callout-important icon=false}
+## Theorem 1.1 — Heine-Borel Theorem
+A subset $K \subseteq \mathbb{R}^L$ (with the Euclidean metric) is compact if and only if it is **closed and bounded**.
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+We prove both directions.
+
+**($\Rightarrow$) Compact implies closed and bounded.**
+
+*Closed:* Let $(x_n)$ be any sequence in $K$ converging to some $x \in \mathbb{R}^L$. We must show $x \in K$. Since $x_n \to x$, for every $\varepsilon > 0$ there exists $N$ such that $n \geq N$ implies $x_n \in B_\varepsilon(x)$. In particular, $B_\varepsilon(x)$ intersects $K$ for every $\varepsilon > 0$, so $x$ is a limit point of $K$. In a compact Hausdorff space (and metric spaces are Hausdorff), compact sets are closed. More directly: suppose $x \notin K$. Then for each $y \in K$, let $\varepsilon_y = d(x, y)/2 > 0$. The balls $\{B_{\varepsilon_y}(y)\}_{y \in K}$ cover $K$, so by compactness there is a finite subcover: $K \subseteq B_{\varepsilon_{y_1}}(y_1) \cup \cdots \cup B_{\varepsilon_{y_n}}(y_n)$. Let $\delta = \min_i \varepsilon_{y_i} > 0$. Then $B_\delta(x)$ is disjoint from $K$ (by the triangle inequality), contradicting that $x$ is a limit point. So $x \in K$.
+
+*Bounded:* Cover $K$ by the open balls $\{B_1(y)\}_{y \in K}$. By compactness, a finite subcollection $B_1(y_1), \ldots, B_1(y_n)$ covers $K$. Let $M = \max_i \|y_i\| + 1$. Then every $x \in K$ satisfies $\|x\| \leq \max_i \|x - y_i\| + \|y_i\| < 1 + \max_i \|y_i\| = M$. So $K$ is bounded.
+
+**($\Leftarrow$) Closed and bounded implies compact.**
+
+Since $K$ is bounded, $K \subseteq [-M, M]^L$ for some $M > 0$. It suffices to show $[-M,M]^L$ is compact (then $K$, being a closed subset of a compact set, is compact). We use the **sequential characterization**: in a metric space, compactness and sequential compactness are equivalent (this is a standard result in analysis; proof omitted here but available in Rudin Ch. 3).
+
+Let $(x_n)$ be any sequence in $[-M, M]^L$. Since each coordinate sequence $(x_{n,\ell})$ is bounded in $\mathbb{R}$, by the Bolzano-Weierstrass theorem (every bounded sequence in $\mathbb{R}$ has a convergent subsequence), we can extract a convergent subsequence for coordinate 1. From that subsequence, extract a further subsequence converging in coordinate 2. Iterate for all $L$ coordinates. The resulting subsequence $(x_{n_k})$ converges in all $L$ coordinates, hence converges in $\mathbb{R}^L$. Its limit lies in $[-M, M]^L$ (since each coordinate limit lies in $[-M, M]$). Since $K$ is closed and $(x_{n_k}) \subseteq K$ converges to a point in $[-M,M]^L$, that limit point also lies in $K$. Thus every sequence in $K$ has a subsequence converging in $K$, so $K$ is sequentially compact, hence compact. $\blacksquare$
+:::
+
+
+::: {.callout-caution icon=false}
+## Remark
+The Heine-Borel theorem is specific to $\mathbb{R}^L$ (finite-dimensional Euclidean space). In infinite-dimensional spaces (e.g., the space of continuous functions $C([0,1])$ with the sup-norm), closed and bounded sets are not in general compact. This distinction matters for dynamic models or models with infinite commodity spaces.
+:::
+
+
+::: {.callout-important icon=false}
+## Theorem 1.2 — Equivalence of Compactness and Sequential Compactness (Metric Spaces)
+In any metric space $(X, d)$, a set $K \subseteq X$ is compact if and only if it is sequentially compact.
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+This is a standard result. The proof that compact implies sequentially compact proceeds by contradiction: if a sequence had no convergent subsequence, one constructs an open cover with no finite subcover. The converse uses the totality of metric spaces (existence of $\varepsilon$-nets). We refer to Rudin (1976, Theorem 3.16) for the complete proof and use the result freely throughout this program. $\blacksquare$
+:::
+
+
+::: {.callout-important icon=false}
+## Theorem 1.3 — Continuity Preserves Compactness
+Let $f: X \to Y$ be continuous and $K \subseteq X$ compact. Then $f(K) = \{f(x) : x \in K\}$ is compact in $Y$.
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+Let $\{V_\alpha\}$ be an open cover of $f(K)$. Since $f$ is continuous, $f^{-1}(V_\alpha)$ is open in $X$ for each $\alpha$, and $\{f^{-1}(V_\alpha)\}$ covers $K$. By compactness of $K$, a finite subcollection $f^{-1}(V_{\alpha_1}), \ldots, f^{-1}(V_{\alpha_n})$ covers $K$. Then $V_{\alpha_1}, \ldots, V_{\alpha_n}$ covers $f(K)$. $\blacksquare$
+:::
+
+
+::: {.callout-important icon=false}
+## Theorem 1.4 — Sequential Characterization of Continuity
+A function $f: X \to Y$ between metric spaces is continuous at $x \in X$ if and only if for every sequence $x_n \to x$ in $X$, $f(x_n) \to f(x)$ in $Y$.
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+**($\Rightarrow$)** Suppose $f$ is continuous at $x$ and $x_n \to x$. Given $\varepsilon > 0$, continuity gives $\delta > 0$ with $d_X(x', x) < \delta \implies d_Y(f(x'), f(x)) < \varepsilon$. Since $x_n \to x$, there exists $N$ with $n \geq N \implies d_X(x_n, x) < \delta$, hence $d_Y(f(x_n), f(x)) < \varepsilon$.
+
+**($\Leftarrow$)** Suppose $f$ is not continuous at $x$. Then $\exists \varepsilon > 0$ such that for every $\delta > 0$, $\exists x' \in X$ with $d_X(x', x) < \delta$ but $d_Y(f(x'), f(x)) \geq \varepsilon$. Taking $\delta = 1/n$ gives a sequence $x_n$ with $d_X(x_n, x) < 1/n$ (so $x_n \to x$) but $d_Y(f(x_n), f(x)) \geq \varepsilon$ for all $n$. Thus $f(x_n) \not\to f(x)$. $\blacksquare$
+:::
+
+
+::: {.callout-important icon=false}
+## Theorem 1.5 — Weierstrass Maximum Theorem (Proposition M.F.2)
+Let $X \subseteq \mathbb{R}^L$ be nonempty and compact, and let $f: X \to \mathbb{R}$ be continuous. Then:
+1. $f$ is bounded above and below on $X$.
+2. $f$ attains its maximum: $\exists x^* \in X$ such that $f(x^*) = \sup_{x \in X} f(x)$.
+3. $f$ attains its minimum: $\exists x_* \in X$ such that $f(x_*) = \inf_{x \in X} f(x)$.
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+**Step 1: $f(X)$ is compact.**
+By Theorem 1.3 (continuity preserves compactness), since $X$ is compact and $f$ is continuous, $f(X) \subseteq \mathbb{R}$ is compact. By Heine-Borel (Theorem 1.1), $f(X)$ is closed and bounded.
+
+**Step 2: $\sup f(X)$ is finite and belongs to $f(X)$.**
+Since $f(X)$ is bounded above, $M = \sup f(X) \in \mathbb{R}$ (the supremum is finite). We claim $M \in f(X)$. By definition of supremum, for each $n \in \mathbb{N}$ there exists $y_n \in f(X)$ with $M - 1/n < y_n \leq M$, so $y_n \to M$. Since $f(X)$ is closed and $(y_n)$ is a sequence in $f(X)$ converging to $M$, we have $M \in f(X)$.
+
+**Step 3: Maximum is attained.**
+Since $M \in f(X)$, there exists $x^* \in X$ with $f(x^*) = M = \sup_{x \in X} f(x)$. So $f(x^*) \geq f(x)$ for all $x \in X$: $x^*$ is a maximizer.
+
+**Step 4: Minimum.**
+Apply the same argument to $-f$, which is also continuous. Its maximum on $X$ is $-\inf_{x \in X} f(x)$, which is attained at some $x_* \in X$. Then $f(x_*) = \inf_{x \in X} f(x)$. $\blacksquare$
+:::
+
+
+::: {.callout-caution icon=false}
+## Remark
+All three hypotheses are necessary:
+- **Nonemptiness:** Obvious.
+- **Compactness (closed):** $f(x) = x$ on $(0, 1)$ (open): supremum is $1$, not attained. More economically, a consumer facing an open budget set $\{x : p \cdot x < w\}$ may not have an optimal choice.
+- **Compactness (bounded):** $f(x) = x$ on $[0, \infty)$: no maximum.
+- **Continuity:** $f(x) = 0$ for $x < 1$, $f(1) = -1$ on $[0,1]$: supremum is $0$, not attained.
+:::
+
+
+::: {.callout-important icon=false}
+## Theorem 1.6 — Properties of Convex Sets
+Let $C, D \subseteq \mathbb{R}^L$ be convex. Then:
+1. $C \cap D$ is convex.
+2. $C + D = \{x + y : x \in C, y \in D\}$ (Minkowski sum) is convex.
+3. $\lambda C = \{\lambda x : x \in C\}$ is convex for any $\lambda \in \mathbb{R}$.
+4. The closure $\bar{C}$ of a convex set is convex.
+5. If $C$ is convex and $f: \mathbb{R}^L \to \mathbb{R}$ is a linear function, then $f(C)$ is a convex subset of $\mathbb{R}$.
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+Each part follows directly from the definition of convexity. We prove (1) as representative. Let $x, y \in C \cap D$ and $\lambda \in [0,1]$. Since $C$ is convex and $x, y \in C$: $\lambda x + (1-\lambda)y \in C$. Since $D$ is convex and $x, y \in D$: $\lambda x + (1-\lambda)y \in D$. Hence $\lambda x + (1-\lambda)y \in C \cap D$. $\blacksquare$
+:::
+
+
+---
+
+## Economic Intuition
+
+**Why compactness is needed in consumer theory.** The consumer's problem is to maximize a continuous utility function $u: \mathbb{R}^L_+ \to \mathbb{R}$ subject to the budget constraint $p \cdot x \leq w$, $x \geq 0$. The budget set $B(p, w) = \{x \in \mathbb{R}^L_+ : p \cdot x \leq w\}$ is closed (as the intersection of closed half-spaces) and bounded (since $x_\ell \leq w/p_\ell$ for each $\ell$ when $p \gg 0$). By Heine-Borel, $B(p,w)$ is compact. By Weierstrass, the maximum of $u$ over $B(p,w)$ exists. Without boundedness (e.g., if $p_\ell = 0$ for some $\ell$, so the consumer can consume infinite amounts of good $\ell$ at zero cost), the budget set is unbounded and a solution may not exist. This is why the assumption $p \gg 0$ (all prices strictly positive) is maintained in basic consumer theory.
+
+**Why convexity is needed for uniqueness.** Compactness guarantees existence of a maximum, but not uniqueness. If the utility function is strictly quasi-concave (a convexity condition on preferences), then the set of maximizers is a singleton: the demand function $x(p,w)$ is single-valued. Without quasi-concavity, demand may be multi-valued (a correspondence), and comparative statics arguments become more delicate.
+
+**Why these conditions matter for model-building.** When building a new model, the first question to ask is: does each agent's optimization problem have a solution? The Weierstrass theorem provides a two-part checklist: (1) Is the constraint set compact? If not, add an assumption that makes it compact (e.g., bounded endowments, finite action space). (2) Is the objective function continuous? If not, identify the source of discontinuity (e.g., a jump in a pricing rule) and either smooth it or use a fixed-point argument directly. Models where existence of optimal choices is not guaranteed are not well-posed.
+
+::: {.callout-note icon=false appearance="simple"}
+## Example
+**Budget set compactness.** Let $L = 2$, $p = (1, 2)$, $w = 10$. Then $B(p,w) = \{(x_1, x_2) \in \mathbb{R}^2_+ : x_1 + 2x_2 \leq 10\}$. This is the triangle with vertices $(0,0)$, $(10,0)$, $(0,5)$. It is closed (it includes its boundary) and bounded (all points satisfy $x_1 \leq 10$, $x_2 \leq 5$). By Heine-Borel, it is compact. The utility function $u(x_1, x_2) = x_1^{1/2} x_2^{1/2}$ is continuous on $\mathbb{R}^2_+$. By Weierstrass, a utility-maximizing bundle exists. (It is $x^* = (5, 2.5)$ by the standard Cobb-Douglas formula.)
+:::
+
+
+---
+
+## Cross-References
+
+- [1.2 Correspondences and Hemicontinuity](1.2_Correspondences_and_Hemicontinuity.qmd) — Berge's Maximum Theorem extends Weierstrass to optimization over a correspondence; requires compactness and continuity developed here.
+- [1.3 Optimization Theory](1.3_Optimization_Theory.qmd) — Lagrangian and envelope theorem methods assume interior solutions or use the topology of the constraint set developed here.
+- [1.4 Fixed Point Theorems](1.4_Fixed_Point_Theorems.qmd) — Brouwer and Kakutani require the domain to be compact and convex; those properties are defined and studied here.
+- [Index](../Part_II_Consumer_Theory/Index.qmd) — Budget set compactness and utility continuity are the foundation of demand existence throughout Part II.

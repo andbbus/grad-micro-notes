@@ -1,0 +1,126 @@
+project:
+  type: book
+  output-dir: docs
+
+book:
+  title: "Graduate Microeconomic Theory"
+  subtitle: "From MWG Foundations to Empirical Model-Building"
+  author: "Andrea Busolo"
+  date: today
+  repo-url: https://github.com/andbbus/grad-micro-notes
+  repo-actions: [edit, issue]
+  search: true
+  navbar:
+    background: dark
+  sidebar:
+    style: docked
+  chapters:
+    - index.qmd
+    - part: "Part I — Mathematical Foundations"
+      chapters:
+        - Part_I_Mathematical_Foundations/index.qmd
+        - Part_I_Mathematical_Foundations/1.1_Metric_Spaces_and_Topology.qmd
+        - Part_I_Mathematical_Foundations/1.2_Correspondences_and_Hemicontinuity.qmd
+        - Part_I_Mathematical_Foundations/1.3_Optimization_Theory.qmd
+        - Part_I_Mathematical_Foundations/1.4_Fixed_Point_Theorems.qmd
+    - part: "Part II — Consumer Theory"
+      chapters:
+        - Part_II_Consumer_Theory/index.qmd
+        - Part_II_Consumer_Theory/2.1_Preference_Relations.qmd
+        - Part_II_Consumer_Theory/2.2_Utility_Representation.qmd
+        - Part_II_Consumer_Theory/2.3_Utility_Maximization_Problem.qmd
+        - Part_II_Consumer_Theory/2.4_Expenditure_Minimization.qmd
+        - Part_II_Consumer_Theory/2.5_Duality_and_Slutsky.qmd
+        - Part_II_Consumer_Theory/2.6_Revealed_Preference.qmd
+        - Part_II_Consumer_Theory/2.7_Integrability.qmd
+        - Part_II_Consumer_Theory/2.8_Aggregate_Demand.qmd
+        - Part_II_Consumer_Theory/PS_Consumer_Theory.qmd
+    - part: "Part III — Producer Theory"
+      chapters:
+        - Part_III_Producer_Theory/index.qmd
+        - Part_III_Producer_Theory/3.1_Production_Sets.qmd
+        - Part_III_Producer_Theory/3.2_Profit_Maximization.qmd
+        - Part_III_Producer_Theory/3.3_Cost_Minimization.qmd
+        - Part_III_Producer_Theory/3.4_Supply_and_Factor_Demands.qmd
+        - Part_III_Producer_Theory/PS_Producer_Theory.qmd
+    - part: "Part IV — Choice Under Uncertainty"
+      chapters:
+        - Part_IV_Choice_Under_Uncertainty/index.qmd
+        - Part_IV_Choice_Under_Uncertainty/4.1_State_Space_Framework.qmd
+        - Part_IV_Choice_Under_Uncertainty/4.2_Expected_Utility_Theory.qmd
+        - Part_IV_Choice_Under_Uncertainty/4.3_Risk_Aversion.qmd
+        - Part_IV_Choice_Under_Uncertainty/4.4_Stochastic_Dominance.qmd
+        - Part_IV_Choice_Under_Uncertainty/PS_Uncertainty.qmd
+    - part: "Part V — Game Theory"
+      chapters:
+        - Part_V_Game_Theory/index.qmd
+        - Part_V_Game_Theory/5.1_Normal_Form_Games.qmd
+        - Part_V_Game_Theory/5.2_Nash_Equilibrium.qmd
+        - Part_V_Game_Theory/5.3_Mixed_Strategies.qmd
+        - Part_V_Game_Theory/5.4_Extensive_Form_Games.qmd
+        - Part_V_Game_Theory/5.5_Subgame_Perfect_Equilibrium.qmd
+        - Part_V_Game_Theory/5.6_Repeated_Games.qmd
+        - Part_V_Game_Theory/5.7_Bayesian_Games.qmd
+        - Part_V_Game_Theory/PS_Game_Theory.qmd
+    - part: "Part VI — General Equilibrium"
+      chapters:
+        - Part_VI_General_Equilibrium/index.qmd
+        - Part_VI_General_Equilibrium/6.1_Exchange_Economies.qmd
+        - Part_VI_General_Equilibrium/6.2_Arrow_Debreu_Economy.qmd
+        - Part_VI_General_Equilibrium/6.3_Existence_of_Equilibrium.qmd
+        - Part_VI_General_Equilibrium/6.4_Welfare_Theorems.qmd
+        - Part_VI_General_Equilibrium/6.5_Externalities_and_Public_Goods.qmd
+        - Part_VI_General_Equilibrium/PS_General_Equilibrium.qmd
+    - part: "Part VII — Information and Incentives"
+      chapters:
+        - Part_VII_Information_and_Incentives/index.qmd
+        - Part_VII_Information_and_Incentives/7.1_Principal_Agent_Problem.qmd
+        - Part_VII_Information_and_Incentives/7.2_Moral_Hazard.qmd
+        - Part_VII_Information_and_Incentives/7.3_Adverse_Selection_and_Screening.qmd
+        - Part_VII_Information_and_Incentives/7.4_Signaling.qmd
+        - Part_VII_Information_and_Incentives/7.5_Mechanism_Design.qmd
+        - Part_VII_Information_and_Incentives/7.6_Prediction_Markets_and_Information_Aggregation.qmd
+        - Part_VII_Information_and_Incentives/PS_Information.qmd
+    - part: "Part VIII — Social Choice"
+      chapters:
+        - Part_VIII_Social_Choice/index.qmd
+        - Part_VIII_Social_Choice/8.1_Social_Welfare_Functions.qmd
+        - Part_VIII_Social_Choice/8.2_Arrows_Impossibility_Theorem.qmd
+        - Part_VIII_Social_Choice/8.3_Welfare_Criteria.qmd
+        - Part_VIII_Social_Choice/PS_Social_Choice.qmd
+    - part: "Part IX — Model Building for Empirics"
+      chapters:
+        - Part_IX_Model_Building_for_Empirics/index.qmd
+        - Part_IX_Model_Building_for_Empirics/9.1_Anatomy_of_a_Theoretical_Model.qmd
+        - Part_IX_Model_Building_for_Empirics/9.2_Equilibrium_Concepts_and_Selection.qmd
+        - Part_IX_Model_Building_for_Empirics/9.3_Comparative_Statics_Methodology.qmd
+        - Part_IX_Model_Building_for_Empirics/9.4_Deriving_Testable_Predictions.qmd
+        - Part_IX_Model_Building_for_Empirics/9.5_Structural_vs_Reduced_Form.qmd
+        - Part_IX_Model_Building_for_Empirics/9.6_Identification_in_Structural_Models.qmd
+        - Part_IX_Model_Building_for_Empirics/9.7_Model_Discipline_and_Tractability.qmd
+        - Part_IX_Model_Building_for_Empirics/APP_Conflict_and_Resource_Models.qmd
+        - Part_IX_Model_Building_for_Empirics/APP_Trade_and_Price_Shock_Models.qmd
+        - Part_IX_Model_Building_for_Empirics/APP_Prediction_Markets_and_Signals.qmd
+        - Part_IX_Model_Building_for_Empirics/PS_Model_Building.qmd
+
+format:
+  html:
+    theme:
+      - cosmo
+      - custom.scss
+    mainfont: "Source Serif 4"
+    monofont: "Fira Code"
+    fontsize: 1.05em
+    linestretch: 1.7
+    toc: true
+    toc-depth: 3
+    toc-title: "On this page"
+    number-sections: true
+    number-depth: 3
+    smooth-scroll: true
+    link-external-icon: true
+    link-external-newwindow: true
+    html-math-method: mathjax
+
+execute:
+  freeze: auto

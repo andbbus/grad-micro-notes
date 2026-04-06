@@ -1,0 +1,64 @@
+---
+title: "Part II — Consumer Theory: Index"
+---
+
+# Part II — Consumer Theory: Index
+
+> **MWG Reference:** Chapters 1–4, pp. 5–115
+
+## Overview
+
+Consumer theory provides the micro-foundations for demand, which is the backbone of most empirical structural models in industrial organization, trade, public finance, and macroeconomics. Beginning from primitive assumptions on preferences — orderings over consumption bundles — the theory derives demand functions that are coherent (internally consistent), testable (satisfying observable restrictions such as Slutsky symmetry), and welfare-relevant (supporting exact measures of welfare change via compensating and equivalent variation). At its core, consumer theory is an exercise in constrained optimization: a rational agent maximizes a utility function subject to a budget constraint, yielding Walrasian demand; dually, a cost-minimizing agent minimizes expenditure to reach a utility target, yielding Hicksian demand. The duality between these two problems — formalized through the Slutsky equation — is perhaps the single most productive piece of mathematical structure in all of microeconomics, linking the observable Walrasian demand system to the welfare-theoretically primitive Hicksian system. Extensions to revealed preference theory show that the theory is empirically meaningful (Afriat's theorem), while aggregation theory (Gorman) identifies the precise conditions under which heterogeneous consumers can be aggregated into a representative agent.
+
+## The Two Fundamental Problems and Their Duality
+
+**Utility Maximization Problem (UMP):**
+$$\max_{x \in \mathbb{R}^L_+} u(x) \quad \text{subject to} \quad p \cdot x \leq w$$
+Solution: Walrasian (Marshallian) demand $x(p,w)$; value function: indirect utility $v(p,w)$.
+
+**Expenditure Minimization Problem (EMP):**
+$$\min_{x \in \mathbb{R}^L_+} p \cdot x \quad \text{subject to} \quad u(x) \geq \bar{u}$$
+Solution: Hicksian (compensated) demand $h(p,\bar{u})$; value function: expenditure function $e(p,\bar{u})$.
+
+**Duality:** The two problems are dual to each other in the sense that:
+$$e(p, v(p,w)) = w, \qquad v(p, e(p,\bar{u})) = \bar{u}$$
+$$x(p,w) = h(p,v(p,w)), \qquad h(p,\bar{u}) = x(p, e(p,\bar{u}))$$
+
+These identities allow us to move freely between Walrasian and Hicksian objects, and underlie the Slutsky decomposition of price effects into substitution and income components.
+
+## Notes in This Part
+
+| Note | Title | Description |
+|------|-------|-------------|
+| [2.1 Preference Relations](2.1_Preference_Relations.qmd) | Preference Relations | Axioms on $\succsim$: completeness, transitivity, continuity, monotonicity, convexity; rationality |
+| [2.2 Utility Representation](2.2_Utility_Representation.qmd) | Utility Representation | Debreu representation theorem; ordinal utility; CES, Cobb-Douglas, homothetic, quasi-linear forms |
+| [2.3 Utility Maximization Problem](2.3_Utility_Maximization_Problem.qmd) | Utility Maximization Problem | UMP, Walrasian demand, KKT conditions, indirect utility, Roy's Identity |
+| [2.4 Expenditure Minimization](2.4_Expenditure_Minimization.qmd) | Expenditure Minimization | EMP, Hicksian demand, expenditure function, Shephard's Lemma |
+| [2.5 Duality and Slutsky](2.5_Duality_and_Slutsky.qmd) | Duality and the Slutsky Equation | Full duality relations, Slutsky decomposition, NSD of substitution matrix, CV/EV |
+| [2.6 Revealed Preference](2.6_Revealed_Preference.qmd) | Revealed Preference | WARP, SARP, Afriat's theorem, GARP, nonparametric rationality tests |
+| [2.7 Integrability](2.7_Integrability.qmd) | Integrability | Recovering preferences from demand; Hurwicz-Uzawa theorem; Frobenius conditions |
+| [2.8 Aggregate Demand](2.8_Aggregate_Demand.qmd) | Aggregate Demand and Gorman Aggregation | Representative consumer; Gorman polar form; SMD theorem |
+| [PS Consumer Theory](PS_Consumer_Theory.qmd) | Problem Set | Eight graduate-level problems covering all topics in Part II |
+
+## Key Results Summary
+
+**Walras' Law:** For any locally nonsatiated preference, $p \cdot x(p,w) = w$ for all $(p,w)$. The consumer always exhausts the budget.
+
+**Roy's Identity:** Given a differentiable indirect utility function $v(p,w)$:
+$$x_l(p,w) = -\frac{\partial v(p,w)/\partial p_l}{\partial v(p,w)/\partial w}$$
+This allows recovery of Walrasian demand from the indirect utility function.
+
+**Shephard's Lemma:** Given a differentiable expenditure function $e(p,\bar{u})$:
+$$h_l(p,\bar{u}) = \frac{\partial e(p,\bar{u})}{\partial p_l}$$
+This allows recovery of Hicksian demand from the expenditure function.
+
+**Slutsky Symmetry:** The matrix of compensated price effects $S_{lk} = \partial h_l / \partial p_k$ is symmetric and negative semidefinite. Symmetry is the key testable restriction on observed demand systems.
+
+**Gorman Aggregation:** Aggregate demand can be written as a function of aggregate wealth (independently of its distribution) if and only if all individual indirect utility functions take the Gorman polar form $v^i(p,w^i) = [w^i - a^i(p)]/b(p)$, implying linear Engel curves with common slopes $b(p)$.
+
+**Sonnenschein-Mantel-Debreu (SMD) Theorem:** When Gorman conditions fail, essentially any continuous function satisfying Walras' Law and homogeneity of degree zero can arise as aggregate excess demand. Aggregation imposes almost no restrictions beyond those individual demands already satisfy.
+
+## Cross-References
+- [1.1 Metric Spaces and Topology](1.1_Metric_Spaces_and_Topology.qmd) — Compactness, Weierstrass theorem, continuity
+- [1.2 Convex Analysis](1.2_Convex_Analysis.qmd) — Quasi-concavity, supporting hyperplane theorem, duality
+- [1.3 Optimization Theory](1.3_Optimization_Theory.qmd) — KKT conditions, envelope theorem, Berge maximum theorem

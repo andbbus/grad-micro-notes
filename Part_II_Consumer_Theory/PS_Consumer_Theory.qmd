@@ -1,0 +1,167 @@
+---
+title: "Problem Set — Part II: Consumer Theory"
+---
+
+# Problem Set — Part II: Consumer Theory
+
+> **Scope:** Chapters 1–4 of MWG; Notes [2.1 Preference Relations](2.1_Preference_Relations.qmd) through [2.8 Aggregate Demand](2.8_Aggregate_Demand.qmd)
+>
+> **Instructions:** Provide complete proofs and derivations. Where a result is claimed, every step must be justified with reference to relevant definitions, theorems, or standard results. Numerical answers without derivations receive no credit. Unless otherwise stated, assume $L = 2$ goods, prices $p = (p_1, p_2) \gg 0$, and wealth $w > 0$.
+
+---
+
+## Problem 1 — Properties of CES Utility
+
+Let $u: \mathbb{R}^2_+ \to \mathbb{R}$ be the CES utility function with two goods:
+$$u(x_1, x_2) = (x_1^\rho + x_2^\rho)^{1/\rho}, \qquad \rho \in (-\infty, 1), \rho \neq 0$$
+
+**(a)** Show that $u$ is homogeneous of degree one: $u(\lambda x) = \lambda u(x)$ for all $\lambda > 0$. Conclude that CES preferences are homothetic.
+
+**(b)** Compute $\partial u/\partial x_l$ and form the bordered Hessian of $u$. Use the bordered Hessian conditions to verify that $u$ is strictly quasi-concave for $\rho < 1$.
+
+**(c)** The elasticity of substitution between goods 1 and 2 (along an indifference curve) is defined as:
+$$\sigma = -\frac{d \ln(x_1/x_2)}{d \ln(\partial u/\partial x_2 \cdot / \cdot \partial u/\partial x_1)}\bigg|_{u = \text{const}}$$
+Show that $\sigma = 1/(1-\rho)$ for the CES utility function. Verify the limiting cases: as $\rho \to 0$, $\sigma \to 1$; as $\rho \to 1$, $\sigma \to \infty$; as $\rho \to -\infty$, $\sigma \to 0$.
+
+**(d)** Show that as $\rho \to 0$, $u(x_1, x_2)$ converges (up to a monotone transformation) to the Cobb-Douglas function $x_1^{1/2} x_2^{1/2}$. (Hint: take the logarithm of $u$ and apply L'Hopital's rule.)
+
+**(e)** Show that as $\rho \to -\infty$, $u(x_1, x_2) \to \min(x_1, x_2)$. (Hint: write $u = x_1 (1 + (x_2/x_1)^\rho)^{1/\rho}$ for $x_1, x_2 > 0$ and analyze the limit.)
+
+---
+
+## Problem 2 — Walrasian and Hicksian Demand for Cobb-Douglas
+
+Consider the Cobb-Douglas utility function $u(x_1, x_2) = x_1^\alpha x_2^{1-\alpha}$ for $\alpha \in (0,1)$.
+
+**(a) Walrasian demand:** Solve the UMP to derive the Walrasian demand functions:
+$$x_1(p, w) = \frac{\alpha w}{p_1}, \qquad x_2(p, w) = \frac{(1-\alpha) w}{p_2}$$
+Show your work using the Lagrangian and KKT conditions. Verify that the solution satisfies (i) Walras' Law, (ii) homogeneity of degree zero.
+
+**(b) Indirect utility:** Derive the indirect utility function $v(p,w)$. Verify that $v$ is (i) homogeneous of degree zero, (ii) decreasing in $p_l$, (iii) increasing in $w$.
+
+**(c) Expenditure function:** Use the result $v(p, e(p, \bar{u})) = \bar{u}$ and your expression for $v(p,w)$ to derive the expenditure function $e(p, \bar{u})$.
+
+**(d) Hicksian demand:** Apply Shephard's Lemma to $e(p, \bar{u})$ to derive $h_l(p, \bar{u})$ for $l = 1, 2$. Verify that $h_l(p, v(p,w)) = x_l(p,w)$ for each $l$ (confirming duality identity (3) from [2.5 Duality and Slutsky](2.5_Duality_and_Slutsky.qmd)).
+
+**(e)** Verify that the Hicksian demands satisfy:
+(i) homogeneity of degree zero in $p$;
+(ii) $h_l(p, \bar{u})$ is non-increasing in $p_l$ (own-price effect);
+(iii) $\partial h_1/\partial p_2 = \partial h_2/\partial p_1$ (symmetry of substitution effects).
+
+---
+
+## Problem 3 — Slutsky Symmetry Verification
+
+Consider the demand system for $L = 3$ goods:
+$$x_1(p,w) = \frac{w}{3p_1}, \qquad x_2(p,w) = \frac{w}{3p_2}, \qquad x_3(p,w) = \frac{w}{3p_3}$$
+
+**(a)** Verify Walras' Law: $\sum_l p_l x_l = w$.
+
+**(b)** Compute the full $3 \times 3$ Slutsky matrix $S$ with entries $S_{lk} = \partial x_l/\partial p_k + x_k \partial x_l/\partial w$.
+
+**(c)** Verify that $S$ is symmetric ($S_{lk} = S_{kl}$ for all $l \neq k$).
+
+**(d)** Verify that $S$ is negative semidefinite by computing the eigenvalues of $S$ or by checking the leading principal minors of $-S$.
+
+**(e)** Verify that $Sp = 0$ (i.e., the Slutsky matrix times the price vector is zero). Provide the economic interpretation of this property.
+
+**(f)** Identify the utility function that rationalizes this demand system. (Hint: apply the integrability procedure from [2.7 Integrability](2.7_Integrability.qmd).)
+
+---
+
+## Problem 4 — WARP and SARP Exercise
+
+An econometrician observes the following demand data for a consumer with $L = 2$ goods:
+
+| $t$ | $p_1^t$ | $p_2^t$ | $w^t$ | $x_1^t$ | $x_2^t$ |
+|-----|---------|---------|-------|---------|---------|
+| 1   | 1       | 2       | 6     | 4       | 1       |
+| 2   | 2       | 1       | 6     | 1       | 4       |
+| 3   | 1       | 1       | 4     | 2       | 2       |
+
+**(a)** For each ordered pair $(t, s)$ with $t \neq s$, compute $p^t \cdot x^s$ and determine whether $x^t \, R^0 \, x^s$ (i.e., whether bundle $x^s$ was affordable at observation $t$'s prices and wealth). Construct the direct revealed preference table.
+
+**(b)** Check whether the data satisfies WARP. For each pair where $x^t \, R^0 \, x^s$, verify that $\neg (x^s \, R^0 \, x^t)$.
+
+**(c)** Construct the full revealed preference relation $R$ (transitive closure of $R^0$). Does the data satisfy SARP?
+
+**(d)** Check whether the data satisfies GARP. Recall GARP: if $x^t \, R \, x^s$ (weakly revealed preferred), then $p^s \cdot x^t \geq w^s$.
+
+**(e)** If the data satisfies GARP, write down the Afriat inequalities $U^t \leq U^s + \lambda^s p^s \cdot (x^t - x^s)$ for all $t, s$ and find a feasible solution $\{U^t, \lambda^t\}$ with $\lambda^t > 0$.
+
+**(f)** Using the feasible $\{U^t, \lambda^t\}$ from (e), construct Afriat's rationalizing utility function $u(x) = \min_t \{U^t + \lambda^t p^t \cdot (x - x^t)\}$. Evaluate $u$ at each observed bundle $x^t$ and verify it rationalizes the data.
+
+---
+
+## Problem 5 — Envelope Theorem and Roy's Identity
+
+Let $u(x_1, x_2) = \min\{\alpha x_1, \beta x_2\}$ for $\alpha, \beta > 0$ (Leontief utility).
+
+**(a)** Explain why the utility function is not differentiable. Despite this, solve the UMP directly (without calculus) using the observation that at the optimum, $\alpha x_1^* = \beta x_2^*$. Derive:
+$$x_1(p,w) = \frac{\beta w}{\beta p_1 + \alpha p_2}, \qquad x_2(p,w) = \frac{\alpha w}{\beta p_1 + \alpha p_2}$$
+
+**(b)** Derive the indirect utility function $v(p,w)$.
+
+**(c)** Roy's Identity is typically derived using the envelope theorem for differentiable utility functions. Verify Roy's Identity directly for the Leontief case: compute $-(\partial v/\partial p_l)/(\partial v/\partial w)$ and check it equals $x_l(p,w)$ for $l = 1, 2$.
+
+**(d)** Now consider a smooth utility function $u(x_1, x_2)$ with $v(p,w)$ denoting its indirect utility. Provide a complete proof of Roy's Identity using the envelope theorem applied to the Lagrangian of the UMP. Be explicit about what the envelope theorem states and how it applies.
+
+**(e)** Derive the Hicksian demands $h_l(p, \bar{u})$ for the Leontief utility directly (without calculus). Verify Shephard's Lemma: $\partial e(p, \bar{u})/\partial p_l = h_l(p, \bar{u})$.
+
+---
+
+## Problem 6 — Gorman Aggregation Check
+
+Consider two consumers with the following indirect utility functions:
+$$v^1(p, w^1) = \frac{w^1 - p_1}{p_2}, \qquad v^2(p, w^2) = \frac{w^2 - 2p_1}{p_2}$$
+
+**(a)** Apply Roy's Identity to derive the Walrasian demand functions $x^i(p, w^i)$ for $i = 1, 2$.
+
+**(b)** Check whether these demands take the Gorman polar form: $x^i(p, w^i) = a^i(p) + b(p) w^i$. Identify $a^i(p)$ and $b(p)$ explicitly.
+
+**(c)** Verify that the slope $b(p)$ is the same for both consumers, confirming that the Gorman condition holds.
+
+**(d)** Derive the aggregate demand $X(p, W) = x^1(p, w^1) + x^2(p, w^2)$ as a function of $(p, W)$ where $W = w^1 + w^2$. Confirm that $X$ does not depend on the distribution $(w^1, w^2)$ separately.
+
+**(e)** Now suppose consumer 2's indirect utility is instead $v^2(p, w^2) = (w^2)^2 / p_2$. Show that the demand does not take the Gorman form. Provide an example of a wealth distribution change that alters aggregate demand while holding $W$ fixed.
+
+**(f)** Provide a verbal and graphical explanation of why linear Engel curves with identical slopes are necessary for wealth-distribution-free aggregation.
+
+---
+
+## Problem 7 — Integrability
+
+Consider the following demand system for $L = 2$ goods:
+$$x_1(p, w) = \frac{w}{2p_1} + \frac{p_2}{p_1}, \qquad x_2(p, w) = \frac{w}{2p_2} - 1$$
+
+**(a)** Verify Walras' Law: $p_1 x_1 + p_2 x_2 = w$.
+
+**(b)** Verify homogeneity of degree zero: $x_l(\lambda p, \lambda w) = x_l(p, w)$ for all $\lambda > 0$.
+
+**(c)** Compute the Slutsky matrix $S(p,w)$ with entries $S_{lk} = \partial x_l/\partial p_k + x_k \partial x_l/\partial w$. Determine whether $S$ is symmetric.
+
+**(d)** Is this demand system integrable? If yes, proceed to recover the expenditure function and hence a rationalizing utility function. If no, explain precisely which integrability condition fails.
+
+**(e)** Suppose instead the demand system is given by:
+$$x_1(p,w) = \frac{w}{2p_1}, \qquad x_2(p,w) = \frac{w}{2p_2}$$
+Verify symmetry and NSD of the Slutsky matrix. Solve the ODE system $\partial e/\partial p_l = h_l(p, \bar{u}) = x_l(p, e)$ with initial condition $e(p^0, \bar{u}) = \bar{u} \sqrt{p_1^0 p_2^0}$ (for some reference $p^0$). Recover $e(p, \bar{u})$ and identify the corresponding utility function.
+
+---
+
+## Problem 8 — Welfare Analysis Using CV and EV
+
+A consumer has Cobb-Douglas utility $u(x_1, x_2) = x_1^{1/2} x_2^{1/2}$ and wealth $w = 100$. Initial prices are $p^0 = (1, 1)$. The price of good 1 increases to $p^1 = (4, 1)$.
+
+**(a)** Derive the indirect utility function $v(p,w)$ and the expenditure function $e(p, \bar{u})$ for this utility function (use the results of Problem 2 with $\alpha = 1/2$ as a guide or re-derive from scratch).
+
+**(b)** Compute the consumer's initial utility $\bar{u}^0 = v(p^0, w)$ and post-change utility $\bar{u}^1 = v(p^1, w)$.
+
+**(c)** **Compensating Variation:** Compute $CV = w - e(p^1, \bar{u}^0)$. Interpret: how much wealth must be given to the consumer after the price change to restore their original utility? Is $|CV|$ larger or smaller than the consumer surplus loss (area under the Marshallian demand curve)?
+
+**(d)** **Equivalent Variation:** Compute $EV = e(p^1, \bar{u}^1) - e(p^0, \bar{u}^1) = w - e(p^0, \bar{u}^1)$. Interpret: what lump-sum payment at the old prices would make the consumer indifferent to the price change?
+
+**(e)** Verify the welfare ranking: for a price increase, $|EV| \leq |\Delta CS| \leq |CV|$ (where $\Delta CS$ is the change in consumer surplus). Compute $\Delta CS = \int_1^4 x_1(p_1, 1, 100) \, dp_1$ and verify the inequality.
+
+**(f)** Now suppose the government proposes two alternative policies: (Policy A) a lump-sum tax of $T_A = |CV|$ on the consumer; (Policy B) maintaining the price change at $p^1$. Show that the consumer is indifferent between facing $p^1$ (no compensation) and facing $p^0$ with the tax $T_A$. Which policy raises more government revenue while leaving the consumer at utility $\bar{u}^0$? What does this imply about the efficiency of price distortions relative to lump-sum taxes?
+
+**(g)** Using the Slutsky equation, decompose the change in Marshallian demand $\Delta x_1 = x_1(p^1, w) - x_1(p^0, w)$ into substitution and income effects. Verify that the substitution effect is non-positive and that the income effect is also non-positive (since good 1 is normal for Cobb-Douglas). Does this demand system exhibit any Giffen behavior?

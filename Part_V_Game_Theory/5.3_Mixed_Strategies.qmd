@@ -1,0 +1,181 @@
+---
+title: "5.3 Mixed Strategies"
+---
+
+# 5.3 Mixed Strategies
+
+> **MWG Reference:** Ch. 8, §8.D–8.E, pp. 250–260
+
+## Context
+
+A mixed strategy is a probability distribution over pure strategies. While players in most economic applications are modeled as choosing pure strategies, mixed strategies play three important roles: (1) they guarantee existence of Nash equilibrium in finite games (Nash's theorem); (2) they arise naturally in zero-sum games where randomization prevents exploitation; and (3) via the purification theorem (Harsanyi 1973), they can be reinterpreted as pure strategy behavior in a world with slight private information. The correlated equilibrium (Aumann 1974) is a further generalization that allows players to correlate their randomization via a public signal and can achieve payoffs outside the convex hull of Nash payoffs.
+
+## Definitions
+
+::: {.callout-note icon=false}
+## Definition 5.3.1 — Mixed Strategy
+A **mixed strategy** for player $i$ is a probability distribution $\sigma_i \in \Delta(S_i)$ over the finite set $S_i$. Formally, $\sigma_i: S_i \to [0,1]$ with $\sum_{s_i \in S_i} \sigma_i(s_i) = 1$. A **pure strategy** is a degenerate mixed strategy placing probability one on a single action.
+
+The set of mixed strategies $\Delta(S_i)$ is the $(|S_i|-1)$-dimensional simplex.
+:::
+
+
+::: {.callout-note icon=false}
+## Definition 5.3.2 — Expected Payoff
+Given a mixed strategy profile $\sigma = (\sigma_1, \ldots, \sigma_n)$, the **expected payoff** of player $i$ is
+$$\hat{u}_i(\sigma) = \sum_{s \in S} \left(\prod_{j=1}^n \sigma_j(s_j)\right) u_i(s),$$
+where the product form assumes players randomize independently.
+:::
+
+
+::: {.callout-note icon=false}
+## Definition 5.3.3 — Support of a Mixed Strategy
+The **support** of mixed strategy $\sigma_i$ is
+$$\text{supp}(\sigma_i) = \{s_i \in S_i : \sigma_i(s_i) > 0\}.$$
+A pure strategy $s_i$ is in the support of $\sigma_i$ if and only if it is played with strictly positive probability.
+:::
+
+
+::: {.callout-note icon=false}
+## Definition 5.3.4 — Mixed Strategy Nash Equilibrium
+A mixed strategy profile $\sigma^* = (\sigma_1^*, \ldots, \sigma_n^*) \in \prod_i \Delta(S_i)$ is a **mixed strategy Nash equilibrium** if for every player $i$ and every $\sigma_i \in \Delta(S_i)$:
+$$\hat{u}_i(\sigma_i^*, \sigma_{-i}^*) \geq \hat{u}_i(\sigma_i, \sigma_{-i}^*).$$
+:::
+
+
+::: {.callout-note icon=false}
+## Definition 5.3.5 — Correlated Equilibrium (Aumann 1974)
+A **correlated equilibrium** is a probability distribution $\mu \in \Delta(S)$ over strategy profiles such that, for every player $i$ and every $s_i, s_i' \in S_i$:
+$$\sum_{s_{-i} \in S_{-i}} \mu(s_i, s_{-i}) [u_i(s_i, s_{-i}) - u_i(s_i', s_{-i})] \geq 0.$$
+Equivalently: if a mediator draws $s \sim \mu$ and tells player $i$ only their component $s_i$, no player wishes to deviate unilaterally after receiving their recommendation.
+:::
+
+
+## Main Results
+
+::: {.callout-important icon=false}
+## Theorem 5.3.1 — Indifference Condition (Support Characterization)
+In any mixed strategy Nash equilibrium $\sigma^*$, every pure strategy $s_i$ in the support of $\sigma_i^*$ yields the same expected payoff:
+$$s_i \in \text{supp}(\sigma_i^*) \implies \hat{u}_i(s_i, \sigma_{-i}^*) = \hat{u}_i(\sigma_i^*, \sigma_{-i}^*).$$
+Moreover, every pure strategy $s_i \notin \text{supp}(\sigma_i^*)$ satisfies $\hat{u}_i(s_i, \sigma_{-i}^*) \leq \hat{u}_i(\sigma_i^*, \sigma_{-i}^*)$.
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+Since $\hat{u}_i(\sigma_i, \sigma_{-i}^*)$ is linear in $\sigma_i$, the expected payoff of playing $\sigma_i^*$ is a weighted average:
+$$\hat{u}_i(\sigma_i^*, \sigma_{-i}^*) = \sum_{s_i \in S_i} \sigma_i^*(s_i) \hat{u}_i(s_i, \sigma_{-i}^*).$$
+
+**Claim:** For any $s_i \in \text{supp}(\sigma_i^*)$, we have $\hat{u}_i(s_i, \sigma_{-i}^*) = \hat{u}_i(\sigma_i^*, \sigma_{-i}^*)$.
+
+Suppose for contradiction that some $s_i^0 \in \text{supp}(\sigma_i^*)$ with $\sigma_i^*(s_i^0) > 0$ satisfies
+$$\hat{u}_i(s_i^0, \sigma_{-i}^*) < \hat{u}_i(\sigma_i^*, \sigma_{-i}^*).$$
+
+Since $\sigma_i^*$ is optimal for player $i$, and $\hat{u}_i(\sigma_i^*, \sigma_{-i}^*)$ is an average over strategies in the support, there must exist some $s_i^1 \in \text{supp}(\sigma_i^*)$ with $\hat{u}_i(s_i^1, \sigma_{-i}^*) > \hat{u}_i(s_i^0, \sigma_{-i}^*)$. But then player $i$ could shift all probability from $s_i^0$ to $s_i^1$, achieving expected payoff strictly greater than $\hat{u}_i(\sigma_i^*, \sigma_{-i}^*)$, contradicting $\sigma_i^*$ being a best response. $\blacksquare$
+:::
+
+
+::: {.callout-caution icon=false}
+## Remark
+The indifference condition is the key computational tool for finding mixed NE. To find $\sigma_{-i}^*$ that makes player $i$ willing to mix over $\text{supp}(\sigma_i^*)$, one sets up the system of equations:
+$$\hat{u}_i(s_i, \sigma_{-i}^*) = \hat{u}_i(s_i', \sigma_{-i}^*) \quad \forall s_i, s_i' \in \text{supp}(\sigma_i^*).$$
+The mixing probabilities of player $j \neq i$ are chosen to make player $i$ indifferent — a counterintuitive feature: **each player's mixing probabilities are determined by others' indifference conditions, not by their own indifference.**
+:::
+
+
+::: {.callout-important icon=false}
+## Theorem 5.3.2 — Purification Theorem (Harsanyi 1973)
+Let $\Gamma$ be a finite normal form game and $\sigma^*$ a mixed Nash equilibrium. For any $\epsilon > 0$, there exists a perturbation $\Gamma^\epsilon$ of $\Gamma$ in which each player $i$ has private payoff information (a "type" that perturbs $u_i$ by at most $\epsilon$) and a **pure strategy** Bayesian Nash equilibrium $s^{**}$ of $\Gamma^\epsilon$ whose induced distribution over strategy profiles is within $\epsilon$ of $\sigma^*$.
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+**Proof sketch.** Augment each player's payoff with an independent private shock: $\tilde{u}_i(s, t_i) = u_i(s) + \epsilon \cdot t_i(s_i)$, where $t_i(s_i)$ are i.i.d. draws from a continuous distribution (e.g., Uniform $[0,1]$). Each player's type is the realization of their shocks across all pure strategies.
+
+In the perturbed game, a player with type $t_i$ plays pure strategy $s_i$ if $\hat{u}_i(s_i, \sigma_{-i}) + \epsilon t_i(s_i) > \hat{u}_i(s_i', \sigma_{-i}) + \epsilon t_i(s_i')$ for all $s_i' \neq s_i$.
+
+As $\epsilon \to 0$, the threshold for each player approaches the indifference conditions of the original mixed NE. By continuity of the induced distributions, the marginal probability that player $i$ plays $s_i$ in the pure strategy BNE of $\Gamma^\epsilon$ converges to $\sigma_i^*(s_i)$.
+
+The formal argument uses the intermediate value theorem applied to the best-response probability as a function of $\epsilon$; see Harsanyi (1973) for the complete proof. $\blacksquare$
+:::
+
+
+::: {.callout-caution icon=false}
+## Remark
+**Economic interpretation of purification.** The purification theorem justifies mixed NE as an approximation of pure behavior under private information. When players know their own payoffs perfectly but observe others' types only through their actions, the induced behavior mimics a mixed NE. This is the Bayesian foundation for mixing: players are not actually randomizing — they are making deterministic decisions based on their private information, but from the perspective of opponents, the behavior looks random.
+:::
+
+
+::: {.callout-important icon=false}
+## Theorem 5.3.3 — Properties of Correlated Equilibrium
+1. Every Nash equilibrium (pure or mixed) is a correlated equilibrium.
+2. The set of correlated equilibria is convex and compact (as a subset of $\Delta(S)$).
+3. A correlated equilibrium can strictly Pareto dominate all Nash equilibria.
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+**Part 1.** Given a mixed NE $\sigma^* = (\sigma_1^*, \ldots, \sigma_n^*)$, define $\mu = \prod_i \sigma_i^*$ (the product distribution). For any $s_i, s_i'$:
+$$\sum_{s_{-i}} \mu(s_i, s_{-i}) [u_i(s_i, s_{-i}) - u_i(s_i', s_{-i})] = \sigma_i^*(s_i) \sum_{s_{-i}} \prod_{j \neq i}\sigma_j^*(s_j) [u_i(s_i, s_{-i}) - u_i(s_i', s_{-i})].$$
+Since $s_i^*$ is a best response to $\sigma_{-i}^*$, this sum is $\geq 0$. Hence $\mu$ is a CE.
+
+**Part 2.** The CE conditions are a finite system of linear inequalities in $\mu \in \Delta(S)$. Therefore the CE set is the intersection of a simplex with half-spaces — a convex polytope.
+
+**Part 3.** Consider the Battle of the Sexes. The two pure NE yield payoffs $(2,1)$ and $(1,2)$; the mixed NE yields $(2/3, 2/3)$. Consider the correlated strategy $\mu(O,O) = \mu(F,F) = 1/2$. This is a CE: given recommendation $O$, player 1 gets expected payoff $2 > 0$ from following vs. deviating; given recommendation $F$, player 1 gets $1 > 0$ from following vs. deviating. Expected payoffs are $(3/2, 3/2)$, which strictly Pareto dominates the mixed NE payoff $(2/3, 2/3)$. $\blacksquare$
+:::
+
+
+## Computing Mixed Nash Equilibria
+
+::: {.callout-note icon=false appearance="simple"}
+## Example 5.3.1 — Mixed NE in a Zero-Sum Game (Matching Pennies)
+$$\begin{array}{c|cc} & H & T \\ \hline H & 1,-1 & -1,1 \\ T & -1,1 & 1,-1 \end{array}$$
+
+Let $\sigma_1 = (p, 1-p)$ and $\sigma_2 = (q, 1-q)$.
+
+**Player 1's indifference** (player 2 must make player 1 indifferent):
+$$\hat{u}_1(H, \sigma_2) = q - (1-q) = 2q - 1$$
+$$\hat{u}_1(T, \sigma_2) = -q + (1-q) = 1 - 2q$$
+Setting equal: $2q - 1 = 1 - 2q \Rightarrow q = 1/2$.
+
+**Player 2's indifference** (player 1 must make player 2 indifferent):
+$$\hat{u}_2(\sigma_1, H) = -p + (1-p) = 1 - 2p$$
+$$\hat{u}_2(\sigma_1, T) = p - (1-p) = 2p - 1$$
+Setting equal: $1 - 2p = 2p - 1 \Rightarrow p = 1/2$.
+
+**Unique NE:** $\sigma^* = ((1/2, 1/2), (1/2, 1/2))$. Expected payoffs: $(0,0)$. This is the value of the zero-sum game by the minimax theorem.
+:::
+
+
+::: {.callout-note icon=false appearance="simple"}
+## Example 5.3.2 — Correlated Equilibrium Pareto Dominating Mixed NE
+In the Battle of the Sexes (payoff matrix as before), define the correlated distribution:
+$$\mu(O,O) = \frac{1}{2}, \quad \mu(F,F) = \frac{1}{2}, \quad \mu(O,F) = \mu(F,O) = 0.$$
+
+**Verification that $\mu$ is a CE:**
+- If player 1 is told $O$: deviation to $F$ gives expected payoff $0 \cdot 1 = 0 < 2 = $ payoff from following. No incentive to deviate.
+- If player 1 is told $F$: deviation to $O$ gives expected payoff $0 < 1$. No incentive to deviate.
+- Analogous conditions hold for player 2.
+
+**Payoffs:** $E[\hat{u}_1] = \frac{1}{2}(2) + \frac{1}{2}(1) = \frac{3}{2}$; $E[\hat{u}_2] = \frac{1}{2}(1) + \frac{1}{2}(2) = \frac{3}{2}$.
+
+Compare to the mixed NE payoff of $(2/3, 2/3)$ — the correlated equilibrium achieves $(3/2, 3/2)$, strictly Pareto superior.
+:::
+
+
+## Economic Intuition
+
+**Why players mix in equilibrium.** A player has an incentive to mix if and only if they are indifferent between the strategies in their support. This means that in a mixed NE, each player's mixing probabilities are set to make *other* players indifferent, not themselves. This is a deep and somewhat paradoxical feature: player 2's mixing in Matching Pennies prevents player 1 from exploiting predictability, but player 2 is mixing because player 1's mix makes them indifferent.
+
+**Mixed NE and unpredictability.** In competitive or adversarial settings (zero-sum games, inspection problems, penalty kicks in soccer, tax auditing), mixed strategies represent optimal randomization to prevent exploitation. The value of the zero-sum game is determined precisely by the mixed NE, and represents what each player can guarantee regardless of opponent behavior.
+
+**Correlated equilibrium and mediation.** The CE concept shows that a trustworthy mediator who makes private recommendations can improve on Nash equilibrium outcomes. The mediator does not need to enforce actions — only to make recommendations that are self-enforcing (each player prefers to follow given the recommendation). This is the basis for mechanism design applications where a principal structures information revelation.
+
+## Cross-References
+
+- [5.2 Nash Equilibrium](5.2_Nash_Equilibrium.qmd) — Nash existence theorem uses the mixed extension
+- [5.7 Bayesian Games](5.7_Bayesian_Games.qmd) — Purification connects mixed NE to BNE with private types
+- [5.1 Normal Form Games](5.1_Normal_Form_Games.qmd) — Rationalizability applies to the mixed extension
+- [1.4 Fixed Point Theorems](1.4_Fixed_Point_Theorems.qmd) — Kakutani applied to the mixed best-response correspondence

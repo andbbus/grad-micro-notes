@@ -1,0 +1,51 @@
+---
+title: "Part III: Producer Theory — Overview"
+---
+
+# Part III: Producer Theory — Overview
+
+> **MWG Reference:** Ch. 5, pp. 127–189
+
+## Context
+
+Producer theory provides the supply side of general equilibrium analysis and is the microeconomic foundation for industrial organization, trade theory, and regulatory economics. The central objects of study are the **production set** $Y$, which encodes all technologically feasible input-output combinations, and two derived optimization problems: the **profit maximization problem (PMP)** and the **cost minimization problem (CMP)**.
+
+The structure of producer theory closely mirrors consumer theory. The duality between the profit function $\pi(p)$ and the production set $Y$ parallels the duality between the expenditure function $e(p, u)$ and the indirect utility function $v(p, w)$ in consumer theory. **Hotelling's lemma** — the derivative of the profit function yields the supply correspondence — is the producer-side analogue of Roy's identity and Shephard's lemma for the consumer. This duality is not merely a formal analogy: both derive from the **envelope theorem** applied to parametric optimization, and both reveal how observable choice data constrain the underlying technology or preferences.
+
+Producer theory also provides the technical underpinning for **welfare analysis**: producer surplus equals profit under competitive pricing, and the comparative statics of the cost and profit functions determine how supply responds to price and factor-price changes. The **Le Chatelier principle** formalizes the intuition that long-run supply elasticities exceed short-run ones.
+
+The four notes in this part cover the building blocks of production theory from the ground up, culminating in a unified treatment of supply and factor demands and their relationship to market structure.
+
+---
+
+## Notes in This Part
+
+| Note | Topic | Key Results |
+|------|-------|-------------|
+| [3.1 Production Sets](3.1_Production_Sets.qmd) | Technology representation; properties of $Y$; returns to scale | Transformation function; CRS $\Rightarrow$ $\pi = 0$ or $+\infty$ |
+| [3.2 Profit Maximization](3.2_Profit_Maximization.qmd) | PMP; profit function $\pi(p)$; Hotelling's lemma; law of supply | $\pi$ convex, HD1; $y(p) = \nabla_p \pi(p)$; $\Delta p \cdot \Delta y \geq 0$ |
+| [3.3 Cost Minimization](3.3_Cost_Minimization.qmd) | CMP; cost function $c(w,q)$; Shephard's lemma; duality | $c$ concave in $w$; $z(w,q) = \nabla_w c$; $f$ recoverable from $c$ |
+| [3.4 Supply and Factor Demands](3.4_Supply_and_Factor_Demands.qmd) | PMP–CMP duality; comparative statics; Le Chatelier | $p = MC$ at optimum; long-run vs. short-run supply elasticity |
+
+---
+
+## Logical Dependencies
+
+$$
+\text{Production Set } Y \xrightarrow{\text{PMP}} \pi(p), \; y(p) \xrightarrow{\text{Hotelling}} \text{supply responses}
+$$
+$$
+Y \xrightarrow{\text{CMP}} c(w,q), \; z(w,q) \xrightarrow{\text{Shephard}} \text{factor demand responses}
+$$
+$$
+\pi(p,w) = \max_q [pq - c(w,q)] \quad \text{(PMP--CMP duality)}
+$$
+
+---
+
+## Cross-References
+
+- [1.1 Preference and Utility](1.1_Preference_and_Utility.qmd) — consumer-side parallel; preference axioms
+- [1.3 Optimization Theory](1.3_Optimization_Theory.qmd) — envelope theorem underlying Hotelling's and Shephard's lemmas
+- [2.3 Expenditure Minimization](2.3_Expenditure_Minimization.qmd) — EMP is the exact consumer analogue of the CMP
+- [PS Producer Theory](PS_Producer_Theory.qmd) — problem set for this part

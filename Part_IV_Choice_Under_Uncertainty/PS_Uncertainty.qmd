@@ -1,0 +1,121 @@
+---
+title: "Problem Set: Choice Under Uncertainty"
+---
+
+# Problem Set: Choice Under Uncertainty
+
+> **MWG Reference:** Ch. 6; see notes [4.1 State Space Framework](4.1_State_Space_Framework.qmd), [4.2 Expected Utility Theory](4.2_Expected_Utility_Theory.qmd), [4.3 Risk Aversion](4.3_Risk_Aversion.qmd), [4.4 Stochastic Dominance](4.4_Stochastic_Dominance.qmd)
+
+---
+
+## Problem 1 — Verifying the VNM Axioms
+
+Let $C = \{c_1, c_2, c_3\}$ with $c_1 < c_2 < c_3$ (monetary outcomes: $c_1 = 0$, $c_2 = 10$, $c_3 = 100$). An agent reports the following preference ordering over a selection of lotteries:
+
+- $\delta_{c_3} \succ \delta_{c_2} \succ \delta_{c_1}$ (strict preference over pure outcomes)
+- $\delta_{c_2} \sim 0.4 \delta_{c_3} + 0.6 \delta_{c_1}$ (indifferent between certain $c_2$ and the stated lottery)
+- $(0.5 \delta_{c_3} + 0.5 \delta_{c_1}) \succ \delta_{c_2}$ (strictly prefers the 50-50 gamble to certain $c_2$)
+
+**(a)** Show that the first two statements are consistent with an EU representation with some Bernoulli utility $u$. Derive the value $u(c_2)$ (normalizing $u(c_1) = 0$ and $u(c_3) = 1$).
+
+**(b)** Show that the third statement ($(0.5\delta_{c_3}+0.5\delta_{c_1}) \succ \delta_{c_2}$) is **inconsistent** with the Bernoulli utility derived in part (a) and with EU theory. Identify which axiom is violated.
+
+**(c)** More carefully: are the first and third statements consistent with the rationality axiom (completeness and transitivity) alone, ignoring the Independence Axiom? Is there any EU utility consistent with all three statements?
+
+**(d)** Now suppose instead the agent reports $\delta_{c_2} \sim 0.4\delta_{c_3} + 0.6\delta_{c_1}$ and $(0.5\delta_{c_3} + 0.5\delta_{c_1}) \sim \delta_{c_2}$. Is this consistent with EU? If so, what constraint does it place on $u(c_2)$? Explain.
+
+**(e)** Suppose a fourth outcome $c_4$ is introduced with $c_3 < c_4$. Using continuity, argue that there must exist a $\beta \in (0,1)$ such that $\delta_{c_3} \sim \beta \delta_{c_4} + (1-\beta)\delta_{c_1}$. What is the interpretation of $\beta$ in terms of the EU representation? Compute $u(c_3)$ (normalized so that $u(c_1) = 0$, $u(c_4) = 1$) in terms of $\beta$.
+
+---
+
+## Problem 2 — Certainty Equivalent and Risk Premium under CARA
+
+An agent has CARA utility $u(c) = -e^{-\gamma c}$ with $\gamma > 0$. The agent faces a lottery $\tilde{c}$ with distribution $\tilde{c} \sim \mathcal{N}(\mu, \sigma^2)$ (normally distributed with mean $\mu$ and variance $\sigma^2$).
+
+**(a)** Compute the expected utility $EU = \mathbb{E}[u(\tilde{c})] = \mathbb{E}[-e^{-\gamma \tilde{c}}]$ in closed form. (Hint: use the moment generating function of the normal distribution: $\mathbb{E}[e^{t\tilde{c}}] = e^{\mu t + \sigma^2 t^2/2}$.)
+
+**(b)** Derive the certainty equivalent $CE(\tilde{c})$ defined by $u(CE) = EU$. Show that:
+$$CE = \mu - \frac{\gamma \sigma^2}{2}$$
+Interpret this formula: how does the certainty equivalent depend on the mean, variance, and risk aversion parameter?
+
+**(c)** Compute the risk premium $\pi = \mu - CE$ and verify that it equals $\frac{\gamma\sigma^2}{2}$. Confirm that this is consistent with the Arrow-Pratt approximation $\pi \approx \frac{1}{2}r_A(c)\sigma^2$ (where $r_A = \gamma$ for CARA). In this case, the approximation is exact — explain why.
+
+**(d)** Now consider two agents with CARA parameters $\gamma_A > \gamma_B > 0$. Both face the lottery $\tilde{c} \sim \mathcal{N}(\mu, \sigma^2)$. Show that agent $A$ has a lower certainty equivalent than agent $B$: $CE_A < CE_B$. Is this consistent with the ordering of Arrow-Pratt measures?
+
+**(e)** Suppose the agent can purchase insurance that replaces the risky lottery $\tilde{c}$ with the certain outcome $\mu$ (full insurance at actuarially fair price). What is the maximum premium $\pi^*$ the agent would pay for this insurance, as a function of $\gamma$, $\mu$, and $\sigma^2$? Compare the maximum premium for agents $A$ and $B$.
+
+**(f)** Now suppose $\tilde{c}$ follows an exponential distribution with mean $1/\lambda$ (so $f(c) = \lambda e^{-\lambda c}$ for $c \geq 0$). Compute $CE$ and $\pi$ for the CARA agent. Is the Arrow-Pratt approximation exact in this case? Under what conditions is the approximation exact?
+
+---
+
+## Problem 3 — DARA and Risky Asset Demand
+
+An agent has wealth $w > 0$ and can invest $a \geq 0$ dollars in a risky asset with net return $\tilde{R}$ (mean $\mu_R > r$, variance $\sigma_R^2$) and the remainder at safe rate $r \geq 0$. Final wealth is:
+$$\tilde{W}(a) = (w - a)(1 + r) + a(1 + \tilde{R}) = w(1+r) + a(\tilde{R} - r)$$
+
+**(a)** Write down the portfolio optimization problem. Derive the first-order condition for an interior optimum $a^* > 0$:
+$$\mathbb{E}\left[u'(\tilde{W}(a^*)) \cdot (\tilde{R} - r)\right] = 0$$
+Verify the second-order condition under risk aversion.
+
+**(b)** Use the implicit function theorem to show that the optimal risky investment $a^*(w)$ satisfies:
+$$\frac{da^*}{dw} = -\frac{\mathbb{E}\left[u''(\tilde{W}^*)(\tilde{R}-r)\right](1+r)}{\mathbb{E}\left[u''(\tilde{W}^*)(\tilde{R}-r)^2\right]}$$
+
+**(c)** Show that the denominator satisfies $\mathbb{E}[u''(\tilde{W}^*)(\tilde{R}-r)^2] < 0$ (under strict concavity of $u$). Hence the sign of $da^*/dw$ is determined by the sign of $\mathbb{E}[u''(\tilde{W}^*)(\tilde{R}-r)]$.
+
+**(d)** Prove that DARA ($r_A'(c) < 0$, i.e., $r_A(c)$ decreasing) implies $\mathbb{E}[u''(\tilde{W}^*)(\tilde{R}-r)] < 0$, and therefore $da^*/dw > 0$. (Hint: use the FOC to show $\mathbb{E}[u'(\tilde{W}^*)(\tilde{R}-r)] = 0$, then write $u''(\tilde{W}^*)(\tilde{R}-r) = -r_A(\tilde{W}^*) u'(\tilde{W}^*) (\tilde{R}-r)$, and use DARA and the sign of $(\tilde{R}-r)$ in different states.)
+
+**(e)** What does the result imply for CARA utility? Verify directly by showing that under CARA, the FOC pins down $a^*$ independently of $w$.
+
+**(f)** Show that under CRRA utility $u(c) = c^{1-\rho}/(1-\rho)$, the optimal portfolio **share** $\theta^* = a^*/w$ (fraction invested in the risky asset) is independent of $w$ (scale-invariance). Interpret this result in terms of decreasing absolute risk aversion and constant relative risk aversion.
+
+---
+
+## Problem 4 — Mean-Preserving Spreads and EU Rankings
+
+Consider two distributions over income $c \geq 0$:
+- $F$: uniform distribution on $[2, 4]$ (density $f(c) = 1/2$ on $[2,4]$)
+- $G$: uniform distribution on $[1, 5]$ (density $g(c) = 1/4$ on $[1,5]$)
+
+**(a)** Compute the means $\mathbb{E}_F[c]$ and $\mathbb{E}_G[c]$. Compute the variances $\text{Var}_F(c)$ and $\text{Var}_G(c)$.
+
+**(b)** Compute the CDFs $F(c)$ and $G(c)$ explicitly. Plot them (or describe their shapes). Do they satisfy the FSD condition $F(c) \leq G(c)$ for all $c$? Explain.
+
+**(c)** Show that $G$ is a mean-preserving spread of $F$ by verifying:
+  (i) Equal means
+  (ii) The SSD integral condition: $\int_{-\infty}^c [G(t) - F(t)] \, dt \geq 0$ for all $c$
+
+  Compute $\int_{-\infty}^c [G(t)-F(t)]\,dt$ explicitly for all relevant ranges of $c$.
+
+**(d)** By the equivalence between SSD and MPS, conclude that $F \succsim_2 G$. Verify this directly for the following specific utility functions:
+  (i) $u(c) = \ln c$ (log utility, risk-averse)
+  (ii) $u(c) = c^{1/2}$ (square root utility, risk-averse)
+  (iii) $u(c) = c^2$ (convex utility, risk-seeking)
+
+  For (i) and (ii), confirm $\mathbb{E}_F[u] \geq \mathbb{E}_G[u]$. For (iii), confirm $\mathbb{E}_F[u] \leq \mathbb{E}_G[u]$. Compute the expected utilities explicitly.
+
+**(e)** Construct a new distribution $H$ that is a mean-preserving spread of $G$ (and hence also SSD-dominated by $F$). Verify your construction by checking the SSD condition.
+
+**(f)** Suppose a government policy changes the income distribution from $G$ to $F$. Characterize the class of social welfare functions $W = \int u(c) dF(c)$ that rank the new distribution $F$ as weakly better than $G$. Can you make a unanimous welfare statement (i.e., a statement valid for all social welfare functions in some large class) about this policy?
+
+---
+
+## Problem 5 — The Allais Paradox and Violations of Independence
+
+**(a)** Formally present the Allais paradox as in Example 4.1 of [4.1 State Space Framework](4.1_State_Space_Framework.qmd). Let $C = \{0, 1, 5\}$ (millions of dollars). Consider the four lotteries:
+$$L_1 = (0, 1, 0), \quad L_2 = (0.01, 0.89, 0.10), \quad L_3 = (0.89, 0.11, 0), \quad L_4 = (0.90, 0, 0.10)$$
+Show algebraically that the preference $L_1 \succ L_2$ and $L_4 \succ L_3$ cannot be represented by any EU utility function. (Derive the conditions on $u(0), u(1), u(5)$ implied by each preference and show they are contradictory.)
+
+**(b)** Represent the four lotteries as points in the two-dimensional simplex (since $p_1 + p_2 + p_3 = 1$, use coordinates $(p_1, p_3)$ with $p_2 = 1-p_1-p_3$). Draw the lotteries $L_1, L_2, L_3, L_4$ in this coordinate system. Show geometrically that the Allais preference $L_1 \succ L_2, L_4 \succ L_3$ corresponds to "fanning out" of indifference curves, which violates the EU requirement of parallel linear indifference curves.
+
+**(c)** Now consider a **rank-dependent utility (RDU)** agent with utility $u(c) = c$ (risk-neutral) and probability weighting function $w(p) = p^{0.6}$ (a concave probability weighting function that overweights small probabilities). Compute the RDU value:
+$$RDU(L) = \sum_n [w(F_L(c_n)) - w(F_L(c_{n-1}))] u(c_n)$$
+where $F_L(c_n) = \sum_{k \leq n} p_k$ is the CDF of $L$ evaluated at $c_n$ (ranked from worst to best). Compute $RDU(L_1), RDU(L_2), RDU(L_3), RDU(L_4)$. Can RDU with this $w$ accommodate the Allais preference?
+
+**(d)** Construct a **new** pair of lotteries $M_1, M_2$ and $M_3, M_4$ with the same underlying structure as the Allais paradox (i.e., $M_3 = M_1$ mixed with $\delta_0$ in the same way $L_3$ is constructed from $L_1$) but with different probability values, such that the resulting preferences violate the Independence Axiom. Be explicit about the construction and prove that EU cannot accommodate the stated preferences.
+
+**(e)** Discuss the **policy implications** of the Allais paradox. If EU is systematically violated, what does this imply for:
+  (i) The use of expected utility in welfare analysis (cost-benefit analysis of risky policies)?
+  (ii) The design of insurance contracts (if agents have non-EU preferences, does optimal insurance still involve full coverage at actuarially fair prices)?
+  (iii) The use of EU in game-theoretic models of strategic interaction under uncertainty (Bayesian games)?
+
+  Provide a balanced assessment: when is the EU assumption likely to be a reasonable approximation, and when is it likely to lead to seriously wrong predictions?

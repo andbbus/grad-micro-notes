@@ -1,0 +1,111 @@
+---
+title: "Problem Set — Part VIII: Social Choice"
+---
+
+# Problem Set — Part VIII: Social Choice
+
+> **MWG Reference:** Ch. 21–22
+
+---
+
+## Problem 1 — Majority Rule: Arrow's Axioms and Condorcet Cycles
+
+Let $X = \{a, b, c\}$ and $I = \{1, 2, 3\}$ (three voters). **Majority rule** $F^{maj}$ is defined as follows: $x R^{maj} y$ iff $|\{i : x R_i y\}| \geq |\{i : y R_i x\}|$ (alternative $x$ is socially at least as good as $y$ if it has at least as many supporters).
+
+Consider the following **Condorcet profile**:
+- Voter 1: $a P_1 b P_1 c$
+- Voter 2: $b P_2 c P_2 a$
+- Voter 3: $c P_3 a P_3 b$
+
+**(a)** Compute the majority ranking for each pair: $(a,b)$, $(b,c)$, and $(a,c)$. Show that the social relation is not transitive (it exhibits a Condorcet cycle). Which of Arrow's axioms does $F^{maj}$ violate on this profile?
+
+**(b)** Verify that $F^{maj}$ satisfies axioms **P** (Pareto), **IIA**, and **ND** for the Condorcet profile. Show the calculations for each axiom check.
+
+**(c)** Now consider the profile:
+- Voter 1: $a P_1 b P_1 c$
+- Voter 2: $a P_2 c P_2 b$
+- Voter 3: $b P_3 c P_3 a$
+
+Compute the majority ranking for all pairs. Is the social ordering transitive in this case? Identify the **Condorcet winner** (if it exists).
+
+**(d)** A preference profile satisfies the **single-peaked condition** over a linear order $\succ^*$ on $X$ if for each voter $i$, there exists a "peak" $p(i) \in X$ such that: if $x \succ^* p(i) \succ^* y$ or $y \succ^* p(i) \succ^* x$, then $x P_i y$ iff $x$ is closer to $p(i)$. Formally define single-peaked preferences.
+
+Check whether the profile in (c) is single-peaked over the order $a \succ^* b \succ^* c$. Apply Black's Median Voter Theorem to identify the majority rule winner.
+
+**(e)** Prove that for any profile of single-peaked preferences over a linear order on $X$, majority rule is transitive. (This is the key theorem showing that restricting the domain to single-peaked preferences satisfies all four Arrow axioms.) Identify precisely which step of Arrow's impossibility proof fails under this domain restriction.
+
+---
+
+## Problem 2 — Arrow's Theorem for $|X| = 3$, $|I| = 2$
+
+Let $X = \{x, y, z\}$ and $I = \{1, 2\}$. You will prove Arrow's impossibility theorem directly for this minimal case.
+
+**(a)** List all logically possible strict preference orderings over $X$ (there are 6). List all possible profiles $(R_1, R_2) \in \mathcal{R}^2$ (there are $6 \times 6 = 36$; you may work symbolically).
+
+**(b)** Suppose $F$ satisfies axioms **U**, **P**, and **IIA**. Consider the profile:
+$$R_1: x P_1 y P_1 z, \quad R_2: y P_2 z P_2 x.$$
+By Pareto, we must have $y P^S z$. By IIA, the social ranking of $(x, z)$ depends only on how individuals rank $x$ vs. $z$. Since $x P_1 z$ and $z P_2 x$, write $F^{xz}(1,2) \in \{xPz, zPx, xIz\}$ for the social ranking.
+
+**(c)** Consider the two profiles:
+- Profile A: $R_1: x P_1 y P_1 z$; $R_2: x P_2 y P_2 z$
+- Profile B: $R_1: x P_1 y P_1 z$; $R_2: y P_2 x P_2 z$
+
+In Profile A, Pareto requires $x P^S y$ and $x P^S z$ and $y P^S z$. In Profile B, both agree that $x P y$ is not unanimous. Show via IIA applied across several profiles that the social ranking of $(x,y)$ in Profile B cannot be $y P^S x$ if $F$ satisfies P and IIA.
+
+**(d)** Systematically, using profiles that vary one individual's preference at a time, show that either individual 1 is decisive for every pair of alternatives, or individual 2 is. (Hint: use the "pivotal voter" method: find the profile where flipping individual $k$'s preference changes the social ranking, and show $k$ is decisive.)
+
+**(e)** Conclude that $F$ must be a dictatorship, contradicting ND. Write out the full logical chain of implications from steps (b)–(d) to the contradiction.
+
+---
+
+## Problem 3 — Scitovsky Reversal: An Explicit Counterexample
+
+Consider a two-agent economy with two goods $(q_1, q_2)$ and total endowment $(10, 10)$. Agents have quasi-linear utilities:
+$$u_1(q_{11}, q_{12}) = q_{11} + v_1(q_{12}), \quad u_2(q_{21}, q_{22}) = q_{21} + v_2(q_{22})$$
+where $v_1(q) = 4\sqrt{q}$ and $v_2(q) = q^2/8$.
+
+**State A:** Agent 1 gets $(5, 8)$, Agent 2 gets $(5, 2)$.
+
+**State B:** Agent 1 gets $(5, 2)$, Agent 2 gets $(5, 8)$.
+
+**(a)** Compute the utilities $u_1^A, u_2^A, u_1^B, u_2^B$. Is either state Pareto superior to the other?
+
+**(b)** Compute the **compensating variation (CV)** for each agent from the move $A \to B$:
+- $CV_i$ is the income change that makes agent $i$ indifferent between $A$ (with $CV_i$ income transfer) and $B$.
+- More precisely, $CV_i$ solves $u_i^B = u_i^A + CV_i$ (using quasi-linearity).
+
+**(c)** Check whether $B \succ_{KH} A$ by computing $\sum_i CV_i$ for the move $A \to B$.
+
+**(d)** Check whether $A \succ_{KH} B$ by computing $\sum_i CV_i$ for the move $B \to A$ (i.e., $-(CV_i)$ from (b)).
+
+**(e)** If both $B \succ_{KH} A$ and $A \succ_{KH} B$, you have demonstrated a Scitovsky reversal. Explain geometrically why this occurs: draw the "community indifference curves" for states $A$ and $B$ and show they intersect.
+
+**(f)** Discuss the policy implication: a government that uses the Kaldor-Hicks criterion to evaluate a policy change may simultaneously justify **both** implementing and reversing the policy. What does Samuelson's critique add to this observation?
+
+---
+
+## Problem 4 — Borda Count and Violation of IIA
+
+Consider three voters $\{1, 2, 3\}$ and four alternatives $X = \{a, b, c, d\}$.
+
+The **Borda count** assigns to each alternative a score equal to the number of alternatives ranked below it, summed across voters. The social ordering ranks alternatives by total Borda score.
+
+**Profile 1:**
+- Voter 1: $a \succ b \succ c \succ d$ (scores: $a=3, b=2, c=1, d=0$)
+- Voter 2: $b \succ a \succ c \succ d$ (scores: $a=2, b=3, c=1, d=0$)
+- Voter 3: $b \succ c \succ a \succ d$ (scores: $a=1, b=3, c=2, d=0$)
+
+**(a)** Compute the Borda scores for each alternative in Profile 1. Determine the social ranking. Who wins (has the highest Borda score)?
+
+**Profile 2:** Same as Profile 1 except the alternative $d$ is removed from the ballots (voters rank only $\{a, b, c\}$).
+- Voter 1: $a \succ b \succ c$ (scores: $a=2, b=1, c=0$)
+- Voter 2: $b \succ a \succ c$ (scores: $a=1, b=2, c=0$)
+- Voter 3: $b \succ c \succ a$ (scores: $a=0, b=2, c=1$)
+
+**(b)** Compute the Borda scores for $\{a, b, c\}$ in Profile 2. Who wins? Compare to Profile 1.
+
+**(c)** Show that the relative ranking of $a$ vs. $b$ differs between Profile 1 and Profile 2, even though no voter changed their ranking of $a$ vs. $b$. Conclude that the Borda count violates Arrow's axiom IIA. Exhibit the specific violation.
+
+**(d)** Verify that the Borda count satisfies axioms **U**, **P**, and **ND** (briefly). Confirm that it must therefore violate IIA, consistent with Arrow's theorem.
+
+**(e)** Consider a modified axiom: **Independence of Non-Dominated Alternatives (INDA)**: the social ranking of $x$ vs. $y$ depends only on the rank positions of $x$ and $y$ in each voter's ordering (not on absolute scores). Does the Borda count satisfy INDA? Is INDA weaker or stronger than IIA? Can Arrow's theorem be avoided by replacing IIA with INDA?

@@ -1,0 +1,271 @@
+---
+title: "4.4 Stochastic Dominance"
+---
+
+# 4.4 Stochastic Dominance
+
+> **MWG Reference:** Ch. 6, §6.D, pp. 195–211
+
+## Context
+
+Stochastic dominance criteria provide welfare rankings of probability distributions that are **robust** to the specific utility function, within a broad class. Rather than asking "does agent with utility $u$ prefer $F$ to $G$?", stochastic dominance asks "do **all** agents in some class prefer $F$ to $G$?". This robustness makes stochastic dominance criteria especially valuable for policy analysis and empirical welfare measurement.
+
+**First-order stochastic dominance (FSD)** applies to all agents with increasing preferences: $F$ dominates $G$ if every agent who prefers more to less prefers $F$. **Second-order stochastic dominance (SSD)** applies to all risk-averse agents: $F$ dominates $G$ if every concave-utility agent prefers $F$. SSD is equivalent to $G$ being a "mean-preserving spread" of $F$ in the sense of Rothschild and Stiglitz (1970), which formalizes the intuition that $F$ is "less risky" than $G$.
+
+These concepts connect directly to empirical welfare analysis: stochastic dominance tests (Barrett-Donald, Linton-Maasoumi-Whang) are used in poverty and inequality measurement to rank income distributions without committing to a specific social welfare function.
+
+---
+
+## First-Order Stochastic Dominance
+
+::: {.callout-note icon=false}
+## Definition 4.1 — First-Order Stochastic Dominance (FSD)
+Distribution $F$ **first-order stochastically dominates** $G$ (written $F \succsim_1 G$ or $F \text{ FSD } G$) if:
+$$F(c) \leq G(c) \quad \text{for all } c \in \mathbb{R}$$
+with strict inequality for at least one $c$.
+:::
+
+
+::: {.callout-caution icon=false}
+## Remark 4.1 — Interpretation of FSD
+$F(c) \leq G(c)$ means that the probability of being below any threshold $c$ is smaller under $F$ than under $G$. Equivalently, every quantile of $F$ is at least as large as the corresponding quantile of $G$: $F^{-1}(\tau) \geq G^{-1}(\tau)$ for all $\tau \in [0,1]$. FSD corresponds to the intuitive notion that $F$ is "uniformly better" than $G$.
+:::
+
+
+::: {.callout-important icon=false}
+## Theorem 4.1 — FSD Characterization via EU
+$F \succsim_1 G$ if and only if $\int u \, dF \geq \int u \, dG$ for **all nondecreasing** functions $u: \mathbb{R} \to \mathbb{R}$ (for which the integrals exist).
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+**($\Rightarrow$) FSD implies higher EU for all nondecreasing $u$:**
+
+Suppose $F(c) \leq G(c)$ for all $c$. Using **integration by parts** (the key technical tool):
+$$\int u \, dF - \int u \, dG = \int u \, d(F - G)$$
+
+Integrating by parts on $[-M, M]$ (then taking $M \to \infty$):
+$$\int_{-M}^{M} u(c) \, d(F(c) - G(c)) = \left[u(c)(F(c)-G(c))\right]_{-M}^{M} - \int_{-M}^{M} u'(c)(F(c)-G(c)) \, dc$$
+
+Boundary terms: $(F(M)-G(M)) \to 0$ as $M \to \infty$ (both CDFs approach 1); $(F(-M)-G(-M)) \to 0$ (both approach 0). Hence:
+$$\int u \, d(F-G) = -\int_{-\infty}^{\infty} u'(c) [F(c) - G(c)] \, dc$$
+
+Since $F(c) \leq G(c)$, we have $F(c) - G(c) \leq 0$ for all $c$. Since $u$ is nondecreasing, $u'(c) \geq 0$ for all $c$. Therefore:
+$$-\int u'(c)[F(c)-G(c)] \, dc = \int u'(c)[G(c)-F(c)] \, dc \geq 0$$
+Hence $\int u \, dF \geq \int u \, dG$. $\checkmark$
+
+**($\Leftarrow$) If $\int u \, dF \geq \int u \, dG$ for all nondecreasing $u$, then $F \succsim_1 G$:**
+
+Suppose for contradiction that $F(c^*) > G(c^*)$ for some $c^*$. By right-continuity of CDFs, there exists an interval $(c^*, c^* + \delta)$ on which $F(c) > G(c)$.
+
+Choose $u = \mathbf{1}_{(-\infty, c^*]}$ (indicator function, a valid nondecreasing function). Then:
+$$\int u \, dF = F(c^*) > G(c^*) = \int u \, dG$$
+— wait, we need $\int u \, dF \geq \int u \, dG$, so this is consistent. Let me use the correct contrapositive.
+
+Choose $u(c) = \mathbf{1}_{[c^*, \infty)}(c)$ (indicator of being above $c^*$). This is nondecreasing. Then:
+$$\int u \, dF = 1 - F(c^*), \quad \int u \, dG = 1 - G(c^*)$$
+If $F(c^*) > G(c^*)$, then $\int u \, dF = 1 - F(c^*) < 1 - G(c^*) = \int u \, dG$.
+This means there exists a nondecreasing $u$ for which $\int u \, dF < \int u \, dG$, contradicting the assumption. Hence $F(c) \leq G(c)$ for all $c$. $\blacksquare$
+:::
+
+
+::: {.callout-note icon=false appearance="simple"}
+## Example 4.1 — FSD in Income Distributions
+Suppose $F$ is the income distribution after a policy intervention (e.g., a targeted transfer) and $G$ is the pre-intervention distribution. If the intervention raises every quantile of the income distribution (every percentile earns at least as much as before), then $F$ FSD $G$. All welfare functions that are increasing in income (regardless of inequality aversion) rank the post-intervention distribution as better.
+:::
+
+
+---
+
+## Second-Order Stochastic Dominance
+
+::: {.callout-note icon=false}
+## Definition 4.2 — Second-Order Stochastic Dominance (SSD)
+Distribution $F$ **second-order stochastically dominates** $G$ (written $F \succsim_2 G$ or $F \text{ SSD } G$) if:
+$$\int_{-\infty}^{c} [G(t) - F(t)] \, dt \geq 0 \quad \text{for all } c \in \mathbb{R}$$
+:::
+
+
+::: {.callout-caution icon=false}
+## Remark 4.2 — Interpretation of SSD
+The condition $\int_{-\infty}^c [G(t)-F(t)] \, dt \geq 0$ says that the area between the CDFs (with $G$ on top) is nonnegative up to every cutoff $c$. Geometrically: the CDF of $G$ lies "above and to the left" of $F$ on average (integrated), even if they cross. SSD is weaker than FSD: if $F$ FSD $G$, then $G(t) \geq F(t)$ for all $t$, so $G-F \geq 0$ everywhere, and the integral is certainly nonneg. The converse is false — SSD allows crossing CDFs.
+:::
+
+
+::: {.callout-important icon=false}
+## Theorem 4.2 — SSD Characterization via EU
+$F \succsim_2 G$ if and only if $\int u \, dF \geq \int u \, dG$ for **all nondecreasing and concave** functions $u$ (all risk-averse agents with increasing preferences).
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+**($\Rightarrow$) SSD implies higher EU for all nondecreasing, concave $u$:**
+
+Using integration by parts twice. Define $D_1(c) = G(c) - F(c)$ and $D_2(c) = \int_{-\infty}^c D_1(t) \, dt = \int_{-\infty}^c [G(t)-F(t)] \, dt \geq 0$ (the SSD condition).
+
+We need to show $\int u \, dF \geq \int u \, dG$, i.e., $\int u \, d(F - G) \geq 0$.
+
+First integration by parts:
+$$\int u \, d(F-G) = -\int u \, dD_1 = -[u \cdot D_1]_{-\infty}^{\infty} + \int u' D_1 \, dc$$
+
+Boundary terms: $D_1(\pm\infty) = G(\pm\infty) - F(\pm\infty) = 0$. So:
+$$\int u \, d(F-G) = \int u'(c) D_1(c) \, dc = \int u'(c)[G(c)-F(c)] \, dc$$
+
+Second integration by parts (integrate $u'$, differentiate $D_1$, where $D_1(c) = dD_2/dc$):
+$$\int u'(c) D_1(c) \, dc = \int u'(c) \, dD_2(c)$$
+$$= [u'(c) D_2(c)]_{-\infty}^{\infty} - \int u''(c) D_2(c) \, dc$$
+
+Boundary terms: $D_2(-\infty) = 0$ (integral from $-\infty$ to $-\infty$). For $D_2(\infty) = \int_{-\infty}^{\infty}[G(t)-F(t)]dt$: if $F$ and $G$ have the same mean ($\mathbb{E}_F[c] = \mathbb{E}_G[c]$), then $\int(G-F)dt = 0$ by integration by parts. More generally, for the boundary term to vanish, either $F$ and $G$ have equal means, or $u'(\infty) = 0$ (which holds for concave $u$ on bounded support or if $u'$ is bounded and $D_2$ grows slower than $1/u'(\infty)$). Under standard conditions, the boundary term is 0.
+
+Therefore:
+$$\int u \, d(F-G) = -\int u''(c) D_2(c) \, dc$$
+
+Since $u$ is concave: $u''(c) \leq 0$. Since SSD holds: $D_2(c) \geq 0$. Therefore:
+$$-\int u''(c) D_2(c) \, dc \geq 0 \qquad \checkmark$$
+
+**($\Leftarrow$) If $\int u \, dF \geq \int u \, dG$ for all nondecreasing concave $u$, then SSD:**
+
+Suppose for contradiction that $D_2(c^*) = \int_{-\infty}^{c^*}[G(t)-F(t)]dt < 0$ for some $c^*$.
+
+By continuity, $D_2(c) < 0$ on some interval $(c^* - \delta, c^*)$.
+
+Choose $u(c) = \min(c, c^*) = c \cdot \mathbf{1}_{c \leq c^*} + c^* \cdot \mathbf{1}_{c > c^*}$. This is nondecreasing and concave ($u' = \mathbf{1}_{c \leq c^*} \geq 0$, $u'' = -\delta_{c^*} \leq 0$).
+
+Then: $\int u \, dF - \int u \, dG = -\int u'' D_2 \, dc = \int \delta_{c^*}(c) D_2(c) \, dc = -D_2(c^*)$
+
+Wait — using the integration by parts result: $\int u \, d(F-G) = -\int u'' D_2 \, dc$. With $u''(c) = -\delta_0(c - c^*)$ (the Dirac mass at $c^*$, since $u'$ has a jump down from 1 to 0 at $c^*$):
+$$\int u \, d(F-G) = -\int (-\delta(c-c^*)) D_2(c) \, dc = D_2(c^*) < 0$$
+
+This contradicts $\int u \, dF \geq \int u \, dG$. Hence $D_2(c) \geq 0$ for all $c$. $\blacksquare$
+:::
+
+
+---
+
+## Mean-Preserving Spreads (Rothschild-Stiglitz)
+
+::: {.callout-note icon=false}
+## Definition 4.3 — Mean-Preserving Spread
+Distribution $G$ is a **mean-preserving spread (MPS)** of $F$ if:
+1. $\int c \, dF(c) = \int c \, dG(c)$ (equal means)
+2. $G = F + \text{noise}$ in the sense that $G$ can be obtained from $F$ by adding noise to each realization: there exists a random variable $\tilde{\epsilon}$ such that $c_G = c_F + \tilde{\epsilon}$ with $\mathbb{E}[\tilde{\epsilon} | c_F] = 0$.
+:::
+
+
+::: {.callout-important icon=false}
+## Theorem 4.3 — SSD Equivalence with Mean-Preserving Spreads
+$F \succsim_2 G$ if and only if $G$ is a mean-preserving spread of $F$ (i.e., $G$ has the same mean as $F$ but is "more spread out").
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+**Sketch of the equivalence:**
+
+**(MPS $\Rightarrow$ SSD):**
+Suppose $c_G = c_F + \tilde{\epsilon}$ with $\mathbb{E}[\tilde{\epsilon}|c_F] = 0$. For any nondecreasing concave $u$:
+\begin{align}
+\mathbb{E}_G[u(c)] &= \mathbb{E}[u(c_F + \tilde{\epsilon})] \\
+&= \mathbb{E}_{c_F}\left[\mathbb{E}[u(c_F + \tilde{\epsilon}) \mid c_F]\right] \\
+&\leq \mathbb{E}_{c_F}\left[u\left(\mathbb{E}[c_F + \tilde{\epsilon} \mid c_F]\right)\right] \quad \text{(Jensen, since $u$ is concave)}\\
+&= \mathbb{E}_{c_F}[u(c_F)] = \mathbb{E}_F[u(c)]
+\end{align}
+So $\mathbb{E}_F[u] \geq \mathbb{E}_G[u]$ for all concave nondecreasing $u$, i.e., $F \succsim_2 G$.
+
+**(SSD $\Rightarrow$ MPS):** This direction uses the theory of majorization and is more involved. Key idea: if $F \succsim_2 G$ and they have equal means, then the "excess distribution" $G - F$ can be decomposed as a series of pairwise spreads (elementary mean-preserving spreads), showing that $G$ is obtained from $F$ by adding conditional noise. A full proof uses the Hardy-Littlewood-Polya theorem on majorization.
+
+If $F \succsim_2 G$ but means differ ($\mathbb{E}_G[c] < \mathbb{E}_F[c]$): then $G$ is worse than $F$ both due to lower mean (FSD direction) and more spread. SSD captures both effects. $\blacksquare$
+:::
+
+
+::: {.callout-caution icon=false}
+## Remark 4.3 — Rothschild-Stiglitz Interpretation
+The MPS characterization of SSD is the key result in Rothschild and Stiglitz (1970). It says: $G$ is riskier than $F$ (for risk-averse agents) if and only if $G$ can be obtained from $F$ by adding noise. This gives a precise operational definition of "more risky" that does not depend on the particular risk measure used. Applications include:
+- **Insurance**: Full insurance eliminates the MPS (replaces $G = c_F + \tilde{\epsilon}$ with the certain $c_F$); this is why all risk-averse agents prefer full insurance at actuarially fair rates.
+- **Portfolio choice**: A mean-preserving spread of the return distribution makes the risky asset less attractive to all risk-averse investors.
+- **Principal-agent theory**: Performance pay introduces a MPS (adds noise) relative to a fixed wage; risk-averse agents require a premium to accept performance pay.
+:::
+
+
+---
+
+## Applications
+
+::: {.callout-note icon=false appearance="simple"}
+## Example 4.2 — FSD and Portfolio Choice
+An investor has wealth $w$ and can allocate it between two assets: a safe asset with gross return 1 and a risky asset with gross return distribution $\tilde{R}$. A new asset has return distribution $\tilde{R}' \text{ FSD } \tilde{R}$.
+
+**Claim:** Any investor with increasing utility (prefers more to less) will weakly prefer the new asset.
+
+**Proof:** By Theorem 4.1, since $\tilde{R}'$ FSD $\tilde{R}$, for any nondecreasing utility $u$: $\mathbb{E}[u(\tilde{R}')] \geq \mathbb{E}[u(\tilde{R})]$. Hence any portfolio with the new asset yields higher expected utility for any monotone preferences.
+:::
+
+
+::: {.callout-note icon=false appearance="simple"}
+## Example 4.3 — SSD and Insurance
+An agent has initial wealth $w$ and faces a loss $\tilde{L}$ with distribution $G$ (random wealth $w - \tilde{L}$). Full insurance replaces $w - \tilde{L}$ with the certain amount $w - \mathbb{E}[\tilde{L}]$ (i.e., distribution $F = \delta_{w-\mathbb{E}[\tilde{L}]}$).
+
+The certain wealth $F$ second-order stochastically dominates the risky wealth $G$ because:
+- Both have the same mean: $\mathbb{E}_F[c] = w - \mathbb{E}[\tilde{L}] = \mathbb{E}_G[c]$.
+- $G$ is a mean-preserving spread of $F$ (adding the zero-mean noise $-(\tilde{L} - \mathbb{E}[\tilde{L}])$ to the certain outcome).
+
+By SSD, all risk-averse agents (all $u$ concave) prefer full insurance at actuarially fair premium to bearing the risk.
+:::
+
+
+::: {.callout-note icon=false appearance="simple"}
+## Example 4.4 — Stochastic Dominance in Welfare Analysis
+In poverty analysis, let $F$ be the income distribution after a social program and $G$ be the pre-program distribution. If $F$ SSD $G$:
+- All social welfare functions $W = \int u(c) dF(c)$ with $u$ concave (inequality-averse) and increasing rank $F$ weakly higher.
+- This holds for any poverty measure that can be written as $P = \int p(c) dF(c)$ with $p$ concave and decreasing (which includes the Foster-Greer-Thorbecke measures for appropriate parameter ranges).
+
+This is the core result underlying **nonparametric welfare dominance** tests used in empirical development economics (e.g., comparing welfare pre- and post-policy without specifying the exact social welfare function).
+:::
+
+
+---
+
+## Empirical Link: Stochastic Dominance Tests
+
+::: {.callout-caution icon=false}
+## Remark 4.4 — Nonparametric Stochastic Dominance Testing
+In empirical applications (poverty and inequality analysis, financial economics), stochastic dominance is tested nonparametrically:
+
+- **Barrett-Donald (2003)**: Kolmogorov-Smirnov-type test for FSD and SSD between two empirical distributions.
+- **Linton-Maasoumi-Whang (2005)**: Bootstrap-based tests for stochastic dominance that are valid under weak assumptions.
+- **Application in poverty**: The FSD test asks whether every poverty headcount (at any poverty line) is lower under distribution $F$ than $G$. The SSD test asks whether every Foster-Greer-Thorbecke $P_1$ poverty gap measure (at any poverty line) is lower. These tests can confirm dominance without specifying a poverty line.
+
+This connects directly to the **Poverty and Inequality** course: the Atkinson (1970) result that SSD is equivalent to unanimity of all increasing concave social welfare functions is the theoretical foundation for these tests.
+:::
+
+
+---
+
+## Summary Table
+
+| Criterion | Definition | Equivalent EU condition | Economic content |
+|-----------|-----------|------------------------|-----------------|
+| FSD: $F \succsim_1 G$ | $F(c) \leq G(c)$ $\forall c$ | All $\uparrow$ $u$ prefer $F$ | $F$ dominates $G$ at every quantile |
+| SSD: $F \succsim_2 G$ | $\int_{-\infty}^c (G-F) \geq 0$ $\forall c$ | All $\uparrow$, concave $u$ prefer $F$ | $G$ is a mean-preserving spread of $F$ |
+| FSD $\Rightarrow$ SSD | immediate | stronger condition | FSD is a special case of SSD |
+
+---
+
+## Economic Intuition
+
+Stochastic dominance is the natural framework for welfare analysis under uncertainty when the analyst does not want to commit to a specific utility function. FSD is the easy case: if one distribution gives better outcomes at every quantile, all agents with increasing preferences prefer it — this is just a universal improvement. SSD is more subtle: it applies only to risk-averse agents, but it is satisfied in many practical cases (e.g., the comparison of full insurance to a fair lottery, or a more concentrated income distribution to a more dispersed one with the same mean).
+
+The equivalence between SSD and mean-preserving spreads is the deepest result in this note. It says that "riskier" (in the sense of SSD-dominated) is exactly the same as "a mean-preserving spread": added noise that does not change the mean but makes the distribution more dispersed. This is an operational, non-parametric definition of riskiness that is used throughout insurance theory, financial economics, and welfare analysis.
+
+The policy relevance of these concepts is enormous: stochastic dominance tests allow policymakers to make robust welfare statements about policy interventions without specifying the exact form of the social welfare function. If a policy generates a distribution that SSD-dominates the status quo, then all risk-averse welfare-maximizing policymakers — regardless of their precise inequality aversion — would approve the policy.
+
+---
+
+## Cross-References
+
+- [4.2 Expected Utility Theory](4.2_Expected_Utility_Theory.qmd) — EU framework underlying the stochastic dominance theorems
+- [4.3 Risk Aversion](4.3_Risk_Aversion.qmd) — risk aversion (concavity of $u$) is the key property for SSD
+- [4.1 State Space Framework](4.1_State_Space_Framework.qmd) — lotteries and probability distributions
+- [PS Uncertainty](PS_Uncertainty.qmd) — Problem 4

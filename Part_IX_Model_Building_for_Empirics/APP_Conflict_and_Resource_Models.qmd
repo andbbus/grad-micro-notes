@@ -1,0 +1,192 @@
+---
+title: "APP — Conflict and Resource Models"
+---
+
+# APP — Conflict and Resource Models
+
+> **Cross-references:** Garfinkel & Skaperdas (1994, 2007); Grossman (1991); Dal Bó & Dal Bó (2011); Dube & Vargas (2013)
+
+## Context
+
+One of the most empirically active areas connecting microeconomic theory to development economics is the study of natural resources and conflict. When does resource wealth generate conflict rather than prosperity? How does the value of the contested prize affect the intensity and duration of fighting? These questions have both theoretical content — they can be addressed using formal models of strategic conflict — and empirical content — they generate predictions testable with cross-country or sub-national panel data.
+
+The canonical theoretical framework is the **contest model** (Tullock 1980; Garfinkel-Skaperdas 1994): groups choose conflict effort to maximize the probability of capturing a resource prize, trading off costs against expected gains. The model generates sharp comparative statics: higher prize value → more conflict effort → greater probability of conflict onset and more casualties. These comparative statics provide the theoretical foundation for an IV strategy using international commodity prices.
+
+## Garfinkel-Skaperdas Contest Model
+
+::: {.callout-note icon=false}
+## Definition APP.1 — Contest Model Setup (Garfinkel-Skaperdas 1994, 2007)
+Two groups $i \in \{1,2\}$ simultaneously choose conflict effort $m_i \geq 0$. Group $i$ wins a resource prize of value $R$ with probability:
+$$p_i(m_1, m_2) = \frac{f(m_i)}{f(m_1) + f(m_2)}$$
+where $f: \mathbb{R}_+ \to \mathbb{R}_+$ is an impact function with $f(0) = 0$, $f' > 0$. The **contest success function (CSF)** satisfies: $p_1 + p_2 = 1$ (winner takes all). Each group pays cost $c > 0$ per unit of effort. Group $i$'s expected payoff:
+$$\Pi_i(m_i, m_j) = p_i(m_i, m_j) \cdot R - c \cdot m_i$$
+:::
+
+
+::: {.callout-important icon=false}
+## Proposition APP.1 — Nash Equilibrium of the Symmetric Contest
+With $f(m) = m$ (Tullock contest) and symmetric costs $c$, the symmetric Nash equilibrium has:
+$$m^* = \frac{R}{4c}$$
+and each group wins with probability $p_i^* = 1/2$. Total conflict effort is $M^* = 2m^* = R/(2c)$.
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+**Best response:** Group 1 maximizes $\Pi_1(m_1, m_2) = \frac{m_1}{m_1 + m_2} R - c m_1$.
+
+FOC with respect to $m_1$:
+$$\frac{m_2}{(m_1 + m_2)^2} R = c$$
+(Using $\frac{\partial}{\partial m_1}\left[\frac{m_1}{m_1+m_2}\right] = \frac{m_2}{(m_1+m_2)^2}$.)
+
+**Symmetric equilibrium:** Set $m_1 = m_2 = m^*$:
+$$\frac{m^*}{(2m^*)^2} R = c \implies \frac{R}{4m^*} = c \implies m^* = \frac{R}{4c}$$
+
+**Verification:** $p_1^* = m^*/(2m^*) = 1/2$. SOC: $\frac{\partial^2 \Pi_1}{\partial m_1^2} = \frac{-2m_2}{(m_1+m_2)^3} R < 0$ — confirmed maximum.
+
+**Existence and uniqueness of symmetric NE:** The best response $BR_1(m_2) = \sqrt{m_2 R/c} - m_2$ is well-defined for $m_2 > 0$. The symmetric fixed point $m^* = BR(m^*) = \frac{R}{4c}$ is unique.
+:::
+
+
+::: {.callout-important icon=false}
+## Proposition APP.2 — Comparative Statics: Resource Value and Conflict Effort
+In the symmetric Tullock contest:
+1. $\frac{\partial m^*}{\partial R} = \frac{1}{4c} > 0$: Higher resource value increases equilibrium conflict effort.
+2. $\frac{\partial m^*}{\partial c} = -\frac{R}{4c^2} < 0$: Higher conflict cost decreases conflict effort.
+3. **Rent dissipation:** Total effort $2m^* = R/(2c)$ and total cost $2cm^* = R/2$: exactly half the prize value is dissipated in equilibrium. The dissipation fraction is $2cm^*/R = 1/2$.
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+Differentiating $m^* = R/(4c)$: $\frac{\partial m^*}{\partial R} = 1/(4c) > 0$ and $\frac{\partial m^*}{\partial c} = -R/(4c^2) < 0$. Total cost = $2c \cdot R/(4c) = R/2$. Rent dissipation fraction = $(R/2)/R = 1/2$. Under CRS, Tullock contest dissipates half the rent. Under DRS ($f(m) = m^\gamma$, $\gamma < 1$), less than half is dissipated; under IRS ($\gamma > 1$), more.
+:::
+
+
+::: {.callout-caution icon=false}
+## Remark APP.1 — Generalizations
+The basic contest model has been extended in several directions relevant for empirical work:
+- **Heterogeneous groups:** Different cost parameters $c_1 \neq c_2$ generate asymmetric equilibria where the lower-cost group exerts more effort and is more likely to win. This creates cross-sectional heterogeneity in conflict outcomes.
+- **Capital accumulation:** Allowing groups to invest in productive capital (which also increases fighting capacity) generates a dynamic model where steady-state capital and conflict depend on resource value.
+- **Multiple periods:** Repeated conflict creates potential for ceasefire agreements (especially if groups discount the future), linking to bargaining theory.
+:::
+
+
+## Grossman Looting Model
+
+::: {.callout-note icon=false}
+## Definition APP.2 — Grossman (1991) Insurrection Model
+The economy has $N$ agents who each choose to be a **worker** (produces $y_i$, earns wage $w$) or an **insurgent** (attempt to loot the government's revenue $G$). The probability that an individual insurgent succeeds depends on the number of insurgents $n$ and the government's defensive capacity $\mu$:
+$$q(n, \mu) = \frac{n}{n + \mu}$$
+An insurgent earns expected payoff $q(n, \mu) \cdot G/n$ — a share of the prize if the rebellion succeeds. An insurgent bears effort cost $e > 0$.
+
+In equilibrium, agents are indifferent between working and rebelling:
+$$w = q(n, \mu) \cdot G/n - e$$
+:::
+
+
+::: {.callout-important icon=false}
+## Proposition APP.3 — Grossman Model Comparative Statics
+In the Grossman model equilibrium, the number of insurgents $n^*$ satisfies:
+$$\frac{G \mu}{(n^* + \mu)^2 \cdot n^*} = 1 \implies n^* + \mu = \sqrt{G\mu}$$
+so $n^* = \sqrt{G\mu} - \mu = \mu(\sqrt{G/\mu} - 1)$. Comparative statics:
+1. $\frac{\partial n^*}{\partial G} > 0$: Higher government revenue (larger lootable prize) increases insurgency
+2. $\frac{\partial n^*}{\partial w} < 0$: Higher wages (higher opportunity cost) decrease insurgency
+3. $\frac{\partial n^*}{\partial \mu} < 0$: Stronger government reduces insurgency
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+At equilibrium, the marginal insurgent is indifferent: $w = q(n,\mu)\frac{G}{n} - e$. Using $q(n,\mu) = n/(n+\mu)$:
+$$w + e = \frac{G}{n+\mu}$$
+Solving: $n^* + \mu = G/(w+e)$, so $n^* = G/(w+e) - \mu$.
+
+Comparative statics: $\frac{\partial n^*}{\partial G} = 1/(w+e) > 0$; $\frac{\partial n^*}{\partial w} = -G/(w+e)^2 < 0$; $\frac{\partial n^*}{\partial \mu} = -1 < 0$.
+:::
+
+
+::: {.callout-caution icon=false}
+## Remark APP.2 — Bridge to Dube-Vargas (2013)
+Dube and Vargas (2013) empirically test the Grossman model using variation in international commodity prices in Colombia (coffee and oil). The model's key prediction: a decline in the opportunity cost of conflict (lower wages, from lower coffee prices) increases insurgency; an increase in the lootable prize (higher oil revenues) also increases insurgency.
+
+Identification: international commodity prices are exogenous to local conflict (the exclusion restriction from the structural model: Colombia is a price-taker in world markets), and prices are correlated with local wages (coffee prices affect labor demand in coffee-growing regions) and local resource rents (oil prices affect rents in oil-producing municipalities). The IV strategy is directly motivated by the model's structure.
+:::
+
+
+## Dal Bó & Dal Bó (2011): Workers, Warriors, and Criminals
+
+::: {.callout-note icon=false}
+## Definition APP.3 — Dal Bó & Dal Bó (2011) Model
+The economy produces two goods: a **labor-intensive good** $L$ (using only labor) and a **capital-intensive good** $K$ (using capital and labor). A third sector allows **appropriation/conflict** — capturing the production of others.
+
+Each worker has unit labor; can allocate fraction $\mu_i$ to appropriation and $(1-\mu_i)$ to production. Aggregate output depends on the labor allocation. Factor prices are determined by the production equilibrium.
+
+The key mechanism: **an increase in the price of the labor-intensive good** raises wages, which raises the opportunity cost of appropriation, reducing conflict. **An increase in the price of the capital-intensive good** raises returns to capital and hence returns to appropriation of capital-intensive production, increasing conflict.
+:::
+
+
+::: {.callout-important icon=false}
+## Proposition APP.4 — Dal Bó & Dal Bó Comparative Statics
+1. $\frac{\partial \text{Conflict}}{\partial p_L} < 0$: A price increase of the labor-intensive good decreases conflict by raising wages (opportunity cost of fighting)
+2. $\frac{\partial \text{Conflict}}{\partial p_K} > 0$: A price increase of the capital-intensive good increases conflict by raising the value of the prize (capital goods are appropriable)
+
+These predictions generate opposite sign predictions for different commodity types, providing sharp cross-sectional heterogeneity that distinguishes the model from simpler prize-value theories.
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+**Labor-intensive shock:** An increase in $p_L$ raises the demand for labor (labor is the factor used in $L$-production). By the Stolper-Samuelson theorem, the wage $w$ rises. Higher $w$ raises the opportunity cost of conflict (the foregone wage from spending time on appropriation). Therefore, the equilibrium fraction allocated to appropriation falls: $d\mu^*/dp_L < 0$.
+
+**Capital-intensive shock:** An increase in $p_K$ raises the return to capital. Since capital is appropriable (capital goods can be captured), the prize to conflict in the capital sector increases. The equilibrium appropriation fraction rises: $d\mu^*/dp_K > 0$.
+
+The formal derivation uses the Heckscher-Ohlin-Stolper-Samuelson framework: in a two-factor, two-good economy, $w = w(p_L, p_K)$ where $\partial w/\partial p_L > 0$ (Stolper-Samuelson), and the prize to appropriation $\pi = \pi(p_K, w)$ where $\partial \pi/\partial p_K > 0$ (higher capital good price increases rent) and $\partial \pi/\partial w$ ambiguous. The net effect on conflict depends on whether the opportunity-cost or rent channel dominates.
+:::
+
+
+### Bridge to Identification
+
+::: {.callout-caution icon=false}
+## Remark APP.3 — IV Strategy Using International Commodity Prices
+**Setup:** Let $C_{kt}$ denote the conflict intensity in country/region $k$ at time $t$. The theory predicts:
+$$C_{kt} = \alpha + \beta R_{kt} + \gamma X_{kt} + \varepsilon_{kt}$$
+where $R_{kt}$ is the value of the contested resource (correlated with conflict by the model) and $X_{kt}$ are controls.
+
+**Endogeneity:** $R_{kt}$ is endogenous — high conflict may destroy production, reducing $R$. Also, omitted factors (state capacity, institutions) may drive both conflict and resource value.
+
+**IV strategy:** Use international commodity prices $P_{ct}$ (the world price of commodity $c$ at time $t$) as an instrument for $R_{kt}$. The exclusion restriction: $P_{ct}$ is set on world markets and is uncorrelated with $\varepsilon_{kt}$ conditional on controls (country $k$ is a price taker). The relevance condition: $P_{ct}$ is correlated with $R_{kt}$ because local resource value is a function of the world price.
+
+**First stage:**
+$$R_{kt} = \delta + \phi P_{ct} + \gamma X_{kt} + u_{kt}$$
+**Second stage:**
+$$C_{kt} = \alpha + \beta \hat{R}_{kt} + \gamma X_{kt} + \varepsilon_{kt}$$
+
+The structural justification for the exclusion restriction: the contest model (Garfinkel-Skaperdas) specifies that fighting occurs over $R_{kt}$, and $P_{ct}$ enters only through $R_{kt}$ in the structural equation. The price $P_{ct}$ does not independently enter the conflict payoff function — this is the model's prediction, which becomes the empirical identifying assumption.
+:::
+
+
+::: {.callout-caution icon=false}
+## Remark APP.4 — Testable Predictions of the Contest Model: Heterogeneity by Resource Type
+The contest model makes heterogeneity predictions:
+1. **Lootable vs. non-lootable resources:** Resources that can be captured by individual armed groups (alluvial diamonds, cassiterite, coca) should respond differently to price shocks than point-source resources controlled by the state (oil pipelines, large-scale mines). The prize-value mechanism is stronger for lootable resources.
+2. **Point-source vs. diffuse resources:** Point-source resources (oil wells, mine shafts) are easier to contest than diffuse resources (agricultural land). The contest model predicts stronger conflict responses to price shocks for point-source resources.
+3. **State capacity:** The Grossman model predicts $\partial n^*/\partial \mu < 0$ — stronger state capacity reduces conflict responses to price shocks. Therefore the conflict-price relationship should be weaker in high-capacity states.
+
+These heterogeneity predictions are testable and provide additional evidence on the mechanism, beyond the average effect. Finding $\beta > 0$ for lootable and $\beta < 0$ for labor-intensive resources would strongly confirm Dal Bó & Dal Bó's model over simpler prize-only theories.
+:::
+
+
+## Economic Intuition
+
+The conflict model pipeline illustrates the full methodology of Part IX: a formal model (Garfinkel-Skaperdas) generates comparative statics (conflict effort is increasing in $R$), which become testable predictions (conflict intensity is increasing in commodity prices), which are identified via an IV strategy justified by the model's exclusion restriction (world prices are exogenous to local conflict).
+
+The key insight is that the model does not just motivate the empirical specification — it disciplines it. The model tells us which variable to instrument (local resource value), which instrument to use (world prices), why the exclusion restriction holds (price-taking assumption), and what heterogeneity to expect (lootable vs. non-lootable, labor vs. capital intensity). A purely atheoretic IV study would miss these predictions and would be less informative about the mechanism.
+
+## Cross-References
+
+- [9.3 Comparative Statics Methodology](9.3_Comparative_Statics_Methodology.qmd) — Topkis applied to contest model
+- [9.4 Deriving Testable Predictions](9.4_Deriving_Testable_Predictions.qmd) — contest model FOC as moment condition
+- [9.5 Structural vs Reduced Form](9.5_Structural_vs_Reduced_Form.qmd) — IV with structural exclusion restriction
+- [9.6 Identification in Structural Models](9.6_Identification_in_Structural_Models.qmd) — model-based exclusion restriction in contest
+- [APP Trade and Price Shock Models](APP_Trade_and_Price_Shock_Models.qmd) — commodity prices as instruments; Bartik design

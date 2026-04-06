@@ -1,0 +1,164 @@
+---
+title: "2.8 — Aggregate Demand and Gorman Aggregation"
+---
+
+# 2.8 — Aggregate Demand and Gorman Aggregation
+
+> **MWG Reference:** Ch. 4, pp. 101–115
+
+## Context
+
+When moving from individual consumer theory to market-level analysis, one faces the **aggregation problem**: under what conditions can we treat the market as if it were a single representative consumer? In general, aggregate demand depends not only on aggregate wealth but also on its distribution across consumers, making the aggregate demand function poorly behaved. Gorman's (1953) theorem provides the precise conditions under which aggregation is clean: individual indirect utility functions must have the Gorman polar form, implying parallel linear Engel curves. This is a strong restriction, satisfied by homothetic preferences and quasi-linear preferences but not by general preferences. When the Gorman conditions fail, the Sonnenschein-Mantel-Debreu (SMD) theorem shows that aggregate excess demand satisfies essentially no restrictions beyond those already imposed by individual optimization — a sobering result for the macroeconomic representative-agent hypothesis.
+
+## Setup
+
+Consider an economy with $I$ consumers, $L$ goods, and prices $p \in \mathbb{R}^L_{++}$. Consumer $i$ has wealth $w^i > 0$ and Walrasian demand $x^i(p, w^i)$.
+
+::: {.callout-note icon=false}
+## Definition 2.8.1 — Aggregate Demand
+**Aggregate demand** is:
+$$X(p, w^1, \ldots, w^I) = \sum_{i=1}^I x^i(p, w^i)$$
+where $w^i$ are individual wealth levels. Aggregate wealth is $W = \sum_i w^i$. We say aggregate demand depends only on $(p, W)$ — is **wealth-distribution-free** — if $X$ can be written as $X(p, W)$ for some function $X$ that does not depend on how $W$ is distributed.
+:::
+
+
+## Gorman Aggregation
+
+::: {.callout-note icon=false}
+## Definition 2.8.2 — Engel Curve
+For fixed prices $p$, the **Engel curve** of consumer $i$ for good $l$ is the function $w^i \mapsto x^i_l(p, w^i)$. It describes how demand for good $l$ changes as income varies. The **Engel curve system** is $w^i \mapsto x^i(p, w^i) \in \mathbb{R}^L$.
+:::
+
+
+::: {.callout-important icon=false}
+## Theorem 2.8.1 — Gorman's Aggregation Theorem (Gorman 1953, 1961)
+Suppose each $x^i(p, w^i)$ satisfies Walras' Law. Aggregate demand $\sum_i x^i(p, w^i)$ is independent of the distribution of wealth — i.e., depends only on $(p, W)$ with $W = \sum_i w^i$ — for all distributions $(w^1, \ldots, w^I)$ summing to $W$ **if and only if** each consumer's demand takes the form:
+$$x^i(p, w^i) = a^i(p) + b(p) \cdot w^i$$
+for some vector-valued functions $a^i(p) \in \mathbb{R}^L$ (consumer-specific) and $b(p) \in \mathbb{R}^L$ (common to all consumers). That is, Engel curves are linear in $w^i$ with **identical slopes $b(p)$ across consumers**.
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+**Necessity ($\Rightarrow$):** Suppose aggregate demand depends only on $(p, W)$: $\sum_i x^i(p, w^i) = X(p, W)$ for all $(w^1, \ldots, w^I)$ with $\sum_i w^i = W$.
+
+Fix $p$ and consider two wealth distributions $(w^1, \ldots, w^I)$ and $(w^1 + \varepsilon, w^2 - \varepsilon, w^3, \ldots, w^I)$ — a transfer of $\varepsilon$ from consumer 2 to consumer 1. Both sum to $W$, so by assumption, aggregate demands are equal:
+$$x^1(p, w^1 + \varepsilon) + x^2(p, w^2 - \varepsilon) + \sum_{i \geq 3} x^i(p, w^i) = x^1(p, w^1) + x^2(p, w^2) + \sum_{i \geq 3} x^i(p, w^i)$$
+Canceling the common terms:
+$$x^1(p, w^1 + \varepsilon) - x^1(p, w^1) = x^2(p, w^2) - x^2(p, w^2 - \varepsilon)$$
+Dividing by $\varepsilon$ and taking $\varepsilon \to 0$:
+$$\frac{\partial x^1(p, w^1)}{\partial w^1} = \frac{\partial x^2(p, w^2)}{\partial w^2}$$
+This holds for all $w^1, w^2$. Hence $\partial x^i_l/\partial w^i$ must be the same function for all consumers $i$ and all wealth levels $w^i$: $\partial x^i_l(p, w^i)/\partial w^i = b_l(p)$ for some function $b_l(p)$ that does not depend on $i$ or $w^i$.
+
+Integrating over $w^i$: $x^i_l(p, w^i) = b_l(p) w^i + a^i_l(p)$ for some integration constant $a^i_l(p)$ (which may depend on $i$ but not on $w^i$). In vector form: $x^i(p, w^i) = a^i(p) + b(p) w^i$.
+
+**Sufficiency ($\Leftarrow$):** If $x^i(p, w^i) = a^i(p) + b(p) w^i$ for all $i$, then:
+$$\sum_i x^i(p, w^i) = \sum_i a^i(p) + b(p) \sum_i w^i = A(p) + b(p) W$$
+where $A(p) = \sum_i a^i(p)$. This depends only on $(p, W)$, not on the distribution. $\square$
+:::
+
+
+::: {.callout-caution icon=false}
+## Remark 2.8.1 — Interpretation of Gorman Conditions
+The Gorman condition — linear Engel curves with identical slopes — has a strong economic interpretation. It says that if we transfer one dollar from any consumer to any other consumer, aggregate demand does not change (only the redistribution matters, but the slopes are the same so the effects cancel). This is a strong income distribution neutrality condition. It fails whenever different consumers have different marginal propensities to spend on different goods.
+:::
+
+
+## Gorman Polar Form
+
+::: {.callout-important icon=false}
+## Proposition 2.8.1 — Gorman Polar Form of Indirect Utility
+The demand $x^i(p, w^i) = a^i(p) + b(p) w^i$ is consistent with utility maximization if and only if consumer $i$'s indirect utility function takes the **Gorman polar form**:
+$$v^i(p, w^i) = \frac{w^i - a^i(p)}{b(p)} \cdot \phi(p)$$
+where, up to normalization, this simplifies to:
+$$v^i(p, w^i) = \frac{w^i - c^i(p)}{b(p)}$$
+for functions $c^i(p)$ (individual "fixed costs") and $b(p)$ (common "price index").
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+Apply Roy's Identity to $v^i(p, w^i)$. With $v^i(p, w^i) = [w^i - c^i(p)]/b(p)$:
+$$\frac{\partial v^i}{\partial w^i} = \frac{1}{b(p)}, \qquad \frac{\partial v^i}{\partial p_l} = \frac{-\partial c^i/\partial p_l \cdot b(p) - (w^i - c^i) \partial b/\partial p_l}{[b(p)]^2}$$
+By Roy's Identity:
+$$x^i_l(p, w^i) = -\frac{\partial v^i/\partial p_l}{\partial v^i/\partial w^i} = \frac{\partial c^i/\partial p_l \cdot b(p) + (w^i - c^i) \partial b/\partial p_l}{b(p)}$$
+$= \frac{\partial c^i(p)}{\partial p_l} + \frac{\partial \ln b(p)}{\partial p_l} (w^i - c^i(p))$
+$= \frac{\partial c^i}{\partial p_l} - c^i(p) \frac{\partial \ln b}{\partial p_l} + w^i \frac{\partial \ln b}{\partial p_l}$
+$= a^i_l(p) + b_l(p) w^i$
+where $a^i_l(p) = \partial c^i/\partial p_l - c^i \partial \ln b/\partial p_l$ and $b_l(p) = \partial \ln b/\partial p_l$. This confirms the demand takes the Gorman linear form. $\square$
+:::
+
+
+## Implications of Gorman Aggregation
+
+**Homothetic preferences satisfy Gorman:** If preferences are homothetic, then $x^i(p, w^i) = x^i(p, 1) \cdot w^i$ (demand is proportional to wealth, with no constant term). This is the special case $a^i(p) \equiv 0$ and $b(p) = x^i(p, 1)$. The common slope requires all consumers to have identical homothetic preferences (same $b(p)$). Engel curves pass through the origin for all consumers.
+
+**Quasi-linear preferences satisfy Gorman:** With $u^i = x^i_1 + v^i(x^i_2, \ldots)$, the demand for goods $2, \ldots, L$ is independent of wealth, so $\partial x^i_l/\partial w^i = 0$ for $l \geq 2$ (and $= 1$ for $l=1$). This is also a special case with $b(p)$ having first component 1 and remaining components 0.
+
+**PIGL and PIGLOG systems:** Muellbauer (1975, 1976) identified more general demand systems compatible with aggregation: the **Price-Independent Generalized Linear (PIGL)** and **Price-Independent Generalized Logarithmic (PIGLOG)** systems. The **Almost Ideal Demand System (AIDS)** of Deaton-Muellbauer (1980) is a PIGLOG system, allowing linear Engel curves in $\ln w$ — a slight generalization of Gorman that permits aggregation with a specific structure.
+
+## Failure of Aggregation: The Sonnenschein-Mantel-Debreu Theorem
+
+When the Gorman conditions fail, aggregate demand depends on the wealth distribution, and essentially any reasonable function can arise as aggregate excess demand.
+
+::: {.callout-important icon=false}
+## Theorem 2.8.2 — Sonnenschein-Mantel-Debreu Theorem
+Let $z: \mathbb{R}^L_{++} \to \mathbb{R}^L$ be any continuous function satisfying:
+1. **Homogeneity of degree zero:** $z(\alpha p) = z(p)$ for all $\alpha > 0$
+2. **Walras' Law:** $p \cdot z(p) = 0$ for all $p$
+
+Then for any compact set $K \subset \mathbb{R}^L_{++}$, there exists an economy (with $I \geq L$ consumers, each with a continuous, strongly monotone, strictly convex utility function) whose aggregate excess demand on $K$ is exactly $z(p)$.
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+(Sketch of Debreu 1974 and Mantel 1974.) The proof is constructive: one builds $I = L$ consumers, each with an appropriately chosen expenditure function, such that the sum of their Hicksian demands aggregates to give $z(p)$ on $K$. The key insight is that individual demands can be "mixed" arbitrarily by choosing appropriate utility functions and wealth distributions. The two conditions (homogeneity and Walras' Law) are the only restrictions that survive aggregation from individual optimization. Since any aggregate excess demand satisfying just these two conditions is achievable, the aggregation process destroys all the Slutsky restrictions that individual demands satisfy. $\square$
+:::
+
+
+::: {.callout-caution icon=false}
+## Remark 2.8.2 — Implications of SMD
+The SMD theorem has profound implications:
+1. **For general equilibrium theory:** Aggregate excess demand satisfies essentially no restrictions beyond homogeneity and Walras' Law. In particular, it need not satisfy the gross substitutes property, which is why the uniqueness and stability of competitive equilibria cannot be established in full generality.
+2. **For the representative agent:** The SMD theorem shows that there is generally no representative consumer whose preferences over aggregate bundles coincide with those of the heterogeneous population (in the sense of supporting the same competitive equilibria or welfare conclusions).
+3. **For macro models:** The widespread use of representative-agent models in macroeconomics is justified only when preferences are homothetic or quasi-linear (special cases of Gorman) or as an approximation when distributional concerns are secondary.
+:::
+
+
+## Aggregation and the Representative Consumer
+
+::: {.callout-note icon=false}
+## Definition 2.8.3 — Representative Consumer
+A **positive representative consumer** exists for an economy if there is a utility function $U: \mathbb{R}^L_+ \to \mathbb{R}$ and a wealth function $W(p, w^1, \ldots, w^I)$ such that:
+$$\sum_i x^i(p, w^i) = X(p, W(p, w^1, \ldots, w^I))$$
+where $X(p, W)$ solves $\max_{p \cdot x \leq W} U(x)$.
+
+A **normative representative consumer** additionally exists if the representative's welfare can be used to rank social allocations: social welfare $\mathcal{W} = V(p, W)$ (the indirect utility of the representative) is maximized at competitive equilibria, and changes in $V$ correctly rank social welfare changes (i.e., the representative's CV equals the sum of individual CVs).
+:::
+
+
+::: {.callout-important icon=false}
+## Proposition 2.8.2 — Gorman Implies Representative Consumer
+If all consumers have Gorman polar form indirect utility $v^i(p, w^i) = [w^i - c^i(p)]/b(p)$, then:
+1. A positive representative consumer exists with indirect utility $V(p, W) = [W - C(p)]/b(p)$, where $C(p) = \sum_i c^i(p)$.
+2. A normative representative consumer exists if individual welfare is measured by $v^i$ (the sum of individual utilities $\sum_i v^i$ is maximized by the competitive equilibrium, and equals $V(p, W)$ up to a constant).
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+By Gorman's theorem, $\sum_i x^i(p, w^i) = A(p) + b(p) W$ with $A(p) = \sum_i a^i(p)$. This aggregate demand coincides with the Walrasian demand of a consumer with indirect utility $V(p, W) = [W - C(p)]/b(p)$ (by Roy's Identity applied to $V$, which recovers $X_l = -\partial V/\partial p_l / \partial V/\partial W$). For the normative part: $\sum_i v^i(p, w^i) = \sum_i [w^i - c^i(p)]/b(p) = [W - C(p)]/b(p) = V(p, W)$. Hence maximizing $V$ is equivalent to maximizing $\sum_i v^i$, which is Pareto-efficient under Gorman preferences. $\square$
+:::
+
+
+## Economic Intuition
+
+The aggregation problem highlights the tension between tractability and generality in economic modeling. The Gorman condition is strong: it requires that a dollar of additional income has the same expenditure effects for rich and poor consumers (across all goods), which is empirically questionable. Yet without it, every distributional change affects aggregate demand, and the "market demand curve" becomes a poor summary statistic for market behavior.
+
+In practice, the representative-agent assumption is often defended on one of three grounds: (1) calibration to macro data implicitly imposes homothetic preferences; (2) distributional effects are assumed second-order relative to aggregate wealth effects; (3) the model is explicitly a reduced form for a more complex heterogeneous-agent structure. The SMD theorem serves as a theoretical warning that (2) is not always innocuous, and motivates the growing literature on heterogeneous-agent models in macroeconomics and trade.
+
+## Cross-References
+- [2.3 Utility Maximization Problem](2.3_Utility_Maximization_Problem.qmd) — Individual demand, indirect utility function
+- [2.5 Duality and Slutsky](2.5_Duality_and_Slutsky.qmd) — Roy's Identity used to derive demand from Gorman polar form
+- [2.2 Utility Representation](2.2_Utility_Representation.qmd) — Homothetic and quasi-linear utility satisfy Gorman

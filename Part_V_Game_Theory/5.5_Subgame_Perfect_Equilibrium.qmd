@@ -1,0 +1,150 @@
+---
+title: "5.5 Subgame Perfect Equilibrium"
+---
+
+# 5.5 Subgame Perfect Equilibrium
+
+> **MWG Reference:** Ch. 9, §9.B–9.C, pp. 267–299
+
+## Context
+
+Nash equilibrium in extensive form games permits equilibria sustained by non-credible threats — strategies that specify suboptimal actions at information sets never reached in equilibrium. Subgame perfect equilibrium (SPE), introduced by Selten (1965), eliminates such equilibria by requiring that the strategy profile induces a Nash equilibrium not just in the full game but in every subgame. The key result justifying SPE is the one-deviation principle: checking SPE reduces to checking whether any single unilateral deviation at any single information set is profitable. This dramatic simplification — from checking all possible deviations to checking one-shot deviations — makes backward induction tractable even in complex games.
+
+## Definitions
+
+::: {.callout-note icon=false}
+## Definition 5.5.1 — Subgame
+A **subgame** $\Gamma(x)$ of extensive form game $\Gamma^E$ starting at node $x$ consists of:
+- The subtree rooted at $x$: all nodes $y$ that are successors of $x$ in the game tree, plus $x$ itself
+- All information sets and actions restricted to this subtree
+- The condition that no information set of the original game straddles the boundary: if node $y$ is in $\Gamma(x)$ and $y'$ is in the same information set as $y$ in $\Gamma^E$, then $y'$ is also in $\Gamma(x)$
+
+The full game $\Gamma^E$ is a subgame of itself (the subgame rooted at the root node). Proper subgames exclude the full game.
+:::
+
+
+::: {.callout-caution icon=false}
+## Remark
+The requirement that information sets not straddle the boundary is crucial. It ensures that a subgame is self-contained: a player who reaches a node in the subgame knows they are in the subgame, and their information set structure within the subgame is consistent with the original game. In a game of perfect information, every node initiates a subgame. In games with imperfect information, subgames can only start at nodes that are singletons in their information set partition.
+:::
+
+
+::: {.callout-note icon=false}
+## Definition 5.5.2 — Subgame Perfect Equilibrium (Selten 1965)
+A strategy profile $\sigma^*$ in an extensive form game $\Gamma^E$ is a **subgame perfect equilibrium (SPE)** if it induces a Nash equilibrium in every subgame of $\Gamma^E$.
+
+Equivalently, for every subgame $\Gamma(x)$, the restriction $\sigma^*|_{\Gamma(x)}$ is a Nash equilibrium of $\Gamma(x)$.
+:::
+
+
+::: {.callout-note icon=false}
+## Definition 5.5.3 — One-Shot Deviation
+A strategy $\sigma_i'$ is a **one-shot deviation** from $\sigma_i^*$ at information set $h$ if $\sigma_i'$ and $\sigma_i^*$ agree at all information sets except $h$:
+$$\sigma_i'(h') = \sigma_i^*(h') \quad \forall h' \in \mathcal{H}_i,\; h' \neq h.$$
+:::
+
+
+## Main Results
+
+::: {.callout-important icon=false}
+## Theorem 5.5.1 — One-Deviation Principle
+In a finite extensive form game, $\sigma^*$ is a subgame perfect equilibrium if and only if there is no player $i$ and no information set $h \in \mathcal{H}_i$ such that player $i$ can strictly increase their payoff in the subgame beginning at $h$ by making a one-shot deviation from $\sigma^*$ at $h$, holding $\sigma^*$ fixed everywhere else.
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+**(Only if)** If $\sigma^*$ is an SPE, then it induces a NE in every subgame. A fortiori, no one-shot deviation is profitable — a one-shot deviation is a special case of a deviation strategy.
+
+**(If)** Suppose no profitable one-shot deviation exists but $\sigma^*$ is not an SPE. Then there exists a subgame $\Gamma(x)$ and a player $i$ with a strategy $\tilde{\sigma}_i$ that improves $i$'s payoff in $\Gamma(x)$ over $\sigma_i^*$.
+
+Let $\tilde{\sigma}_i$ differ from $\sigma_i^*$ at a finite set of information sets $\{h_1, h_2, \ldots, h_K\}$, ordered by depth in the game tree (deepest first): $h_K$ is the deepest.
+
+**Step 1.** Consider modifying $\tilde{\sigma}_i$ to agree with $\sigma_i^*$ at $h_K$ and all deeper information sets, keeping $\tilde{\sigma}_i$ elsewhere. Call this $\tilde{\sigma}_i^{(K-1)}$.
+
+Since $h_K$ is the deepest deviation, in the subgame $\Gamma(h_K)$, $\tilde{\sigma}_i$ and $\sigma_i^*$ agree everywhere except at $h_K$ itself. Therefore switching from $\tilde{\sigma}_i$ to $\tilde{\sigma}_i^{(K-1)}$ constitutes a single-deviation at $h_K$ within $\Gamma(h_K)$.
+
+If $\tilde{\sigma}_i^{(K-1)}$ gives strictly lower payoff in $\Gamma(h_K)$ than $\tilde{\sigma}_i$, then $\tilde{\sigma}_i$ improves over $\sigma_i^*$ at $h_K$ (a one-shot profitable deviation from $\sigma^*$), contradicting our assumption.
+
+If $\tilde{\sigma}_i^{(K-1)}$ gives the same payoff in $\Gamma(h_K)$ as $\tilde{\sigma}_i$, then $\tilde{\sigma}_i^{(K-1)}$ also improves over $\sigma_i^*$ in $\Gamma(x)$.
+
+**Step 2.** Repeat the argument for $h_{K-1}, h_{K-2}, \ldots$ in sequence. At each step, either we find a profitable one-shot deviation (contradiction) or we reduce the number of deviations while preserving the improvement.
+
+After $K$ steps, we obtain $\sigma_i^*$ itself (agreeing with $\tilde{\sigma}_i$ at no information set), yet still improving over $\sigma_i^*$ in $\Gamma(x)$ — a contradiction.
+
+Therefore, if no one-shot deviation is profitable, $\sigma^*$ is an SPE. $\blacksquare$
+:::
+
+
+::: {.callout-important icon=false}
+## Theorem 5.5.2 — Backward Induction Produces SPE
+In any finite game of perfect information, the backward induction strategy profile is a subgame perfect equilibrium.
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+We show the backward induction profile $\sigma^{BI}$ satisfies the one-deviation principle.
+
+By construction of backward induction, at every node $x$ (which is its own information set in perfect information), the action assigned by $\sigma^{BI}$ maximizes player $i(x)$'s continuation payoff given $\sigma^{BI}$ at all subsequent nodes.
+
+Therefore, at any node $x$: conditional on reaching $x$, the action $\sigma^{BI}(x)$ achieves
+$$v(\sigma^{BI}(x), x) = \max_{a \in A(x)} v(a, x \mid \sigma^{BI}_{-x}),$$
+where $v(a, x \mid \sigma^{BI}_{-x})$ is the continuation value of action $a$ followed by $\sigma^{BI}$ at all subsequent nodes.
+
+A one-shot deviation at $x$ changes only $\sigma^{BI}(x)$ to some $a' \neq \sigma^{BI}(x)$, achieving $v(a', x \mid \sigma^{BI}_{-x}) \leq v(\sigma^{BI}(x), x)$. So no profitable one-shot deviation exists.
+
+By Theorem 5.5.1, $\sigma^{BI}$ is an SPE. $\blacksquare$
+:::
+
+
+## SPE vs. NE: Eliminating Non-Credible Threats
+
+::: {.callout-note icon=false appearance="simple"}
+## Example 5.5.1 — Entry Deterrence Game
+**Players:** Incumbent (I) and Entrant (E).
+**Sequence:** E first chooses In or Out. If In, I chooses Fight or Accommodate.
+**Payoffs:**
+- (Out): E gets $0$, I gets $2$
+- (In, Accommodate): E gets $1$, I gets $1$
+- (In, Fight): E gets $-1$, I gets $-1$
+
+**Nash equilibria of the normal form:**
+- NE 1: E plays Out; I's strategy is "Fight if In." E's payoff from Out is $0$, from In is $-1$ (since I fights). Neither wants to deviate. **NE**, but I's threat is non-credible.
+- NE 2: E plays In; I's strategy is "Accommodate if In." If E enters, I gets $1 > -1$ from fighting. E gets $1 > 0$ from entering. **NE and SPE.**
+
+**SPE analysis:**
+The subgame after E plays In has I choosing between Fight ($-1$) and Accommodate ($1$). I prefers Accommodate — backward induction assigns Accommodate in this subgame.
+
+Anticipating I will accommodate, E prefers In ($1 > 0$). The unique SPE is: E plays In; I plays Accommodate. The NE with "Fight" is eliminated because the threat is non-credible.
+:::
+
+
+## Limitations of Backward Induction
+
+**Chain-store paradox (Selten 1978).** A monopolist faces 20 sequential potential entrants. In each market, if entry occurs the monopolist can fight (costly) or accommodate. With backward induction: in market 20, fight is suboptimal; entrant 20 enters. In market 19, fight is suboptimal (no future reputation benefit); entrant 19 enters. Iterating backward, the unique SPE has accommodation in every market and entry by all entrants. Yet in practice, firms may fight early entrants to deter later ones. The paradox reveals a tension between backward induction's rationality assumptions and reputation-building behavior.
+
+**Rationality concerns in long centipede games.** In a 100-round centipede game, backward induction predicts immediate stopping — but this relies on common knowledge of rationality up to 100 levels deep. If Player 1 deviates to Continue in round 1, Player 2 must wonder: is Player 1 irrational, or does Player 1 believe Player 2 is irrational? The backward induction prediction depends on rationality assumptions that become implausible in long games.
+
+**Incomplete information.** Backward induction is well-defined only in perfect information games. With information sets containing multiple nodes, the concept of "which subgame am I in" becomes ambiguous, requiring sequential equilibrium or perfect Bayesian equilibrium.
+
+## Weak Perfect Bayesian Equilibrium (Preview)
+
+::: {.callout-note icon=false}
+## Definition 5.5.4 — Weak Perfect Bayesian Equilibrium
+A **weak perfect Bayesian equilibrium (weak PBE)** consists of a strategy profile $\sigma^*$ and a system of beliefs $\mu$ (probability distributions over nodes within each information set) such that:
+1. **Sequentially rational:** At every information set $h$, player $i(h)$'s strategy maximizes expected payoff given $\mu(h)$ and $\sigma_{-i}^*$ at subsequent nodes.
+2. **Consistent beliefs on path:** At every information set $h$ reached with positive probability under $\sigma^*$, $\mu(h)$ is derived from $\sigma^*$ via Bayes' rule.
+
+Off-path information sets may have arbitrary beliefs in a weak PBE.
+:::
+
+
+This previews the need for stronger concepts (sequential equilibrium, perfect Bayesian equilibrium) in games where beliefs at off-path information sets matter for the equilibrium outcome. In many signaling games and mechanism design applications, the off-path beliefs are the critical object that pins down the equilibrium.
+
+## Cross-References
+
+- [5.2 Nash Equilibrium](5.2_Nash_Equilibrium.qmd) — NE is the base concept; SPE refines it
+- [5.4 Extensive Form Games](5.4_Extensive_Form_Games.qmd) — Game tree, subgame definition, backward induction
+- [5.6 Repeated Games](5.6_Repeated_Games.qmd) — SPE is the relevant equilibrium concept for repeated games
+- [5.7 Bayesian Games](5.7_Bayesian_Games.qmd) — Weak PBE extends SPE to incomplete information

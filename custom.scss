@@ -1,0 +1,21 @@
+/*-- scss:defaults --*/
+$callout-color-note: #1a5276;
+$callout-color-important: #784212;
+$callout-color-tip: #145a32;
+$callout-color-caution: #4a235a;
+$callout-color-warning: #5d4037;
+
+/*-- scss:rules --*/
+.callout-note      { border-left: 4px solid $callout-color-note !important; }
+.callout-important { border-left: 4px solid $callout-color-important !important; }
+.callout-tip       { border-left: 4px solid $callout-color-tip !important; }
+.callout-caution   { border-left: 4px solid $callout-color-caution !important; }
+.callout-warning   { border-left: 4px solid $callout-color-warning !important; }
+
+/* Tighten vertical space around display math */
+mjx-container { margin: 0.5em 0 !important; }
+
+/* Bold part labels in the sidebar */
+.sidebar-section .sidebar-item-section > .sidebar-item-text {
+  font-weight: 700;
+}

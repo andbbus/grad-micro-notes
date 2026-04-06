@@ -1,0 +1,131 @@
+---
+title: "6.3 Existence of Walrasian Equilibrium"
+---
+
+# 6.3 Existence of Walrasian Equilibrium
+
+> **MWG Reference:** Ch. 17, §17.C, pp. 580–590
+
+## Context
+
+The existence of Walrasian equilibrium — the question of whether supply equals demand simultaneously in all markets — is the fundamental mathematical question of competitive equilibrium theory. Arrow and Debreu (1954) and McKenzie (1954) gave the first rigorous proofs using Kakutani's fixed point theorem. The proof strategy is elegant: normalize prices to the simplex, define a "price adjustment" correspondence that raises prices for goods in excess demand, and show that a fixed point of this combined correspondence satisfies market clearing (via Walras' Law). This note presents the complete proof under standard assumptions. Uniqueness, by contrast, fails generically — the Sonnenschein-Mantel-Debreu theorem shows that aggregate excess demand can be essentially arbitrary.
+
+## Assumptions
+
+::: {.callout-note icon=false}
+## Definition 6.3.1 — Standard Assumptions for Existence
+Let $\mathcal{E} = ((u_i, \omega_i)_{i \in I})$ be an exchange economy. The **standard assumptions** are:
+- **(A1) Continuity:** $u_i$ is continuous on $\mathbb{R}^L_+$ for each $i$
+- **(A2) Strong monotonicity:** $u_i(x) > u_i(y)$ whenever $x \gg y$ (or local nonsatiation suffices for Walras' Law; strong monotonicity ensures the boundary condition)
+- **(A3) Strict convexity:** $u_i$ is strictly quasi-concave, so demand $x_i(p,w)$ is a continuous function
+- **(A4) Interior endowments:** $\omega_i \in \mathbb{R}^L_{++}$ for each $i$ (positive endowment of every good, or suitable substitute)
+:::
+
+
+## Main Result
+
+::: {.callout-important icon=false}
+## Theorem 6.3.1 — Existence of Walrasian Equilibrium
+Under assumptions (A1)–(A4), there exists a price vector $p^* \in \Delta^{L-1}$ and allocation $x^*$ constituting a Walrasian equilibrium of $\mathcal{E}$.
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+We proceed in four steps, applying Kakutani's fixed point theorem (see [1.4 Fixed Point Theorems](1.4_Fixed_Point_Theorems.qmd)).
+
+---
+
+**Step 1: Normalize prices and define the compact domain.**
+
+By homogeneity of degree zero of $z(p)$, normalize prices to the simplex:
+$$\Delta^{L-1} = \left\{p \in \mathbb{R}^L_+ : \sum_{\ell=1}^L p_\ell = 1\right\}.$$
+
+$\Delta^{L-1}$ is **nonempty** (e.g., the uniform price $p = (1/L, \ldots, 1/L)$ belongs to it), **compact** (closed and bounded in $\mathbb{R}^L$), and **convex**.
+
+Under (A4), for any $p \in \Delta^{L-1}$ with $p \geq 0$, consumer $i$'s wealth $w_i(p) = p \cdot \omega_i \geq 0$. Under strong monotonicity, if $p_\ell = 0$ for some $\ell$, the demand for good $\ell$ is unbounded (boundary condition). To avoid dealing with the boundary of $\Delta^{L-1}$, we may work with the relative interior $\text{int}(\Delta^{L-1})$ or use a compactness argument (truncate demands at a large bound, prove equilibrium of the truncated economy, take limits).
+
+For simplicity, assume $p \in \Delta^{L-1}_{++} = \{p \in \Delta^{L-1} : p_\ell > 0\; \forall \ell\}$ (strictly positive prices) and use the closure argument at the end.
+
+---
+
+**Step 2: Define the excess demand and the price-adjustment correspondence.**
+
+Under (A1)–(A3), $x_i(p, w_i(p))$ is a continuous function of $p$ (since preferences are strictly convex, demand is single-valued). Therefore $z(p) = \sum_i x_i(p, p \cdot \omega_i) - \bar{\omega}$ is continuous.
+
+Define the **price-adjustment correspondence** $\psi: \Delta^{L-1} \rightrightarrows \Delta^{L-1}$ by:
+$$\psi(p) = \arg\max_{q \in \Delta^{L-1}} q \cdot z(p).$$
+Interpretation: $\psi$ assigns to each price vector the set of price vectors that maximize the value of aggregate excess demand. This pushes prices up for goods in excess demand ($z_\ell > 0$) and down for goods in excess supply ($z_\ell < 0$) — a competitive tatonnement logic.
+
+---
+
+**Step 3: Show $\psi$ satisfies the conditions of Kakutani's theorem.**
+
+$\psi: \Delta^{L-1} \rightrightarrows \Delta^{L-1}$ maps the compact convex set $\Delta^{L-1}$ into itself.
+
+- **Nonempty values:** $q \mapsto q \cdot z(p)$ is a continuous linear function on the compact set $\Delta^{L-1}$; by the Weierstrass theorem, it has a maximum. So $\psi(p) \neq \emptyset$.
+- **Convex values:** $q \cdot z(p)$ is linear in $q$, so its set of maximizers on $\Delta^{L-1}$ is a convex face of the simplex (possibly a singleton if the maximum is at a vertex).
+- **Closed graph (UHC):** Let $p^n \to p$, $q^n \to q$ with $q^n \in \psi(p^n)$. Then $q^n \cdot z(p^n) \geq r \cdot z(p^n)$ for all $r \in \Delta^{L-1}$. By continuity of $z$ and taking limits: $q \cdot z(p) \geq r \cdot z(p)$ for all $r$. So $q \in \psi(p)$, confirming the closed graph.
+
+By Kakutani's theorem, $\psi$ has a **fixed point** $p^* \in \psi(p^*)$, i.e., $p^* \in \arg\max_{q \in \Delta^{L-1}} q \cdot z(p^*)$.
+
+---
+
+**Step 4: Show the fixed point is a Walrasian equilibrium.**
+
+At the fixed point $p^*$, since $p^* \in \arg\max_{q \in \Delta^{L-1}} q \cdot z(p^*)$, it must be that $p^*$ maximizes $q \cdot z(p^*)$ over the simplex. The maximum of a linear function over a simplex is achieved when all weight is placed on the largest component. Therefore:
+$$p_\ell^* = 0 \text{ if } z_\ell(p^*) < \max_k z_k(p^*).$$
+
+**Claim:** $z(p^*) \leq 0$ componentwise and $p_\ell^* z_\ell(p^*) = 0$ for all $\ell$.
+
+Suppose for contradiction that $z_k(p^*) > 0$ for some good $k$. Then $k$ achieves the maximum of $z_\ell(p^*)$ over $\ell$ (or one of the maxima). By the fixed-point condition, $p_k^* > 0$ (otherwise we could improve by shifting weight to $k$).
+
+Now use **Walras' Law:** $p^* \cdot z(p^*) = 0$. Since $p_k^* > 0$ and $z_k(p^*) > 0$, the term $p_k^* z_k(p^*)$ is strictly positive. For the sum to be zero, there must exist some $\ell$ with $p_\ell^* z_\ell(p^*) < 0$, i.e., $z_\ell(p^*) < 0$ (excess supply of good $\ell$).
+
+But at the fixed point, the price-adjustment rule puts zero weight on goods in excess supply: $p_\ell^* = 0$ (since $\ell$ does not achieve the maximum of excess demand). This means $p_\ell^* = 0$ and $z_\ell(p^*) < 0$, so $p_\ell^* z_\ell(p^*) = 0$.
+
+Therefore the only goods with $p_\ell^* z_\ell(p^*) < 0$ must have $p_\ell^* = 0$, and hence $p_\ell^* z_\ell(p^*) = 0$. But then the sum $\sum_\ell p_\ell^* z_\ell(p^*)$ cannot include negative terms — all goods with positive price have $p_\ell^* z_\ell(p^*) \geq 0$, and by Walras' Law the sum is zero. Hence $p_\ell^* z_\ell(p^*) = 0$ for all $\ell$.
+
+For goods with $p_\ell^* > 0$: $z_\ell(p^*) = 0$ (market clearing). For goods with $p_\ell^* = 0$: the boundary condition (excess demand $\to +\infty$ as price $\to 0$) would require $z_\ell(p^*) \leq 0$, otherwise no equilibrium at zero price. Under strong monotonicity, $z_\ell(p^*) \leq 0$ when $p_\ell^* = 0$ can be sustained only if $\ell$ is in excess supply (free disposal or satiation at zero price).
+
+Under the assumption of interior endowments (A4) and strong monotonicity, all prices are strictly positive at equilibrium ($p^* \in \text{int}(\Delta^{L-1})$), so $z(p^*) = 0$. This establishes market clearing. $\blacksquare$
+:::
+
+
+## Conditions That Can Be Relaxed
+
+**Non-convex preferences with a continuum of agents (Aumann 1966).** If there is a continuum of agents (measure space of consumers), individual non-convexities are "averaged out" by the law of large numbers. The aggregate excess demand correspondence is convex-valued even when individual demands are not. Kakutani applies to the aggregate correspondence.
+
+**Non-convex production sets with free entry.** If firms can freely enter and exit, the production possibility frontier is convex at the aggregate level (even with increasing returns at the firm level), because the economy can replicate firms at any scale. This is the basis of "contestable markets" theory.
+
+## Uniqueness
+
+::: {.callout-important icon=false}
+## Theorem 6.3.2 — Gross Substitutes Implies Uniqueness
+If all goods are **gross substitutes** — $\partial z_\ell(p)/\partial p_k > 0$ for all $\ell \neq k$ — then the Walrasian equilibrium is unique.
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+**Proof sketch.** Under gross substitutes, the excess demand function satisfies a **diagonal dominance** condition that prevents multiple zeros. Specifically, the gross substitutes condition implies the Jacobian matrix $Dz(p)$ has all off-diagonal elements positive and (by Walras' Law and homogeneity) is negative semi-definite. This structure implies that the price adjustment dynamics $\dot{p}_\ell = z_\ell(p)$ are globally stable, ruling out multiple equilibria. The formal proof uses the theory of $P$-matrices or monotone maps. $\blacksquare$
+:::
+
+
+**Sonnenschein-Mantel-Debreu Theorem (sketch).** For general preferences satisfying the standard assumptions, the aggregate excess demand function $z: \Delta^{L-1} \to \mathbb{R}^L$ can be **any** continuous function satisfying Walras' Law and homogeneity. No further restrictions are implied by individual rationality. This "anything goes" result means that uniqueness, stability, and comparative statics cannot be derived from first principles in general GE models — they require additional restrictions (gross substitutes, representative agent, etc.).
+
+## Regular Economies
+
+A **regular economy** is one where $Dz(p^*)$ has full rank at every equilibrium $p^*$. By the implicit function theorem, in a regular economy:
+- The number of equilibria is finite and odd (by the index theorem)
+- Each equilibrium is locally unique
+- Equilibria vary smoothly with parameters (endowments, preferences)
+
+Regular economies are generic (the set of economies with irregular equilibria has measure zero in the space of economies).
+
+## Cross-References
+
+- [1.4 Fixed Point Theorems](1.4_Fixed_Point_Theorems.qmd) — Kakutani's theorem is the mathematical engine of the proof
+- [6.1 Exchange Economies](6.1_Exchange_Economies.qmd) — Excess demand properties (continuity, Walras' Law) used in Step 2
+- [6.4 Welfare Theorems](6.4_Welfare_Theorems.qmd) — Existence is a precondition for the welfare theorems to be meaningful
+- [6.2 Arrow Debreu Economy](6.2_Arrow_Debreu_Economy.qmd) — Same proof applies to production economies

@@ -1,0 +1,169 @@
+---
+title: "2.5 — Duality and the Slutsky Equation"
+---
+
+# 2.5 — Duality and the Slutsky Equation
+
+> **MWG Reference:** Ch. 3, pp. 67–88
+
+## Context
+
+The duality between the UMP and EMP is the central organizing principle of consumer theory. The two problems — maximizing utility subject to a budget constraint, and minimizing expenditure to achieve a utility target — are mathematically dual, and their value functions and solution correspondences are tightly linked. The Slutsky equation is the crown jewel of this duality: it decomposes the total price effect on Walrasian demand into a substitution effect (measured by Hicksian demand) and an income effect. This decomposition is indispensable for welfare analysis and demand estimation, since it separates the welfare-neutral reallocation effect (substitution) from the wealth effect (income). The Slutsky matrix must be symmetric and negative semidefinite — properties that serve as the key testable restrictions on any demand system.
+
+## Duality Relations
+
+::: {.callout-important icon=false}
+## Theorem 2.5.1 — The Four Duality Identities
+Let $u$ be continuous and locally nonsatiated, $p \gg 0$, $w > 0$, $\bar{u} \in \text{range}(v(p, \cdot))$. Then:
+1. $e(p, v(p,w)) = w$
+2. $v(p, e(p,\bar{u})) = \bar{u}$
+3. $x(p,w) = h(p, v(p,w))$
+4. $h(p,\bar{u}) = x(p, e(p,\bar{u}))$
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+**(1) $e(p, v(p,w)) = w$:**
+Let $x^* = x(p,w)$, so $v(p,w) = u(x^*)$ and $p \cdot x^* = w$ (by Walras' Law). We claim $x^*$ also solves the EMP at $\bar{u} = v(p,w)$. Feasibility: $u(x^*) = v(p,w) = \bar{u}$. Optimality: suppose some $y$ with $u(y) \geq \bar{u} = u(x^*)$ had $p \cdot y < p \cdot x^* = w$. Then $y \in B(p,w)$ and $u(y) \geq u(x^*)$. By local nonsatiation, we can find $y'$ near $y$ with $u(y') > u(x^*)$ and $y' \in B(p,w)$, contradicting optimality of $x^*$ in the UMP. Hence $x^*$ is a solution to the EMP at $\bar{u} = v(p,w)$, and $e(p, v(p,w)) = p \cdot x^* = w$.
+
+**(2) $v(p, e(p,\bar{u})) = \bar{u}$:**
+Let $h^* = h(p, \bar{u})$, so $e(p, \bar{u}) = p \cdot h^*$ and $u(h^*) \geq \bar{u}$. We show $h^*$ also solves the UMP at wealth $w = e(p, \bar{u})$. Feasibility: $p \cdot h^* = e(p, \bar{u}) = w$. Optimality: suppose some $y \in B(p, w)$ had $u(y) > u(h^*)$. Then $u(y) > \bar{u}$ (since $u(h^*) \geq \bar{u}$, so $u(y) > u(h^*) \geq \bar{u}$), making $y$ feasible for the EMP at $\bar{u}$. But $p \cdot y \leq w = p \cdot h^* = e(p, \bar{u})$, contradicting the minimality of $h^*$ in the EMP (by LNS, equality holds, so $p \cdot y = e(p,\bar{u})$ and we can find a cheaper nearby bundle with $u \geq \bar{u}$, contradiction). Hence $h^*$ solves the UMP at $e(p, \bar{u})$. Therefore $v(p, e(p, \bar{u})) = u(h^*) = \bar{u}$ (the last equality: $u(h^*) = \bar{u}$ by LNS — if $u(h^*) > \bar{u}$, we could find a cheaper feasible bundle, contradicting optimality of $h^*$).
+
+**(3) $x(p,w) = h(p, v(p,w))$:**
+Let $\bar{u} = v(p,w)$. From (1), $e(p, \bar{u}) = w$. From (4) (proven below independently), $h(p, \bar{u}) = x(p, e(p, \bar{u})) = x(p, w)$.
+
+Direct proof: Let $x^* = x(p,w)$. We showed in (1) that $x^*$ solves the EMP at $\bar{u} = v(p,w)$. Hence $x^* \in h(p, v(p,w))$, i.e., $x(p,w) = h(p, v(p,w))$.
+
+**(4) $h(p,\bar{u}) = x(p, e(p,\bar{u}))$:**
+Let $h^* = h(p, \bar{u})$ and $w = e(p, \bar{u}) = p \cdot h^*$. We showed in (2) that $h^*$ solves the UMP at wealth $w$. Hence $h^* \in x(p, e(p, \bar{u}))$, i.e., $h(p, \bar{u}) = x(p, e(p, \bar{u}))$. $\square$
+:::
+
+
+## The Slutsky Equation
+
+::: {.callout-important icon=false}
+## Theorem 2.5.2 — The Slutsky Equation
+Suppose $x(p,w)$ and $h(p, \bar{u})$ are differentiable. For any $(p, w)$ with $v(p,w) = \bar{u}$:
+$$\frac{\partial x_l(p,w)}{\partial p_k} = \frac{\partial h_l(p,\bar{u})}{\partial p_k} - x_k(p,w) \frac{\partial x_l(p,w)}{\partial w}$$
+In matrix form: $Dx_p(p,w) = S(p,w) - x(p,w) \cdot Dx_w(p,w)^\top$, where $S_{lk} = \partial h_l/\partial p_k$ is the **Slutsky matrix**.
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+We differentiate the duality identity (4): $h_l(p, \bar{u}) = x_l(p, e(p, \bar{u}))$ with respect to $p_k$.
+
+The right-hand side is a composite function of $p_k$ through two channels: directly through the first argument of $x_l$, and through the second argument $e(p, \bar{u})$ which depends on $p_k$ via Shephard's Lemma. Applying the chain rule:
+$$\frac{\partial h_l(p, \bar{u})}{\partial p_k} = \frac{\partial x_l(p, e(p,\bar{u}))}{\partial p_k}\bigg|_w + \frac{\partial x_l(p, e(p,\bar{u}))}{\partial w} \cdot \frac{\partial e(p, \bar{u})}{\partial p_k}$$
+The partial derivative on the right (first term) holds $w = e(p, \bar{u})$ fixed, so it is $\partial x_l(p,w)/\partial p_k$. By Shephard's Lemma, $\partial e/\partial p_k = h_k(p, \bar{u}) = x_k(p,w)$ (using identity (3)). Substituting:
+$$\frac{\partial h_l}{\partial p_k} = \frac{\partial x_l}{\partial p_k} + \frac{\partial x_l}{\partial w} \cdot x_k(p,w)$$
+Rearranging:
+$$\frac{\partial x_l(p,w)}{\partial p_k} = \frac{\partial h_l(p,\bar{u})}{\partial p_k} - x_k(p,w) \frac{\partial x_l(p,w)}{\partial w} \qquad \square$$
+:::
+
+
+::: {.callout-caution icon=false}
+## Remark 2.5.1 — Interpretation of the Slutsky Equation
+The Slutsky equation decomposes the total price effect $\partial x_l/\partial p_k$ into:
+- **Substitution effect** $\partial h_l/\partial p_k$: the change in demand for $l$ when $p_k$ changes and the consumer is compensated to remain at the same utility level. This is always non-positive for own-price changes ($l = k$).
+- **Income effect** $-x_k \cdot \partial x_l/\partial w$: the change in demand for $l$ due to the reduction in real wealth caused by the price increase. The consumer purchased $x_k$ units of good $k$, so a rise of $dp_k$ reduces effective wealth by $x_k \, dp_k$.
+:::
+
+
+## The Slutsky Matrix
+
+::: {.callout-note icon=false}
+## Definition 2.5.1 — Slutsky Matrix
+The **Slutsky matrix** is the $L \times L$ matrix of substitution effects:
+$$S(p,w) = \left[\frac{\partial h_l(p,v(p,w))}{\partial p_k}\right]_{l,k} = \left[\frac{\partial x_l}{\partial p_k} + x_k \frac{\partial x_l}{\partial w}\right]_{l,k}$$
+The second expression shows that $S$ can be constructed entirely from the observable Walrasian demand and its derivatives.
+:::
+
+
+::: {.callout-important icon=false}
+## Proposition 2.5.1 — Properties of the Slutsky Matrix
+Under the maintained assumptions, $S(p,w)$ is:
+1. **Symmetric:** $S_{lk} = S_{kl}$
+2. **Negative semidefinite:** $z^\top S(p,w) z \leq 0$ for all $z \in \mathbb{R}^L$
+3. **$S(p,w) p = 0$** (Slutsky matrix times $p$ is zero)
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+**(1) Symmetry:** $S_{lk} = \partial h_l/\partial p_k = \partial^2 e/\partial p_l \partial p_k$ (by Shephard's Lemma). By Young's theorem, $\partial^2 e/\partial p_l \partial p_k = \partial^2 e/\partial p_k \partial p_l = S_{kl}$.
+
+**(2) NSD:** Since $e(p, \bar{u})$ is concave in $p$ (Theorem 2.4.1(4)), its Hessian $D^2_p e$ is negative semidefinite. By Shephard's Lemma, $D^2_p e = \partial h/\partial p = S$. Hence $z^\top S z \leq 0$ for all $z$.
+
+Alternatively, for own-price effects: $S_{ll} = \partial h_l/\partial p_l \leq 0$ because $h_l$ is the minimizer of a cost problem and the own-price effect of the compensated demand is non-positive (complementary slackness and the cost-minimization first-order conditions).
+
+**(3) $Sp = 0$:** Differentiate the homogeneity condition $h(\alpha p, \bar{u}) = h(p, \bar{u})$ with respect to $\alpha$ at $\alpha = 1$:
+$$\sum_k \frac{\partial h_l}{\partial p_k} p_k = 0 \quad \text{for all } l$$
+This is $[S \cdot p]_l = 0$ for all $l$, i.e., $Sp = 0$. $\square$
+:::
+
+
+::: {.callout-caution icon=false}
+## Remark 2.5.2 — NSD and Giffen Goods
+$S_{ll} \leq 0$ means the own-price Hicksian (compensated) effect is non-positive: compensated own-price demand curves slope downward. For Walrasian (Marshallian) demand, the own-price effect is $\partial x_l/\partial p_l = S_{ll} - x_l \cdot \partial x_l/\partial w$. If good $l$ is **inferior** ($\partial x_l/\partial w < 0$), then the income effect $-x_l \cdot \partial x_l / \partial w > 0$ works against the negative substitution effect. If this income effect dominates, $\partial x_l/\partial p_l > 0$: demand rises with price — a **Giffen good**. This requires inferiority plus a sufficiently strong income effect.
+:::
+
+
+## Income and Substitution Effects
+
+::: {.callout-note icon=false}
+## Definition 2.5.2 — Normal and Inferior Goods
+Good $l$ is **normal** at $(p,w)$ if $\partial x_l(p,w)/\partial w > 0$ (demand increases with wealth). It is **inferior** if $\partial x_l/\partial w < 0$.
+:::
+
+
+::: {.callout-note icon=false}
+## Definition 2.5.3 — Complements and Substitutes
+Goods $l$ and $k$ are **net complements** if $S_{lk} = \partial h_l/\partial p_k < 0$ (compensated demand for $l$ falls when $p_k$ rises). They are **net substitutes** if $S_{lk} > 0$.
+
+Note: By symmetry of $S$, the relationship is symmetric: $l$ is a net substitute for $k$ iff $k$ is a net substitute for $l$.
+:::
+
+
+## Compensating and Equivalent Variation
+
+::: {.callout-note icon=false}
+## Definition 2.5.4 — Compensating Variation
+The **Compensating Variation (CV)** of a price change from $p^0$ to $p^1$ (with wealth $w$) is:
+$$CV = e(p^0, \bar{u}^0) - e(p^1, \bar{u}^0) = w - e(p^1, v(p^0, w))$$
+where $\bar{u}^0 = v(p^0, w)$. CV is the amount of wealth that must be given to the consumer after the price change to restore the original utility level.
+:::
+
+
+::: {.callout-note icon=false}
+## Definition 2.5.5 — Equivalent Variation
+The **Equivalent Variation (EV)** of a price change from $p^0$ to $p^1$ is:
+$$EV = e(p^1, \bar{u}^1) - e(p^0, \bar{u}^1) = e(p^1, v(p^1, w)) - e(p^0, v(p^1, w)) = w - e(p^0, v(p^1, w))$$
+where $\bar{u}^1 = v(p^1, w)$. EV is the amount of wealth that would make the consumer indifferent between the price change and receiving the wealth transfer at old prices.
+:::
+
+
+::: {.callout-caution icon=false}
+## Remark 2.5.3 — CV, EV, and Consumer Surplus
+For a single price change in good $l$ from $p_l^0$ to $p_l^1$:
+$$CV = -\int_{p_l^0}^{p_l^1} h_l(p_l, p_{-l}, \bar{u}^0) \, dp_l, \qquad EV = -\int_{p_l^0}^{p_l^1} h_l(p_l, p_{-l}, \bar{u}^1) \, dp_l$$
+The area under the ordinary (Marshallian) demand curve (consumer surplus) lies between CV and EV (for normal goods). CV and EV coincide with consumer surplus only in the quasi-linear case (no income effects).
+:::
+
+
+## Empirical Link: Slutsky Symmetry as a Testable Restriction
+
+The Slutsky symmetry conditions $S_{lk} = S_{kl}$ are the key testable restrictions on demand systems. In applied demand analysis, one estimates a demand system $x(p,w)$ and tests whether the implied Slutsky matrix is symmetric and NSD. These restrictions reduce the number of free parameters in a flexible demand system (e.g., AIDS, QUAIDS) by imposing cross-equation restrictions that can be tested with standard Wald, LR, or LM tests. If symmetry is rejected, the estimated demand system is not rationalizable by any well-behaved utility function, which has implications for the validity of welfare calculations based on CV and EV.
+
+## Economic Intuition
+
+The Slutsky decomposition gives a complete picture of how demand responds to price changes. The substitution effect always works in the expected direction: a price increase for good $l$ leads to substitution away from $l$ toward other goods. The income effect depends on whether the good is normal (strengthening the demand reduction) or inferior (partially or wholly counteracting it). A Giffen good requires a very strong inferiority: the income loss from the higher price of a good that constitutes a large share of spending must swamp the substitution effect. Such goods are theoretically possible but empirically rare.
+
+The symmetry of $S$ reflects the underlying structure of preferences: the marginal willingness to substitute $l$ for $k$ (at constant utility) is the same as the marginal willingness to substitute $k$ for $l$. This symmetry is a restriction that preferences impose on the demand system — if it is violated in data, the data cannot be rationalized by any well-behaved utility function.
+
+## Cross-References
+- [2.3 Utility Maximization Problem](2.3_Utility_Maximization_Problem.qmd) — Walrasian demand, indirect utility, Roy's Identity
+- [2.4 Expenditure Minimization](2.4_Expenditure_Minimization.qmd) — Hicksian demand, expenditure function, Shephard's Lemma
+- [2.6 Revealed Preference](2.6_Revealed_Preference.qmd) — WARP implies NSD of Slutsky; nonparametric alternative derivation
+- [2.7 Integrability](2.7_Integrability.qmd) — Slutsky symmetry + NSD + homogeneity are necessary and sufficient for rationalizability

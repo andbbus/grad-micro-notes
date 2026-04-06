@@ -1,0 +1,146 @@
+---
+title: "2.7 — Integrability"
+---
+
+# 2.7 — Integrability
+
+> **MWG Reference:** Ch. 3, pp. 88–101
+
+## Context
+
+The integrability problem asks the inverse question to the UMP: given an observed demand system $x(p,w)$, does there exist a utility function that rationalizes it? The utility maximization problem tells us that demand derived from a well-behaved utility function must satisfy certain properties: homogeneity of degree zero, Walras' Law, and Slutsky symmetry plus NSD. The integrability theorem (Hurwicz-Uzawa) establishes that these conditions are not only necessary but also sufficient for local (and, under appropriate conditions, global) rationalizability. This gives a clean characterization of rational demand systems. The integrability problem is also practically important: given estimated demand parameters, one can use integrability to recover the expenditure function and perform welfare calculations (CV, EV) that are consistent with an underlying preference ordering.
+
+## The Integrability Problem
+
+::: {.callout-note icon=false}
+## Definition 2.7.1 — Rationalizability
+A demand function $x: \mathbb{R}^L_{++} \times \mathbb{R}_{++} \to \mathbb{R}^L_+$ is **rationalizable** if there exists a locally nonsatiated utility function $u: \mathbb{R}^L_+ \to \mathbb{R}$ such that $x(p,w)$ solves the UMP $\max_{p \cdot y \leq w} u(y)$ for all $(p,w)$.
+:::
+
+
+## Necessary Conditions
+
+::: {.callout-important icon=false}
+## Proposition 2.7.1 — Necessary Conditions for Rationalizability
+If $x(p,w)$ is the Walrasian demand derived from a locally nonsatiated, differentiable utility function, then $x(p,w)$ satisfies:
+1. **Homogeneity of degree zero:** $x(\alpha p, \alpha w) = x(p,w)$ for all $\alpha > 0$
+2. **Walras' Law:** $p \cdot x(p,w) = w$ for all $(p,w)$
+3. **Slutsky symmetry:** $S_{lk}(p,w) = S_{kl}(p,w)$ for all $l, k$, where $S_{lk} = \partial x_l/\partial p_k + x_k \partial x_l/\partial w$
+4. **Slutsky NSD:** the Slutsky matrix $S(p,w)$ is negative semidefinite
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+(1) and (2) were proven in [2.3 Utility Maximization Problem](2.3_Utility_Maximization_Problem.qmd) (Propositions 2.3.3 and 2.3.4).
+
+(3) and (4) were proven in [2.5 Duality and Slutsky](2.5_Duality_and_Slutsky.qmd) (Proposition 2.5.1): $S = \partial h/\partial p$ and the Hessian of the concave expenditure function $e$ is symmetric (Young's theorem) and NSD (concavity). $\square$
+:::
+
+
+## The Integrability Theorem
+
+::: {.callout-important icon=false}
+## Theorem 2.7.1 — Hurwicz-Uzawa Integrability Theorem
+Let $x: \mathbb{R}^L_{++} \times \mathbb{R}_{++} \to \mathbb{R}^L_+$ be a $C^1$ demand function satisfying:
+1. Homogeneity of degree zero in $(p,w)$
+2. Walras' Law: $p \cdot x(p,w) = w$
+3. The Slutsky matrix $S(p,w)$ is symmetric and negative semidefinite
+
+Then $x(p,w)$ is **locally rationalizable**: for every $(p^0, w^0)$, there exists a neighborhood $U$ of $(p^0, w^0)$ and a locally nonsatiated utility function $u$ such that $x(p,w)$ solves the UMP on $U$.
+
+If additionally $S(p,w)$ is everywhere NSD (not just locally) and the system satisfies appropriate global conditions, the rationalization is global.
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+**Step 1: From demand to Hicksian demand and the expenditure function.**
+The strategy is to construct $e(p, \bar{u})$ by integrating the ODE system implied by Shephard's Lemma: $\partial e/\partial p_l = h_l(p, \bar{u})$.
+
+Fix a utility level $\bar{u}$ and initial prices $p^0$. Define the Hicksian demand implicitly: by duality (Theorem 2.5.1), $h(p, \bar{u}) = x(p, e(p, \bar{u}))$. Substituting into Shephard's Lemma, we get a system of ODEs:
+$$\frac{\partial e(p, \bar{u})}{\partial p_l} = x_l(p, e(p, \bar{u})), \quad l = 1, \ldots, L$$
+with initial condition $e(p^0, \bar{u}) = w^0$ (where $v(p^0, w^0) = \bar{u}$).
+
+**Step 2: Integrability condition (Frobenius theorem).**
+The ODE system $\partial e/\partial p_l = x_l(p, e)$ has a (locally unique) solution if and only if the system is **integrable** — i.e., the cross-partial conditions are satisfied:
+$$\frac{\partial^2 e}{\partial p_k \partial p_l} = \frac{\partial^2 e}{\partial p_l \partial p_k}$$
+Substituting the ODE: $\partial^2 e/\partial p_k \partial p_l = \partial x_l/\partial p_k + x_k \partial x_l/\partial e = \partial x_l/\partial p_k + x_k \partial x_l/\partial w$ (since $\partial e/\partial p_k = x_k$, and $\partial x_l/\partial e = \partial x_l/\partial w$).
+
+The integrability condition becomes:
+$$\frac{\partial x_l}{\partial p_k} + x_k \frac{\partial x_l}{\partial w} = \frac{\partial x_k}{\partial p_l} + x_l \frac{\partial x_k}{\partial w}$$
+i.e., $S_{lk} = S_{kl}$: **Slutsky symmetry**. Thus, by the **Frobenius theorem** on integrability of PDE systems, the existence of a solution to the ODE system is equivalent to Slutsky symmetry.
+
+**Step 3: Constructing the utility function.**
+Once we have the expenditure function $e(p, \bar{u})$ (constructed by solving the ODE), we define the utility function via its upper contour sets. For each wealth level $w$ and price vector $p$, define:
+$$u(x) = \max\{\bar{u} : e(p, \bar{u}) \leq p \cdot x \text{ for some } p \text{ supporting } x\}$$
+Under appropriate regularity (which follows from NSD of $S$ ensuring $e$ is concave in $p$ and thus well-behaved), this construction yields a valid utility function. Alternatively, one can use the expenditure function to define preferences directly via indifference curves.
+
+**Step 4: Verification.**
+One must verify that the constructed $u$ rationalizes the original demand $x(p,w)$. This follows from the duality identities: if $e(p, \bar{u})$ satisfies Shephard's Lemma with $h_l = x_l(p, e)$, then the demand system derived from maximizing $u$ (defined from $e$) recovers $x(p,w)$. The NSD condition ensures $e$ is concave, which is needed for $u$ to be quasi-concave. $\square$
+:::
+
+
+::: {.callout-caution icon=false}
+## Remark 2.7.1 — The Frobenius Theorem
+The **Frobenius theorem** states that a system of PDEs $\partial f/\partial x_i = g_i(x, f)$ has a local solution if and only if the integrability conditions $\partial g_i/\partial x_j + g_j \partial g_i/\partial f = \partial g_j/\partial x_i + g_i \partial g_j/\partial f$ hold (i.e., the vector field $(g_i)$ is integrable). In our application, $f = e$, $x = p$, $g_l = x_l(p, e)$, and the integrability condition reduces exactly to Slutsky symmetry.
+:::
+
+
+## Recovering the Expenditure Function from Hicksian Demand
+
+Given $h(p, \bar{u})$ satisfying Shephard's conditions (homogeneity of degree zero in $p$, symmetry, NSD), we recover $e(p, \bar{u})$ by solving:
+$$\frac{d}{dt} e(p(t), \bar{u}) = \sum_l \frac{\partial e}{\partial p_l} \dot{p}_l(t) = \sum_l h_l(p(t), \bar{u}) \dot{p}_l(t)$$
+along any path $p(t)$ from $p^0$ to $p$. The symmetry of $S = \partial h/\partial p$ (Slutsky symmetry) guarantees path-independence of this line integral. Hence:
+$$e(p, \bar{u}) = e(p^0, \bar{u}) + \int_{p^0}^{p} h(q, \bar{u}) \cdot dq$$
+where the integral is along any path from $p^0$ to $p$.
+
+::: {.callout-note icon=false appearance="simple"}
+## Example 2.7.1 — Recovering Utility from a Two-Good Demand System
+Suppose $L = 2$ and we observe:
+$$x_1(p, w) = \frac{\alpha w}{p_1}, \qquad x_2(p, w) = \frac{(1-\alpha) w}{p_2}$$
+for some $\alpha \in (0,1)$. (This is the Walrasian demand for Cobb-Douglas utility $u = x_1^\alpha x_2^{1-\alpha}$.)
+
+**Step 1: Verify necessary conditions.**
+- Homogeneity: $x_l(\alpha p, \alpha w) = \alpha w/(\alpha p_l) \cdot [\text{appropriate factor}]$: $x_1(\lambda p, \lambda w) = \alpha \lambda w / (\lambda p_1) = \alpha w/p_1 = x_1(p,w)$. ✓
+- Walras' Law: $p_1 x_1 + p_2 x_2 = \alpha w + (1-\alpha) w = w$. ✓
+- Slutsky matrix: $S_{11} = \partial x_1/\partial p_1 + x_1 \partial x_1/\partial w = -\alpha w/p_1^2 + (\alpha w/p_1) \cdot (\alpha/p_1) = -\alpha w/p_1^2 + \alpha^2 w/p_1^2 = -\alpha(1-\alpha)w/p_1^2 \leq 0$. ✓
+- Cross-Slutsky: $S_{12} = \partial x_1/\partial p_2 + x_2 \partial x_1/\partial w = 0 + \frac{(1-\alpha)w}{p_2} \cdot \frac{\alpha}{p_1} = \frac{\alpha(1-\alpha)w}{p_1 p_2}$.
+- $S_{21} = \partial x_2/\partial p_1 + x_1 \partial x_2/\partial w = 0 + \frac{\alpha w}{p_1} \cdot \frac{1-\alpha}{p_2} = \frac{\alpha(1-\alpha)w}{p_1 p_2} = S_{12}$. Symmetry ✓.
+
+**Step 2: Integrate to find $e(p, \bar{u})$.**
+The ODE system is: $\partial e/\partial p_l = h_l(p, \bar{u}) = x_l(p, e) = \alpha e/p_1$ (for $l=1$) and $(1-\alpha)e/p_2$ (for $l=2$).
+
+This is a system of linear ODEs. Integrating: $d(\ln e) = \alpha \, d(\ln p_1) + (1-\alpha) d(\ln p_2)$, which integrates to $\ln e = \alpha \ln p_1 + (1-\alpha) \ln p_2 + C(\bar{u})$, or:
+$$e(p, \bar{u}) = A(\bar{u}) \cdot p_1^\alpha p_2^{1-\alpha}$$
+where $A(\bar{u})$ is determined by the initial condition. Setting $e(p, v(p,w)) = w$: $A(v(p,w)) = w/(p_1^\alpha p_2^{1-\alpha})$. Since $v(p,w) = u(x(p,w)) = ({\alpha w}/{p_1})^\alpha \cdot ({(1-\alpha)w}/{p_2})^{1-\alpha} = w \cdot \alpha^\alpha(1-\alpha)^{1-\alpha}/p_1^\alpha p_2^{1-\alpha}$, we get $A(\bar{u}) = \bar{u}/(\alpha^\alpha(1-\alpha)^{1-\alpha})$.
+
+Therefore:
+$$e(p, \bar{u}) = \frac{\bar{u}}{\alpha^\alpha(1-\alpha)^{1-\alpha}} \cdot p_1^\alpha p_2^{1-\alpha}$$
+This is the correct Cobb-Douglas expenditure function, confirming that the demand system is rationalized by $u = x_1^\alpha x_2^{1-\alpha}$.
+:::
+
+
+## Practical Implications for Structural Demand Estimation
+
+The integrability theorem has a crucial practical consequence for structural demand estimation. In applied work, one typically:
+
+1. **Specify a demand system** $x(p,w; \theta)$ with parameters $\theta$ — e.g., the Almost Ideal Demand System (AIDS) of Deaton-Muellbauer.
+2. **Estimate $\theta$** from price and quantity data.
+3. **Impose integrability restrictions**: Slutsky symmetry ($S_{lk} = S_{kl}$) as cross-equation restrictions; homogeneity of degree zero as within-equation restrictions; NSD as inequality restrictions.
+4. **Recover the expenditure function** by integrating the estimated Hicksian demand system.
+5. **Compute welfare measures** (CV, EV) from the recovered expenditure function.
+
+Step 3 is possible precisely because of the Hurwicz-Uzawa theorem: if the estimated demand satisfies Slutsky symmetry, homogeneity, and NSD, then an underlying utility function exists, and welfare calculations are internally consistent (i.e., they correspond to actual preference-based comparisons). Without imposing integrability, welfare measures derived from the estimated demand system may be internally inconsistent.
+
+::: {.callout-caution icon=false}
+## Remark 2.7.2 — Global vs. Local Integrability
+The Hurwicz-Uzawa theorem guarantees local integrability. Global integrability — the existence of a single utility function rationalizing demand everywhere — requires additional conditions ensuring the ODE solutions are well-defined globally and that the resulting $e(p, \bar{u})$ is globally well-behaved. In practice, parametric demand systems (AIDS, QUAIDS) are designed to be globally integrable by construction, with the integrability conditions imposed as parameter restrictions.
+:::
+
+
+## Cross-References
+- [2.5 Duality and Slutsky](2.5_Duality_and_Slutsky.qmd) — Slutsky symmetry is the integrability condition; NSD is the regularity condition
+- [2.4 Expenditure Minimization](2.4_Expenditure_Minimization.qmd) — Shephard's Lemma is the key tool for recovery
+- [2.6 Revealed Preference](2.6_Revealed_Preference.qmd) — Afriat's theorem is the discrete analog of integrability
+- [2.3 Utility Maximization Problem](2.3_Utility_Maximization_Problem.qmd) — The UMP is the model whose rationalizing utility integrability constructs

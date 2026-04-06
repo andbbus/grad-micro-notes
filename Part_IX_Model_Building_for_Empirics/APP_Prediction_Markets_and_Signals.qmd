@@ -1,0 +1,207 @@
+---
+title: "APP — Prediction Markets and Signals"
+---
+
+# APP — Prediction Markets and Signals
+
+> **Cross-references:** Fama (1970); Grossman & Stiglitz (1980); Kyle (1985); [7.6 Prediction Markets and Information Aggregation](7.6_Prediction_Markets_and_Information_Aggregation.qmd)
+
+## Context
+
+Financial markets aggregate information from many traders with dispersed private signals. Prediction markets are designed to do this deliberately: they create Arrow-Debreu securities whose prices represent market-implied probabilities of future events. The question "how efficiently do markets aggregate information?" has both positive (theoretical) and empirical dimensions. The positive theory — Grossman-Stiglitz, Kyle — characterizes the equilibrium degree of information revelation as a function of information acquisition costs and strategic behavior. The empirical methodology — event studies — tests whether prices respond correctly and completely to informative events. This application note bridges the theoretical models to empirical methodology, with specific focus on implications for studying how conflict events and commodity discoveries are priced in financial markets.
+
+## Efficient Markets Hypothesis
+
+::: {.callout-note icon=false}
+## Definition APP.9 — Efficient Markets Hypothesis (Fama 1970)
+The **Efficient Markets Hypothesis (EMH)** states that asset prices fully reflect all available information. Three forms:
+- **Weak form:** Prices reflect all past prices and trading volume; technical analysis cannot generate excess returns
+- **Semi-strong form:** Prices reflect all publicly available information; fundamental analysis cannot generate excess returns
+- **Strong form:** Prices reflect all information including private; insider trading cannot generate excess returns
+
+**Formal statement (risk-neutral, semi-strong):** Asset price $p_t$ is a martingale with respect to the public information set $\mathcal{F}_t$:
+$$\mathbb{E}[p_{t+1} | \mathcal{F}_t] = p_t$$
+Equivalently, abnormal returns $AR_t = R_t - \mathbb{E}[R_t | \mathcal{F}_{t-1}]$ are serially uncorrelated (a white noise process) with respect to public information.
+:::
+
+
+::: {.callout-caution icon=false}
+## Remark APP.7 — Limitations of the EMH
+The EMH is a joint hypothesis: it assumes both (1) rational pricing and (2) a specific asset pricing model for expected returns. Rejection of $\mathbb{E}[AR_t | \mathcal{F}_{t-1}] = 0$ could mean either that markets are inefficient or that the pricing model for $\mathbb{E}[R_t]$ is wrong. This makes EMH tests inherently joint tests and limits their power to distinguish efficiency from model misspecification.
+:::
+
+
+## Grossman-Stiglitz Revisited
+
+::: {.callout-caution icon=false}
+## Remark APP.8 — Grossman-Stiglitz for Prediction Market Design
+The Grossman-Stiglitz paradox (see [7.6 Prediction Markets and Information Aggregation](7.6_Prediction_Markets_and_Information_Aggregation.qmd)) has direct implications for prediction market design:
+
+1. **Full information efficiency is a knife-edge:** A perfectly informationally efficient prediction market would drive the return to information acquisition to zero, deterring acquisition. Any viable prediction market must be imperfectly efficient.
+
+2. **Noise traders as a necessity:** The noisy REE shows that noise traders (or equivalently, liquidity-motivated traders) are necessary for the existence of prediction markets. Without noise, there is no trading, and hence no price.
+
+3. **Optimal market design:** The liquidity parameter $b$ in the LMSR (Logarithmic Market Scoring Rule) controls the tradeoff between responsiveness (how quickly prices update to new information) and stability (how resistant they are to noise). Higher $b$ → more responsive → more trading but also more noise sensitivity.
+
+4. **Testable implication (Grossman-Stiglitz):** More volatile assets should have greater private information acquisition, larger spreads (bid-ask spread as a proxy for adverse selection), and higher analyst coverage. This can be tested by regressing measures of information environment (analyst coverage, bid-ask spread, price impact) on asset return volatility.
+:::
+
+
+## Prediction Market Design: Formal Treatment
+
+::: {.callout-note icon=false}
+## Definition APP.10 — Market Scoring Rule (LMSR)
+A **Logarithmic Market Scoring Rule (LMSR)** is an automated market maker for an event $E$. Let $q_1$ and $q_2$ be the total quantities sold (shares in $E$ vs. $\neg E$) and $b > 0$ be the liquidity parameter. The cost function is:
+$$C(q_1, q_2) = b \ln(e^{q_1/b} + e^{q_2/b})$$
+The price for a share in $E$ is the marginal cost:
+$$p_E = \frac{\partial C}{\partial q_1} = \frac{e^{q_1/b}}{e^{q_1/b} + e^{q_2/b}} = \frac{1}{1 + e^{(q_2 - q_1)/b}}$$
+This is a softmax function: prices are bounded in $(0,1)$ and sum to 1.
+:::
+
+
+::: {.callout-important icon=false}
+## Proposition APP.9 — LMSR Properties
+The LMSR satisfies:
+1. **Bounded loss:** The market maker's maximum loss is $b \ln(2)$ regardless of the outcome
+2. **Properness:** A trader who believes $\Pr(E) = p$ maximizes expected profit by purchasing shares until the price equals $p$; truth-telling is optimal
+3. **Path independence:** The market maker's final liability depends only on the terminal $(q_1, q_2)$, not the order of trades
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+**Properness:** Trader with belief $p$ buys $\delta$ additional shares in $E$ when the current price is $p_E$. The expected profit from a marginal purchase is $p - p_E$ (expected payoff minus cost). This is positive iff $p > p_E$ (if trader believes higher probability than market price). The trader buys until $p_E = p$. Therefore, each trade pushes the price toward the trader's belief — trading is truth-inducing.
+
+**Bounded loss:** The market maker pays $q_1$ if $E$ occurs and $q_2$ if $\neg E$ occurs. Revenue collected is $C(q_1, q_2) - C(0,0) = b\ln(e^{q_1/b} + e^{q_2/b}) - b\ln(2)$. Maximum loss = maximum of $q_1 - C$, $q_2 - C$. Using $C = b\ln(e^{q_1/b} + e^{q_2/b})$: loss if $E$ occurs $= q_1 - b\ln(e^{q_1/b} + e^{q_2/b}) + b\ln(2) = b\ln(2) - b\ln(1 + e^{(q_2-q_1)/b}) \leq b\ln(2)$. Similarly for $\neg E$.
+
+**Path independence:** $C(q_1, q_2)$ depends only on the final quantities $(q_1, q_2)$, not the history of trades. Therefore the market maker's liability is the same regardless of the order of purchases.
+:::
+
+
+::: {.callout-caution icon=false}
+## Remark APP.9 — LMSR and Bayesian Updating
+When traders update beliefs by Bayes' rule and trade truthfully (as properness implies), the sequence of LMSR prices $p_E^{(1)}, p_E^{(2)}, \ldots$ follows the sequence of posterior probabilities. Starting from a uniform prior, after $n$ traders report their private signals through trades, the market price equals the optimal Bayesian posterior given all signals. The LMSR is therefore a mechanism for distributed Bayesian inference.
+:::
+
+
+## Event Studies: Formal Methodology
+
+::: {.callout-note icon=false}
+## Definition APP.11 — Event Study Methodology (MacKinlay 1997)
+An **event study** measures the price impact of a discrete event at time $\tau$ on the value of a traded security.
+
+**Steps:**
+1. **Identify the event:** Define the event and its announcement date $\tau$
+2. **Estimation window:** Estimate the normal return model over a pre-event window $[\tau_1, \tau_2]$ (typically $[-250, -10]$ trading days)
+3. **Normal return model:** $R_{it} = \hat\alpha_i + \hat\beta_i R_{mt}$ (market model) or Fama-French three-factor model
+4. **Abnormal return:** $AR_{it} = R_{it} - (\hat\alpha_i + \hat\beta_i R_{mt})$ for $t$ in the event window $[\tau - k, \tau + k]$
+5. **Cumulative abnormal return (CAR):**
+$$CAR_i(\tau_1, \tau_2) = \sum_{t=\tau_1}^{\tau_2} AR_{it}$$
+6. **Statistical test:** $CAAR(\tau_1, \tau_2) = \frac{1}{N}\sum_i CAR_i(\tau_1, \tau_2) \sim N(0, \sigma_{CAR}^2/N)$ under the null of no event effect
+:::
+
+
+::: {.callout-important icon=false}
+## Proposition APP.10 — Theoretical Interpretation of Event Studies Under EMH
+Under the semi-strong EMH and risk neutrality:
+1. **At announcement ($t = \tau$):** All information contained in the event is incorporated immediately: $AR_\tau = \Delta p_\tau = \mathbb{E}[v | \text{event announced}] - \mathbb{E}[v | \text{pre-event beliefs}]$
+2. **Post-announcement ($t > \tau$):** No predictable price movements: $\mathbb{E}[AR_t | \mathcal{F}_\tau] = 0$ for all $t > \tau$
+3. **Pre-announcement ($t < \tau$):** No predictable drift unless there is information leakage: $\mathbb{E}[AR_t | \mathcal{F}_{t-1}] = 0$ for $t < \tau$
+:::
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Proof
+**At announcement:** The event announcement changes the information set from $\mathcal{F}_{\tau^-}$ (pre-announcement) to $\mathcal{F}_\tau = \mathcal{F}_{\tau^-} \cup \{\text{event}\}$. By the martingale property of asset prices:
+$$\mathbb{E}[p_\tau | \mathcal{F}_\tau] = \mathbb{E}[v | \mathcal{F}_\tau]$$
+$$p_\tau - p_{\tau-1} = \mathbb{E}[v | \mathcal{F}_\tau] - \mathbb{E}[v | \mathcal{F}_{\tau-1}]$$
+The abnormal return $AR_\tau = p_\tau - p_{\tau-1} - \hat{R}_{\tau}$ measures the value-relevant information in the event, stripped of the normal return.
+
+**Post-announcement:** By the law of iterated expectations, $\mathbb{E}[p_{t+1} - p_t | \mathcal{F}_t] = 0$ for all $t \geq \tau$ (martingale property). Therefore expected abnormal returns are zero post-event.
+
+**Pre-announcement drift:** If no information is available before $\tau$, $p_t = \mathbb{E}[v | \mathcal{F}_{t-1}]$ and no systematic drift is predicted. If informed traders acquire information before $\tau$ and trade on it, the Kyle model predicts price impact from order flow, generating a pre-announcement drift of magnitude $\lambda \mathbb{E}[|x_t|]$ per period.
+:::
+
+
+### Pre-Event Drift and the Kyle Model
+
+::: {.callout-caution icon=false}
+## Remark APP.10 — Kyle Model Predicts Pre-Event Drift
+In the multi-period Kyle model, the informed trader privately knows the event outcome (e.g., whether a commodity discovery is positive or negative) before the public announcement at $\tau$. The informed trader spreads their trades across periods $t < \tau$ to minimize price impact. The equilibrium generates a gradual drift toward the true value:
+
+$$\mathbb{E}[p_t | v] = \mu_0 + \frac{t}{T}(v - \mu_0) \quad \text{for } t = 0, 1, \ldots, T = \tau$$
+
+This linear drift is the Kyle model's prediction for the cumulative abnormal return prior to an announcement:
+$$\mathbb{E}[CAR(-k, -1)] = \frac{k}{T}(v - \mu_0) > 0 \quad \text{if } v > \mu_0 \text{ (positive event)}$$
+
+**Empirical implication:** A significant positive $CAR(-k, -1)$ before an announcement suggests informed trading. The magnitude of the pre-announcement CAR relative to the announcement-day CAR estimates the fraction of information revealed before the public announcement. In markets for mineral commodities, this could capture insider knowledge of mining discoveries or production capacity changes.
+:::
+
+
+### Application: Conflict Events and Commodity Prices
+
+::: {.callout-caution icon=false}
+## Remark APP.11 — Event Studies for Conflict-Commodity Price Research
+The theoretical setup: mining operations in conflict zones (such as the DRC) face the risk of disruption, occupation, or shutdown due to armed conflict. This risk should be priced into:
+- **Mineral commodity futures:** If a major conflict disrupts supply from a key producing region, futures prices should jump at the announcement of the conflict event
+- **Mining company equity:** Companies with operations in the affected region should exhibit negative abnormal returns
+- **Country sovereign bonds:** Countries dependent on mining exports may see sovereign spreads widen
+
+**Research design:**
+1. Construct a database of conflict events in major mining regions (ACLED, UCDP data for the DRC, Congo, Central African Republic)
+2. Match each event to the relevant commodity (cassiterite, coltan, gold, cobalt) and futures contract
+3. Compute $AR_t$ for futures contracts around each conflict event
+4. Test $H_0: CAAR(\tau-k, \tau+k) = 0$ vs. $H_1: CAAR \neq 0$
+
+**Theoretical predictions from the conflict model:**
+- **Conflict disrupts supply → futures prices rise** (positive CAR for mineral futures at conflict onset)
+- **Pre-event drift suggests insider knowledge** of impending conflict — captured by positive CAR before the first public ACLED report
+- **Heterogeneity by lootability:** Events targeting lootable resources (coltan, cassiterite — hand-mined, easily transported) should generate larger price responses than events at large industrial mines (which can continue operating with security)
+- **Anticipation effects:** In regions with persistent conflict, market participants learn to anticipate certain types of conflict escalation, dampening the immediate price response
+
+**Identification challenge:** The event study is identified by the assumption that the announcement of a conflict event is the relevant information shock — that no other price-relevant information is released simultaneously. This is standard EMH identification but can be threatened by: (a) confounding macro events; (b) conflict events that are anticipated vs. unexpected; (c) thin markets with few traders.
+:::
+
+
+::: {.callout-caution icon=false}
+## Remark APP.12 — Event Studies as Tests of Information Aggregation
+A portfolio of conflict events can be used to test the Kyle model's prediction: the ratio $CAR(-k, -1)/CAR(-k, \tau)$ (pre-event drift relative to total price movement) estimates the share of information revealed before public announcement. Under the Kyle model, this ratio should equal $k/T$ — the fraction of the informed trader's horizon elapsed.
+
+If the pre-event drift is larger for events in markets with lower liquidity (higher $\lambda$ in the Kyle model), this confirms the model's prediction: high price impact markets reveal information more slowly (informed traders hold back larger positions to limit price impact). Testing this cross-sectional prediction requires: (a) estimating Kyle's $\lambda$ for each commodity market; (b) computing the pre-event drift ratio for each; (c) regressing the drift ratio on $\lambda$.
+
+This exercise would connect the structural microstructure model (Kyle) to the empirical methodology (event studies) in a way that uses both as complements: the Kyle model motivates what to expect; the event study tests whether the expected pattern appears in data.
+:::
+
+
+## Empirical Evidence on Prediction Market Accuracy
+
+::: {.callout-caution icon=false}
+## Remark APP.13 — Summary of Empirical Evidence
+A substantial literature documents the accuracy of prediction markets:
+
+- **Iowa Electronic Markets (IEM):** Markets for US presidential elections; prices outperform opinion polls in 3/4 of elections, measured by mean absolute error. Particularly accurate in the final weeks before election day.
+- **Betfair (now Smarkets):** UK and European sports betting; betting markets are well-calibrated probability forecasters; show minimal pre-announcement drift.
+- **Polymarket:** Decentralized prediction markets; liquidity varies substantially by contract; calibration degrades for illiquid contracts.
+- **Internal corporate prediction markets (HP, Google, Intel):** Outperform official forecasts for product demand, project completion times.
+
+**Theoretical conditions for accuracy (from the model):** (1) Sufficient diversity of trader beliefs; (2) Absence of common value manipulation; (3) Liquid enough to make uninformed trading costly; (4) No systematic correlation between trader beliefs and trader wealth (which would bias the price toward wealthy traders' beliefs rather than the average belief).
+
+**Conditions for failure:** (1) Thin markets (few traders → price dominated by noise); (2) Correlated biases (e.g., all informed traders have similar systematic errors); (3) Market manipulation by large players with common-value information and market power.
+:::
+
+
+## Economic Intuition
+
+Prediction markets are a mechanism design solution to the information aggregation problem: by creating financial incentives for truthful belief revelation (through the LMSR's properness), they elicit and aggregate dispersed private information into a single price. The price is the sufficient statistic for the market's collective belief.
+
+Event studies test whether the price mechanism achieves its information aggregation function efficiently. The null hypothesis (EMH) says it does: all information is immediately and correctly reflected in prices. Rejections of EMH can reflect either genuine inefficiency (slow updating, biased learning) or model misspecification (wrong normal return model). Distinguishing these requires additional theoretical structure.
+
+For research connecting commodity prices to conflict, the event study methodology offers a complementary approach to the IV strategy: instead of using price variation to identify conflict effects on local economies, it uses conflict events to identify how markets price supply disruption risk. Both approaches rest on the same theoretical model — but they exploit the causal arrow in different directions.
+
+## Cross-References
+
+- [7.6 Prediction Markets and Information Aggregation](7.6_Prediction_Markets_and_Information_Aggregation.qmd) — theoretical foundations: Grossman-Stiglitz; Kyle model
+- [9.4 Deriving Testable Predictions](9.4_Deriving_Testable_Predictions.qmd) — event studies as tests of model predictions
+- [9.5 Structural vs Reduced Form](9.5_Structural_vs_Reduced_Form.qmd) — event studies are reduced-form tests of market efficiency
+- [APP Conflict and Resource Models](APP_Conflict_and_Resource_Models.qmd) — conflict events as the "treatment" in event studies
+- [APP Trade and Price Shock Models](APP_Trade_and_Price_Shock_Models.qmd) — commodity futures markets as the outcome in trade-conflict research
