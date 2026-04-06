@@ -1,0 +1,1592 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.36">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>21&nbsp; 3.4 Supply and Factor Demands – Graduate Microeconomic Theory</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../Part_III_Producer_Theory/PS_Producer_Theory.html" rel="next">
+<link href="../Part_III_Producer_Theory/3.3_Cost_Minimization.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-44c2c454a7ec14b8e9312150d2b271b4.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar docked nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Graduate Microeconomic Theory</span>
+    </a>
+  </div>
+        <div class="quarto-navbar-tools tools-end">
+    <a href="https://github.com/andbbus/grad-micro-notes" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+</div>
+          <div id="quarto-search" class="" title="Search"></div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../Part_III_Producer_Theory/index.html">Part III — Producer Theory</a></li><li class="breadcrumb-item"><a href="../Part_III_Producer_Theory/3.4_Supply_and_Factor_Demands.html"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">3.4 Supply and Factor Demands</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Microeconomics Program Overview</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part I — Mathematical Foundations</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_I_Mathematical_Foundations/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Part I: Mathematical Foundations — Index</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_I_Mathematical_Foundations/1.1_Metric_Spaces_and_Topology.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">1.1 Metric Spaces and Topology</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_I_Mathematical_Foundations/1.2_Correspondences_and_Hemicontinuity.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">1.2 Correspondences and Hemicontinuity</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_I_Mathematical_Foundations/1.3_Optimization_Theory.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">1.3 Optimization Theory</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_I_Mathematical_Foundations/1.4_Fixed_Point_Theorems.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">1.4 Fixed-Point Theorems</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part II — Consumer Theory</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_II_Consumer_Theory/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Part II — Consumer Theory: Index</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_II_Consumer_Theory/2.1_Preference_Relations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">2.1 — Preference Relations</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_II_Consumer_Theory/2.2_Utility_Representation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">2.2 — Utility Representation</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_II_Consumer_Theory/2.3_Utility_Maximization_Problem.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">2.3 — The Utility Maximization Problem (UMP)</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_II_Consumer_Theory/2.4_Expenditure_Minimization.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">2.4 — The Expenditure Minimization Problem (EMP)</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_II_Consumer_Theory/2.5_Duality_and_Slutsky.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">2.5 — Duality and the Slutsky Equation</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_II_Consumer_Theory/2.6_Revealed_Preference.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">2.6 — Revealed Preference</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_II_Consumer_Theory/2.7_Integrability.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">2.7 — Integrability</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_II_Consumer_Theory/2.8_Aggregate_Demand.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">2.8 — Aggregate Demand and Gorman Aggregation</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_II_Consumer_Theory/PS_Consumer_Theory.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Problem Set — Part II: Consumer Theory</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part III — Producer Theory</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_III_Producer_Theory/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Part III: Producer Theory — Overview</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_III_Producer_Theory/3.1_Production_Sets.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">3.1 Production Sets and Technology</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_III_Producer_Theory/3.2_Profit_Maximization.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">3.2 Profit Maximization</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_III_Producer_Theory/3.3_Cost_Minimization.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">3.3 Cost Minimization</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_III_Producer_Theory/3.4_Supply_and_Factor_Demands.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">3.4 Supply and Factor Demands</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_III_Producer_Theory/PS_Producer_Theory.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Problem Set: Producer Theory</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part IV — Choice Under Uncertainty</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IV_Choice_Under_Uncertainty/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Part IV: Choice Under Uncertainty — Overview</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IV_Choice_Under_Uncertainty/4.1_State_Space_Framework.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">4.1 The State Space Framework and Axioms</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IV_Choice_Under_Uncertainty/4.2_Expected_Utility_Theory.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">4.2 Expected Utility Theory</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IV_Choice_Under_Uncertainty/4.3_Risk_Aversion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">4.3 Risk Aversion</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IV_Choice_Under_Uncertainty/4.4_Stochastic_Dominance.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">4.4 Stochastic Dominance</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IV_Choice_Under_Uncertainty/PS_Uncertainty.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Problem Set: Choice Under Uncertainty</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part V — Game Theory</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_V_Game_Theory/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">Part V — Game Theory</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_V_Game_Theory/5.1_Normal_Form_Games.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">30</span>&nbsp; <span class="chapter-title">5.1 Normal Form Games</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_V_Game_Theory/5.2_Nash_Equilibrium.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">31</span>&nbsp; <span class="chapter-title">5.2 Nash Equilibrium</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_V_Game_Theory/5.3_Mixed_Strategies.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">32</span>&nbsp; <span class="chapter-title">5.3 Mixed Strategies</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_V_Game_Theory/5.4_Extensive_Form_Games.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">33</span>&nbsp; <span class="chapter-title">5.4 Extensive Form Games</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_V_Game_Theory/5.5_Subgame_Perfect_Equilibrium.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">34</span>&nbsp; <span class="chapter-title">5.5 Subgame Perfect Equilibrium</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_V_Game_Theory/5.6_Repeated_Games.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">35</span>&nbsp; <span class="chapter-title">5.6 Repeated Games</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_V_Game_Theory/5.7_Bayesian_Games.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">36</span>&nbsp; <span class="chapter-title">5.7 Bayesian Games</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_V_Game_Theory/PS_Game_Theory.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">37</span>&nbsp; <span class="chapter-title">Problem Set — Part V: Game Theory</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part VI — General Equilibrium</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VI_General_Equilibrium/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">38</span>&nbsp; <span class="chapter-title">Part VI — General Equilibrium</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VI_General_Equilibrium/6.1_Exchange_Economies.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">39</span>&nbsp; <span class="chapter-title">6.1 Exchange Economies</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VI_General_Equilibrium/6.2_Arrow_Debreu_Economy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">40</span>&nbsp; <span class="chapter-title">6.2 The Arrow-Debreu Economy</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VI_General_Equilibrium/6.3_Existence_of_Equilibrium.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">41</span>&nbsp; <span class="chapter-title">6.3 Existence of Walrasian Equilibrium</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VI_General_Equilibrium/6.4_Welfare_Theorems.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">42</span>&nbsp; <span class="chapter-title">6.4 Welfare Theorems</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VI_General_Equilibrium/6.5_Externalities_and_Public_Goods.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">43</span>&nbsp; <span class="chapter-title">6.5 Externalities and Public Goods</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VI_General_Equilibrium/PS_General_Equilibrium.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">44</span>&nbsp; <span class="chapter-title">Problem Set — Part VI: General Equilibrium</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part VII — Information and Incentives</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VII_Information_and_Incentives/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">45</span>&nbsp; <span class="chapter-title">Part VII — Information and Incentives</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VII_Information_and_Incentives/7.1_Principal_Agent_Problem.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">46</span>&nbsp; <span class="chapter-title">7.1 — The Principal-Agent Problem</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VII_Information_and_Incentives/7.2_Moral_Hazard.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">47</span>&nbsp; <span class="chapter-title">7.2 — Moral Hazard</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VII_Information_and_Incentives/7.3_Adverse_Selection_and_Screening.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">48</span>&nbsp; <span class="chapter-title">7.3 — Adverse Selection and Screening</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VII_Information_and_Incentives/7.4_Signaling.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">49</span>&nbsp; <span class="chapter-title">7.4 — Signaling</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VII_Information_and_Incentives/7.5_Mechanism_Design.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">50</span>&nbsp; <span class="chapter-title">7.5 — Mechanism Design</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VII_Information_and_Incentives/7.6_Prediction_Markets_and_Information_Aggregation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">51</span>&nbsp; <span class="chapter-title">7.6 — Prediction Markets and Information Aggregation</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VII_Information_and_Incentives/PS_Information.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">52</span>&nbsp; <span class="chapter-title">Problem Set — Part VII: Information and Incentives</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part VIII — Social Choice</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VIII_Social_Choice/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">53</span>&nbsp; <span class="chapter-title">Part VIII — Social Choice Theory</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VIII_Social_Choice/8.1_Social_Welfare_Functions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">54</span>&nbsp; <span class="chapter-title">8.1 Social Welfare Functions</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VIII_Social_Choice/8.2_Arrows_Impossibility_Theorem.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">55</span>&nbsp; <span class="chapter-title">8.2 Arrow’s Impossibility Theorem</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VIII_Social_Choice/8.3_Welfare_Criteria.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">56</span>&nbsp; <span class="chapter-title">8.3 Welfare Criteria and Compensation Principles</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VIII_Social_Choice/PS_Social_Choice.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">57</span>&nbsp; <span class="chapter-title">Problem Set — Part VIII: Social Choice</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part IX — Model Building for Empirics</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IX_Model_Building_for_Empirics/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">58</span>&nbsp; <span class="chapter-title">Part IX — Model Building for Empirics</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IX_Model_Building_for_Empirics/9.1_Anatomy_of_a_Theoretical_Model.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">59</span>&nbsp; <span class="chapter-title">9.1 — Anatomy of a Theoretical Model</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IX_Model_Building_for_Empirics/9.2_Equilibrium_Concepts_and_Selection.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">60</span>&nbsp; <span class="chapter-title">9.2 — Equilibrium Concepts and Selection</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IX_Model_Building_for_Empirics/9.3_Comparative_Statics_Methodology.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">61</span>&nbsp; <span class="chapter-title">9.3 — Comparative Statics Methodology</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IX_Model_Building_for_Empirics/9.4_Deriving_Testable_Predictions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">62</span>&nbsp; <span class="chapter-title">9.4 — Deriving Testable Predictions</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IX_Model_Building_for_Empirics/9.5_Structural_vs_Reduced_Form.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">63</span>&nbsp; <span class="chapter-title">9.5 — Structural vs.&nbsp;Reduced Form</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IX_Model_Building_for_Empirics/9.6_Identification_in_Structural_Models.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">64</span>&nbsp; <span class="chapter-title">9.6 — Identification in Structural Models</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IX_Model_Building_for_Empirics/9.7_Model_Discipline_and_Tractability.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">65</span>&nbsp; <span class="chapter-title">9.7 — Model Discipline and Tractability</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IX_Model_Building_for_Empirics/APP_Conflict_and_Resource_Models.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">66</span>&nbsp; <span class="chapter-title">APP — Conflict and Resource Models</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IX_Model_Building_for_Empirics/APP_Trade_and_Price_Shock_Models.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">67</span>&nbsp; <span class="chapter-title">APP — Trade and Price Shock Models</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IX_Model_Building_for_Empirics/APP_Prediction_Markets_and_Signals.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">68</span>&nbsp; <span class="chapter-title">APP — Prediction Markets and Signals</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IX_Model_Building_for_Empirics/PS_Model_Building.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">69</span>&nbsp; <span class="chapter-title">Problem Set — Part IX: Model Building for Empirics</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#supply-and-factor-demands" id="toc-supply-and-factor-demands" class="nav-link active" data-scroll-target="#supply-and-factor-demands"><span class="header-section-number">22</span> 3.4 Supply and Factor Demands</a>
+  <ul class="collapse">
+  <li><a href="#context" id="toc-context" class="nav-link" data-scroll-target="#context"><span class="header-section-number">22.1</span> Context</a></li>
+  <li><a href="#definitions" id="toc-definitions" class="nav-link" data-scroll-target="#definitions"><span class="header-section-number">22.2</span> Definitions</a></li>
+  <li><a href="#profit-cost-duality" id="toc-profit-cost-duality" class="nav-link" data-scroll-target="#profit-cost-duality"><span class="header-section-number">22.3</span> Profit-Cost Duality</a></li>
+  <li><a href="#comparative-statics-full-matrix" id="toc-comparative-statics-full-matrix" class="nav-link" data-scroll-target="#comparative-statics-full-matrix"><span class="header-section-number">22.4</span> Comparative Statics: Full Matrix</a></li>
+  <li><a href="#returns-to-scale-and-market-structure" id="toc-returns-to-scale-and-market-structure" class="nav-link" data-scroll-target="#returns-to-scale-and-market-structure"><span class="header-section-number">22.5</span> Returns to Scale and Market Structure</a></li>
+  <li><a href="#producer-surplus" id="toc-producer-surplus" class="nav-link" data-scroll-target="#producer-surplus"><span class="header-section-number">22.6</span> Producer Surplus</a></li>
+  <li><a href="#factor-demand-elasticities" id="toc-factor-demand-elasticities" class="nav-link" data-scroll-target="#factor-demand-elasticities"><span class="header-section-number">22.7</span> Factor Demand Elasticities</a></li>
+  <li><a href="#le-chatelier-principle" id="toc-le-chatelier-principle" class="nav-link" data-scroll-target="#le-chatelier-principle"><span class="header-section-number">22.8</span> Le Chatelier Principle</a></li>
+  <li><a href="#connecting-conditional-and-unconditional-factor-demands" id="toc-connecting-conditional-and-unconditional-factor-demands" class="nav-link" data-scroll-target="#connecting-conditional-and-unconditional-factor-demands"><span class="header-section-number">22.9</span> Connecting Conditional and Unconditional Factor Demands</a></li>
+  <li><a href="#economic-intuition" id="toc-economic-intuition" class="nav-link" data-scroll-target="#economic-intuition"><span class="header-section-number">22.10</span> Economic Intuition</a></li>
+  <li><a href="#cross-references" id="toc-cross-references" class="nav-link" data-scroll-target="#cross-references"><span class="header-section-number">22.11</span> Cross-References</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/andbbus/grad-micro-notes/edit/main/Part_III_Producer_Theory/3.4_Supply_and_Factor_Demands.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/andbbus/grad-micro-notes/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../Part_III_Producer_Theory/index.html">Part III — Producer Theory</a></li><li class="breadcrumb-item"><a href="../Part_III_Producer_Theory/3.4_Supply_and_Factor_Demands.html"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">3.4 Supply and Factor Demands</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">3.4 Supply and Factor Demands</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="supply-and-factor-demands" class="level1" data-number="22">
+<h1 data-number="22"><span class="header-section-number">22</span> 3.4 Supply and Factor Demands</h1>
+<blockquote class="blockquote">
+<p><strong>MWG Reference:</strong> Ch. 5, §5.C–5.E, pp.&nbsp;138–167</p>
+</blockquote>
+<section id="context" class="level2" data-number="22.1">
+<h2 data-number="22.1" class="anchored" data-anchor-id="context"><span class="header-section-number">22.1</span> Context</h2>
+<p>Having established the PMP and CMP separately, this note synthesizes them. The key insight is that the PMP and CMP are dual to each other: the profit function equals the net revenue from cost-minimizing production at the profit-maximizing output. This <strong>profit-cost duality</strong> allows us to deploy the results from both problems simultaneously.</p>
+<p>The central economic questions addressed here are: How does supply respond to price changes in the short run versus the long run (Le Chatelier principle)? How do returns to scale determine equilibrium market structure? What is the relationship between unconditional and conditional factor demands? These questions are central to applied microeconomics, industrial organization, and general equilibrium theory.</p>
+<hr>
+</section>
+<section id="definitions" class="level2" data-number="22.2">
+<h2 data-number="22.2" class="anchored" data-anchor-id="definitions"><span class="header-section-number">22.2</span> Definitions</h2>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Definition 3.1 — Profit-Cost Duality
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The profit function and cost function are related by: <span class="math display">\[\pi(p, w) = \max_{q \geq 0} \left[pq - c(w, q)\right]\]</span> Profit equals revenues <span class="math inline">\(pq\)</span> from selling <span class="math inline">\(q\)</span> units minus the minimized cost of producing <span class="math inline">\(q\)</span> units.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Definition 3.2 — Unconditional Factor Demands
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The <strong>unconditional factor demands</strong> <span class="math inline">\(z^*(p, w)\)</span> are the input demands at the profit-maximizing output level: <span class="math display">\[z^*(p, w) = z\bigl(w, q^*(p,w)\bigr)\]</span> where <span class="math inline">\(q^*(p,w)\)</span> is the profit-maximizing output and <span class="math inline">\(z(w,q)\)</span> are the conditional factor demands from the CMP.</p>
+</div>
+</div>
+<hr>
+</section>
+<section id="profit-cost-duality" class="level2" data-number="22.3">
+<h2 data-number="22.3" class="anchored" data-anchor-id="profit-cost-duality"><span class="header-section-number">22.3</span> Profit-Cost Duality</h2>
+<div class="callout callout-style-default callout-important no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Proposition 3.1 — First-Order Condition for Profit Maximization
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Suppose <span class="math inline">\(c(w, q)\)</span> is differentiable in <span class="math inline">\(q\)</span> and the profit-maximizing output <span class="math inline">\(q^*(p,w) &gt; 0\)</span> is interior. Then: <span class="math display">\[p = MC(w, q^*) = \frac{\partial c(w, q^*)}{\partial q}\]</span> <strong>Price equals marginal cost</strong> at the profit optimum.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Proof
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>From the PMP decomposed as <span class="math inline">\(\pi(p,w) = \max_{q \geq 0} [pq - c(w,q)]\)</span>, the first-order condition for an interior maximum with respect to <span class="math inline">\(q\)</span> is: <span class="math display">\[\frac{d}{dq}[pq - c(w,q)] = p - \frac{\partial c(w,q)}{\partial q} = 0\]</span> <span class="math display">\[\Rightarrow p = \frac{\partial c(w,q^*)}{\partial q} = MC(w, q^*)\]</span> The second-order condition is <span class="math inline">\(-\frac{\partial^2 c}{\partial q^2} \leq 0\)</span>, i.e., <span class="math inline">\(\frac{\partial^2 c}{\partial q^2} \geq 0\)</span>: marginal cost is nondecreasing in <span class="math inline">\(q\)</span>. This holds under DRS (where <span class="math inline">\(c\)</span> is convex in <span class="math inline">\(q\)</span>) but not necessarily under IRS. <span class="math inline">\(\blacksquare\)</span></p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-caution no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Caution</span>Remark 3.1 — Supply Function from MC
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>When <span class="math inline">\(MC(w,q)\)</span> is strictly increasing in <span class="math inline">\(q\)</span> (DRS), the equation <span class="math inline">\(p = MC(w, q^*)\)</span> uniquely determines <span class="math inline">\(q^*(p,w)\)</span> as the <strong>inverse of the MC function</strong>: <span class="math display">\[q^*(p,w) = MC^{-1}(p; w)\]</span> This is the firm’s supply function. The supply curve is the marginal cost curve (above minimum average variable cost).</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-important no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Proposition 3.2 — Envelope Relationships: Hotelling via Shephard
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Using the profit-cost decomposition <span class="math inline">\(\pi(p,w) = pq^*(p,w) - c(w, q^*(p,w))\)</span>:</p>
+<ol type="a">
+<li><p><span class="math inline">\(\frac{\partial \pi}{\partial p} = q^*(p,w)\)</span> (Hotelling’s lemma for output)</p></li>
+<li><p><span class="math inline">\(\frac{\partial \pi}{\partial w_l} = -z^*_l(p,w)\)</span> (Hotelling’s lemma for inputs, with negative sign)</p></li>
+</ol>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Proof
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>(a)</strong> By the envelope theorem applied to <span class="math inline">\(\pi(p,w) = \max_q [pq - c(w,q)]\)</span>, treating <span class="math inline">\(p\)</span> as the parameter: <span class="math display">\[\frac{\partial \pi}{\partial p} = q^*(p,w) + \underbrace{\left(p - \frac{\partial c}{\partial q}\right)}_{\text{= 0 at optimum}} \frac{\partial q^*}{\partial p} = q^*(p,w)\]</span></p>
+<p><strong>(b)</strong> By the envelope theorem, treating <span class="math inline">\(w_l\)</span> as the parameter (it enters <span class="math inline">\(c\)</span> but not <span class="math inline">\(pq\)</span> directly): <span class="math display">\[\frac{\partial \pi}{\partial w_l} = -\frac{\partial c(w, q^*)}{\partial w_l} + \underbrace{\left(p - \frac{\partial c}{\partial q}\right)}_{\text{= 0}} \frac{\partial q^*}{\partial w_l} = -\frac{\partial c(w, q^*)}{\partial w_l} = -z_l(w, q^*) = -z^*_l(p,w)\]</span> where Shephard’s lemma was used in the last step. <span class="math inline">\(\blacksquare\)</span></p>
+</div>
+</div>
+</div>
+<hr>
+</section>
+<section id="comparative-statics-full-matrix" class="level2" data-number="22.4">
+<h2 data-number="22.4" class="anchored" data-anchor-id="comparative-statics-full-matrix"><span class="header-section-number">22.4</span> Comparative Statics: Full Matrix</h2>
+<p>The full matrix of supply and factor demand responses can be derived by combining Hotelling’s and Shephard’s lemmas.</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Definition 3.3 — Full Comparative Statics Matrix
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Partition prices into <span class="math inline">\((p, w)\)</span> where <span class="math inline">\(p\)</span> is the output price and <span class="math inline">\(w = (w_1, \ldots, w_K)\)</span> are input prices. The full <span class="math inline">\((1+K) \times (1+K)\)</span> comparative statics matrix is: <span class="math display">\[\begin{pmatrix} \partial q^*/\partial p &amp; \partial q^*/\partial w^T \\ \partial z^*/\partial p &amp; \partial z^*/\partial w \end{pmatrix} = \begin{pmatrix} \partial^2 \pi/\partial p^2 &amp; \partial^2 \pi/\partial p \partial w^T \\ \partial^2 \pi/\partial w \partial p &amp; \partial^2 \pi/\partial w^2 \end{pmatrix} = D^2_{(p,w)} \pi\]</span></p>
+</div>
+</div>
+<div class="callout callout-style-default callout-important no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Proposition 3.3 — Properties of the Comparative Statics Matrix
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><span class="math inline">\(D^2_{(p,w)} \pi\)</span> is: 1. <strong>Symmetric</strong> (Young’s theorem on <span class="math inline">\(\pi\)</span>) 2. <strong>Positive semidefinite</strong> (convexity of <span class="math inline">\(\pi\)</span>) 3. <strong><span class="math inline">\(D^2_{(p,w)} \pi \cdot (p,w)^T = 0\)</span></strong> (HD0 of supply and factor demands)</p>
+<p>In particular: - <span class="math inline">\(\partial q^*/\partial p \geq 0\)</span>: supply is nondecreasing in output price - <span class="math inline">\(\partial z^*_l/\partial w_l \leq 0\)</span>: unconditional own-price factor demand is nonincreasing - <span class="math inline">\(\partial q^*/\partial w_l = \partial z^*_l / \partial p\)</span>: cross-effects are symmetric</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-caution no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Caution</span>Remark 3.2 — Symmetric Cross-Effects
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The symmetry <span class="math inline">\(\partial q^*/\partial w_l = -\partial z^*_l/\partial p\)</span> (note the sign: Hotelling gives <span class="math inline">\(\partial \pi/\partial w_l = -z^*_l\)</span> so <span class="math inline">\(\partial z^*_l/\partial p = -\partial^2 \pi/\partial w_l \partial p\)</span>) is a testable restriction: the effect of a factor price change on output equals (up to sign) the effect of the output price change on that factor’s demand. This has strong empirical content.</p>
+</div>
+</div>
+<hr>
+</section>
+<section id="returns-to-scale-and-market-structure" class="level2" data-number="22.5">
+<h2 data-number="22.5" class="anchored" data-anchor-id="returns-to-scale-and-market-structure"><span class="header-section-number">22.5</span> Returns to Scale and Market Structure</h2>
+<div class="callout callout-style-default callout-important no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Proposition 3.4 — CRS and Zero Profit
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Under <strong>constant returns to scale</strong>, in a competitive equilibrium with positive production, profit must be zero: <span class="math inline">\(\pi(p,w) = 0\)</span>.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Proof
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-12" class="callout-12-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>By Proposition 3.1 of <a href="../Part_III_Producer_Theory/3.1_Production_Sets.html">3.1 Production Sets</a>, under CRS <span class="math inline">\(\pi(p,w) \in \{0, +\infty\}\)</span>. In a competitive equilibrium, supply must equal finite demand, so <span class="math inline">\(\pi(p,w) = +\infty\)</span> is impossible. Hence <span class="math inline">\(\pi(p,w) = 0\)</span>. Alternatively: if <span class="math inline">\(\pi &gt; 0\)</span>, the firm would want to scale up indefinitely (since CRS means scaling up is always feasible), driving supply to infinity. <span class="math inline">\(\blacksquare\)</span></p>
+</div>
+</div>
+</div>
+<p><strong>Implications for market structure:</strong></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 30%">
+<col style="width: 26%">
+<col style="width: 42%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Returns to Scale</th>
+<th>Cost structure</th>
+<th>Equilibrium implication</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>CRS</strong></td>
+<td><span class="math inline">\(c(w,q) = q \cdot c(w,1)\)</span>; $AC = MC = $ const</td>
+<td>Zero profit; supply horizontal; scale indeterminate</td>
+</tr>
+<tr class="even">
+<td><strong>DRS</strong></td>
+<td><span class="math inline">\(c\)</span> strictly convex in <span class="math inline">\(q\)</span>; <span class="math inline">\(AC &lt; MC\)</span></td>
+<td>Finite supply; upward-sloping supply curve; positive profit</td>
+</tr>
+<tr class="odd">
+<td><strong>IRS</strong></td>
+<td><span class="math inline">\(c\)</span> strictly concave in <span class="math inline">\(q\)</span>; <span class="math inline">\(AC &gt; MC\)</span></td>
+<td>Natural monopoly tendency; competitive equilibrium may fail to exist</td>
+</tr>
+</tbody>
+</table>
+<div class="callout callout-style-default callout-caution no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Caution</span>Remark 3.3 — IRS and Natural Monopoly
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Under IRS, the average cost curve is everywhere declining. A single firm producing all industry output always has lower average cost than any division of output among multiple firms. This is the definition of a <strong>natural monopoly</strong>. Competitive equilibrium breaks down because at any price <span class="math inline">\(p &gt; 0\)</span>, if a firm makes profit, it wants to scale up; if <span class="math inline">\(p = AC\)</span>, it makes zero profit but a competitor who produces slightly more makes profit (since <span class="math inline">\(AC\)</span> is declining). The natural outcome is monopoly or regulated pricing at <span class="math inline">\(p = AC\)</span>.</p>
+</div>
+</div>
+<hr>
+</section>
+<section id="producer-surplus" class="level2" data-number="22.6">
+<h2 data-number="22.6" class="anchored" data-anchor-id="producer-surplus"><span class="header-section-number">22.6</span> Producer Surplus</h2>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Definition 3.4 — Producer Surplus
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The <strong>producer surplus</strong> at price <span class="math inline">\(p\)</span> is: <span class="math display">\[PS(p) = \pi(p, w) - \pi(0, w)\]</span> For a competitive firm with <span class="math inline">\(0 \in Y\)</span> (inaction possible), <span class="math inline">\(\pi(0,w) = 0\)</span> (zero profit at zero output price), so: <span class="math display">\[PS(p) = \pi(p, w)\]</span></p>
+<p>Equivalently, producer surplus is the area above the supply curve and below the price: <span class="math display">\[PS(p) = \int_0^{q^*(p)} [p - MC(w, q)] \, dq = p \cdot q^* - \int_0^{q^*} MC(w, q) \, dq = p q^* - VC(q^*)\]</span></p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-15-contents" aria-controls="callout-15" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Equivalence of the Two Definitions
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-15" class="callout-15-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><span class="math inline">\(PS(p) = p q^* - VC(q^*)\)</span> where <span class="math inline">\(VC(q) = c(w,q) - FC\)</span>.</p>
+<p>The area above supply and below <span class="math inline">\(p\)</span>: supply curve is <span class="math inline">\(p = MC(q)\)</span> (the inverse supply). The area to the left of the supply curve between <span class="math inline">\(q = 0\)</span> and <span class="math inline">\(q = q^*\)</span> is: <span class="math display">\[\int_0^{p} q^*(s) \, ds = p q^* - \int_0^{q^*} MC(q) \, dq\]</span> where integration by parts was used. Since <span class="math inline">\(\int_0^{q^*} MC(q) dq = VC(q^*) = c(q^*) - FC\)</span>: <span class="math display">\[PS(p) = p q^* - VC(q^*) = \pi(p) + FC\]</span> If there are no fixed costs (<span class="math inline">\(FC = 0\)</span>), then <span class="math inline">\(PS = \pi\)</span>. <span class="math inline">\(\blacksquare\)</span></p>
+</div>
+</div>
+</div>
+<hr>
+</section>
+<section id="factor-demand-elasticities" class="level2" data-number="22.7">
+<h2 data-number="22.7" class="anchored" data-anchor-id="factor-demand-elasticities"><span class="header-section-number">22.7</span> Factor Demand Elasticities</h2>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Definition 3.5 — Factor Demand Elasticities
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The <strong>own-price elasticity of (conditional) factor demand</strong> for input <span class="math inline">\(l\)</span>: <span class="math display">\[\epsilon_{ll} = \frac{\partial \ln z_l}{\partial \ln w_l} = \frac{\partial z_l}{\partial w_l} \cdot \frac{w_l}{z_l} \leq 0\]</span></p>
+<p>The <strong>cross-price elasticity of factor demand</strong>: <span class="math display">\[\epsilon_{lk} = \frac{\partial \ln z_l}{\partial \ln w_k} = \frac{\partial z_l}{\partial w_k} \cdot \frac{w_k}{z_l}\]</span> Inputs <span class="math inline">\(l\)</span> and <span class="math inline">\(k\)</span> are <strong>substitutes</strong> if <span class="math inline">\(\epsilon_{lk} &gt; 0\)</span> (raise price of <span class="math inline">\(k\)</span>, demand for <span class="math inline">\(l\)</span> increases) and <strong>complements</strong> if <span class="math inline">\(\epsilon_{lk} &lt; 0\)</span>.</p>
+<p>The <strong>output elasticity of factor demand</strong>: <span class="math display">\[\epsilon_{lq} = \frac{\partial \ln z_l}{\partial \ln q} = \frac{\partial z_l}{\partial q} \cdot \frac{q}{z_l}\]</span></p>
+</div>
+</div>
+<div class="callout callout-style-default callout-important no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Proposition 3.5 — Symmetry of Cross-Elasticities (Allen-Uzawa)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The Allen-Uzawa elasticity of substitution <span class="math inline">\(\sigma_{lk}^{AU} = \frac{c \cdot c_{lk}}{c_l c_k}\)</span> (where <span class="math inline">\(c_l = \partial c/\partial w_l\)</span>) is symmetric: <span class="math inline">\(\sigma_{lk}^{AU} = \sigma_{kl}^{AU}\)</span>.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-18-contents" aria-controls="callout-18" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Proof
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-18" class="callout-18-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>From Shephard’s lemma, <span class="math inline">\(c_l = z_l\)</span> and <span class="math inline">\(c_k = z_k\)</span>. By Young’s theorem, <span class="math inline">\(c_{lk} = \partial^2 c/\partial w_l \partial w_k = \partial^2 c/\partial w_k \partial w_l = c_{kl}\)</span>. Hence <span class="math inline">\(\sigma_{lk}^{AU} = c \cdot c_{lk}/(c_l c_k) = c \cdot c_{kl}/(c_k c_l) = \sigma_{kl}^{AU}\)</span>. <span class="math inline">\(\blacksquare\)</span></p>
+</div>
+</div>
+</div>
+<hr>
+</section>
+<section id="le-chatelier-principle" class="level2" data-number="22.8">
+<h2 data-number="22.8" class="anchored" data-anchor-id="le-chatelier-principle"><span class="header-section-number">22.8</span> Le Chatelier Principle</h2>
+<p>The Le Chatelier principle states that long-run responses to price changes are at least as large (in absolute value) as short-run responses. Intuitively, in the short run some inputs are fixed; in the long run all inputs are variable, providing more flexibility to respond to price changes.</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Definition 3.6 — Short-Run and Long-Run
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The <strong>short-run</strong> cost function <span class="math inline">\(c^{SR}(w, q; \bar{z}_K)\)</span> holds input <span class="math inline">\(K\)</span> fixed at <span class="math inline">\(\bar{z}_K\)</span>: <span class="math display">\[c^{SR}(w, q; \bar{z}_K) = \min_{z_1, \ldots, z_{K-1}} w_{-K} \cdot z_{-K} + w_K \bar{z}_K \quad \text{s.t.} \quad f(z_{-K}, \bar{z}_K) \geq q\]</span> The <strong>long-run</strong> cost function <span class="math inline">\(c^{LR}(w, q) = \min_z w \cdot z\)</span> s.t. <span class="math inline">\(f(z) \geq q\)</span> optimizes over all inputs.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-important no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Theorem 3.3 — Le Chatelier Principle (Supply Elasticity)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>At the long-run profit-maximizing output <span class="math inline">\(q^{LR}(p,w)\)</span>, the long-run supply response to a price change is at least as large as the short-run supply response: <span class="math display">\[\frac{\partial q^{LR}}{\partial p} \geq \frac{\partial q^{SR}}{\partial p} \geq 0\]</span> More generally, for any input <span class="math inline">\(l\)</span> that is variable in both the short run and long run, the long-run price response of that factor exceeds the short-run response in absolute value: <span class="math display">\[\left|\frac{\partial z^{LR}_l}{\partial w_l}\right| \geq \left|\frac{\partial z^{SR}_l}{\partial w_l}\right|\]</span></p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-21-contents" aria-controls="callout-21" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Proof
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-21" class="callout-21-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>Proof sketch for supply elasticity:</strong></p>
+<p>At the long-run optimum <span class="math inline">\((q^*, z^*)\)</span>, <span class="math inline">\(q^{SR}(p, w; \bar{z}_K) = q^{LR}(p,w)\)</span> when <span class="math inline">\(\bar{z}_K = z^*_K\)</span> (the short-run optimum coincides with the long-run optimum when the fixed input is set at its long-run optimal level).</p>
+<p>The short-run and long-run profit functions satisfy <span class="math inline">\(\pi^{LR}(p,w) \geq \pi^{SR}(p,w; z^*_K(p,w))\)</span> for all <span class="math inline">\((p,w)\)</span> (the long run is more flexible), with equality at the equilibrium prices <span class="math inline">\((p^0, w^0)\)</span>: both equal <span class="math inline">\(\pi^0\)</span>.</p>
+<p>Define <span class="math inline">\(g(p) = \pi^{LR}(p, w^0)\)</span> and <span class="math inline">\(h(p) = \pi^{SR}(p, w^0; z^*_K(p^0, w^0))\)</span>. Then: - <span class="math inline">\(g(p) \geq h(p)\)</span> for all <span class="math inline">\(p\)</span> (long run dominates) - <span class="math inline">\(g(p^0) = h(p^0)\)</span> (equal at <span class="math inline">\(p^0\)</span>)</p>
+<p>Both <span class="math inline">\(g\)</span> and <span class="math inline">\(h\)</span> are convex and have the same value at <span class="math inline">\(p^0\)</span>. Since <span class="math inline">\(g \geq h\)</span> everywhere and they are equal at <span class="math inline">\(p^0\)</span>, <span class="math inline">\(g\)</span> is “more convex” than <span class="math inline">\(h\)</span> at <span class="math inline">\(p^0\)</span>: <span class="math display">\[g''(p^0) \geq h''(p^0)\]</span> By Hotelling’s lemma, <span class="math inline">\(g'(p) = q^{LR}(p,w^0)\)</span> and <span class="math inline">\(h'(p) = q^{SR}(p,w^0; \bar{z}_K)\)</span>. Thus <span class="math inline">\(g''(p^0) = \partial q^{LR}/\partial p\)</span> and <span class="math inline">\(h''(p^0) = \partial q^{SR}/\partial p\)</span>: <span class="math display">\[\frac{\partial q^{LR}}{\partial p}\bigg|_{p^0} \geq \frac{\partial q^{SR}}{\partial p}\bigg|_{p^0} \qquad \blacksquare\]</span></p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-caution no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Caution</span>Remark 3.4 — Economic Interpretation of Le Chatelier
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The Le Chatelier principle captures the idea that adjustment takes time. In the short run, firms cannot change all inputs; this constrains their ability to respond to price changes. In the long run, all inputs are variable and firms can fully optimize. Therefore, long-run supply curves are flatter (more elastic) than short-run supply curves, and long-run factor demand curves are steeper (more elastic in absolute value) than short-run ones.</p>
+<p>This has important policy implications: the short-run response of supply to a price change (e.g., from a tax or subsidy) understates the long-run response. Policymakers who rely on short-run elasticities will underestimate the long-run effects of price interventions.</p>
+</div>
+</div>
+<hr>
+</section>
+<section id="connecting-conditional-and-unconditional-factor-demands" class="level2" data-number="22.9">
+<h2 data-number="22.9" class="anchored" data-anchor-id="connecting-conditional-and-unconditional-factor-demands"><span class="header-section-number">22.9</span> Connecting Conditional and Unconditional Factor Demands</h2>
+<p>The relationship between conditional factor demands <span class="math inline">\(z(w,q)\)</span> and unconditional factor demands <span class="math inline">\(z^*(p,w)\)</span> illuminates how output decisions interact with input decisions.</p>
+<div class="callout callout-style-default callout-important no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Proposition 3.6 — Decomposition of Factor Demand Response
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>For an unconditional factor demand <span class="math inline">\(z^*_l(p,w) = z_l(w, q^*(p,w))\)</span>, differentiating with respect to <span class="math inline">\(w_k\)</span>: <span class="math display">\[\frac{\partial z^*_l}{\partial w_k} = \underbrace{\frac{\partial z_l}{\partial w_k}\bigg|_q}_{\text{substitution effect}} + \underbrace{\frac{\partial z_l}{\partial q} \cdot \frac{\partial q^*}{\partial w_k}}_{\text{output effect}}\]</span></p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-24-contents" aria-controls="callout-24" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Proof
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-24" class="callout-24-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>By the chain rule applied to <span class="math inline">\(z^*_l(p,w) = z_l(w, q^*(p,w))\)</span>: <span class="math display">\[\frac{\partial z^*_l}{\partial w_k} = \frac{\partial z_l}{\partial w_k}\bigg|_{q \text{ fixed}} + \frac{\partial z_l}{\partial q} \cdot \frac{\partial q^*}{\partial w_k}\]</span> The first term is the conditional (substitution) effect, holding output fixed. The second term captures how the change in <span class="math inline">\(w_k\)</span> affects optimal output <span class="math inline">\(q^*\)</span>, which in turn affects input demand for <span class="math inline">\(l\)</span>. <span class="math inline">\(\blacksquare\)</span></p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-caution no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Caution</span>Remark 3.5 — Sign of the Output Effect
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The output effect <span class="math inline">\(\frac{\partial z_l}{\partial q} \cdot \frac{\partial q^*}{\partial w_k}\)</span> has an ambiguous sign in general: - Raising <span class="math inline">\(w_k\)</span> reduces optimal output <span class="math inline">\(q^*\)</span> (since costs increase): <span class="math inline">\(\partial q^*/\partial w_k \leq 0\)</span>. - If <span class="math inline">\(l\)</span> is a normal input (<span class="math inline">\(\partial z_l/\partial q &gt; 0\)</span>), higher output means more of input <span class="math inline">\(l\)</span>. - Therefore the output effect <span class="math inline">\(\frac{\partial z_l}{\partial q} \cdot \frac{\partial q^*}{\partial w_k} \leq 0\)</span> reinforces the substitution effect for normal inputs.</p>
+<p>The decomposition is analogous to the <strong>Slutsky decomposition</strong> in consumer theory, with the “output effect” playing the role of the income effect. Unlike the income effect in consumer theory, the output effect here has a determinate sign for normal inputs (it reinforces the substitution effect), which is why the law of unconditional factor demand (own-price factor demand decreasing) is more robust than the law of demand in consumer theory.</p>
+</div>
+</div>
+<hr>
+</section>
+<section id="economic-intuition" class="level2" data-number="22.10">
+<h2 data-number="22.10" class="anchored" data-anchor-id="economic-intuition"><span class="header-section-number">22.10</span> Economic Intuition</h2>
+<p>The synthesis of the PMP and CMP reveals that competitive firm behavior is characterized by two conditions: (1) <strong>cost minimization</strong> — use the cheapest input combination for any given output level; (2) <strong>output optimization</strong> — set output where price equals marginal cost. These two conditions together fully determine the firm’s supply and input demands.</p>
+<p>The Le Chatelier principle is one of the deepest results in producer theory. It shows that the <strong>flexibility</strong> of the optimization problem — how many variables can adjust — determines the elasticity of the response. Long-run responses are always at least as large as short-run responses because the long run simply has more degrees of freedom. This is a general principle in comparative statics: adding constraints reduces the magnitude of optimal responses.</p>
+<p>Returns to scale drive market structure. The welfare analysis of competitive markets (the efficiency of competitive equilibrium, the deadweight loss from monopoly, the effects of entry) all depend critically on whether firms face CRS, DRS, or IRS. CRS supports efficient competitive markets with free entry; IRS creates the natural monopoly problem that is central to regulatory economics.</p>
+<hr>
+</section>
+<section id="cross-references" class="level2" data-number="22.11">
+<h2 data-number="22.11" class="anchored" data-anchor-id="cross-references"><span class="header-section-number">22.11</span> Cross-References</h2>
+<ul>
+<li><a href="../Part_III_Producer_Theory/3.1_Production_Sets.html">3.1 Production Sets</a> — production set; CRS and profit zero result</li>
+<li><a href="../Part_III_Producer_Theory/3.2_Profit_Maximization.html">3.2 Profit Maximization</a> — PMP; Hotelling’s lemma; convexity of <span class="math inline">\(\pi\)</span></li>
+<li><a href="../Part_III_Producer_Theory/3.3_Cost_Minimization.html">3.3 Cost Minimization</a> — CMP; cost function; Shephard’s lemma; concavity of <span class="math inline">\(c\)</span></li>
+<li><a href="1.3_Optimization_Theory.qmd">1.3 Optimization Theory</a> — envelope theorem; comparative statics methodology</li>
+<li><a href="../Part_III_Producer_Theory/PS_Producer_Theory.html">PS Producer Theory</a> — Problems 4 and 5</li>
+</ul>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+            // default icon
+            link.classList.add("external");
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../Part_III_Producer_Theory/3.3_Cost_Minimization.html" class="pagination-link" aria-label="3.3 Cost Minimization">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">3.3 Cost Minimization</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../Part_III_Producer_Theory/PS_Producer_Theory.html" class="pagination-link" aria-label="Problem Set: Producer Theory">
+        <span class="nav-page-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Problem Set: Producer Theory</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/andbbus/grad-micro-notes/edit/main/Part_III_Producer_Theory/3.4_Supply_and_Factor_Demands.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/andbbus/grad-micro-notes/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer><script src="../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

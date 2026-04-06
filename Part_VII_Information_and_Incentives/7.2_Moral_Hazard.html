@@ -1,0 +1,1440 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.36">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>47&nbsp; 7.2 — Moral Hazard – Graduate Microeconomic Theory</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../Part_VII_Information_and_Incentives/7.3_Adverse_Selection_and_Screening.html" rel="next">
+<link href="../Part_VII_Information_and_Incentives/7.1_Principal_Agent_Problem.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-44c2c454a7ec14b8e9312150d2b271b4.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar docked nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Graduate Microeconomic Theory</span>
+    </a>
+  </div>
+        <div class="quarto-navbar-tools tools-end">
+    <a href="https://github.com/andbbus/grad-micro-notes" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+</div>
+          <div id="quarto-search" class="" title="Search"></div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../Part_VII_Information_and_Incentives/index.html">Part VII — Information and Incentives</a></li><li class="breadcrumb-item"><a href="../Part_VII_Information_and_Incentives/7.2_Moral_Hazard.html"><span class="chapter-number">47</span>&nbsp; <span class="chapter-title">7.2 — Moral Hazard</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Microeconomics Program Overview</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part I — Mathematical Foundations</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_I_Mathematical_Foundations/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Part I: Mathematical Foundations — Index</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_I_Mathematical_Foundations/1.1_Metric_Spaces_and_Topology.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">1.1 Metric Spaces and Topology</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_I_Mathematical_Foundations/1.2_Correspondences_and_Hemicontinuity.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">1.2 Correspondences and Hemicontinuity</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_I_Mathematical_Foundations/1.3_Optimization_Theory.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">1.3 Optimization Theory</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_I_Mathematical_Foundations/1.4_Fixed_Point_Theorems.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">1.4 Fixed-Point Theorems</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part II — Consumer Theory</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_II_Consumer_Theory/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Part II — Consumer Theory: Index</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_II_Consumer_Theory/2.1_Preference_Relations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">2.1 — Preference Relations</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_II_Consumer_Theory/2.2_Utility_Representation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">2.2 — Utility Representation</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_II_Consumer_Theory/2.3_Utility_Maximization_Problem.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">2.3 — The Utility Maximization Problem (UMP)</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_II_Consumer_Theory/2.4_Expenditure_Minimization.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">2.4 — The Expenditure Minimization Problem (EMP)</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_II_Consumer_Theory/2.5_Duality_and_Slutsky.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">2.5 — Duality and the Slutsky Equation</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_II_Consumer_Theory/2.6_Revealed_Preference.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">2.6 — Revealed Preference</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_II_Consumer_Theory/2.7_Integrability.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">2.7 — Integrability</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_II_Consumer_Theory/2.8_Aggregate_Demand.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">2.8 — Aggregate Demand and Gorman Aggregation</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_II_Consumer_Theory/PS_Consumer_Theory.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Problem Set — Part II: Consumer Theory</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part III — Producer Theory</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_III_Producer_Theory/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Part III: Producer Theory — Overview</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_III_Producer_Theory/3.1_Production_Sets.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">3.1 Production Sets and Technology</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_III_Producer_Theory/3.2_Profit_Maximization.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">3.2 Profit Maximization</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_III_Producer_Theory/3.3_Cost_Minimization.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">3.3 Cost Minimization</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_III_Producer_Theory/3.4_Supply_and_Factor_Demands.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">3.4 Supply and Factor Demands</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_III_Producer_Theory/PS_Producer_Theory.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Problem Set: Producer Theory</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part IV — Choice Under Uncertainty</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IV_Choice_Under_Uncertainty/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Part IV: Choice Under Uncertainty — Overview</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IV_Choice_Under_Uncertainty/4.1_State_Space_Framework.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">4.1 The State Space Framework and Axioms</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IV_Choice_Under_Uncertainty/4.2_Expected_Utility_Theory.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">4.2 Expected Utility Theory</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IV_Choice_Under_Uncertainty/4.3_Risk_Aversion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">4.3 Risk Aversion</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IV_Choice_Under_Uncertainty/4.4_Stochastic_Dominance.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">4.4 Stochastic Dominance</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IV_Choice_Under_Uncertainty/PS_Uncertainty.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Problem Set: Choice Under Uncertainty</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part V — Game Theory</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_V_Game_Theory/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">Part V — Game Theory</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_V_Game_Theory/5.1_Normal_Form_Games.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">30</span>&nbsp; <span class="chapter-title">5.1 Normal Form Games</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_V_Game_Theory/5.2_Nash_Equilibrium.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">31</span>&nbsp; <span class="chapter-title">5.2 Nash Equilibrium</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_V_Game_Theory/5.3_Mixed_Strategies.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">32</span>&nbsp; <span class="chapter-title">5.3 Mixed Strategies</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_V_Game_Theory/5.4_Extensive_Form_Games.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">33</span>&nbsp; <span class="chapter-title">5.4 Extensive Form Games</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_V_Game_Theory/5.5_Subgame_Perfect_Equilibrium.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">34</span>&nbsp; <span class="chapter-title">5.5 Subgame Perfect Equilibrium</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_V_Game_Theory/5.6_Repeated_Games.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">35</span>&nbsp; <span class="chapter-title">5.6 Repeated Games</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_V_Game_Theory/5.7_Bayesian_Games.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">36</span>&nbsp; <span class="chapter-title">5.7 Bayesian Games</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_V_Game_Theory/PS_Game_Theory.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">37</span>&nbsp; <span class="chapter-title">Problem Set — Part V: Game Theory</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part VI — General Equilibrium</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VI_General_Equilibrium/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">38</span>&nbsp; <span class="chapter-title">Part VI — General Equilibrium</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VI_General_Equilibrium/6.1_Exchange_Economies.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">39</span>&nbsp; <span class="chapter-title">6.1 Exchange Economies</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VI_General_Equilibrium/6.2_Arrow_Debreu_Economy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">40</span>&nbsp; <span class="chapter-title">6.2 The Arrow-Debreu Economy</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VI_General_Equilibrium/6.3_Existence_of_Equilibrium.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">41</span>&nbsp; <span class="chapter-title">6.3 Existence of Walrasian Equilibrium</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VI_General_Equilibrium/6.4_Welfare_Theorems.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">42</span>&nbsp; <span class="chapter-title">6.4 Welfare Theorems</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VI_General_Equilibrium/6.5_Externalities_and_Public_Goods.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">43</span>&nbsp; <span class="chapter-title">6.5 Externalities and Public Goods</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VI_General_Equilibrium/PS_General_Equilibrium.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">44</span>&nbsp; <span class="chapter-title">Problem Set — Part VI: General Equilibrium</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part VII — Information and Incentives</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VII_Information_and_Incentives/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">45</span>&nbsp; <span class="chapter-title">Part VII — Information and Incentives</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VII_Information_and_Incentives/7.1_Principal_Agent_Problem.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">46</span>&nbsp; <span class="chapter-title">7.1 — The Principal-Agent Problem</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VII_Information_and_Incentives/7.2_Moral_Hazard.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">47</span>&nbsp; <span class="chapter-title">7.2 — Moral Hazard</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VII_Information_and_Incentives/7.3_Adverse_Selection_and_Screening.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">48</span>&nbsp; <span class="chapter-title">7.3 — Adverse Selection and Screening</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VII_Information_and_Incentives/7.4_Signaling.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">49</span>&nbsp; <span class="chapter-title">7.4 — Signaling</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VII_Information_and_Incentives/7.5_Mechanism_Design.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">50</span>&nbsp; <span class="chapter-title">7.5 — Mechanism Design</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VII_Information_and_Incentives/7.6_Prediction_Markets_and_Information_Aggregation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">51</span>&nbsp; <span class="chapter-title">7.6 — Prediction Markets and Information Aggregation</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VII_Information_and_Incentives/PS_Information.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">52</span>&nbsp; <span class="chapter-title">Problem Set — Part VII: Information and Incentives</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part VIII — Social Choice</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VIII_Social_Choice/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">53</span>&nbsp; <span class="chapter-title">Part VIII — Social Choice Theory</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VIII_Social_Choice/8.1_Social_Welfare_Functions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">54</span>&nbsp; <span class="chapter-title">8.1 Social Welfare Functions</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VIII_Social_Choice/8.2_Arrows_Impossibility_Theorem.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">55</span>&nbsp; <span class="chapter-title">8.2 Arrow’s Impossibility Theorem</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VIII_Social_Choice/8.3_Welfare_Criteria.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">56</span>&nbsp; <span class="chapter-title">8.3 Welfare Criteria and Compensation Principles</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VIII_Social_Choice/PS_Social_Choice.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">57</span>&nbsp; <span class="chapter-title">Problem Set — Part VIII: Social Choice</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part IX — Model Building for Empirics</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IX_Model_Building_for_Empirics/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">58</span>&nbsp; <span class="chapter-title">Part IX — Model Building for Empirics</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IX_Model_Building_for_Empirics/9.1_Anatomy_of_a_Theoretical_Model.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">59</span>&nbsp; <span class="chapter-title">9.1 — Anatomy of a Theoretical Model</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IX_Model_Building_for_Empirics/9.2_Equilibrium_Concepts_and_Selection.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">60</span>&nbsp; <span class="chapter-title">9.2 — Equilibrium Concepts and Selection</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IX_Model_Building_for_Empirics/9.3_Comparative_Statics_Methodology.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">61</span>&nbsp; <span class="chapter-title">9.3 — Comparative Statics Methodology</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IX_Model_Building_for_Empirics/9.4_Deriving_Testable_Predictions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">62</span>&nbsp; <span class="chapter-title">9.4 — Deriving Testable Predictions</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IX_Model_Building_for_Empirics/9.5_Structural_vs_Reduced_Form.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">63</span>&nbsp; <span class="chapter-title">9.5 — Structural vs.&nbsp;Reduced Form</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IX_Model_Building_for_Empirics/9.6_Identification_in_Structural_Models.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">64</span>&nbsp; <span class="chapter-title">9.6 — Identification in Structural Models</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IX_Model_Building_for_Empirics/9.7_Model_Discipline_and_Tractability.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">65</span>&nbsp; <span class="chapter-title">9.7 — Model Discipline and Tractability</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IX_Model_Building_for_Empirics/APP_Conflict_and_Resource_Models.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">66</span>&nbsp; <span class="chapter-title">APP — Conflict and Resource Models</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IX_Model_Building_for_Empirics/APP_Trade_and_Price_Shock_Models.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">67</span>&nbsp; <span class="chapter-title">APP — Trade and Price Shock Models</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IX_Model_Building_for_Empirics/APP_Prediction_Markets_and_Signals.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">68</span>&nbsp; <span class="chapter-title">APP — Prediction Markets and Signals</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IX_Model_Building_for_Empirics/PS_Model_Building.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">69</span>&nbsp; <span class="chapter-title">Problem Set — Part IX: Model Building for Empirics</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#moral-hazard" id="toc-moral-hazard" class="nav-link active" data-scroll-target="#moral-hazard"><span class="header-section-number">48</span> 7.2 — Moral Hazard</a>
+  <ul class="collapse">
+  <li><a href="#context" id="toc-context" class="nav-link" data-scroll-target="#context"><span class="header-section-number">48.1</span> Context</a></li>
+  <li><a href="#definitions" id="toc-definitions" class="nav-link" data-scroll-target="#definitions"><span class="header-section-number">48.2</span> Definitions</a></li>
+  <li><a href="#main-results" id="toc-main-results" class="nav-link" data-scroll-target="#main-results"><span class="header-section-number">48.3</span> Main Results</a>
+  <ul class="collapse">
+  <li><a href="#the-principals-program-under-moral-hazard" id="toc-the-principals-program-under-moral-hazard" class="nav-link" data-scroll-target="#the-principals-program-under-moral-hazard"><span class="header-section-number">48.3.1</span> The Principal’s Program Under Moral Hazard</a></li>
+  <li><a href="#monotone-contracts" id="toc-monotone-contracts" class="nav-link" data-scroll-target="#monotone-contracts"><span class="header-section-number">48.3.2</span> Monotone Contracts</a></li>
+  <li><a href="#multitasking-holmström-milgrom-1991" id="toc-multitasking-holmström-milgrom-1991" class="nav-link" data-scroll-target="#multitasking-holmström-milgrom-1991"><span class="header-section-number">48.3.3</span> Multitasking (Holmström-Milgrom 1991)</a></li>
+  <li><a href="#risk-neutrality-with-limited-liability-moral-hazard-survives" id="toc-risk-neutrality-with-limited-liability-moral-hazard-survives" class="nav-link" data-scroll-target="#risk-neutrality-with-limited-liability-moral-hazard-survives"><span class="header-section-number">48.3.4</span> Risk Neutrality with Limited Liability: Moral Hazard Survives</a></li>
+  <li><a href="#moral-hazard-in-teams-holmström-1982" id="toc-moral-hazard-in-teams-holmström-1982" class="nav-link" data-scroll-target="#moral-hazard-in-teams-holmström-1982"><span class="header-section-number">48.3.5</span> Moral Hazard in Teams (Holmström 1982)</a></li>
+  </ul></li>
+  <li><a href="#economic-intuition" id="toc-economic-intuition" class="nav-link" data-scroll-target="#economic-intuition"><span class="header-section-number">48.4</span> Economic Intuition</a></li>
+  <li><a href="#cross-references" id="toc-cross-references" class="nav-link" data-scroll-target="#cross-references"><span class="header-section-number">48.5</span> Cross-References</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/andbbus/grad-micro-notes/edit/main/Part_VII_Information_and_Incentives/7.2_Moral_Hazard.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/andbbus/grad-micro-notes/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../Part_VII_Information_and_Incentives/index.html">Part VII — Information and Incentives</a></li><li class="breadcrumb-item"><a href="../Part_VII_Information_and_Incentives/7.2_Moral_Hazard.html"><span class="chapter-number">47</span>&nbsp; <span class="chapter-title">7.2 — Moral Hazard</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">47</span>&nbsp; <span class="chapter-title">7.2 — Moral Hazard</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="moral-hazard" class="level1" data-number="48">
+<h1 data-number="48"><span class="header-section-number">48</span> 7.2 — Moral Hazard</h1>
+<blockquote class="blockquote">
+<p><strong>MWG Reference:</strong> Ch. 14, §14.B–14.D, pp.&nbsp;477–506; Holmström (1979); Holmström &amp; Milgrom (1991); Holmström (1982)</p>
+</blockquote>
+<section id="context" class="level2" data-number="48.1">
+<h2 data-number="48.1" class="anchored" data-anchor-id="context"><span class="header-section-number">48.1</span> Context</h2>
+<p>Moral hazard refers to the distortion of behavior that arises when an agent takes hidden actions — actions that affect outcomes but that the principal cannot observe or verify. The term originates in insurance markets (insured individuals take less care), but the structure appears throughout economics: employers and employees, shareholders and managers, lenders and borrowers, regulators and regulated firms. This note develops the formal theory of moral hazard beginning with the discrete two-effort model, characterizes the optimal contract using the likelihood ratio, derives monotonicity conditions, and extends to the multitasking problem and team production.</p>
+</section>
+<section id="definitions" class="level2" data-number="48.2">
+<h2 data-number="48.2" class="anchored" data-anchor-id="definitions"><span class="header-section-number">48.2</span> Definitions</h2>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Definition 7.2.1 — Binary Effort Model
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The agent chooses effort <span class="math inline">\(e \in \{e_L, e_H\}\)</span> (low or high). Output <span class="math inline">\(q \in \{q_1, \ldots, q_n\}\)</span> is distributed according to: - <span class="math inline">\(f_k^H = \Pr(q = q_k | e_H)\)</span> under high effort - <span class="math inline">\(f_k^L = \Pr(q = q_k | e_L)\)</span> under low effort The effort cost satisfies <span class="math inline">\(c(e_H) &gt; c(e_L) \geq 0\)</span> (normalize <span class="math inline">\(c(e_L) = 0\)</span>; write <span class="math inline">\(\Delta c = c(e_H) - c(e_L) &gt; 0\)</span>).</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Definition 7.2.2 — Monotone Likelihood Ratio Condition (MLRC)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The distribution <span class="math inline">\(\{f_k^H\}\)</span> satisfies the <strong>Monotone Likelihood Ratio Condition (MLRC)</strong> if the likelihood ratio <span class="math inline">\(\ell(q_k) = f_k^L / f_k^H\)</span> is <strong>non-increasing</strong> in <span class="math inline">\(q_k\)</span>: <span class="math display">\[q_k &gt; q_j \implies \frac{f_k^L}{f_k^H} \leq \frac{f_j^L}{f_j^H}\]</span> Equivalently, <span class="math inline">\(f^H(q)/f^L(q)\)</span> is non-decreasing in <span class="math inline">\(q\)</span>: higher output is relatively more likely under high effort.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Definition 7.2.3 — Convexity of Distribution Function Condition (CDFC)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The cumulative distribution function satisfies the <strong>CDFC</strong> if <span class="math inline">\(F(q|e)\)</span> is convex in <span class="math inline">\(e\)</span>: for any <span class="math inline">\(e'', e' &gt; 0\)</span> and <span class="math inline">\(\lambda \in (0,1)\)</span>: <span class="math display">\[F(q|\lambda e'' + (1-\lambda)e') \leq \lambda F(q|e'') + (1-\lambda) F(q|e')\]</span> i.e., increasing effort shifts the distribution of output upward in the sense of first-order stochastic dominance, and this shift is convex in effort (diminishing returns to effort in shifting the distribution).</p>
+</div>
+</div>
+</section>
+<section id="main-results" class="level2" data-number="48.3">
+<h2 data-number="48.3" class="anchored" data-anchor-id="main-results"><span class="header-section-number">48.3</span> Main Results</h2>
+<section id="the-principals-program-under-moral-hazard" class="level3" data-number="48.3.1">
+<h3 data-number="48.3.1" class="anchored" data-anchor-id="the-principals-program-under-moral-hazard"><span class="header-section-number">48.3.1</span> The Principal’s Program Under Moral Hazard</h3>
+<p>The principal wishes to implement high effort <span class="math inline">\(e_H\)</span>. The program is:</p>
+<p><span class="math display">\[\max_{t_1, \ldots, t_n} \sum_k (q_k - t_k) f_k^H\]</span></p>
+<p>subject to:</p>
+<p><span class="math display">\[\text{(PC):} \quad \sum_k u(t_k) f_k^H - \Delta c \geq \bar{u}\]</span></p>
+<p><span class="math display">\[\text{(IC):} \quad \sum_k u(t_k) f_k^H - \Delta c \geq \sum_k u(t_k) f_k^L\]</span></p>
+<p>The IC can be rewritten as: <span class="math inline">\(\sum_k u(t_k)(f_k^H - f_k^L) \geq \Delta c\)</span>.</p>
+<div class="callout callout-style-default callout-important no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Proposition 7.2.1 — Optimal Contract Under Moral Hazard
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Suppose the principal wishes to implement <span class="math inline">\(e_H\)</span>. The optimal contract <span class="math inline">\(\{t_k^*\}\)</span> satisfies the following first-order conditions for each output level <span class="math inline">\(q_k\)</span>: <span class="math display">\[\frac{1}{u'(t_k^*)} = \lambda + \mu\left(1 - \frac{f_k^L}{f_k^H}\right)\]</span> where <span class="math inline">\(\lambda \geq 0\)</span> (PC multiplier) and <span class="math inline">\(\mu \geq 0\)</span> (IC multiplier). Both constraints bind at the optimum.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Proof
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Form the Lagrangian: <span class="math display">\[\mathcal{L} = \sum_k (q_k - t_k) f_k^H + \lambda\left(\sum_k u(t_k) f_k^H - \Delta c - \bar{u}\right) + \mu\left(\sum_k u(t_k)(f_k^H - f_k^L) - \Delta c\right)\]</span> Taking the FOC with respect to <span class="math inline">\(t_k\)</span>: <span class="math display">\[-f_k^H + \lambda u'(t_k) f_k^H + \mu u'(t_k)(f_k^H - f_k^L) = 0\]</span> Dividing by <span class="math inline">\(f_k^H &gt; 0\)</span>: <span class="math display">\[-1 + u'(t_k)\left[\lambda + \mu\left(1 - \frac{f_k^L}{f_k^H}\right)\right] = 0\]</span> Therefore: <span class="math display">\[\frac{1}{u'(t_k^*)} = \lambda + \mu\left(1 - \frac{f_k^L}{f_k^H}\right)\]</span></p>
+<p><strong>Both constraints bind:</strong> Suppose PC does not bind. Then <span class="math inline">\(\lambda = 0\)</span>, and the contract satisfies <span class="math inline">\(1/u'(t_k) = \mu(1 - f_k^L/f_k^H)\)</span>. Since <span class="math inline">\(f_k^L/f_k^H &lt; 1\)</span> for some <span class="math inline">\(k\)</span>, <span class="math inline">\(\mu &gt; 0\)</span> (IC must bind; otherwise <span class="math inline">\(t_k\)</span> is constant which generically violates IC). Now if PC slack, the principal could reduce all <span class="math inline">\(t_k\)</span> uniformly, increasing profit while maintaining IC, until PC binds — contradiction.</p>
+<p><strong>IC binds:</strong> If IC slack, then the optimal contract has only PC binding, giving a flat contract <span class="math inline">\(t_k = \bar{t}\)</span> for all <span class="math inline">\(k\)</span>. But a flat contract violates IC (with flat pay, the agent strictly prefers <span class="math inline">\(e_L\)</span>). Contradiction.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-caution no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Caution</span>Remark 7.2.1 — Interpretation of the Optimal Payment
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The optimal transfer <span class="math inline">\(t_k^*\)</span> is increasing in <span class="math inline">\(q_k\)</span> iff <span class="math inline">\(u'(t_k^*)\)</span> is decreasing in <span class="math inline">\(q_k\)</span> iff <span class="math inline">\(t_k^*\)</span> is increasing in <span class="math inline">\(q_k\)</span> (since <span class="math inline">\(u'' &lt; 0\)</span>). From the FOC, <span class="math inline">\(1/u'(t_k^*)\)</span> is increasing in <span class="math inline">\(q_k\)</span> iff <span class="math inline">\(\mu(1 - f_k^L/f_k^H)\)</span> is increasing in <span class="math inline">\(q_k\)</span> iff the likelihood ratio <span class="math inline">\(f_k^L/f_k^H\)</span> is decreasing in <span class="math inline">\(q_k\)</span> — exactly the MLRC. Therefore:</p>
+<p><strong>Under MLRC, the optimal payment <span class="math inline">\(t_k^*\)</span> is non-decreasing in output <span class="math inline">\(q_k\)</span>.</strong></p>
+</div>
+</div>
+</section>
+<section id="monotone-contracts" class="level3" data-number="48.3.2">
+<h3 data-number="48.3.2" class="anchored" data-anchor-id="monotone-contracts"><span class="header-section-number">48.3.2</span> Monotone Contracts</h3>
+<div class="callout callout-style-default callout-important no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Proposition 7.2.2 — Monotonicity of the Optimal Contract
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Under MLRC and CDFC, the optimal contract <span class="math inline">\(t^*(q)\)</span> solving the principal’s program is non-decreasing in <span class="math inline">\(q\)</span>.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Proof
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>From Proposition 7.2.1, the optimal payment satisfies: <span class="math display">\[\frac{1}{u'(t^*(q))} = \lambda + \mu\left(1 - \frac{f(q|e_L)}{f(q|e_H)}\right)\]</span> The right side is non-decreasing in <span class="math inline">\(q\)</span> iff <span class="math inline">\(f(q|e_L)/f(q|e_H)\)</span> is non-increasing in <span class="math inline">\(q\)</span>, which is exactly MLRC. Since <span class="math inline">\(u'' &lt; 0\)</span>, <span class="math inline">\(1/u'(\cdot)\)</span> is increasing. Therefore <span class="math inline">\(t^*(q)\)</span> is non-decreasing in <span class="math inline">\(q\)</span>.</p>
+<p>The CDFC is used to justify the first-order approach (replacing the global IC constraint with the local FOC), validating the Lagrangian approach in Proposition 7.2.1. Specifically, CDFC guarantees that the agent’s expected utility, as a function of effort, is concave, so the first-order condition is sufficient for the agent’s maximum.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="multitasking-holmström-milgrom-1991" class="level3" data-number="48.3.3">
+<h3 data-number="48.3.3" class="anchored" data-anchor-id="multitasking-holmström-milgrom-1991"><span class="header-section-number">48.3.3</span> Multitasking (Holmström-Milgrom 1991)</h3>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Definition 7.2.4 — Multitask Principal-Agent Environment
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The agent performs <span class="math inline">\(n\)</span> tasks. Let <span class="math inline">\(\mathbf{e} = (e_1, \ldots, e_n) \in \mathbb{R}_+^n\)</span> denote the effort vector. The output of task <span class="math inline">\(i\)</span> is <span class="math inline">\(q_i = e_i + \varepsilon_i\)</span> where <span class="math inline">\(\boldsymbol{\varepsilon} \sim N(\mathbf{0}, \Sigma)\)</span>. The agent’s cost function is <span class="math inline">\(C(\mathbf{e}) = \frac{1}{2}\mathbf{e}^T \Psi \mathbf{e}\)</span> where <span class="math inline">\(\Psi\)</span> is positive definite.</p>
+<p>Only a subset of tasks have measurable outputs (say tasks <span class="math inline">\(1, \ldots, m\)</span>, <span class="math inline">\(m &lt; n\)</span>); the remaining tasks <span class="math inline">\(m+1, \ldots, n\)</span> produce non-measurable outputs (e.g., relationship building, quality). The contract can condition only on measurable outputs: <span class="math inline">\(t = \alpha + \boldsymbol{\beta}^T \mathbf{q}_m\)</span> where <span class="math inline">\(\mathbf{q}_m = (q_1, \ldots, q_m)\)</span>.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-important no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Proposition 7.2.3 — Holmström-Milgrom Multitasking Result
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>In the multitask LEN model: 1. <strong>Effort substitution:</strong> Higher incentives on measurable tasks divert effort away from non-measurable tasks. If the principal values non-measurable task output, this creates a welfare cost. 2. <strong>Optimal incentives:</strong> When tasks are substitutes in the effort cost function, the optimal incentive intensity on measurable tasks is <strong>lower</strong> than in the single-task LEN model. In some cases, the optimal contract has <span class="math inline">\(\beta_i^* = 0\)</span> for all measurable tasks. 3. <strong>Complementarity resolution:</strong> If the principal can restrict the agent to measurable tasks only, providing high-powered incentives is optimal. The problem arises when tasks cannot be separated.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Proof
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-11" class="callout-11-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>Setup:</strong> For simplicity, take <span class="math inline">\(n = 2\)</span> tasks, both with <span class="math inline">\(\sigma^2\)</span> variance and zero covariance. Task 1 is measurable (<span class="math inline">\(q_1 = e_1 + \varepsilon_1\)</span>), task 2 is not. The principal values both: <span class="math inline">\(V = \gamma_1 e_1 + \gamma_2 e_2\)</span>. The cost function satisfies <span class="math inline">\(C(e_1, e_2) = \frac{c}{2}(e_1^2 + e_2^2) + \rho e_1 e_2\)</span> where <span class="math inline">\(\rho &gt; 0\)</span> (effort substitutes).</p>
+<p>The contract is <span class="math inline">\(t = \alpha + \beta q_1\)</span>. Agent’s CE: <span class="math display">\[CE = \alpha + \beta e_1 - C(e_1, e_2) - \frac{r\beta^2\sigma^2}{2}\]</span> Agent’s FOCs: <span class="math display">\[\frac{\partial CE}{\partial e_1} = \beta - c e_1 - \rho e_2 = 0\]</span> <span class="math display">\[\frac{\partial CE}{\partial e_2} = 0 - c e_2 - \rho e_1 = 0\]</span> From the second equation: <span class="math inline">\(e_2 = -\frac{\rho}{c} e_1 &lt; 0\)</span> if <span class="math inline">\(\rho &gt; 0\)</span>… But effort is non-negative.</p>
+<p>With <span class="math inline">\(e_2 \geq 0\)</span>, the second FOC gives a corner solution: <span class="math inline">\(e_2^*(\beta) = \max\{0, -\frac{\rho}{c}e_1\} = 0\)</span> when <span class="math inline">\(\rho &gt; 0\)</span> and <span class="math inline">\(\beta &gt; 0\)</span> (since <span class="math inline">\(e_1 &gt; 0\)</span>). So when tasks are substitutes and both are desirable, stronger incentives on task 1 crowds out task 2 at the margin.</p>
+<p>More precisely, with <span class="math inline">\(e_2 = 0\)</span> (forced by non-negativity), we return to a single-task problem, but the principal loses value <span class="math inline">\(\gamma_2 e_2 = 0\)</span>. The optimal <span class="math inline">\(\beta\)</span> trades off incentives for task 1 against the loss in task 2. The net social value of increasing <span class="math inline">\(\beta\)</span> is <span class="math inline">\(\gamma_1 \frac{de_1}{d\beta} + \gamma_2 \frac{de_2}{d\beta}\)</span>. When <span class="math inline">\(\frac{de_2}{d\beta} &lt; 0\)</span> (substitution) and <span class="math inline">\(\gamma_2 &gt; 0\)</span>, the marginal benefit of incentives is reduced relative to the single-task case, so <span class="math inline">\(\beta^* &lt; \beta^*_{\text{single task}}\)</span>.</p>
+<p>At the extreme, if the marginal cost of reduced effort on task 2 (measured by <span class="math inline">\(\gamma_2 |de_2/d\beta|\)</span>) exceeds the marginal benefit on task 1, the optimal incentive is <span class="math inline">\(\beta^* = 0\)</span> — no performance pay at all.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-caution no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Caution</span>Remark 7.2.2 — Institutional Implications of Multitasking
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The multitasking model provides a theoretical foundation for several institutional features: - <strong>Public sector employment:</strong> Civil servants perform non-measurable tasks (justice, fairness, long-run policy quality). High-powered incentives on measurable outputs (throughput, cases resolved) would divert effort from non-measurable tasks. Optimal institutional design may call for flat wages and job security. - <strong>Teaching:</strong> Standardized testing creates incentives on measurable outputs (test scores) at the expense of non-measurable outputs (critical thinking, citizenship). This is the “teaching to the test” problem. - <strong>Sales force compensation:</strong> High-powered commissions on sales divert effort from customer service and relationship building. Salaried sales forces may outperform commissioned ones when repeat business matters.</p>
+</div>
+</div>
+</section>
+<section id="risk-neutrality-with-limited-liability-moral-hazard-survives" class="level3" data-number="48.3.4">
+<h3 data-number="48.3.4" class="anchored" data-anchor-id="risk-neutrality-with-limited-liability-moral-hazard-survives"><span class="header-section-number">48.3.4</span> Risk Neutrality with Limited Liability: Moral Hazard Survives</h3>
+<div class="callout callout-style-default callout-important no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Proposition 7.2.4 — Moral Hazard with Risk-Neutral Agent and Limited Liability
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Suppose the agent is risk-neutral (<span class="math inline">\(u(t) = t\)</span>) but has limited liability: <span class="math inline">\(t(q) \geq 0\)</span> for all <span class="math inline">\(q\)</span>. Then: 1. The first-best is generally not achievable. 2. The agent earns a positive expected rent: <span class="math inline">\(\mathbb{E}[t(q^*)] - c(e^*) &gt; \bar{u}\)</span>. 3. Equilibrium effort is below first-best: <span class="math inline">\(e^* &lt; e^{FB}\)</span>.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Proof
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-14" class="callout-14-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>With a risk-neutral agent, the sell-the-firm contract <span class="math inline">\(t(q) = q - F\)</span> implements first-best. But if <span class="math inline">\(q\)</span> can be very low (say <span class="math inline">\(q = 0\)</span> occurs with positive probability), then <span class="math inline">\(t(0) = -F &lt; 0\)</span>, violating limited liability.</p>
+<p>Under limited liability <span class="math inline">\(t(q) \geq 0\)</span>, the contract must set <span class="math inline">\(t(q) = 0\)</span> at bad output levels. This means the agent does not internalize the full cost of bad outcomes, creating a wedge between private and social incentives to exert effort.</p>
+<p>Formally, with binary effort and binary output <span class="math inline">\(q \in \{q_L, q_H\}\)</span>, <span class="math inline">\(q_L = 0\)</span>, the contract is <span class="math inline">\(t_L \geq 0\)</span> and <span class="math inline">\(t_H \geq 0\)</span>. IC: <span class="math inline">\((f_H^H - f_H^L)u(t_H) - (f_L^H - f_L^L)u(t_L) \geq \Delta c\)</span>. With <span class="math inline">\(t_L = 0\)</span> (optimal to minimize payment at low output), IC becomes <span class="math inline">\(f_H^H t_H \geq \Delta c + f_H^L t_H\)</span>, i.e., <span class="math inline">\((f_H^H - f_H^L) t_H \geq \Delta c\)</span>. This gives <span class="math inline">\(t_H^* = \frac{\Delta c}{f_H^H - f_H^L}\)</span>.</p>
+<p>Agent’s expected rent <span class="math inline">\(= f_H^H \cdot t_H^* - \Delta c = \frac{f_H^H \Delta c}{f_H^H - f_H^L} - \Delta c = \frac{f_H^L \Delta c}{f_H^H - f_H^L} &gt; 0\)</span>.</p>
+<p>The principal prefers to reduce agency rent by shading down effort below first-best — setting <span class="math inline">\(e^* &lt; e^{FB}\)</span> costs efficiency but reduces the rent <span class="math inline">\(t_H^*\)</span> that must be paid to induce effort.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="moral-hazard-in-teams-holmström-1982" class="level3" data-number="48.3.5">
+<h3 data-number="48.3.5" class="anchored" data-anchor-id="moral-hazard-in-teams-holmström-1982"><span class="header-section-number">48.3.5</span> Moral Hazard in Teams (Holmström 1982)</h3>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Definition 7.2.5 — Team Production Environment
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><span class="math inline">\(n\)</span> agents each choose effort <span class="math inline">\(e_i \geq 0\)</span>. Team output is <span class="math inline">\(q = Q(e_1, \ldots, e_n) + \varepsilon\)</span>. The principal (or budget breaker) observes total output <span class="math inline">\(q\)</span> and distributes it among agents. Each agent <span class="math inline">\(i\)</span> receives share <span class="math inline">\(s_i(q)\)</span> with <span class="math inline">\(\sum_i s_i(q) \leq q\)</span>; the remainder <span class="math inline">\(q - \sum_i s_i(q)\)</span> goes to the budget breaker.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-important no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Proposition 7.2.5 — Free Rider Problem and Budget Breaking (Holmström 1982)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Consider <span class="math inline">\(n\)</span> risk-neutral agents in team production. There is no symmetric sharing rule <span class="math inline">\(s_i(q) = q/n\)</span> that simultaneously achieves: (i) Each agent chooses the first-best effort level <span class="math inline">\(e_i^{FB}\)</span> (ii) The budget is balanced: <span class="math inline">\(\sum_i s_i(q) = q\)</span> for all <span class="math inline">\(q\)</span></p>
+<p>However, both (i) and (ii) can be achieved simultaneously if there exists a <strong>budget breaker</strong> (principal/outside investor) who can run a deficit.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-17-contents" aria-controls="callout-17" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Proof
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-17" class="callout-17-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>Free rider problem:</strong> With symmetric sharing <span class="math inline">\(s_i(q) = q/n\)</span>, agent <span class="math inline">\(i\)</span> solves: <span class="math display">\[\max_{e_i} \frac{1}{n}\mathbb{E}[Q(e_i, e_{-i})] - c(e_i)\]</span> FOC: <span class="math inline">\(\frac{1}{n} \frac{\partial Q}{\partial e_i} = c'(e_i)\)</span> First-best requires <span class="math inline">\(\frac{\partial Q}{\partial e_i} = c'(e_i^{FB})\)</span>, which is <span class="math inline">\(n\)</span> times larger. Therefore each agent under-provides effort by a factor of <span class="math inline">\(n\)</span>.</p>
+<p><strong>Budget breaking as solution:</strong> Holmström’s mechanism: Each agent <span class="math inline">\(i\)</span> receives <span class="math inline">\(s_i(q)\)</span> defined by: if <span class="math inline">\(q \geq q^*\)</span> (the first-best output target), each agent receives <span class="math inline">\(\tilde{t}_i\)</span>; if <span class="math inline">\(q &lt; q^*\)</span>, each agent receives <span class="math inline">\(\underline{t}_i &lt; \tilde{t}_i\)</span>, and the deficit (if any) or surplus is absorbed by the budget breaker.</p>
+<p>Formally, construct shares <span class="math inline">\(s_i(q) = t_i\)</span> for <span class="math inline">\(q \geq q^*\)</span> and <span class="math inline">\(s_i(q) = 0\)</span> otherwise, where <span class="math inline">\(t_i\)</span> is chosen so that agent <span class="math inline">\(i\)</span>’s expected payoff under <span class="math inline">\(e^{FB}\)</span> exceeds that under any deviation. Since <span class="math inline">\(q^*\)</span> is deterministic under first-best and stochastic otherwise (output is noisy), the budget breaker earns <span class="math inline">\(q - \sum_i t_i\)</span> when <span class="math inline">\(q \geq q^*\)</span> and <span class="math inline">\(-0\)</span> otherwise, with strictly positive expected profit.</p>
+<p>The key insight: <strong>budget balancing is the constraint that prevents first-best.</strong> If the budget must balance state-by-state, then sharing rules cannot simultaneously provide full incentives to all <span class="math inline">\(n\)</span> agents, because the “reward good performance, punish bad” rule requires paying out more in good states than total output (or less in bad states, destroying incentives). An outside budget breaker absorbs this imbalance.</p>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="economic-intuition" class="level2" data-number="48.4">
+<h2 data-number="48.4" class="anchored" data-anchor-id="economic-intuition"><span class="header-section-number">48.4</span> Economic Intuition</h2>
+<p>Moral hazard is the problem of observational non-verifiability: what cannot be seen cannot be contracted upon. In the discrete model, the optimal contract exploits whatever information is available about the agent’s effort — the distribution of outputs given effort choices — and uses the likelihood ratio as the sufficient statistic for inferring effort.</p>
+<p>The MLRC is the empirically relevant condition: it says that higher output is “good news” about effort. Under MLRC, the optimal contract pays more for better outcomes. This is simply performance pay, and the MLRC tells us when performance pay is incentive-theoretically justified.</p>
+<p>Multitasking is the most important practical extension: organizations rarely have agents doing a single, fully measurable task. Whenever effort is multi-dimensional and measurement is imperfect, high-powered incentives on measured outputs create distortions in unmeasured directions. The institutional implication is that the optimal incentive system is a portfolio choice — not just how much to pay for performance, but which dimensions to measure and incentivize at all.</p>
+</section>
+<section id="cross-references" class="level2" data-number="48.5">
+<h2 data-number="48.5" class="anchored" data-anchor-id="cross-references"><span class="header-section-number">48.5</span> Cross-References</h2>
+<ul>
+<li><a href="../Part_VII_Information_and_Incentives/7.1_Principal_Agent_Problem.html">7.1 Principal Agent Problem</a> — LEN model and informativeness principle</li>
+<li><a href="../Part_VII_Information_and_Incentives/7.3_Adverse_Selection_and_Screening.html">7.3 Adverse Selection and Screening</a> — hidden type (compare information structure)</li>
+<li><a href="9.4_Deriving_Testable_Predictions.qmd">9.4 Deriving Testable Predictions</a> — moment conditions from FOC</li>
+<li><a href="APP_Conflict_and_Resource_Models.qmd">APP Conflict and Resource Models</a> — effort in conflict modeled similarly to hidden action</li>
+</ul>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+            // default icon
+            link.classList.add("external");
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../Part_VII_Information_and_Incentives/7.1_Principal_Agent_Problem.html" class="pagination-link" aria-label="7.1 — The Principal-Agent Problem">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">46</span>&nbsp; <span class="chapter-title">7.1 — The Principal-Agent Problem</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../Part_VII_Information_and_Incentives/7.3_Adverse_Selection_and_Screening.html" class="pagination-link" aria-label="7.3 — Adverse Selection and Screening">
+        <span class="nav-page-text"><span class="chapter-number">48</span>&nbsp; <span class="chapter-title">7.3 — Adverse Selection and Screening</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/andbbus/grad-micro-notes/edit/main/Part_VII_Information_and_Incentives/7.2_Moral_Hazard.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/andbbus/grad-micro-notes/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer><script src="../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

@@ -1,0 +1,1410 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.36">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>8&nbsp; 2.1 — Preference Relations – Graduate Microeconomic Theory</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../Part_II_Consumer_Theory/2.2_Utility_Representation.html" rel="next">
+<link href="../Part_II_Consumer_Theory/index.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-44c2c454a7ec14b8e9312150d2b271b4.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar docked nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Graduate Microeconomic Theory</span>
+    </a>
+  </div>
+        <div class="quarto-navbar-tools tools-end">
+    <a href="https://github.com/andbbus/grad-micro-notes" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+</div>
+          <div id="quarto-search" class="" title="Search"></div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../Part_II_Consumer_Theory/index.html">Part II — Consumer Theory</a></li><li class="breadcrumb-item"><a href="../Part_II_Consumer_Theory/2.1_Preference_Relations.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">2.1 — Preference Relations</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Microeconomics Program Overview</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part I — Mathematical Foundations</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_I_Mathematical_Foundations/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Part I: Mathematical Foundations — Index</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_I_Mathematical_Foundations/1.1_Metric_Spaces_and_Topology.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">1.1 Metric Spaces and Topology</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_I_Mathematical_Foundations/1.2_Correspondences_and_Hemicontinuity.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">1.2 Correspondences and Hemicontinuity</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_I_Mathematical_Foundations/1.3_Optimization_Theory.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">1.3 Optimization Theory</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_I_Mathematical_Foundations/1.4_Fixed_Point_Theorems.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">1.4 Fixed-Point Theorems</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part II — Consumer Theory</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_II_Consumer_Theory/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Part II — Consumer Theory: Index</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_II_Consumer_Theory/2.1_Preference_Relations.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">2.1 — Preference Relations</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_II_Consumer_Theory/2.2_Utility_Representation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">2.2 — Utility Representation</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_II_Consumer_Theory/2.3_Utility_Maximization_Problem.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">2.3 — The Utility Maximization Problem (UMP)</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_II_Consumer_Theory/2.4_Expenditure_Minimization.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">2.4 — The Expenditure Minimization Problem (EMP)</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_II_Consumer_Theory/2.5_Duality_and_Slutsky.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">2.5 — Duality and the Slutsky Equation</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_II_Consumer_Theory/2.6_Revealed_Preference.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">2.6 — Revealed Preference</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_II_Consumer_Theory/2.7_Integrability.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">2.7 — Integrability</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_II_Consumer_Theory/2.8_Aggregate_Demand.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">2.8 — Aggregate Demand and Gorman Aggregation</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_II_Consumer_Theory/PS_Consumer_Theory.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Problem Set — Part II: Consumer Theory</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part III — Producer Theory</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_III_Producer_Theory/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Part III: Producer Theory — Overview</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_III_Producer_Theory/3.1_Production_Sets.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">3.1 Production Sets and Technology</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_III_Producer_Theory/3.2_Profit_Maximization.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">3.2 Profit Maximization</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_III_Producer_Theory/3.3_Cost_Minimization.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">3.3 Cost Minimization</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_III_Producer_Theory/3.4_Supply_and_Factor_Demands.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">3.4 Supply and Factor Demands</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_III_Producer_Theory/PS_Producer_Theory.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Problem Set: Producer Theory</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part IV — Choice Under Uncertainty</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IV_Choice_Under_Uncertainty/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Part IV: Choice Under Uncertainty — Overview</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IV_Choice_Under_Uncertainty/4.1_State_Space_Framework.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">4.1 The State Space Framework and Axioms</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IV_Choice_Under_Uncertainty/4.2_Expected_Utility_Theory.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">4.2 Expected Utility Theory</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IV_Choice_Under_Uncertainty/4.3_Risk_Aversion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">4.3 Risk Aversion</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IV_Choice_Under_Uncertainty/4.4_Stochastic_Dominance.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">4.4 Stochastic Dominance</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IV_Choice_Under_Uncertainty/PS_Uncertainty.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Problem Set: Choice Under Uncertainty</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part V — Game Theory</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_V_Game_Theory/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">Part V — Game Theory</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_V_Game_Theory/5.1_Normal_Form_Games.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">30</span>&nbsp; <span class="chapter-title">5.1 Normal Form Games</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_V_Game_Theory/5.2_Nash_Equilibrium.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">31</span>&nbsp; <span class="chapter-title">5.2 Nash Equilibrium</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_V_Game_Theory/5.3_Mixed_Strategies.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">32</span>&nbsp; <span class="chapter-title">5.3 Mixed Strategies</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_V_Game_Theory/5.4_Extensive_Form_Games.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">33</span>&nbsp; <span class="chapter-title">5.4 Extensive Form Games</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_V_Game_Theory/5.5_Subgame_Perfect_Equilibrium.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">34</span>&nbsp; <span class="chapter-title">5.5 Subgame Perfect Equilibrium</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_V_Game_Theory/5.6_Repeated_Games.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">35</span>&nbsp; <span class="chapter-title">5.6 Repeated Games</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_V_Game_Theory/5.7_Bayesian_Games.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">36</span>&nbsp; <span class="chapter-title">5.7 Bayesian Games</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_V_Game_Theory/PS_Game_Theory.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">37</span>&nbsp; <span class="chapter-title">Problem Set — Part V: Game Theory</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part VI — General Equilibrium</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VI_General_Equilibrium/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">38</span>&nbsp; <span class="chapter-title">Part VI — General Equilibrium</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VI_General_Equilibrium/6.1_Exchange_Economies.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">39</span>&nbsp; <span class="chapter-title">6.1 Exchange Economies</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VI_General_Equilibrium/6.2_Arrow_Debreu_Economy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">40</span>&nbsp; <span class="chapter-title">6.2 The Arrow-Debreu Economy</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VI_General_Equilibrium/6.3_Existence_of_Equilibrium.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">41</span>&nbsp; <span class="chapter-title">6.3 Existence of Walrasian Equilibrium</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VI_General_Equilibrium/6.4_Welfare_Theorems.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">42</span>&nbsp; <span class="chapter-title">6.4 Welfare Theorems</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VI_General_Equilibrium/6.5_Externalities_and_Public_Goods.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">43</span>&nbsp; <span class="chapter-title">6.5 Externalities and Public Goods</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VI_General_Equilibrium/PS_General_Equilibrium.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">44</span>&nbsp; <span class="chapter-title">Problem Set — Part VI: General Equilibrium</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part VII — Information and Incentives</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VII_Information_and_Incentives/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">45</span>&nbsp; <span class="chapter-title">Part VII — Information and Incentives</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VII_Information_and_Incentives/7.1_Principal_Agent_Problem.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">46</span>&nbsp; <span class="chapter-title">7.1 — The Principal-Agent Problem</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VII_Information_and_Incentives/7.2_Moral_Hazard.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">47</span>&nbsp; <span class="chapter-title">7.2 — Moral Hazard</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VII_Information_and_Incentives/7.3_Adverse_Selection_and_Screening.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">48</span>&nbsp; <span class="chapter-title">7.3 — Adverse Selection and Screening</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VII_Information_and_Incentives/7.4_Signaling.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">49</span>&nbsp; <span class="chapter-title">7.4 — Signaling</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VII_Information_and_Incentives/7.5_Mechanism_Design.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">50</span>&nbsp; <span class="chapter-title">7.5 — Mechanism Design</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VII_Information_and_Incentives/7.6_Prediction_Markets_and_Information_Aggregation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">51</span>&nbsp; <span class="chapter-title">7.6 — Prediction Markets and Information Aggregation</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VII_Information_and_Incentives/PS_Information.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">52</span>&nbsp; <span class="chapter-title">Problem Set — Part VII: Information and Incentives</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part VIII — Social Choice</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VIII_Social_Choice/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">53</span>&nbsp; <span class="chapter-title">Part VIII — Social Choice Theory</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VIII_Social_Choice/8.1_Social_Welfare_Functions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">54</span>&nbsp; <span class="chapter-title">8.1 Social Welfare Functions</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VIII_Social_Choice/8.2_Arrows_Impossibility_Theorem.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">55</span>&nbsp; <span class="chapter-title">8.2 Arrow’s Impossibility Theorem</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VIII_Social_Choice/8.3_Welfare_Criteria.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">56</span>&nbsp; <span class="chapter-title">8.3 Welfare Criteria and Compensation Principles</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VIII_Social_Choice/PS_Social_Choice.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">57</span>&nbsp; <span class="chapter-title">Problem Set — Part VIII: Social Choice</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part IX — Model Building for Empirics</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IX_Model_Building_for_Empirics/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">58</span>&nbsp; <span class="chapter-title">Part IX — Model Building for Empirics</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IX_Model_Building_for_Empirics/9.1_Anatomy_of_a_Theoretical_Model.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">59</span>&nbsp; <span class="chapter-title">9.1 — Anatomy of a Theoretical Model</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IX_Model_Building_for_Empirics/9.2_Equilibrium_Concepts_and_Selection.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">60</span>&nbsp; <span class="chapter-title">9.2 — Equilibrium Concepts and Selection</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IX_Model_Building_for_Empirics/9.3_Comparative_Statics_Methodology.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">61</span>&nbsp; <span class="chapter-title">9.3 — Comparative Statics Methodology</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IX_Model_Building_for_Empirics/9.4_Deriving_Testable_Predictions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">62</span>&nbsp; <span class="chapter-title">9.4 — Deriving Testable Predictions</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IX_Model_Building_for_Empirics/9.5_Structural_vs_Reduced_Form.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">63</span>&nbsp; <span class="chapter-title">9.5 — Structural vs.&nbsp;Reduced Form</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IX_Model_Building_for_Empirics/9.6_Identification_in_Structural_Models.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">64</span>&nbsp; <span class="chapter-title">9.6 — Identification in Structural Models</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IX_Model_Building_for_Empirics/9.7_Model_Discipline_and_Tractability.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">65</span>&nbsp; <span class="chapter-title">9.7 — Model Discipline and Tractability</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IX_Model_Building_for_Empirics/APP_Conflict_and_Resource_Models.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">66</span>&nbsp; <span class="chapter-title">APP — Conflict and Resource Models</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IX_Model_Building_for_Empirics/APP_Trade_and_Price_Shock_Models.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">67</span>&nbsp; <span class="chapter-title">APP — Trade and Price Shock Models</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IX_Model_Building_for_Empirics/APP_Prediction_Markets_and_Signals.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">68</span>&nbsp; <span class="chapter-title">APP — Prediction Markets and Signals</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IX_Model_Building_for_Empirics/PS_Model_Building.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">69</span>&nbsp; <span class="chapter-title">Problem Set — Part IX: Model Building for Empirics</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#preference-relations" id="toc-preference-relations" class="nav-link active" data-scroll-target="#preference-relations"><span class="header-section-number">9</span> 2.1 — Preference Relations</a>
+  <ul class="collapse">
+  <li><a href="#context" id="toc-context" class="nav-link" data-scroll-target="#context"><span class="header-section-number">9.1</span> Context</a></li>
+  <li><a href="#definitions" id="toc-definitions" class="nav-link" data-scroll-target="#definitions"><span class="header-section-number">9.2</span> Definitions</a></li>
+  <li><a href="#main-results" id="toc-main-results" class="nav-link" data-scroll-target="#main-results"><span class="header-section-number">9.3</span> Main Results</a></li>
+  <li><a href="#lexicographic-preferences-a-failure-of-continuity" id="toc-lexicographic-preferences-a-failure-of-continuity" class="nav-link" data-scroll-target="#lexicographic-preferences-a-failure-of-continuity"><span class="header-section-number">9.4</span> Lexicographic Preferences: A Failure of Continuity</a></li>
+  <li><a href="#economic-intuition" id="toc-economic-intuition" class="nav-link" data-scroll-target="#economic-intuition"><span class="header-section-number">9.5</span> Economic Intuition</a></li>
+  <li><a href="#cross-references" id="toc-cross-references" class="nav-link" data-scroll-target="#cross-references"><span class="header-section-number">9.6</span> Cross-References</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/andbbus/grad-micro-notes/edit/main/Part_II_Consumer_Theory/2.1_Preference_Relations.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/andbbus/grad-micro-notes/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../Part_II_Consumer_Theory/index.html">Part II — Consumer Theory</a></li><li class="breadcrumb-item"><a href="../Part_II_Consumer_Theory/2.1_Preference_Relations.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">2.1 — Preference Relations</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">2.1 — Preference Relations</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="preference-relations" class="level1" data-number="9">
+<h1 data-number="9"><span class="header-section-number">9</span> 2.1 — Preference Relations</h1>
+<blockquote class="blockquote">
+<p><strong>MWG Reference:</strong> Ch. 1, pp.&nbsp;6–30</p>
+</blockquote>
+<section id="context" class="level2" data-number="9.1">
+<h2 data-number="9.1" class="anchored" data-anchor-id="context"><span class="header-section-number">9.1</span> Context</h2>
+<p>The primitive object of consumer theory is a preference relation — a binary relation on a consumption set that captures how an agent ranks bundles of goods. Rather than assuming utility functions directly, we derive them from preference axioms. This approach clarifies which properties of utility are structural (derivable from rationality) and which are additional restrictions (such as concavity or separability). The axiomatic approach also makes the theory testable: each axiom can, in principle, be questioned empirically or philosophically. The central axioms are rationality (completeness and transitivity), continuity (technical, ensuring a utility representation), and behavioral restrictions on how preferences respond to more or less of goods (monotonicity, convexity).</p>
+</section>
+<section id="definitions" class="level2" data-number="9.2">
+<h2 data-number="9.2" class="anchored" data-anchor-id="definitions"><span class="header-section-number">9.2</span> Definitions</h2>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Definition 2.1.1 — Consumption Set
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The <strong>consumption set</strong> is <span class="math inline">\(X \subseteq \mathbb{R}^L_+\)</span>, where <span class="math inline">\(L \geq 1\)</span> is the number of goods. Each element <span class="math inline">\(x = (x_1, \ldots, x_L) \in X\)</span> is a <strong>consumption bundle</strong>. We typically take <span class="math inline">\(X = \mathbb{R}^L_+\)</span>.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Definition 2.1.2 — Preference Relation
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A <strong>preference relation</strong> <span class="math inline">\(\succsim\)</span> on <span class="math inline">\(X\)</span> is a binary relation on <span class="math inline">\(X\)</span>. We read <span class="math inline">\(x \succsim y\)</span> as “<span class="math inline">\(x\)</span> is at least as good as <span class="math inline">\(y\)</span>.” Two derived relations are: - <strong>Strict preference:</strong> <span class="math inline">\(x \succ y \iff x \succsim y\)</span> and <span class="math inline">\(\neg(y \succsim x)\)</span> - <strong>Indifference:</strong> <span class="math inline">\(x \sim y \iff x \succsim y\)</span> and <span class="math inline">\(y \succsim x\)</span></p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Definition 2.1.3 — Completeness
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><span class="math inline">\(\succsim\)</span> is <strong>complete</strong> if for all <span class="math inline">\(x, y \in X\)</span>: <span class="math inline">\(x \succsim y\)</span> or <span class="math inline">\(y \succsim x\)</span> (or both).</p>
+<p><em>Economic motivation:</em> Every pair of bundles is comparable. The consumer is never “stuck” — they can always express a preference or indifference. While philosophically demanding (it rules out genuine incomparability), completeness is maintained as a tractability assumption in standard theory.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Definition 2.1.4 — Transitivity
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><span class="math inline">\(\succsim\)</span> is <strong>transitive</strong> if for all <span class="math inline">\(x, y, z \in X\)</span>: if <span class="math inline">\(x \succsim y\)</span> and <span class="math inline">\(y \succsim z\)</span>, then <span class="math inline">\(x \succsim z\)</span>.</p>
+<p><em>Economic motivation:</em> Transitivity rules out preference cycles. Without it, a consumer could be “money-pumped” — paying to cycle indefinitely among bundles. Transitivity together with completeness constitutes <strong>rationality</strong>.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Definition 2.1.5 — Rationality
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A preference relation <span class="math inline">\(\succsim\)</span> is <strong>rational</strong> if it is both complete and transitive.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Definition 2.1.6 — Continuity
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><span class="math inline">\(\succsim\)</span> is <strong>continuous</strong> if for all <span class="math inline">\(y \in X\)</span>, the <strong>upper contour set</strong> <span class="math inline">\(\{x \in X : x \succsim y\}\)</span> and the <strong>lower contour set</strong> <span class="math inline">\(\{x \in X : y \succsim x\}\)</span> are both closed subsets of <span class="math inline">\(X\)</span>.</p>
+<p>Equivalently, <span class="math inline">\(\succsim\)</span> is continuous if for any sequences <span class="math inline">\(x^n \to x\)</span> and <span class="math inline">\(y^n \to y\)</span> with <span class="math inline">\(x^n \succsim y^n\)</span> for all <span class="math inline">\(n\)</span>, we have <span class="math inline">\(x \succsim y\)</span>.</p>
+<p><em>Economic motivation:</em> Continuity is a technical regularity condition. It prevents situations in which a small change in a bundle causes a discrete jump in preference rank. Its primary role is to guarantee the existence of a utility representation (Debreu’s theorem).</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Definition 2.1.7 — Monotonicity
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="a">
+<li><p><span class="math inline">\(\succsim\)</span> is <strong>weakly monotone</strong> if <span class="math inline">\(x \geq y\)</span> (componentwise) implies <span class="math inline">\(x \succsim y\)</span>.</p></li>
+<li><p><span class="math inline">\(\succsim\)</span> is <strong>strongly monotone</strong> if <span class="math inline">\(x \geq y\)</span> and <span class="math inline">\(x \neq y\)</span> implies <span class="math inline">\(x \succ y\)</span>.</p></li>
+</ol>
+<p><em>Economic motivation:</em> Monotonicity captures the idea that goods are desirable — “more is better.” Weak monotonicity allows indifference over additional units; strong monotonicity insists that having strictly more of at least one good is strictly preferred.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Definition 2.1.8 — Local Nonsatiation (LNS)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><span class="math inline">\(\succsim\)</span> satisfies <strong>local nonsatiation</strong> if for every <span class="math inline">\(x \in X\)</span> and every <span class="math inline">\(\varepsilon &gt; 0\)</span>, there exists <span class="math inline">\(y \in X\)</span> with <span class="math inline">\(\|y - x\| &lt; \varepsilon\)</span> such that <span class="math inline">\(y \succ x\)</span>.</p>
+<p><em>Economic motivation:</em> LNS is weaker than monotonicity. It rules out thick indifference curves (bliss points surrounded by a region of indifference), but allows some goods to be bads. LNS is the minimal assumption needed to derive Walras’ Law (<span class="math inline">\(p \cdot x(p,w) = w\)</span>): if the consumer were satiated, they might not exhaust their budget.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Definition 2.1.9 — Convexity
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="a">
+<li><p><span class="math inline">\(\succsim\)</span> is <strong>weakly convex</strong> if for all <span class="math inline">\(y \in X\)</span>, the upper contour set <span class="math inline">\(\{x \in X : x \succsim y\}\)</span> is convex. Equivalently: if <span class="math inline">\(x \succsim y\)</span> and <span class="math inline">\(z \succsim y\)</span>, then <span class="math inline">\(\alpha x + (1-\alpha) z \succsim y\)</span> for all <span class="math inline">\(\alpha \in [0,1]\)</span>.</p></li>
+<li><p><span class="math inline">\(\succsim\)</span> is <strong>strictly convex</strong> if <span class="math inline">\(x \succsim y\)</span>, <span class="math inline">\(z \succsim y\)</span>, and <span class="math inline">\(x \neq z\)</span> implies <span class="math inline">\(\alpha x + (1-\alpha)z \succ y\)</span> for all <span class="math inline">\(\alpha \in (0,1)\)</span>.</p></li>
+</ol>
+<p><em>Economic motivation:</em> Convexity captures a taste for variety or diversification. Consumers prefer mixtures of bundles to extremes. Geometrically, it corresponds to convex-to-the-origin indifference curves. Strict convexity additionally rules out linear segments of indifference curves, ensuring uniqueness of the utility-maximizing bundle (given a linear budget set).</p>
+</div>
+</div>
+</section>
+<section id="main-results" class="level2" data-number="9.3">
+<h2 data-number="9.3" class="anchored" data-anchor-id="main-results"><span class="header-section-number">9.3</span> Main Results</h2>
+<div class="callout callout-style-default callout-important no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Proposition 2.1.1 — Continuity Implies Closed Contour Sets
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If <span class="math inline">\(\succsim\)</span> is complete, transitive, and continuous on <span class="math inline">\(\mathbb{R}^L_+\)</span>, then for every <span class="math inline">\(y \in \mathbb{R}^L_+\)</span>, the sets <span class="math display">\[UC(y) = \{x \in \mathbb{R}^L_+ : x \succsim y\} \quad \text{and} \quad LC(y) = \{x \in \mathbb{R}^L_+ : y \succsim x\}\]</span> are closed in <span class="math inline">\(\mathbb{R}^L_+\)</span>.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Proof
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-11" class="callout-11-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>This follows directly from the definition of continuity (Definition 2.1.6): continuity of <span class="math inline">\(\succsim\)</span> is defined as the requirement that <span class="math inline">\(UC(y)\)</span> and <span class="math inline">\(LC(y)\)</span> are closed for all <span class="math inline">\(y\)</span>. The content of the proposition is that this property is equivalent to sequential continuity.</p>
+<p><strong>Sequential characterization:</strong> <span class="math inline">\(\succsim\)</span> is continuous if and only if for all sequences <span class="math inline">\(\{x^n\}\)</span> and <span class="math inline">\(\{z^n\}\)</span> in <span class="math inline">\(X\)</span> with <span class="math inline">\(x^n \succsim z^n\)</span> for all <span class="math inline">\(n\)</span>, <span class="math inline">\(x^n \to x\)</span>, and <span class="math inline">\(z^n \to z\)</span>, we have <span class="math inline">\(x \succsim z\)</span>.</p>
+<p>We show that sequential continuity implies <span class="math inline">\(UC(y)\)</span> is closed (the argument for <span class="math inline">\(LC(y)\)</span> is symmetric).</p>
+<p>Let <span class="math inline">\(\{x^n\}\)</span> be a sequence in <span class="math inline">\(UC(y)\)</span> with <span class="math inline">\(x^n \to x\)</span>. We need to show <span class="math inline">\(x \in UC(y)\)</span>, i.e., <span class="math inline">\(x \succsim y\)</span>.</p>
+<p>By assumption, <span class="math inline">\(x^n \succsim y\)</span> for all <span class="math inline">\(n\)</span>. Consider the constant sequence <span class="math inline">\(z^n = y \to y\)</span>. By sequential continuity applied to the pair <span class="math inline">\((x^n, z^n)\)</span> where <span class="math inline">\(x^n \succsim z^n = y\)</span>, we conclude <span class="math inline">\(x \succsim y\)</span>.</p>
+<p>Hence <span class="math inline">\(x \in UC(y)\)</span>, so <span class="math inline">\(UC(y)\)</span> is closed.</p>
+<p>Conversely, suppose <span class="math inline">\(UC(y)\)</span> and <span class="math inline">\(LC(y)\)</span> are closed for all <span class="math inline">\(y\)</span>. Let <span class="math inline">\(x^n \to x\)</span> and <span class="math inline">\(y^n \to y\)</span> with <span class="math inline">\(x^n \succsim y^n\)</span>. Suppose for contradiction that <span class="math inline">\(y \succ x\)</span>, i.e., <span class="math inline">\(y \succsim x\)</span> but <span class="math inline">\(\neg(x \succsim y)\)</span>. Then <span class="math inline">\(x \in LC(y) \setminus UC(y)\)</span>. By openness of <span class="math inline">\(LC(y)^c \cup UC(y) = \{z : y \not\succsim z\} \cup \{z : z \succsim y\}\)</span>… but more directly: since <span class="math inline">\(y \succ x\)</span>, there exist open neighborhoods <span class="math inline">\(U \ni x\)</span> and <span class="math inline">\(V \ni y\)</span> such that every pair <span class="math inline">\((x', y')\)</span> with <span class="math inline">\(x' \in U, y' \in V\)</span> satisfies <span class="math inline">\(y' \succ x'\)</span> (this uses the equivalence with open-set continuity under completeness and transitivity). For large <span class="math inline">\(n\)</span>, <span class="math inline">\(x^n \in U\)</span> and <span class="math inline">\(y^n \in V\)</span>, which would give <span class="math inline">\(y^n \succ x^n\)</span>, contradicting <span class="math inline">\(x^n \succsim y^n\)</span>. <span class="math inline">\(\square\)</span></p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-caution no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Caution</span>Remark 2.1.1 — Rationality as a Maintained Hypothesis
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The combination of completeness and transitivity — rationality — is a strong behavioral postulate. It is maintained in most of economic theory not because it is believed to be perfectly accurate, but because: 1. It provides a determinate theory of choice: the agent’s decision is fully characterized by the preference relation. 2. It is normatively defensible: violating transitivity opens an agent to money pumps. 3. It generates sharp, testable predictions via the revealed preference literature.</p>
+<p>Behavioral economics documents systematic violations of both completeness (preference reversals, ambiguity) and transitivity (cyclic choices under framing effects). These motivate alternative models (prospect theory, regret theory), but standard micro theory retains rationality as the benchmark.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-important no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Proposition 2.1.2 — Properties of Derived Relations
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If <span class="math inline">\(\succsim\)</span> is rational (complete and transitive), then: (a) <span class="math inline">\(\succ\)</span> is irreflexive and transitive. (b) <span class="math inline">\(\sim\)</span> is reflexive, symmetric, and transitive (an equivalence relation). (c) If <span class="math inline">\(x \succ y \succsim z\)</span>, then <span class="math inline">\(x \succ z\)</span>.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Proof
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-14" class="callout-14-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>(a) Irreflexivity of <span class="math inline">\(\succ\)</span>:</strong> By completeness, <span class="math inline">\(x \succsim x\)</span> for all <span class="math inline">\(x\)</span> (take <span class="math inline">\(y = x\)</span>). Hence <span class="math inline">\(\neg(x \succ x)\)</span>.</p>
+<p><strong>Transitivity of <span class="math inline">\(\succ\)</span>:</strong> Suppose <span class="math inline">\(x \succ y\)</span> and <span class="math inline">\(y \succ z\)</span>. Then <span class="math inline">\(x \succsim y\)</span> and <span class="math inline">\(y \succsim z\)</span>, so by transitivity of <span class="math inline">\(\succsim\)</span>, <span class="math inline">\(x \succsim z\)</span>. It remains to show <span class="math inline">\(\neg(z \succsim x)\)</span>. Suppose for contradiction <span class="math inline">\(z \succsim x\)</span>. Then <span class="math inline">\(z \succsim x \succsim y\)</span>, so <span class="math inline">\(z \succsim y\)</span> by transitivity, contradicting <span class="math inline">\(y \succ z\)</span>. Hence <span class="math inline">\(x \succ z\)</span>.</p>
+<p><strong>(b)</strong> Reflexivity: <span class="math inline">\(x \succsim x\)</span> by completeness (apply with <span class="math inline">\(y = x\)</span>), so <span class="math inline">\(x \sim x\)</span>. Symmetry: if <span class="math inline">\(x \sim y\)</span> then <span class="math inline">\(x \succsim y\)</span> and <span class="math inline">\(y \succsim x\)</span>, so <span class="math inline">\(y \sim x\)</span>. Transitivity: if <span class="math inline">\(x \sim y\)</span> and <span class="math inline">\(y \sim z\)</span>, then <span class="math inline">\(x \succsim y \succsim z\)</span> and <span class="math inline">\(z \succsim y \succsim x\)</span>, so <span class="math inline">\(x \sim z\)</span>.</p>
+<p><strong>(c)</strong> <span class="math inline">\(x \succ y\)</span> and <span class="math inline">\(y \succsim z\)</span> gives <span class="math inline">\(x \succsim z\)</span> by transitivity. If <span class="math inline">\(z \succsim x\)</span>, then <span class="math inline">\(z \succsim x \succsim y\)</span> gives <span class="math inline">\(z \succsim y\)</span>, contradicting <span class="math inline">\(y \succ z\)</span>… wait, we only have <span class="math inline">\(y \succsim z\)</span> not <span class="math inline">\(y \succ z\)</span>. Instead: if <span class="math inline">\(z \succsim x\)</span>, transitivity gives <span class="math inline">\(z \succsim x \succsim y\)</span>, so <span class="math inline">\(z \succsim y\)</span>; but also by <span class="math inline">\(x \succ y\)</span> we have <span class="math inline">\(\neg(y \succsim x)\)</span>; and <span class="math inline">\(z \succsim x\)</span> together with transitivity gives <span class="math inline">\(z \succsim y\)</span>. This does not immediately give a contradiction. We need: <span class="math inline">\(x \succ y\)</span> means <span class="math inline">\(\neg(y \succsim x)\)</span>. If <span class="math inline">\(z \succsim x\)</span>, then <span class="math inline">\(y \succsim z \succsim x\)</span> by transitivity of <span class="math inline">\(\succsim\)</span>, giving <span class="math inline">\(y \succsim x\)</span>, contradiction. <span class="math inline">\(\square\)</span></p>
+</div>
+</div>
+</div>
+</section>
+<section id="lexicographic-preferences-a-failure-of-continuity" class="level2" data-number="9.4">
+<h2 data-number="9.4" class="anchored" data-anchor-id="lexicographic-preferences-a-failure-of-continuity"><span class="header-section-number">9.4</span> Lexicographic Preferences: A Failure of Continuity</h2>
+<div class="callout callout-style-simple callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Example 2.1.1 — Lexicographic Preferences
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>On <span class="math inline">\(X = \mathbb{R}^2_+\)</span>, define <span class="math inline">\((x_1, x_2) \succsim^{lex} (y_1, y_2)\)</span> if either <span class="math inline">\(x_1 &gt; y_1\)</span>, or <span class="math inline">\(x_1 = y_1\)</span> and <span class="math inline">\(x_2 \geq y_2\)</span>.</p>
+<p>This preference is complete and transitive (verify: it is essentially the dictionary ordering). However, it is <strong>not continuous</strong>, and <strong>no utility function represents it</strong>.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-16-contents" aria-controls="callout-16" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Proof
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-16" class="callout-16-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>Failure of continuity:</strong> Consider <span class="math inline">\(y = (1, 0)\)</span> and the upper contour set <span class="math inline">\(UC(y) = \{x : x \succsim^{lex} (1,0)\}\)</span>. This set equals <span class="math inline">\(\{x : x_1 &gt; 1\} \cup \{x : x_1 = 1, x_2 \geq 0\} = \{x : x_1 \geq 1\}\)</span>. Wait — more carefully: <span class="math inline">\(UC(y)\)</span> consists of all <span class="math inline">\(x\)</span> with <span class="math inline">\(x_1 &gt; 1\)</span>, plus all <span class="math inline">\(x\)</span> with <span class="math inline">\(x_1 = 1\)</span> and <span class="math inline">\(x_2 \geq 0\)</span>. So <span class="math inline">\(UC(y) = \{x : x_1 &gt; 1\} \cup \{(1, x_2) : x_2 \geq 0\}\)</span>.</p>
+<p>Consider the sequence <span class="math inline">\(x^n = (1 - 1/n, n)\)</span>. Then <span class="math inline">\(x^n_1 = 1 - 1/n &lt; 1 = y_1\)</span>, so <span class="math inline">\(y \succ^{lex} x^n\)</span>, meaning <span class="math inline">\(x^n \notin UC(y)\)</span>. However, <span class="math inline">\(x^n \to (1, \infty)\)</span>… actually <span class="math inline">\(x^n\)</span> does not converge in <span class="math inline">\(\mathbb{R}^2_+\)</span>. Let us use a better sequence.</p>
+<p>Consider <span class="math inline">\(y = (1, 1)\)</span> and <span class="math inline">\(x^n = (1 - 1/n, M)\)</span> for any fixed large <span class="math inline">\(M\)</span>. Then <span class="math inline">\(x^n_1 &lt; y_1 = 1\)</span>, so <span class="math inline">\(y \succ^{lex} x^n\)</span>, i.e., <span class="math inline">\(x^n \notin UC(y)\)</span> for any <span class="math inline">\(n\)</span>. But <span class="math inline">\(x^n \to (1, M)\)</span>, and <span class="math inline">\((1, M) \succsim^{lex} (1,1)\)</span> iff <span class="math inline">\(M \geq 1\)</span>, so if <span class="math inline">\(M \geq 1\)</span> then the limit <span class="math inline">\((1, M)\)</span> is in <span class="math inline">\(UC(y)\)</span> but each <span class="math inline">\(x^n\)</span> is not. Hence <span class="math inline">\(UC(y)\)</span> is not closed.</p>
+<p><strong>No utility representation exists:</strong> Suppose for contradiction that <span class="math inline">\(u: \mathbb{R}^2_+ \to \mathbb{R}\)</span> represents <span class="math inline">\(\succsim^{lex}\)</span>. For each <span class="math inline">\(x_1 \in \mathbb{R}_+\)</span>, consider the “fiber” at <span class="math inline">\(x_1\)</span>: the set of bundles <span class="math inline">\(\{(x_1, t) : t \geq 0\}\)</span>. For any <span class="math inline">\(t &lt; t'\)</span>, <span class="math inline">\((x_1, t') \succ^{lex} (x_1, t)\)</span>, so <span class="math inline">\(u(x_1, t') &gt; u(x_1, t)\)</span>. Hence for each fixed <span class="math inline">\(x_1\)</span>, the function <span class="math inline">\(t \mapsto u(x_1, t)\)</span> is strictly increasing. In particular, the set <span class="math inline">\(\{u(x_1, t) : t \in \mathbb{Q}_+\}\)</span> is a countably infinite subset of <span class="math inline">\(\mathbb{R}\)</span> with distinct values.</p>
+<p>Now, for <span class="math inline">\(x_1 \neq x_1'\)</span> (say <span class="math inline">\(x_1 &lt; x_1'\)</span>), we have <span class="math inline">\((x_1', t) \succ^{lex} (x_1, t')\)</span> for all <span class="math inline">\(t, t' \geq 0\)</span>. Hence <span class="math inline">\(u(x_1', t) &gt; u(x_1, t')\)</span> for all <span class="math inline">\(t, t'\)</span>. This means the entire range of <span class="math inline">\(u\)</span> on the fiber at <span class="math inline">\(x_1\)</span> lies strictly below the entire range of <span class="math inline">\(u\)</span> on the fiber at <span class="math inline">\(x_1'\)</span>, whenever <span class="math inline">\(x_1 &lt; x_1'\)</span>.</p>
+<p>Thus the ranges <span class="math inline">\(\{u(x_1, t) : t \geq 0\}\)</span> for different values of <span class="math inline">\(x_1\)</span> are pairwise disjoint intervals in <span class="math inline">\(\mathbb{R}\)</span>, each containing the set <span class="math inline">\(\{u(x_1, t) : t \in \mathbb{Q}_+\}\)</span>, which is a countably infinite set with distinct values (so not a single point). We have uncountably many such disjoint subintervals of <span class="math inline">\(\mathbb{R}\)</span> (one for each <span class="math inline">\(x_1 \in \mathbb{R}_+\)</span>), each containing at least two rationals. But since any collection of pairwise disjoint nondegenerate intervals is at most countable (each contains a rational), we have a contradiction. <span class="math inline">\(\square\)</span></p>
+</div>
+</div>
+</div>
+</section>
+<section id="economic-intuition" class="level2" data-number="9.5">
+<h2 data-number="9.5" class="anchored" data-anchor-id="economic-intuition"><span class="header-section-number">9.5</span> Economic Intuition</h2>
+<p>The preference axioms fall naturally into two groups: <strong>substantive</strong> and <strong>technical</strong>.</p>
+<p><strong>Substantive axioms</strong> make real behavioral restrictions: Completeness says every comparison is possible. Transitivity rules out cycles. Monotonicity encodes the desirability of goods. Convexity encodes the preference for variety. These are the axioms that behavioral economics tests and sometimes rejects.</p>
+<p><strong>Technical axioms</strong> primarily serve mathematical purposes: Continuity ensures that preference can be represented by a function (and that the optimum exists and varies continuously with parameters). Without continuity, we lose the utility representation theorem, and the entire machinery of calculus-based optimization becomes unavailable. The lexicographic example shows that continuity cannot be weakened without losing the existence of a utility function.</p>
+<p><strong>Which axioms are load-bearing for economics?</strong> The core welfare theorems and the Slutsky decomposition require rationality and local nonsatiation. Monotonicity and convexity are used for clean demand characterizations (interior solutions, uniqueness) but many results hold without them. Continuity is almost always maintained because without it the theory becomes intractable.</p>
+</section>
+<section id="cross-references" class="level2" data-number="9.6">
+<h2 data-number="9.6" class="anchored" data-anchor-id="cross-references"><span class="header-section-number">9.6</span> Cross-References</h2>
+<ul>
+<li><a href="../Part_II_Consumer_Theory/2.2_Utility_Representation.html">2.2 Utility Representation</a> — Representation theorem requires exactly rationality + continuity</li>
+<li><a href="../Part_II_Consumer_Theory/2.3_Utility_Maximization_Problem.html">2.3 Utility Maximization Problem</a> — Convexity ensures uniqueness of demand; LNS implies Walras’ Law</li>
+<li><a href="../Part_II_Consumer_Theory/2.5_Duality_and_Slutsky.html">2.5 Duality and Slutsky</a> — Monotonicity and convexity are maintained throughout duality theory</li>
+<li><a href="1.2_Convex_Analysis.qmd">1.2 Convex Analysis</a> — Mathematical background on convex sets</li>
+</ul>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+            // default icon
+            link.classList.add("external");
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../Part_II_Consumer_Theory/index.html" class="pagination-link" aria-label="Part II — Consumer Theory: Index">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Part II — Consumer Theory: Index</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../Part_II_Consumer_Theory/2.2_Utility_Representation.html" class="pagination-link" aria-label="2.2 — Utility Representation">
+        <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">2.2 — Utility Representation</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/andbbus/grad-micro-notes/edit/main/Part_II_Consumer_Theory/2.1_Preference_Relations.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/andbbus/grad-micro-notes/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer><script src="../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

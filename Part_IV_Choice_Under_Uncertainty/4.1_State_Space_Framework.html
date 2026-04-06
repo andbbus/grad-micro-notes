@@ -1,0 +1,1445 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.36">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>24&nbsp; 4.1 The State Space Framework and Axioms – Graduate Microeconomic Theory</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../Part_IV_Choice_Under_Uncertainty/4.2_Expected_Utility_Theory.html" rel="next">
+<link href="../Part_IV_Choice_Under_Uncertainty/index.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-44c2c454a7ec14b8e9312150d2b271b4.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar docked nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Graduate Microeconomic Theory</span>
+    </a>
+  </div>
+        <div class="quarto-navbar-tools tools-end">
+    <a href="https://github.com/andbbus/grad-micro-notes" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+</div>
+          <div id="quarto-search" class="" title="Search"></div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../Part_IV_Choice_Under_Uncertainty/index.html">Part IV — Choice Under Uncertainty</a></li><li class="breadcrumb-item"><a href="../Part_IV_Choice_Under_Uncertainty/4.1_State_Space_Framework.html"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">4.1 The State Space Framework and Axioms</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Microeconomics Program Overview</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part I — Mathematical Foundations</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_I_Mathematical_Foundations/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Part I: Mathematical Foundations — Index</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_I_Mathematical_Foundations/1.1_Metric_Spaces_and_Topology.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">1.1 Metric Spaces and Topology</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_I_Mathematical_Foundations/1.2_Correspondences_and_Hemicontinuity.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">1.2 Correspondences and Hemicontinuity</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_I_Mathematical_Foundations/1.3_Optimization_Theory.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">1.3 Optimization Theory</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_I_Mathematical_Foundations/1.4_Fixed_Point_Theorems.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">1.4 Fixed-Point Theorems</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part II — Consumer Theory</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_II_Consumer_Theory/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Part II — Consumer Theory: Index</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_II_Consumer_Theory/2.1_Preference_Relations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">2.1 — Preference Relations</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_II_Consumer_Theory/2.2_Utility_Representation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">2.2 — Utility Representation</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_II_Consumer_Theory/2.3_Utility_Maximization_Problem.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">2.3 — The Utility Maximization Problem (UMP)</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_II_Consumer_Theory/2.4_Expenditure_Minimization.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">2.4 — The Expenditure Minimization Problem (EMP)</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_II_Consumer_Theory/2.5_Duality_and_Slutsky.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">2.5 — Duality and the Slutsky Equation</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_II_Consumer_Theory/2.6_Revealed_Preference.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">2.6 — Revealed Preference</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_II_Consumer_Theory/2.7_Integrability.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">2.7 — Integrability</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_II_Consumer_Theory/2.8_Aggregate_Demand.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">2.8 — Aggregate Demand and Gorman Aggregation</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_II_Consumer_Theory/PS_Consumer_Theory.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Problem Set — Part II: Consumer Theory</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part III — Producer Theory</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_III_Producer_Theory/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Part III: Producer Theory — Overview</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_III_Producer_Theory/3.1_Production_Sets.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">3.1 Production Sets and Technology</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_III_Producer_Theory/3.2_Profit_Maximization.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">3.2 Profit Maximization</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_III_Producer_Theory/3.3_Cost_Minimization.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">3.3 Cost Minimization</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_III_Producer_Theory/3.4_Supply_and_Factor_Demands.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">3.4 Supply and Factor Demands</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_III_Producer_Theory/PS_Producer_Theory.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Problem Set: Producer Theory</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part IV — Choice Under Uncertainty</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IV_Choice_Under_Uncertainty/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Part IV: Choice Under Uncertainty — Overview</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IV_Choice_Under_Uncertainty/4.1_State_Space_Framework.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">4.1 The State Space Framework and Axioms</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IV_Choice_Under_Uncertainty/4.2_Expected_Utility_Theory.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">4.2 Expected Utility Theory</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IV_Choice_Under_Uncertainty/4.3_Risk_Aversion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">4.3 Risk Aversion</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IV_Choice_Under_Uncertainty/4.4_Stochastic_Dominance.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">4.4 Stochastic Dominance</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IV_Choice_Under_Uncertainty/PS_Uncertainty.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Problem Set: Choice Under Uncertainty</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part V — Game Theory</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_V_Game_Theory/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">Part V — Game Theory</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_V_Game_Theory/5.1_Normal_Form_Games.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">30</span>&nbsp; <span class="chapter-title">5.1 Normal Form Games</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_V_Game_Theory/5.2_Nash_Equilibrium.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">31</span>&nbsp; <span class="chapter-title">5.2 Nash Equilibrium</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_V_Game_Theory/5.3_Mixed_Strategies.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">32</span>&nbsp; <span class="chapter-title">5.3 Mixed Strategies</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_V_Game_Theory/5.4_Extensive_Form_Games.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">33</span>&nbsp; <span class="chapter-title">5.4 Extensive Form Games</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_V_Game_Theory/5.5_Subgame_Perfect_Equilibrium.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">34</span>&nbsp; <span class="chapter-title">5.5 Subgame Perfect Equilibrium</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_V_Game_Theory/5.6_Repeated_Games.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">35</span>&nbsp; <span class="chapter-title">5.6 Repeated Games</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_V_Game_Theory/5.7_Bayesian_Games.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">36</span>&nbsp; <span class="chapter-title">5.7 Bayesian Games</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_V_Game_Theory/PS_Game_Theory.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">37</span>&nbsp; <span class="chapter-title">Problem Set — Part V: Game Theory</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part VI — General Equilibrium</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VI_General_Equilibrium/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">38</span>&nbsp; <span class="chapter-title">Part VI — General Equilibrium</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VI_General_Equilibrium/6.1_Exchange_Economies.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">39</span>&nbsp; <span class="chapter-title">6.1 Exchange Economies</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VI_General_Equilibrium/6.2_Arrow_Debreu_Economy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">40</span>&nbsp; <span class="chapter-title">6.2 The Arrow-Debreu Economy</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VI_General_Equilibrium/6.3_Existence_of_Equilibrium.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">41</span>&nbsp; <span class="chapter-title">6.3 Existence of Walrasian Equilibrium</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VI_General_Equilibrium/6.4_Welfare_Theorems.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">42</span>&nbsp; <span class="chapter-title">6.4 Welfare Theorems</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VI_General_Equilibrium/6.5_Externalities_and_Public_Goods.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">43</span>&nbsp; <span class="chapter-title">6.5 Externalities and Public Goods</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VI_General_Equilibrium/PS_General_Equilibrium.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">44</span>&nbsp; <span class="chapter-title">Problem Set — Part VI: General Equilibrium</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part VII — Information and Incentives</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VII_Information_and_Incentives/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">45</span>&nbsp; <span class="chapter-title">Part VII — Information and Incentives</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VII_Information_and_Incentives/7.1_Principal_Agent_Problem.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">46</span>&nbsp; <span class="chapter-title">7.1 — The Principal-Agent Problem</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VII_Information_and_Incentives/7.2_Moral_Hazard.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">47</span>&nbsp; <span class="chapter-title">7.2 — Moral Hazard</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VII_Information_and_Incentives/7.3_Adverse_Selection_and_Screening.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">48</span>&nbsp; <span class="chapter-title">7.3 — Adverse Selection and Screening</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VII_Information_and_Incentives/7.4_Signaling.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">49</span>&nbsp; <span class="chapter-title">7.4 — Signaling</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VII_Information_and_Incentives/7.5_Mechanism_Design.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">50</span>&nbsp; <span class="chapter-title">7.5 — Mechanism Design</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VII_Information_and_Incentives/7.6_Prediction_Markets_and_Information_Aggregation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">51</span>&nbsp; <span class="chapter-title">7.6 — Prediction Markets and Information Aggregation</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VII_Information_and_Incentives/PS_Information.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">52</span>&nbsp; <span class="chapter-title">Problem Set — Part VII: Information and Incentives</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part VIII — Social Choice</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VIII_Social_Choice/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">53</span>&nbsp; <span class="chapter-title">Part VIII — Social Choice Theory</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VIII_Social_Choice/8.1_Social_Welfare_Functions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">54</span>&nbsp; <span class="chapter-title">8.1 Social Welfare Functions</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VIII_Social_Choice/8.2_Arrows_Impossibility_Theorem.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">55</span>&nbsp; <span class="chapter-title">8.2 Arrow’s Impossibility Theorem</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VIII_Social_Choice/8.3_Welfare_Criteria.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">56</span>&nbsp; <span class="chapter-title">8.3 Welfare Criteria and Compensation Principles</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VIII_Social_Choice/PS_Social_Choice.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">57</span>&nbsp; <span class="chapter-title">Problem Set — Part VIII: Social Choice</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part IX — Model Building for Empirics</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IX_Model_Building_for_Empirics/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">58</span>&nbsp; <span class="chapter-title">Part IX — Model Building for Empirics</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IX_Model_Building_for_Empirics/9.1_Anatomy_of_a_Theoretical_Model.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">59</span>&nbsp; <span class="chapter-title">9.1 — Anatomy of a Theoretical Model</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IX_Model_Building_for_Empirics/9.2_Equilibrium_Concepts_and_Selection.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">60</span>&nbsp; <span class="chapter-title">9.2 — Equilibrium Concepts and Selection</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IX_Model_Building_for_Empirics/9.3_Comparative_Statics_Methodology.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">61</span>&nbsp; <span class="chapter-title">9.3 — Comparative Statics Methodology</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IX_Model_Building_for_Empirics/9.4_Deriving_Testable_Predictions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">62</span>&nbsp; <span class="chapter-title">9.4 — Deriving Testable Predictions</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IX_Model_Building_for_Empirics/9.5_Structural_vs_Reduced_Form.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">63</span>&nbsp; <span class="chapter-title">9.5 — Structural vs.&nbsp;Reduced Form</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IX_Model_Building_for_Empirics/9.6_Identification_in_Structural_Models.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">64</span>&nbsp; <span class="chapter-title">9.6 — Identification in Structural Models</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IX_Model_Building_for_Empirics/9.7_Model_Discipline_and_Tractability.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">65</span>&nbsp; <span class="chapter-title">9.7 — Model Discipline and Tractability</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IX_Model_Building_for_Empirics/APP_Conflict_and_Resource_Models.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">66</span>&nbsp; <span class="chapter-title">APP — Conflict and Resource Models</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IX_Model_Building_for_Empirics/APP_Trade_and_Price_Shock_Models.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">67</span>&nbsp; <span class="chapter-title">APP — Trade and Price Shock Models</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IX_Model_Building_for_Empirics/APP_Prediction_Markets_and_Signals.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">68</span>&nbsp; <span class="chapter-title">APP — Prediction Markets and Signals</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IX_Model_Building_for_Empirics/PS_Model_Building.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">69</span>&nbsp; <span class="chapter-title">Problem Set — Part IX: Model Building for Empirics</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#the-state-space-framework-and-axioms" id="toc-the-state-space-framework-and-axioms" class="nav-link active" data-scroll-target="#the-state-space-framework-and-axioms"><span class="header-section-number">25</span> 4.1 The State Space Framework and Axioms</a>
+  <ul class="collapse">
+  <li><a href="#context" id="toc-context" class="nav-link" data-scroll-target="#context"><span class="header-section-number">25.1</span> Context</a></li>
+  <li><a href="#framework-1-objective-uncertainty-vnm" id="toc-framework-1-objective-uncertainty-vnm" class="nav-link" data-scroll-target="#framework-1-objective-uncertainty-vnm"><span class="header-section-number">25.2</span> Framework 1: Objective Uncertainty (VNM)</a></li>
+  <li><a href="#framework-2-subjective-uncertainty-savage" id="toc-framework-2-subjective-uncertainty-savage" class="nav-link" data-scroll-target="#framework-2-subjective-uncertainty-savage"><span class="header-section-number">25.3</span> Framework 2: Subjective Uncertainty (Savage)</a></li>
+  <li><a href="#preferences-over-lotteries" id="toc-preferences-over-lotteries" class="nav-link" data-scroll-target="#preferences-over-lotteries"><span class="header-section-number">25.4</span> Preferences Over Lotteries</a></li>
+  <li><a href="#the-continuity-archimedean-axiom" id="toc-the-continuity-archimedean-axiom" class="nav-link" data-scroll-target="#the-continuity-archimedean-axiom"><span class="header-section-number">25.5</span> The Continuity (Archimedean) Axiom</a></li>
+  <li><a href="#the-independence-axiom" id="toc-the-independence-axiom" class="nav-link" data-scroll-target="#the-independence-axiom"><span class="header-section-number">25.6</span> The Independence Axiom</a></li>
+  <li><a href="#the-allais-paradox" id="toc-the-allais-paradox" class="nav-link" data-scroll-target="#the-allais-paradox"><span class="header-section-number">25.7</span> The Allais Paradox</a></li>
+  <li><a href="#summary-of-axioms" id="toc-summary-of-axioms" class="nav-link" data-scroll-target="#summary-of-axioms"><span class="header-section-number">25.8</span> Summary of Axioms</a></li>
+  <li><a href="#economic-intuition" id="toc-economic-intuition" class="nav-link" data-scroll-target="#economic-intuition"><span class="header-section-number">25.9</span> Economic Intuition</a></li>
+  <li><a href="#cross-references" id="toc-cross-references" class="nav-link" data-scroll-target="#cross-references"><span class="header-section-number">25.10</span> Cross-References</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/andbbus/grad-micro-notes/edit/main/Part_IV_Choice_Under_Uncertainty/4.1_State_Space_Framework.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/andbbus/grad-micro-notes/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../Part_IV_Choice_Under_Uncertainty/index.html">Part IV — Choice Under Uncertainty</a></li><li class="breadcrumb-item"><a href="../Part_IV_Choice_Under_Uncertainty/4.1_State_Space_Framework.html"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">4.1 The State Space Framework and Axioms</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">4.1 The State Space Framework and Axioms</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="the-state-space-framework-and-axioms" class="level1" data-number="25">
+<h1 data-number="25"><span class="header-section-number">25</span> 4.1 The State Space Framework and Axioms</h1>
+<blockquote class="blockquote">
+<p><strong>MWG Reference:</strong> Ch. 6, §6.A–6.B, pp.&nbsp;167–182</p>
+</blockquote>
+<section id="context" class="level2" data-number="25.1">
+<h2 data-number="25.1" class="anchored" data-anchor-id="context"><span class="header-section-number">25.1</span> Context</h2>
+<p>Before writing down a utility function for choice under uncertainty, one must be precise about the <strong>objects of choice</strong>. There are two major frameworks: the <strong>von Neumann-Morgenstern (VNM)</strong> framework of objective lotteries over outcomes, and the <strong>Savage</strong> framework of acts over states of the world. The VNM framework is more tractable and is the standard in microeconomic theory; the Savage framework is foundational for decision theory and handles subjective beliefs endogenously.</p>
+<p>The key axiom distinguishing expected utility from other decision theories is the <strong>Independence Axiom</strong>. Unlike rationality and continuity, which are standard in deterministic choice theory, the Independence Axiom is specific to the probabilistic setting. It is the axiom that drives the linear-in-probabilities form of the EU representation. The <strong>Allais paradox</strong> demonstrates that the Independence Axiom is systematically violated in experiments, providing the primary empirical motivation for non-EU theories.</p>
+<hr>
+</section>
+<section id="framework-1-objective-uncertainty-vnm" class="level2" data-number="25.2">
+<h2 data-number="25.2" class="anchored" data-anchor-id="framework-1-objective-uncertainty-vnm"><span class="header-section-number">25.2</span> Framework 1: Objective Uncertainty (VNM)</h2>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Definition 4.1 — Outcomes and Simple Lotteries
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Let <span class="math inline">\(C = \{c_1, \ldots, c_N\}\)</span> be a finite set of <strong>outcomes</strong> (prizes, consumption levels, wealth levels). A <strong>simple lottery</strong> over <span class="math inline">\(C\)</span> is a probability distribution: <span class="math display">\[L = (p_1, p_2, \ldots, p_N) \quad \text{with} \quad p_n \geq 0 \; \forall n \quad \text{and} \quad \sum_{n=1}^N p_n = 1\]</span> where <span class="math inline">\(p_n\)</span> is the probability of outcome <span class="math inline">\(c_n\)</span>.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Definition 4.2 — The Space of Lotteries
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The set of all simple lotteries over <span class="math inline">\(C\)</span> is the <strong>(N-1)-dimensional simplex</strong>: <span class="math display">\[\mathcal{L} = \left\{(p_1, \ldots, p_N) \in \mathbb{R}^N_+ : \sum_{n=1}^N p_n = 1\right\}\]</span> <strong>Degenerate lotteries</strong> <span class="math inline">\(\delta_n\)</span> (placing probability 1 on outcome <span class="math inline">\(c_n\)</span>) are the vertices of the simplex.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Definition 4.3 — Compound Lotteries
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A <strong>compound lottery</strong> is a lottery over lotteries: given lotteries <span class="math inline">\(L_1, \ldots, L_K \in \mathcal{L}\)</span> and probabilities <span class="math inline">\(\alpha_1, \ldots, \alpha_K \geq 0\)</span> with <span class="math inline">\(\sum_k \alpha_k = 1\)</span>, the compound lottery <span class="math inline">\((\alpha_1 \circ L_1, \ldots, \alpha_K \circ L_K)\)</span> first selects <span class="math inline">\(L_k\)</span> with probability <span class="math inline">\(\alpha_k\)</span>, then resolves <span class="math inline">\(L_k\)</span>.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Definition 4.4 — Reduction of Compound Lotteries
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The <strong>reduced simple lottery</strong> corresponding to a compound lottery <span class="math inline">\((\alpha_1 \circ L_1, \ldots, \alpha_K \circ L_K)\)</span> is obtained by computing the total probability of each outcome: <span class="math display">\[\bar{p}_n = \sum_{k=1}^K \alpha_k p_n^k\]</span> where <span class="math inline">\(p_n^k\)</span> is the probability of outcome <span class="math inline">\(c_n\)</span> under lottery <span class="math inline">\(L_k\)</span>.</p>
+<p>The reduced lottery is the <strong>convex combination</strong>: <span class="math display">\[\bar{L} = \sum_{k=1}^K \alpha_k L_k = \alpha_1 L_1 + \cdots + \alpha_K L_K \in \mathcal{L}\]</span></p>
+</div>
+</div>
+<div class="callout callout-style-default callout-caution no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Caution</span>Remark 4.1 — Reduction Principle
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The assumption that agents care only about the reduced simple lottery (the ultimate probabilities over outcomes), and not about the multi-stage resolution process, is called the <strong>reduction principle</strong>. It is implicit in the VNM framework. Psychologically, the timing and framing of uncertainty can matter (this is studied in behavioral economics under “temporal resolution of uncertainty”), but for the standard VNM model, only the final distribution over outcomes matters.</p>
+</div>
+</div>
+<hr>
+</section>
+<section id="framework-2-subjective-uncertainty-savage" class="level2" data-number="25.3">
+<h2 data-number="25.3" class="anchored" data-anchor-id="framework-2-subjective-uncertainty-savage"><span class="header-section-number">25.3</span> Framework 2: Subjective Uncertainty (Savage)</h2>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Definition 4.5 — Savage Framework
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Let <span class="math inline">\(S\)</span> be a set of <strong>states of the world</strong> (possible realizations of uncertainty), <span class="math inline">\(C\)</span> be a set of <strong>outcomes</strong> (consequences), and <span class="math inline">\(\Sigma\)</span> a <span class="math inline">\(\sigma\)</span>-algebra of events. An <strong>act</strong> is a measurable function <span class="math inline">\(f: S \to C\)</span> mapping each state to an outcome.</p>
+<p>The agent has <strong>preferences</strong> <span class="math inline">\(\succsim\)</span> over acts. The Savage framework does not assume objective probabilities; instead, the agent’s <strong>subjective probability measure</strong> <span class="math inline">\(\mu\)</span> over <span class="math inline">\(S\)</span> is derived from preferences over acts via Savage’s seven axioms.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-caution no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Caution</span>Remark 4.2 — VNM vs.&nbsp;Savage
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>In the VNM framework, probabilities are <strong>objective</strong> (given by the lottery). The agent knows the probability of each outcome. In the Savage framework, the agent has <strong>beliefs</strong> (subjective probabilities) that must be inferred from their choices. Anscombe and Aumann (1963) provided a cleaner axiomatization by mixing the two frameworks: acts map states to objective lotteries, and both subjective probabilities (over states) and VNM utility (over outcomes) are derived jointly.</p>
+<p>For most of microeconomic theory (insurance, portfolio choice, mechanism design), the VNM framework with objective probabilities is sufficient. The Savage framework is essential for game theory under ambiguity (Knightian uncertainty) and for decision theory with heterogeneous beliefs.</p>
+</div>
+</div>
+<hr>
+</section>
+<section id="preferences-over-lotteries" class="level2" data-number="25.4">
+<h2 data-number="25.4" class="anchored" data-anchor-id="preferences-over-lotteries"><span class="header-section-number">25.4</span> Preferences Over Lotteries</h2>
+<p>The agent’s preferences are a binary relation <span class="math inline">\(\succsim\)</span> on <span class="math inline">\(\mathcal{L}\)</span>, where <span class="math inline">\(L \succsim L'\)</span> means “lottery <span class="math inline">\(L\)</span> is at least as good as lottery <span class="math inline">\(L'\)</span>.”</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Definition 4.6 — Rational Preferences Over Lotteries
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><span class="math inline">\(\succsim\)</span> on <span class="math inline">\(\mathcal{L}\)</span> is <strong>rational</strong> if it is: - <strong>Complete</strong>: for all <span class="math inline">\(L, L' \in \mathcal{L}\)</span>, either <span class="math inline">\(L \succsim L'\)</span> or <span class="math inline">\(L' \succsim L\)</span> (or both) - <strong>Transitive</strong>: <span class="math inline">\(L \succsim L'\)</span> and <span class="math inline">\(L' \succsim L''\)</span> imply <span class="math inline">\(L \succsim L''\)</span></p>
+</div>
+</div>
+<p>These are exactly the same axioms as in deterministic choice theory (MWG Ch. 1). Their interpretation carries over: rationality means the agent can rank all lotteries and their rankings are consistent.</p>
+<hr>
+</section>
+<section id="the-continuity-archimedean-axiom" class="level2" data-number="25.5">
+<h2 data-number="25.5" class="anchored" data-anchor-id="the-continuity-archimedean-axiom"><span class="header-section-number">25.5</span> The Continuity (Archimedean) Axiom</h2>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Definition 4.7 — Continuity Axiom
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><span class="math inline">\(\succsim\)</span> satisfies <strong>continuity</strong> if for all <span class="math inline">\(L, L', L'' \in \mathcal{L}\)</span> with <span class="math inline">\(L \succ L' \succ L''\)</span>, there exist <span class="math inline">\(\alpha, \beta \in (0,1)\)</span> such that: <span class="math display">\[\alpha L + (1-\alpha) L'' \succ L' \quad \text{and} \quad L' \succ \beta L + (1-\beta) L''\]</span></p>
+</div>
+</div>
+<div class="callout callout-style-default callout-caution no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Caution</span>Remark 4.3 — Interpretation of Continuity
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The continuity axiom says that the preference ranking is not lexicographic in outcomes: if <span class="math inline">\(L \succ L' \succ L''\)</span>, then a mixture of the best and worst lotteries (<span class="math inline">\(L\)</span> and <span class="math inline">\(L''\)</span>) can be made strictly better or worse than the intermediate lottery <span class="math inline">\(L'\)</span> by choosing the appropriate mixing probability. This rules out the possibility that some outcomes are “infinitely better” or “infinitely worse” than others.</p>
+<p><strong>Example of a violation:</strong> Suppose <span class="math inline">\(c_1\)</span> = death, <span class="math inline">\(c_2\)</span> = poverty, <span class="math inline">\(c_3\)</span> = wealth. An agent who has <span class="math inline">\(\delta_3 \succ \delta_2 \succ \delta_1\)</span> but would never accept any risk of death regardless of the probability (even <span class="math inline">\(0.0001\%\)</span> chance of death) to gain any amount of wealth would violate continuity, since <span class="math inline">\(\alpha \delta_3 + (1-\alpha)\delta_1 \prec \delta_2\)</span> for all <span class="math inline">\(\alpha \in (0,1)\)</span>.</p>
+<p>Mathematically, continuity ensures that the better-than and worse-than sets are open in the simplex topology, allowing a continuous utility representation to exist.</p>
+</div>
+</div>
+<hr>
+</section>
+<section id="the-independence-axiom" class="level2" data-number="25.6">
+<h2 data-number="25.6" class="anchored" data-anchor-id="the-independence-axiom"><span class="header-section-number">25.6</span> The Independence Axiom</h2>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Definition 4.8 — Independence Axiom
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><span class="math inline">\(\succsim\)</span> satisfies the <strong>Independence Axiom</strong> if for all <span class="math inline">\(L, L', L'' \in \mathcal{L}\)</span> and all <span class="math inline">\(\alpha \in (0,1)\)</span>: <span class="math display">\[L \succsim L' \iff \alpha L + (1-\alpha) L'' \succsim \alpha L' + (1-\alpha) L''\]</span></p>
+</div>
+</div>
+<div class="callout callout-style-default callout-caution no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Caution</span>Remark 4.4 — Interpretation of the Independence Axiom
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The Independence Axiom says that the preference between two lotteries <span class="math inline">\(L\)</span> and <span class="math inline">\(L'\)</span> is <strong>not affected</strong> by mixing them with a common third lottery <span class="math inline">\(L''\)</span>. The common component <span class="math inline">\((1-\alpha)L''\)</span> is irrelevant and can be “canceled out.”</p>
+<p><strong>Intuition:</strong> Think of <span class="math inline">\(\alpha L + (1-\alpha) L''\)</span> as a two-stage lottery: with probability <span class="math inline">\(\alpha\)</span>, face lottery <span class="math inline">\(L\)</span>; with probability <span class="math inline">\(1-\alpha\)</span>, face lottery <span class="math inline">\(L''\)</span>. The preference between the two compound lotteries depends only on what happens in the event (probability <span class="math inline">\(\alpha\)</span>) where they differ — which is the preference between <span class="math inline">\(L\)</span> and <span class="math inline">\(L'\)</span> themselves. The common part <span class="math inline">\(L''\)</span> occurs in neither case and is irrelevant.</p>
+<p><strong>Why it is controversial:</strong> The Independence Axiom is a separability condition. It says that your preference in one branch of the decision tree is independent of what happens in other branches. Real agents often violate this, particularly when the outcomes involve extreme events or when the framing of the lottery as a two-stage process affects behavior (as documented in the Allais paradox below).</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-caution no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Caution</span>Remark 4.5 — Geometric Interpretation
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>In the simplex <span class="math inline">\(\mathcal{L}\)</span>, the Independence Axiom implies that indifference curves are <strong>straight parallel lines</strong> (hyperplanes). To see this: if <span class="math inline">\(L \sim L'\)</span>, then by Independence, <span class="math inline">\(\alpha L + (1-\alpha)L'' \sim \alpha L' + (1-\alpha)L''\)</span> for any <span class="math inline">\(L''\)</span> and <span class="math inline">\(\alpha\)</span>. This means the indifference set through <span class="math inline">\(L\)</span> maps linearly to the indifference set through <span class="math inline">\(\alpha L + (1-\alpha)L''\)</span>, tracing out a straight line. Non-EU theories (e.g., rank-dependent utility) allow “fanning” of indifference curves — non-parallel lines in the simplex.</p>
+</div>
+</div>
+<hr>
+</section>
+<section id="the-allais-paradox" class="level2" data-number="25.7">
+<h2 data-number="25.7" class="anchored" data-anchor-id="the-allais-paradox"><span class="header-section-number">25.7</span> The Allais Paradox</h2>
+<p>The Allais paradox (Allais, 1953) is the most famous systematic violation of the Independence Axiom.</p>
+<div class="callout callout-style-simple callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Example 4.1 — The Allais Paradox
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Consider monetary outcomes <span class="math inline">\(c_1 = \$0\)</span>, <span class="math inline">\(c_2 = \$1{,}000{,}000\)</span>, <span class="math inline">\(c_3 = \$5{,}000{,}000\)</span>.</p>
+<p><strong>Pair 1:</strong> <span class="math display">\[L_1 = (0, 1, 0) \quad \text{(win \$1M for certain)}\]</span> <span class="math display">\[L_2 = (0.01, 0.89, 0.10) \quad \text{(1\% chance of \$0; 89\% chance of \$1M; 10\% chance of \$5M)}\]</span></p>
+<p><strong>Pair 2:</strong> <span class="math display">\[L_3 = (0.89, 0.11, 0) \quad \text{(89\% chance of \$0; 11\% chance of \$1M; 0\% chance of \$5M)}\]</span> <span class="math display">\[L_4 = (0.90, 0, 0.10) \quad \text{(90\% chance of \$0; 0\% chance of \$1M; 10\% chance of \$5M)}\]</span></p>
+<p><strong>Modal experimental preference:</strong> <span class="math inline">\(L_1 \succ L_2\)</span> and <span class="math inline">\(L_4 \succ L_3\)</span>.</p>
+<p><strong>Why this violates Independence:</strong></p>
+<p>Note that: <span class="math display">\[L_1 = 0.11 \cdot \delta_{c_2} + 0.89 \cdot \delta_{c_2}\]</span> <span class="math display">\[L_2 = 0.11 \cdot \left(\frac{1}{11}\delta_{c_1} + \frac{10}{11}\delta_{c_3}\right) + 0.89 \cdot \delta_{c_2}\]</span></p>
+<p>So <span class="math inline">\(L_1\)</span> and <span class="math inline">\(L_2\)</span> differ only in the <span class="math inline">\(0.11\)</span>-probability event: in that event, <span class="math inline">\(L_1\)</span> gives <span class="math inline">\(\delta_{c_2}\)</span> and <span class="math inline">\(L_2\)</span> gives <span class="math inline">\(\frac{1}{11}\delta_{c_1} + \frac{10}{11}\delta_{c_3}\)</span>. Denoting <span class="math inline">\(M_1 = \delta_{c_2}\)</span> and <span class="math inline">\(M_2 = \frac{1}{11}\delta_{c_1} + \frac{10}{11}\delta_{c_3}\)</span>: <span class="math display">\[L_1 = 0.11 M_1 + 0.89 \delta_{c_2}, \quad L_2 = 0.11 M_2 + 0.89 \delta_{c_2}\]</span></p>
+<p>By the Independence Axiom, <span class="math inline">\(L_1 \succ L_2\)</span> iff <span class="math inline">\(M_1 \succ M_2\)</span>.</p>
+<p>Similarly: <span class="math display">\[L_3 = 0.11 M_1 + 0.89 \delta_{c_1}, \quad L_4 = 0.11 M_2 + 0.89 \delta_{c_1}\]</span></p>
+<p>Again by Independence, <span class="math inline">\(L_3 \succsim L_4\)</span> iff <span class="math inline">\(M_1 \succsim M_2\)</span>.</p>
+<p><strong>Contradiction:</strong> <span class="math inline">\(L_1 \succ L_2\)</span> implies <span class="math inline">\(M_1 \succ M_2\)</span>, which implies <span class="math inline">\(L_3 \succ L_4\)</span>. But the experimental finding is <span class="math inline">\(L_4 \succ L_3\)</span>. This is a violation of the Independence Axiom.</p>
+<p><strong>EU representation check:</strong> Under EU, <span class="math inline">\(L_1 \succ L_2\)</span> means: <span class="math display">\[u(c_2) &gt; 0.01 u(c_1) + 0.89 u(c_2) + 0.10 u(c_3)\]</span> <span class="math display">\[0.11 u(c_2) &gt; 0.01 u(c_1) + 0.10 u(c_3) \quad \cdots (*)\]</span></p>
+<p>And <span class="math inline">\(L_4 \succ L_3\)</span> means: <span class="math display">\[0.90 u(c_1) + 0.10 u(c_3) &gt; 0.89 u(c_1) + 0.11 u(c_2)\]</span> <span class="math display">\[0.10 u(c_3) - 0.11 u(c_2) &gt; 0.89 u(c_1) - 0.90 u(c_1) = -0.01 u(c_1)\]</span> <span class="math display">\[0.10 u(c_3) + 0.01 u(c_1) &gt; 0.11 u(c_2) \quad \cdots (**)\]</span></p>
+<p>But <span class="math inline">\((*)\)</span> and <span class="math inline">\((**)\)</span> directly contradict each other (<span class="math inline">\((*)\)</span> says <span class="math inline">\(0.11 u(c_2) &gt; 0.01 u(c_1) + 0.10 u(c_3)\)</span> while <span class="math inline">\((**)\)</span> says the opposite). Hence no EU representation can accommodate both preferences simultaneously.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-caution no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Caution</span>Remark 4.6 — What the Allais Paradox Tells Us
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The Allais paradox reveals that agents often violate Independence when one option includes <strong>certainty</strong> (the <span class="math inline">\(L_1\)</span> certainty effect). Agents appear to overweight the certain outcome relative to what EU would predict. This suggests:</p>
+<ol type="1">
+<li><p><strong>Psychologically</strong>: People treat “certainty” as qualitatively different from “very high probability,” not just quantitatively. The move from 100% to 99% feels worse than the move from 11% to 10% (both are a 1 percentage point reduction).</p></li>
+<li><p><strong>Modeling response</strong>: Non-EU theories such as <strong>rank-dependent utility</strong> (Quiggin, 1982) and <strong>prospect theory</strong> (Kahneman and Tversky, 1979) accommodate such behavior by allowing the probability weighting function to be nonlinear, with overweighting of extreme probabilities (near 0 and 1).</p></li>
+<li><p><strong>Practical response</strong>: Despite the Allais violation, EU remains the dominant model in most applied economics because (i) violations are less prevalent in high-stakes repeated environments; (ii) EU is tractable and has well-understood implications; (iii) for aggregate outcomes and policy analysis, violations may average out.</p></li>
+</ol>
+</div>
+</div>
+<hr>
+</section>
+<section id="summary-of-axioms" class="level2" data-number="25.8">
+<h2 data-number="25.8" class="anchored" data-anchor-id="summary-of-axioms"><span class="header-section-number">25.8</span> Summary of Axioms</h2>
+<div class="callout callout-style-default callout-important no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Proposition 4.1 — The Three Key Axioms
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The three axioms for VNM expected utility are: 1. <strong>Rationality</strong>: <span class="math inline">\(\succsim\)</span> is complete and transitive on <span class="math inline">\(\mathcal{L}\)</span> 2. <strong>Continuity</strong>: For <span class="math inline">\(L \succ L' \succ L''\)</span>, <span class="math inline">\(\exists \alpha, \beta \in (0,1)\)</span> such that <span class="math inline">\(\alpha L + (1-\alpha)L'' \succ L' \succ \beta L + (1-\beta)L''\)</span> 3. <strong>Independence</strong>: <span class="math inline">\(L \succsim L' \iff \alpha L + (1-\alpha)L'' \succsim \alpha L' + (1-\alpha)L''\)</span> for all <span class="math inline">\(\alpha \in (0,1)\)</span>, <span class="math inline">\(L'' \in \mathcal{L}\)</span></p>
+<p>The VNM theorem states these three axioms are <strong>necessary and sufficient</strong> for an EU representation (see <a href="../Part_IV_Choice_Under_Uncertainty/4.2_Expected_Utility_Theory.html">4.2 Expected Utility Theory</a>).</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-caution no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Caution</span>Remark 4.7 — Which Axiom is “Doing the Work”?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><strong>Rationality</strong> alone (without continuity) gives an ordinal representation on the simplex (a utility function on lotteries exists).</li>
+<li><strong>Rationality + Continuity</strong> gives a continuous utility function <span class="math inline">\(U: \mathcal{L} \to \mathbb{R}\)</span>.</li>
+<li><strong>+ Independence</strong> forces this utility function to be <strong>linear in probabilities</strong>: <span class="math inline">\(U(L) = \sum_n p_n u(c_n)\)</span>.</li>
+</ul>
+<p>The Independence Axiom is thus precisely what converts a general preference ordering on lotteries into an expected utility representation. This is the hardest axiom to justify and the most frequently violated.</p>
+</div>
+</div>
+<hr>
+</section>
+<section id="economic-intuition" class="level2" data-number="25.9">
+<h2 data-number="25.9" class="anchored" data-anchor-id="economic-intuition"><span class="header-section-number">25.9</span> Economic Intuition</h2>
+<p>The von Neumann-Morgenstern framework provides a clean, tractable model of decision-making under risk. The genius of the VNM approach is to work directly with preferences over lotteries (probability distributions), rather than trying to model the psychological experience of uncertainty. The axioms encode plausible consistency requirements: completeness (you can always make a choice), transitivity (your choices don’t cycle), continuity (no outcome is infinitely good or bad), and independence (the presence of a common background risk doesn’t affect relative preferences).</p>
+<p>The Independence Axiom is particularly elegant: it says that in evaluating two lotteries, you should focus only on the events where they differ. The common component is irrelevant — you’ll experience it in either case. This “consequentialist” reasoning is compelling in many settings, but breaks down when the psychological experience of certainty, or the framing of the lottery, affects the evaluation.</p>
+<p>Understanding both the power and the limits of the Independence Axiom is essential for graduate-level economic theory. It is the cornerstone of the most important representation theorem in decision theory, and its systematic violation has generated decades of research in behavioral economics and decision theory.</p>
+<hr>
+</section>
+<section id="cross-references" class="level2" data-number="25.10">
+<h2 data-number="25.10" class="anchored" data-anchor-id="cross-references"><span class="header-section-number">25.10</span> Cross-References</h2>
+<ul>
+<li><a href="../Part_IV_Choice_Under_Uncertainty/4.2_Expected_Utility_Theory.html">4.2 Expected Utility Theory</a> — VNM theorem; the full proof; uniqueness</li>
+<li><a href="../Part_IV_Choice_Under_Uncertainty/4.3_Risk_Aversion.html">4.3 Risk Aversion</a> — what the curvature of Bernoulli utility <span class="math inline">\(u\)</span> means</li>
+<li><a href="../Part_IV_Choice_Under_Uncertainty/4.4_Stochastic_Dominance.html">4.4 Stochastic Dominance</a> — welfare rankings of distributions for broad classes of <span class="math inline">\(u\)</span></li>
+<li><a href="1.1_Preference_and_Utility.qmd">1.1 Preference and Utility</a> — rationality axioms in the deterministic setting</li>
+<li><a href="../Part_IV_Choice_Under_Uncertainty/PS_Uncertainty.html">PS Uncertainty</a> — Problems 1 and 5</li>
+</ul>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+            // default icon
+            link.classList.add("external");
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../Part_IV_Choice_Under_Uncertainty/index.html" class="pagination-link" aria-label="Part IV: Choice Under Uncertainty — Overview">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Part IV: Choice Under Uncertainty — Overview</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../Part_IV_Choice_Under_Uncertainty/4.2_Expected_Utility_Theory.html" class="pagination-link" aria-label="4.2 Expected Utility Theory">
+        <span class="nav-page-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">4.2 Expected Utility Theory</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/andbbus/grad-micro-notes/edit/main/Part_IV_Choice_Under_Uncertainty/4.1_State_Space_Framework.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/andbbus/grad-micro-notes/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer><script src="../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

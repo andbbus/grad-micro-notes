@@ -1,0 +1,1378 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.36">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>6&nbsp; 1.4 Fixed-Point Theorems – Graduate Microeconomic Theory</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../Part_II_Consumer_Theory/index.html" rel="next">
+<link href="../Part_I_Mathematical_Foundations/1.3_Optimization_Theory.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-44c2c454a7ec14b8e9312150d2b271b4.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar docked nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Graduate Microeconomic Theory</span>
+    </a>
+  </div>
+        <div class="quarto-navbar-tools tools-end">
+    <a href="https://github.com/andbbus/grad-micro-notes" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+</div>
+          <div id="quarto-search" class="" title="Search"></div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../Part_I_Mathematical_Foundations/index.html">Part I — Mathematical Foundations</a></li><li class="breadcrumb-item"><a href="../Part_I_Mathematical_Foundations/1.4_Fixed_Point_Theorems.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">1.4 Fixed-Point Theorems</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Microeconomics Program Overview</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part I — Mathematical Foundations</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_I_Mathematical_Foundations/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Part I: Mathematical Foundations — Index</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_I_Mathematical_Foundations/1.1_Metric_Spaces_and_Topology.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">1.1 Metric Spaces and Topology</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_I_Mathematical_Foundations/1.2_Correspondences_and_Hemicontinuity.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">1.2 Correspondences and Hemicontinuity</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_I_Mathematical_Foundations/1.3_Optimization_Theory.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">1.3 Optimization Theory</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_I_Mathematical_Foundations/1.4_Fixed_Point_Theorems.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">1.4 Fixed-Point Theorems</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part II — Consumer Theory</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_II_Consumer_Theory/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Part II — Consumer Theory: Index</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_II_Consumer_Theory/2.1_Preference_Relations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">2.1 — Preference Relations</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_II_Consumer_Theory/2.2_Utility_Representation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">2.2 — Utility Representation</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_II_Consumer_Theory/2.3_Utility_Maximization_Problem.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">2.3 — The Utility Maximization Problem (UMP)</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_II_Consumer_Theory/2.4_Expenditure_Minimization.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">2.4 — The Expenditure Minimization Problem (EMP)</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_II_Consumer_Theory/2.5_Duality_and_Slutsky.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">2.5 — Duality and the Slutsky Equation</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_II_Consumer_Theory/2.6_Revealed_Preference.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">2.6 — Revealed Preference</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_II_Consumer_Theory/2.7_Integrability.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">2.7 — Integrability</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_II_Consumer_Theory/2.8_Aggregate_Demand.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">2.8 — Aggregate Demand and Gorman Aggregation</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_II_Consumer_Theory/PS_Consumer_Theory.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Problem Set — Part II: Consumer Theory</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part III — Producer Theory</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_III_Producer_Theory/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Part III: Producer Theory — Overview</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_III_Producer_Theory/3.1_Production_Sets.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">3.1 Production Sets and Technology</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_III_Producer_Theory/3.2_Profit_Maximization.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">3.2 Profit Maximization</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_III_Producer_Theory/3.3_Cost_Minimization.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">3.3 Cost Minimization</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_III_Producer_Theory/3.4_Supply_and_Factor_Demands.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">3.4 Supply and Factor Demands</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_III_Producer_Theory/PS_Producer_Theory.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Problem Set: Producer Theory</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part IV — Choice Under Uncertainty</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IV_Choice_Under_Uncertainty/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Part IV: Choice Under Uncertainty — Overview</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IV_Choice_Under_Uncertainty/4.1_State_Space_Framework.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">4.1 The State Space Framework and Axioms</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IV_Choice_Under_Uncertainty/4.2_Expected_Utility_Theory.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">4.2 Expected Utility Theory</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IV_Choice_Under_Uncertainty/4.3_Risk_Aversion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">4.3 Risk Aversion</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IV_Choice_Under_Uncertainty/4.4_Stochastic_Dominance.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">4.4 Stochastic Dominance</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IV_Choice_Under_Uncertainty/PS_Uncertainty.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Problem Set: Choice Under Uncertainty</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part V — Game Theory</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_V_Game_Theory/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">Part V — Game Theory</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_V_Game_Theory/5.1_Normal_Form_Games.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">30</span>&nbsp; <span class="chapter-title">5.1 Normal Form Games</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_V_Game_Theory/5.2_Nash_Equilibrium.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">31</span>&nbsp; <span class="chapter-title">5.2 Nash Equilibrium</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_V_Game_Theory/5.3_Mixed_Strategies.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">32</span>&nbsp; <span class="chapter-title">5.3 Mixed Strategies</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_V_Game_Theory/5.4_Extensive_Form_Games.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">33</span>&nbsp; <span class="chapter-title">5.4 Extensive Form Games</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_V_Game_Theory/5.5_Subgame_Perfect_Equilibrium.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">34</span>&nbsp; <span class="chapter-title">5.5 Subgame Perfect Equilibrium</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_V_Game_Theory/5.6_Repeated_Games.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">35</span>&nbsp; <span class="chapter-title">5.6 Repeated Games</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_V_Game_Theory/5.7_Bayesian_Games.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">36</span>&nbsp; <span class="chapter-title">5.7 Bayesian Games</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_V_Game_Theory/PS_Game_Theory.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">37</span>&nbsp; <span class="chapter-title">Problem Set — Part V: Game Theory</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part VI — General Equilibrium</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VI_General_Equilibrium/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">38</span>&nbsp; <span class="chapter-title">Part VI — General Equilibrium</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VI_General_Equilibrium/6.1_Exchange_Economies.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">39</span>&nbsp; <span class="chapter-title">6.1 Exchange Economies</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VI_General_Equilibrium/6.2_Arrow_Debreu_Economy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">40</span>&nbsp; <span class="chapter-title">6.2 The Arrow-Debreu Economy</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VI_General_Equilibrium/6.3_Existence_of_Equilibrium.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">41</span>&nbsp; <span class="chapter-title">6.3 Existence of Walrasian Equilibrium</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VI_General_Equilibrium/6.4_Welfare_Theorems.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">42</span>&nbsp; <span class="chapter-title">6.4 Welfare Theorems</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VI_General_Equilibrium/6.5_Externalities_and_Public_Goods.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">43</span>&nbsp; <span class="chapter-title">6.5 Externalities and Public Goods</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VI_General_Equilibrium/PS_General_Equilibrium.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">44</span>&nbsp; <span class="chapter-title">Problem Set — Part VI: General Equilibrium</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part VII — Information and Incentives</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VII_Information_and_Incentives/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">45</span>&nbsp; <span class="chapter-title">Part VII — Information and Incentives</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VII_Information_and_Incentives/7.1_Principal_Agent_Problem.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">46</span>&nbsp; <span class="chapter-title">7.1 — The Principal-Agent Problem</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VII_Information_and_Incentives/7.2_Moral_Hazard.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">47</span>&nbsp; <span class="chapter-title">7.2 — Moral Hazard</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VII_Information_and_Incentives/7.3_Adverse_Selection_and_Screening.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">48</span>&nbsp; <span class="chapter-title">7.3 — Adverse Selection and Screening</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VII_Information_and_Incentives/7.4_Signaling.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">49</span>&nbsp; <span class="chapter-title">7.4 — Signaling</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VII_Information_and_Incentives/7.5_Mechanism_Design.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">50</span>&nbsp; <span class="chapter-title">7.5 — Mechanism Design</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VII_Information_and_Incentives/7.6_Prediction_Markets_and_Information_Aggregation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">51</span>&nbsp; <span class="chapter-title">7.6 — Prediction Markets and Information Aggregation</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VII_Information_and_Incentives/PS_Information.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">52</span>&nbsp; <span class="chapter-title">Problem Set — Part VII: Information and Incentives</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part VIII — Social Choice</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VIII_Social_Choice/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">53</span>&nbsp; <span class="chapter-title">Part VIII — Social Choice Theory</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VIII_Social_Choice/8.1_Social_Welfare_Functions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">54</span>&nbsp; <span class="chapter-title">8.1 Social Welfare Functions</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VIII_Social_Choice/8.2_Arrows_Impossibility_Theorem.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">55</span>&nbsp; <span class="chapter-title">8.2 Arrow’s Impossibility Theorem</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VIII_Social_Choice/8.3_Welfare_Criteria.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">56</span>&nbsp; <span class="chapter-title">8.3 Welfare Criteria and Compensation Principles</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VIII_Social_Choice/PS_Social_Choice.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">57</span>&nbsp; <span class="chapter-title">Problem Set — Part VIII: Social Choice</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part IX — Model Building for Empirics</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IX_Model_Building_for_Empirics/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">58</span>&nbsp; <span class="chapter-title">Part IX — Model Building for Empirics</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IX_Model_Building_for_Empirics/9.1_Anatomy_of_a_Theoretical_Model.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">59</span>&nbsp; <span class="chapter-title">9.1 — Anatomy of a Theoretical Model</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IX_Model_Building_for_Empirics/9.2_Equilibrium_Concepts_and_Selection.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">60</span>&nbsp; <span class="chapter-title">9.2 — Equilibrium Concepts and Selection</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IX_Model_Building_for_Empirics/9.3_Comparative_Statics_Methodology.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">61</span>&nbsp; <span class="chapter-title">9.3 — Comparative Statics Methodology</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IX_Model_Building_for_Empirics/9.4_Deriving_Testable_Predictions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">62</span>&nbsp; <span class="chapter-title">9.4 — Deriving Testable Predictions</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IX_Model_Building_for_Empirics/9.5_Structural_vs_Reduced_Form.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">63</span>&nbsp; <span class="chapter-title">9.5 — Structural vs.&nbsp;Reduced Form</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IX_Model_Building_for_Empirics/9.6_Identification_in_Structural_Models.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">64</span>&nbsp; <span class="chapter-title">9.6 — Identification in Structural Models</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IX_Model_Building_for_Empirics/9.7_Model_Discipline_and_Tractability.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">65</span>&nbsp; <span class="chapter-title">9.7 — Model Discipline and Tractability</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IX_Model_Building_for_Empirics/APP_Conflict_and_Resource_Models.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">66</span>&nbsp; <span class="chapter-title">APP — Conflict and Resource Models</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IX_Model_Building_for_Empirics/APP_Trade_and_Price_Shock_Models.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">67</span>&nbsp; <span class="chapter-title">APP — Trade and Price Shock Models</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IX_Model_Building_for_Empirics/APP_Prediction_Markets_and_Signals.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">68</span>&nbsp; <span class="chapter-title">APP — Prediction Markets and Signals</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IX_Model_Building_for_Empirics/PS_Model_Building.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">69</span>&nbsp; <span class="chapter-title">Problem Set — Part IX: Model Building for Empirics</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#fixed-point-theorems" id="toc-fixed-point-theorems" class="nav-link active" data-scroll-target="#fixed-point-theorems"><span class="header-section-number">7</span> 1.4 Fixed-Point Theorems</a>
+  <ul class="collapse">
+  <li><a href="#context" id="toc-context" class="nav-link" data-scroll-target="#context"><span class="header-section-number">7.1</span> Context</a></li>
+  <li><a href="#definitions" id="toc-definitions" class="nav-link" data-scroll-target="#definitions"><span class="header-section-number">7.2</span> Definitions</a></li>
+  <li><a href="#main-results" id="toc-main-results" class="nav-link" data-scroll-target="#main-results"><span class="header-section-number">7.3</span> Main Results</a></li>
+  <li><a href="#economic-applications" id="toc-economic-applications" class="nav-link" data-scroll-target="#economic-applications"><span class="header-section-number">7.4</span> Economic Applications</a></li>
+  <li><a href="#economic-intuition" id="toc-economic-intuition" class="nav-link" data-scroll-target="#economic-intuition"><span class="header-section-number">7.5</span> Economic Intuition</a></li>
+  <li><a href="#cross-references" id="toc-cross-references" class="nav-link" data-scroll-target="#cross-references"><span class="header-section-number">7.6</span> Cross-References</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/andbbus/grad-micro-notes/edit/main/Part_I_Mathematical_Foundations/1.4_Fixed_Point_Theorems.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/andbbus/grad-micro-notes/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../Part_I_Mathematical_Foundations/index.html">Part I — Mathematical Foundations</a></li><li class="breadcrumb-item"><a href="../Part_I_Mathematical_Foundations/1.4_Fixed_Point_Theorems.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">1.4 Fixed-Point Theorems</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">1.4 Fixed-Point Theorems</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="fixed-point-theorems" class="level1" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> 1.4 Fixed-Point Theorems</h1>
+<blockquote class="blockquote">
+<p><strong>MWG Reference:</strong> Mathematical Appendix, Section M.I, pp.&nbsp;952–954; Chapter 17, pp.&nbsp;580–586; Chapter 8, pp.&nbsp;250–254</p>
+</blockquote>
+<section id="context" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="context"><span class="header-section-number">7.1</span> Context</h2>
+<p>A fixed point of a function or correspondence <span class="math inline">\(\phi: C \to C\)</span> (or <span class="math inline">\(\phi: C \rightrightarrows C\)</span>) is a point <span class="math inline">\(x^*\)</span> such that <span class="math inline">\(x^* \in \phi(x^*)\)</span>. The importance of this concept for microeconomics cannot be overstated: virtually every notion of economic equilibrium — Walrasian equilibrium, Nash equilibrium, competitive equilibrium with production, and optimal mechanisms — can be reformulated as the fixed point of some suitably constructed map. The two central results are Brouwer’s Fixed-Point Theorem (for continuous functions) and its generalization, Kakutani’s Fixed-Point Theorem (for UHC correspondences). Both require the domain to be nonempty, compact, and convex — conditions whose economic content is discussed at length below. This note proves Brouwer’s theorem via Sperner’s lemma, derives Kakutani from Brouwer using an approximation argument, and then applies both to preview the existence proofs for Nash equilibrium and Walrasian equilibrium that will be completed in Parts V and VII.</p>
+<hr>
+</section>
+<section id="definitions" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="definitions"><span class="header-section-number">7.2</span> Definitions</h2>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Definition 1.21 — Fixed Point
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Let <span class="math inline">\(C\)</span> be a nonempty set and <span class="math inline">\(\phi: C \rightrightarrows C\)</span> a correspondence (or <span class="math inline">\(f: C \to C\)</span> a function). A point <span class="math inline">\(x^* \in C\)</span> is a <strong>fixed point</strong> of <span class="math inline">\(\phi\)</span> (resp. <span class="math inline">\(f\)</span>) if <span class="math inline">\(x^* \in \phi(x^*)\)</span> (resp. <span class="math inline">\(x^* = f(x^*)\)</span>).</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Definition 1.22 — Simplex
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The <strong>standard <span class="math inline">\(n\)</span>-simplex</strong> is: <span class="math display">\[\Delta^n = \left\{ x \in \mathbb{R}^{n+1}_+ : \sum_{i=0}^n x_i = 1 \right\}.\]</span> More generally, given <span class="math inline">\(n+1\)</span> affinely independent points (vertices) <span class="math inline">\(v^0, v^1, \ldots, v^n \in \mathbb{R}^L\)</span>, the simplex with these vertices is <span class="math inline">\(\text{co}(\{v^0, \ldots, v^n\})\)</span> (their convex hull). A <strong>simplicial subdivision</strong> (triangulation) of a simplex <span class="math inline">\(\Delta\)</span> is a decomposition of <span class="math inline">\(\Delta\)</span> into smaller simplices that fit together face-to-face.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Definition 1.23 — Sperner Labeling
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Let <span class="math inline">\(\Delta^n\)</span> be subdivided into smaller simplices, and let the vertices of the subdivision be labeled with integers in <span class="math inline">\(\{0, 1, \ldots, n\}\)</span>. The labeling is a <strong>Sperner labeling</strong> if: 1. Vertex <span class="math inline">\(v^i\)</span> of the original simplex (for <span class="math inline">\(i = 0, 1, \ldots, n\)</span>) receives label <span class="math inline">\(i\)</span>. 2. Any vertex lying on the face <span class="math inline">\(F_I = \text{co}(\{v^i : i \in I\})\)</span> (for <span class="math inline">\(I \subseteq \{0, \ldots, n\}\)</span>) receives a label in <span class="math inline">\(I\)</span>. A small simplex in the subdivision is <strong>completely labeled</strong> if its <span class="math inline">\(n+1\)</span> vertices carry all <span class="math inline">\(n+1\)</span> labels <span class="math inline">\(0, 1, \ldots, n\)</span>.</p>
+</div>
+</div>
+<hr>
+</section>
+<section id="main-results" class="level2" data-number="7.3">
+<h2 data-number="7.3" class="anchored" data-anchor-id="main-results"><span class="header-section-number">7.3</span> Main Results</h2>
+<div class="callout callout-style-default callout-important no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Theorem 1.16 — Sperner’s Lemma
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>For any Sperner labeling of any simplicial subdivision of <span class="math inline">\(\Delta^n\)</span>, the number of completely labeled simplices is odd (in particular, at least one completely labeled simplex exists).</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Proof
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>(For <span class="math inline">\(n = 2\)</span>; the general case is analogous.) Consider a triangulation of <span class="math inline">\(\Delta^2\)</span> with a Sperner labeling. Count ordered pairs <span class="math inline">\((T, e)\)</span> where <span class="math inline">\(T\)</span> is a small triangle and <span class="math inline">\(e\)</span> is an edge of <span class="math inline">\(T\)</span> carrying labels <span class="math inline">\(\{0, 1\}\)</span>. Count this in two ways:</p>
+<ul>
+<li><p><strong>From the inside (triangles):</strong> A completely labeled triangle (labels <span class="math inline">\(\{0,1,2\}\)</span>) has exactly one <span class="math inline">\(\{0,1\}\)</span>-edge. A triangle with labels <span class="math inline">\(\{0,1,1\}\)</span> or <span class="math inline">\(\{0,0,1\}\)</span> has exactly two <span class="math inline">\(\{0,1\}\)</span>-edges. All other triangles have zero. So the count equals <span class="math inline">\((\text{number of completely labeled triangles}) + 2(\text{number of triangles with exactly two }\{0,1\}\text{-edges})\)</span>.</p></li>
+<li><p><strong>From the boundary:</strong> An edge on the boundary of <span class="math inline">\(\Delta^2\)</span> can be a <span class="math inline">\(\{0,1\}\)</span>-edge only if it lies on the face connecting <span class="math inline">\(v^0\)</span> and <span class="math inline">\(v^1\)</span> (since by Sperner’s condition, boundary vertices have restricted labels). Count the <span class="math inline">\(\{0,1\}\)</span>-edges on the <span class="math inline">\(v^0\)</span>-to-<span class="math inline">\(v^1\)</span> face of <span class="math inline">\(\Delta^2\)</span>: these are the boundary edges with one endpoint labeled 0 and one labeled 1. Starting at <span class="math inline">\(v^0\)</span> (label 0) and walking to <span class="math inline">\(v^1\)</span> (label 1) along the subdivision, the label must change from 0 to 1 an odd number of times net. So the number of boundary <span class="math inline">\(\{0,1\}\)</span>-edges is odd.</p></li>
+</ul>
+<p>An interior <span class="math inline">\(\{0,1\}\)</span>-edge is shared by exactly two triangles (counted twice); a boundary <span class="math inline">\(\{0,1\}\)</span>-edge is counted once. So the total count is: <span class="math display">\[(\text{boundary count, odd}) + 2(\text{interior } \{0,1\}\text{-edges}).\]</span> This equals the sum from triangles: <span class="math inline">\((\text{completely labeled}) + 2(\text{two-edge triangles})\)</span>. Reducing modulo 2: the number of completely labeled triangles is congruent to the boundary count (odd), hence odd. <span class="math inline">\(\blacksquare\)</span></p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-important no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Theorem 1.17 — Brouwer’s Fixed-Point Theorem
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Let <span class="math inline">\(C \subseteq \mathbb{R}^L\)</span> be <strong>nonempty, compact, and convex</strong>, and let <span class="math inline">\(f: C \to C\)</span> be <strong>continuous</strong>. Then <span class="math inline">\(f\)</span> has a fixed point: there exists <span class="math inline">\(x^* \in C\)</span> with <span class="math inline">\(f(x^*) = x^*\)</span>.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Proof
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>It suffices to prove the theorem for <span class="math inline">\(C = \Delta^n\)</span> (the standard <span class="math inline">\(n\)</span>-simplex), since any nonempty compact convex set in <span class="math inline">\(\mathbb{R}^L\)</span> is homeomorphic to a simplex of appropriate dimension, and homeomorphisms preserve fixed-point properties.</p>
+<p><strong>Step 1: Construct Sperner labelings on finer and finer subdivisions.</strong> For each <span class="math inline">\(m \in \mathbb{N}\)</span>, consider the <span class="math inline">\(m\)</span>-th barycentric subdivision <span class="math inline">\(\mathcal{T}_m\)</span> of <span class="math inline">\(\Delta^n\)</span> (mesh size <span class="math inline">\(\sim 1/m\)</span>). For each vertex <span class="math inline">\(v\)</span> of <span class="math inline">\(\mathcal{T}_m\)</span>, assign a label <span class="math inline">\(\ell(v) \in \{0, 1, \ldots, n\}\)</span> as follows: write <span class="math inline">\(v = (v_0, \ldots, v_n) \in \Delta^n\)</span> (barycentric coordinates). Define: <span class="math display">\[\ell(v) = \min \{ i \in \{0, \ldots, n\} : f(v)_i \leq v_i \}.\]</span> (Here <span class="math inline">\(f(v)_i\)</span> is the <span class="math inline">\(i\)</span>-th component of <span class="math inline">\(f(v)\)</span>.) This is well-defined because <span class="math inline">\(f: \Delta^n \to \Delta^n\)</span> satisfies <span class="math inline">\(\sum_i f(v)_i = 1 = \sum_i v_i\)</span>, so at least one <span class="math inline">\(i\)</span> must have <span class="math inline">\(f(v)_i \leq v_i\)</span>.</p>
+<p><strong>Sperner condition:</strong> One verifies (exercise) that this labeling satisfies the Sperner condition. In particular, <span class="math inline">\(v^i\)</span> has <span class="math inline">\(v^i_i = 1\)</span> and <span class="math inline">\(v^i_j = 0\)</span> for <span class="math inline">\(j \neq i\)</span>; since <span class="math inline">\(f(v^i)_i \leq 1 = v^i_i\)</span>, label <span class="math inline">\(i\)</span> is assigned. On a face where some coordinates are zero, the label is always an index in that face.</p>
+<p><strong>Step 2: By Sperner’s Lemma, each <span class="math inline">\(\mathcal{T}_m\)</span> has a completely labeled simplex <span class="math inline">\(S_m\)</span>.</strong> Choose one such completely labeled simplex <span class="math inline">\(S_m\)</span> for each <span class="math inline">\(m\)</span>. Let <span class="math inline">\(x^{(m)}\)</span> be a vertex of <span class="math inline">\(S_m\)</span>.</p>
+<p><strong>Step 3: Extract a convergent subsequence.</strong> Since all <span class="math inline">\(x^{(m)} \in \Delta^n\)</span> (compact), by Bolzano-Weierstrass there is a convergent subsequence <span class="math inline">\(x^{(m_k)} \to x^* \in \Delta^n\)</span>.</p>
+<p><strong>Step 4: Show <span class="math inline">\(x^*\)</span> is a fixed point.</strong> The mesh of <span class="math inline">\(\mathcal{T}_m \to 0\)</span>, so all vertices of <span class="math inline">\(S_{m_k}\)</span> converge to <span class="math inline">\(x^*\)</span>. For each <span class="math inline">\(i\)</span>, the <span class="math inline">\(i\)</span>-labeled vertex <span class="math inline">\(v^i_{m_k}\)</span> of <span class="math inline">\(S_{m_k}\)</span> also converges to <span class="math inline">\(x^*\)</span> (since the simplex diameter <span class="math inline">\(\to 0\)</span>). By definition of the labeling: <span class="math inline">\(f(v^i_{m_k})_i \leq (v^i_{m_k})_i\)</span>.</p>
+<p>Taking <span class="math inline">\(k \to \infty\)</span> (using continuity of <span class="math inline">\(f\)</span>): <span class="math inline">\(f(x^*)_i \leq x^*_i\)</span> for all <span class="math inline">\(i = 0, \ldots, n\)</span>.</p>
+<p>But <span class="math inline">\(\sum_i f(x^*)_i = 1 = \sum_i x^*_i\)</span>, so we cannot have <span class="math inline">\(f(x^*)_i &lt; x^*_i\)</span> for any <span class="math inline">\(i\)</span> (as that would make the sum strictly less than <span class="math inline">\(\sum_i x^*_i = 1\)</span>). Therefore <span class="math inline">\(f(x^*)_i = x^*_i\)</span> for all <span class="math inline">\(i\)</span>, i.e., <span class="math inline">\(f(x^*) = x^*\)</span>. <span class="math inline">\(\blacksquare\)</span></p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-caution no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Caution</span>Remark
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Why each hypothesis is necessary:</strong> - <strong>Compactness (boundedness):</strong> <span class="math inline">\(f(x) = x + 1\)</span> on <span class="math inline">\(\mathbb{R}\)</span>: no fixed point. - <strong>Compactness (closedness):</strong> <span class="math inline">\(f(x) = x/2 + 1/2\)</span> on <span class="math inline">\((0,1)\)</span>: fixed point at <span class="math inline">\(x=1\)</span> is not in the domain. - <strong>Convexity:</strong> The map <span class="math inline">\(f: S^1 \to S^1\)</span> (rotation by <span class="math inline">\(\pi\)</span> on the unit circle) has no fixed point. The circle is compact but not convex. - <strong>Continuity:</strong> <span class="math inline">\(f: [0,1] \to [0,1]\)</span> with <span class="math inline">\(f(x) = 1\)</span> for <span class="math inline">\(x \in [0, 1/2)\)</span> and <span class="math inline">\(f(x) = 0\)</span> for <span class="math inline">\(x \in [1/2, 1]\)</span>: no fixed point.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-important no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Theorem 1.18 — Kakutani’s Fixed-Point Theorem
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Let <span class="math inline">\(C \subseteq \mathbb{R}^L\)</span> be <strong>nonempty, compact, and convex</strong>, and let <span class="math inline">\(\phi: C \rightrightarrows C\)</span> be a correspondence satisfying: 1. <span class="math inline">\(\phi(x)\)</span> is <strong>nonempty</strong> and <strong>convex</strong> for all <span class="math inline">\(x \in C\)</span>. 2. <span class="math inline">\(\phi\)</span> is <strong>upper hemicontinuous</strong>.</p>
+<p>Then <span class="math inline">\(\phi\)</span> has a fixed point: there exists <span class="math inline">\(x^* \in C\)</span> with <span class="math inline">\(x^* \in \phi(x^*)\)</span>.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Proof
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>Strategy:</strong> Approximate <span class="math inline">\(\phi\)</span> by a sequence of continuous functions, apply Brouwer to each, and pass to the limit.</p>
+<p><strong>Step 1: Construct continuous approximations.</strong> For each <span class="math inline">\(m \in \mathbb{N}\)</span>, consider the <span class="math inline">\(m\)</span>-th barycentric subdivision <span class="math inline">\(\mathcal{T}_m\)</span> of a simplex <span class="math inline">\(\Delta\)</span> containing <span class="math inline">\(C\)</span> (we may take <span class="math inline">\(C = \Delta\)</span> by convexity). For each vertex <span class="math inline">\(v\)</span> of <span class="math inline">\(\mathcal{T}_m\)</span>, pick any <span class="math inline">\(y_v \in \phi(v)\)</span> (nonemptiness). Define the <strong>piecewise-linear approximation</strong> <span class="math inline">\(f_m: \Delta \to \Delta\)</span> by barycentric interpolation: for a point <span class="math inline">\(x\)</span> in a simplex <span class="math inline">\([v_0, \ldots, v_n]\)</span> of <span class="math inline">\(\mathcal{T}_m\)</span> with barycentric coordinates <span class="math inline">\(\lambda_0, \ldots, \lambda_n\)</span>: <span class="math display">\[f_m(x) = \sum_{i=0}^n \lambda_i y_{v_i}.\]</span> Since <span class="math inline">\(y_{v_i} \in \phi(v_i) \subseteq C\)</span> and <span class="math inline">\(C\)</span> is convex, <span class="math inline">\(f_m(x) \in C\)</span>. Also <span class="math inline">\(f_m\)</span> is continuous (piecewise linear). So <span class="math inline">\(f_m: C \to C\)</span> is a continuous function from a convex compact set to itself.</p>
+<p><strong>Step 2: Apply Brouwer.</strong> By Brouwer’s theorem (Theorem 1.17), each <span class="math inline">\(f_m\)</span> has a fixed point <span class="math inline">\(x_m \in C\)</span>: <span class="math inline">\(f_m(x_m) = x_m\)</span>.</p>
+<p><strong>Step 3: Extract convergent subsequence.</strong> Since <span class="math inline">\(C\)</span> is compact, <span class="math inline">\((x_m)\)</span> has a convergent subsequence <span class="math inline">\(x_{m_k} \to x^* \in C\)</span>.</p>
+<p><strong>Step 4: Show <span class="math inline">\(x^* \in \phi(x^*)\)</span>.</strong> By construction, <span class="math inline">\(x_{m_k} = f_{m_k}(x_{m_k}) = \sum_i \lambda^{(k)}_i y_{v^{(k)}_i}\)</span>, where <span class="math inline">\(v^{(k)}_0, \ldots, v^{(k)}_n\)</span> are the vertices of the simplex of <span class="math inline">\(\mathcal{T}_{m_k}\)</span> containing <span class="math inline">\(x_{m_k}\)</span>, and <span class="math inline">\(y_{v^{(k)}_i} \in \phi(v^{(k)}_i)\)</span>.</p>
+<p>As <span class="math inline">\(k \to \infty\)</span>, the mesh size <span class="math inline">\(\to 0\)</span>, so all <span class="math inline">\(v^{(k)}_i \to x^*\)</span>. Consider the sequence <span class="math inline">\(y_{v^{(k)}_i} \in \phi(v^{(k)}_i)\)</span>. Since <span class="math inline">\(C\)</span> is compact, passing to a further subsequence, <span class="math inline">\(y_{v^{(k)}_i} \to y_i\)</span> for some <span class="math inline">\(y_i\)</span>. By UHC of <span class="math inline">\(\phi\)</span> and <span class="math inline">\(v^{(k)}_i \to x^*\)</span>: <span class="math inline">\(y_i \in \phi(x^*)\)</span>.</p>
+<p>Then <span class="math inline">\(x_{m_k} = \sum_i \lambda^{(k)}_i y_{v^{(k)}_i} \to \sum_i \bar{\lambda}_i y_i\)</span> for some convex weights <span class="math inline">\(\bar{\lambda}_i \geq 0\)</span>, <span class="math inline">\(\sum_i \bar{\lambda}_i = 1\)</span>. But <span class="math inline">\(x_{m_k} \to x^*\)</span>, so <span class="math inline">\(x^* = \sum_i \bar{\lambda}_i y_i\)</span>. Since each <span class="math inline">\(y_i \in \phi(x^*)\)</span> and <span class="math inline">\(\phi(x^*)\)</span> is convex, <span class="math inline">\(x^* \in \phi(x^*)\)</span>. <span class="math inline">\(\blacksquare\)</span></p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-caution no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Caution</span>Remark
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Why convexity of <span class="math inline">\(\phi(x)\)</span> is necessary:</strong> If the correspondence has non-convex values, the argument in Step 4 fails: a convex combination of elements of <span class="math inline">\(\phi(x^*)\)</span> need not be in <span class="math inline">\(\phi(x^*)\)</span>. Economically: non-convex best-response correspondences (e.g., from non-quasi-concave payoffs) may fail to have fixed points — Nash equilibria in pure strategies may not exist.</p>
+</div>
+</div>
+<hr>
+</section>
+<section id="economic-applications" class="level2" data-number="7.4">
+<h2 data-number="7.4" class="anchored" data-anchor-id="economic-applications"><span class="header-section-number">7.4</span> Economic Applications</h2>
+<div class="callout callout-style-default callout-important no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Theorem 1.19 — Nash Equilibrium Existence (Preview)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Informal statement.</strong> For any finite normal-form game with mixed strategy extensions, the best-response correspondence has the properties required by Kakutani’s theorem, and therefore a Nash equilibrium (in mixed strategies) exists.</p>
+<p><strong>Formal setup (to be completed in Part VII).</strong> Let <span class="math inline">\(I = \{1, \ldots, N\}\)</span> be the set of players. For each <span class="math inline">\(i\)</span>, let <span class="math inline">\(S_i\)</span> be a finite set of pure strategies, and let <span class="math inline">\(\Sigma_i = \Delta(S_i)\)</span> be the set of mixed strategies (probability distributions over <span class="math inline">\(S_i\)</span>). The mixed strategy space <span class="math inline">\(\Sigma = \prod_i \Sigma_i\)</span> is a product of simplices, hence compact and convex. For player <span class="math inline">\(i\)</span>, the expected payoff function <span class="math inline">\(U_i: \Sigma \to \mathbb{R}\)</span> is multilinear (hence continuous). The best-response correspondence is: <span class="math display">\[\beta_i(\sigma_{-i}) = \arg\max_{\sigma_i \in \Sigma_i} U_i(\sigma_i, \sigma_{-i}).\]</span> The joint best-response correspondence is <span class="math inline">\(\beta: \Sigma \rightrightarrows \Sigma\)</span> with <span class="math inline">\(\beta(\sigma) = \prod_i \beta_i(\sigma_{-i})\)</span>.</p>
+<p><strong>Why Kakutani applies:</strong> 1. <span class="math inline">\(\Sigma\)</span> is compact and convex. 2. <span class="math inline">\(\beta(\sigma)\)</span> is nonempty (by Weierstrass, since <span class="math inline">\(\Sigma_i\)</span> is compact and <span class="math inline">\(U_i\)</span> is continuous) and convex (since <span class="math inline">\(U_i\)</span> is linear in <span class="math inline">\(\sigma_i\)</span>, the argmax over a linear functional on a convex set is convex). 3. <span class="math inline">\(\beta\)</span> is UHC (by Berge’s Maximum Theorem, Theorem 1.8, applied to <span class="math inline">\(U_i\)</span> and <span class="math inline">\(\Sigma_i\)</span>).</p>
+<p>By Kakutani, <span class="math inline">\(\exists \sigma^* \in \beta(\sigma^*)\)</span>, i.e., <span class="math inline">\(\sigma^*_i \in \beta_i(\sigma^*_{-i})\)</span> for all <span class="math inline">\(i\)</span>: a Nash equilibrium.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-important no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Theorem 1.20 — Walrasian Equilibrium Existence (Preview)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Informal statement.</strong> Under standard assumptions on preferences and endowments, the excess demand correspondence has the properties required by Kakutani’s theorem (applied to a fixed-point argument on the price simplex), and therefore a Walrasian equilibrium exists.</p>
+<p><strong>Formal setup (to be completed in Part V).</strong> The argument (following MWG Theorem 17.C.1) proceeds as follows:</p>
+<ol type="1">
+<li><p>Restrict attention to prices in the unit simplex <span class="math inline">\(\Delta^{L-1} = \{p \in \mathbb{R}^L_+ : \sum_\ell p_\ell = 1\}\)</span> (compact, convex).</p></li>
+<li><p>Define the aggregate excess demand correspondence <span class="math inline">\(z: \Delta^{L-1}_{++} \rightrightarrows \mathbb{R}^L\)</span> by <span class="math inline">\(z(p) = \sum_i x_i(p, p \cdot \omega_i) - \sum_i \omega_i\)</span>.</p></li>
+<li><p>Define the <strong>price-adjustment correspondence</strong> (tatônnement) <span class="math inline">\(T: \Delta^{L-1} \rightrightarrows \Delta^{L-1}\)</span> by: <span class="math display">\[T(p) = \arg\max_{q \in \Delta^{L-1}} q \cdot \bar{z}(p),\]</span> where <span class="math inline">\(\bar{z}(p)\)</span> is the mean excess demand. This picks out prices that maximize the “value” of excess demand — the tatônnement response to disequilibrium.</p></li>
+<li><p>A fixed point of <span class="math inline">\(T\)</span> (i.e., <span class="math inline">\(p^* \in T(p^*)\)</span>) is a Walrasian equilibrium: <span class="math inline">\(p^*\)</span> maximizes <span class="math inline">\(q \cdot z(p^*)\)</span> at <span class="math inline">\(q = p^*\)</span>, which (by Walras’ law and other standard steps) implies <span class="math inline">\(z(p^*) \leq 0\)</span> (market clearing or free-disposal condition).</p></li>
+<li><p>Kakutani applies to <span class="math inline">\(T\)</span> because: <span class="math inline">\(\Delta^{L-1}\)</span> is compact and convex; <span class="math inline">\(T(p)\)</span> is nonempty and convex (argmax of a linear function over a compact convex set); <span class="math inline">\(T\)</span> is UHC (by Berge, since <span class="math inline">\(z\)</span> is continuous under regularity conditions on preferences).</p></li>
+</ol>
+<p>The full proof and all regularity conditions are given in <a href="../Part_V_General_Equilibrium/Index.qmd">Index</a>.</p>
+</div>
+</div>
+<hr>
+</section>
+<section id="economic-intuition" class="level2" data-number="7.5">
+<h2 data-number="7.5" class="anchored" data-anchor-id="economic-intuition"><span class="header-section-number">7.5</span> Economic Intuition</h2>
+<p>The economic content of a fixed-point theorem is the concept of <strong>self-consistency</strong>. An equilibrium is not simply a solution to an agent’s optimization problem — it is a state where every agent is optimizing given what every other agent is doing, and these decisions are mutually consistent. This mutual consistency is exactly what a fixed point captures: <span class="math inline">\(x^*\)</span> is a fixed point of the aggregate response map if and only if, when all agents believe the outcome will be <span class="math inline">\(x^*\)</span>, their best responses collectively generate exactly <span class="math inline">\(x^*\)</span>.</p>
+<p>Brouwer’s theorem guarantees existence of such self-consistent states whenever the aggregate response map is continuous — that is, whenever small changes in the “guessed equilibrium” lead to small changes in the “best-response outcome.” Kakutani extends this to allow for multi-valued best responses (indifferences, mixed strategies, boundary optima), requiring only that the correspondence of best responses is UHC with convex values. The convexity of values — the requirement that players can mix between optimal responses — is the key condition that rules out non-existence of equilibrium in pure strategies.</p>
+<p>The compactness condition is about preventing equilibrium candidates from escaping to infinity. In game theory, restricting to mixed strategies (probabilities) automatically provides a compact strategy space. In general equilibrium, one normalizes prices to the simplex to achieve compactness. In mechanism design, one restricts messages to compact sets. In every case, the same principle applies: make the domain compact to ensure the fixed-point theorem applies.</p>
+<hr>
+</section>
+<section id="cross-references" class="level2" data-number="7.6">
+<h2 data-number="7.6" class="anchored" data-anchor-id="cross-references"><span class="header-section-number">7.6</span> Cross-References</h2>
+<ul>
+<li><a href="../Part_I_Mathematical_Foundations/1.1_Metric_Spaces_and_Topology.html">1.1 Metric Spaces and Topology</a> — Compactness and convexity are the domain conditions required by both Brouwer and Kakutani; defined and studied in Note 1.1.</li>
+<li><a href="../Part_I_Mathematical_Foundations/1.2_Correspondences_and_Hemicontinuity.html">1.2 Correspondences and Hemicontinuity</a> — UHC (required for Kakutani) and Berge’s Maximum Theorem (which provides UHC of best-response correspondences) are from Note 1.2.</li>
+<li><a href="../Part_I_Mathematical_Foundations/1.3_Optimization_Theory.html">1.3 Optimization Theory</a> — KKT conditions characterize the best-response map whose fixed points are Nash equilibria.</li>
+<li><a href="../Part_V_General_Equilibrium/Index.qmd">Index</a> — Full proof of Walrasian equilibrium existence via Kakutani (Theorem 17.C.1 in MWG).</li>
+<li><a href="../Part_VII_Game_Theory/Index.qmd">Index</a> — Full proof of Nash equilibrium existence in finite games via Kakutani.</li>
+</ul>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+            // default icon
+            link.classList.add("external");
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../Part_I_Mathematical_Foundations/1.3_Optimization_Theory.html" class="pagination-link" aria-label="1.3 Optimization Theory">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">1.3 Optimization Theory</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../Part_II_Consumer_Theory/index.html" class="pagination-link" aria-label="Part II — Consumer Theory: Index">
+        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Part II — Consumer Theory: Index</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/andbbus/grad-micro-notes/edit/main/Part_I_Mathematical_Foundations/1.4_Fixed_Point_Theorems.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/andbbus/grad-micro-notes/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer><script src="../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

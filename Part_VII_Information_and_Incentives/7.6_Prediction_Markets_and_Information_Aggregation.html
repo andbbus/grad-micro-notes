@@ -1,0 +1,1461 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.36">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>51&nbsp; 7.6 — Prediction Markets and Information Aggregation – Graduate Microeconomic Theory</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../Part_VII_Information_and_Incentives/PS_Information.html" rel="next">
+<link href="../Part_VII_Information_and_Incentives/7.5_Mechanism_Design.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-44c2c454a7ec14b8e9312150d2b271b4.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar docked nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Graduate Microeconomic Theory</span>
+    </a>
+  </div>
+        <div class="quarto-navbar-tools tools-end">
+    <a href="https://github.com/andbbus/grad-micro-notes" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+</div>
+          <div id="quarto-search" class="" title="Search"></div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../Part_VII_Information_and_Incentives/index.html">Part VII — Information and Incentives</a></li><li class="breadcrumb-item"><a href="../Part_VII_Information_and_Incentives/7.6_Prediction_Markets_and_Information_Aggregation.html"><span class="chapter-number">51</span>&nbsp; <span class="chapter-title">7.6 — Prediction Markets and Information Aggregation</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Microeconomics Program Overview</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part I — Mathematical Foundations</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_I_Mathematical_Foundations/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Part I: Mathematical Foundations — Index</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_I_Mathematical_Foundations/1.1_Metric_Spaces_and_Topology.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">1.1 Metric Spaces and Topology</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_I_Mathematical_Foundations/1.2_Correspondences_and_Hemicontinuity.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">1.2 Correspondences and Hemicontinuity</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_I_Mathematical_Foundations/1.3_Optimization_Theory.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">1.3 Optimization Theory</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_I_Mathematical_Foundations/1.4_Fixed_Point_Theorems.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">1.4 Fixed-Point Theorems</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part II — Consumer Theory</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_II_Consumer_Theory/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Part II — Consumer Theory: Index</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_II_Consumer_Theory/2.1_Preference_Relations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">2.1 — Preference Relations</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_II_Consumer_Theory/2.2_Utility_Representation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">2.2 — Utility Representation</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_II_Consumer_Theory/2.3_Utility_Maximization_Problem.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">2.3 — The Utility Maximization Problem (UMP)</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_II_Consumer_Theory/2.4_Expenditure_Minimization.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">2.4 — The Expenditure Minimization Problem (EMP)</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_II_Consumer_Theory/2.5_Duality_and_Slutsky.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">2.5 — Duality and the Slutsky Equation</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_II_Consumer_Theory/2.6_Revealed_Preference.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">2.6 — Revealed Preference</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_II_Consumer_Theory/2.7_Integrability.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">2.7 — Integrability</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_II_Consumer_Theory/2.8_Aggregate_Demand.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">2.8 — Aggregate Demand and Gorman Aggregation</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_II_Consumer_Theory/PS_Consumer_Theory.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Problem Set — Part II: Consumer Theory</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part III — Producer Theory</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_III_Producer_Theory/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Part III: Producer Theory — Overview</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_III_Producer_Theory/3.1_Production_Sets.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">3.1 Production Sets and Technology</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_III_Producer_Theory/3.2_Profit_Maximization.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">3.2 Profit Maximization</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_III_Producer_Theory/3.3_Cost_Minimization.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">3.3 Cost Minimization</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_III_Producer_Theory/3.4_Supply_and_Factor_Demands.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">3.4 Supply and Factor Demands</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_III_Producer_Theory/PS_Producer_Theory.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Problem Set: Producer Theory</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part IV — Choice Under Uncertainty</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IV_Choice_Under_Uncertainty/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Part IV: Choice Under Uncertainty — Overview</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IV_Choice_Under_Uncertainty/4.1_State_Space_Framework.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">4.1 The State Space Framework and Axioms</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IV_Choice_Under_Uncertainty/4.2_Expected_Utility_Theory.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">4.2 Expected Utility Theory</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IV_Choice_Under_Uncertainty/4.3_Risk_Aversion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">4.3 Risk Aversion</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IV_Choice_Under_Uncertainty/4.4_Stochastic_Dominance.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">4.4 Stochastic Dominance</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IV_Choice_Under_Uncertainty/PS_Uncertainty.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Problem Set: Choice Under Uncertainty</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part V — Game Theory</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_V_Game_Theory/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">Part V — Game Theory</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_V_Game_Theory/5.1_Normal_Form_Games.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">30</span>&nbsp; <span class="chapter-title">5.1 Normal Form Games</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_V_Game_Theory/5.2_Nash_Equilibrium.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">31</span>&nbsp; <span class="chapter-title">5.2 Nash Equilibrium</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_V_Game_Theory/5.3_Mixed_Strategies.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">32</span>&nbsp; <span class="chapter-title">5.3 Mixed Strategies</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_V_Game_Theory/5.4_Extensive_Form_Games.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">33</span>&nbsp; <span class="chapter-title">5.4 Extensive Form Games</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_V_Game_Theory/5.5_Subgame_Perfect_Equilibrium.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">34</span>&nbsp; <span class="chapter-title">5.5 Subgame Perfect Equilibrium</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_V_Game_Theory/5.6_Repeated_Games.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">35</span>&nbsp; <span class="chapter-title">5.6 Repeated Games</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_V_Game_Theory/5.7_Bayesian_Games.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">36</span>&nbsp; <span class="chapter-title">5.7 Bayesian Games</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_V_Game_Theory/PS_Game_Theory.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">37</span>&nbsp; <span class="chapter-title">Problem Set — Part V: Game Theory</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part VI — General Equilibrium</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VI_General_Equilibrium/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">38</span>&nbsp; <span class="chapter-title">Part VI — General Equilibrium</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VI_General_Equilibrium/6.1_Exchange_Economies.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">39</span>&nbsp; <span class="chapter-title">6.1 Exchange Economies</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VI_General_Equilibrium/6.2_Arrow_Debreu_Economy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">40</span>&nbsp; <span class="chapter-title">6.2 The Arrow-Debreu Economy</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VI_General_Equilibrium/6.3_Existence_of_Equilibrium.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">41</span>&nbsp; <span class="chapter-title">6.3 Existence of Walrasian Equilibrium</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VI_General_Equilibrium/6.4_Welfare_Theorems.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">42</span>&nbsp; <span class="chapter-title">6.4 Welfare Theorems</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VI_General_Equilibrium/6.5_Externalities_and_Public_Goods.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">43</span>&nbsp; <span class="chapter-title">6.5 Externalities and Public Goods</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VI_General_Equilibrium/PS_General_Equilibrium.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">44</span>&nbsp; <span class="chapter-title">Problem Set — Part VI: General Equilibrium</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part VII — Information and Incentives</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VII_Information_and_Incentives/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">45</span>&nbsp; <span class="chapter-title">Part VII — Information and Incentives</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VII_Information_and_Incentives/7.1_Principal_Agent_Problem.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">46</span>&nbsp; <span class="chapter-title">7.1 — The Principal-Agent Problem</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VII_Information_and_Incentives/7.2_Moral_Hazard.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">47</span>&nbsp; <span class="chapter-title">7.2 — Moral Hazard</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VII_Information_and_Incentives/7.3_Adverse_Selection_and_Screening.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">48</span>&nbsp; <span class="chapter-title">7.3 — Adverse Selection and Screening</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VII_Information_and_Incentives/7.4_Signaling.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">49</span>&nbsp; <span class="chapter-title">7.4 — Signaling</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VII_Information_and_Incentives/7.5_Mechanism_Design.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">50</span>&nbsp; <span class="chapter-title">7.5 — Mechanism Design</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VII_Information_and_Incentives/7.6_Prediction_Markets_and_Information_Aggregation.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">51</span>&nbsp; <span class="chapter-title">7.6 — Prediction Markets and Information Aggregation</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VII_Information_and_Incentives/PS_Information.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">52</span>&nbsp; <span class="chapter-title">Problem Set — Part VII: Information and Incentives</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part VIII — Social Choice</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VIII_Social_Choice/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">53</span>&nbsp; <span class="chapter-title">Part VIII — Social Choice Theory</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VIII_Social_Choice/8.1_Social_Welfare_Functions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">54</span>&nbsp; <span class="chapter-title">8.1 Social Welfare Functions</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VIII_Social_Choice/8.2_Arrows_Impossibility_Theorem.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">55</span>&nbsp; <span class="chapter-title">8.2 Arrow’s Impossibility Theorem</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VIII_Social_Choice/8.3_Welfare_Criteria.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">56</span>&nbsp; <span class="chapter-title">8.3 Welfare Criteria and Compensation Principles</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VIII_Social_Choice/PS_Social_Choice.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">57</span>&nbsp; <span class="chapter-title">Problem Set — Part VIII: Social Choice</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part IX — Model Building for Empirics</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IX_Model_Building_for_Empirics/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">58</span>&nbsp; <span class="chapter-title">Part IX — Model Building for Empirics</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IX_Model_Building_for_Empirics/9.1_Anatomy_of_a_Theoretical_Model.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">59</span>&nbsp; <span class="chapter-title">9.1 — Anatomy of a Theoretical Model</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IX_Model_Building_for_Empirics/9.2_Equilibrium_Concepts_and_Selection.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">60</span>&nbsp; <span class="chapter-title">9.2 — Equilibrium Concepts and Selection</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IX_Model_Building_for_Empirics/9.3_Comparative_Statics_Methodology.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">61</span>&nbsp; <span class="chapter-title">9.3 — Comparative Statics Methodology</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IX_Model_Building_for_Empirics/9.4_Deriving_Testable_Predictions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">62</span>&nbsp; <span class="chapter-title">9.4 — Deriving Testable Predictions</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IX_Model_Building_for_Empirics/9.5_Structural_vs_Reduced_Form.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">63</span>&nbsp; <span class="chapter-title">9.5 — Structural vs.&nbsp;Reduced Form</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IX_Model_Building_for_Empirics/9.6_Identification_in_Structural_Models.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">64</span>&nbsp; <span class="chapter-title">9.6 — Identification in Structural Models</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IX_Model_Building_for_Empirics/9.7_Model_Discipline_and_Tractability.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">65</span>&nbsp; <span class="chapter-title">9.7 — Model Discipline and Tractability</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IX_Model_Building_for_Empirics/APP_Conflict_and_Resource_Models.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">66</span>&nbsp; <span class="chapter-title">APP — Conflict and Resource Models</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IX_Model_Building_for_Empirics/APP_Trade_and_Price_Shock_Models.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">67</span>&nbsp; <span class="chapter-title">APP — Trade and Price Shock Models</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IX_Model_Building_for_Empirics/APP_Prediction_Markets_and_Signals.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">68</span>&nbsp; <span class="chapter-title">APP — Prediction Markets and Signals</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IX_Model_Building_for_Empirics/PS_Model_Building.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">69</span>&nbsp; <span class="chapter-title">Problem Set — Part IX: Model Building for Empirics</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#prediction-markets-and-information-aggregation" id="toc-prediction-markets-and-information-aggregation" class="nav-link active" data-scroll-target="#prediction-markets-and-information-aggregation"><span class="header-section-number">52</span> 7.6 — Prediction Markets and Information Aggregation</a>
+  <ul class="collapse">
+  <li><a href="#context" id="toc-context" class="nav-link" data-scroll-target="#context"><span class="header-section-number">52.1</span> Context</a></li>
+  <li><a href="#definitions" id="toc-definitions" class="nav-link" data-scroll-target="#definitions"><span class="header-section-number">52.2</span> Definitions</a></li>
+  <li><a href="#main-results" id="toc-main-results" class="nav-link" data-scroll-target="#main-results"><span class="header-section-number">52.3</span> Main Results</a>
+  <ul class="collapse">
+  <li><a href="#fully-revealing-rational-expectations-equilibrium" id="toc-fully-revealing-rational-expectations-equilibrium" class="nav-link" data-scroll-target="#fully-revealing-rational-expectations-equilibrium"><span class="header-section-number">52.3.1</span> Fully Revealing Rational Expectations Equilibrium</a></li>
+  <li><a href="#grossman-stiglitz-paradox" id="toc-grossman-stiglitz-paradox" class="nav-link" data-scroll-target="#grossman-stiglitz-paradox"><span class="header-section-number">52.3.2</span> Grossman-Stiglitz Paradox</a></li>
+  <li><a href="#noisy-rational-expectations-equilibrium" id="toc-noisy-rational-expectations-equilibrium" class="nav-link" data-scroll-target="#noisy-rational-expectations-equilibrium"><span class="header-section-number">52.3.3</span> Noisy Rational Expectations Equilibrium</a></li>
+  <li><a href="#kyle-model" id="toc-kyle-model" class="nav-link" data-scroll-target="#kyle-model"><span class="header-section-number">52.3.4</span> Kyle Model</a></li>
+  <li><a href="#prediction-markets" id="toc-prediction-markets" class="nav-link" data-scroll-target="#prediction-markets"><span class="header-section-number">52.3.5</span> Prediction Markets</a></li>
+  <li><a href="#event-studies-as-information-aggregation-tests" id="toc-event-studies-as-information-aggregation-tests" class="nav-link" data-scroll-target="#event-studies-as-information-aggregation-tests"><span class="header-section-number">52.3.6</span> Event Studies as Information Aggregation Tests</a></li>
+  </ul></li>
+  <li><a href="#economic-intuition" id="toc-economic-intuition" class="nav-link" data-scroll-target="#economic-intuition"><span class="header-section-number">52.4</span> Economic Intuition</a></li>
+  <li><a href="#cross-references" id="toc-cross-references" class="nav-link" data-scroll-target="#cross-references"><span class="header-section-number">52.5</span> Cross-References</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/andbbus/grad-micro-notes/edit/main/Part_VII_Information_and_Incentives/7.6_Prediction_Markets_and_Information_Aggregation.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/andbbus/grad-micro-notes/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../Part_VII_Information_and_Incentives/index.html">Part VII — Information and Incentives</a></li><li class="breadcrumb-item"><a href="../Part_VII_Information_and_Incentives/7.6_Prediction_Markets_and_Information_Aggregation.html"><span class="chapter-number">51</span>&nbsp; <span class="chapter-title">7.6 — Prediction Markets and Information Aggregation</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">51</span>&nbsp; <span class="chapter-title">7.6 — Prediction Markets and Information Aggregation</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="prediction-markets-and-information-aggregation" class="level1" data-number="52">
+<h1 data-number="52"><span class="header-section-number">52</span> 7.6 — Prediction Markets and Information Aggregation</h1>
+<blockquote class="blockquote">
+<p><strong>MWG Reference:</strong> Ch. 13, §13.B, pp.&nbsp;432–450; Grossman &amp; Stiglitz (1980); Kyle (1985)</p>
+</blockquote>
+<section id="context" class="level2" data-number="52.1">
+<h2 data-number="52.1" class="anchored" data-anchor-id="context"><span class="header-section-number">52.1</span> Context</h2>
+<p>A central question in information economics is whether markets aggregate dispersed private information. Hayek’s (1945) insight was that prices serve as signals that convey information no single agent possesses in full. The formal theory of <strong>rational expectations equilibrium (REE)</strong> makes this precise: in a fully revealing REE, the equilibrium price is a sufficient statistic for all agents’ private information. But Grossman and Stiglitz (1980) showed this leads to a paradox: if prices fully reveal information, no one will pay to acquire it; if no one acquires information, prices cannot reveal it. The resolution is the <strong>noisy rational expectations equilibrium</strong>, in which uninformed noise traders prevent prices from fully revealing information, leaving informed traders with positive returns on their information acquisition.</p>
+<p>Kyle’s (1985) model provides the strategic counterpart: a single informed trader strategically chooses order flow to maximize profits while a competitive market maker sets prices to break even given observed order flow. Together, these models characterize when and how well markets aggregate information — with direct implications for prediction market design, financial market efficiency, and the use of market prices as policy signals.</p>
+</section>
+<section id="definitions" class="level2" data-number="52.2">
+<h2 data-number="52.2" class="anchored" data-anchor-id="definitions"><span class="header-section-number">52.2</span> Definitions</h2>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Definition 7.6.1 — Rational Expectations Equilibrium (REE)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Consider an economy with agents <span class="math inline">\(i \in \{1,\ldots,n\}\)</span>, each observing private signal <span class="math inline">\(s_i\)</span> and taking prices <span class="math inline">\(p\)</span> as given. An <strong>REE</strong> is a price function <span class="math inline">\(p^*: S \to \mathbb{R}\)</span> (mapping signal profiles to prices) such that: 1. <strong>Market clearing:</strong> At price <span class="math inline">\(p^*(s)\)</span>, aggregate demand equals aggregate supply for every signal realization <span class="math inline">\(s = (s_1, \ldots, s_n)\)</span> 2. <strong>Bayesian rationality:</strong> Each agent <span class="math inline">\(i\)</span> maximizes expected utility <span class="math inline">\(\mathbb{E}[u_i | s_i, p^*(s)]\)</span>, treating the price <span class="math inline">\(p^*(s)\)</span> as an additional signal about the unobserved aggregate state</p>
+<p>A <strong>fully revealing REE</strong> is an REE in which <span class="math inline">\(p^*\)</span> is a sufficient statistic for all private signals: the joint distribution of the state conditional on <span class="math inline">\(p^*(s)\)</span> is the same as conditional on the entire signal profile <span class="math inline">\((s_1, \ldots, s_n)\)</span>.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Definition 7.6.2 — Hayek’s Knowledge Problem
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Hayek (1945) argued that the key economic problem is the use of knowledge that is dispersed among individuals — each agent has local, specific knowledge that no central planner can access. Prices solve this problem by aggregating dispersed knowledge into a single number that guides resource allocation. The formal content is: in a competitive economy, the market price <span class="math inline">\(p^*\)</span> is an informative signal about the true state <span class="math inline">\(\omega\)</span> even when no individual agent observes <span class="math inline">\(\omega\)</span> directly.</p>
+</div>
+</div>
+</section>
+<section id="main-results" class="level2" data-number="52.3">
+<h2 data-number="52.3" class="anchored" data-anchor-id="main-results"><span class="header-section-number">52.3</span> Main Results</h2>
+<section id="fully-revealing-rational-expectations-equilibrium" class="level3" data-number="52.3.1">
+<h3 data-number="52.3.1" class="anchored" data-anchor-id="fully-revealing-rational-expectations-equilibrium"><span class="header-section-number">52.3.1</span> Fully Revealing Rational Expectations Equilibrium</h3>
+<div class="callout callout-style-default callout-important no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Proposition 7.6.1 — Fully Revealing REE in a Linear Economy
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Consider an economy with a risky asset with true value <span class="math inline">\(v \sim N(\mu_0, \sigma_v^2)\)</span>. There are <span class="math inline">\(n\)</span> informed agents, each observing signal <span class="math inline">\(s_i = v + \varepsilon_i\)</span> where <span class="math inline">\(\varepsilon_i \sim N(0, \sigma_\varepsilon^2)\)</span> IID and independent of <span class="math inline">\(v\)</span>. Agent <span class="math inline">\(i\)</span> has CARA utility with risk aversion <span class="math inline">\(r\)</span> and wealth <span class="math inline">\(w_i\)</span>. In a competitive equilibrium, there exists a fully revealing linear REE price: <span class="math display">\[p^* = A + B \cdot \bar{s}\]</span> where <span class="math inline">\(\bar{s} = \frac{1}{n}\sum_i s_i\)</span> is the average signal, and <span class="math inline">\(A, B\)</span> are constants. Given <span class="math inline">\(p^*\)</span>, all agents can recover <span class="math inline">\(\bar{s}\)</span> and hence the posterior <span class="math inline">\(\mathbb{E}[v|\bar{s}] \to v\)</span> as <span class="math inline">\(n \to \infty\)</span>.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Proof
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>Posterior beliefs:</strong> Observing signal <span class="math inline">\(s_i\)</span> and price <span class="math inline">\(p = A + B\bar{s}\)</span> (equivalently, <span class="math inline">\(\bar{s} = (p-A)/B\)</span>), agent <span class="math inline">\(i\)</span> can infer <span class="math inline">\(\bar{s}\)</span>. The posterior distribution of <span class="math inline">\(v\)</span> given <span class="math inline">\(s_i\)</span> and <span class="math inline">\(\bar{s}\)</span> is: <span class="math display">\[v | (s_i, \bar{s}) \sim N\left(\mu_i^*, (\sigma_i^*)^2\right)\]</span> where <span class="math inline">\(\mu_i^*\)</span> and <span class="math inline">\((\sigma_i^*)^2\)</span> are obtained by Bayesian updating using the prior <span class="math inline">\(N(\mu_0, \sigma_v^2)\)</span>, signal <span class="math inline">\(s_i\)</span> with variance <span class="math inline">\(\sigma_\varepsilon^2\)</span>, and the additional signal <span class="math inline">\(\bar{s}\)</span> with variance <span class="math inline">\(\sigma_\varepsilon^2/n\)</span> (since <span class="math inline">\(\bar{s} = v + \bar\varepsilon\)</span> with <span class="math inline">\(\bar\varepsilon \sim N(0, \sigma_\varepsilon^2/n)\)</span>).</p>
+<p><strong>Demand:</strong> With CARA-normal utility, agent <span class="math inline">\(i\)</span>’s demand for the risky asset: <span class="math display">\[x_i^* = \frac{\mu_i^* - p}{r (\sigma_i^*)^2}\]</span></p>
+<p><strong>Market clearing:</strong> <span class="math inline">\(\sum_i x_i^* = X_0\)</span> (fixed supply <span class="math inline">\(X_0\)</span>). Using the fact that all agents have the same posterior given <span class="math inline">\(\bar{s}\)</span> (they all observe <span class="math inline">\(\bar{s}\)</span> via <span class="math inline">\(p\)</span>) and symmetry: <span class="math display">\[n \cdot \frac{\mu^*({\bar{s}}) - p}{r (\sigma^*)^2} = X_0\]</span> Solving for <span class="math inline">\(p\)</span>: <span class="math display">\[p = \mu^*(\bar{s}) - \frac{r (\sigma^*)^2 X_0}{n}\]</span></p>
+<p>Since <span class="math inline">\(\mu^*(\bar{s})\)</span> is a linear function of <span class="math inline">\(\bar{s}\)</span>, this gives <span class="math inline">\(p = A + B\bar{s}\)</span> for constants <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> that can be solved for from the Bayesian updating formulas.</p>
+<p><strong>Full revelation:</strong> Observing <span class="math inline">\(p = A + B\bar{s}\)</span> and knowing <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>, any agent can recover <span class="math inline">\(\bar{s} = (p-A)/B\)</span> exactly. As <span class="math inline">\(n \to \infty\)</span>, <span class="math inline">\(\bar{s} \to v\)</span> by the law of large numbers, so <span class="math inline">\(p^* \to v\)</span> and the market becomes fully informationally efficient.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="grossman-stiglitz-paradox" class="level3" data-number="52.3.2">
+<h3 data-number="52.3.2" class="anchored" data-anchor-id="grossman-stiglitz-paradox"><span class="header-section-number">52.3.2</span> Grossman-Stiglitz Paradox</h3>
+<div class="callout callout-style-default callout-important no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Theorem 7.6.2 — Grossman-Stiglitz Impossibility of Informationally Efficient Markets
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If information acquisition is costly, a fully revealing REE cannot be an equilibrium: if prices fully reveal all private information, the return to acquiring information is zero, so rational agents choose not to acquire information. But then there is no information for prices to reveal. This is a contradiction.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Proof
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Suppose, for contradiction, that in equilibrium prices fully reveal all private information (fully revealing REE).</p>
+<p><strong>Step 1: Zero return to information.</strong> If prices are fully informative, an uninformed trader who observes the price has exactly the same posterior distribution over the true value as an informed trader. Therefore an uninformed trader can achieve the same expected utility as an informed trader simply by conditioning on the observable price.</p>
+<p><strong>Step 2: Costly acquisition.</strong> If acquiring information costs <span class="math inline">\(c &gt; 0\)</span> and yields no incremental advantage (since prices already reveal all information), no rational agent will acquire information. Expected utility from being uninformed = Expected utility from being informed.</p>
+<p><strong>Step 3: Contradiction.</strong> If no agent acquires information, prices carry no information (they are based purely on liquidity/noise trades or uninformed demands). Prices therefore cannot be fully informative. Contradiction with the assumption.</p>
+<p><strong>Resolution:</strong> The paradox implies that in a world with costly information, prices cannot be fully informative. The equilibrium must feature <strong>partial information revelation</strong> — prices reveal some but not all information, leaving informed traders with positive expected rents that justify information acquisition.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="noisy-rational-expectations-equilibrium" class="level3" data-number="52.3.3">
+<h3 data-number="52.3.3" class="anchored" data-anchor-id="noisy-rational-expectations-equilibrium"><span class="header-section-number">52.3.3</span> Noisy Rational Expectations Equilibrium</h3>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Definition 7.6.3 — Noisy REE
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A <strong>noisy REE</strong> introduces exogenous “noise traders” whose demands are random (unrelated to fundamentals). The presence of noise traders prevents prices from fully revealing private information, creating a role for informed traders. The equilibrium features partial information revelation: prices are more informative than no information but less informative than full revelation.</p>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Example 7.6.1 — Noisy REE in the Linear-Normal Model
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Augment the model of Proposition 7.6.1 with noise traders who supply <span class="math inline">\(u \sim N(0, \sigma_u^2)\)</span> units of the asset. Now <span class="math inline">\(\bar{s} = v + \bar\varepsilon\)</span> and the total order from informed traders plus noise traders determines price.</p>
+<p>The equilibrium price becomes <span class="math inline">\(p^* = A + B(v + \bar\varepsilon) + Cu\)</span> for coefficients <span class="math inline">\(A, B, C\)</span>. The price aggregates information but is confounded by noise <span class="math inline">\(u\)</span>. Given <span class="math inline">\(p^*\)</span>, an agent cannot distinguish whether a high price reflects high <span class="math inline">\(v\)</span> (good news) or a negative noise-trader demand shock. The posterior variance of <span class="math inline">\(v\)</span> given <span class="math inline">\(p^*\)</span> is strictly positive, so informed traders have an informational advantage over uninformed traders.</p>
+<p><strong>Equilibrium informativeness:</strong> Let <span class="math inline">\(\phi\)</span> denote the fraction of agents who acquire information (endogenous). In equilibrium, informed and uninformed agents earn the same expected utility: <span class="math display">\[V^I(\phi) = V^U(\phi)\]</span> where <span class="math inline">\(V^I\)</span> (informed utility) decreases in <span class="math inline">\(\phi\)</span> (more informed traders <span class="math inline">\(\to\)</span> price is more informative <span class="math inline">\(\to\)</span> informed advantage shrinks) and <span class="math inline">\(V^U\)</span> increases in <span class="math inline">\(\phi\)</span>. The equilibrium <span class="math inline">\(\phi^*\)</span> equates the two, yielding partial information revelation.</p>
+</div>
+</div>
+</section>
+<section id="kyle-model" class="level3" data-number="52.3.4">
+<h3 data-number="52.3.4" class="anchored" data-anchor-id="kyle-model"><span class="header-section-number">52.3.4</span> Kyle Model</h3>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Definition 7.6.4 — Kyle (1985) Model Setup
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The Kyle model features: - <strong>Informed trader:</strong> observes true asset value <span class="math inline">\(v \sim N(\mu_0, \sigma_v^2)\)</span> and submits order <span class="math inline">\(x\)</span> - <strong>Noise traders:</strong> submit order <span class="math inline">\(u \sim N(0, \sigma_u^2)\)</span>, independent of <span class="math inline">\(v\)</span> - <strong>Market maker:</strong> observes total order flow <span class="math inline">\(y = x + u\)</span>; cannot distinguish <span class="math inline">\(x\)</span> from <span class="math inline">\(u\)</span>; sets price <span class="math inline">\(p = \mathbb{E}[v | y]\)</span> (Bayesian posterior, competitive market maker breaks even) - <strong>Payoff to informed trader:</strong> <span class="math inline">\(\pi = (v - p) \cdot x\)</span></p>
+</div>
+</div>
+<div class="callout callout-style-default callout-important no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Theorem 7.6.3 — Kyle Linear Equilibrium
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>In the Kyle model, there exists a unique linear equilibrium characterized by: - <strong>Informed trader’s strategy:</strong> <span class="math inline">\(x^*(v) = \beta(v - \mu_0)\)</span> where <span class="math inline">\(\beta = \frac{\sigma_u}{\sigma_v}\)</span> - <strong>Market maker’s pricing rule:</strong> <span class="math inline">\(p(y) = \mu_0 + \lambda y\)</span> where <span class="math inline">\(\lambda = \frac{\sigma_v}{2\sigma_u}\)</span> - <strong>Price impact:</strong> <span class="math inline">\(\lambda = \frac{\sigma_v}{2\sigma_u}\)</span> (Kyle’s lambda) - <strong>Informed trader’s expected profit:</strong> <span class="math inline">\(\Pi^* = \frac{1}{2}\sigma_v \sigma_u\)</span></p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Proof
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-11" class="callout-11-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>Step 1: Conjecture linear strategies.</strong> Assume <span class="math inline">\(x = \beta(v - \mu_0)\)</span> and <span class="math inline">\(p = \mu_0 + \lambda y\)</span>. We will verify these by requiring: (a) <span class="math inline">\(x^*\)</span> maximizes informed trader’s profit given <span class="math inline">\(p(\cdot)\)</span>; (b) <span class="math inline">\(p = \mathbb{E}[v|y]\)</span> (market maker breaks even/rational Bayesian).</p>
+<p><strong>Step 2: Market maker’s pricing rule.</strong> Total order flow: <span class="math display">\[y = x + u = \beta(v - \mu_0) + u\]</span> Both <span class="math inline">\(v\)</span> and <span class="math inline">\(u\)</span> are normally distributed. The market maker computes <span class="math inline">\(\mathbb{E}[v|y]\)</span>:</p>
+<p><span class="math inline">\((v - \mu_0)\)</span> and <span class="math inline">\(y\)</span> are jointly normal with: - <span class="math inline">\(\text{Var}(y) = \beta^2 \sigma_v^2 + \sigma_u^2\)</span> - <span class="math inline">\(\text{Cov}(v, y) = \text{Cov}(v, \beta(v-\mu_0) + u) = \beta \sigma_v^2\)</span></p>
+<p>By the projection theorem for normal random variables: <span class="math display">\[\mathbb{E}[v|y] = \mu_0 + \frac{\text{Cov}(v,y)}{\text{Var}(y)} (y - 0) = \mu_0 + \frac{\beta \sigma_v^2}{\beta^2 \sigma_v^2 + \sigma_u^2} y\]</span> Therefore the market maker’s price rule is <span class="math inline">\(p = \mu_0 + \lambda y\)</span> where: <span class="math display">\[\lambda = \frac{\beta \sigma_v^2}{\beta^2 \sigma_v^2 + \sigma_u^2} \quad \text{...(MM condition)}\]</span></p>
+<p><strong>Step 3: Informed trader’s optimization.</strong> The informed trader with value <span class="math inline">\(v\)</span> observes <span class="math inline">\(v\)</span> and knows <span class="math inline">\(p = \mu_0 + \lambda(x + u)\)</span>. The trader does not observe <span class="math inline">\(u\)</span>, so from their perspective: <span class="math display">\[\mathbb{E}[(v - p) x | v] = (v - \mu_0 - \lambda x) x\]</span> (since <span class="math inline">\(\mathbb{E}[u] = 0\)</span> and <span class="math inline">\(u\)</span> is independent of <span class="math inline">\(v\)</span>).</p>
+<p>This is a quadratic in <span class="math inline">\(x\)</span>; maximizing: <span class="math display">\[\frac{d}{dx}[(v - \mu_0 - \lambda x) x] = (v - \mu_0) - 2\lambda x = 0\]</span> <span class="math display">\[x^* = \frac{v - \mu_0}{2\lambda} \quad \text{...(IT optimality condition)}\]</span> So <span class="math inline">\(\beta = \frac{1}{2\lambda}\)</span>.</p>
+<p><strong>Step 4: Solve for <span class="math inline">\(\beta\)</span> and <span class="math inline">\(\lambda\)</span>.</strong> From IT optimality: <span class="math inline">\(\beta = \frac{1}{2\lambda}\)</span>. Substituting into MM condition: <span class="math display">\[\lambda = \frac{\frac{1}{2\lambda} \sigma_v^2}{\frac{1}{4\lambda^2}\sigma_v^2 + \sigma_u^2} = \frac{\frac{\sigma_v^2}{2\lambda}}{\frac{\sigma_v^2}{4\lambda^2} + \sigma_u^2}\]</span> Multiply numerator and denominator by <span class="math inline">\(4\lambda^2\)</span>: <span class="math display">\[\lambda = \frac{2\lambda\sigma_v^2}{\sigma_v^2 + 4\lambda^2\sigma_u^2}\]</span> <span class="math display">\[\lambda(\sigma_v^2 + 4\lambda^2\sigma_u^2) = 2\lambda\sigma_v^2\]</span> <span class="math display">\[\sigma_v^2 + 4\lambda^2\sigma_u^2 = 2\sigma_v^2\]</span> <span class="math display">\[4\lambda^2\sigma_u^2 = \sigma_v^2\]</span> <span class="math display">\[\lambda = \frac{\sigma_v}{2\sigma_u}\]</span> And <span class="math inline">\(\beta = \frac{1}{2\lambda} = \frac{\sigma_u}{\sigma_v}\)</span>.</p>
+<p><strong>Step 5: Expected profit.</strong> <span class="math display">\[\Pi^* = \mathbb{E}[(v-p)x | v] = (v - \mu_0 - \lambda x^*) x^* = \lambda (x^*)^2 = \lambda \beta^2 (v-\mu_0)^2\]</span> Taking expectations over <span class="math inline">\(v\)</span>: <span class="math display">\[\mathbb{E}[\Pi^*] = \lambda \beta^2 \sigma_v^2 = \frac{\sigma_v}{2\sigma_u} \cdot \frac{\sigma_u^2}{\sigma_v^2} \cdot \sigma_v^2 = \frac{\sigma_v \sigma_u}{2}\]</span></p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-caution no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Caution</span>Remark 7.6.1 — Properties of the Kyle Equilibrium
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The Kyle model delivers several important results:</p>
+<ol type="1">
+<li><p><strong>Price impact <span class="math inline">\(\lambda = \sigma_v/(2\sigma_u)\)</span>:</strong> Price impact increases with fundamental volatility <span class="math inline">\(\sigma_v\)</span> (more private information to hide) and decreases with noise-trader volume <span class="math inline">\(\sigma_u\)</span> (more liquidity = less price impact per unit of order flow). This is the key empirical prediction tested in market microstructure studies.</p></li>
+<li><p><strong>Informed trader “hides in the noise”:</strong> The optimal order <span class="math inline">\(x^* = \beta(v-\mu_0)\)</span> is proportional to <span class="math inline">\(\sigma_u/\sigma_v\)</span>. More noise trading gives the informed trader cover to trade larger positions without moving prices as much.</p></li>
+<li><p><strong>Market depth:</strong> <span class="math inline">\(1/\lambda = 2\sigma_u/\sigma_v\)</span> measures market depth — the quantity needed to move the price by one unit. Deeper markets (higher <span class="math inline">\(\sigma_u\)</span>) have lower price impact.</p></li>
+<li><p><strong>Efficiency:</strong> The equilibrium price absorbs exactly half the information: <span class="math inline">\(\text{Var}(v|p) = \sigma_v^2/2 = \text{Var}(v)/2\)</span>. The market maker reduces uncertainty by 50% by observing order flow.</p></li>
+</ol>
+</div>
+</div>
+</section>
+<section id="prediction-markets" class="level3" data-number="52.3.5">
+<h3 data-number="52.3.5" class="anchored" data-anchor-id="prediction-markets"><span class="header-section-number">52.3.5</span> Prediction Markets</h3>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Definition 7.6.5 — Prediction Market
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A <strong>prediction market</strong> is a financial market specifically designed to aggregate information about the probability of future events. An Arrow-Debreu security for event <span class="math inline">\(E\)</span> pays <span class="math inline">\(\$1\)</span> if <span class="math inline">\(E\)</span> occurs and <span class="math inline">\(\$0\)</span> otherwise; the equilibrium price <span class="math inline">\(p\)</span> equals the market-implied probability of <span class="math inline">\(E\)</span>.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-important no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Proposition 7.6.4 — Conditions for Prediction Market Accuracy
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A prediction market accurately reveals the true probability <span class="math inline">\(\Pr(E)\)</span> of event <span class="math inline">\(E\)</span> if: 1. <strong>Trader diversity:</strong> There are informed traders with signals about <span class="math inline">\(E\)</span>, and their signals are collectively sufficient for <span class="math inline">\(E\)</span> 2. <strong>No manipulation:</strong> No trader has market power or incentive to manipulate prices (which requires sufficient liquidity) 3. <strong>Rational updating:</strong> Traders update beliefs using Bayes’ rule 4. <strong>No common value problems:</strong> The true probability of <span class="math inline">\(E\)</span> is pinned down by the fundamentals, not by circular market beliefs</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-caution no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Caution</span>Remark 7.6.2 — Empirical Evidence on Prediction Markets
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Prediction markets (Iowa Electronic Markets, Betfair, Polymarket) have proven remarkably accurate in forecasting election outcomes, commodity prices, and economic indicators, often outperforming professional forecasters and polls. The theoretical explanation is consistent with noisy REE: enough traders have private information, and prices efficiently aggregate this information despite individual noise. Exceptions arise when markets are thin, when common value problems create manipulation incentives, or when regulatory restrictions limit participation.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Definition 7.6.6 — Logarithmic Market Scoring Rule (LMSR)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>In a <strong>market scoring rule</strong>, a market maker plays the role of an automated bookmaker. The logarithmic market scoring rule (LMSR) sets the price of an Arrow-Debreu security based on the current quantity outstanding <span class="math inline">\(q\)</span>: <span class="math display">\[p(q) = \frac{e^{q/b}}{\sum_{j} e^{q_j/b}}\]</span> where <span class="math inline">\(b &gt; 0\)</span> is a liquidity parameter. The LMSR is: - <strong>Proper:</strong> truth-telling maximizes expected profit for a trader who believes <span class="math inline">\(\Pr(E) = p\)</span> - <strong>Path-independent:</strong> the market maker’s final loss depends only on the outcome, not the order of trades - <strong>Connection to Bayesian updating:</strong> the LMSR price update is equivalent to Bayesian updating in a specific conjugate exponential family model</p>
+</div>
+</div>
+</section>
+<section id="event-studies-as-information-aggregation-tests" class="level3" data-number="52.3.6">
+<h3 data-number="52.3.6" class="anchored" data-anchor-id="event-studies-as-information-aggregation-tests"><span class="header-section-number">52.3.6</span> Event Studies as Information Aggregation Tests</h3>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Definition 7.6.7 — Event Study Methodology
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>An <strong>event study</strong> measures the market’s informational response to a discrete event at time <span class="math inline">\(\tau\)</span>. The <strong>abnormal return</strong> is: <span class="math display">\[AR_t = R_t - \hat{R}_t\]</span> where <span class="math inline">\(R_t\)</span> is the realized return at time <span class="math inline">\(t\)</span> and <span class="math inline">\(\hat{R}_t = \hat{\alpha} + \hat{\beta} R_t^M\)</span> is the predicted normal return from a market model estimated on a pre-event window.</p>
+<p>The <strong>cumulative abnormal return (CAR)</strong> over an event window <span class="math inline">\([\tau_1, \tau_2]\)</span>: <span class="math display">\[CAR(\tau_1, \tau_2) = \sum_{t=\tau_1}^{\tau_2} AR_t\]</span></p>
+<p>Under the EMH, all information in a publicly announced event is immediately incorporated into prices at <span class="math inline">\(t = \tau\)</span>, so <span class="math inline">\(AR_t = 0\)</span> for <span class="math inline">\(t &gt; \tau\)</span> and <span class="math inline">\(AR_t \neq 0\)</span> only at <span class="math inline">\(t = \tau\)</span>. Pre-event <span class="math inline">\(CAR(\tau - k, \tau - 1) &gt; 0\)</span> indicates information leakage.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-caution no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Caution</span>Remark 7.6.3 — Bridge to Empirical Research
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Event studies test the speed and accuracy of information aggregation in financial markets. In the context of commodity markets and conflict research, event studies can examine:</p>
+<ul>
+<li><strong>How quickly do commodity futures prices incorporate news of resource discoveries or mine openings in the DRC?</strong> If markets are efficient, prices should jump at announcement and remain stable thereafter.</li>
+<li><strong>Do conflict events affect commodity prices?</strong> Abnormal returns in mineral futures following conflict episodes in mining regions would indicate that markets internalize conflict risk.</li>
+<li><strong>Pre-event leakage:</strong> Positive CAR before public announcement of a conflict event suggests insider trading or information leakage — markets aggregate private information before it becomes public.</li>
+</ul>
+<p>The theoretical connection: the Kyle model predicts that informed trading will generate price impact prior to public revelation of information (<span class="math inline">\(\lambda &gt; 0\)</span>), creating the pre-event drift observed in many event studies. The magnitude of the pre-event CAR is related to Kyle’s <span class="math inline">\(\lambda\)</span> — higher price impact markets will show stronger pre-announcement drift.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="economic-intuition" class="level2" data-number="52.4">
+<h2 data-number="52.4" class="anchored" data-anchor-id="economic-intuition"><span class="header-section-number">52.4</span> Economic Intuition</h2>
+<p>The information aggregation problem is a microcosm of the tension between competitive equilibrium and strategic behavior. In the frictionless Walrasian world of fully revealing REE, prices solve Hayek’s knowledge problem perfectly. But this leads to the Grossman-Stiglitz paradox — perfectly efficient markets undermine the incentive to become informed. The real world operates in the interior: markets partially reveal information, informed traders earn rents, and prices are more informative than individual signals but less informative than the social planner’s omniscient aggregation.</p>
+<p>Kyle’s model captures the strategic dimension: the informed trader voluntarily limits their order size to prevent prices from moving against them. This creates a tradeoff between profit per unit (higher for small orders) and total volume, leading to the half-information result. The price impact coefficient <span class="math inline">\(\lambda\)</span> is the key structural parameter linking theory to empirics — it can be estimated from order flow data and used to infer the degree of information asymmetry in a market.</p>
+</section>
+<section id="cross-references" class="level2" data-number="52.5">
+<h2 data-number="52.5" class="anchored" data-anchor-id="cross-references"><span class="header-section-number">52.5</span> Cross-References</h2>
+<ul>
+<li><a href="../Part_VII_Information_and_Incentives/7.3_Adverse_Selection_and_Screening.html">7.3 Adverse Selection and Screening</a> — adverse selection in financial markets (Glosten-Milgrom)</li>
+<li><a href="../Part_VII_Information_and_Incentives/7.5_Mechanism_Design.html">7.5 Mechanism Design</a> — market scoring rules as mechanism design problems</li>
+<li><a href="APP_Prediction_Markets_and_Signals.qmd">APP Prediction Markets and Signals</a> — detailed empirical applications</li>
+<li><a href="APP_Trade_and_Price_Shock_Models.qmd">APP Trade and Price Shock Models</a> — commodity price signals and local economic outcomes</li>
+<li><a href="APP_Conflict_and_Resource_Models.qmd">APP Conflict and Resource Models</a> — commodity price shocks as signals in conflict models</li>
+</ul>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+            // default icon
+            link.classList.add("external");
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../Part_VII_Information_and_Incentives/7.5_Mechanism_Design.html" class="pagination-link" aria-label="7.5 — Mechanism Design">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">50</span>&nbsp; <span class="chapter-title">7.5 — Mechanism Design</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../Part_VII_Information_and_Incentives/PS_Information.html" class="pagination-link" aria-label="Problem Set — Part VII: Information and Incentives">
+        <span class="nav-page-text"><span class="chapter-number">52</span>&nbsp; <span class="chapter-title">Problem Set — Part VII: Information and Incentives</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/andbbus/grad-micro-notes/edit/main/Part_VII_Information_and_Incentives/7.6_Prediction_Markets_and_Information_Aggregation.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/andbbus/grad-micro-notes/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer><script src="../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

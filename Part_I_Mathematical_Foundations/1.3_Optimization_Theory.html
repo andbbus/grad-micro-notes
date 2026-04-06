@@ -1,0 +1,1504 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.36">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>5&nbsp; 1.3 Optimization Theory – Graduate Microeconomic Theory</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../Part_I_Mathematical_Foundations/1.4_Fixed_Point_Theorems.html" rel="next">
+<link href="../Part_I_Mathematical_Foundations/1.2_Correspondences_and_Hemicontinuity.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-44c2c454a7ec14b8e9312150d2b271b4.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar docked nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Graduate Microeconomic Theory</span>
+    </a>
+  </div>
+        <div class="quarto-navbar-tools tools-end">
+    <a href="https://github.com/andbbus/grad-micro-notes" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+</div>
+          <div id="quarto-search" class="" title="Search"></div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../Part_I_Mathematical_Foundations/index.html">Part I — Mathematical Foundations</a></li><li class="breadcrumb-item"><a href="../Part_I_Mathematical_Foundations/1.3_Optimization_Theory.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">1.3 Optimization Theory</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Microeconomics Program Overview</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part I — Mathematical Foundations</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_I_Mathematical_Foundations/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Part I: Mathematical Foundations — Index</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_I_Mathematical_Foundations/1.1_Metric_Spaces_and_Topology.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">1.1 Metric Spaces and Topology</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_I_Mathematical_Foundations/1.2_Correspondences_and_Hemicontinuity.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">1.2 Correspondences and Hemicontinuity</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_I_Mathematical_Foundations/1.3_Optimization_Theory.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">1.3 Optimization Theory</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_I_Mathematical_Foundations/1.4_Fixed_Point_Theorems.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">1.4 Fixed-Point Theorems</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part II — Consumer Theory</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_II_Consumer_Theory/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Part II — Consumer Theory: Index</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_II_Consumer_Theory/2.1_Preference_Relations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">2.1 — Preference Relations</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_II_Consumer_Theory/2.2_Utility_Representation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">2.2 — Utility Representation</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_II_Consumer_Theory/2.3_Utility_Maximization_Problem.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">2.3 — The Utility Maximization Problem (UMP)</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_II_Consumer_Theory/2.4_Expenditure_Minimization.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">2.4 — The Expenditure Minimization Problem (EMP)</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_II_Consumer_Theory/2.5_Duality_and_Slutsky.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">2.5 — Duality and the Slutsky Equation</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_II_Consumer_Theory/2.6_Revealed_Preference.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">2.6 — Revealed Preference</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_II_Consumer_Theory/2.7_Integrability.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">2.7 — Integrability</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_II_Consumer_Theory/2.8_Aggregate_Demand.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">2.8 — Aggregate Demand and Gorman Aggregation</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_II_Consumer_Theory/PS_Consumer_Theory.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Problem Set — Part II: Consumer Theory</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part III — Producer Theory</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_III_Producer_Theory/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Part III: Producer Theory — Overview</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_III_Producer_Theory/3.1_Production_Sets.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">3.1 Production Sets and Technology</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_III_Producer_Theory/3.2_Profit_Maximization.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">3.2 Profit Maximization</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_III_Producer_Theory/3.3_Cost_Minimization.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">3.3 Cost Minimization</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_III_Producer_Theory/3.4_Supply_and_Factor_Demands.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">3.4 Supply and Factor Demands</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_III_Producer_Theory/PS_Producer_Theory.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Problem Set: Producer Theory</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part IV — Choice Under Uncertainty</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IV_Choice_Under_Uncertainty/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Part IV: Choice Under Uncertainty — Overview</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IV_Choice_Under_Uncertainty/4.1_State_Space_Framework.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">4.1 The State Space Framework and Axioms</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IV_Choice_Under_Uncertainty/4.2_Expected_Utility_Theory.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">4.2 Expected Utility Theory</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IV_Choice_Under_Uncertainty/4.3_Risk_Aversion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">4.3 Risk Aversion</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IV_Choice_Under_Uncertainty/4.4_Stochastic_Dominance.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">4.4 Stochastic Dominance</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IV_Choice_Under_Uncertainty/PS_Uncertainty.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Problem Set: Choice Under Uncertainty</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part V — Game Theory</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_V_Game_Theory/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">Part V — Game Theory</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_V_Game_Theory/5.1_Normal_Form_Games.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">30</span>&nbsp; <span class="chapter-title">5.1 Normal Form Games</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_V_Game_Theory/5.2_Nash_Equilibrium.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">31</span>&nbsp; <span class="chapter-title">5.2 Nash Equilibrium</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_V_Game_Theory/5.3_Mixed_Strategies.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">32</span>&nbsp; <span class="chapter-title">5.3 Mixed Strategies</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_V_Game_Theory/5.4_Extensive_Form_Games.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">33</span>&nbsp; <span class="chapter-title">5.4 Extensive Form Games</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_V_Game_Theory/5.5_Subgame_Perfect_Equilibrium.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">34</span>&nbsp; <span class="chapter-title">5.5 Subgame Perfect Equilibrium</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_V_Game_Theory/5.6_Repeated_Games.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">35</span>&nbsp; <span class="chapter-title">5.6 Repeated Games</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_V_Game_Theory/5.7_Bayesian_Games.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">36</span>&nbsp; <span class="chapter-title">5.7 Bayesian Games</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_V_Game_Theory/PS_Game_Theory.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">37</span>&nbsp; <span class="chapter-title">Problem Set — Part V: Game Theory</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part VI — General Equilibrium</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VI_General_Equilibrium/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">38</span>&nbsp; <span class="chapter-title">Part VI — General Equilibrium</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VI_General_Equilibrium/6.1_Exchange_Economies.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">39</span>&nbsp; <span class="chapter-title">6.1 Exchange Economies</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VI_General_Equilibrium/6.2_Arrow_Debreu_Economy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">40</span>&nbsp; <span class="chapter-title">6.2 The Arrow-Debreu Economy</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VI_General_Equilibrium/6.3_Existence_of_Equilibrium.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">41</span>&nbsp; <span class="chapter-title">6.3 Existence of Walrasian Equilibrium</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VI_General_Equilibrium/6.4_Welfare_Theorems.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">42</span>&nbsp; <span class="chapter-title">6.4 Welfare Theorems</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VI_General_Equilibrium/6.5_Externalities_and_Public_Goods.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">43</span>&nbsp; <span class="chapter-title">6.5 Externalities and Public Goods</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VI_General_Equilibrium/PS_General_Equilibrium.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">44</span>&nbsp; <span class="chapter-title">Problem Set — Part VI: General Equilibrium</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part VII — Information and Incentives</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VII_Information_and_Incentives/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">45</span>&nbsp; <span class="chapter-title">Part VII — Information and Incentives</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VII_Information_and_Incentives/7.1_Principal_Agent_Problem.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">46</span>&nbsp; <span class="chapter-title">7.1 — The Principal-Agent Problem</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VII_Information_and_Incentives/7.2_Moral_Hazard.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">47</span>&nbsp; <span class="chapter-title">7.2 — Moral Hazard</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VII_Information_and_Incentives/7.3_Adverse_Selection_and_Screening.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">48</span>&nbsp; <span class="chapter-title">7.3 — Adverse Selection and Screening</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VII_Information_and_Incentives/7.4_Signaling.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">49</span>&nbsp; <span class="chapter-title">7.4 — Signaling</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VII_Information_and_Incentives/7.5_Mechanism_Design.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">50</span>&nbsp; <span class="chapter-title">7.5 — Mechanism Design</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VII_Information_and_Incentives/7.6_Prediction_Markets_and_Information_Aggregation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">51</span>&nbsp; <span class="chapter-title">7.6 — Prediction Markets and Information Aggregation</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VII_Information_and_Incentives/PS_Information.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">52</span>&nbsp; <span class="chapter-title">Problem Set — Part VII: Information and Incentives</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part VIII — Social Choice</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VIII_Social_Choice/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">53</span>&nbsp; <span class="chapter-title">Part VIII — Social Choice Theory</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VIII_Social_Choice/8.1_Social_Welfare_Functions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">54</span>&nbsp; <span class="chapter-title">8.1 Social Welfare Functions</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VIII_Social_Choice/8.2_Arrows_Impossibility_Theorem.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">55</span>&nbsp; <span class="chapter-title">8.2 Arrow’s Impossibility Theorem</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VIII_Social_Choice/8.3_Welfare_Criteria.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">56</span>&nbsp; <span class="chapter-title">8.3 Welfare Criteria and Compensation Principles</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VIII_Social_Choice/PS_Social_Choice.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">57</span>&nbsp; <span class="chapter-title">Problem Set — Part VIII: Social Choice</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part IX — Model Building for Empirics</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IX_Model_Building_for_Empirics/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">58</span>&nbsp; <span class="chapter-title">Part IX — Model Building for Empirics</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IX_Model_Building_for_Empirics/9.1_Anatomy_of_a_Theoretical_Model.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">59</span>&nbsp; <span class="chapter-title">9.1 — Anatomy of a Theoretical Model</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IX_Model_Building_for_Empirics/9.2_Equilibrium_Concepts_and_Selection.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">60</span>&nbsp; <span class="chapter-title">9.2 — Equilibrium Concepts and Selection</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IX_Model_Building_for_Empirics/9.3_Comparative_Statics_Methodology.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">61</span>&nbsp; <span class="chapter-title">9.3 — Comparative Statics Methodology</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IX_Model_Building_for_Empirics/9.4_Deriving_Testable_Predictions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">62</span>&nbsp; <span class="chapter-title">9.4 — Deriving Testable Predictions</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IX_Model_Building_for_Empirics/9.5_Structural_vs_Reduced_Form.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">63</span>&nbsp; <span class="chapter-title">9.5 — Structural vs.&nbsp;Reduced Form</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IX_Model_Building_for_Empirics/9.6_Identification_in_Structural_Models.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">64</span>&nbsp; <span class="chapter-title">9.6 — Identification in Structural Models</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IX_Model_Building_for_Empirics/9.7_Model_Discipline_and_Tractability.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">65</span>&nbsp; <span class="chapter-title">9.7 — Model Discipline and Tractability</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IX_Model_Building_for_Empirics/APP_Conflict_and_Resource_Models.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">66</span>&nbsp; <span class="chapter-title">APP — Conflict and Resource Models</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IX_Model_Building_for_Empirics/APP_Trade_and_Price_Shock_Models.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">67</span>&nbsp; <span class="chapter-title">APP — Trade and Price Shock Models</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IX_Model_Building_for_Empirics/APP_Prediction_Markets_and_Signals.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">68</span>&nbsp; <span class="chapter-title">APP — Prediction Markets and Signals</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IX_Model_Building_for_Empirics/PS_Model_Building.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">69</span>&nbsp; <span class="chapter-title">Problem Set — Part IX: Model Building for Empirics</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#optimization-theory" id="toc-optimization-theory" class="nav-link active" data-scroll-target="#optimization-theory"><span class="header-section-number">6</span> 1.3 Optimization Theory</a>
+  <ul class="collapse">
+  <li><a href="#context" id="toc-context" class="nav-link" data-scroll-target="#context"><span class="header-section-number">6.1</span> Context</a></li>
+  <li><a href="#definitions" id="toc-definitions" class="nav-link" data-scroll-target="#definitions"><span class="header-section-number">6.2</span> Definitions</a></li>
+  <li><a href="#main-results" id="toc-main-results" class="nav-link" data-scroll-target="#main-results"><span class="header-section-number">6.3</span> Main Results</a></li>
+  <li><a href="#economic-intuition" id="toc-economic-intuition" class="nav-link" data-scroll-target="#economic-intuition"><span class="header-section-number">6.4</span> Economic Intuition</a></li>
+  <li><a href="#cross-references" id="toc-cross-references" class="nav-link" data-scroll-target="#cross-references"><span class="header-section-number">6.5</span> Cross-References</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/andbbus/grad-micro-notes/edit/main/Part_I_Mathematical_Foundations/1.3_Optimization_Theory.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/andbbus/grad-micro-notes/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../Part_I_Mathematical_Foundations/index.html">Part I — Mathematical Foundations</a></li><li class="breadcrumb-item"><a href="../Part_I_Mathematical_Foundations/1.3_Optimization_Theory.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">1.3 Optimization Theory</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">1.3 Optimization Theory</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="optimization-theory" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> 1.3 Optimization Theory</h1>
+<blockquote class="blockquote">
+<p><strong>MWG Reference:</strong> Mathematical Appendix, Sections M.D, M.L, pp.&nbsp;937–940, 966–977</p>
+</blockquote>
+<section id="context" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="context"><span class="header-section-number">6.1</span> Context</h2>
+<p>Optimization theory is the engine of microeconomics: virtually every positive result (a demand function, a supply function, a contract) is the solution to some agent’s optimization problem, and virtually every comparative statics result (how demand changes with income, how cost changes with output) follows from differentiating the optimized value with respect to a parameter. This note develops the key tools in sequence: unconstrained FOCs and SOCs, the Lagrangian method for equality constraints, the Kuhn-Tucker conditions for inequality constraints, and — most importantly for applications — the Envelope Theorem in both unconstrained and constrained versions. The Envelope Theorem is a single mathematical result with at least a dozen named corollaries in economic theory: Hotelling’s Lemma, Shephard’s Lemma, Roy’s Identity, the Slutsky equation, and the characterization of shadow prices all follow directly. The note closes with quasi-concavity, which is the minimal convexity condition needed for the consumer’s and firm’s optimization programs to be well-behaved.</p>
+<hr>
+</section>
+<section id="definitions" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="definitions"><span class="header-section-number">6.2</span> Definitions</h2>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Definition 1.16 — Local and Global Optima
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Let <span class="math inline">\(f: U \subseteq \mathbb{R}^L \to \mathbb{R}\)</span>. - <span class="math inline">\(x^* \in U\)</span> is a <strong>local maximum</strong> of <span class="math inline">\(f\)</span> on <span class="math inline">\(U\)</span> if there exists <span class="math inline">\(\varepsilon &gt; 0\)</span> such that <span class="math inline">\(f(x^*) \geq f(x)\)</span> for all <span class="math inline">\(x \in B_\varepsilon(x^*) \cap U\)</span>. - <span class="math inline">\(x^*\)</span> is a <strong>global maximum</strong> if <span class="math inline">\(f(x^*) \geq f(x)\)</span> for all <span class="math inline">\(x \in U\)</span>. - Replace <span class="math inline">\(\geq\)</span> with <span class="math inline">\(\leq\)</span> for minima; replace <span class="math inline">\(\geq\)</span> with <span class="math inline">\(&gt;\)</span> for strict local/global maxima.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Definition 1.17 — Concavity and Quasi-Concavity
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A function <span class="math inline">\(f: C \to \mathbb{R}\)</span> on a convex set <span class="math inline">\(C \subseteq \mathbb{R}^L\)</span> is: - <strong>Concave</strong> if for all <span class="math inline">\(x, y \in C\)</span> and <span class="math inline">\(\lambda \in [0,1]\)</span>: <span class="math inline">\(f(\lambda x + (1-\lambda)y) \geq \lambda f(x) + (1-\lambda) f(y)\)</span>. - <strong>Strictly concave</strong> if the inequality is strict for <span class="math inline">\(x \neq y\)</span> and <span class="math inline">\(\lambda \in (0,1)\)</span>. - <strong>Quasi-concave</strong> if for all <span class="math inline">\(x, y \in C\)</span> and <span class="math inline">\(\lambda \in [0,1]\)</span>: <span class="math inline">\(f(\lambda x + (1-\lambda)y) \geq \min\{f(x), f(y)\}\)</span>. - <strong>Strictly quasi-concave</strong> if the inequality is strict for <span class="math inline">\(x \neq y\)</span> and <span class="math inline">\(\lambda \in (0,1)\)</span>.</p>
+<p>Equivalently, <span class="math inline">\(f\)</span> is quasi-concave if and only if every <strong>upper contour set</strong> <span class="math inline">\(\{x \in C : f(x) \geq t\}\)</span> is convex for all <span class="math inline">\(t \in \mathbb{R}\)</span>.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-caution no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Caution</span>Remark
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Concavity implies quasi-concavity (but not conversely). Quasi-concavity is the right condition for preferences: it says “averages are weakly preferred to extremes,” i.e., indifference curves are convex to the origin. Strictly quasi-concave utility functions yield unique demand (single-valued <span class="math inline">\(x(p,w)\)</span>). Concavity is a stronger condition used for profit functions and cost functions (as functions of output).</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Definition 1.18 — Hessian Matrix
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>For <span class="math inline">\(f: U \subseteq \mathbb{R}^L \to \mathbb{R}\)</span> twice continuously differentiable, the <strong>Hessian</strong> is the <span class="math inline">\(L \times L\)</span> symmetric matrix: <span class="math display">\[H_f(x) = D^2 f(x) = \left( \frac{\partial^2 f}{\partial x_i \partial x_j}(x) \right)_{i,j=1}^L.\]</span> <span class="math inline">\(f\)</span> is <strong>concave</strong> on <span class="math inline">\(U\)</span> (convex <span class="math inline">\(U\)</span>) if and only if <span class="math inline">\(H_f(x)\)</span> is <strong>negative semidefinite</strong> for all <span class="math inline">\(x \in U\)</span>; strictly concave if <span class="math inline">\(H_f\)</span> is negative definite everywhere.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Definition 1.19 — Lagrangian
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>For the constrained problem: <span class="math display">\[\max_{x \in \mathbb{R}^L} \; f(x) \quad \text{subject to} \quad g_k(x) = 0, \; k = 1, \ldots, K,\]</span> the <strong>Lagrangian</strong> is: <span class="math display">\[\mathcal{L}(x, \lambda) = f(x) - \sum_{k=1}^K \lambda_k g_k(x),\]</span> where <span class="math inline">\(\lambda = (\lambda_1, \ldots, \lambda_K) \in \mathbb{R}^K\)</span> are <strong>Lagrange multipliers</strong>.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Definition 1.20 — Kuhn-Tucker Lagrangian
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>For the problem with inequality constraints: <span class="math display">\[\max_{x \in \mathbb{R}^L} \; f(x) \quad \text{subject to} \quad g_k(x) \leq 0, \; k = 1, \ldots, K,\]</span> the <strong>Kuhn-Tucker Lagrangian</strong> is: <span class="math display">\[\mathcal{L}(x, \mu) = f(x) - \sum_{k=1}^K \mu_k g_k(x),\]</span> where <span class="math inline">\(\mu_k \geq 0\)</span> for all <span class="math inline">\(k\)</span>.</p>
+</div>
+</div>
+<hr>
+</section>
+<section id="main-results" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="main-results"><span class="header-section-number">6.3</span> Main Results</h2>
+<div class="callout callout-style-default callout-important no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Theorem 1.10 — Unconstrained First and Second-Order Conditions
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Let <span class="math inline">\(f: U \subseteq \mathbb{R}^L \to \mathbb{R}\)</span> be <span class="math inline">\(C^2\)</span> on the open set <span class="math inline">\(U\)</span>.</p>
+<p><strong>(Necessity)</strong> If <span class="math inline">\(x^*\)</span> is a local maximum, then: <span class="math display">\[\text{(FOC)} \quad Df(x^*) = 0 \quad \text{(i.e., } \nabla f(x^*) = 0\text{)},\]</span> <span class="math display">\[\text{(SOC)} \quad D^2 f(x^*) \text{ is negative semidefinite.}\]</span></p>
+<p><strong>(Sufficiency)</strong> If <span class="math inline">\(Df(x^*) = 0\)</span> and <span class="math inline">\(D^2 f(x^*)\)</span> is negative definite, then <span class="math inline">\(x^*\)</span> is a strict local maximum.</p>
+<p><strong>(Global)</strong> If <span class="math inline">\(f\)</span> is concave on <span class="math inline">\(U\)</span> (convex), then any local maximum is a global maximum, and any point with <span class="math inline">\(Df(x^*) = 0\)</span> is a global maximum.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Proof
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>FOC Necessity.</strong> Suppose <span class="math inline">\(x^*\)</span> is a local maximum. For any direction <span class="math inline">\(v \in \mathbb{R}^L\)</span>, the function <span class="math inline">\(\varphi(t) = f(x^* + tv)\)</span> achieves a local maximum at <span class="math inline">\(t=0\)</span>, so <span class="math inline">\(\varphi'(0) = Df(x^*) \cdot v = 0\)</span>. Since <span class="math inline">\(v\)</span> is arbitrary, <span class="math inline">\(Df(x^*) = 0\)</span>.</p>
+<p><strong>SOC Necessity.</strong> Similarly, <span class="math inline">\(\varphi''(0) = v^T D^2 f(x^*) v \leq 0\)</span> for all <span class="math inline">\(v\)</span>, since <span class="math inline">\(t=0\)</span> is a local max of <span class="math inline">\(\varphi\)</span>. This is the definition of negative semidefiniteness.</p>
+<p><strong>Sufficiency.</strong> By Taylor’s theorem, <span class="math inline">\(f(x^* + h) = f(x^*) + Df(x^*) \cdot h + \frac{1}{2} h^T D^2 f(x^*) h + o(\|h\|^2)\)</span>. If <span class="math inline">\(Df(x^*) = 0\)</span> and <span class="math inline">\(D^2 f(x^*)\)</span> is negative definite, then <span class="math inline">\(h^T D^2 f(x^*) h \leq -c\|h\|^2\)</span> for some <span class="math inline">\(c &gt; 0\)</span>, so <span class="math inline">\(f(x^*+h) \leq f(x^*) - (c/2)\|h\|^2 &lt; f(x^*)\)</span> for small <span class="math inline">\(\|h\| &gt; 0\)</span>.</p>
+<p><strong>Global (concave case).</strong> If <span class="math inline">\(f\)</span> is concave and <span class="math inline">\(x^*\)</span> is a local maximum, suppose <span class="math inline">\(f(y) &gt; f(x^*)\)</span> for some <span class="math inline">\(y\)</span>. For <span class="math inline">\(\lambda \in (0,1)\)</span> small, <span class="math inline">\(f(\lambda y + (1-\lambda) x^*) \geq \lambda f(y) + (1-\lambda)f(x^*) &gt; f(x^*)\)</span>, and <span class="math inline">\(\lambda y + (1-\lambda)x^*\)</span> is arbitrarily close to <span class="math inline">\(x^*\)</span> for small <span class="math inline">\(\lambda\)</span>, contradicting local maximality. <span class="math inline">\(\blacksquare\)</span></p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-important no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Theorem 1.11 — Lagrange’s Theorem (Equality-Constrained FOCs)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Let <span class="math inline">\(f: \mathbb{R}^L \to \mathbb{R}\)</span> and <span class="math inline">\(g: \mathbb{R}^L \to \mathbb{R}^K\)</span> be <span class="math inline">\(C^1\)</span>. Suppose <span class="math inline">\(x^*\)</span> is a local maximum of <span class="math inline">\(f\)</span> subject to <span class="math inline">\(g(x) = 0\)</span>, and suppose the <strong>constraint qualification</strong> holds at <span class="math inline">\(x^*\)</span>: the Jacobian <span class="math inline">\(Dg(x^*) \in \mathbb{R}^{K \times L}\)</span> has full row rank (rank <span class="math inline">\(K\)</span>). Then there exists a unique <span class="math inline">\(\lambda^* \in \mathbb{R}^K\)</span> such that: <span class="math display">\[D_x \mathcal{L}(x^*, \lambda^*) = Df(x^*) - \lambda^{*T} Dg(x^*) = 0.\]</span> Equivalently: <span class="math display">\[\frac{\partial f}{\partial x_\ell}(x^*) = \sum_{k=1}^K \lambda^*_k \frac{\partial g_k}{\partial x_\ell}(x^*), \quad \ell = 1, \ldots, L.\]</span></p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Proof
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>Step 1: Characterize the tangent space of the constraint set.</strong> The constraint set is <span class="math inline">\(S = \{x : g(x) = 0\}\)</span>. The tangent space of <span class="math inline">\(S\)</span> at <span class="math inline">\(x^*\)</span> is <span class="math inline">\(T_{x^*} S = \ker(Dg(x^*)) = \{v \in \mathbb{R}^L : Dg(x^*) v = 0\}\)</span>.</p>
+<p><strong>Step 2: <span class="math inline">\(Df(x^*)\)</span> must annihilate <span class="math inline">\(T_{x^*} S\)</span>.</strong> If <span class="math inline">\(v \in T_{x^*} S\)</span>, let <span class="math inline">\(\gamma: (-\varepsilon, \varepsilon) \to S\)</span> be a <span class="math inline">\(C^1\)</span> curve with <span class="math inline">\(\gamma(0) = x^*\)</span> and <span class="math inline">\(\gamma'(0) = v\)</span>. Since <span class="math inline">\(x^*\)</span> is a local max of <span class="math inline">\(f\)</span> on <span class="math inline">\(S\)</span>, <span class="math inline">\(t = 0\)</span> is a local max of <span class="math inline">\(f \circ \gamma\)</span>, so <span class="math inline">\((f \circ \gamma)'(0) = Df(x^*) \cdot v = 0\)</span>. (Such a curve exists by the implicit function theorem, which applies because <span class="math inline">\(Dg(x^*)\)</span> has full rank.)</p>
+<p><strong>Step 3: Invoke the fundamental theorem of linear algebra.</strong> We have <span class="math inline">\(Df(x^*) \in (\ker Dg(x^*))^\perp = \text{rowspace}(Dg(x^*))\)</span>.</p>
+<p>Therefore <span class="math inline">\(Df(x^*)\)</span> is a linear combination of the rows of <span class="math inline">\(Dg(x^*)\)</span>: <span class="math inline">\(\exists \lambda^* \in \mathbb{R}^K\)</span> such that <span class="math inline">\(Df(x^*) = \lambda^{*T} Dg(x^*)\)</span>.</p>
+<p><strong>Step 4: Uniqueness of <span class="math inline">\(\lambda^*\)</span>.</strong> Since <span class="math inline">\(Dg(x^*)\)</span> has full row rank <span class="math inline">\(K\)</span>, the rows are linearly independent, so <span class="math inline">\(\lambda^*\)</span> is unique. <span class="math inline">\(\blacksquare\)</span></p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-caution no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Caution</span>Remark
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The Lagrange multiplier <span class="math inline">\(\lambda_k^*\)</span> has the interpretation of a <strong>shadow price</strong>: it measures how much the optimal value <span class="math inline">\(f(x^*)\)</span> would increase if constraint <span class="math inline">\(k\)</span> were relaxed from <span class="math inline">\(g_k(x) = 0\)</span> to <span class="math inline">\(g_k(x) = \varepsilon\)</span> (by <span class="math inline">\(\varepsilon \lambda_k^*\)</span> to first order). This interpretation is made precise by the Envelope Theorem (Theorem 1.13 below).</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-important no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Theorem 1.12 — Kuhn-Tucker Necessary Conditions
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Let <span class="math inline">\(f: \mathbb{R}^L \to \mathbb{R}\)</span> and <span class="math inline">\(g_k: \mathbb{R}^L \to \mathbb{R}\)</span> for <span class="math inline">\(k = 1, \ldots, K\)</span> be <span class="math inline">\(C^1\)</span>. Consider: <span class="math display">\[\max_{x \in \mathbb{R}^L} f(x) \quad \text{s.t.} \quad g_k(x) \leq 0, \; k = 1, \ldots, K.\]</span> Let <span class="math inline">\(x^*\)</span> be a local maximum and suppose a <strong>constraint qualification</strong> holds at <span class="math inline">\(x^*\)</span> (e.g., LICQ: the gradients <span class="math inline">\(\nabla g_k(x^*)\)</span> for active constraints <span class="math inline">\(k \in A(x^*) = \{k : g_k(x^*) = 0\}\)</span> are linearly independent). Then there exist multipliers <span class="math inline">\(\mu^* = (\mu^*_1, \ldots, \mu^*_K) \geq 0\)</span> such that:</p>
+<p><strong>(Stationarity)</strong> <span class="math inline">\(\displaystyle \nabla f(x^*) = \sum_{k=1}^K \mu_k^* \nabla g_k(x^*)\)</span></p>
+<p><strong>(Primal Feasibility)</strong> <span class="math inline">\(g_k(x^*) \leq 0\)</span> for all <span class="math inline">\(k\)</span></p>
+<p><strong>(Dual Feasibility)</strong> <span class="math inline">\(\mu_k^* \geq 0\)</span> for all <span class="math inline">\(k\)</span></p>
+<p><strong>(Complementary Slackness)</strong> <span class="math inline">\(\mu_k^* g_k(x^*) = 0\)</span> for all <span class="math inline">\(k\)</span>.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Proof
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-13" class="callout-13-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>The active constraints <span class="math inline">\(g_k(x^*) = 0\)</span> for <span class="math inline">\(k \in A(x^*)\)</span> are equality constraints at <span class="math inline">\(x^*\)</span>; the inactive constraints <span class="math inline">\(g_k(x^*) &lt; 0\)</span> for <span class="math inline">\(k \notin A(x^*)\)</span> are locally nonbinding and can be ignored. Apply Lagrange’s Theorem (Theorem 1.11) to <span class="math inline">\(f\)</span> subject to the active equality constraints, obtaining multipliers <span class="math inline">\(\mu_k^*\)</span> for <span class="math inline">\(k \in A(x^*)\)</span>. Set <span class="math inline">\(\mu_k^* = 0\)</span> for <span class="math inline">\(k \notin A(x^*)\)</span> (this enforces complementary slackness automatically for inactive constraints).</p>
+<p>The sign condition <span class="math inline">\(\mu_k^* \geq 0\)</span> follows from the observation that the active constraints enter as <span class="math inline">\(g_k(x^*) \leq 0\)</span>: relaxing a binding <span class="math inline">\(\leq\)</span>-constraint (increasing the right-hand side from 0 to <span class="math inline">\(\varepsilon &gt; 0\)</span>) cannot decrease the maximum (more feasibility only helps), so the shadow price of a binding <span class="math inline">\(\leq\)</span>-constraint must be non-negative. <span class="math inline">\(\blacksquare\)</span></p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-caution no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Caution</span>Remark
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Complementary slackness</strong> says: either a constraint is binding (<span class="math inline">\(g_k(x^*) = 0\)</span>) or its multiplier is zero (<span class="math inline">\(\mu_k^* = 0\)</span>), or both. In consumer theory: the budget constraint is almost always binding at the optimum (by local non-satiation), so <span class="math inline">\(\mu &gt; 0\)</span>; the non-negativity constraint <span class="math inline">\(x_\ell \geq 0\)</span> may be binding (if good <span class="math inline">\(\ell\)</span> is not consumed) with <span class="math inline">\(\mu_\ell^*\)</span> equal to the imputed value of the good, or non-binding with <span class="math inline">\(\mu_\ell^* = 0\)</span>.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-important no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Theorem 1.13 — Sufficiency Under Convexity
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Suppose <span class="math inline">\(f\)</span> is concave and each <span class="math inline">\(g_k\)</span> is convex. If <span class="math inline">\((x^*, \mu^*)\)</span> satisfies the KKT conditions, then <span class="math inline">\(x^*\)</span> is a <strong>global</strong> maximum.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-16-contents" aria-controls="callout-16" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Proof
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-16" class="callout-16-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>For any feasible <span class="math inline">\(x\)</span> (with <span class="math inline">\(g_k(x) \leq 0\)</span>): <span class="math display">\[f(x) - f(x^*) \leq Df(x^*) \cdot (x - x^*) \quad (\text{concavity of } f)\]</span> <span class="math display">\[= \sum_k \mu_k^* \nabla g_k(x^*) \cdot (x - x^*) \quad (\text{stationarity})\]</span> <span class="math display">\[\leq \sum_k \mu_k^* [g_k(x) - g_k(x^*)] \quad (\text{convexity of each } g_k: g_k(x) \geq g_k(x^*) + \nabla g_k(x^*) \cdot (x-x^*))\]</span> <span class="math display">\[= \sum_k \mu_k^* g_k(x) - \sum_k \mu_k^* g_k(x^*)\]</span> <span class="math display">\[\leq \sum_k \mu_k^* \cdot 0 - \sum_k \mu_k^* g_k(x^*) \quad (\text{since } g_k(x) \leq 0 \text{ and } \mu_k^* \geq 0)\]</span> <span class="math display">\[= -\sum_k \mu_k^* g_k(x^*) = 0 \quad (\text{complementary slackness: } \mu_k^* g_k(x^*) = 0).\]</span> So <span class="math inline">\(f(x) \leq f(x^*)\)</span> for all feasible <span class="math inline">\(x\)</span>. <span class="math inline">\(\blacksquare\)</span></p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-important no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Theorem 1.14 — Envelope Theorem (Unconstrained Version)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Let <span class="math inline">\(f: \mathbb{R}^L \times \mathbb{R}^M \to \mathbb{R}\)</span> be <span class="math inline">\(C^1\)</span> in <span class="math inline">\((x, \alpha)\)</span> where <span class="math inline">\(x\)</span> is the choice variable and <span class="math inline">\(\alpha \in \mathbb{R}^M\)</span> is a parameter vector. Define the value function: <span class="math display">\[V(\alpha) = \max_{x \in \mathbb{R}^L} f(x, \alpha),\]</span> and suppose that for each <span class="math inline">\(\alpha\)</span>, the maximizer <span class="math inline">\(x^*(\alpha)\)</span> is unique and varies <span class="math inline">\(C^1\)</span> with <span class="math inline">\(\alpha\)</span>. Then <span class="math inline">\(V\)</span> is differentiable and: <span class="math display">\[\frac{\partial V}{\partial \alpha_m}(\alpha) = \frac{\partial f}{\partial \alpha_m}(x^*(\alpha), \alpha) \quad \text{for each } m = 1, \ldots, M.\]</span></p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-18-contents" aria-controls="callout-18" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Proof
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-18" class="callout-18-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Differentiate <span class="math inline">\(V(\alpha) = f(x^*(\alpha), \alpha)\)</span> with respect to <span class="math inline">\(\alpha_m\)</span> using the chain rule: <span class="math display">\[\frac{dV}{d\alpha_m} = \sum_{\ell=1}^L \frac{\partial f}{\partial x_\ell}(x^*, \alpha) \frac{\partial x^*_\ell}{\partial \alpha_m} + \frac{\partial f}{\partial \alpha_m}(x^*, \alpha).\]</span> By the FOC for an interior maximum: <span class="math inline">\(\frac{\partial f}{\partial x_\ell}(x^*(\alpha), \alpha) = 0\)</span> for all <span class="math inline">\(\ell\)</span>. Therefore the first sum vanishes and: <span class="math display">\[\frac{dV}{d\alpha_m} = \frac{\partial f}{\partial \alpha_m}(x^*(\alpha), \alpha). \qquad \blacksquare\]</span></p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-caution no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Caution</span>Remark
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The key insight is that we can ignore the indirect effect of <span class="math inline">\(\alpha\)</span> on <span class="math inline">\(V\)</span> through the optimal choice <span class="math inline">\(x^*(\alpha)\)</span>, because at the optimum the FOC guarantees that a marginal change in <span class="math inline">\(x\)</span> has zero first-order effect on <span class="math inline">\(f\)</span>. Only the <strong>direct</strong> effect of <span class="math inline">\(\alpha\)</span> on <span class="math inline">\(f\)</span> matters for the derivative of <span class="math inline">\(V\)</span>.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-important no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Theorem 1.15 — Envelope Theorem (Constrained Version, Theorem M.L.1)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Consider the parameterized constrained problem: <span class="math display">\[V(\alpha) = \max_{x} f(x, \alpha) \quad \text{s.t.} \quad g_k(x, \alpha) = 0, \; k = 1, \ldots, K.\]</span> Let <span class="math inline">\(\mathcal{L}(x, \lambda, \alpha) = f(x, \alpha) - \sum_k \lambda_k g_k(x, \alpha)\)</span>. Suppose <span class="math inline">\(x^*(\alpha)\)</span> and <span class="math inline">\(\lambda^*(\alpha)\)</span> are <span class="math inline">\(C^1\)</span> and satisfy the FOCs for all <span class="math inline">\(\alpha\)</span> near <span class="math inline">\(\alpha_0\)</span>. Then <span class="math inline">\(V\)</span> is differentiable at <span class="math inline">\(\alpha_0\)</span> and: <span class="math display">\[\frac{\partial V}{\partial \alpha_m}(\alpha_0) = \frac{\partial \mathcal{L}}{\partial \alpha_m}(x^*(\alpha_0), \lambda^*(\alpha_0), \alpha_0) = \frac{\partial f}{\partial \alpha_m}(x^*, \alpha_0) - \sum_{k=1}^K \lambda_k^* \frac{\partial g_k}{\partial \alpha_m}(x^*, \alpha_0).\]</span></p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-21-contents" aria-controls="callout-21" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Proof
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-21" class="callout-21-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>Step 1: Express <span class="math inline">\(V\)</span> in terms of the Lagrangian at the optimum.</strong> At the optimum, all constraints hold: <span class="math inline">\(g_k(x^*(\alpha), \alpha) = 0\)</span>. Therefore: <span class="math display">\[V(\alpha) = f(x^*(\alpha), \alpha) = \mathcal{L}(x^*(\alpha), \lambda^*(\alpha), \alpha)\]</span> (since the <span class="math inline">\(\lambda_k g_k\)</span> terms vanish at the constraint).</p>
+<p><strong>Step 2: Differentiate with respect to <span class="math inline">\(\alpha_m\)</span>.</strong> <span class="math display">\[\frac{dV}{d\alpha_m} = \frac{d}{d\alpha_m} \mathcal{L}(x^*(\alpha), \lambda^*(\alpha), \alpha)\]</span> <span class="math display">\[= \underbrace{\sum_\ell \frac{\partial \mathcal{L}}{\partial x_\ell} \frac{\partial x^*_\ell}{\partial \alpha_m}}_{=0 \text{ by FOC}} + \underbrace{\sum_k \frac{\partial \mathcal{L}}{\partial \lambda_k} \frac{\partial \lambda^*_k}{\partial \alpha_m}}_{=0 \text{ since } \partial \mathcal{L}/\partial \lambda_k = -g_k = 0} + \frac{\partial \mathcal{L}}{\partial \alpha_m}.\]</span> <strong>Explanation of zero terms:</strong> - <span class="math inline">\(\partial \mathcal{L} / \partial x_\ell = 0\)</span> at <span class="math inline">\((x^*, \lambda^*)\)</span> by the Lagrange FOC. - <span class="math inline">\(\partial \mathcal{L} / \partial \lambda_k = -g_k(x^*, \alpha) = 0\)</span> because the constraints hold at the optimum.</p>
+<p>Therefore: <span class="math inline">\(\displaystyle\frac{dV}{d\alpha_m} = \frac{\partial \mathcal{L}}{\partial \alpha_m}(x^*, \lambda^*, \alpha) = \frac{\partial f}{\partial \alpha_m}(x^*, \alpha) - \sum_k \lambda_k^* \frac{\partial g_k}{\partial \alpha_m}(x^*, \alpha).\)</span> <span class="math inline">\(\blacksquare\)</span></p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-caution no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Caution</span>Remark
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Economic applications of the Envelope Theorem:</strong></p>
+<ol type="1">
+<li><p><strong>Hotelling’s Lemma:</strong> Let <span class="math inline">\(\pi(p) = \max_y \{p \cdot y : y \in Y\}\)</span> be the profit function. The parameter is <span class="math inline">\(p_\ell\)</span>, the objective is <span class="math inline">\(\sum_j p_j y_j\)</span>, and there is no parameter-dependent constraint. By the unconstrained Envelope Theorem: <span class="math inline">\(\frac{\partial \pi}{\partial p_\ell} = y_\ell^*(p)\)</span> — the supply of good <span class="math inline">\(\ell\)</span> equals the derivative of the profit function.</p></li>
+<li><p><strong>Shephard’s Lemma:</strong> Let <span class="math inline">\(c(w, q) = \min_z \{w \cdot z : f(z) \geq q\}\)</span>. Treating the minimization as <span class="math inline">\(-c(w,q) = \max_z \{-w \cdot z : f(z) \geq q\}\)</span> with parameter <span class="math inline">\(w_\ell\)</span>: <span class="math inline">\(\frac{\partial c}{\partial w_\ell} = z_\ell^*(w,q)\)</span> — the conditional factor demand equals the derivative of the cost function.</p></li>
+<li><p><strong>Roy’s Identity:</strong> Let <span class="math inline">\(v(p,w) = \max_{p \cdot x \leq w} u(x)\)</span>. The budget constraint can be written <span class="math inline">\(p \cdot x - w = 0\)</span>; the Lagrangian is <span class="math inline">\(\mathcal{L} = u(x) - \lambda(p \cdot x - w)\)</span>. By the constrained Envelope Theorem: <span class="math inline">\(\frac{\partial v}{\partial p_\ell} = -\lambda^* x_\ell^*(p,w)\)</span> and <span class="math inline">\(\frac{\partial v}{\partial w} = \lambda^*\)</span>. Dividing: <span class="math inline">\(x_\ell^*(p,w) = -\frac{\partial v / \partial p_\ell}{\partial v / \partial w}\)</span> — Roy’s Identity.</p></li>
+</ol>
+</div>
+</div>
+<hr>
+</section>
+<section id="economic-intuition" class="level2" data-number="6.4">
+<h2 data-number="6.4" class="anchored" data-anchor-id="economic-intuition"><span class="header-section-number">6.4</span> Economic Intuition</h2>
+<p>The central insight of the Envelope Theorem is the principle of “optimized-out” indirect effects. When an agent is already at an optimum, a small change in a parameter can affect welfare both directly (the new parameter changes the objective function for fixed choices) and indirectly (the agent re-optimizes). But at an optimum, the first-order effect of re-optimizing is exactly zero — the agent’s FOC says that small changes in the choice variable have zero first-order effect on the objective. This is why only the direct effect survives in the Envelope Theorem.</p>
+<p>This has a profound practical implication for model-building: to derive how a value function responds to a parameter (e.g., how welfare responds to a price change, how cost responds to a wage change), you do not need to solve for how optimal choices respond to the parameter — you only need to differentiate the objective function directly with respect to the parameter, holding optimal choices fixed. This dramatically simplifies comparative statics.</p>
+<p>The Kuhn-Tucker multipliers have a clean economic interpretation via the Envelope Theorem: <span class="math inline">\(\lambda_k^*\)</span> is the marginal value (in terms of the objective function) of relaxing constraint <span class="math inline">\(k\)</span> by one unit. In consumer theory, the multiplier on the budget constraint is the <strong>marginal utility of wealth</strong> <span class="math inline">\(\lambda^* = \partial v / \partial w\)</span>: how much utility increases per unit of additional wealth. This allows the shadow price interpretation of Lagrange multipliers to be made rigorous.</p>
+<div class="callout callout-style-simple callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Example
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>CES expenditure function.</strong> Let <span class="math inline">\(u(x_1, x_2) = (x_1^\rho + x_2^\rho)^{1/\rho}\)</span> with <span class="math inline">\(\rho \leq 1\)</span>, <span class="math inline">\(\rho \neq 0\)</span> (CES utility with elasticity of substitution <span class="math inline">\(\sigma = 1/(1-\rho)\)</span>). The expenditure function is <span class="math inline">\(e(p,u) = u \cdot (p_1^{\rho/(\rho-1)} + p_2^{\rho/(\rho-1)})^{(\rho-1)/\rho}\)</span>. By Shephard’s Lemma (Envelope Theorem applied to the EMP): <span class="math display">\[h_1(p,u) = \frac{\partial e}{\partial p_1} = u \cdot \frac{p_1^{1/(\rho-1)}}{(p_1^{\rho/(\rho-1)} + p_2^{\rho/(\rho-1)})^{1/\rho}},\]</span> which is the Hicksian demand for good 1. Note: this required only differentiating <span class="math inline">\(e\)</span>, not re-solving the EMP.</p>
+</div>
+</div>
+<hr>
+</section>
+<section id="cross-references" class="level2" data-number="6.5">
+<h2 data-number="6.5" class="anchored" data-anchor-id="cross-references"><span class="header-section-number">6.5</span> Cross-References</h2>
+<ul>
+<li><a href="../Part_I_Mathematical_Foundations/1.1_Metric_Spaces_and_Topology.html">1.1 Metric Spaces and Topology</a> — Weierstrass (Theorem 1.5) guarantees existence of optima; quasi-concavity of preferences relates to convex upper contour sets defined using the topology here.</li>
+<li><a href="../Part_I_Mathematical_Foundations/1.2_Correspondences_and_Hemicontinuity.html">1.2 Correspondences and Hemicontinuity</a> — Berge’s Theorem (Theorem 1.8) gives continuity of <span class="math inline">\(V\)</span>; the Envelope Theorem gives differentiability of <span class="math inline">\(V\)</span> under stronger assumptions.</li>
+<li><a href="../Part_I_Mathematical_Foundations/1.4_Fixed_Point_Theorems.html">1.4 Fixed Point Theorems</a> — KKT conditions characterize fixed points of best-response maps in game theory.</li>
+<li><a href="../Part_II_Consumer_Theory/Index.qmd">Index</a> — Roy’s Identity, Slutsky equation, and duality (UMP/EMP) all follow from Envelope Theorem applications.</li>
+<li><a href="../Part_III_Producer_Theory/Index.qmd">Index</a> — Hotelling’s Lemma and Shephard’s Lemma are direct Envelope Theorem applications.</li>
+</ul>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+            // default icon
+            link.classList.add("external");
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../Part_I_Mathematical_Foundations/1.2_Correspondences_and_Hemicontinuity.html" class="pagination-link" aria-label="1.2 Correspondences and Hemicontinuity">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">1.2 Correspondences and Hemicontinuity</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../Part_I_Mathematical_Foundations/1.4_Fixed_Point_Theorems.html" class="pagination-link" aria-label="1.4 Fixed-Point Theorems">
+        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">1.4 Fixed-Point Theorems</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/andbbus/grad-micro-notes/edit/main/Part_I_Mathematical_Foundations/1.3_Optimization_Theory.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/andbbus/grad-micro-notes/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer><script src="../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

@@ -1,0 +1,1542 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.36">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>3&nbsp; 1.1 Metric Spaces and Topology – Graduate Microeconomic Theory</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../Part_I_Mathematical_Foundations/1.2_Correspondences_and_Hemicontinuity.html" rel="next">
+<link href="../Part_I_Mathematical_Foundations/index.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-44c2c454a7ec14b8e9312150d2b271b4.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar docked nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Graduate Microeconomic Theory</span>
+    </a>
+  </div>
+        <div class="quarto-navbar-tools tools-end">
+    <a href="https://github.com/andbbus/grad-micro-notes" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+</div>
+          <div id="quarto-search" class="" title="Search"></div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../Part_I_Mathematical_Foundations/index.html">Part I — Mathematical Foundations</a></li><li class="breadcrumb-item"><a href="../Part_I_Mathematical_Foundations/1.1_Metric_Spaces_and_Topology.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">1.1 Metric Spaces and Topology</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Microeconomics Program Overview</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part I — Mathematical Foundations</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_I_Mathematical_Foundations/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Part I: Mathematical Foundations — Index</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_I_Mathematical_Foundations/1.1_Metric_Spaces_and_Topology.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">1.1 Metric Spaces and Topology</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_I_Mathematical_Foundations/1.2_Correspondences_and_Hemicontinuity.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">1.2 Correspondences and Hemicontinuity</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_I_Mathematical_Foundations/1.3_Optimization_Theory.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">1.3 Optimization Theory</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_I_Mathematical_Foundations/1.4_Fixed_Point_Theorems.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">1.4 Fixed-Point Theorems</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part II — Consumer Theory</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_II_Consumer_Theory/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Part II — Consumer Theory: Index</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_II_Consumer_Theory/2.1_Preference_Relations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">2.1 — Preference Relations</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_II_Consumer_Theory/2.2_Utility_Representation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">2.2 — Utility Representation</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_II_Consumer_Theory/2.3_Utility_Maximization_Problem.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">2.3 — The Utility Maximization Problem (UMP)</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_II_Consumer_Theory/2.4_Expenditure_Minimization.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">2.4 — The Expenditure Minimization Problem (EMP)</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_II_Consumer_Theory/2.5_Duality_and_Slutsky.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">2.5 — Duality and the Slutsky Equation</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_II_Consumer_Theory/2.6_Revealed_Preference.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">2.6 — Revealed Preference</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_II_Consumer_Theory/2.7_Integrability.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">2.7 — Integrability</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_II_Consumer_Theory/2.8_Aggregate_Demand.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">2.8 — Aggregate Demand and Gorman Aggregation</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_II_Consumer_Theory/PS_Consumer_Theory.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Problem Set — Part II: Consumer Theory</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part III — Producer Theory</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_III_Producer_Theory/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Part III: Producer Theory — Overview</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_III_Producer_Theory/3.1_Production_Sets.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">3.1 Production Sets and Technology</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_III_Producer_Theory/3.2_Profit_Maximization.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">3.2 Profit Maximization</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_III_Producer_Theory/3.3_Cost_Minimization.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">3.3 Cost Minimization</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_III_Producer_Theory/3.4_Supply_and_Factor_Demands.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">3.4 Supply and Factor Demands</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_III_Producer_Theory/PS_Producer_Theory.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Problem Set: Producer Theory</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part IV — Choice Under Uncertainty</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IV_Choice_Under_Uncertainty/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Part IV: Choice Under Uncertainty — Overview</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IV_Choice_Under_Uncertainty/4.1_State_Space_Framework.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">4.1 The State Space Framework and Axioms</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IV_Choice_Under_Uncertainty/4.2_Expected_Utility_Theory.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">4.2 Expected Utility Theory</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IV_Choice_Under_Uncertainty/4.3_Risk_Aversion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">4.3 Risk Aversion</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IV_Choice_Under_Uncertainty/4.4_Stochastic_Dominance.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">4.4 Stochastic Dominance</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IV_Choice_Under_Uncertainty/PS_Uncertainty.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Problem Set: Choice Under Uncertainty</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part V — Game Theory</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_V_Game_Theory/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">Part V — Game Theory</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_V_Game_Theory/5.1_Normal_Form_Games.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">30</span>&nbsp; <span class="chapter-title">5.1 Normal Form Games</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_V_Game_Theory/5.2_Nash_Equilibrium.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">31</span>&nbsp; <span class="chapter-title">5.2 Nash Equilibrium</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_V_Game_Theory/5.3_Mixed_Strategies.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">32</span>&nbsp; <span class="chapter-title">5.3 Mixed Strategies</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_V_Game_Theory/5.4_Extensive_Form_Games.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">33</span>&nbsp; <span class="chapter-title">5.4 Extensive Form Games</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_V_Game_Theory/5.5_Subgame_Perfect_Equilibrium.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">34</span>&nbsp; <span class="chapter-title">5.5 Subgame Perfect Equilibrium</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_V_Game_Theory/5.6_Repeated_Games.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">35</span>&nbsp; <span class="chapter-title">5.6 Repeated Games</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_V_Game_Theory/5.7_Bayesian_Games.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">36</span>&nbsp; <span class="chapter-title">5.7 Bayesian Games</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_V_Game_Theory/PS_Game_Theory.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">37</span>&nbsp; <span class="chapter-title">Problem Set — Part V: Game Theory</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part VI — General Equilibrium</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VI_General_Equilibrium/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">38</span>&nbsp; <span class="chapter-title">Part VI — General Equilibrium</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VI_General_Equilibrium/6.1_Exchange_Economies.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">39</span>&nbsp; <span class="chapter-title">6.1 Exchange Economies</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VI_General_Equilibrium/6.2_Arrow_Debreu_Economy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">40</span>&nbsp; <span class="chapter-title">6.2 The Arrow-Debreu Economy</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VI_General_Equilibrium/6.3_Existence_of_Equilibrium.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">41</span>&nbsp; <span class="chapter-title">6.3 Existence of Walrasian Equilibrium</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VI_General_Equilibrium/6.4_Welfare_Theorems.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">42</span>&nbsp; <span class="chapter-title">6.4 Welfare Theorems</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VI_General_Equilibrium/6.5_Externalities_and_Public_Goods.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">43</span>&nbsp; <span class="chapter-title">6.5 Externalities and Public Goods</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VI_General_Equilibrium/PS_General_Equilibrium.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">44</span>&nbsp; <span class="chapter-title">Problem Set — Part VI: General Equilibrium</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part VII — Information and Incentives</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VII_Information_and_Incentives/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">45</span>&nbsp; <span class="chapter-title">Part VII — Information and Incentives</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VII_Information_and_Incentives/7.1_Principal_Agent_Problem.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">46</span>&nbsp; <span class="chapter-title">7.1 — The Principal-Agent Problem</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VII_Information_and_Incentives/7.2_Moral_Hazard.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">47</span>&nbsp; <span class="chapter-title">7.2 — Moral Hazard</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VII_Information_and_Incentives/7.3_Adverse_Selection_and_Screening.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">48</span>&nbsp; <span class="chapter-title">7.3 — Adverse Selection and Screening</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VII_Information_and_Incentives/7.4_Signaling.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">49</span>&nbsp; <span class="chapter-title">7.4 — Signaling</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VII_Information_and_Incentives/7.5_Mechanism_Design.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">50</span>&nbsp; <span class="chapter-title">7.5 — Mechanism Design</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VII_Information_and_Incentives/7.6_Prediction_Markets_and_Information_Aggregation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">51</span>&nbsp; <span class="chapter-title">7.6 — Prediction Markets and Information Aggregation</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VII_Information_and_Incentives/PS_Information.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">52</span>&nbsp; <span class="chapter-title">Problem Set — Part VII: Information and Incentives</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part VIII — Social Choice</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VIII_Social_Choice/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">53</span>&nbsp; <span class="chapter-title">Part VIII — Social Choice Theory</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VIII_Social_Choice/8.1_Social_Welfare_Functions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">54</span>&nbsp; <span class="chapter-title">8.1 Social Welfare Functions</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VIII_Social_Choice/8.2_Arrows_Impossibility_Theorem.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">55</span>&nbsp; <span class="chapter-title">8.2 Arrow’s Impossibility Theorem</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VIII_Social_Choice/8.3_Welfare_Criteria.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">56</span>&nbsp; <span class="chapter-title">8.3 Welfare Criteria and Compensation Principles</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VIII_Social_Choice/PS_Social_Choice.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">57</span>&nbsp; <span class="chapter-title">Problem Set — Part VIII: Social Choice</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part IX — Model Building for Empirics</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IX_Model_Building_for_Empirics/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">58</span>&nbsp; <span class="chapter-title">Part IX — Model Building for Empirics</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IX_Model_Building_for_Empirics/9.1_Anatomy_of_a_Theoretical_Model.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">59</span>&nbsp; <span class="chapter-title">9.1 — Anatomy of a Theoretical Model</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IX_Model_Building_for_Empirics/9.2_Equilibrium_Concepts_and_Selection.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">60</span>&nbsp; <span class="chapter-title">9.2 — Equilibrium Concepts and Selection</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IX_Model_Building_for_Empirics/9.3_Comparative_Statics_Methodology.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">61</span>&nbsp; <span class="chapter-title">9.3 — Comparative Statics Methodology</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IX_Model_Building_for_Empirics/9.4_Deriving_Testable_Predictions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">62</span>&nbsp; <span class="chapter-title">9.4 — Deriving Testable Predictions</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IX_Model_Building_for_Empirics/9.5_Structural_vs_Reduced_Form.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">63</span>&nbsp; <span class="chapter-title">9.5 — Structural vs.&nbsp;Reduced Form</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IX_Model_Building_for_Empirics/9.6_Identification_in_Structural_Models.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">64</span>&nbsp; <span class="chapter-title">9.6 — Identification in Structural Models</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IX_Model_Building_for_Empirics/9.7_Model_Discipline_and_Tractability.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">65</span>&nbsp; <span class="chapter-title">9.7 — Model Discipline and Tractability</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IX_Model_Building_for_Empirics/APP_Conflict_and_Resource_Models.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">66</span>&nbsp; <span class="chapter-title">APP — Conflict and Resource Models</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IX_Model_Building_for_Empirics/APP_Trade_and_Price_Shock_Models.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">67</span>&nbsp; <span class="chapter-title">APP — Trade and Price Shock Models</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IX_Model_Building_for_Empirics/APP_Prediction_Markets_and_Signals.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">68</span>&nbsp; <span class="chapter-title">APP — Prediction Markets and Signals</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IX_Model_Building_for_Empirics/PS_Model_Building.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">69</span>&nbsp; <span class="chapter-title">Problem Set — Part IX: Model Building for Empirics</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#metric-spaces-and-topology" id="toc-metric-spaces-and-topology" class="nav-link active" data-scroll-target="#metric-spaces-and-topology"><span class="header-section-number">4</span> 1.1 Metric Spaces and Topology</a>
+  <ul class="collapse">
+  <li><a href="#context" id="toc-context" class="nav-link" data-scroll-target="#context"><span class="header-section-number">4.1</span> Context</a></li>
+  <li><a href="#definitions" id="toc-definitions" class="nav-link" data-scroll-target="#definitions"><span class="header-section-number">4.2</span> Definitions</a></li>
+  <li><a href="#main-results" id="toc-main-results" class="nav-link" data-scroll-target="#main-results"><span class="header-section-number">4.3</span> Main Results</a></li>
+  <li><a href="#economic-intuition" id="toc-economic-intuition" class="nav-link" data-scroll-target="#economic-intuition"><span class="header-section-number">4.4</span> Economic Intuition</a></li>
+  <li><a href="#cross-references" id="toc-cross-references" class="nav-link" data-scroll-target="#cross-references"><span class="header-section-number">4.5</span> Cross-References</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/andbbus/grad-micro-notes/edit/main/Part_I_Mathematical_Foundations/1.1_Metric_Spaces_and_Topology.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/andbbus/grad-micro-notes/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../Part_I_Mathematical_Foundations/index.html">Part I — Mathematical Foundations</a></li><li class="breadcrumb-item"><a href="../Part_I_Mathematical_Foundations/1.1_Metric_Spaces_and_Topology.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">1.1 Metric Spaces and Topology</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">1.1 Metric Spaces and Topology</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="metric-spaces-and-topology" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> 1.1 Metric Spaces and Topology</h1>
+<blockquote class="blockquote">
+<p><strong>MWG Reference:</strong> Mathematical Appendix, Sections M.A–M.C, M.F–M.G, pp.&nbsp;940–951, 954–959</p>
+</blockquote>
+<section id="context" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="context"><span class="header-section-number">4.1</span> Context</h2>
+<p>The purpose of this note is to establish the topological foundations on which all of microeconomic theory rests. The central concern is: under what conditions does an optimization problem have a solution? The answer, given by the Weierstrass Maximum Theorem, requires the domain to be compact and the objective function to be continuous. Understanding what these conditions mean, why they are needed, and how to verify them in economic applications is the primary goal of this note. The note proceeds from metric spaces through open and closed sets, convergence, compactness (with the Heine-Borel characterization), and continuity, culminating in the Weierstrass theorem and its economic applications. Convex sets are introduced at the end because convexity of budget sets and production sets is a standing assumption throughout the program; the relationship between compactness and convexity also matters for the fixed-point theorems in Note 1.4.</p>
+<hr>
+</section>
+<section id="definitions" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="definitions"><span class="header-section-number">4.2</span> Definitions</h2>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Definition 1.1 — Metric Space
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A <strong>metric space</strong> is a pair <span class="math inline">\((X, d)\)</span> where <span class="math inline">\(X\)</span> is a nonempty set and <span class="math inline">\(d: X \times X \to \mathbb{R}_+\)</span> is a <strong>metric</strong> (distance function) satisfying, for all <span class="math inline">\(x, y, z \in X\)</span>: 1. <strong>(Nonnegativity)</strong> <span class="math inline">\(d(x, y) \geq 0\)</span>, with <span class="math inline">\(d(x, y) = 0\)</span> if and only if <span class="math inline">\(x = y\)</span>. 2. <strong>(Symmetry)</strong> <span class="math inline">\(d(x, y) = d(y, x)\)</span>. 3. <strong>(Triangle inequality)</strong> <span class="math inline">\(d(x, z) \leq d(x, y) + d(y, z)\)</span>.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-caution no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Caution</span>Remark
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The canonical example throughout this program is <span class="math inline">\((\mathbb{R}^L, d_E)\)</span> with the <strong>Euclidean metric</strong> <span class="math inline">\(d_E(x, y) = \|x - y\| = \left(\sum_{\ell=1}^L (x_\ell - y_\ell)^2\right)^{1/2}\)</span>. This metric generates the standard topology on <span class="math inline">\(\mathbb{R}^L\)</span> that underlies all of consumer and producer theory. Other metrics on <span class="math inline">\(\mathbb{R}^L\)</span> (e.g., the sup-norm <span class="math inline">\(d_\infty(x,y) = \max_\ell |x_\ell - y_\ell|\)</span>) generate the same topology (they are equivalent), so topological properties such as compactness and continuity are unaffected by the choice among them.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Definition 1.2 — Open and Closed Balls
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Let <span class="math inline">\((X, d)\)</span> be a metric space, <span class="math inline">\(x \in X\)</span>, and <span class="math inline">\(\varepsilon &gt; 0\)</span>. The <strong>open ball</strong> of radius <span class="math inline">\(\varepsilon\)</span> centered at <span class="math inline">\(x\)</span> is: <span class="math display">\[B_\varepsilon(x) = \{ y \in X : d(x, y) &lt; \varepsilon \}.\]</span> The <strong>closed ball</strong> is <span class="math inline">\(\bar{B}_\varepsilon(x) = \{ y \in X : d(x, y) \leq \varepsilon \}\)</span>.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Definition 1.3 — Open Sets and Closed Sets
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Let <span class="math inline">\((X, d)\)</span> be a metric space. - A set <span class="math inline">\(U \subseteq X\)</span> is <strong>open</strong> if for every <span class="math inline">\(x \in U\)</span> there exists <span class="math inline">\(\varepsilon &gt; 0\)</span> such that <span class="math inline">\(B_\varepsilon(x) \subseteq U\)</span>. - A set <span class="math inline">\(F \subseteq X\)</span> is <strong>closed</strong> if its complement <span class="math inline">\(X \setminus F\)</span> is open; equivalently, <span class="math inline">\(F\)</span> contains all its limit points (see Definition 1.4). - The <strong>interior</strong> of <span class="math inline">\(A \subseteq X\)</span> is <span class="math inline">\(\text{int}(A) = \bigcup \{U \subseteq A : U \text{ open}\}\)</span>. - The <strong>closure</strong> of <span class="math inline">\(A\)</span> is <span class="math inline">\(\bar{A} = \bigcap \{F \supseteq A : F \text{ closed}\}\)</span>. - The <strong>boundary</strong> of <span class="math inline">\(A\)</span> is <span class="math inline">\(\partial A = \bar{A} \setminus \text{int}(A)\)</span>.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-caution no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Caution</span>Remark
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>In <span class="math inline">\(\mathbb{R}^L\)</span>: the open orthant <span class="math inline">\(\mathbb{R}^L_{++} = \{x : x_\ell &gt; 0 \; \forall \ell\}\)</span> is open; the closed orthant <span class="math inline">\(\mathbb{R}^L_+ = \{x : x_\ell \geq 0 \; \forall \ell\}\)</span> is closed. The budget set <span class="math inline">\(\{x \in \mathbb{R}^L_+ : p \cdot x \leq w\}\)</span> is closed (and, as we shall see, bounded, hence compact). The strict budget set <span class="math inline">\(\{x \in \mathbb{R}^L_+ : p \cdot x &lt; w\}\)</span> is not closed.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Definition 1.4 — Convergence and Limit Points
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Let <span class="math inline">\((X, d)\)</span> be a metric space. A sequence <span class="math inline">\((x_n)_{n=1}^\infty\)</span> in <span class="math inline">\(X\)</span> <strong>converges</strong> to <span class="math inline">\(x \in X\)</span>, written <span class="math inline">\(x_n \to x\)</span>, if: <span class="math display">\[\forall \varepsilon &gt; 0, \; \exists N \in \mathbb{N} \text{ such that } n \geq N \implies d(x_n, x) &lt; \varepsilon.\]</span> The point <span class="math inline">\(x\)</span> is called the <strong>limit</strong> of the sequence. A point <span class="math inline">\(x \in X\)</span> is a <strong>limit point</strong> (or accumulation point) of <span class="math inline">\(A \subseteq X\)</span> if every open ball <span class="math inline">\(B_\varepsilon(x)\)</span> contains a point of <span class="math inline">\(A\)</span> different from <span class="math inline">\(x\)</span>.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Definition 1.5 — Cauchy Sequence and Completeness
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A sequence <span class="math inline">\((x_n)\)</span> in <span class="math inline">\((X, d)\)</span> is a <strong>Cauchy sequence</strong> if: <span class="math display">\[\forall \varepsilon &gt; 0, \; \exists N \in \mathbb{N} \text{ such that } m, n \geq N \implies d(x_m, x_n) &lt; \varepsilon.\]</span> A metric space <span class="math inline">\((X, d)\)</span> is <strong>complete</strong> if every Cauchy sequence in <span class="math inline">\(X\)</span> converges to a point in <span class="math inline">\(X\)</span>.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-caution no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Caution</span>Remark
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><span class="math inline">\((\mathbb{R}^L, d_E)\)</span> is complete (this follows from the completeness of <span class="math inline">\(\mathbb{R}\)</span>, which in turn follows from the least upper bound property). Closed subsets of complete metric spaces are complete. This fact is used implicitly whenever we work with closed constraint sets.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Definition 1.6 — Compactness
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A subset <span class="math inline">\(K \subseteq X\)</span> is <strong>compact</strong> if every open cover of <span class="math inline">\(K\)</span> has a finite subcover. That is, <span class="math inline">\(K\)</span> is compact if for every collection of open sets <span class="math inline">\(\{U_\alpha\}_{\alpha \in \mathcal{A}}\)</span> with <span class="math inline">\(K \subseteq \bigcup_\alpha U_\alpha\)</span>, there exist finitely many indices <span class="math inline">\(\alpha_1, \ldots, \alpha_n\)</span> such that <span class="math inline">\(K \subseteq U_{\alpha_1} \cup \cdots \cup U_{\alpha_n}\)</span>.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Definition 1.7 — Sequential Compactness
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A subset <span class="math inline">\(K \subseteq X\)</span> is <strong>sequentially compact</strong> if every sequence in <span class="math inline">\(K\)</span> has a subsequence that converges to a point in <span class="math inline">\(K\)</span>.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Definition 1.8 — Continuity
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Let <span class="math inline">\((X, d_X)\)</span> and <span class="math inline">\((Y, d_Y)\)</span> be metric spaces. A function <span class="math inline">\(f: X \to Y\)</span> is <strong>continuous at <span class="math inline">\(x \in X\)</span></strong> if: <span class="math display">\[\forall \varepsilon &gt; 0, \; \exists \delta &gt; 0 \text{ such that } d_X(x, x') &lt; \delta \implies d_Y(f(x), f(x')) &lt; \varepsilon.\]</span> The function <span class="math inline">\(f\)</span> is <strong>continuous</strong> (on <span class="math inline">\(X\)</span>) if it is continuous at every <span class="math inline">\(x \in X\)</span>.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Definition 1.9 — Convex Set
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A set <span class="math inline">\(C \subseteq \mathbb{R}^L\)</span> is <strong>convex</strong> if for all <span class="math inline">\(x, y \in C\)</span> and all <span class="math inline">\(\lambda \in [0, 1]\)</span>: <span class="math display">\[\lambda x + (1 - \lambda) y \in C.\]</span> A <strong>convex combination</strong> of points <span class="math inline">\(x^1, \ldots, x^K \in \mathbb{R}^L\)</span> is any point <span class="math inline">\(\sum_{k=1}^K \lambda_k x^k\)</span> with <span class="math inline">\(\lambda_k \geq 0\)</span> and <span class="math inline">\(\sum_k \lambda_k = 1\)</span>. The <strong>convex hull</strong> of a set <span class="math inline">\(A\)</span> is the smallest convex set containing <span class="math inline">\(A\)</span>: <span class="math inline">\(\text{co}(A) = \bigcap \{C \supseteq A : C \text{ convex}\}\)</span>.</p>
+</div>
+</div>
+<hr>
+</section>
+<section id="main-results" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="main-results"><span class="header-section-number">4.3</span> Main Results</h2>
+<div class="callout callout-style-default callout-important no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Theorem 1.1 — Heine-Borel Theorem
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A subset <span class="math inline">\(K \subseteq \mathbb{R}^L\)</span> (with the Euclidean metric) is compact if and only if it is <strong>closed and bounded</strong>.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Proof
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-14" class="callout-14-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>We prove both directions.</p>
+<p><strong>(<span class="math inline">\(\Rightarrow\)</span>) Compact implies closed and bounded.</strong></p>
+<p><em>Closed:</em> Let <span class="math inline">\((x_n)\)</span> be any sequence in <span class="math inline">\(K\)</span> converging to some <span class="math inline">\(x \in \mathbb{R}^L\)</span>. We must show <span class="math inline">\(x \in K\)</span>. Since <span class="math inline">\(x_n \to x\)</span>, for every <span class="math inline">\(\varepsilon &gt; 0\)</span> there exists <span class="math inline">\(N\)</span> such that <span class="math inline">\(n \geq N\)</span> implies <span class="math inline">\(x_n \in B_\varepsilon(x)\)</span>. In particular, <span class="math inline">\(B_\varepsilon(x)\)</span> intersects <span class="math inline">\(K\)</span> for every <span class="math inline">\(\varepsilon &gt; 0\)</span>, so <span class="math inline">\(x\)</span> is a limit point of <span class="math inline">\(K\)</span>. In a compact Hausdorff space (and metric spaces are Hausdorff), compact sets are closed. More directly: suppose <span class="math inline">\(x \notin K\)</span>. Then for each <span class="math inline">\(y \in K\)</span>, let <span class="math inline">\(\varepsilon_y = d(x, y)/2 &gt; 0\)</span>. The balls <span class="math inline">\(\{B_{\varepsilon_y}(y)\}_{y \in K}\)</span> cover <span class="math inline">\(K\)</span>, so by compactness there is a finite subcover: <span class="math inline">\(K \subseteq B_{\varepsilon_{y_1}}(y_1) \cup \cdots \cup B_{\varepsilon_{y_n}}(y_n)\)</span>. Let <span class="math inline">\(\delta = \min_i \varepsilon_{y_i} &gt; 0\)</span>. Then <span class="math inline">\(B_\delta(x)\)</span> is disjoint from <span class="math inline">\(K\)</span> (by the triangle inequality), contradicting that <span class="math inline">\(x\)</span> is a limit point. So <span class="math inline">\(x \in K\)</span>.</p>
+<p><em>Bounded:</em> Cover <span class="math inline">\(K\)</span> by the open balls <span class="math inline">\(\{B_1(y)\}_{y \in K}\)</span>. By compactness, a finite subcollection <span class="math inline">\(B_1(y_1), \ldots, B_1(y_n)\)</span> covers <span class="math inline">\(K\)</span>. Let <span class="math inline">\(M = \max_i \|y_i\| + 1\)</span>. Then every <span class="math inline">\(x \in K\)</span> satisfies <span class="math inline">\(\|x\| \leq \max_i \|x - y_i\| + \|y_i\| &lt; 1 + \max_i \|y_i\| = M\)</span>. So <span class="math inline">\(K\)</span> is bounded.</p>
+<p><strong>(<span class="math inline">\(\Leftarrow\)</span>) Closed and bounded implies compact.</strong></p>
+<p>Since <span class="math inline">\(K\)</span> is bounded, <span class="math inline">\(K \subseteq [-M, M]^L\)</span> for some <span class="math inline">\(M &gt; 0\)</span>. It suffices to show <span class="math inline">\([-M,M]^L\)</span> is compact (then <span class="math inline">\(K\)</span>, being a closed subset of a compact set, is compact). We use the <strong>sequential characterization</strong>: in a metric space, compactness and sequential compactness are equivalent (this is a standard result in analysis; proof omitted here but available in Rudin Ch. 3).</p>
+<p>Let <span class="math inline">\((x_n)\)</span> be any sequence in <span class="math inline">\([-M, M]^L\)</span>. Since each coordinate sequence <span class="math inline">\((x_{n,\ell})\)</span> is bounded in <span class="math inline">\(\mathbb{R}\)</span>, by the Bolzano-Weierstrass theorem (every bounded sequence in <span class="math inline">\(\mathbb{R}\)</span> has a convergent subsequence), we can extract a convergent subsequence for coordinate 1. From that subsequence, extract a further subsequence converging in coordinate 2. Iterate for all <span class="math inline">\(L\)</span> coordinates. The resulting subsequence <span class="math inline">\((x_{n_k})\)</span> converges in all <span class="math inline">\(L\)</span> coordinates, hence converges in <span class="math inline">\(\mathbb{R}^L\)</span>. Its limit lies in <span class="math inline">\([-M, M]^L\)</span> (since each coordinate limit lies in <span class="math inline">\([-M, M]\)</span>). Since <span class="math inline">\(K\)</span> is closed and <span class="math inline">\((x_{n_k}) \subseteq K\)</span> converges to a point in <span class="math inline">\([-M,M]^L\)</span>, that limit point also lies in <span class="math inline">\(K\)</span>. Thus every sequence in <span class="math inline">\(K\)</span> has a subsequence converging in <span class="math inline">\(K\)</span>, so <span class="math inline">\(K\)</span> is sequentially compact, hence compact. <span class="math inline">\(\blacksquare\)</span></p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-caution no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Caution</span>Remark
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The Heine-Borel theorem is specific to <span class="math inline">\(\mathbb{R}^L\)</span> (finite-dimensional Euclidean space). In infinite-dimensional spaces (e.g., the space of continuous functions <span class="math inline">\(C([0,1])\)</span> with the sup-norm), closed and bounded sets are not in general compact. This distinction matters for dynamic models or models with infinite commodity spaces.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-important no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Theorem 1.2 — Equivalence of Compactness and Sequential Compactness (Metric Spaces)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>In any metric space <span class="math inline">\((X, d)\)</span>, a set <span class="math inline">\(K \subseteq X\)</span> is compact if and only if it is sequentially compact.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-17-contents" aria-controls="callout-17" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Proof
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-17" class="callout-17-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>This is a standard result. The proof that compact implies sequentially compact proceeds by contradiction: if a sequence had no convergent subsequence, one constructs an open cover with no finite subcover. The converse uses the totality of metric spaces (existence of <span class="math inline">\(\varepsilon\)</span>-nets). We refer to Rudin (1976, Theorem 3.16) for the complete proof and use the result freely throughout this program. <span class="math inline">\(\blacksquare\)</span></p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-important no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Theorem 1.3 — Continuity Preserves Compactness
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Let <span class="math inline">\(f: X \to Y\)</span> be continuous and <span class="math inline">\(K \subseteq X\)</span> compact. Then <span class="math inline">\(f(K) = \{f(x) : x \in K\}\)</span> is compact in <span class="math inline">\(Y\)</span>.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-19-contents" aria-controls="callout-19" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Proof
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-19" class="callout-19-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Let <span class="math inline">\(\{V_\alpha\}\)</span> be an open cover of <span class="math inline">\(f(K)\)</span>. Since <span class="math inline">\(f\)</span> is continuous, <span class="math inline">\(f^{-1}(V_\alpha)\)</span> is open in <span class="math inline">\(X\)</span> for each <span class="math inline">\(\alpha\)</span>, and <span class="math inline">\(\{f^{-1}(V_\alpha)\}\)</span> covers <span class="math inline">\(K\)</span>. By compactness of <span class="math inline">\(K\)</span>, a finite subcollection <span class="math inline">\(f^{-1}(V_{\alpha_1}), \ldots, f^{-1}(V_{\alpha_n})\)</span> covers <span class="math inline">\(K\)</span>. Then <span class="math inline">\(V_{\alpha_1}, \ldots, V_{\alpha_n}\)</span> covers <span class="math inline">\(f(K)\)</span>. <span class="math inline">\(\blacksquare\)</span></p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-important no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Theorem 1.4 — Sequential Characterization of Continuity
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A function <span class="math inline">\(f: X \to Y\)</span> between metric spaces is continuous at <span class="math inline">\(x \in X\)</span> if and only if for every sequence <span class="math inline">\(x_n \to x\)</span> in <span class="math inline">\(X\)</span>, <span class="math inline">\(f(x_n) \to f(x)\)</span> in <span class="math inline">\(Y\)</span>.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-21-contents" aria-controls="callout-21" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Proof
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-21" class="callout-21-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>(<span class="math inline">\(\Rightarrow\)</span>)</strong> Suppose <span class="math inline">\(f\)</span> is continuous at <span class="math inline">\(x\)</span> and <span class="math inline">\(x_n \to x\)</span>. Given <span class="math inline">\(\varepsilon &gt; 0\)</span>, continuity gives <span class="math inline">\(\delta &gt; 0\)</span> with <span class="math inline">\(d_X(x', x) &lt; \delta \implies d_Y(f(x'), f(x)) &lt; \varepsilon\)</span>. Since <span class="math inline">\(x_n \to x\)</span>, there exists <span class="math inline">\(N\)</span> with <span class="math inline">\(n \geq N \implies d_X(x_n, x) &lt; \delta\)</span>, hence <span class="math inline">\(d_Y(f(x_n), f(x)) &lt; \varepsilon\)</span>.</p>
+<p><strong>(<span class="math inline">\(\Leftarrow\)</span>)</strong> Suppose <span class="math inline">\(f\)</span> is not continuous at <span class="math inline">\(x\)</span>. Then <span class="math inline">\(\exists \varepsilon &gt; 0\)</span> such that for every <span class="math inline">\(\delta &gt; 0\)</span>, <span class="math inline">\(\exists x' \in X\)</span> with <span class="math inline">\(d_X(x', x) &lt; \delta\)</span> but <span class="math inline">\(d_Y(f(x'), f(x)) \geq \varepsilon\)</span>. Taking <span class="math inline">\(\delta = 1/n\)</span> gives a sequence <span class="math inline">\(x_n\)</span> with <span class="math inline">\(d_X(x_n, x) &lt; 1/n\)</span> (so <span class="math inline">\(x_n \to x\)</span>) but <span class="math inline">\(d_Y(f(x_n), f(x)) \geq \varepsilon\)</span> for all <span class="math inline">\(n\)</span>. Thus <span class="math inline">\(f(x_n) \not\to f(x)\)</span>. <span class="math inline">\(\blacksquare\)</span></p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-important no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Theorem 1.5 — Weierstrass Maximum Theorem (Proposition M.F.2)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Let <span class="math inline">\(X \subseteq \mathbb{R}^L\)</span> be nonempty and compact, and let <span class="math inline">\(f: X \to \mathbb{R}\)</span> be continuous. Then: 1. <span class="math inline">\(f\)</span> is bounded above and below on <span class="math inline">\(X\)</span>. 2. <span class="math inline">\(f\)</span> attains its maximum: <span class="math inline">\(\exists x^* \in X\)</span> such that <span class="math inline">\(f(x^*) = \sup_{x \in X} f(x)\)</span>. 3. <span class="math inline">\(f\)</span> attains its minimum: <span class="math inline">\(\exists x_* \in X\)</span> such that <span class="math inline">\(f(x_*) = \inf_{x \in X} f(x)\)</span>.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-23-contents" aria-controls="callout-23" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Proof
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-23" class="callout-23-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>Step 1: <span class="math inline">\(f(X)\)</span> is compact.</strong> By Theorem 1.3 (continuity preserves compactness), since <span class="math inline">\(X\)</span> is compact and <span class="math inline">\(f\)</span> is continuous, <span class="math inline">\(f(X) \subseteq \mathbb{R}\)</span> is compact. By Heine-Borel (Theorem 1.1), <span class="math inline">\(f(X)\)</span> is closed and bounded.</p>
+<p><strong>Step 2: <span class="math inline">\(\sup f(X)\)</span> is finite and belongs to <span class="math inline">\(f(X)\)</span>.</strong> Since <span class="math inline">\(f(X)\)</span> is bounded above, <span class="math inline">\(M = \sup f(X) \in \mathbb{R}\)</span> (the supremum is finite). We claim <span class="math inline">\(M \in f(X)\)</span>. By definition of supremum, for each <span class="math inline">\(n \in \mathbb{N}\)</span> there exists <span class="math inline">\(y_n \in f(X)\)</span> with <span class="math inline">\(M - 1/n &lt; y_n \leq M\)</span>, so <span class="math inline">\(y_n \to M\)</span>. Since <span class="math inline">\(f(X)\)</span> is closed and <span class="math inline">\((y_n)\)</span> is a sequence in <span class="math inline">\(f(X)\)</span> converging to <span class="math inline">\(M\)</span>, we have <span class="math inline">\(M \in f(X)\)</span>.</p>
+<p><strong>Step 3: Maximum is attained.</strong> Since <span class="math inline">\(M \in f(X)\)</span>, there exists <span class="math inline">\(x^* \in X\)</span> with <span class="math inline">\(f(x^*) = M = \sup_{x \in X} f(x)\)</span>. So <span class="math inline">\(f(x^*) \geq f(x)\)</span> for all <span class="math inline">\(x \in X\)</span>: <span class="math inline">\(x^*\)</span> is a maximizer.</p>
+<p><strong>Step 4: Minimum.</strong> Apply the same argument to <span class="math inline">\(-f\)</span>, which is also continuous. Its maximum on <span class="math inline">\(X\)</span> is <span class="math inline">\(-\inf_{x \in X} f(x)\)</span>, which is attained at some <span class="math inline">\(x_* \in X\)</span>. Then <span class="math inline">\(f(x_*) = \inf_{x \in X} f(x)\)</span>. <span class="math inline">\(\blacksquare\)</span></p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-caution no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Caution</span>Remark
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>All three hypotheses are necessary: - <strong>Nonemptiness:</strong> Obvious. - <strong>Compactness (closed):</strong> <span class="math inline">\(f(x) = x\)</span> on <span class="math inline">\((0, 1)\)</span> (open): supremum is <span class="math inline">\(1\)</span>, not attained. More economically, a consumer facing an open budget set <span class="math inline">\(\{x : p \cdot x &lt; w\}\)</span> may not have an optimal choice. - <strong>Compactness (bounded):</strong> <span class="math inline">\(f(x) = x\)</span> on <span class="math inline">\([0, \infty)\)</span>: no maximum. - <strong>Continuity:</strong> <span class="math inline">\(f(x) = 0\)</span> for <span class="math inline">\(x &lt; 1\)</span>, <span class="math inline">\(f(1) = -1\)</span> on <span class="math inline">\([0,1]\)</span>: supremum is <span class="math inline">\(0\)</span>, not attained.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-important no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Theorem 1.6 — Properties of Convex Sets
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Let <span class="math inline">\(C, D \subseteq \mathbb{R}^L\)</span> be convex. Then: 1. <span class="math inline">\(C \cap D\)</span> is convex. 2. <span class="math inline">\(C + D = \{x + y : x \in C, y \in D\}\)</span> (Minkowski sum) is convex. 3. <span class="math inline">\(\lambda C = \{\lambda x : x \in C\}\)</span> is convex for any <span class="math inline">\(\lambda \in \mathbb{R}\)</span>. 4. The closure <span class="math inline">\(\bar{C}\)</span> of a convex set is convex. 5. If <span class="math inline">\(C\)</span> is convex and <span class="math inline">\(f: \mathbb{R}^L \to \mathbb{R}\)</span> is a linear function, then <span class="math inline">\(f(C)\)</span> is a convex subset of <span class="math inline">\(\mathbb{R}\)</span>.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-26-contents" aria-controls="callout-26" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Proof
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-26" class="callout-26-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Each part follows directly from the definition of convexity. We prove (1) as representative. Let <span class="math inline">\(x, y \in C \cap D\)</span> and <span class="math inline">\(\lambda \in [0,1]\)</span>. Since <span class="math inline">\(C\)</span> is convex and <span class="math inline">\(x, y \in C\)</span>: <span class="math inline">\(\lambda x + (1-\lambda)y \in C\)</span>. Since <span class="math inline">\(D\)</span> is convex and <span class="math inline">\(x, y \in D\)</span>: <span class="math inline">\(\lambda x + (1-\lambda)y \in D\)</span>. Hence <span class="math inline">\(\lambda x + (1-\lambda)y \in C \cap D\)</span>. <span class="math inline">\(\blacksquare\)</span></p>
+</div>
+</div>
+</div>
+<hr>
+</section>
+<section id="economic-intuition" class="level2" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="economic-intuition"><span class="header-section-number">4.4</span> Economic Intuition</h2>
+<p><strong>Why compactness is needed in consumer theory.</strong> The consumer’s problem is to maximize a continuous utility function <span class="math inline">\(u: \mathbb{R}^L_+ \to \mathbb{R}\)</span> subject to the budget constraint <span class="math inline">\(p \cdot x \leq w\)</span>, <span class="math inline">\(x \geq 0\)</span>. The budget set <span class="math inline">\(B(p, w) = \{x \in \mathbb{R}^L_+ : p \cdot x \leq w\}\)</span> is closed (as the intersection of closed half-spaces) and bounded (since <span class="math inline">\(x_\ell \leq w/p_\ell\)</span> for each <span class="math inline">\(\ell\)</span> when <span class="math inline">\(p \gg 0\)</span>). By Heine-Borel, <span class="math inline">\(B(p,w)\)</span> is compact. By Weierstrass, the maximum of <span class="math inline">\(u\)</span> over <span class="math inline">\(B(p,w)\)</span> exists. Without boundedness (e.g., if <span class="math inline">\(p_\ell = 0\)</span> for some <span class="math inline">\(\ell\)</span>, so the consumer can consume infinite amounts of good <span class="math inline">\(\ell\)</span> at zero cost), the budget set is unbounded and a solution may not exist. This is why the assumption <span class="math inline">\(p \gg 0\)</span> (all prices strictly positive) is maintained in basic consumer theory.</p>
+<p><strong>Why convexity is needed for uniqueness.</strong> Compactness guarantees existence of a maximum, but not uniqueness. If the utility function is strictly quasi-concave (a convexity condition on preferences), then the set of maximizers is a singleton: the demand function <span class="math inline">\(x(p,w)\)</span> is single-valued. Without quasi-concavity, demand may be multi-valued (a correspondence), and comparative statics arguments become more delicate.</p>
+<p><strong>Why these conditions matter for model-building.</strong> When building a new model, the first question to ask is: does each agent’s optimization problem have a solution? The Weierstrass theorem provides a two-part checklist: (1) Is the constraint set compact? If not, add an assumption that makes it compact (e.g., bounded endowments, finite action space). (2) Is the objective function continuous? If not, identify the source of discontinuity (e.g., a jump in a pricing rule) and either smooth it or use a fixed-point argument directly. Models where existence of optimal choices is not guaranteed are not well-posed.</p>
+<div class="callout callout-style-simple callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Example
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Budget set compactness.</strong> Let <span class="math inline">\(L = 2\)</span>, <span class="math inline">\(p = (1, 2)\)</span>, <span class="math inline">\(w = 10\)</span>. Then <span class="math inline">\(B(p,w) = \{(x_1, x_2) \in \mathbb{R}^2_+ : x_1 + 2x_2 \leq 10\}\)</span>. This is the triangle with vertices <span class="math inline">\((0,0)\)</span>, <span class="math inline">\((10,0)\)</span>, <span class="math inline">\((0,5)\)</span>. It is closed (it includes its boundary) and bounded (all points satisfy <span class="math inline">\(x_1 \leq 10\)</span>, <span class="math inline">\(x_2 \leq 5\)</span>). By Heine-Borel, it is compact. The utility function <span class="math inline">\(u(x_1, x_2) = x_1^{1/2} x_2^{1/2}\)</span> is continuous on <span class="math inline">\(\mathbb{R}^2_+\)</span>. By Weierstrass, a utility-maximizing bundle exists. (It is <span class="math inline">\(x^* = (5, 2.5)\)</span> by the standard Cobb-Douglas formula.)</p>
+</div>
+</div>
+<hr>
+</section>
+<section id="cross-references" class="level2" data-number="4.5">
+<h2 data-number="4.5" class="anchored" data-anchor-id="cross-references"><span class="header-section-number">4.5</span> Cross-References</h2>
+<ul>
+<li><a href="../Part_I_Mathematical_Foundations/1.2_Correspondences_and_Hemicontinuity.html">1.2 Correspondences and Hemicontinuity</a> — Berge’s Maximum Theorem extends Weierstrass to optimization over a correspondence; requires compactness and continuity developed here.</li>
+<li><a href="../Part_I_Mathematical_Foundations/1.3_Optimization_Theory.html">1.3 Optimization Theory</a> — Lagrangian and envelope theorem methods assume interior solutions or use the topology of the constraint set developed here.</li>
+<li><a href="../Part_I_Mathematical_Foundations/1.4_Fixed_Point_Theorems.html">1.4 Fixed Point Theorems</a> — Brouwer and Kakutani require the domain to be compact and convex; those properties are defined and studied here.</li>
+<li><a href="../Part_II_Consumer_Theory/Index.qmd">Index</a> — Budget set compactness and utility continuity are the foundation of demand existence throughout Part II.</li>
+</ul>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+            // default icon
+            link.classList.add("external");
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../Part_I_Mathematical_Foundations/index.html" class="pagination-link" aria-label="Part I: Mathematical Foundations — Index">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Part I: Mathematical Foundations — Index</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../Part_I_Mathematical_Foundations/1.2_Correspondences_and_Hemicontinuity.html" class="pagination-link" aria-label="1.2 Correspondences and Hemicontinuity">
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">1.2 Correspondences and Hemicontinuity</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/andbbus/grad-micro-notes/edit/main/Part_I_Mathematical_Foundations/1.1_Metric_Spaces_and_Topology.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/andbbus/grad-micro-notes/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer><script src="../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

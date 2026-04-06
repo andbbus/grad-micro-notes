@@ -1,0 +1,1591 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.36">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>18&nbsp; 3.1 Production Sets and Technology – Graduate Microeconomic Theory</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../Part_III_Producer_Theory/3.2_Profit_Maximization.html" rel="next">
+<link href="../Part_III_Producer_Theory/index.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-44c2c454a7ec14b8e9312150d2b271b4.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar docked nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Graduate Microeconomic Theory</span>
+    </a>
+  </div>
+        <div class="quarto-navbar-tools tools-end">
+    <a href="https://github.com/andbbus/grad-micro-notes" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+</div>
+          <div id="quarto-search" class="" title="Search"></div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../Part_III_Producer_Theory/index.html">Part III — Producer Theory</a></li><li class="breadcrumb-item"><a href="../Part_III_Producer_Theory/3.1_Production_Sets.html"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">3.1 Production Sets and Technology</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Microeconomics Program Overview</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part I — Mathematical Foundations</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_I_Mathematical_Foundations/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Part I: Mathematical Foundations — Index</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_I_Mathematical_Foundations/1.1_Metric_Spaces_and_Topology.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">1.1 Metric Spaces and Topology</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_I_Mathematical_Foundations/1.2_Correspondences_and_Hemicontinuity.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">1.2 Correspondences and Hemicontinuity</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_I_Mathematical_Foundations/1.3_Optimization_Theory.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">1.3 Optimization Theory</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_I_Mathematical_Foundations/1.4_Fixed_Point_Theorems.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">1.4 Fixed-Point Theorems</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part II — Consumer Theory</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_II_Consumer_Theory/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Part II — Consumer Theory: Index</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_II_Consumer_Theory/2.1_Preference_Relations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">2.1 — Preference Relations</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_II_Consumer_Theory/2.2_Utility_Representation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">2.2 — Utility Representation</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_II_Consumer_Theory/2.3_Utility_Maximization_Problem.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">2.3 — The Utility Maximization Problem (UMP)</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_II_Consumer_Theory/2.4_Expenditure_Minimization.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">2.4 — The Expenditure Minimization Problem (EMP)</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_II_Consumer_Theory/2.5_Duality_and_Slutsky.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">2.5 — Duality and the Slutsky Equation</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_II_Consumer_Theory/2.6_Revealed_Preference.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">2.6 — Revealed Preference</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_II_Consumer_Theory/2.7_Integrability.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">2.7 — Integrability</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_II_Consumer_Theory/2.8_Aggregate_Demand.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">2.8 — Aggregate Demand and Gorman Aggregation</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_II_Consumer_Theory/PS_Consumer_Theory.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Problem Set — Part II: Consumer Theory</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part III — Producer Theory</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_III_Producer_Theory/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Part III: Producer Theory — Overview</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_III_Producer_Theory/3.1_Production_Sets.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">3.1 Production Sets and Technology</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_III_Producer_Theory/3.2_Profit_Maximization.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">3.2 Profit Maximization</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_III_Producer_Theory/3.3_Cost_Minimization.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">3.3 Cost Minimization</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_III_Producer_Theory/3.4_Supply_and_Factor_Demands.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">3.4 Supply and Factor Demands</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_III_Producer_Theory/PS_Producer_Theory.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Problem Set: Producer Theory</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part IV — Choice Under Uncertainty</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IV_Choice_Under_Uncertainty/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Part IV: Choice Under Uncertainty — Overview</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IV_Choice_Under_Uncertainty/4.1_State_Space_Framework.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">4.1 The State Space Framework and Axioms</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IV_Choice_Under_Uncertainty/4.2_Expected_Utility_Theory.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">4.2 Expected Utility Theory</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IV_Choice_Under_Uncertainty/4.3_Risk_Aversion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">4.3 Risk Aversion</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IV_Choice_Under_Uncertainty/4.4_Stochastic_Dominance.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">4.4 Stochastic Dominance</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IV_Choice_Under_Uncertainty/PS_Uncertainty.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Problem Set: Choice Under Uncertainty</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part V — Game Theory</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_V_Game_Theory/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">Part V — Game Theory</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_V_Game_Theory/5.1_Normal_Form_Games.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">30</span>&nbsp; <span class="chapter-title">5.1 Normal Form Games</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_V_Game_Theory/5.2_Nash_Equilibrium.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">31</span>&nbsp; <span class="chapter-title">5.2 Nash Equilibrium</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_V_Game_Theory/5.3_Mixed_Strategies.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">32</span>&nbsp; <span class="chapter-title">5.3 Mixed Strategies</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_V_Game_Theory/5.4_Extensive_Form_Games.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">33</span>&nbsp; <span class="chapter-title">5.4 Extensive Form Games</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_V_Game_Theory/5.5_Subgame_Perfect_Equilibrium.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">34</span>&nbsp; <span class="chapter-title">5.5 Subgame Perfect Equilibrium</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_V_Game_Theory/5.6_Repeated_Games.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">35</span>&nbsp; <span class="chapter-title">5.6 Repeated Games</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_V_Game_Theory/5.7_Bayesian_Games.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">36</span>&nbsp; <span class="chapter-title">5.7 Bayesian Games</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_V_Game_Theory/PS_Game_Theory.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">37</span>&nbsp; <span class="chapter-title">Problem Set — Part V: Game Theory</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part VI — General Equilibrium</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VI_General_Equilibrium/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">38</span>&nbsp; <span class="chapter-title">Part VI — General Equilibrium</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VI_General_Equilibrium/6.1_Exchange_Economies.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">39</span>&nbsp; <span class="chapter-title">6.1 Exchange Economies</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VI_General_Equilibrium/6.2_Arrow_Debreu_Economy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">40</span>&nbsp; <span class="chapter-title">6.2 The Arrow-Debreu Economy</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VI_General_Equilibrium/6.3_Existence_of_Equilibrium.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">41</span>&nbsp; <span class="chapter-title">6.3 Existence of Walrasian Equilibrium</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VI_General_Equilibrium/6.4_Welfare_Theorems.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">42</span>&nbsp; <span class="chapter-title">6.4 Welfare Theorems</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VI_General_Equilibrium/6.5_Externalities_and_Public_Goods.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">43</span>&nbsp; <span class="chapter-title">6.5 Externalities and Public Goods</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VI_General_Equilibrium/PS_General_Equilibrium.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">44</span>&nbsp; <span class="chapter-title">Problem Set — Part VI: General Equilibrium</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part VII — Information and Incentives</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VII_Information_and_Incentives/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">45</span>&nbsp; <span class="chapter-title">Part VII — Information and Incentives</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VII_Information_and_Incentives/7.1_Principal_Agent_Problem.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">46</span>&nbsp; <span class="chapter-title">7.1 — The Principal-Agent Problem</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VII_Information_and_Incentives/7.2_Moral_Hazard.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">47</span>&nbsp; <span class="chapter-title">7.2 — Moral Hazard</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VII_Information_and_Incentives/7.3_Adverse_Selection_and_Screening.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">48</span>&nbsp; <span class="chapter-title">7.3 — Adverse Selection and Screening</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VII_Information_and_Incentives/7.4_Signaling.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">49</span>&nbsp; <span class="chapter-title">7.4 — Signaling</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VII_Information_and_Incentives/7.5_Mechanism_Design.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">50</span>&nbsp; <span class="chapter-title">7.5 — Mechanism Design</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VII_Information_and_Incentives/7.6_Prediction_Markets_and_Information_Aggregation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">51</span>&nbsp; <span class="chapter-title">7.6 — Prediction Markets and Information Aggregation</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VII_Information_and_Incentives/PS_Information.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">52</span>&nbsp; <span class="chapter-title">Problem Set — Part VII: Information and Incentives</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part VIII — Social Choice</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VIII_Social_Choice/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">53</span>&nbsp; <span class="chapter-title">Part VIII — Social Choice Theory</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VIII_Social_Choice/8.1_Social_Welfare_Functions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">54</span>&nbsp; <span class="chapter-title">8.1 Social Welfare Functions</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VIII_Social_Choice/8.2_Arrows_Impossibility_Theorem.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">55</span>&nbsp; <span class="chapter-title">8.2 Arrow’s Impossibility Theorem</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VIII_Social_Choice/8.3_Welfare_Criteria.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">56</span>&nbsp; <span class="chapter-title">8.3 Welfare Criteria and Compensation Principles</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_VIII_Social_Choice/PS_Social_Choice.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">57</span>&nbsp; <span class="chapter-title">Problem Set — Part VIII: Social Choice</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part IX — Model Building for Empirics</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IX_Model_Building_for_Empirics/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">58</span>&nbsp; <span class="chapter-title">Part IX — Model Building for Empirics</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IX_Model_Building_for_Empirics/9.1_Anatomy_of_a_Theoretical_Model.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">59</span>&nbsp; <span class="chapter-title">9.1 — Anatomy of a Theoretical Model</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IX_Model_Building_for_Empirics/9.2_Equilibrium_Concepts_and_Selection.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">60</span>&nbsp; <span class="chapter-title">9.2 — Equilibrium Concepts and Selection</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IX_Model_Building_for_Empirics/9.3_Comparative_Statics_Methodology.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">61</span>&nbsp; <span class="chapter-title">9.3 — Comparative Statics Methodology</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IX_Model_Building_for_Empirics/9.4_Deriving_Testable_Predictions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">62</span>&nbsp; <span class="chapter-title">9.4 — Deriving Testable Predictions</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IX_Model_Building_for_Empirics/9.5_Structural_vs_Reduced_Form.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">63</span>&nbsp; <span class="chapter-title">9.5 — Structural vs.&nbsp;Reduced Form</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IX_Model_Building_for_Empirics/9.6_Identification_in_Structural_Models.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">64</span>&nbsp; <span class="chapter-title">9.6 — Identification in Structural Models</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IX_Model_Building_for_Empirics/9.7_Model_Discipline_and_Tractability.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">65</span>&nbsp; <span class="chapter-title">9.7 — Model Discipline and Tractability</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IX_Model_Building_for_Empirics/APP_Conflict_and_Resource_Models.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">66</span>&nbsp; <span class="chapter-title">APP — Conflict and Resource Models</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IX_Model_Building_for_Empirics/APP_Trade_and_Price_Shock_Models.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">67</span>&nbsp; <span class="chapter-title">APP — Trade and Price Shock Models</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IX_Model_Building_for_Empirics/APP_Prediction_Markets_and_Signals.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">68</span>&nbsp; <span class="chapter-title">APP — Prediction Markets and Signals</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Part_IX_Model_Building_for_Empirics/PS_Model_Building.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">69</span>&nbsp; <span class="chapter-title">Problem Set — Part IX: Model Building for Empirics</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#production-sets-and-technology" id="toc-production-sets-and-technology" class="nav-link active" data-scroll-target="#production-sets-and-technology"><span class="header-section-number">19</span> 3.1 Production Sets and Technology</a>
+  <ul class="collapse">
+  <li><a href="#context" id="toc-context" class="nav-link" data-scroll-target="#context"><span class="header-section-number">19.1</span> Context</a></li>
+  <li><a href="#definitions" id="toc-definitions" class="nav-link" data-scroll-target="#definitions"><span class="header-section-number">19.2</span> Definitions</a></li>
+  <li><a href="#properties-of-the-production-set" id="toc-properties-of-the-production-set" class="nav-link" data-scroll-target="#properties-of-the-production-set"><span class="header-section-number">19.3</span> Properties of the Production Set</a>
+  <ul class="collapse">
+  <li><a href="#property-p1-non-emptiness" id="toc-property-p1-non-emptiness" class="nav-link" data-scroll-target="#property-p1-non-emptiness"><span class="header-section-number">19.3.1</span> Property P1: Non-emptiness</a></li>
+  <li><a href="#property-p2-closedness" id="toc-property-p2-closedness" class="nav-link" data-scroll-target="#property-p2-closedness"><span class="header-section-number">19.3.2</span> Property P2: Closedness</a></li>
+  <li><a href="#property-p3-no-free-lunch" id="toc-property-p3-no-free-lunch" class="nav-link" data-scroll-target="#property-p3-no-free-lunch"><span class="header-section-number">19.3.3</span> Property P3: No Free Lunch</a></li>
+  <li><a href="#property-p4-free-disposal" id="toc-property-p4-free-disposal" class="nav-link" data-scroll-target="#property-p4-free-disposal"><span class="header-section-number">19.3.4</span> Property P4: Free Disposal</a></li>
+  <li><a href="#property-p5-irreversibility" id="toc-property-p5-irreversibility" class="nav-link" data-scroll-target="#property-p5-irreversibility"><span class="header-section-number">19.3.5</span> Property P5: Irreversibility</a></li>
+  <li><a href="#property-p6-nonincreasing-returns-to-scale-nirts" id="toc-property-p6-nonincreasing-returns-to-scale-nirts" class="nav-link" data-scroll-target="#property-p6-nonincreasing-returns-to-scale-nirts"><span class="header-section-number">19.3.6</span> Property P6: Nonincreasing Returns to Scale (NIRTS)</a></li>
+  <li><a href="#property-p7-nondecreasing-returns-to-scale-ndirts" id="toc-property-p7-nondecreasing-returns-to-scale-ndirts" class="nav-link" data-scroll-target="#property-p7-nondecreasing-returns-to-scale-ndirts"><span class="header-section-number">19.3.7</span> Property P7: Nondecreasing Returns to Scale (NDIRTS)</a></li>
+  <li><a href="#property-p8-constant-returns-to-scale-crs" id="toc-property-p8-constant-returns-to-scale-crs" class="nav-link" data-scroll-target="#property-p8-constant-returns-to-scale-crs"><span class="header-section-number">19.3.8</span> Property P8: Constant Returns to Scale (CRS)</a></li>
+  <li><a href="#property-p9-convexity" id="toc-property-p9-convexity" class="nav-link" data-scroll-target="#property-p9-convexity"><span class="header-section-number">19.3.9</span> Property P9: Convexity</a></li>
+  </ul></li>
+  <li><a href="#single-output-case-and-production-function" id="toc-single-output-case-and-production-function" class="nav-link" data-scroll-target="#single-output-case-and-production-function"><span class="header-section-number">19.4</span> Single-Output Case and Production Function</a></li>
+  <li><a href="#transformation-function" id="toc-transformation-function" class="nav-link" data-scroll-target="#transformation-function"><span class="header-section-number">19.5</span> Transformation Function</a></li>
+  <li><a href="#main-results" id="toc-main-results" class="nav-link" data-scroll-target="#main-results"><span class="header-section-number">19.6</span> Main Results</a></li>
+  <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples"><span class="header-section-number">19.7</span> Examples</a></li>
+  <li><a href="#economic-intuition" id="toc-economic-intuition" class="nav-link" data-scroll-target="#economic-intuition"><span class="header-section-number">19.8</span> Economic Intuition</a></li>
+  <li><a href="#cross-references" id="toc-cross-references" class="nav-link" data-scroll-target="#cross-references"><span class="header-section-number">19.9</span> Cross-References</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/andbbus/grad-micro-notes/edit/main/Part_III_Producer_Theory/3.1_Production_Sets.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/andbbus/grad-micro-notes/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../Part_III_Producer_Theory/index.html">Part III — Producer Theory</a></li><li class="breadcrumb-item"><a href="../Part_III_Producer_Theory/3.1_Production_Sets.html"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">3.1 Production Sets and Technology</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">3.1 Production Sets and Technology</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="production-sets-and-technology" class="level1" data-number="19">
+<h1 data-number="19"><span class="header-section-number">19</span> 3.1 Production Sets and Technology</h1>
+<blockquote class="blockquote">
+<p><strong>MWG Reference:</strong> Ch. 5, §5.A–5.B, pp.&nbsp;128–142</p>
+</blockquote>
+<section id="context" class="level2" data-number="19.1">
+<h2 data-number="19.1" class="anchored" data-anchor-id="context"><span class="header-section-number">19.1</span> Context</h2>
+<p>The starting point of producer theory is a formal description of what is technologically feasible. Rather than imposing a particular functional form on technology, MWG takes a set-theoretic approach: the <strong>production set</strong> <span class="math inline">\(Y \subseteq \mathbb{R}^L\)</span> is the primitive object, and all behavioral results (supply, cost minimization, comparative statics) follow from properties of <span class="math inline">\(Y\)</span>. This level of generality accommodates multiple outputs, joint production, and heterogeneous inputs within a single framework. In the special but important single-output case, the production set reduces to the familiar production function.</p>
+<hr>
+</section>
+<section id="definitions" class="level2" data-number="19.2">
+<h2 data-number="19.2" class="anchored" data-anchor-id="definitions"><span class="header-section-number">19.2</span> Definitions</h2>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Definition 3.1 — Commodity Space and Sign Convention
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>There are <span class="math inline">\(L\)</span> commodities. A <strong>production vector</strong> (or <strong>netput vector</strong>) is <span class="math inline">\(y = (y_1, \ldots, y_L) \in \mathbb{R}^L\)</span>, where: - <span class="math inline">\(y_l &gt; 0\)</span>: commodity <span class="math inline">\(l\)</span> is an <strong>output</strong> (net supply to the market) - <span class="math inline">\(y_l &lt; 0\)</span>: commodity <span class="math inline">\(l\)</span> is an <strong>input</strong> (net demand from the market)</p>
+<p>This sign convention consolidates inputs and outputs into a single vector, enabling a unified treatment.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Definition 3.2 — Production Set
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The <strong>production set</strong> <span class="math inline">\(Y \subseteq \mathbb{R}^L\)</span> is the set of all technologically feasible production vectors. The set <span class="math inline">\(Y\)</span> is the complete description of the firm’s technology.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Definition 3.3 — Input Requirement Set
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>For a given output vector <span class="math inline">\(\bar{q}\)</span>, the <strong>input requirement set</strong> is: <span class="math display">\[V(\bar{q}) = \{z \in \mathbb{R}^K_+ : (-z, \bar{q}) \in Y\}\]</span> This is the set of input vectors <span class="math inline">\(z\)</span> that can produce at least output <span class="math inline">\(\bar{q}\)</span>.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Definition 3.4 — Isoquant
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The <strong>isoquant</strong> at output level <span class="math inline">\(q\)</span> is: <span class="math display">\[Q(q) = \{z \in \mathbb{R}^K_+ : z \in V(q) \text{ and } z \notin V(q') \text{ for any } q' &gt; q\}\]</span> That is, it is the boundary of the input requirement set: the minimal inputs needed to produce exactly <span class="math inline">\(q\)</span>.</p>
+</div>
+</div>
+<hr>
+</section>
+<section id="properties-of-the-production-set" class="level2" data-number="19.3">
+<h2 data-number="19.3" class="anchored" data-anchor-id="properties-of-the-production-set"><span class="header-section-number">19.3</span> Properties of the Production Set</h2>
+<p>Each property below is stated formally, interpreted economically, and its implication for the profit function <span class="math inline">\(\pi(p) = \sup_{y \in Y} p \cdot y\)</span> is noted.</p>
+<section id="property-p1-non-emptiness" class="level3" data-number="19.3.1">
+<h3 data-number="19.3.1" class="anchored" data-anchor-id="property-p1-non-emptiness"><span class="header-section-number">19.3.1</span> Property P1: Non-emptiness</h3>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Definition 3.5 — Non-emptiness (Possibility of Inaction)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><span class="math inline">\(Y \neq \emptyset\)</span>, and in particular <span class="math inline">\(0 \in Y\)</span>.</p>
+</div>
+</div>
+<p><strong>Economic Interpretation:</strong> The firm can always choose to produce nothing — the “shutdown” option. This is an important outside option that bounds losses to zero (if the firm can always costlessly not produce).</p>
+<p><strong>Implication for <span class="math inline">\(\pi(p)\)</span>:</strong> Since <span class="math inline">\(0 \in Y\)</span>, we have <span class="math inline">\(p \cdot 0 = 0 \leq \pi(p)\)</span> for all <span class="math inline">\(p\)</span>. Hence the profit function satisfies <span class="math inline">\(\pi(p) \geq 0\)</span> whenever inaction is feasible.</p>
+</section>
+<section id="property-p2-closedness" class="level3" data-number="19.3.2">
+<h3 data-number="19.3.2" class="anchored" data-anchor-id="property-p2-closedness"><span class="header-section-number">19.3.2</span> Property P2: Closedness</h3>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Definition 3.6 — Closedness
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><span class="math inline">\(Y\)</span> is a <strong>closed</strong> set: if <span class="math inline">\(\{y^n\} \subset Y\)</span> and <span class="math inline">\(y^n \to y\)</span>, then <span class="math inline">\(y \in Y\)</span>.</p>
+</div>
+</div>
+<p><strong>Economic Interpretation:</strong> The production possibilities do not have “holes” at their boundaries. If a sequence of feasible production plans converges, the limit is also feasible.</p>
+<p><strong>Implication for <span class="math inline">\(\pi(p)\)</span>:</strong> Closedness, together with boundedness of the feasible set for given prices, ensures the supremum defining <span class="math inline">\(\pi(p)\)</span> is attained (by the extreme value theorem). Without closedness, optimal production plans may not exist.</p>
+</section>
+<section id="property-p3-no-free-lunch" class="level3" data-number="19.3.3">
+<h3 data-number="19.3.3" class="anchored" data-anchor-id="property-p3-no-free-lunch"><span class="header-section-number">19.3.3</span> Property P3: No Free Lunch</h3>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Definition 3.7 — No Free Lunch
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><span class="math display">\[Y \cap \mathbb{R}^L_+ \subseteq \{0\}\]</span> It is impossible to produce positive outputs without using any inputs.</p>
+</div>
+</div>
+<p><strong>Economic Interpretation:</strong> Nothing comes from nothing. The only production vector in the positive orthant (all outputs, no inputs) that is feasible is the zero vector. This rules out technologies that create commodities from thin air.</p>
+<p><strong>Implication for <span class="math inline">\(\pi(p)\)</span>:</strong> Rules out unbounded profit from zero outlay in the absence of any price-taking inputs, providing a basic regularity condition.</p>
+</section>
+<section id="property-p4-free-disposal" class="level3" data-number="19.3.4">
+<h3 data-number="19.3.4" class="anchored" data-anchor-id="property-p4-free-disposal"><span class="header-section-number">19.3.4</span> Property P4: Free Disposal</h3>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Definition 3.8 — Free Disposal
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><span class="math display">\[y \in Y \text{ and } y' \leq y \Rightarrow y' \in Y\]</span> where <span class="math inline">\(y' \leq y\)</span> means <span class="math inline">\(y'_l \leq y_l\)</span> for all <span class="math inline">\(l\)</span>.</p>
+</div>
+</div>
+<p><strong>Economic Interpretation:</strong> The firm can freely dispose of any outputs or use more inputs than necessary. If a production plan <span class="math inline">\(y\)</span> is feasible, then producing less output or using more inputs (making components of <span class="math inline">\(y'\)</span> more negative) remains feasible. There are no disposal costs.</p>
+<p><strong>Implication for <span class="math inline">\(\pi(p)\)</span>:</strong> Free disposal implies that the input requirement set <span class="math inline">\(V(q)\)</span> is comprehensive upward: <span class="math inline">\(z \in V(q)\)</span> and <span class="math inline">\(z' \geq z\)</span> implies <span class="math inline">\(z' \in V(q)\)</span>. This makes the CMP well-behaved since wasting inputs is costless.</p>
+</section>
+<section id="property-p5-irreversibility" class="level3" data-number="19.3.5">
+<h3 data-number="19.3.5" class="anchored" data-anchor-id="property-p5-irreversibility"><span class="header-section-number">19.3.5</span> Property P5: Irreversibility</h3>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Definition 3.9 — Irreversibility
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><span class="math display">\[y \in Y, \; y \neq 0 \Rightarrow -y \notin Y\]</span></p>
+</div>
+</div>
+<p><strong>Economic Interpretation:</strong> Production processes cannot simply be “run backwards.” If inputs can be turned into outputs, those outputs cannot be reversed back into the original inputs at the same rate. This reflects the asymmetry of physical production processes.</p>
+<p><strong>Implication for <span class="math inline">\(\pi(p)\)</span>:</strong> Irreversibility, together with No Free Lunch, prevents the technology from being trivially unbounded in all price configurations.</p>
+</section>
+<section id="property-p6-nonincreasing-returns-to-scale-nirts" class="level3" data-number="19.3.6">
+<h3 data-number="19.3.6" class="anchored" data-anchor-id="property-p6-nonincreasing-returns-to-scale-nirts"><span class="header-section-number">19.3.6</span> Property P6: Nonincreasing Returns to Scale (NIRTS)</h3>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Definition 3.10 — Nonincreasing Returns to Scale
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><span class="math display">\[y \in Y \Rightarrow \alpha y \in Y \quad \forall \alpha \in [0, 1]\]</span> Scaling down any feasible production plan remains feasible.</p>
+</div>
+</div>
+<p><strong>Economic Interpretation:</strong> The firm can always do less: if it can produce <span class="math inline">\(y\)</span>, it can produce <span class="math inline">\(\alpha y\)</span> for any fraction <span class="math inline">\(\alpha \in [0,1]\)</span>. This corresponds to the ability to idle part of the plant. Equivalently, in the single-output case: <span class="math inline">\(f(\lambda z) \leq \lambda f(z)\)</span> for <span class="math inline">\(\lambda \in [0,1]\)</span>, i.e., <strong>decreasing or constant returns to scale</strong>.</p>
+<p><strong>Implication for <span class="math inline">\(\pi(p)\)</span>:</strong> Under NIRTS, <span class="math inline">\(\pi(p) \leq 0\)</span> or <span class="math inline">\(\pi(p) = 0\)</span>. Combined with Non-emptiness (<span class="math inline">\(0 \in Y \Rightarrow \pi \geq 0\)</span>), NIRTS implies <span class="math inline">\(\pi(p) \geq 0\)</span> for all <span class="math inline">\(p\)</span>, and the profit-maximizing scale is finite.</p>
+</section>
+<section id="property-p7-nondecreasing-returns-to-scale-ndirts" class="level3" data-number="19.3.7">
+<h3 data-number="19.3.7" class="anchored" data-anchor-id="property-p7-nondecreasing-returns-to-scale-ndirts"><span class="header-section-number">19.3.7</span> Property P7: Nondecreasing Returns to Scale (NDIRTS)</h3>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Definition 3.11 — Nondecreasing Returns to Scale
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><span class="math display">\[y \in Y \Rightarrow \alpha y \in Y \quad \forall \alpha \geq 1\]</span> Any feasible production plan can be scaled up.</p>
+</div>
+</div>
+<p><strong>Economic Interpretation:</strong> The firm can always do at least proportionally more if it scales up all inputs. This could arise from specialization, indivisible fixed costs amortized over large production runs, or network effects. In the single-output case: <span class="math inline">\(f(\lambda z) \geq \lambda f(z)\)</span> for <span class="math inline">\(\lambda \geq 1\)</span>.</p>
+<p><strong>Implication for <span class="math inline">\(\pi(p)\)</span>:</strong> Under NDIRTS (without NIRTS), the profit function may be <span class="math inline">\(+\infty\)</span> at certain prices, since scaling up is always feasible. Positive profits tend to grow without bound as scale increases.</p>
+</section>
+<section id="property-p8-constant-returns-to-scale-crs" class="level3" data-number="19.3.8">
+<h3 data-number="19.3.8" class="anchored" data-anchor-id="property-p8-constant-returns-to-scale-crs"><span class="header-section-number">19.3.8</span> Property P8: Constant Returns to Scale (CRS)</h3>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Definition 3.12 — Constant Returns to Scale
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><span class="math inline">\(Y\)</span> is a <strong>cone</strong>: <span class="math display">\[y \in Y \Rightarrow \alpha y \in Y \quad \forall \alpha \geq 0\]</span> Equivalently, CRS = NIRTS <span class="math inline">\(\cap\)</span> NDIRTS.</p>
+</div>
+</div>
+<p><strong>Economic Interpretation:</strong> Doubling all inputs exactly doubles all outputs. The firm’s technology exhibits no scale economies or diseconomies. CRS is the benchmark case for competitive general equilibrium models, since entry and exit drive profits to zero and scale is indeterminate.</p>
+<p><strong>Implication for <span class="math inline">\(\pi(p)\)</span>:</strong> Under CRS, the profit function satisfies <span class="math inline">\(\pi(\alpha p) = \alpha \pi(p)\)</span> (homogeneous of degree 1), but also: since <span class="math inline">\(Y\)</span> is a cone, either <span class="math inline">\(\pi(p) = 0\)</span> (if prices are consistent with zero profit) or <span class="math inline">\(\pi(p) = +\infty\)</span> (if there is a strictly profitable direction). This is formalized in Proposition 3.1 below.</p>
+</section>
+<section id="property-p9-convexity" class="level3" data-number="19.3.9">
+<h3 data-number="19.3.9" class="anchored" data-anchor-id="property-p9-convexity"><span class="header-section-number">19.3.9</span> Property P9: Convexity</h3>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Definition 3.13 — Convexity of <span class="math inline">\(Y\)</span>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><span class="math display">\[y, y' \in Y \Rightarrow \lambda y + (1-\lambda) y' \in Y \quad \forall \lambda \in [0,1]\]</span></p>
+</div>
+</div>
+<p><strong>Economic Interpretation:</strong> Mixing two feasible production plans is feasible. This captures the idea of <strong>diminishing marginal returns</strong>: as we shift resources from one activity to another, production possibilities shrink at the margin. Convexity of <span class="math inline">\(Y\)</span> is implied by CRS plus NIRTS (any convex combination of a CRS set lies in the set), but is also consistent with DRS technologies.</p>
+<p><strong>Implication for <span class="math inline">\(\pi(p)\)</span>:</strong> Convexity of <span class="math inline">\(Y\)</span> implies that the profit-maximizing problem has a convex feasible set, which (together with linearity of the objective) ensures that the set of optimal solutions <span class="math inline">\(y(p)\)</span> is convex-valued, and that the profit function <span class="math inline">\(\pi(p)\)</span> is convex in <span class="math inline">\(p\)</span> (see <a href="../Part_III_Producer_Theory/3.2_Profit_Maximization.html">3.2 Profit Maximization</a>).</p>
+<hr>
+</section>
+</section>
+<section id="single-output-case-and-production-function" class="level2" data-number="19.4">
+<h2 data-number="19.4" class="anchored" data-anchor-id="single-output-case-and-production-function"><span class="header-section-number">19.4</span> Single-Output Case and Production Function</h2>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Definition 3.14 — Production Function
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>In the <strong>single-output case</strong>, there are <span class="math inline">\(K\)</span> inputs with quantities <span class="math inline">\(z = (z_1, \ldots, z_K) \geq 0\)</span> and one output <span class="math inline">\(q \geq 0\)</span>. The <strong>production function</strong> <span class="math inline">\(f: \mathbb{R}^K_+ \to \mathbb{R}_+\)</span> gives the maximum output obtainable from input vector <span class="math inline">\(z\)</span>: <span class="math display">\[f(z) = \max\{q \geq 0 : (-z, q) \in Y\}\]</span> The production set is then: <span class="math display">\[Y = \{(-z, q) \in \mathbb{R}^{K+1} : q \leq f(z), \; z \geq 0\}\]</span></p>
+</div>
+</div>
+<p><strong>Returns to Scale via the Production Function:</strong> For <span class="math inline">\(\lambda &gt; 1\)</span>: - <strong>Constant Returns to Scale (CRS):</strong> <span class="math inline">\(f(\lambda z) = \lambda f(z)\)</span> — doubling inputs doubles output - <strong>Increasing Returns to Scale (IRS):</strong> <span class="math inline">\(f(\lambda z) &gt; \lambda f(z)\)</span> — doubling inputs more than doubles output - <strong>Decreasing Returns to Scale (DRS):</strong> <span class="math inline">\(f(\lambda z) &lt; \lambda f(z)\)</span> — doubling inputs less than doubles output</p>
+<div class="callout callout-style-default callout-caution no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Caution</span>Remark 3.1 — Local vs.&nbsp;Global Returns to Scale
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Returns to scale can be <strong>local</strong> (holding at a particular <span class="math inline">\(z\)</span>) or <strong>global</strong> (holding for all <span class="math inline">\(z\)</span>). A production function may exhibit IRS at low scales and DRS at high scales (the typical “U-shaped” average cost curve corresponds to this pattern). The properties P6–P8 are global.</p>
+</div>
+</div>
+<p><strong>Marginal Rate of Technical Substitution (MRTS):</strong> For a two-input technology, the MRTS between inputs 1 and 2 at a given output level is: <span class="math display">\[MRTS_{12}(z) = -\frac{dz_2}{dz_1}\bigg|_{q = f(z) \text{ fixed}} = \frac{\partial f/\partial z_1}{\partial f/\partial z_2} = \frac{MP_1}{MP_2}\]</span> This is the rate at which input 2 can be substituted for input 1 while keeping output constant.</p>
+<hr>
+</section>
+<section id="transformation-function" class="level2" data-number="19.5">
+<h2 data-number="19.5" class="anchored" data-anchor-id="transformation-function"><span class="header-section-number">19.5</span> Transformation Function</h2>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Definition 3.15 — Transformation Function
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The <strong>transformation function</strong> <span class="math inline">\(F: \mathbb{R}^L \to \mathbb{R}\)</span> is defined such that: <span class="math display">\[Y = \{y \in \mathbb{R}^L : F(y) \leq 0\}\]</span> The <strong>production frontier</strong> (or <strong>transformation frontier</strong>) is <span class="math inline">\(\{y : F(y) = 0\}\)</span>.</p>
+</div>
+</div>
+<p><strong>Properties:</strong> - <span class="math inline">\(F\)</span> is well-defined when <span class="math inline">\(Y\)</span> is convex and closed with a smooth boundary. - The gradient <span class="math inline">\(\nabla F(y)\)</span> at a boundary point is the outward normal to the production frontier. - <span class="math inline">\(F\)</span> is normalized so that <span class="math inline">\(F(y) &lt; 0\)</span> for interior points (strictly feasible) and <span class="math inline">\(F(y) &gt; 0\)</span> for infeasible plans.</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Definition 3.16 — Marginal Rate of Transformation
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>For a multi-output technology at a boundary point <span class="math inline">\(y^*\)</span> with <span class="math inline">\(F(y^*) = 0\)</span>, the <strong>marginal rate of transformation (MRT)</strong> between outputs <span class="math inline">\(k\)</span> and <span class="math inline">\(l\)</span> is: <span class="math display">\[MRT_{kl}(y^*) = -\frac{dy_l}{dy_k}\bigg|_{F(y) = 0} = \frac{\partial F / \partial y_k}{\partial F / \partial y_l}\]</span></p>
+</div>
+</div>
+<p><strong>Economic Interpretation:</strong> The MRT measures the opportunity cost of producing more of output <span class="math inline">\(k\)</span> in terms of output <span class="math inline">\(l\)</span> foregone. At a profit maximum, the MRT between any two outputs must equal their price ratio: <span class="math inline">\(MRT_{kl} = p_k/p_l\)</span>. This is the producer analogue of the consumer’s equimarginal condition.</p>
+<hr>
+</section>
+<section id="main-results" class="level2" data-number="19.6">
+<h2 data-number="19.6" class="anchored" data-anchor-id="main-results"><span class="header-section-number">19.6</span> Main Results</h2>
+<div class="callout callout-style-default callout-important no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Proposition 3.1 — CRS Implies Zero Profit or Infinite Profit
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Suppose <span class="math inline">\(Y\)</span> satisfies free disposal and CRS (is a cone with <span class="math inline">\(0 \in Y\)</span>). Then for every price vector <span class="math inline">\(p \gg 0\)</span>: <span class="math display">\[\pi(p) = 0 \quad \text{or} \quad \pi(p) = +\infty\]</span></p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-19-contents" aria-controls="callout-19" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Proof
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-19" class="callout-19-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>Step 1: <span class="math inline">\(\pi(p) \geq 0\)</span>.</strong> Since <span class="math inline">\(0 \in Y\)</span> (from CRS, which requires <span class="math inline">\(Y\)</span> to be a cone containing <span class="math inline">\(0\)</span>), we have <span class="math inline">\(p \cdot 0 = 0 \leq \pi(p)\)</span>.</p>
+<p><strong>Step 2: Either <span class="math inline">\(\pi(p) &gt; 0\)</span> implies <span class="math inline">\(\pi(p) = +\infty\)</span>.</strong> Suppose there exists <span class="math inline">\(y^* \in Y\)</span> with <span class="math inline">\(p \cdot y^* = \epsilon &gt; 0\)</span>. Since <span class="math inline">\(Y\)</span> is a cone, for any <span class="math inline">\(\alpha &gt; 0\)</span> we have <span class="math inline">\(\alpha y^* \in Y\)</span>. Therefore: <span class="math display">\[\pi(p) \geq p \cdot (\alpha y^*) = \alpha (p \cdot y^*) = \alpha \epsilon\]</span> Since this holds for all <span class="math inline">\(\alpha &gt; 0\)</span>, taking <span class="math inline">\(\alpha \to \infty\)</span> gives <span class="math inline">\(\pi(p) = +\infty\)</span>.</p>
+<p><strong>Step 3: Conclusion.</strong> The only two possibilities consistent with <span class="math inline">\(\pi(p) \geq 0\)</span> are: - <span class="math inline">\(p \cdot y \leq 0\)</span> for all <span class="math inline">\(y \in Y\)</span>: then <span class="math inline">\(\pi(p) = \sup_{y \in Y} p \cdot y = 0\)</span> (achieved at <span class="math inline">\(y = 0\)</span>). - <span class="math inline">\(\exists y^* \in Y\)</span> with <span class="math inline">\(p \cdot y^* &gt; 0\)</span>: then by Step 2, <span class="math inline">\(\pi(p) = +\infty\)</span>.</p>
+<p>Hence <span class="math inline">\(\pi(p) \in \{0, +\infty\}\)</span>. <span class="math inline">\(\blacksquare\)</span></p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-caution no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Caution</span>Remark 3.2 — Economic Significance of Proposition 3.1
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This result explains why competitive general equilibrium models with CRS technologies require zero-profit conditions: if any technology exhibited CRS and generated positive profits at equilibrium prices, firms would want to scale up production without bound, which is inconsistent with market clearing. CRS is therefore the natural assumption for “small” competitive firms whose individual scale decisions do not affect prices.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-important no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Proposition 3.2 — Convexity of <span class="math inline">\(Y\)</span> and Concavity of <span class="math inline">\(f\)</span>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>In the single-output case, the production set <span class="math inline">\(Y = \{(-z, q) : q \leq f(z), z \geq 0\}\)</span> is convex if and only if <span class="math inline">\(f\)</span> is a <strong>concave</strong> function.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-22-contents" aria-controls="callout-22" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Proof
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-22" class="callout-22-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>(<span class="math inline">\(\Rightarrow\)</span>) Suppose <span class="math inline">\(Y\)</span> is convex. Take any <span class="math inline">\(z, z' \geq 0\)</span> and <span class="math inline">\(\lambda \in [0,1]\)</span>. Then <span class="math inline">\((-z, f(z)) \in Y\)</span> and <span class="math inline">\((-z', f(z')) \in Y\)</span>. By convexity of <span class="math inline">\(Y\)</span>: <span class="math display">\[\lambda(-z, f(z)) + (1-\lambda)(-z', f(z')) = (-[\lambda z + (1-\lambda)z'], \; \lambda f(z) + (1-\lambda)f(z')) \in Y\]</span> For this to be in <span class="math inline">\(Y\)</span>, we need <span class="math inline">\(\lambda f(z) + (1-\lambda)f(z') \leq f(\lambda z + (1-\lambda)z')\)</span>. This is precisely the concavity of <span class="math inline">\(f\)</span>.</p>
+<p>(<span class="math inline">\(\Leftarrow\)</span>) Suppose <span class="math inline">\(f\)</span> is concave. Take <span class="math inline">\((-z, q)\)</span> and <span class="math inline">\((-z', q')\)</span> in <span class="math inline">\(Y\)</span>, so <span class="math inline">\(q \leq f(z)\)</span> and <span class="math inline">\(q' \leq f(z')\)</span>. For <span class="math inline">\(\lambda \in [0,1]\)</span>: <span class="math display">\[\lambda q + (1-\lambda)q' \leq \lambda f(z) + (1-\lambda)f(z') \leq f(\lambda z + (1-\lambda)z')\]</span> where the second inequality uses concavity of <span class="math inline">\(f\)</span>. Hence <span class="math inline">\((-[\lambda z + (1-\lambda) z'], \lambda q + (1-\lambda)q') \in Y\)</span>. <span class="math inline">\(\blacksquare\)</span></p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-caution no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Caution</span>Remark 3.3 — Implications for Returns to Scale
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>A <strong>concave</strong> production function exhibits non-increasing returns to scale (DRS or CRS globally).</li>
+<li>A <strong>linear</strong> production function (<span class="math inline">\(f(z) = a \cdot z\)</span>) is both concave and convex, corresponding to CRS.</li>
+<li>A <strong>strictly concave</strong> production function implies DRS.</li>
+<li>Note: concavity of <span class="math inline">\(f\)</span> is a stronger condition than DRS. DRS only requires <span class="math inline">\(f(\lambda z) &lt; \lambda f(z)\)</span> for <span class="math inline">\(\lambda &gt; 1\)</span>, while concavity requires the same inequality to hold for all convex combinations.</li>
+</ul>
+</div>
+</div>
+<hr>
+</section>
+<section id="examples" class="level2" data-number="19.7">
+<h2 data-number="19.7" class="anchored" data-anchor-id="examples"><span class="header-section-number">19.7</span> Examples</h2>
+<div class="callout callout-style-simple callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Example 3.1 — Cobb-Douglas Production Function
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Let <span class="math inline">\(f(z_1, z_2) = z_1^{\alpha} z_2^{\beta}\)</span> with <span class="math inline">\(\alpha, \beta &gt; 0\)</span>.</p>
+<p><strong>Returns to scale:</strong> For <span class="math inline">\(\lambda &gt; 0\)</span>: <span class="math display">\[f(\lambda z_1, \lambda z_2) = (\lambda z_1)^{\alpha} (\lambda z_2)^{\beta} = \lambda^{\alpha+\beta} z_1^{\alpha} z_2^{\beta} = \lambda^{\alpha+\beta} f(z_1, z_2)\]</span> - If <span class="math inline">\(\alpha + \beta = 1\)</span>: CRS - If <span class="math inline">\(\alpha + \beta &gt; 1\)</span>: IRS - If <span class="math inline">\(\alpha + \beta &lt; 1\)</span>: DRS</p>
+<p><strong>Transformation function:</strong> <span class="math inline">\(F(-z_1, -z_2, q) = q - z_1^{\alpha} z_2^{\beta}\)</span>; the production set is <span class="math inline">\(\{F \leq 0\}\)</span>.</p>
+<p><strong>MRTS:</strong> <span class="math inline">\(MRTS_{12} = \frac{\alpha z_2}{\beta z_1}\)</span>, which is decreasing in <span class="math inline">\(z_1/z_2\)</span> — confirming diminishing MRTS (convex isoquants).</p>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Example 3.2 — CES Production Function
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Let <span class="math inline">\(f(z_1, z_2) = (z_1^{\rho} + z_2^{\rho})^{1/\rho}\)</span> with <span class="math inline">\(\rho \leq 1\)</span>, <span class="math inline">\(\rho \neq 0\)</span>.</p>
+<p>This is CRS for all admissible <span class="math inline">\(\rho\)</span>. Special cases: - <span class="math inline">\(\rho \to 1\)</span>: <span class="math inline">\(f(z_1, z_2) = z_1 + z_2\)</span> (perfect substitutes; linear isoquants) - <span class="math inline">\(\rho \to 0\)</span>: <span class="math inline">\(f(z_1, z_2) = z_1^{1/2} z_2^{1/2}\)</span> (Cobb-Douglas; limiting case) - <span class="math inline">\(\rho \to -\infty\)</span>: <span class="math inline">\(f(z_1, z_2) = \min(z_1, z_2)\)</span> (Leontief; perfect complements; L-shaped isoquants)</p>
+<p>The elasticity of substitution is <span class="math inline">\(\sigma = 1/(1-\rho)\)</span>, measuring curvature of the isoquant.</p>
+</div>
+</div>
+<hr>
+</section>
+<section id="economic-intuition" class="level2" data-number="19.8">
+<h2 data-number="19.8" class="anchored" data-anchor-id="economic-intuition"><span class="header-section-number">19.8</span> Economic Intuition</h2>
+<p>The production set is a more general primitive than the production function because it accommodates <strong>multiple outputs</strong> (joint production), <strong>by-products</strong> (waste), and technologies where the input-output distinction is itself endogenous. The sign convention — inputs negative, outputs positive — is elegant because it reduces the entire description of the firm’s technology to a single set in commodity space, and profit is simply <span class="math inline">\(p \cdot y\)</span> for a price vector <span class="math inline">\(p\)</span> with the same sign convention (all prices positive).</p>
+<p>The nine properties P1–P9 are not all independent. For example, CRS (P8) implies both NIRTS (P6) and NDIRTS (P7). Convexity (P9) plus NIRTS (P6) gives a very well-behaved technology: the profit-maximizing problem will have a convex feasible set with a finite optimum for any price vector satisfying a no-profitable-direction condition.</p>
+<p>The critical practical message is: <strong>returns to scale determine market structure</strong>. CRS supports competitive markets with indeterminate scale; DRS generates finite supply and positive profits; IRS creates natural monopoly pressures. Understanding the production set is thus essential not just for partial equilibrium supply analysis, but for the entire theory of market organization.</p>
+<hr>
+</section>
+<section id="cross-references" class="level2" data-number="19.9">
+<h2 data-number="19.9" class="anchored" data-anchor-id="cross-references"><span class="header-section-number">19.9</span> Cross-References</h2>
+<ul>
+<li><a href="../Part_III_Producer_Theory/3.2_Profit_Maximization.html">3.2 Profit Maximization</a> — the PMP takes <span class="math inline">\(Y\)</span> as given; Hotelling’s lemma</li>
+<li><a href="../Part_III_Producer_Theory/3.3_Cost_Minimization.html">3.3 Cost Minimization</a> — the CMP works with the single-output production function</li>
+<li><a href="../Part_III_Producer_Theory/3.4_Supply_and_Factor_Demands.html">3.4 Supply and Factor Demands</a> — how returns to scale affect supply and factor demands</li>
+<li><a href="1.3_Optimization_Theory.qmd">1.3 Optimization Theory</a> — convex analysis and the envelope theorem</li>
+<li><a href="../Part_III_Producer_Theory/PS_Producer_Theory.html">PS Producer Theory</a> — Problem 1: verify production set properties for a given technology</li>
+</ul>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+            // default icon
+            link.classList.add("external");
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../Part_III_Producer_Theory/index.html" class="pagination-link" aria-label="Part III: Producer Theory — Overview">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Part III: Producer Theory — Overview</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../Part_III_Producer_Theory/3.2_Profit_Maximization.html" class="pagination-link" aria-label="3.2 Profit Maximization">
+        <span class="nav-page-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">3.2 Profit Maximization</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/andbbus/grad-micro-notes/edit/main/Part_III_Producer_Theory/3.1_Production_Sets.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/andbbus/grad-micro-notes/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer><script src="../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>
